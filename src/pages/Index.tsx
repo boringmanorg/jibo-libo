@@ -48,10 +48,10 @@ const Index = memo(() => {
           <StatsStrip />
           <PromiseMarquee />
           <Trending />
+          <PrimeRail />
           <Stays />
           <CampsiteBanner />
           <StateExplorer />
-          <PrimeRail />
           <GlampFeature />
           <BistroFeature />
           <ToursRow />
