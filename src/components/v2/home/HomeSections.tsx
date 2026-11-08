@@ -168,7 +168,6 @@ export function PrimeRail() {
     { t: 'Work From Home', cat: 'DIGITAL NOMAD', d: 'Fibre Wi-Fi, a desk with a view and TAB Bistro downstairs.', price: 'Weekly plans', note: 'ask the desk', img: COVERS.workation, to: '/work-from-home', tone: 'slate' as const },
     { t: 'XTSY Rentals', cat: 'VEHICLE RENTAL', d: 'Cars and Royal Enfields, booked through trusted rental partners.', price: '₹1,300', note: 'per day onwards', img: IMG.bumla, to: '/xtsy-rentals', tone: 'crimson' as const },
   ];
-  const doubled = prime.concat(prime);
   return (
     <section className="flex flex-col gap-9 overflow-hidden bg-xt-ink py-20 text-xt-paper lg:py-[88px]">
       <div className={`${PAD} xt-reveal flex flex-col gap-4 md:flex-row md:items-end md:justify-between`}>
@@ -176,22 +175,20 @@ export function PrimeRail() {
           <Eyebrow light>Premium experiences</Eyebrow>
           <h2 className="xt-display m-0 text-[56px] leading-[0.95] sm:text-[76px]">XTSY Prime</h2>
         </div>
-        <p className="m-0 max-w-[460px] text-[16px] leading-relaxed text-xt-fog">What sets us apart, from India’s First Stargaze Glamp to stays where pets are family. Hover to pause.</p>
+        <p className="m-0 max-w-[460px] text-[16px] leading-relaxed text-xt-fog">What sets us apart, from India’s First Stargaze Glamp to stays where pets are family.</p>
       </div>
-      <div className="overflow-hidden">
-        <div className="xt-rail flex w-max gap-5 pl-4 sm:pl-8 lg:pl-14">
-          {doubled.map((p, i) => (
-            <Link key={`${p.t}-${i}`} to={p.to} aria-hidden={i >= prime.length ? true : undefined} tabIndex={i >= prime.length ? -1 : undefined} className="xt-lift flex w-[300px] flex-col overflow-hidden rounded-3xl bg-[#2A2F42] text-xt-paper hover:text-xt-paper sm:w-[340px]">
-              <Photo afterLoad src={p.img} alt={p.t} tone={p.tone} className="h-[200px] sm:h-[220px]" sizes="300px" />
-              <div className="flex flex-col gap-2 p-[22px]">
-                <span className="text-[12px] font-extrabold tracking-wider text-xt-rose">{p.cat}</span>
-                <span className="text-[21px] font-extrabold">{p.t}</span>
-                <span className="text-[14px] leading-normal text-xt-fog">{p.d}</span>
-                <span className="mt-1.5 text-[18px] font-extrabold">{p.price} <span className="text-[13px] font-semibold text-[#A3ABC2]">{p.note}</span></span>
-              </div>
-            </Link>
-          ))}
-        </div>
+      <div className={`${PAD} grid gap-5 sm:grid-cols-2 lg:grid-cols-3`}>
+        {prime.map((p) => (
+          <Link key={p.t} to={p.to} className="xt-lift xt-reveal flex flex-col overflow-hidden rounded-3xl bg-[#2A2F42] text-xt-paper hover:text-xt-paper">
+            <Photo afterLoad src={p.img} alt={p.t} tone={p.tone} className="h-[200px] sm:h-[220px]" sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" />
+            <div className="flex flex-col gap-2 p-[22px]">
+              <span className="text-[12px] font-extrabold tracking-wider text-xt-rose">{p.cat}</span>
+              <span className="text-[21px] font-extrabold">{p.t}</span>
+              <span className="text-[14px] leading-normal text-xt-fog">{p.d}</span>
+              <span className="mt-1.5 text-[18px] font-extrabold">{p.price} <span className="text-[13px] font-semibold text-[#A3ABC2]">{p.note}</span></span>
+            </div>
+          </Link>
+        ))}
       </div>
     </section>
   );
