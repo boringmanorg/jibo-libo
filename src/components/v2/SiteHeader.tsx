@@ -71,7 +71,6 @@ const MENU_GROUPS = [
 export default function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const { user } = useUserAuth();
   const location = useLocation();
   const path = location?.pathname ?? '/';
 
@@ -88,7 +87,6 @@ export default function SiteHeader() {
     };
   }, [menuOpen]);
 
-  const accountLabel = user?.displayName || user?.email?.split('@')[0];
 
   return (
     <div className="xt sticky top-0 z-50">
