@@ -662,6 +662,15 @@ serve(async (req) => {
 
       const html = generateInvoiceHTML(data);
 
+      // SECURITY: never trust a caller-supplied userId; derive it from a verified JWT.
+      let verifiedUserId: string | null = null;
+      const createAuth = req.headers.get("Authorization");
+      if (createAuth?.startsWith("Bearer ")) {
+        const uc = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_ANON_KEY")!, { global: { headers: { Authorization: createAuth } } });
+        const { data: c } = await uc.auth.getClaims(createAuth.replace("Bearer ", ""));
+        verifiedUserId = (c?.claims?.sub as string | undefined) ?? null;
+      }
+
       // Call the database function to create booking with invoice
       const { data: result, error } = await supabase.rpc('create_booking_with_invoice', {
         p_guest_name: data.guestName,
@@ -684,7 +693,7 @@ serve(async (req) => {
         p_state: data.guestState || null,
         p_pincode: data.guestPincode || null,
         p_special_requests: data.specialRequests || null,
-        p_user_id: data.userId || null,
+        p_user_id: verifiedUserId,
       });
 
       if (error) {
@@ -736,7 +745,7 @@ serve(async (req) => {
         });
       }
 
-      console.log('Invoice generated for booking:', dbResult.bookingId, 'User ID:', data.userId);
+      console.log('Invoice generated for booking:', dbResult.bookingId, 'User ID:', verifiedUserId);
 
       return new Response(JSON.stringify({
         success: true,

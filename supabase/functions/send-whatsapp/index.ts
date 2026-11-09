@@ -175,7 +175,7 @@ Deno.serve(async (req) => {
       payload.text = { preview_url: true, body: messageBody };
     }
 
-    console.log('[WhatsApp] Sending payload:', JSON.stringify(payload, null, 2));
+    console.log('[WhatsApp] Sending template message');
 
     // Send to WhatsApp Business API
     const whatsappResponse = await fetch(
