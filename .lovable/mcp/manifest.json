@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "sdk_version": "0.20.1",
+  "sdk_version": "3.4.0",
   "path": "/mcp",
   "auth": {
     "type": "oauth",
@@ -26,19 +26,19 @@
           "openWorldHint": false
         },
         "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "category": {
+              "description": "Filter by 'luxury' (Experience by XTSY) or 'hostel' (dorms & private rooms).",
               "type": "string",
               "enum": [
                 "luxury",
                 "hostel"
-              ],
-              "description": "Filter by 'luxury' (Experience by XTSY) or 'hostel' (dorms & private rooms)."
+              ]
             }
           },
-          "additionalProperties": false,
-          "$schema": "http://json-schema.org/draft-07/schema#"
+          "additionalProperties": false
         },
         "outputSchema": null
       },
@@ -52,9 +52,11 @@
           "openWorldHint": false
         },
         "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "category": {
+              "description": "Filter by destination category.",
               "type": "string",
               "enum": [
                 "waterfall",
@@ -67,20 +69,18 @@
                 "river",
                 "peak",
                 "cultural"
-              ],
-              "description": "Filter by destination category."
+              ]
             },
             "region": {
-              "type": "string",
-              "description": "Filter by region, e.g. 'Cherrapunji & Sohra', 'Near Shillong'."
+              "description": "Filter by region, e.g. 'Cherrapunji & Sohra', 'Near Shillong'.",
+              "type": "string"
             },
             "featuredOnly": {
-              "type": "boolean",
-              "description": "Return only featured destinations."
+              "description": "Return only featured destinations.",
+              "type": "boolean"
             }
           },
-          "additionalProperties": false,
-          "$schema": "http://json-schema.org/draft-07/schema#"
+          "additionalProperties": false
         },
         "outputSchema": null
       },
@@ -94,6 +94,7 @@
           "openWorldHint": false
         },
         "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "slug": {
@@ -105,8 +106,7 @@
           "required": [
             "slug"
           ],
-          "additionalProperties": false,
-          "$schema": "http://json-schema.org/draft-07/schema#"
+          "additionalProperties": false
         },
         "outputSchema": null
       },
@@ -120,20 +120,20 @@
           "openWorldHint": false
         },
         "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "region": {
+              "description": "Filter packages by region.",
               "type": "string",
               "enum": [
                 "Meghalaya",
                 "Arunachal Pradesh",
                 "Assam & Meghalaya"
-              ],
-              "description": "Filter packages by region."
+              ]
             }
           },
-          "additionalProperties": false,
-          "$schema": "http://json-schema.org/draft-07/schema#"
+          "additionalProperties": false
         },
         "outputSchema": null
       },
@@ -147,6 +147,7 @@
           "openWorldHint": false
         },
         "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "slug": {
@@ -158,8 +159,7 @@
           "required": [
             "slug"
           ],
-          "additionalProperties": false,
-          "$schema": "http://json-schema.org/draft-07/schema#"
+          "additionalProperties": false
         },
         "outputSchema": null
       },
@@ -173,15 +173,15 @@
           "openWorldHint": false
         },
         "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "section": {
-              "type": "string",
-              "description": "Optional section id or label to filter, e.g. 'beverages'."
+              "description": "Optional section id or label to filter, e.g. 'beverages'.",
+              "type": "string"
             }
           },
-          "additionalProperties": false,
-          "$schema": "http://json-schema.org/draft-07/schema#"
+          "additionalProperties": false
         },
         "outputSchema": null
       },
@@ -195,9 +195,10 @@
           "openWorldHint": false
         },
         "inputSchema": {
-          "$schema": "http://json-schema.org/draft-07/schema#",
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
-          "properties": {}
+          "properties": {},
+          "additionalProperties": false
         },
         "outputSchema": null
       }

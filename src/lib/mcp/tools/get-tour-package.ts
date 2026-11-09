@@ -57,7 +57,7 @@ export default defineTool({
       `\n\nEnquire: https://xtsy.one/tours/${p.slug}`;
     return {
       content: [{ type: "text", text }],
-      structuredContent: detail,
+      structuredContent: JSON.parse(JSON.stringify(detail)),
     };
   },
 });

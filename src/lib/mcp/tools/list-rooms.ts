@@ -26,7 +26,7 @@ export default defineTool({
       `Book online: ${BOOKING_URL}`;
     return {
       content: [{ type: "text", text }],
-      structuredContent: { rooms, bookingUrl: BOOKING_URL },
+      structuredContent: JSON.parse(JSON.stringify({ rooms, bookingUrl: BOOKING_URL })),
     };
   },
 });
