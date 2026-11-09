@@ -98,7 +98,7 @@ async function sendOTPEmail(toEmail: string, otp: string): Promise<boolean> {
     });
 
     await client.close();
-    console.log(`OTP email sent successfully to ${toEmail}`);
+    console.log("OTP email sent successfully");
     return true;
   } catch (error) {
     console.error('Failed to send OTP email:', error);
@@ -147,7 +147,7 @@ Deno.serve(async (req) => {
 
       // If OTP was generated, send email via Gmail SMTP
       if (otpResult?.otp) {
-        console.log(`Generated OTP for ${normalizedEmail}, expires: ${otpResult.expires_at}`);
+        console.log("Generated password reset OTP");
         
         const emailSent = await sendOTPEmail(normalizedEmail, otpResult.otp);
         

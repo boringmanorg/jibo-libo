@@ -120,7 +120,19 @@ Deno.serve(async (req) => {
     const result = await validateSitemap(parsed.toString());
 
     const supabase = createClient(SUPABASE_URL, SERVICE_KEY);
-    await supabase.from('sitemap_health_checks').insert(result);
+    // SECURITY: only the scheduler (CRON_SECRET) or an admin may persist health records.
+    let mayPersist = false;
+    const cronSecret = Deno.env.get("CRON_SECRET");
+    if (cronSecret && req.headers.get("x-cron-secret") === cronSecret) mayPersist = true;
+    const auth = req.headers.get("Authorization");
+    if (!mayPersist && auth?.startsWith("Bearer ")) {
+      const { data: u } = await supabase.auth.getUser(auth.replace("Bearer ", ""));
+      if (u?.user) {
+        const { data: isAdmin } = await supabase.rpc("has_role", { _user_id: u.user.id, _role: "admin" });
+        mayPersist = !!isAdmin;
+      }
+    }
+    if (mayPersist) await supabase.from("sitemap_health_checks").insert(result);
 
     return new Response(JSON.stringify({ success: true, result }), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },

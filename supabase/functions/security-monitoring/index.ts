@@ -52,7 +52,7 @@ serve(async (req) => {
 
     const { action, email, timeWindow } = await req.json();
 
-    console.log('Security monitoring request:', { action, email, timeWindow });
+    console.log('Security monitoring request:', { action, timeWindow });
 
     switch (action) {
       case 'check_suspicious_activity':
