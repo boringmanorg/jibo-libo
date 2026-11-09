@@ -280,9 +280,7 @@ export const useEnhancedAnalytics = () => {
     // Initial ping
     pingRealtime();
 
-    // Ping every 30 seconds
-    const interval = setInterval(pingRealtime, 30000);
-    return () => clearInterval(interval);
+    // One ping per page view only; no repeating timer (avoids background backend calls).
   }, [context, location.pathname]);
 
   // Track custom event
