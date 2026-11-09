@@ -23,8 +23,11 @@ export default function BistroV2() {
   const [section, setSection] = useState(menuSections[0]?.id ?? '');
   const current = menuSections.find((s) => s.id === section) ?? menuSections[0];
   const restaurantSchema = buildRestaurantSchema({
-    ratingValue: stats.average || undefined,
-    reviewCount: stats.count || undefined,
+    // No aggregateRating: `stats` now comes from the curated best-of Google reviews
+    // (all 5-star by selection), so emitting it would publish a 5.0 aggregate that
+    // misrepresents TAB Bistro's real Google rating. buildRestaurantSchema omits the
+    // block when these are undefined. Supply TAB Bistro's actual Google figures here
+    // (its own Business Profile, not the hostel's 4.7/252) to show a rating again.
     reviews: reviews.map((r) => ({ name: r.name, rating: r.rating, comment: r.comment, date: r.isoDate.slice(0, 10) })),
   });
   // Best Google reviews pin first; approved diner reviews fill the rest.
@@ -174,7 +177,9 @@ export default function BistroV2() {
 
         {topReviews.length > 0 && (
           <Section className="pt-0">
-            <H2 eyebrow="Diners say">{stats.average ? `${stats.average.toFixed(1)} from ${stats.count} diners` : 'What diners say'}</H2>
+            {/* No average shown: `stats` is the curated best-of Google set (all 5-star by
+                selection), so "5.0 from 6 diners" would misstate TAB Bistro's real rating. */}
+            <H2 eyebrow="Diners say">What diners say</H2>
             <div className="grid gap-5 md:grid-cols-3">
               {topReviews.map((r) => (
                 <figure key={r.key} className="xt-reveal m-0 flex flex-col gap-3 rounded-3xl bg-white p-7">

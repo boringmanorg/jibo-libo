@@ -1,5 +1,4 @@
 import { memo, useState } from "react";
-import { Helmet } from '@/lib/seo/helmet';
 import { Star, BadgeCheck, MessageSquare, Camera, Loader2, Send, ImagePlus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -153,26 +152,17 @@ const TabBistroReviews = memo(({ reviews, stats, submitReview, onSubmitted }: Pr
     }
   };
 
-  const aggSchema = stats.count
-    ? {
-        "@context": "https://schema.org",
-        "@type": "AggregateRating",
-        itemReviewed: { "@type": "Restaurant", name: "TAB Bistro by XTSY", servesCuisine: "Multi-cuisine" },
-        ratingValue: stats.average.toFixed(1),
-        reviewCount: stats.count,
-        bestRating: 5,
-        worstRating: 1,
-      }
-    : null;
+  // No AggregateRating is emitted. The reviews shown here are a curated selection of
+  // the best Google reviews (see src/data/featuredGoogleReviews.ts), so their average
+  // is 5.0 by construction. Publishing that as an aggregate would misrepresent TAB
+  // Bistro's real Google rating and breaches Google's structured-data policy, which
+  // requires an aggregate to reflect all reviews rather than a hand-picked subset.
+  // To show a rating here, add TAB Bistro's actual Google figures (it has its own
+  // Business Profile, separate from the hostel's 4.7/252 in brandFacts.ts) and use
+  // those instead of anything derived from this selection.
 
   return (
     <section id="reviews">
-      {aggSchema && (
-        <Helmet>
-          <script type="application/ld+json">{JSON.stringify(aggSchema)}</script>
-        </Helmet>
-      )}
-
       <div className="flex items-center gap-2 text-amber-400 mb-2">
         <Star className="w-5 h-5" />
         <span className="text-xs uppercase tracking-[0.15em] font-semibold">Guest Reviews</span>
@@ -183,13 +173,9 @@ const TabBistroReviews = memo(({ reviews, stats, submitReview, onSubmitted }: Pr
             What Diners Say About TAB Bistro
           </h2>
           {stats.count > 0 && (
-            <div className="flex items-center gap-3">
-              <span className="text-3xl font-bold text-foreground">{stats.average.toFixed(1)}</span>
-              <div>
-                <Stars value={Math.round(stats.average)} className="mb-0.5" />
-                <span className="text-xs text-muted-foreground">{stats.count} reviews · Shillong</span>
-              </div>
-            </div>
+            <span className="text-xs text-muted-foreground">
+              {stats.count} featured Google reviews · Shillong
+            </span>
           )}
         </div>
         <Button
