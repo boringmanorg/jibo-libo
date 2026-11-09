@@ -2,7 +2,7 @@
  {
   "url": "/",
   "status": 200,
-  "words": 1828,
+  "words": 1699,
   "findings": [
    {
     "rule": "policy:check-in time",
