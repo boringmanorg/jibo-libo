@@ -23,7 +23,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
-import { supabase } from "@/integrations/supabase/client";
+import { localEnquiryRef } from '@/lib/localEnquiry';
 import { bookingPageSource } from "@/utils/privacyCompliantWhatsApp";
 import { DAWKI_CAMPING_IMAGES, getPropertyById } from "@/data/properties";
 
@@ -115,16 +115,7 @@ const CampsiteBookingFlow = memo(() => {
     if (!checkIn || !checkOut) return;
     setSubmitting(true);
     try {
-      const { data: saved, error } = await supabase.rpc('create_enquiry', {
-        p_guest_name: name, p_email: email, p_phone: phone,
-        p_check_in: format(checkIn, 'yyyy-MM-dd'), p_check_out: format(checkOut, 'yyyy-MM-dd'),
-        p_room_type: 'campsite-dawki', p_room_name: `XTSY Adventure Campsite — ${selectedPkg.title}`,
-        p_quantity: guests, p_nights: nights, p_rate_per_night: selectedPkg.price,
-        p_subtotal: total, p_gst_rate: 0, p_gst_amount: 0, p_total_amount: total,
-        p_special_requests: [`[WhatsApp] Page: ${bookingPageSource()}`, notes].filter(Boolean).join(' | '),
-      });
-      if (error || !saved?.[0]?.enquiry_id) throw error || new Error('Could not save enquiry');
-      setEnquiryId(saved[0].enquiry_id);
+      setEnquiryId(localEnquiryRef());
       setStep("confirmation");
     } catch (err: any) {
       toast.error(err.message || "Could not submit enquiry. Please WhatsApp us.");

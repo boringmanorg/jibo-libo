@@ -36,7 +36,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/utils';
 import { toast } from 'sonner';
-import { supabase } from '@/integrations/supabase/client';
+import { localEnquiryRef, staticRoomCatalogue } from '@/lib/localEnquiry';
 import UnifiedImage from '@/components/UnifiedImage';
 import { useEnhancedAnalytics } from '@/hooks/useEnhancedAnalytics';
 import { ROOM_INVENTORY, RoomType } from '@/data/roomInventory';
@@ -1081,10 +1081,7 @@ export default function SimplifiedBookingFlow() {
     const whatsAppTab = window.open('', '_blank');
     setIsSubmitting(true);
     try {
-      const { data: catalogue, error: catalogueError } = await supabase.from('room_types')
-        .select('id,name,base_price,is_active').eq('is_active', true);
-      if (catalogueError) throw catalogueError;
-      const quote = resolveBookingQuote((catalogue ?? []).map(entry => ({ ...entry, id: String(entry.id), base_price: Number(entry.base_price), is_active: entry.is_active === true })),
+      const quote = resolveBookingQuote(staticRoomCatalogue(),
         selectedRooms.map(({ room, quantity }) => ({ name: room.name, quantity, kind: room.kind, capacity: room.capacity })), nights);
       const { rooms, guests } = quote;
       if (rooms.some((room, index) => room.nightlyRate !== selectedRooms[index]?.room.discountedPrice)) {
@@ -1096,16 +1093,7 @@ export default function SimplifiedBookingFlow() {
       }
       const source = bookingPageSource();
       const requests = [`Page: ${source}`, guestDetails.specialRequests, guestDetails.address && `Address: ${guestDetails.address}`, [guestDetails.city, guestDetails.state, guestDetails.pincode].filter(Boolean).join(', ')].filter(Boolean).join(' | ').slice(0, 2000);
-      const { data, error } = await supabase.rpc('create_whatsapp_enquiry', {
-        p_guest_name: guestDetails.name.trim(), p_email: guestDetails.email.trim(), p_phone: guestDetails.phone.trim(),
-        p_check_in: format(checkIn, 'yyyy-MM-dd'), p_check_out: format(checkOut, 'yyyy-MM-dd'),
-        p_guests: guests, p_room_ids: rooms.map(r => r.id), p_quantities: rooms.map(r => r.quantity),
-        p_breakfast: false, p_decoration: false, p_subtotal: quote.subtotal, p_taxes: quote.taxes,
-        p_total: quote.total, p_requests: requests,
-      });
-      if (error) throw error;
-      const saved = typeof data === 'string' ? JSON.parse(data) : data;
-      if (!saved?.success || !saved.enquiry_id) throw new Error(saved?.error || 'Could not save enquiry');
+      const saved = { enquiry_id: localEnquiryRef() };
       setBookingId(saved.enquiry_id);
       const message = generateBookingMessage({
         roomType: rooms.map(r => `${r.quantity}× ${r.name} (₹${r.nightlyRate.toLocaleString('en-IN')}/night, GST included)`).join(', '),
@@ -1119,7 +1107,7 @@ export default function SimplifiedBookingFlow() {
       if (whatsAppTab && !whatsAppTab.closed) { whatsAppTab.opener = null; whatsAppTab.location.href = url; }
       else openWhatsAppDirectly(message);
       goToStep('confirmation');
-      toast.success('Enquiry saved. Send your message in WhatsApp to reach the host.');
+      toast.success('Enquiry ready. Send your message in WhatsApp to reach the host.');
     } catch (error) {
       whatsAppTab?.close();
       toast.error(error instanceof Error ? error.message : 'Could not save enquiry. Please try again.');
