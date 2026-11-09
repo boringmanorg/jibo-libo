@@ -4,7 +4,6 @@
  */
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { Link, useLocation } from '@/lib/router-compat';
-import { useUserAuth } from '@/contexts/UserAuthContext';
 import xtsyLogo from '@/assets/xtsy-color-logo.webp';
 import { cn } from '@/lib/utils';
 import { openTripChat } from './tripChatEvents';
