@@ -152,7 +152,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       { rel: "apple-touch-icon", href: "/xtsy-favicon.png" },
       { rel: "dns-prefetch", href: "//www.googletagmanager.com" },
-      { rel: "dns-prefetch", href: "//checkout.razorpay.com" },
       { rel: "dns-prefetch", href: "//wa.me" },
       { rel: "alternate", hrefLang: "en", href: "https://xtsy.one/" },
       { rel: "alternate", hrefLang: "en-IN", href: "https://xtsy.one/" },

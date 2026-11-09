@@ -4,7 +4,6 @@
  */
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { Link, useLocation } from '@/lib/router-compat';
-import { useUserAuth } from '@/contexts/UserAuthContext';
 import xtsyLogo from '@/assets/xtsy-color-logo.webp';
 import { cn } from '@/lib/utils';
 import { openTripChat } from './tripChatEvents';
@@ -71,7 +70,6 @@ const MENU_GROUPS = [
 export default function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const { user } = useUserAuth();
   const location = useLocation();
   const path = location?.pathname ?? '/';
 
@@ -88,7 +86,6 @@ export default function SiteHeader() {
     };
   }, [menuOpen]);
 
-  const accountLabel = user?.displayName || user?.email?.split('@')[0];
 
   return (
     <div className="xt sticky top-0 z-50">
@@ -141,13 +138,6 @@ export default function SiteHeader() {
             </span>
             Plan with AI
           </button>
-          <Link
-            to={user ? '/profile' : '/auth'}
-            className="hidden h-11 items-center gap-2 whitespace-nowrap rounded-full border-[1.5px] border-xt-ink px-4 text-[14px] font-bold text-xt-ink md:flex lg:hidden 2xl:flex"
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4" /><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6" /></svg>
-            <span className="max-w-[120px] truncate">{accountLabel || 'Sign in'}</span>
-          </Link>
           <Link to="/book" className="xt-btn flex h-[44px] items-center whitespace-nowrap rounded-full bg-xt-crimson px-5 text-[14px] font-bold text-white hover:text-white">
             Book now
           </Link>
@@ -193,9 +183,6 @@ export default function SiteHeader() {
           </div>
           <div className="flex flex-wrap items-center gap-3 border-t border-white/10 px-4 py-8 sm:px-8 lg:px-14">
             <a href={waLink()} className="flex h-12 items-center rounded-full bg-xt-crimson px-6 font-bold text-white hover:text-white">WhatsApp {WHATSAPP_DISPLAY}</a>
-            <Link to={user ? '/profile' : '/auth'} className="flex h-12 items-center rounded-full border-[1.5px] border-xt-paper px-6 font-bold text-xt-paper">
-              {accountLabel || 'Sign in'}
-            </Link>
             <Link to="/install" className="flex h-12 items-center rounded-full border-[1.5px] border-xt-paper/40 px-6 font-bold text-xt-paper">Install the app</Link>
           </div>
         </div>

@@ -155,8 +155,7 @@ export const PrivacyPolicy: React.FC = () => {
               
               <h3 className="text-xl font-medium mb-3 mt-4 text-foreground">5.1 Service Providers</h3>
               <ul className="list-disc pl-6 space-y-2">
-                <li><strong>Payment Processors:</strong> Razorpay for secure payment handling</li>
-                <li><strong>Authentication Services:</strong> Firebase/Google for account authentication</li>
+                <li><strong>Hosting &amp; Database:</strong> Lovable Cloud for website hosting and storing enquiries you submit</li>
                 <li><strong>Analytics Providers:</strong> To understand website usage (anonymized data)</li>
                 <li><strong>Communication Platforms:</strong> WhatsApp for customer support (user-initiated)</li>
               </ul>
@@ -284,7 +283,7 @@ export const PrivacyPolicy: React.FC = () => {
               <h2 className="text-2xl font-semibold mb-4 text-foreground">10. International Data Transfers</h2>
               <p>
                 Your data may be transferred to and processed in countries outside India, including 
-                the United States (where our service providers like Google and Firebase operate). 
+                the United States (where our service providers like Google and our cloud hosting provider operate). 
                 When we transfer data internationally, we ensure appropriate safeguards are in place.
               </p>
             </section>
