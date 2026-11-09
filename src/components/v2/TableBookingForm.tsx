@@ -6,7 +6,7 @@
  * desk replies to confirm availability.
  */
 import { useEffect, useMemo, useState, type FormEvent } from 'react';
-import { supabase } from '@/integrations/supabase/client';
+import { localEnquiryRef } from '@/lib/localEnquiry';
 import { Link } from '@/lib/router-compat';
 import { bookingPageSource } from '@/utils/privacyCompliantWhatsApp';
 import { formatLocalDateString, getLocalToday, parseLocalDate } from '@/lib/date-utils';
@@ -126,35 +126,7 @@ export function TableBookingForm({ id = 'table-booking-form' }: { id?: string })
 
     setBusy(true);
     try {
-      const { data, error: saveError } = await supabase.rpc('create_enquiry', {
-        p_guest_name: name,
-        p_email: email,
-        p_phone: phone,
-        p_check_in: f.date,
-        p_check_out: checkOut,
-        p_room_type: 'table-reservation',
-        p_room_name: lunch ? `TAB Bistro — lunch preorder for ${party}` : `TAB Bistro — table for ${party}`,
-        p_quantity: party,
-        p_nights: 1,
-        p_rate_per_night: 0,
-        p_subtotal: 0,
-        p_gst_rate: 0,
-        p_gst_amount: 0,
-        p_total_amount: 0,
-        p_special_requests: [
-          `${lunch ? 'Lunch preorder only' : 'Table'}: ${f.date} | ${requestedTimeLabel}`,
-          `Guests: ${party}`,
-          f.notes.trim(),
-          lunch ? 'Pending WhatsApp confirmation of availability, order and price. Not a table reservation.' : '',
-          `Page: ${bookingPageSource()}`,
-        ]
-          .filter(Boolean)
-          .join(' | ')
-          .slice(0, 2000),
-      });
-      if (saveError) throw saveError;
-      const ref = data?.[0]?.enquiry_id;
-      if (!ref) throw new Error('Could not save your table request.');
+      const ref = localEnquiryRef();
       const wa = waLink(message(ref));
       setSaved({ ref, wa });
       window.location.assign(wa);

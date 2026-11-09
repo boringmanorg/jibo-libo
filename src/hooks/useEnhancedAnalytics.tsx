@@ -2,7 +2,7 @@ import { readConsent } from '@/lib/consent';
 import { SELF_TRACKING_ENABLED } from '@/lib/selfTracking';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useLocation } from '@/lib/router-compat';
-import { getSupabase } from '@/integrations/supabase/lazy';
+import { getSupabase, BACKEND_TELEMETRY_ENABLED } from '@/lib/offlineBackend';
 import { 
   isLovableSession, 
   initLovableSessionDetection, 
@@ -254,7 +254,7 @@ export const useEnhancedAnalytics = () => {
         },
       };
 
-      navigator.sendBeacon(
+      if (BACKEND_TELEMETRY_ENABLED) navigator.sendBeacon(
         `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/track-analytics`,
         JSON.stringify(data)
       );

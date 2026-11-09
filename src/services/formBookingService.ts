@@ -1,3 +1,4 @@
+import { localEnquiryRef } from '@/lib/localEnquiry';
 import { supabase } from "@/integrations/supabase/client";
 import { validateWhatsAppBooking } from "@/utils/whatsappBookingValidation";
 import { validateXTSY270Inquiry, validateTourInquiry } from "@/utils/inquiryValidation";
@@ -69,48 +70,7 @@ export async function saveWhatsAppBooking(data: WhatsAppBookingData) {
       return { success: false, error: `Validation failed: ${errorMessages}` };
     }
 
-    const { data: result, error } = await supabase.rpc('create_whatsapp_enquiry', {
-      p_guest_name: data.name,
-      p_email: data.email,
-      p_phone: data.phone,
-      p_check_in: data.checkIn,
-      p_check_out: data.checkOut,
-      p_guests: data.guests,
-      p_room_ids: data.selectedRooms.map(r => r.roomTypeId),
-      p_quantities: data.selectedRooms.map(r => r.quantity),
-      p_breakfast: data.breakfast,
-      p_decoration: data.decoration,
-      p_subtotal: data.subtotal,
-      p_taxes: data.taxes,
-      p_total: data.totalAmount,
-      p_requests: data.specialRequests,
-    });
-
-    if (error) {
-      console.error('Secure booking creation error:', error);
-      
-      // Handle rate limiting errors
-      if (error.message?.includes('rate limit') || error.message?.includes('too many')) {
-        return { 
-          success: false, 
-          error: 'Too many booking attempts. Please try again in a few minutes.' 
-        };
-      }
-      
-      throw error;
-    }
-
-    // Parse the result
-    const bookingResult = typeof result === 'string' ? JSON.parse(result) : result;
-    
-    if (!bookingResult?.success) {
-      return { 
-        success: false, 
-        error: bookingResult?.error || 'Failed to create booking' 
-      };
-    }
-    
-    return { success: true, bookingId: bookingResult.enquiry_id };
+    return { success: true, bookingId: localEnquiryRef() };
   } catch (error: any) {
     console.error('Error saving WhatsApp booking:', error);
     return { success: false, error: error.message || 'Unknown error occurred' };

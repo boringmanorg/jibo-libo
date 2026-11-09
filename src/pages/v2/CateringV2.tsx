@@ -5,7 +5,6 @@
 import { useState, type FormEvent } from 'react';
 import { toast } from 'sonner';
 import SEOHead from '@/components/SEOHead';
-import { createCateringEnquiry } from '@/services/cateringService';
 import { IMG, first } from '@/data/v2Images';
 import { PageShell, PageHero, Btn, PAD } from '@/components/v2/blocks';
 import { Photo, waLink } from '@/components/v2/primitives';
@@ -26,22 +25,10 @@ export default function CateringV2({ canonical = 'https://xtsy.one/tab-bistro/ca
   const submit = async (e: FormEvent) => {
     e.preventDefault();
     setBusy(true);
-    const res = await createCateringEnquiry({
-      fullName: f.name,
-      phone: f.phone,
-      eventType: f.type,
-      eventDate: f.date || undefined,
-      guestCount: f.guests ? Number(f.guests) : undefined,
-      message: f.message,
-    });
+    toast.success('Opening WhatsApp — send the message for your TAB Bistro quote.');
+    window.location.href = waLink(`Hi TAB Bistro! Catering enquiry: ${f.type}, ${f.guests || '?'} guests, ${f.date || 'date TBC'}. Name: ${f.name}; phone: ${f.phone}. ${f.message}`);
+    setDone(true);
     setBusy(false);
-    if (res.success) {
-      setDone(true);
-      toast.success('Thanks! The TAB Bistro team will send your quote on WhatsApp.');
-    } else {
-      toast.error('Could not send online — opening WhatsApp instead.');
-      window.location.href = waLink(`Hi TAB Bistro! Catering enquiry: ${f.type}, ${f.guests} guests, ${f.date || 'date TBC'}. ${f.message}`);
-    }
   };
 
   return (

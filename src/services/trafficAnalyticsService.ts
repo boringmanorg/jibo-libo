@@ -7,7 +7,7 @@ import { pushToDataLayer } from '@/utils/dataLayerService';
  */
 
 import { SELF_TRACKING_ENABLED } from '@/lib/selfTracking';
-import { getSupabase } from '@/integrations/supabase/lazy';
+import { getSupabase, BACKEND_TELEMETRY_ENABLED } from '@/lib/offlineBackend';
 
 // =============================================
 // TYPE DEFINITIONS
@@ -1009,7 +1009,7 @@ class TrafficAnalyticsService {
         traffic_quality: this.computeTrafficQuality(),
       };
       
-      navigator.sendBeacon(
+      if (BACKEND_TELEMETRY_ENABLED) navigator.sendBeacon(
         `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/track-analytics`,
         JSON.stringify({
           endpoint: 'session-end',

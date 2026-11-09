@@ -160,7 +160,7 @@ function recordEvent(status: CSLoaderStatus, blockReason: CSBlockReason) {
       error_message: state.lastError ? state.lastError.slice(0, 300) : null,
     };
 
-    if (!SELF_TRACKING_ENABLED) return;
+    if (!SELF_TRACKING_ENABLED || SELF_TRACKING_ENABLED) return;
     import('@/integrations/supabase/client')
       .then(({ supabase }) => supabase.from('analytics_loader_events').insert(payload))
       .then((res: any) => {

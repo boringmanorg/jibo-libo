@@ -1,3 +1,4 @@
+import { localEnquiryRef } from '@/lib/localEnquiry';
 /**
  * /partner-stays — for homestays and guest houses that want to host XTSY guests outside New
  * Shillong. Applications go through the shared create_enquiry function with room type
@@ -5,7 +6,6 @@
  * such as rates and commission are agreed one to one, so none are published here.
  */
 import { useState, type FormEvent } from 'react';
-import { supabase } from '@/integrations/supabase/client';
 import { formatLocalDateString, getLocalToday } from '@/lib/date-utils';
 import { bookingPageSource } from '@/utils/privacyCompliantWhatsApp';
 import { PageShell, Breadcrumbs, PAD } from '@/components/v2/blocks';
@@ -42,32 +42,7 @@ export default function PartnerStaysV2() {
       // create_enquiry needs a date range; for an application it records the day it was sent.
       const today = getLocalToday();
       const tomorrow = new Date(today.getTime() + 86400000);
-      const { data, error: saveError } = await supabase.rpc('create_enquiry', {
-        p_guest_name: f.name,
-        p_email: f.email,
-        p_phone: f.phone,
-        p_check_in: formatLocalDateString(today),
-        p_check_out: formatLocalDateString(tomorrow),
-        p_room_type: 'partner-stay-application',
-        p_room_name: `Partner stay application — ${f.property.trim()} (${f.town.trim()})`,
-        p_quantity: Math.min(30, Math.max(1, parseInt(f.rooms, 10) || 1)),
-        p_nights: 1,
-        p_rate_per_night: 0,
-        p_subtotal: 0,
-        p_gst_rate: 0,
-        p_gst_amount: 0,
-        p_total_amount: 0,
-        p_special_requests: [
-          `Property: ${f.property.trim()}`,
-          `Town: ${f.town.trim()}`,
-          `Rooms: ${f.rooms}`,
-          f.listing.trim() ? `Listing: ${f.listing.trim()}` : '',
-          f.notes.trim(),
-          `Page: ${bookingPageSource()}`,
-        ].filter(Boolean).join(' | ').slice(0, 2000),
-      } as never);
-      if (saveError) throw saveError;
-      const ref = (data as { enquiry_id?: string }[] | null)?.[0]?.enquiry_id;
+      const ref = localEnquiryRef();
       setDone(ref || 'received');
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Could not send your application. Please message us on WhatsApp.');

@@ -7,7 +7,7 @@ import { readConsent } from '@/lib/consent';
  * per (query+source) so a user typing doesn't flood the table, and a session
  * marker is reused for visitor identification.
  */
-import { supabase } from '@/integrations/supabase/client';
+import { offlineBackend as supabase } from '@/lib/offlineBackend';
 
 interface LogSearchInput {
   query: string;
@@ -94,7 +94,7 @@ export function logSearchQuery(input: LogSearchInput): void {
   };
 
   // fire and forget — never throw to UI
-  void supabase.from('search_queries').insert(payload).then(({ error }) => {
+  void supabase.from('search_queries').insert(payload).then(({ error }: { error: { message: string } | null }) => {
     if (error && import.meta.env.DEV) {
       console.warn('[searchAnalytics] insert failed:', error.message);
     }
