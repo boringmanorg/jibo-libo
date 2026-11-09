@@ -102,7 +102,7 @@ export const validateField = (field: keyof WhatsAppBookingFormData, value: any, 
     return null;
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return error.errors[0]?.message || 'Invalid value';
+      return error.issues[0]?.message || 'Invalid value';
     }
     return null;
   }
@@ -116,7 +116,7 @@ export const validateWhatsAppBooking = (data: any) => {
   }
   
   const errors: Record<string, string> = {};
-  result.error.errors.forEach((err) => {
+  result.error.issues.forEach((err) => {
     const path = err.path[0] as string;
     if (path && !errors[path]) {
       errors[path] = err.message;
