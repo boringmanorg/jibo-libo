@@ -17,7 +17,7 @@ export const LAST_MINUTE_SEO_PAGES: SEOPageData[] = [
     sections: [
       {
         heading: 'Available Right Now',
-        content: `Our real-time inventory shows live availability for today. Don't miss out — beds fill up fast, especially on weekends and during festivals. Book directly for the best rates, guaranteed.`,
+        content: `We confirm availability for tonight on WhatsApp, usually within minutes. Don't miss out — beds fill up fast, especially on weekends and during festivals. Book directly for the best rates, guaranteed.`,
         listItems: [
           '8-Bed Mixed Dorm — ₹399/night (24 beds)',
           '6-Bed Mixed Dorm — ₹499/night (18 beds)',
@@ -42,7 +42,7 @@ export const LAST_MINUTE_SEO_PAGES: SEOPageData[] = [
       },
     ],
     faqs: [
-      { question: 'Can I book a hostel in Shillong for tonight?', answer: 'Yes! XTSY accepts same-day bookings. Check our live availability above and book instantly. Confirmation is sent via WhatsApp within minutes.' },
+      { question: 'Can I book a hostel in Shillong for tonight?', answer: 'Yes! XTSY accepts same-day bookings. Send your dates and we confirm availability on WhatsApp within minutes.' },
       { question: 'What is the best budget-friendly hostel bed in Shillong today?', answer: 'The most affordable option is our 8-Bed Mixed Dormitory at ₹399/night. It includes Wi-Fi, hot water, locker storage, and access to all common areas.' },
       { question: 'Is walk-in available at XTSY?', answer: 'Walk-ins are welcome subject to availability. However, we recommend booking online to guarantee your spot, especially during peak season.' },
     ],
@@ -151,7 +151,7 @@ export const LAST_MINUTE_SEO_PAGES: SEOPageData[] = [
       },
     ],
     faqs: [
-      { question: 'Are there hotels available in Shillong right now?', answer: 'Yes, XTSY has rooms available for immediate booking. Our real-time system shows live inventory — what you see is what\'s actually available.' },
+      { question: 'Are there hotels available in Shillong right now?', answer: 'Yes, XTSY has rooms available for immediate booking. We confirm availability on WhatsApp before any payment — what you are quoted is what\'s actually available.' },
       { question: 'What\'s the best budget-friendly private room in Shillong tonight?', answer: 'Our King Double Room starts at ₹2,399/night for two guests. This includes Wi-Fi, hot water, and housekeeping; breakfast is available à la carte.' },
     ],
     schemaType: 'Hotel',
@@ -170,7 +170,7 @@ export const LAST_MINUTE_SEO_PAGES: SEOPageData[] = [
     sections: [
       {
         heading: 'What\'s Available Tonight',
-        content: `Our live inventory updates in real-time. Here's what you can book right now:`,
+        content: `We confirm what is free on WhatsApp before you pay. Here's what you can book right now:`,
         listItems: [
           '8-Bed Mixed Dorm — From ₹399/night (best value)',
           '6-Bed Mixed Dorm — From ₹499/night (recommended)',

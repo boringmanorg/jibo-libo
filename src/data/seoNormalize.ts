@@ -167,7 +167,7 @@ const extraFaqsFor = (cat: SEOPageCategory, topic: string): SEOFaq[] => {
   }
   return [
     { question: `Can XTSY customise ${low} for me?`, answer: `Yes — share your dates, budget and group size on WhatsApp ${WA} and we build ${low} around exactly what you need, with no outsourcing.` },
-    { question: `How quickly will I get a quote?`, answer: `Most ${low} quotes are returned within an hour during the day via WhatsApp ${WA}, with live availability and transparent pricing.` },
+    { question: `How quickly will I get a quote?`, answer: `Most ${low} quotes are returned within an hour during the day via WhatsApp ${WA}, with availability and transparent pricing.` },
   ];
 };
 

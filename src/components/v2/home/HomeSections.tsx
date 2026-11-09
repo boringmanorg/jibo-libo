@@ -16,7 +16,7 @@ export function LastMinuteBar() {
   return (
     <Link to="/book" className="flex h-[60px] items-center justify-center gap-3 overflow-hidden bg-xt-blush px-4 text-center text-[13px] font-bold leading-snug text-xt-crimson-dark hover:text-xt-crimson sm:h-12 sm:text-[15px]">
       <LiveDot />
-      Last-minute stay tonight? See live availability for dorms, private rooms and Experience by XTSY →
+      Last-minute stay tonight? Check availability for dorms, private rooms and Experience by XTSY →
     </Link>
   );
 }
@@ -95,7 +95,7 @@ export function Stays() {
           <Link key={s.title} to={s.to} className="xt-reveal xt-lift flex flex-col gap-3 rounded-[20px] pb-2 text-xt-ink hover:text-xt-ink">
             <Photo afterLoad src={s.img} alt={s.title} tone={s.tone} className="aspect-[314/236] rounded-[20px]" sizes="(max-width: 639px) 92vw, (max-width: 1023px) 46vw, 23vw">
               <span className="absolute bottom-3 left-3 flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1.5 text-[12px] font-extrabold text-xt-ink">
-                <span className="h-[7px] w-[7px] rounded-full bg-xt-leaf" />Live availability
+                <span className="h-[7px] w-[7px] rounded-full bg-xt-leaf" />Availability on WhatsApp
               </span>
             </Photo>
             <div className="flex items-baseline justify-between gap-2 px-1">

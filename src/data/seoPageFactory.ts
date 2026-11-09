@@ -285,7 +285,7 @@ export function buildIntentStayPage(slug: string): SEOPageData {
   const cityLabel = slugToLabel(city);
   const intentLabel = intent ? ` ${slugToLabel(intent)}` : '';
   const title = seoTitle(`${modifier ? slugToLabel(modifier) + ' ' : ''}${stayLabel} in ${cityLabel}${intentLabel}`);
-  const metaDescription = `Book a ${modifier ? slugToLabel(modifier).toLowerCase() + ' ' : ''}${stayLabel.toLowerCase()} in ${cityLabel}${intent ? ' for ' + intent.replace('-', ' ') : ''}. Live availability, best rates and 24/7 check-in. Get instant help on WhatsApp.`;
+  const metaDescription = `Book a ${modifier ? slugToLabel(modifier).toLowerCase() + ' ' : ''}${stayLabel.toLowerCase()} in ${cityLabel}${intent ? ' for ' + intent.replace('-', ' ') : ''}. Availability confirmed on WhatsApp, best rates and 24/7 check-in. Get instant help on WhatsApp.`;
 
   return buildPage({
     slug,
@@ -597,7 +597,7 @@ const workationFaqs = (scope: string, intentLabel: string): SEOFaq[] => [
   { question: `Is there a dedicated workspace or quiet zone?`, answer: `Yes — every workation guest gets an ergonomic desk, daylight lamp and access to a quiet zone with no-call hours (10am–5pm) for focused work.` },
   { question: `What is the best time for a workation in ${scope}?`, answer: `October to April is ideal — clear skies, cool days and great weekend exploring. Monsoon (Jun–Sep) is greener and more affordable, with reliable indoor work setups.` },
   { question: `Can digital nomads explore on weekends?`, answer: `Absolutely. ${scope} puts waterfalls, living root bridges, lakes and viewpoints within easy reach — XTSY can arrange weekend trips so you switch off fully between work weeks.` },
-  { question: `How do I book a ${intentLabel} in ${scope}?`, answer: `Send your dates and expected length of stay on WhatsApp ${WA}. We reply with live availability and a weekly/monthly quote within an hour.` },
+  { question: `How do I book a ${intentLabel} in ${scope}?`, answer: `Send your dates and expected length of stay on WhatsApp ${WA}. We reply with availability and a weekly/monthly quote within an hour.` },
 ];
 
 
@@ -696,7 +696,7 @@ export function buildWorkationPage(slug: string): SEOPageData {
   const intentLabel = slugToLabel(intent);
   const title = clamp(`${intentLabel} in ${scopeLabel} ${YEAR} – Long-Stay by XTSY`, 35, 60);
   const metaDescription = clamp(`${intentLabel} stays in ${scopeLabel} for remote workers and digital nomads. Fast fibre WiFi, weekly housekeeping, monthly rates. WhatsApp ${WA}.`, 130, 160);
-  const quickAnswer = clamp(`XTSY offers ${intentLabel.toLowerCase()} stays in ${scopeLabel} with verified 50+ Mbps fibre WiFi, daily breakfast, weekly housekeeping and monthly rates for remote workers. WhatsApp ${WA} for live availability.`, 40, 240);
+  const quickAnswer = clamp(`XTSY offers ${intentLabel.toLowerCase()} stays in ${scopeLabel} with verified 50+ Mbps fibre WiFi, daily breakfast, weekly housekeeping and monthly rates for remote workers. WhatsApp ${WA} and we confirm availability.`, 40, 240);
 
   return buildPage({
     slug,

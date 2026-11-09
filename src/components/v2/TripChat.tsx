@@ -116,7 +116,7 @@ export default function TripChat({ variant = 'embedded', className, onClose, ini
   }, [initialPrompt, msgs.length]);
 
   const chipAction = (chip: string) => {
-    if (/^check live availability$/i.test(chip)) return navigate('/book');
+    if (/^check availability$/i.test(chip)) return navigate('/book');
     if (/pet-friendly stays page/i.test(chip)) return navigate('/pet-friendly');
     if (/group bookings page/i.test(chip)) return navigate('/group-bookings-meghalaya');
     if (/workation plans/i.test(chip)) return navigate('/work-from-home');

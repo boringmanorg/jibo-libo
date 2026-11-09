@@ -270,10 +270,10 @@ export function respond(message: string, prev: ChatState): { reply: Reply; state
     return { reply: { text: dist, chips: target ? [`Plan a trip with ${target.name}`, `Where should I stay near ${target.name}?`] : ['How far is Dawki?', 'How far is Tawang?'], actions: [] }, state };
   }
   if (/(where|best place|good place|recommend).{0,30}(stay|hostel|hotel|homestay|sleep|accommodation)|best hostel|best hotel|stay in shillong|hostel in shillong|hotel in shillong/.test(t) && !parseDays(t)) {
-    return { reply: { text: stayAnswer(places[0]), chips: ['Check live availability', 'Plan my trip around XTSY', 'Pet policy'], actions: ['book'] }, state };
+    return { reply: { text: stayAnswer(places[0]), chips: ['Check availability', 'Plan my trip around XTSY', 'Pet policy'], actions: ['book'] }, state };
   }
   if (/\b(price|prices|cost|rate|rates|tariff|how much|charges)\b/.test(t) && !parseDays(t) && !places.length) {
-    return { reply: { text: priceAnswer(), chips: ['Check live availability', 'Plan a 4-day trip'], actions: ['book'] }, state };
+    return { reply: { text: priceAnswer(), chips: ['Check availability', 'Plan a 4-day trip'], actions: ['book'] }, state };
   }
   const bt = bestTimeAnswer(places, t);
   if (bt && !parseDays(t)) return { reply: { text: bt, chips: ['Plan 5 days in December', 'Plan a monsoon trip'], actions: [] }, state };

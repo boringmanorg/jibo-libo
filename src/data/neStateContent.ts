@@ -45,7 +45,7 @@ const XTSY_STAYS: StayLink[] = [
     note: 'Guided multi-day itineraries with transport, stays and local guides.',
   },
   {
-    label: 'Check live availability & book direct',
+    label: 'Check availability & book direct',
     href: '/book',
     note: 'Direct booking — no OTA commission, instant confirmation on WhatsApp.',
   },

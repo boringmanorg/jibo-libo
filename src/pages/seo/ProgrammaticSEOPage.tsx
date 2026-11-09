@@ -495,7 +495,7 @@ const ProgrammaticSEOPage = () => {
           {/* Bottom CTA — no prices, WhatsApp first */}
           <section className="mt-12 bg-gradient-to-r from-primary/10 to-primary/5 rounded-2xl p-8 text-center">
             <h2 className="text-2xl font-bold text-foreground">Plan Your Meghalaya Trip with XTSY</h2>
-            <p className="mt-2 text-muted-foreground">Talk to our local team for live availability, custom itineraries, and the best rate for your dates — usually within minutes on WhatsApp.</p>
+            <p className="mt-2 text-muted-foreground">Talk to our local team for availability, custom itineraries, and the best rate for your dates — usually within minutes on WhatsApp.</p>
             <div className="mt-4 flex flex-col sm:flex-row gap-3 justify-center">
               <a href={waBookHref} target="_blank" rel="noopener noreferrer" className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors">
                 Book Now
