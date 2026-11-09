@@ -129,7 +129,34 @@ const TourBookingModal: React.FC<TourBookingModalProps> = ({ isOpen, onClose, to
       setEnquiryId(result.enquiryId || '');
       setIsSuccess(true);
       setStep(3);
-      toast.success("Tour enquiry submitted successfully!");
+
+      // The enquiry reaches the XTSY desk on WhatsApp -- there is no backend to store it,
+      // so this hand-off IS the submission. Without it the guest would be told the enquiry
+      // was sent while nothing actually left the browser.
+      const lines = [
+        `*Tour enquiry - ${tourPackage.title}*`,
+        `Enquiry ID: ${result.enquiryId || '-'}`,
+        '',
+        `Name: ${guestName.trim()}`,
+        `Email: ${email.trim()}`,
+        `WhatsApp: ${whatsappNumber.trim()}`,
+        city.trim() ? `City: ${city.trim()}` : '',
+        '',
+        `Duration: ${tourPackage.duration}`,
+        `Location: ${tourPackage.location}`,
+        `Preferred date: ${format(preferredDate, 'dd MMM yyyy')}`,
+        `Travellers: ${travellers} (${groupType})`,
+        `Per person: Rs ${perPersonPrice.toLocaleString('en-IN')}`,
+        `Total: Rs ${totalAmount.toLocaleString('en-IN')}`,
+        specialRequests.trim() ? `\nRequests: ${specialRequests.trim()}` : '',
+      ].filter(Boolean);
+
+      window.open(
+        `https://wa.me/918837317070?text=${encodeURIComponent(lines.join('\n'))}`,
+        '_blank',
+        'noopener',
+      );
+      toast.success("Opening WhatsApp to confirm your tour enquiry.");
     } else {
       toast.error(result.error || "Failed to submit. Please try again.");
     }

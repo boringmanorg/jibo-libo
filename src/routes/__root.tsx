@@ -39,7 +39,6 @@ import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import ChatLauncher from "@/components/v2/ChatLauncher";
 import NotFound from "@/pages/NotFound";
 import { AppProvider } from "@/contexts/AppContext";
-import { HappyGuestsProvider } from "@/contexts/HappyGuestsContext";
 import { UserAuthProvider } from "@/contexts/UserAuthContext";
 import { EnhancedAnalyticsProvider } from "@/hooks/useEnhancedAnalytics";
 import { TrafficAnalyticsProvider } from "@/hooks/useTrafficAnalytics";
@@ -137,7 +136,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "preconnect", href: "https://kzhsxemkntfwsakhkylt.supabase.co", crossOrigin: "anonymous" },
       // Brand fonts are bundled (hashed /assets URLs, cached for a year; their @font-face rules are
       // in the main stylesheet) and preloaded so headlines render in Staatliches from the first paint.
       { rel: "preload", as: "font", type: "font/woff2", href: staatlichesLatin, crossOrigin: "anonymous" },
@@ -309,7 +307,6 @@ function RootComponent() {
             <ClientOnly fallback={null}>
               <PerformanceMonitor />
             </ClientOnly>
-            <HappyGuestsProvider>
               <UserAuthProvider>
                 <TrafficAnalyticsProvider>
                   <ConversionSignalsProvider>
@@ -342,7 +339,6 @@ function RootComponent() {
                   </ConversionSignalsProvider>
                 </TrafficAnalyticsProvider>
               </UserAuthProvider>
-            </HappyGuestsProvider>
           </div>
         </SecurityHeadersProvider>
       </AppProvider>
