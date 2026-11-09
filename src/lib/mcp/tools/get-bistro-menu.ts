@@ -44,7 +44,7 @@ export default defineTool({
 
     return {
       content: [{ type: "text", text: `TAB Bistro by XTSY menu:\n\n${text}` }],
-      structuredContent: { sections },
+      structuredContent: JSON.parse(JSON.stringify({ sections })),
     };
   },
 });

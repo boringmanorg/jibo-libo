@@ -59,7 +59,7 @@ export function validateXTSY270Inquiry(data: Record<string, any>): {
   
   if (!result.success) {
     const errors: Record<string, string> = {};
-    result.error.errors.forEach((err) => {
+    result.error.issues.forEach((err) => {
       const field = err.path[0] as string;
       if (!errors[field]) {
         errors[field] = err.message;
@@ -81,7 +81,7 @@ export function validateTourInquiry(data: Record<string, any>): {
   
   if (!result.success) {
     const errors: Record<string, string> = {};
-    result.error.errors.forEach((err) => {
+    result.error.issues.forEach((err) => {
       const field = err.path[0] as string;
       if (!errors[field]) {
         errors[field] = err.message;
@@ -107,7 +107,7 @@ export function validateInquiryField(
   
   const result = fieldSchema.safeParse(value);
   if (!result.success) {
-    return result.error.errors[0]?.message || 'Invalid value';
+    return result.error.issues[0]?.message || 'Invalid value';
   }
   return null;
 }
