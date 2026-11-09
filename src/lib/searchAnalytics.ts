@@ -7,7 +7,7 @@ import { readConsent } from '@/lib/consent';
  * per (query+source) so a user typing doesn't flood the table, and a session
  * marker is reused for visitor identification.
  */
-import { supabase } from '@/integrations/supabase/client';
+import { offlineBackend as supabase } from '@/lib/offlineBackend';
 
 interface LogSearchInput {
   query: string;

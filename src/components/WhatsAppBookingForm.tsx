@@ -1,3 +1,4 @@
+import { offlineBackend } from '@/lib/offlineBackend';
 import { useState, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { Button } from "@/components/ui/button";
@@ -944,7 +945,7 @@ Looking forward to hearing from you. Thank you! 🌟`;
                         
                         // Track state selection to analytics
                         try {
-                          await supabase.functions.invoke('track-analytics', {
+                          await offlineBackend.functions.invoke('track-analytics', {
                             body: {
                               endpoint: 'visitor_location',
                               data: {
