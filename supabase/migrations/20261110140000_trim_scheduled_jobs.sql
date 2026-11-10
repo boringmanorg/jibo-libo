@@ -40,4 +40,9 @@ begin
     perform cron.unschedule(job.jobid);
     raise notice 'removed job % (%)', job.jobid, job.jobname;
   end loop;
+
+  -- Audit trail: list what is still scheduled after the clean-up.
+  for job in select jobid, jobname, schedule, active from cron.job order by jobname loop
+    raise notice 'still scheduled: % (%) "%" active=%', job.jobid, job.jobname, job.schedule, job.active;
+  end loop;
 end $$;

@@ -430,7 +430,8 @@ export default function UserAuth() {
             onSubmit={handleEmailSignIn}
             isLoading={isLoading}
             error={displayError}
-            onForgotPassword={() => setView('forgot')}
+            // Self-service password reset is retired (it allowed account takeover by guessing codes).
+            onForgotPassword={() => setLocalError('To reset your password, email admin@xtsy.one and the XTSY desk will help you.')}
             onSwitchToSignUp={() => setView('signup')}
           />
         )}
