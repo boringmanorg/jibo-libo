@@ -151,6 +151,7 @@ export const ROOM_TYPES: Record<string, RoomTypeConfig> = {
   // === LUXURY CATEGORY ===
   'xtsy-270': {
     id: 'xtsy-270',
+    // Booking key: must match room_types.name in Supabase (see utils/bookingCatalogue.ts). Customer-facing name is shortName.
     name: 'XTSY 270° Panorama Glass Ensuite',
     shortName: 'Experience by XTSY',
     category: 'luxury',

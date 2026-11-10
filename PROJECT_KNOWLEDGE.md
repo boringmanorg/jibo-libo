@@ -60,7 +60,7 @@ Central source of truth for all room configurations:
 
 | ID | Name | Category | Unit Type | Capacity | Base Price |
 |----|------|----------|-----------|----------|------------|
-| `xtsy-270` | XTSY 270° Panorama Glass Ensuite | luxury | room | 2 | ₹4,999 |
+| `xtsy-270` | Experience by XTSY (internal booking name: "XTSY 270° Panorama Glass Ensuite") | luxury | room | 2 | ₹4,999 |
 | `4-bed-female-only-dorm` | 4-Bed Female Dormitory | hostel | bed | 4 | ₹649 |
 | `4-bed-mixed-female-dorm` | 4-Bed Mixed Dormitory | hostel | bed | 4 | ₹599 |
 | `6-bed-mixed-female-dorm` | 6-Bed Female Dormitory | hostel | bed | 6 | ₹549 |
