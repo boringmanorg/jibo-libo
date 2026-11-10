@@ -1,0 +1,773 @@
+{
+  "results": [
+    {
+      "bundleName": ".output/public/assets/index-Bn60OAcx.js",
+      "totalBytes": 619866,
+      "mappedBytes": 609890,
+      "unmappedBytes": 9949,
+      "eolBytes": 27,
+      "sourceMapCommentBytes": 0,
+      "files": {
+        "../../../node_modules/scheduler/cjs/scheduler.production.js": {
+          "size": 3476
+        },
+        "[no source]": {
+          "size": 10471
+        },
+        "../../../node_modules/scheduler/index.js": {
+          "size": 14
+        },
+        "../../../node_modules/react-dom/cjs/react-dom-client.production.js": {
+          "size": 203216
+        },
+        "../../../node_modules/react-dom/client.js": {
+          "size": 210
+        },
+        "../../../node_modules/@tanstack/start-client-core/dist/esm/constants.js": {
+          "size": 139
+        },
+        "../../../node_modules/@tanstack/start-client-core/dist/esm/getStartOptions.js": {
+          "size": 40
+        },
+        "../../../node_modules/@tanstack/router-core/dist/esm/ssr/ssr-match-id.js": {
+          "size": 124
+        },
+        "../../../node_modules/@tanstack/router-core/dist/esm/sieve-cache.js": {
+          "size": 365
+        },
+        "../../../node_modules/@tanstack/router-core/dist/esm/new-process-route-tree.js": {
+          "size": 8289
+        },
+        "../../../node_modules/@tanstack/router-core/dist/esm/scroll-restoration.js": {
+          "size": 2449
+        },
+        "../../../node_modules/@tanstack/router-core/dist/esm/qss.js": {
+          "size": 390
+        },
+        "../../../node_modules/@tanstack/router-core/dist/esm/searchParams.js": {
+          "size": 528
+        },
+        "../../../node_modules/@tanstack/router-core/dist/esm/root.js": {
+          "size": 18
+        },
+        "../../../node_modules/@tanstack/router-core/dist/esm/rewrite.js": {
+          "size": 633
+        },
+        "../../../node_modules/@tanstack/router-core/dist/esm/stores.js": {
+          "size": 656
+        },
+        "../../../node_modules/@tanstack/history/dist/esm/index.js": {
+          "size": 4536
+        },
+        "../../../node_modules/@tanstack/router-core/dist/esm/router.js": {
+          "size": 16378
+        },
+        "../../../node_modules/@tanstack/router-core/dist/esm/load-client.js": {
+          "size": 19463
+        },
+        "../../../node_modules/seroval/dist/index.js": {
+          "size": 24799
+        },
+        "../../../node_modules/@tanstack/router-core/dist/esm/ssr/serializer/makeSerovalPlugin.js": {
+          "size": 314
+        },
+        "../../../node_modules/@tanstack/router-core/dist/esm/ssr/serializer/ShallowErrorPlugin.js": {
+          "size": 345
+        },
+        "../../../node_modules/@tanstack/router-core/dist/esm/ssr/serializer/RawStream.js": {
+          "size": 70
+        },
+        "../../../node_modules/@tanstack/router-core/dist/esm/ssr/serializer/rawStreamCodec.js": {
+          "size": 676
+        },
+        "../../../node_modules/@tanstack/router-core/dist/esm/ssr/serializer/RawStreamJSONPlugin.js": {
+          "size": 265
+        },
+        "../../../node_modules/seroval-plugins/dist/web.js": {
+          "size": 1474
+        },
+        "../../../node_modules/@tanstack/router-core/dist/esm/ssr/serializer/seroval-plugins.js": {
+          "size": 50
+        },
+        "../../../node_modules/@tanstack/router-core/dist/esm/ssr/serializer/RawStreamRPCPlugin.js": {
+          "size": 140
+        },
+        "../../../node_modules/@tanstack/start-client-core/dist/esm/getDefaultSerovalPlugins.js": {
+          "size": 106
+        },
+        "../../../node_modules/@tanstack/start-client-core/dist/esm/client-rpc/frame-decoder.js": {
+          "size": 2182
+        },
+        "../../../node_modules/@tanstack/router-core/dist/esm/defer.js": {
+          "size": 257
+        },
+        "../../../node_modules/@tanstack/router-core/dist/esm/manifest.js": {
+          "size": 583
+        },
+        "../../../node_modules/@tanstack/router-core/dist/esm/ssr/bodyScripts.js": {
+          "size": 433
+        },
+        "../../../node_modules/@tanstack/router-core/dist/esm/route.js": {
+          "size": 1332
+        },
+        "../../../node_modules/@tanstack/router-core/dist/esm/ssr/serializer/transformer.js": {
+          "size": 24
+        },
+        "../../../node_modules/@tanstack/start-client-core/dist/esm/client-rpc/serverFnFetcher.js": {
+          "size": 2583
+        },
+        "../../../node_modules/@tanstack/start-client-core/dist/esm/client-rpc/createClientRpc.js": {
+          "size": 158
+        },
+        "../../../node_modules/@tanstack/start-client-core/dist/esm/client/ServerFunctionSerializationAdapter.js": {
+          "size": 181
+        },
+        "../../../node_modules/@tanstack/react-router/dist/esm/utils.js": {
+          "size": 30
+        },
+        "../../../node_modules/@tanstack/react-router/dist/esm/awaited.js": {
+          "size": 319
+        },
+        "../../../node_modules/@tanstack/react-router/dist/esm/CatchBoundary.js": {
+          "size": 1271
+        },
+        "../../../node_modules/@tanstack/store/dist/alien.js": {
+          "size": 1880
+        },
+        "../../../node_modules/@tanstack/store/dist/atom.js": {
+          "size": 1859
+        },
+        "../../../node_modules/@tanstack/react-router/dist/esm/useLoaderData.js": {
+          "size": 149
+        },
+        "../../../node_modules/@tanstack/react-router/dist/esm/useLoaderDeps.js": {
+          "size": 95
+        },
+        "../../../node_modules/@tanstack/react-router/dist/esm/useSearch.js": {
+          "size": 167
+        },
+        "../../../node_modules/@tanstack/react-router/dist/esm/useRouteContext.js": {
+          "size": 82
+        },
+        "../../../node_modules/@tanstack/react-router/dist/esm/route.js": {
+          "size": 1569
+        },
+        "../../../node_modules/@tanstack/react-router/dist/esm/fileRoute.js": {
+          "size": 59
+        },
+        "../../../node_modules/@tanstack/react-router/dist/esm/lazyRouteComponent.js": {
+          "size": 440
+        },
+        "../../../node_modules/@tanstack/react-router/dist/esm/not-found.js": {
+          "size": 345
+        },
+        "../../../node_modules/@tanstack/react-router/dist/esm/renderRouteNotFound.js": {
+          "size": 205
+        },
+        "../../../node_modules/@tanstack/react-router/dist/esm/Match.js": {
+          "size": 2430
+        },
+        "../../../node_modules/@tanstack/react-router/dist/esm/Transitioner.js": {
+          "size": 726
+        },
+        "../../../node_modules/@tanstack/react-router/dist/esm/Matches.js": {
+          "size": 553
+        },
+        "../../../node_modules/@tanstack/react-router/dist/esm/routerStores.js": {
+          "size": 68
+        },
+        "../../../node_modules/@tanstack/react-router/dist/esm/router.js": {
+          "size": 65
+        },
+        "../../../node_modules/@tanstack/react-router/dist/esm/RouterProvider.js": {
+          "size": 323
+        },
+        "../../../node_modules/@tanstack/react-router/dist/esm/Asset.js": {
+          "size": 1974
+        },
+        "../../../node_modules/@tanstack/react-router/dist/esm/headContentUtils.js": {
+          "size": 1602
+        },
+        "../../../node_modules/@tanstack/react-router/dist/esm/HeadContent.js": {
+          "size": 193
+        },
+        "../../../node_modules/@tanstack/react-router/dist/esm/Scripts.js": {
+          "size": 399
+        },
+        "../../../node_modules/@tanstack/start-client-core/dist/esm/createMiddleware.js": {
+          "size": 292
+        },
+        "../../../node_modules/@tanstack/start-client-core/dist/esm/createStart.js": {
+          "size": 299
+        },
+        "../../../src/start.ts": {
+          "size": 58
+        },
+        "../../../node_modules/@tanstack/query-core/build/modern/timeoutManager.js": {
+          "size": 403
+        },
+        "../../../node_modules/@tanstack/query-core/build/modern/utils.js": {
+          "size": 2933
+        },
+        "../../../node_modules/@tanstack/query-core/build/modern/environmentManager.js": {
+          "size": 25
+        },
+        "../../../node_modules/@tanstack/query-core/build/modern/subscribable.js": {
+          "size": 277
+        },
+        "../../../node_modules/@tanstack/query-core/build/modern/focusManager.js": {
+          "size": 695
+        },
+        "../../../node_modules/@tanstack/query-core/build/modern/notifyManager.js": {
+          "size": 371
+        },
+        "../../../node_modules/@tanstack/query-core/build/modern/onlineManager.js": {
+          "size": 616
+        },
+        "../../../node_modules/@tanstack/query-core/build/modern/retryer.js": {
+          "size": 1233
+        },
+        "../../../node_modules/@tanstack/query-core/build/modern/removable.js": {
+          "size": 314
+        },
+        "../../../node_modules/@tanstack/query-core/build/modern/infiniteQueryBehavior.js": {
+          "size": 1240
+        },
+        "../../../node_modules/@tanstack/query-core/build/modern/query.js": {
+          "size": 6431
+        },
+        "../../../node_modules/@tanstack/query-core/build/modern/mutation.js": {
+          "size": 3410
+        },
+        "../../../node_modules/@tanstack/query-core/build/modern/mutationCache.js": {
+          "size": 1442
+        },
+        "../../../node_modules/@tanstack/query-core/build/modern/queryCache.js": {
+          "size": 1000
+        },
+        "../../../node_modules/@tanstack/query-core/build/modern/queryClient.js": {
+          "size": 4335
+        },
+        "../../../src/utils/aiReferralTracking.ts": {
+          "size": 1712
+        },
+        "../../../src/utils/chunkRecovery.ts": {
+          "size": 1079
+        },
+        "../../../src/styles.css?url": {
+          "size": 37
+        },
+        "../../../src/assets/fonts/staatliches-latin.woff2?url": {
+          "size": 46
+        },
+        "../../../src/assets/fonts/staatliches-latin-ext.woff2?url": {
+          "size": 50
+        },
+        "../../../src/assets/fonts/manrope-latin.woff2?url": {
+          "size": 42
+        },
+        "../../../src/assets/fonts/manrope-latin-ext.woff2?url": {
+          "size": 46
+        },
+        "../../../src/hooks/use-toast.ts": {
+          "size": 1153
+        },
+        "../../../node_modules/@radix-ui/react-collection/dist/index.mjs": {
+          "size": 8346
+        },
+        "../../../node_modules/@radix-ui/react-visually-hidden/dist/index.mjs": {
+          "size": 358
+        },
+        "../../../node_modules/@radix-ui/react-toast/dist/index.mjs": {
+          "size": 11194
+        },
+        "../../../node_modules/class-variance-authority/dist/index.mjs": {
+          "size": 594
+        },
+        "../../../node_modules/lucide-react/dist/esm/icons/bath.js": {
+          "size": 268
+        },
+        "../../../node_modules/lucide-react/dist/esm/icons/bed.js": {
+          "size": 176
+        },
+        "../../../node_modules/lucide-react/dist/esm/icons/camera.js": {
+          "size": 273
+        },
+        "../../../node_modules/lucide-react/dist/esm/icons/eye.js": {
+          "size": 193
+        },
+        "../../../node_modules/lucide-react/dist/esm/icons/house.js": {
+          "size": 218
+        },
+        "../../../node_modules/lucide-react/dist/esm/icons/lock.js": {
+          "size": 143
+        },
+        "../../../node_modules/lucide-react/dist/esm/icons/map-pin.js": {
+          "size": 196
+        },
+        "../../../node_modules/lucide-react/dist/esm/icons/message-circle.js": {
+          "size": 178
+        },
+        "../../../node_modules/lucide-react/dist/esm/icons/refresh-cw.js": {
+          "size": 258
+        },
+        "../../../node_modules/lucide-react/dist/esm/icons/shield.js": {
+          "size": 209
+        },
+        "../../../node_modules/lucide-react/dist/esm/icons/triangle-alert.js": {
+          "size": 202
+        },
+        "../../../node_modules/lucide-react/dist/esm/icons/tv.js": {
+          "size": 122
+        },
+        "../../../node_modules/lucide-react/dist/esm/icons/wifi.js": {
+          "size": 217
+        },
+        "../../../node_modules/lucide-react/dist/esm/icons/wind.js": {
+          "size": 183
+        },
+        "../../../node_modules/lucide-react/dist/esm/icons/x.js": {
+          "size": 91
+        },
+        "../../../src/components/ui/toast.tsx": {
+          "size": 2651
+        },
+        "../../../src/components/ui/toaster.tsx": {
+          "size": 316
+        },
+        "../../../node_modules/next-themes/dist/index.mjs": {
+          "size": 1373
+        },
+        "../../../node_modules/sonner/dist/index.mjs": {
+          "size": 33609
+        },
+        "../../../src/components/ui/sonner.tsx": {
+          "size": 480
+        },
+        "../../../node_modules/@radix-ui/react-tooltip/dist/index.mjs": {
+          "size": 5502
+        },
+        "../../../src/components/ui/tooltip.tsx": {
+          "size": 541
+        },
+        "../../../src/components/PerformanceMonitor.tsx": {
+          "size": 45
+        },
+        "../../../src/utils/productionSecurityHeaders.ts": {
+          "size": 3393
+        },
+        "../../../src/components/SecurityHeadersProvider.tsx": {
+          "size": 211
+        },
+        "../../../src/components/ErrorBoundary.tsx": {
+          "size": 3070
+        },
+        "../../../src/components/ui/button.tsx": {
+          "size": 1156
+        },
+        "../../../src/components/SafeShell.tsx": {
+          "size": 3271
+        },
+        "../../../src/components/RouteErrorBoundary.tsx": {
+          "size": 1024
+        },
+        "../../../node_modules/@radix-ui/react-switch/dist/index.mjs": {
+          "size": 3505
+        },
+        "../../../src/components/ui/switch.tsx": {
+          "size": 705
+        },
+        "../../../src/services/consentManagementService.ts": {
+          "size": 2542
+        },
+        "../../../src/components/consent/ConsentModal.tsx": {
+          "size": 4114
+        },
+        "../../../src/assets/whatsapp-icon.svg": {
+          "size": 2986
+        },
+        "../../../src/utils/gtmEventRouter.ts": {
+          "size": 8682
+        },
+        "../../../src/components/FloatingWhatsApp.tsx": {
+          "size": 1730
+        },
+        "../../../src/components/v2/ChatLauncher.tsx": {
+          "size": 2114
+        },
+        "../../../src/data/seoGoneSlugs.ts": {
+          "size": 79
+        },
+        "../../../src/hooks/useGoneStatus.ts": {
+          "size": 417
+        },
+        "../../../src/pages/NotFound.tsx": {
+          "size": 7489
+        },
+        "../../../src/contexts/HappyGuestsContext.tsx": {
+          "size": 1210
+        },
+        "../../../src/contexts/UserAuthContext.tsx": {
+          "size": 9609
+        },
+        "../../../src/hooks/useEnhancedAnalytics.tsx": {
+          "size": 5576
+        },
+        "../../../src/services/trafficAnalyticsService.ts": {
+          "size": 15114
+        },
+        "../../../src/services/trafficDefenseService.ts": {
+          "size": 7954
+        },
+        "../../../src/utils/ga4Integration.ts": {
+          "size": 536
+        },
+        "../../../src/hooks/useTrafficAnalytics.tsx": {
+          "size": 4392
+        },
+        "../../../src/hooks/useConversionSignals.ts": {
+          "size": 4775
+        },
+        "../../../src/providers/ConversionSignalsProvider.tsx": {
+          "size": 111
+        },
+        "../../../src/hooks/useWebVitalsReporter.tsx": {
+          "size": 2822
+        },
+        "../../../src/lib/lovable-error-reporting.ts": {
+          "size": 486
+        },
+        "../../../src/components/debug/OptionalConsentDebugPanel.tsx": {
+          "size": 558
+        },
+        "../../../src/routes/__root.tsx": {
+          "size": 10127
+        },
+        "../../../src/lib/seo-head.ts": {
+          "size": 1829
+        },
+        "../../../src/data/siteSchemas.ts": {
+          "size": 3039
+        },
+        "../../../src/routes/index.tsx": {
+          "size": 696
+        },
+        "../../../src/routes/$slug.tsx": {
+          "size": 530
+        },
+        "../../../src/routes/3-day-meghalaya-itinerary.tsx": {
+          "size": 334
+        },
+        "../../../src/routes/4x4-expedition-meghalaya.tsx": {
+          "size": 395
+        },
+        "../../../src/routes/5-day-meghalaya-itinerary.tsx": {
+          "size": 347
+        },
+        "../../../src/routes/about.tsx": {
+          "size": 376
+        },
+        "../../../src/routes/adventure-tours-northeast-india.tsx": {
+          "size": 409
+        },
+        "../../../src/routes/auth.tsx": {
+          "size": 237
+        },
+        "../../../src/routes/backpacking-india.tsx": {
+          "size": 326
+        },
+        "../../../src/data/stayHub.ts": {
+          "size": 6909
+        },
+        "../../../src/routes/best-hostel-in-shillong.tsx": {
+          "size": 363
+        },
+        "../../../src/routes/best-time-to-visit-meghalaya.tsx": {
+          "size": 344
+        },
+        "../../../src/routes/book-hostel-shillong.tsx": {
+          "size": 352
+        },
+        "../../../src/routes/budget-hostels-shillong.tsx": {
+          "size": 361
+        },
+        "../../../src/routes/budget-trip-to-meghalaya.tsx": {
+          "size": 327
+        },
+        "../../../src/routes/catering-shillong.tsx": {
+          "size": 334
+        },
+        "../../../src/routes/cheap-hostel-in-shillong.tsx": {
+          "size": 109
+        },
+        "../../../src/routes/cheap-hostel-shillong.tsx": {
+          "size": 106
+        },
+        "../../../src/routes/cheap-hostels-shillong.tsx": {
+          "size": 108
+        },
+        "../../../src/routes/contact.tsx": {
+          "size": 304
+        },
+        "../../../src/routes/destination-wedding-shillong.tsx": {
+          "size": 340
+        },
+        "../../../src/pages/v2/faqData.ts": {
+          "size": 7800
+        },
+        "../../../src/routes/faq.tsx": {
+          "size": 443
+        },
+        "../../../src/routes/female-travellers.tsx": {
+          "size": 326
+        },
+        "../../../src/routes/gallery.tsx": {
+          "size": 398
+        },
+        "../../../src/routes/group-bookings-meghalaya.tsx": {
+          "size": 339
+        },
+        "../../../src/routes/guides.tsx": {
+          "size": 925
+        },
+        "../../../src/routes/hidden-places-in-meghalaya.tsx": {
+          "size": 342
+        },
+        "../../../src/routes/homestays-in-shillong.tsx": {
+          "size": 332
+        },
+        "../../../src/routes/hostel-booking.tsx": {
+          "size": 457
+        },
+        "../../../src/routes/hostel-near-me.tsx": {
+          "size": 429
+        },
+        "../../../src/routes/hotels-in-shillong.tsx": {
+          "size": 323
+        },
+        "../../../src/routes/install.tsx": {
+          "size": 279
+        },
+        "../../../src/routes/luxury-glamping-shillong.tsx": {
+          "size": 334
+        },
+        "../../../src/routes/meghalaya-adventure-tour.tsx": {
+          "size": 412
+        },
+        "../../../src/routes/meghalaya-caves.tsx": {
+          "size": 325
+        },
+        "../../../src/routes/meghalaya-couple-tour-package.tsx": {
+          "size": 343
+        },
+        "../../../src/routes/meghalaya-festivals.tsx": {
+          "size": 350
+        },
+        "../../../src/routes/meghalaya-photo-gallery.tsx": {
+          "size": 329
+        },
+        "../../../src/routes/meghalaya-tour-packages.tsx": {
+          "size": 484
+        },
+        "../../../src/routes/meghalaya-viewpoints.tsx": {
+          "size": 324
+        },
+        "../../../src/routes/meghalaya-villages.tsx": {
+          "size": 321
+        },
+        "../../../src/routes/meghalaya-waterfalls.tsx": {
+          "size": 328
+        },
+        "../../../src/routes/merch.tsx": {
+          "size": 377
+        },
+        "../../../src/routes/motorbike-expedition-northeast-india.tsx": {
+          "size": 424
+        },
+        "../../../src/routes/partner-stays.tsx": {
+          "size": 311
+        },
+        "../../../src/routes/pet-friendly.tsx": {
+          "size": 309
+        },
+        "../../../src/routes/places-to-visit-in-meghalaya.tsx": {
+          "size": 336
+        },
+        "../../../src/pages/v2/planTripData.ts": {
+          "size": 2233
+        },
+        "../../../src/routes/plan-trip-with-ai.tsx": {
+          "size": 449
+        },
+        "../../../src/routes/pricing-cancellation-policy.tsx": {
+          "size": 324
+        },
+        "../../../src/routes/privacy-policy.tsx": {
+          "size": 387
+        },
+        "../../../src/routes/profile.tsx": {
+          "size": 261
+        },
+        "../../../src/routes/restaurant-in-shillong.tsx": {
+          "size": 333
+        },
+        "../../../src/routes/safety-house-rules.tsx": {
+          "size": 351
+        },
+        "../../../src/routes/shillong-tour-package.tsx": {
+          "size": 327
+        },
+        "../../../src/routes/terms.tsx": {
+          "size": 80
+        },
+        "../../../src/routes/terms-of-service.tsx": {
+          "size": 406
+        },
+        "../../../src/routes/things-to-do-in-meghalaya.tsx": {
+          "size": 470
+        },
+        "../../../src/routes/unsubscribe.tsx": {
+          "size": 277
+        },
+        "../../../src/routes/work-from-home.tsx": {
+          "size": 310
+        },
+        "../../../src/assets/xtsy-270-stargazing.jpeg": {
+          "size": 47
+        },
+        "../../../src/assets/xtsy-270-aerial.jpeg": {
+          "size": 43
+        },
+        "../../../src/assets/xtsy-270-milkyway.jpeg": {
+          "size": 45
+        },
+        "../../../src/assets/xtsy-270-milkyway2.jpeg": {
+          "size": 45
+        },
+        "../../../src/assets/xtsy-270-interior.jpeg": {
+          "size": 45
+        },
+        "../../../src/data/rooms/xtsy270.ts": {
+          "size": 2305
+        },
+        "../../../src/pages/v2/experienceData.ts": {
+          "size": 1127
+        },
+        "../../../src/routes/xtsy-270.tsx": {
+          "size": 354
+        },
+        "../../../src/routes/xtsy-adventure-campsite-dawki.tsx": {
+          "size": 342
+        },
+        "../../../src/routes/xtsy-rentals.tsx": {
+          "size": 306
+        },
+        "../../../src/routes/xtsy-vs-zostel.tsx": {
+          "size": 301
+        },
+        "../../../src/routes/book/index.tsx": {
+          "size": 492
+        },
+        "../../../src/routes/book/campsite.tsx": {
+          "size": 325
+        },
+        "../../../src/routes/book/select.tsx": {
+          "size": 316
+        },
+        "../../../src/routes/destinations/index.tsx": {
+          "size": 330
+        },
+        "../../../src/routes/expeditions/index.tsx": {
+          "size": 432
+        },
+        "../../../src/routes/franchise/index.tsx": {
+          "size": 305
+        },
+        "../../../src/routes/franchise/install.tsx": {
+          "size": 286
+        },
+        "../../../src/routes/franchise/login.tsx": {
+          "size": 260
+        },
+        "../../../src/routes/places-to-visit/$slug.tsx": {
+          "size": 485
+        },
+        "../../../src/routes/tab-bistro/index.tsx": {
+          "size": 587
+        },
+        "../../../src/routes/tab-bistro/catering.tsx": {
+          "size": 99
+        },
+        "../../../src/routes/tours/index.tsx": {
+          "size": 446
+        },
+        "../../../src/routes/tours/$slug.tsx": {
+          "size": 573
+        },
+        "../../../src/routes/travel-guide/guwahati-to-shillong-transport.tsx": {
+          "size": 369
+        },
+        "../../../src/pages/howToReachFaqs.ts": {
+          "size": 1704
+        },
+        "../../../src/routes/travel-guide/how-to-reach-meghalaya.tsx": {
+          "size": 1484
+        },
+        "../../../src/pages/internationalFaqs.ts": {
+          "size": 2278
+        },
+        "../../../src/routes/travel-guide/meghalaya-for-international-tourists.tsx": {
+          "size": 1582
+        },
+        "../../../src/routes/[.]lovable.oauth.consent.tsx": {
+          "size": 64
+        },
+        "../../../src/lib/seo/fitTitle.ts": {
+          "size": 265
+        },
+        "../../../src/routes/destinations/$state/index.tsx": {
+          "size": 442
+        },
+        "../../../src/routes/expeditions/$type/$route.tsx": {
+          "size": 1767
+        },
+        "../../../src/data/nearbyAdventures.ts": {
+          "size": 3460
+        },
+        "../../../src/routes/destinations/$state/$city/index.tsx": {
+          "size": 896
+        },
+        "../../../src/routes/destinations/$state/$city/$attraction.tsx": {
+          "size": 1182
+        },
+        "../../../src/routeTree.gen.ts": {
+          "size": 9622
+        },
+        "../../../src/router.tsx": {
+          "size": 350
+        },
+        "../../../node_modules/@tanstack/start-client-core/dist/esm/client/hydrateStart.js": {
+          "size": 475
+        },
+        "../../../node_modules/@tanstack/react-start-client/dist/esm/hydrateStart.js": {
+          "size": 57
+        },
+        "../../../node_modules/@tanstack/react-start-client/dist/esm/StartClient.js": {
+          "size": 102
+        },
+        "../../../node_modules/@tanstack/react-start/dist/plugin/default-entry/client.tsx": {
+          "size": 109
+        },
+        "[sourceMappingURL]": {
+          "size": 0
+        },
+        "[unmapped]": {
+          "size": 9949
+        },
+        "[EOLs]": {
+          "size": 27
+        }
+      }
+    }
+  ]
+}
