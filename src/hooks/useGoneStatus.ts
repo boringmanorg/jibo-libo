@@ -15,7 +15,7 @@ import { GONE_SLUGS } from "@/data/seoGoneSlugs";
  * from the compiled value (instant, no flash for prerender) and upgrades a
  * 404 → 410 if Supabase says the slug is gone. The 410 then flows into the
  * <meta name="prerender-status-code"> the NotFound page emits, and the
- * Cloudflare/edge layer (via seo-redirect-resolver) serves a real 410.
+ * Cloudflare/edge layer serves a real 410 from the static redirect map.
  */
 export function useGoneStatus(
   pathname: string,

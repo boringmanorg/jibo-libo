@@ -6,8 +6,8 @@ import { readConsent } from '@/lib/consent';
  * analytics consent. The loader is fully fault-tolerant:
  *
  *   • FIRST-PARTY FIRST: on the production domain it loads the tag from
- *     `/cs/uxa/<id>.js` (proxied by the Cloudflare Worker → cs-proxy edge
- *     function). This defeats domain-based blocklists that target
+ *     `/cs/uxa/<id>.js` (proxied by the Cloudflare Worker straight to the
+ *     Contentsquare CDN). This defeats domain-based blocklists that target
  *     `contentsquare.net`. If the first-party path fails it falls back to the
  *     direct CDN URL.
  *   • Consent resolution falls back from localStorage `xtsy_consent_v2` to

@@ -170,30 +170,140 @@ function makeSeoRewriter(canonical, entry, extraHeaderMeta) {
     });
 }
 
+let REDIRECT_MAP_CACHE = null;
+let REDIRECT_MAP_FETCHED_AT = 0;
+const REDIRECT_MAP_TTL_MS = 5 * 60_000;
+
+/**
+ * Static 301/410 lookup. Replaces the seo-redirect-resolver Supabase edge function,
+ * which queried a seo_redirects table on every request; the site has no database
+ * dependency, so the map now ships with the build (scripts/generateWorkerRedirectMap.ts
+ * -> public/seo-redirect-map.json).
+ *
+ * Same KV-then-origin shape as the slim map: per-path KV when SEO_REDIRECT_MAP is
+ * bound, otherwise the JSON fetched once per isolate and cached in memory.
+ */
 async function resolveLegacyRedirect(path, env) {
-  if (!env.SUPABASE_URL || !env.SUPABASE_FUNCTIONS_HOST) return null;
-  const cached = REDIRECT_CACHE.get(path);
-  if (cached && cached.expires > Date.now()) return cached.value;
+  const key = path.endsWith('/') && path.length > 1 ? path.slice(0, -1) : path;
+
+  if (env && env.SEO_REDIRECT_MAP) {
+    try {
+      const v = await env.SEO_REDIRECT_MAP.get(key, 'json');
+      if (v) return { target: v.t ?? null, status: v.s || 301 };
+    } catch (_) { /* fall through to the origin copy */ }
+  }
+
+  if (!REDIRECT_MAP_CACHE || Date.now() - REDIRECT_MAP_FETCHED_AT >= REDIRECT_MAP_TTL_MS) {
+    try {
+      const res = await fetch(`${env.SITE_ORIGIN || 'https://xtsy.one'}/seo-redirect-map.json`, {
+        cf: { cacheTtl: 3600, cacheEverything: true },
+      });
+      if (res.ok) {
+        REDIRECT_MAP_CACHE = await res.json();
+        REDIRECT_MAP_FETCHED_AT = Date.now();
+      }
+    } catch (_) { /* keep whatever cache we have */ }
+  }
+
+  const hit = REDIRECT_MAP_CACHE && REDIRECT_MAP_CACHE[key];
+  return hit ? { target: hit.t ?? null, status: hit.s || 301 } : null;
+}
+
+/* ── First-party Contentsquare/Hotjar proxy ──────────────────────────────────
+ * Ported from the cs-proxy Supabase edge function, which was a pure allow-listed
+ * HTTP proxy with no database access. Doing it here removes the Supabase hop
+ * entirely and saves a round trip on every cache miss.
+ */
+const CS_DEFAULT_ORIGIN = 'https://t.contentsquare.net';
+const CS_ALLOWED_HOST_SUFFIXES = ['.contentsquare.net', '.hotjar.com', '.hotjar.io'];
+const CS_ALLOWED_PREFIXES = ['uxa', 't', 'log', 'logs', 'b', 'bb', 'pl', 'c', 'm', 'd', 'i', 's', 'hm'];
+
+function resolveCsProxyTarget(subPath, search = '') {
+  const sub = (subPath || '').replace(/^\/+/, '');
+  if (!sub) return { ok: false, reason: 'empty path', status: 404 };
+  if (sub.includes('..') || !/^[A-Za-z0-9._/-]+$/.test(sub)) {
+    return { ok: false, reason: 'invalid path', status: 400 };
+  }
+  if (sub.startsWith('h/')) {
+    const rest = sub.slice(2);
+    const slash = rest.indexOf('/');
+    if (slash <= 0) return { ok: false, reason: 'missing host or path', status: 400 };
+    const host = rest.slice(0, slash).toLowerCase();
+    const hostPath = rest.slice(slash + 1);
+    if (!/^[a-z0-9.-]+$/.test(host) || !CS_ALLOWED_HOST_SUFFIXES.some((x) => host.endsWith(x))) {
+      return { ok: false, reason: `host not allowed: ${host}`, status: 403 };
+    }
+    if (!hostPath) return { ok: false, reason: 'empty host path', status: 400 };
+    return { ok: true, upstreamUrl: `https://${host}/${hostPath}${search}` };
+  }
+  const prefix = sub.split('/')[0];
+  if (!CS_ALLOWED_PREFIXES.includes(prefix)) {
+    return { ok: false, reason: `prefix not allowed: ${prefix}`, status: 403 };
+  }
+  return { ok: true, upstreamUrl: `${CS_DEFAULT_ORIGIN}/${sub}${search}` };
+}
+
+function inferCsContentType(p) {
+  const x = p.toLowerCase().split('?')[0];
+  if (x.endsWith('.js')) return 'application/javascript; charset=utf-8';
+  if (x.endsWith('.json')) return 'application/json; charset=utf-8';
+  if (x.endsWith('.css')) return 'text/css; charset=utf-8';
+  if (x.endsWith('.gif')) return 'image/gif';
+  if (x.endsWith('.png')) return 'image/png';
+  if (x.endsWith('.svg')) return 'image/svg+xml';
+  if (x.endsWith('.html')) return 'text/html; charset=utf-8';
+  return 'application/octet-stream';
+}
+
+async function serveCsProxy(request, url) {
+  const CORS = {
+    'access-control-allow-origin': '*',
+    'access-control-allow-headers': 'authorization, x-client-info, apikey, content-type, range',
+    'access-control-allow-methods': 'GET, HEAD, OPTIONS',
+    'access-control-max-age': '86400',
+  };
+  if (request.method === 'OPTIONS') return new Response('ok', { headers: CORS });
+  if (request.method !== 'GET' && request.method !== 'HEAD') {
+    return new Response('Method Not Allowed', { status: 405, headers: CORS });
+  }
+
+  const resolved = resolveCsProxyTarget(url.pathname.slice('/cs/'.length), url.search);
+  if (!resolved.ok) {
+    return new Response(resolved.reason ?? 'Invalid path', {
+      status: resolved.status ?? 400,
+      headers: { ...CORS, 'cache-control': 'no-store' },
+    });
+  }
 
   try {
-    const endpoint = `${env.SUPABASE_FUNCTIONS_HOST}/seo-redirect-resolver?path=${encodeURIComponent(path)}`;
-    const res = await fetch(endpoint, {
-      headers: env.SUPABASE_ANON_KEY
-        ? { apikey: env.SUPABASE_ANON_KEY, authorization: `Bearer ${env.SUPABASE_ANON_KEY}` }
-        : {},
-      cf: { cacheTtl: 60, cacheEverything: true },
+    const range = request.headers.get('range');
+    const upstream = await fetch(resolved.upstreamUrl, {
+      method: request.method,
+      headers: {
+        'user-agent': request.headers.get('user-agent') ?? 'xtsy-cs-proxy/1.0',
+        accept: request.headers.get('accept') ?? '*/*',
+        ...(range ? { range } : {}),
+      },
+      cf: { cacheTtl: 3600, cacheEverything: true },
     });
-    if (!res.ok) {
-      REDIRECT_CACHE.set(path, { value: null, expires: Date.now() + REDIRECT_TTL_MS });
-      return null;
+    if (!upstream.ok) {
+      return new Response(`Upstream error ${upstream.status}`, {
+        status: upstream.status,
+        headers: { ...CORS, 'cache-control': 'no-store' },
+      });
     }
-    const data = await res.json();
-    const value = data && data.found ? { target: data.target, status: data.status || 301 } : null;
-    REDIRECT_CACHE.set(path, { value, expires: Date.now() + REDIRECT_TTL_MS });
-    return value;
-  } catch (e) {
-    console.error('redirect resolver error', e);
-    return null;
+    const h = new Headers(CORS);
+    h.set('content-type', upstream.headers.get('content-type') ?? inferCsContentType(resolved.upstreamUrl));
+    h.set('cache-control', 'public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800');
+    h.set('x-proxied-by', 'xtsy-cs-proxy');
+    h.set('x-rendered-by', 'cf-cs-proxy');
+    h.set('x-upstream', new URL(resolved.upstreamUrl).origin);
+    return new Response(upstream.body, { status: 200, headers: h });
+  } catch (err) {
+    return new Response(`Proxy failure: ${err && err.message ? err.message : String(err)}`, {
+      status: 502,
+      headers: { ...CORS, 'cache-control': 'no-store' },
+    });
   }
 }
 
@@ -222,23 +332,11 @@ export default {
     const path = url.pathname;
 
     // --- First-party Contentsquare/Hotjar proxy ---
-    // xtsy.one/cs/uxa/<id>.js → cs-proxy edge function. Serving the tag from a
-    // first-party path defeats domain-based blocklists (uBlock/Brave/AdGuard).
-    if (path.startsWith('/cs/') && env.SUPABASE_FUNCTIONS_HOST) {
-      const sub = path.slice('/cs/'.length);
-      const proxyUrl = `${env.SUPABASE_FUNCTIONS_HOST}/cs-proxy/${sub}${url.search}`;
-      const proxied = await fetch(proxyUrl, {
-        method: request.method,
-        headers: {
-          'user-agent': userAgent,
-          accept: request.headers.get('accept') || '*/*',
-          ...(env.SUPABASE_ANON_KEY ? { apikey: env.SUPABASE_ANON_KEY } : {}),
-        },
-        cf: { cacheTtl: 3600, cacheEverything: true },
-      });
-      const h = new Headers(proxied.headers);
-      h.set('x-rendered-by', 'cf-cs-proxy');
-      return new Response(proxied.body, { status: proxied.status, headers: h });
+    // Serving the tag from a first-party path defeats domain-based blocklists
+    // (uBlock/Brave/AdGuard). Handled here directly; it used to hop through the
+    // cs-proxy Supabase edge function, which this Worker no longer needs.
+    if (path.startsWith('/cs/')) {
+      return serveCsProxy(request, url);
     }
 
     if (
@@ -263,8 +361,8 @@ export default {
     }
 
     // --- Legacy URL → real 301 redirects (applies to bots AND users) ---
-    // Looks up seo_redirects via the seo-redirect-resolver edge function and
-    // issues a true HTTP 301 instead of relying on the SPA's <Navigate replace>.
+    // Looks the path up in the static redirect map built at prebuild and issues a
+    // true HTTP 301/410 instead of relying on the SPA's <Navigate replace>.
     if (request.method === 'GET' || request.method === 'HEAD') {
       const redirect = await resolveLegacyRedirect(path, env);
       if (redirect && redirect.target) {
@@ -276,7 +374,19 @@ export default {
           headers: {
             location: targetUrl,
             'cache-control': 'public, max-age=3600',
-            'x-redirect-source': 'seo-redirect-resolver',
+            'x-redirect-source': 'static-redirect-map',
+          },
+        });
+      }
+      // A 410 carries no target. The previous version guarded on `redirect.target`,
+      // so retired slugs fell through and answered 200 — Google kept them indexed.
+      if (redirect && redirect.status === 410) {
+        return new Response('Gone', {
+          status: 410,
+          headers: {
+            'content-type': 'text/plain; charset=utf-8',
+            'cache-control': 'public, max-age=3600',
+            'x-redirect-source': 'static-redirect-map',
           },
         });
       }
