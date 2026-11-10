@@ -1,10 +1,10 @@
 {
   "results": [
     {
-      "bundleName": ".output/public/assets/index-OUXDS7oL.js",
-      "totalBytes": 619866,
-      "mappedBytes": 609890,
-      "unmappedBytes": 9949,
+      "bundleName": ".output/public/assets/index-Bq4sSWvj.js",
+      "totalBytes": 609484,
+      "mappedBytes": 599648,
+      "unmappedBytes": 9809,
       "eolBytes": 27,
       "sourceMapCommentBytes": 0,
       "files": {
@@ -12,13 +12,13 @@
           "size": 3476
         },
         "[no source]": {
-          "size": 10471
+          "size": 10228
         },
         "../../../node_modules/scheduler/index.js": {
           "size": 14
         },
         "../../../node_modules/react-dom/cjs/react-dom-client.production.js": {
-          "size": 203216
+          "size": 203219
         },
         "../../../node_modules/react-dom/client.js": {
           "size": 210
@@ -276,7 +276,7 @@
           "size": 8346
         },
         "../../../node_modules/@radix-ui/react-visually-hidden/dist/index.mjs": {
-          "size": 358
+          "size": 360
         },
         "../../../node_modules/@radix-ui/react-toast/dist/index.mjs": {
           "size": 11194
@@ -339,7 +339,7 @@
           "size": 1373
         },
         "../../../node_modules/sonner/dist/index.mjs": {
-          "size": 33609
+          "size": 33605
         },
         "../../../src/components/ui/sonner.tsx": {
           "size": 480
@@ -387,7 +387,7 @@
           "size": 2986
         },
         "../../../src/utils/gtmEventRouter.ts": {
-          "size": 8682
+          "size": 8681
         },
         "../../../src/components/FloatingWhatsApp.tsx": {
           "size": 1730
@@ -407,11 +407,8 @@
         "../../../src/contexts/HappyGuestsContext.tsx": {
           "size": 1210
         },
-        "../../../src/contexts/UserAuthContext.tsx": {
-          "size": 9609
-        },
         "../../../src/hooks/useEnhancedAnalytics.tsx": {
-          "size": 5576
+          "size": 5572
         },
         "../../../src/services/trafficAnalyticsService.ts": {
           "size": 15114
@@ -441,7 +438,7 @@
           "size": 558
         },
         "../../../src/routes/__root.tsx": {
-          "size": 10127
+          "size": 10102
         },
         "../../../src/lib/seo-head.ts": {
           "size": 1829
@@ -471,7 +468,7 @@
           "size": 409
         },
         "../../../src/routes/auth.tsx": {
-          "size": 237
+          "size": 67
         },
         "../../../src/routes/backpacking-india.tsx": {
           "size": 326
@@ -606,7 +603,7 @@
           "size": 387
         },
         "../../../src/routes/profile.tsx": {
-          "size": 261
+          "size": 70
         },
         "../../../src/routes/restaurant-in-shillong.tsx": {
           "size": 333
@@ -762,7 +759,7 @@
           "size": 0
         },
         "[unmapped]": {
-          "size": 9949
+          "size": 9809
         },
         "[EOLs]": {
           "size": 27
