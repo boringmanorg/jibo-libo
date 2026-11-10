@@ -45,7 +45,7 @@ import { useOptionalAuth } from '@/hooks/useRequireAuth';
 import { openWhatsAppDirectly, generateBookingMessage, bookingPageSource } from '@/utils/privacyCompliantWhatsApp';
 import { trackBookingStart } from '@/utils/dataLayerService';
 import { trafficAnalytics } from '@/services/trafficAnalyticsService';
-import { quoteStay } from '@/data/panoramaPricing';
+import { quoteStay, displayRoomName } from '@/data/panoramaPricing';
 import { resolveBookingQuote } from '@/utils/bookingCatalogue';
 
 type BookingStep = 'dates' | 'rooms' | 'summary' | 'details' | 'confirmation';
@@ -259,12 +259,12 @@ const RoomSelectionStep = ({
                 <div className="w-16 h-16 rounded-xl overflow-hidden bg-white/10 flex-shrink-0">
                   <UnifiedImage
                     src={room.image}
-                    alt={room.name}
+                    alt={displayRoomName(room.name)}
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="font-semibold text-white text-sm truncate">{room.name}</p>
+                  <p className="font-semibold text-white text-sm truncate">{displayRoomName(room.name)}</p>
                   <p className="text-xs text-white/75 mt-0.5">
                     {room.kind === 'dorm' ? `${room.capacity}-bed ${room.category}` : `Up to ${room.capacity} guests`}
                   </p>
@@ -408,12 +408,12 @@ const SummaryStep = ({
                 <div className="w-14 h-14 rounded-lg overflow-hidden bg-white/10 flex-shrink-0">
                   <UnifiedImage
                     src={room.image}
-                    alt={room.name}
+                    alt={displayRoomName(room.name)}
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="font-medium text-white text-sm truncate">{room.name}</p>
+                  <p className="font-medium text-white text-sm truncate">{displayRoomName(room.name)}</p>
                   <p className="text-xs text-white/80">
                     {quantity} × {room.kind === 'dorm' ? 'bed' : 'room'}
                   </p>
@@ -785,7 +785,7 @@ const ConfirmationStep = ({
           <div className="flex justify-between">
             <span className="text-white/80">Rooms</span>
             <span className="font-medium text-white text-right">
-              {selectedRooms.map(r => `${r.quantity}× ${r.room.name}`).join(', ')}
+              {selectedRooms.map(r => `${r.quantity}× ${displayRoomName(r.room.name)}`).join(', ')}
             </span>
           </div>
           <div className="flex justify-between">
@@ -1096,7 +1096,7 @@ export default function SimplifiedBookingFlow() {
       const saved = { enquiry_id: localEnquiryRef() };
       setBookingId(saved.enquiry_id);
       const message = generateBookingMessage({
-        roomType: rooms.map(r => `${r.quantity}× ${r.name} (₹${r.nightlyRate.toLocaleString('en-IN')}/night, GST included)`).join(', '),
+        roomType: rooms.map(r => `${r.quantity}× ${displayRoomName(r.name)} (₹${r.nightlyRate.toLocaleString('en-IN')}/night, GST included)`).join(', '),
         guests, checkIn: format(checkIn, 'yyyy-MM-dd'), checkOut: format(checkOut, 'yyyy-MM-dd'), nights,
         totalPrice: quote.total, guestName: guestDetails.name, email: guestDetails.email, phone: guestDetails.phone,
         address: guestDetails.address, city: guestDetails.city, state: guestDetails.state,
@@ -1223,7 +1223,7 @@ export default function SimplifiedBookingFlow() {
                 onWhatsAppHost={() => {
                   openWhatsAppDirectly(
                     generateBookingMessage({
-                      roomType: selectedRooms.map(r => `${r.quantity}× ${r.room.name}`).join(', '),
+                      roomType: selectedRooms.map(r => `${r.quantity}× ${displayRoomName(r.room.name)}`).join(', '),
                       guests: selectedRooms.reduce((s, r) => s + (r.room.kind === 'dorm' ? r.quantity : r.room.capacity * r.quantity), 0),
                       checkIn: format(checkIn, 'yyyy-MM-dd'),
                       checkOut: format(checkOut, 'yyyy-MM-dd'),
