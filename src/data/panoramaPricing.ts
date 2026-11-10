@@ -10,6 +10,18 @@
  */
 export const PANORAMA_STAY_ONLY = 5999;
 
+/** The name guests see for the glass suite. */
+export const PANORAMA_DISPLAY_NAME = 'Experience by XTSY';
+
+/**
+ * Name to show guests for a room. The database still stores the glass suite as
+ * "XTSY 270° Panorama Glass Ensuite" and booking quotes match on that, so keep using the stored
+ * name for matching and pass it through here only when showing it.
+ */
+export function displayRoomName(name: string): string {
+  return /panorama\s*glass\s*ensuite|270\s*°?\s*glass\s*suite/i.test(name) ? PANORAMA_DISPLAY_NAME : name;
+}
+
 /**
  * Same rule as the database function public.current_room_rate: the room price table cannot be
  * edited right now, so the two rooms whose prices changed on 5 Oct 2026 are mapped here — only
