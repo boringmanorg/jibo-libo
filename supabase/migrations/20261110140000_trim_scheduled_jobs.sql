@@ -5,6 +5,10 @@
 --    into the same seo_position_snapshots table, so daily runs mostly duplicated that cost.
 -- 2. analytics-loader-daily-summary: removed. It posts to an old Supabase project
 --    (oidnydyyjyjfnyadhyzn), not this one, so it does nothing useful.
+-- 3. process-email-queue (every 5 s): removed. Nothing on the site enqueues emails; password
+--    reset OTPs go out directly over Gmail SMTP (password-reset-otp).
+--    To restore: re-run the cron step described in 20260623215228_email_infra.sql.
+-- 4. auto-settle-bookings (daily): removed. Nothing on the site or admin reads settlement_status.
 --
 -- Jobs are matched by what they call, not only by name, because the seo-position-cron job was
 -- created outside the migrations and its job name is not recorded in this repo. Safe to re-run.
@@ -28,8 +32,10 @@ begin
 
   for job in
     select jobid, jobname from cron.job
-    where jobname = 'analytics-loader-daily-summary'
+    where jobname in ('analytics-loader-daily-summary', 'process-email-queue')
        or command ilike '%oidnydyyjyjfnyadhyzn%'
+       or command ilike '%process-email-queue%'
+       or command ilike '%auto-settle-bookings%'
   loop
     perform cron.unschedule(job.jobid);
     raise notice 'removed job % (%)', job.jobid, job.jobname;

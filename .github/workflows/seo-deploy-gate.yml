@@ -60,9 +60,8 @@ jobs:
           exit $rc
       - name: SEO meta + soft-404 + hreflang monitor
         if: always()
-        env:
-          SEO_ALERT_ENDPOINT: ${{ secrets.SEO_ALERT_ENDPOINT }}
-          SEO_ALERT_TOKEN: ${{ secrets.SEO_ALERT_TOKEN }}
+        # No SEO_ALERT_ENDPOINT: the seo-monitor-alert function is retired, so failures show in this
+        # job's log only (seoMetaMonitor skips the alert when no endpoint is set).
         run: |
           set -o pipefail
           rc=0
