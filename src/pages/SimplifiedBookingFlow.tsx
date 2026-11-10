@@ -41,7 +41,6 @@ import UnifiedImage from '@/components/UnifiedImage';
 import { useEnhancedAnalytics } from '@/hooks/useEnhancedAnalytics';
 import { ROOM_INVENTORY, RoomType } from '@/data/roomInventory';
 import { getCanonicalRate, getBreakfastInclusion } from '@/utils/rateSanityCheck';
-import { useOptionalAuth } from '@/hooks/useRequireAuth';
 import { openWhatsAppDirectly, generateBookingMessage, bookingPageSource } from '@/utils/privacyCompliantWhatsApp';
 import { trackBookingStart } from '@/utils/dataLayerService';
 import { trafficAnalytics } from '@/services/trafficAnalyticsService';
@@ -868,7 +867,6 @@ export default function SimplifiedBookingFlow() {
   const [searchParams, setSearchParams] = useSearchParams();
   const hasTrackedEntry = useRef(false);
   
-  const { user } = useOptionalAuth();
 
   // State
   // Without dates in the URL the first screen is the date picker — decide it up front so the
@@ -966,17 +964,6 @@ export default function SimplifiedBookingFlow() {
     }
   }, [navigate, searchParams]);
 
-  // Pre-fill guest details from user
-  useEffect(() => {
-    if (user) {
-      setGuestDetails(prev => ({
-        ...prev,
-        name: prev.name || user.displayName || '',
-        email: prev.email || user.email || '',
-        phone: prev.phone || user.phoneNumber?.replace('+91', '') || '',
-      }));
-    }
-  }, [user]);
 
   // Track booking flow entry
   useEffect(() => {

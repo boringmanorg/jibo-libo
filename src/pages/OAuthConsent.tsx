@@ -46,9 +46,8 @@ export default function OAuthConsent() {
       }
       const { data: sess } = await supabase.auth.getSession();
       if (!sess.session) {
-        // Preserve the FULL consent URL so auth returns the user here.
-        const next = window.location.pathname + window.location.search;
-        window.location.href = '/auth?next=' + encodeURIComponent(next);
+        // Guest sign-in is retired; only signed-in XTSY staff can approve access.
+        setError('Please sign in on the XTSY staff login (/franchise/login), then open this link again.');
         return;
       }
       const { data, error } = await oauth.getAuthorizationDetails(authorizationId);

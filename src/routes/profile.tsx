@@ -1,15 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
-import UserProfile from "@/pages/user/UserProfile";
-import { buildRouteHead } from "@/lib/seo-head";
+import { createFileRoute, redirect } from '@tanstack/react-router';
 
-export const Route = createFileRoute("/profile")({
-  head: () =>
-    buildRouteHead({
-      path: "/profile",
-      title: "Your XTSY Profile & Bookings",
-      description:
-        "Manage your XTSY profile, view upcoming and past bookings, download invoices and update contact and travel preferences.",
-      noIndex: true,
-    }),
-  component: UserProfile,
+// Guest sign-in and accounts are retired: XTSY has no public sign-in. Old links go home.
+export const Route = createFileRoute('/profile')({
+  beforeLoad: () => {
+    throw redirect({ to: '/', statusCode: 301 });
+  },
 });
