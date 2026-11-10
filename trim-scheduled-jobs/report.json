@@ -1,0 +1,137 @@
+[
+  {
+    "route": "/guides",
+    "viewport": "desktop",
+    "status": 200,
+    "file": "desktop-guides.png",
+    "errors": [
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    ]
+  },
+  {
+    "route": "/female-travellers",
+    "viewport": "desktop",
+    "status": 200,
+    "file": "desktop-female-travellers.png",
+    "errors": [
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    ]
+  },
+  {
+    "route": "/book",
+    "viewport": "desktop",
+    "status": 200,
+    "file": "desktop-book.png",
+    "errors": [
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    ]
+  },
+  {
+    "route": "/faq",
+    "viewport": "desktop",
+    "status": 200,
+    "file": "desktop-faq.png",
+    "errors": [
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    ]
+  },
+  {
+    "route": "/contact",
+    "viewport": "desktop",
+    "status": 200,
+    "file": "desktop-contact.png",
+    "errors": [
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    ]
+  },
+  {
+    "route": "/guides",
+    "viewport": "mobile",
+    "status": 200,
+    "file": "mobile-guides.png",
+    "errors": [
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    ]
+  },
+  {
+    "route": "/female-travellers",
+    "viewport": "mobile",
+    "status": 200,
+    "file": "mobile-female-travellers.png",
+    "errors": [
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    ]
+  },
+  {
+    "route": "/book",
+    "viewport": "mobile",
+    "status": 200,
+    "file": "mobile-book.png",
+    "errors": [
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    ]
+  },
+  {
+    "route": "/faq",
+    "viewport": "mobile",
+    "status": 200,
+    "file": "mobile-faq.png",
+    "errors": [
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    ]
+  },
+  {
+    "route": "/contact",
+    "viewport": "mobile",
+    "status": 200,
+    "file": "mobile-contact.png",
+    "errors": [
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+      "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+    ]
+  }
+]

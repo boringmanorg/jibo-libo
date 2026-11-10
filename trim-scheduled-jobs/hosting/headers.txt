@@ -43,19 +43,19 @@
 /assets/*
   cache-control: public, max-age=31536000, immutable
 == server config files
-_._lovable.oauth.consent-CEm-GVS6.mjs
-_attraction-MKMvh3iw.mjs
+_._lovable.oauth.consent-LGuclpZz.mjs
+_attraction-sdNOFB3a.mjs
 _chunks
-_city-BTqH2Vvj.mjs
+_city-CWr-bTGE.mjs
 _libs
-_route-tnro9fkk.mjs
+_route-C0Nv7BDF.mjs
 _runtime.mjs
-_slug-6TMJZmTR.mjs
-_slug-C55zKZMT.mjs
-_slug-Drhpmt3v.mjs
+_slug-C-b788zr.mjs
+_slug-CFnLpruq.mjs
+_slug-DUVP2M6t.mjs
 _ssr
-_state-DwnHO_Su.mjs
-_tanstack-start-manifest_v-D3vaTuvL.mjs
+_state-BIrFUkRA.mjs
+_tanstack-start-manifest_v-CJ_xss2I.mjs
 index.mjs
 wrangler.json
 == .output/server/wrangler.json
@@ -83,7 +83,7 @@ wrangler.json
 }
 == .output/nitro.json
 {
-  "date": "2026-11-10T14:07:27.449Z",
+  "date": "2026-11-10T14:10:19.009Z",
   "preset": "cloudflare-module",
   "framework": {
     "name": "nitro",

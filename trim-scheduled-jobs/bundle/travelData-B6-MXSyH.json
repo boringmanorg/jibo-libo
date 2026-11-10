@@ -1,9 +1,9 @@
 {
   "results": [
     {
-      "bundleName": ".output/public/assets/travelData-DfGlz523.js",
-      "totalBytes": 138239,
-      "mappedBytes": 138239,
+      "bundleName": ".output/public/assets/travelData-B6-MXSyH.js",
+      "totalBytes": 138243,
+      "mappedBytes": 138243,
       "unmappedBytes": 0,
       "eolBytes": 0,
       "sourceMapCommentBytes": 0,
@@ -75,7 +75,7 @@
           "size": 55
         },
         "../../../src/data/travelData.ts": {
-          "size": 31248
+          "size": 31252
         },
         "[sourceMappingURL]": {
           "size": 0
