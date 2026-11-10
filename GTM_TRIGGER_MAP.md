@@ -57,7 +57,7 @@
 | `/about` | About Us | information | medium |
 | `/gallery` | Gallery | engagement | medium |
 | `/travel` | Tour Packages | product | high |
-| `/xtsy-270` | XTSY 270 Suite | product | critical |
+| `/xtsy-270` | Experience by XTSY | product | critical |
 | `/pet-friendly` | Pet Friendly | product | high |
 | `/xtsy-vs-zostel` | Comparison | product | high |
 | `/female-travellers` | Female Travellers | product | high |
