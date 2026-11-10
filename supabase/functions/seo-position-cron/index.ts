@@ -1,7 +1,7 @@
 /**
  * seo-position-cron
  *
- * Scheduled (daily) capture of our Google organic keyword positions from
+ * Scheduled (weekly, Mondays 02:40 UTC) capture of our Google organic keyword positions from
  * Semrush into public.seo_position_snapshots. Triggered by pg_cron via
  * pg_net — NOT by the browser. Because it runs without a user JWT it is
  * protected by a shared secret (SEO_CRON_SECRET) that the cron job passes
