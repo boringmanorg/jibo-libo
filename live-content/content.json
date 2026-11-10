@@ -2,7 +2,7 @@
  {
   "url": "/",
   "status": 200,
-  "words": 1699,
+  "words": 1697,
   "findings": [
    {
     "rule": "policy:check-in time",
@@ -58,7 +58,7 @@
  {
   "url": "/10-day-meghalaya-itinerary",
   "status": 200,
-  "words": 2272,
+  "words": 2270,
   "findings": [],
   "seo": {
    "title": "10-Day Meghalaya Itinerary: Route, Stays & Trek Tips | XTSY",
@@ -107,7 +107,7 @@
  {
   "url": "/2-day-arunachal-pradesh-itinerary",
   "status": 200,
-  "words": 1543,
+  "words": 1541,
   "findings": [],
   "seo": {
    "title": "2 Day Arunachal Pradesh Itinerary (2026)",
@@ -151,7 +151,7 @@
  {
   "url": "/2-day-arunachal-pradesh-trip",
   "status": 200,
-  "words": 1551,
+  "words": 1549,
   "findings": [],
   "seo": {
    "title": "2 Day Arunachal Pradesh Trip Plan (2026)",
@@ -195,7 +195,7 @@
  {
   "url": "/2-day-assam-itinerary",
   "status": 200,
-  "words": 1519,
+  "words": 1517,
   "findings": [],
   "seo": {
    "title": "2 Day Assam Itinerary (2026) – Day-Wise Plan & Stays",
@@ -239,7 +239,7 @@
  {
   "url": "/2-day-assam-trip",
   "status": 200,
-  "words": 1527,
+  "words": 1525,
   "findings": [],
   "seo": {
    "title": "2 Day Assam Trip Plan (2026) – Cost, Route & Stays",
@@ -283,7 +283,7 @@
  {
   "url": "/2-day-meghalaya-itinerary",
   "status": 200,
-  "words": 1520,
+  "words": 1518,
   "findings": [],
   "seo": {
    "title": "2 Day Meghalaya Itinerary (2026) – Day-Wise Plan & Stays",
@@ -327,7 +327,7 @@
  {
   "url": "/2-day-meghalaya-trip",
   "status": 200,
-  "words": 1527,
+  "words": 1525,
   "findings": [],
   "seo": {
    "title": "2 Day Meghalaya Trip Plan (2026) – Cost, Route & Stays",
@@ -371,7 +371,7 @@
  {
   "url": "/2-day-mizoram-itinerary",
   "status": 200,
-  "words": 1541,
+  "words": 1539,
   "findings": [],
   "seo": {
    "title": "2 Day Mizoram Itinerary (2026) – Day-Wise Plan & Stays",
@@ -415,7 +415,7 @@
  {
   "url": "/2-day-mizoram-trip",
   "status": 200,
-  "words": 1549,
+  "words": 1547,
   "findings": [],
   "seo": {
    "title": "2 Day Mizoram Trip Plan (2026) – Cost, Route & Stays",
@@ -459,7 +459,7 @@
  {
   "url": "/2-day-nagaland-itinerary",
   "status": 200,
-  "words": 1522,
+  "words": 1520,
   "findings": [],
   "seo": {
    "title": "2 Day Nagaland Itinerary (2026) – Day-Wise Plan & Stays",
@@ -503,7 +503,7 @@
  {
   "url": "/2-day-nagaland-trip",
   "status": 200,
-  "words": 1530,
+  "words": 1528,
   "findings": [],
   "seo": {
    "title": "2 Day Nagaland Trip Plan (2026) – Cost, Route & Stays",
@@ -547,7 +547,7 @@
  {
   "url": "/2-day-shillong-itinerary",
   "status": 200,
-  "words": 1225,
+  "words": 1223,
   "findings": [],
   "seo": {
    "title": "2-Day Shillong Itinerary — Perfect Weekend Plan",
@@ -591,7 +591,7 @@
  {
   "url": "/2-day-sikkim-itinerary",
   "status": 200,
-  "words": 1554,
+  "words": 1552,
   "findings": [],
   "seo": {
    "title": "2 Day Sikkim Itinerary (2026) – Day-Wise Plan & Stays",
@@ -635,7 +635,7 @@
  {
   "url": "/2-day-sikkim-trip",
   "status": 200,
-  "words": 1562,
+  "words": 1560,
   "findings": [],
   "seo": {
    "title": "2 Day Sikkim Trip Plan (2026) – Cost, Route & Stays",
@@ -679,7 +679,7 @@
  {
   "url": "/3-day-arunachal-pradesh-itinerary",
   "status": 200,
-  "words": 1543,
+  "words": 1541,
   "findings": [],
   "seo": {
    "title": "3 Day Arunachal Pradesh Itinerary (2026)",
@@ -723,7 +723,7 @@
  {
   "url": "/3-day-arunachal-pradesh-trip",
   "status": 200,
-  "words": 1551,
+  "words": 1549,
   "findings": [],
   "seo": {
    "title": "3 Day Arunachal Pradesh Trip Plan (2026)",
@@ -767,7 +767,7 @@
  {
   "url": "/3-day-assam-itinerary",
   "status": 200,
-  "words": 1519,
+  "words": 1517,
   "findings": [],
   "seo": {
    "title": "3 Day Assam Itinerary (2026) – Day-Wise Plan & Stays",
@@ -811,7 +811,7 @@
  {
   "url": "/3-day-assam-trip",
   "status": 200,
-  "words": 1527,
+  "words": 1525,
   "findings": [],
   "seo": {
    "title": "3 Day Assam Trip Plan (2026) – Cost, Route & Stays",
@@ -855,7 +855,7 @@
  {
   "url": "/3-day-meghalaya-itinerary",
   "status": 200,
-  "words": 444,
+  "words": 442,
   "findings": [],
   "seo": {
    "title": "3 Day Meghalaya Itinerary from Shillong | XTSY",
@@ -892,7 +892,7 @@
  {
   "url": "/3-day-meghalaya-trip",
   "status": 200,
-  "words": 1527,
+  "words": 1525,
   "findings": [],
   "seo": {
    "title": "3 Day Meghalaya Trip Plan (2026) – Cost, Route & Stays",
@@ -936,7 +936,7 @@
  {
   "url": "/3-day-mizoram-itinerary",
   "status": 200,
-  "words": 1541,
+  "words": 1539,
   "findings": [],
   "seo": {
    "title": "3 Day Mizoram Itinerary (2026) – Day-Wise Plan & Stays",
@@ -980,7 +980,7 @@
  {
   "url": "/3-day-mizoram-trip",
   "status": 200,
-  "words": 1549,
+  "words": 1547,
   "findings": [],
   "seo": {
    "title": "3 Day Mizoram Trip Plan (2026) – Cost, Route & Stays",
@@ -1024,7 +1024,7 @@
  {
   "url": "/3-day-nagaland-itinerary",
   "status": 200,
-  "words": 1522,
+  "words": 1520,
   "findings": [],
   "seo": {
    "title": "3 Day Nagaland Itinerary (2026) – Day-Wise Plan & Stays",
@@ -1068,7 +1068,7 @@
  {
   "url": "/3-day-nagaland-trip",
   "status": 200,
-  "words": 1530,
+  "words": 1528,
   "findings": [],
   "seo": {
    "title": "3 Day Nagaland Trip Plan (2026) – Cost, Route & Stays",
@@ -1112,7 +1112,7 @@
  {
   "url": "/3-day-sikkim-itinerary",
   "status": 200,
-  "words": 1554,
+  "words": 1552,
   "findings": [],
   "seo": {
    "title": "3 Day Sikkim Itinerary (2026) – Day-Wise Plan & Stays",
@@ -1156,7 +1156,7 @@
  {
   "url": "/3-day-sikkim-trip",
   "status": 200,
-  "words": 1562,
+  "words": 1560,
   "findings": [],
   "seo": {
    "title": "3 Day Sikkim Trip Plan (2026) – Cost, Route & Stays",
@@ -1200,7 +1200,7 @@
  {
   "url": "/4-day-arunachal-pradesh-itinerary",
   "status": 200,
-  "words": 1543,
+  "words": 1541,
   "findings": [],
   "seo": {
    "title": "4 Day Arunachal Pradesh Itinerary (2026)",
@@ -1244,7 +1244,7 @@
  {
   "url": "/4-day-assam-itinerary",
   "status": 200,
-  "words": 1519,
+  "words": 1517,
   "findings": [],
   "seo": {
    "title": "4 Day Assam Itinerary (2026) – Day-Wise Plan & Stays",
@@ -1288,7 +1288,7 @@
  {
   "url": "/4-day-assam-trip",
   "status": 200,
-  "words": 1527,
+  "words": 1525,
   "findings": [],
   "seo": {
    "title": "4 Day Assam Trip Plan (2026) – Cost, Route & Stays",
@@ -1332,7 +1332,7 @@
  {
   "url": "/4-day-meghalaya-itinerary",
   "status": 200,
-  "words": 1214,
+  "words": 1212,
   "findings": [],
   "seo": {
    "title": "4-Day Meghalaya Itinerary 2026 — Day-by-Day Guide | XTSY",
@@ -1376,7 +1376,7 @@
  {
   "url": "/4-day-meghalaya-trip",
   "status": 200,
-  "words": 1527,
+  "words": 1525,
   "findings": [],
   "seo": {
    "title": "4 Day Meghalaya Trip Plan (2026) – Cost, Route & Stays",
@@ -1420,7 +1420,7 @@
  {
   "url": "/4x4-expedition-meghalaya",
   "status": 200,
-  "words": 632,
+  "words": 630,
   "findings": [],
   "seo": {
    "title": "4x4 Expedition Meghalaya | Shillong–Dawki Circuit | XTSY",
@@ -1455,7 +1455,7 @@
  {
   "url": "/5-day-meghalaya-itinerary",
   "status": 200,
-  "words": 841,
+  "words": 839,
   "findings": [],
   "seo": {
    "title": "5 Day Meghalaya Itinerary: Route, Cost, Stays | XTSY",
@@ -1495,7 +1495,7 @@
  {
   "url": "/6-day-meghalaya-itinerary",
   "status": 200,
-  "words": 1221,
+  "words": 1219,
   "findings": [],
   "seo": {
    "title": "6-Day Meghalaya Itinerary 2026 — Day-by-Day Guide | XTSY",
@@ -1539,7 +1539,7 @@
  {
   "url": "/7-day-meghalaya-itinerary",
   "status": 200,
-  "words": 2132,
+  "words": 2130,
   "findings": [],
   "seo": {
    "title": "7-Day Meghalaya Itinerary 2026: The XTSY Deep Dive",
@@ -1583,7 +1583,7 @@
  {
   "url": "/8-day-meghalaya-itinerary",
   "status": 200,
-  "words": 1222,
+  "words": 1220,
   "findings": [],
   "seo": {
    "title": "8-Day Meghalaya Itinerary 2026 — Day-by-Day Guide | XTSY",
@@ -1627,7 +1627,7 @@
  {
   "url": "/about",
   "status": 200,
-  "words": 771,
+  "words": 769,
   "findings": [],
   "seo": {
    "title": "About XTSY — India's Biggest Hostel in Northeast India",
@@ -1666,7 +1666,7 @@
  {
   "url": "/accommodation-near-iim-shillong",
   "status": 200,
-  "words": 1109,
+  "words": 1107,
   "findings": [],
   "seo": {
    "title": "Accommodation IIM Shillong (2026) | XTSY",
@@ -1712,7 +1712,7 @@
  {
   "url": "/accommodation-near-nehu",
   "status": 200,
-  "words": 1096,
+  "words": 1094,
   "findings": [],
   "seo": {
    "title": "Accommodation NEHU (2026) | XTSY",
@@ -1758,7 +1758,7 @@
  {
   "url": "/accommodation-near-nift-shillong",
   "status": 200,
-  "words": 1108,
+  "words": 1106,
   "findings": [],
   "seo": {
    "title": "Accommodation NIFT Shillong (2026) | XTSY",
@@ -1804,7 +1804,7 @@
  {
   "url": "/adventure-tours-northeast-india",
   "status": 200,
-  "words": 636,
+  "words": 634,
   "findings": [],
   "seo": {
    "title": "Adventure Tours in Northeast India | Routes & Permits | XTSY",
@@ -1839,7 +1839,7 @@
  {
   "url": "/anniversary-dinner-shillong",
   "status": 200,
-  "words": 1028,
+  "words": 1026,
   "findings": [],
   "seo": {
    "title": "Anniversary Dinner in Shillong | TAB Bistro",
@@ -1883,7 +1883,7 @@
  {
   "url": "/arunachal-pradesh-tour-packages",
   "status": 200,
-  "words": 1433,
+  "words": 1431,
   "findings": [],
   "seo": {
    "title": "Tour packages Arunachal Pradesh (2026) | XTSY",
@@ -1927,7 +1927,7 @@
  {
   "url": "/assam-tour-packages",
   "status": 200,
-  "words": 1412,
+  "words": 1410,
   "findings": [],
   "seo": {
    "title": "Tour packages Assam (2026) | XTSY",
@@ -1971,7 +1971,7 @@
  {
   "url": "/backpacking-india",
   "status": 200,
-  "words": 1706,
+  "words": 1704,
   "findings": [],
   "seo": {
    "title": "Backpacking India: Routes, Budget & Hostels | XTSY",
@@ -2013,7 +2013,7 @@
  {
   "url": "/backpacking-northeast-india",
   "status": 200,
-  "words": 1411,
+  "words": 1409,
   "findings": [],
   "seo": {
    "title": "Backpacking Northeast India 2026 — Complete Guide",
@@ -2057,7 +2057,7 @@
  {
   "url": "/best-chinese-restaurant-in-shillong",
   "status": 200,
-  "words": 1237,
+  "words": 1235,
   "findings": [],
   "seo": {
    "title": "Best Chinese Restaurant in Shillong | TAB Bistro",
@@ -2101,7 +2101,7 @@
  {
   "url": "/best-chinese-restaurant-shillong",
   "status": 200,
-  "words": 1074,
+  "words": 1072,
   "findings": [],
   "seo": {
    "title": "Best Chinese Restaurant in Shillong — Indo-Chinese",
@@ -2145,7 +2145,7 @@
  {
   "url": "/best-food-in-shillong",
   "status": 200,
-  "words": 1053,
+  "words": 1051,
   "findings": [],
   "seo": {
    "title": "Best Food in Shillong — What & Where to Eat | TAB Bistro",
@@ -2189,7 +2189,7 @@
  {
   "url": "/best-food-places-in-shillong",
   "status": 200,
-  "words": 1039,
+  "words": 1037,
   "findings": [],
   "seo": {
    "title": "Best Food Places in Shillong | TAB Bistro",
@@ -2233,7 +2233,7 @@
  {
   "url": "/best-glamping-in-cherrapunji",
   "status": 200,
-  "words": 1198,
+  "words": 1196,
   "findings": [],
   "seo": {
    "title": "Best Glamping in Cherrapunji (2026) | XTSY",
@@ -2277,7 +2277,7 @@
  {
   "url": "/best-glamping-in-guwahati",
   "status": 200,
-  "words": 1190,
+  "words": 1188,
   "findings": [],
   "seo": {
    "title": "Best Glamping in Guwahati (2026) | XTSY",
@@ -2321,7 +2321,7 @@
  {
   "url": "/best-glamping-in-shillong",
   "status": 200,
-  "words": 1139,
+  "words": 1137,
   "findings": [],
   "seo": {
    "title": "Best Glamping in Shillong (2026) | XTSY",
@@ -2367,7 +2367,7 @@
  {
   "url": "/best-homestay-in-cherrapunji",
   "status": 200,
-  "words": 1193,
+  "words": 1191,
   "findings": [],
   "seo": {
    "title": "Best Homestay in Cherrapunji (2026) | XTSY",
@@ -2411,7 +2411,7 @@
  {
   "url": "/best-homestay-in-guwahati",
   "status": 200,
-  "words": 1185,
+  "words": 1183,
   "findings": [],
   "seo": {
    "title": "Best Homestay in Guwahati (2026) | XTSY",
@@ -2455,7 +2455,7 @@
  {
   "url": "/best-homestay-in-shillong",
   "status": 200,
-  "words": 1134,
+  "words": 1132,
   "findings": [],
   "seo": {
    "title": "Best Homestay in Shillong (2026) | XTSY",
@@ -2501,7 +2501,7 @@
  {
   "url": "/best-hostel-in-cherrapunji",
   "status": 200,
-  "words": 1308,
+  "words": 1306,
   "findings": [],
   "seo": {
    "title": "Best Hostel in Cherrapunji (2026) — Stays via XTSY Partners",
@@ -2545,7 +2545,7 @@
  {
   "url": "/best-hostel-in-guwahati",
   "status": 200,
-  "words": 1296,
+  "words": 1294,
   "findings": [],
   "seo": {
    "title": "Best Hostel in Guwahati (2026) — Stays via XTSY Partners",
@@ -2589,7 +2589,7 @@
  {
   "url": "/best-hostel-in-imphal",
   "status": 200,
-  "words": 1255,
+  "words": 1253,
   "findings": [],
   "seo": {
    "title": "Best Hostel in Imphal (2026) | XTSY",
@@ -2633,7 +2633,7 @@
  {
   "url": "/best-hostel-in-kohima",
   "status": 200,
-  "words": 1266,
+  "words": 1264,
   "findings": [],
   "seo": {
    "title": "Best Hostel in Kohima (2026) | XTSY",
@@ -2677,7 +2677,7 @@
  {
   "url": "/best-hostel-in-shillong",
   "status": 200,
-  "words": 1534,
+  "words": 1532,
   "findings": [
    {
     "rule": "price:king/private room",
@@ -2763,7 +2763,7 @@
  {
   "url": "/best-place-to-eat-in-shillong",
   "status": 200,
-  "words": 927,
+  "words": 925,
   "findings": [],
   "seo": {
    "title": "Best Place to Eat in Shillong 2026 — Top Restaurant Guide",
@@ -2807,7 +2807,7 @@
  {
   "url": "/best-restaurant-in-shillong",
   "status": 200,
-  "words": 1049,
+  "words": 1047,
   "findings": [],
   "seo": {
    "title": "Best Restaurant in Shillong 2026 | TAB Bistro",
@@ -2851,7 +2851,7 @@
  {
   "url": "/best-restaurant-shillong",
   "status": 200,
-  "words": 1172,
+  "words": 1170,
   "findings": [],
   "seo": {
    "title": "Best Restaurant in Shillong 2026 | TAB Bistro",
@@ -2895,7 +2895,7 @@
  {
   "url": "/best-restaurants-shillong",
   "status": 200,
-  "words": 1031,
+  "words": 1029,
   "findings": [],
   "seo": {
    "title": "Best Restaurants in Shillong 2026 — Top Dining Guide",
@@ -2939,7 +2939,7 @@
  {
   "url": "/best-time-to-visit-meghalaya",
   "status": 200,
-  "words": 913,
+  "words": 911,
   "findings": [],
   "seo": {
    "title": "Best Time to Visit Meghalaya (Month by Month) | XTSY",
@@ -2979,7 +2979,7 @@
  {
   "url": "/best-veg-restaurants-shillong",
   "status": 200,
-  "words": 1020,
+  "words": 1018,
   "findings": [],
   "seo": {
    "title": "Best Veg Restaurants in Shillong — Top Vegetarian Dining",
@@ -3023,7 +3023,7 @@
  {
   "url": "/bike-trip-agartala",
   "status": 200,
-  "words": 1499,
+  "words": 1497,
   "findings": [],
   "seo": {
    "title": "Bike Trip Agartala 2026 — Route, Permits & Stays",
@@ -3067,7 +3067,7 @@
  {
   "url": "/bike-trip-aizawl",
   "status": 200,
-  "words": 1505,
+  "words": 1503,
   "findings": [],
   "seo": {
    "title": "Bike Trip Aizawl 2026 — Route, Permits & Stays",
@@ -3111,7 +3111,7 @@
  {
   "url": "/bike-trip-arunachal-pradesh",
   "status": 200,
-  "words": 1508,
+  "words": 1506,
   "findings": [],
   "seo": {
    "title": "Bike Trip Arunachal Pradesh 2026",
@@ -3155,7 +3155,7 @@
  {
   "url": "/bike-trip-assam",
   "status": 200,
-  "words": 1483,
+  "words": 1481,
   "findings": [],
   "seo": {
    "title": "Bike Trip Assam 2026 — Route, Permits & Stays",
@@ -3199,7 +3199,7 @@
  {
   "url": "/bike-trip-cherrapunji",
   "status": 200,
-  "words": 1507,
+  "words": 1505,
   "findings": [],
   "seo": {
    "title": "Bike Trip Cherrapunji 2026 — Route, Permits & Stays",
@@ -3243,7 +3243,7 @@
  {
   "url": "/bike-trip-dawki",
   "status": 200,
-  "words": 1519,
+  "words": 1517,
   "findings": [],
   "seo": {
    "title": "Bike Trip Dawki 2026 — Route, Permits & Stays",
@@ -3287,7 +3287,7 @@
  {
   "url": "/bike-trip-gangtok",
   "status": 200,
-  "words": 1518,
+  "words": 1516,
   "findings": [],
   "seo": {
    "title": "Bike Trip Gangtok 2026 — Route, Permits & Stays",
@@ -3331,7 +3331,7 @@
  {
   "url": "/bike-trip-guwahati",
   "status": 200,
-  "words": 1499,
+  "words": 1497,
   "findings": [],
   "seo": {
    "title": "Bike Trip Guwahati 2026 — Route, Permits & Stays",
@@ -3375,7 +3375,7 @@
  {
   "url": "/bike-trip-imphal",
   "status": 200,
-  "words": 1511,
+  "words": 1509,
   "findings": [],
   "seo": {
    "title": "Bike Trip Imphal 2026 — Route, Permits & Stays",
@@ -3419,7 +3419,7 @@
  {
   "url": "/bike-trip-jowai",
   "status": 200,
-  "words": 1499,
+  "words": 1497,
   "findings": [],
   "seo": {
    "title": "Bike Trip Jowai 2026 — Route, Permits & Stays",
@@ -3463,7 +3463,7 @@
  {
   "url": "/bike-trip-kaziranga",
   "status": 200,
-  "words": 1512,
+  "words": 1510,
   "findings": [],
   "seo": {
    "title": "Bike Trip Kaziranga 2026 — Route, Permits & Stays",
@@ -3507,7 +3507,7 @@
  {
   "url": "/bike-trip-kohima",
   "status": 200,
-  "words": 1522,
+  "words": 1520,
   "findings": [],
   "seo": {
    "title": "Bike Trip Kohima 2026 — Route, Permits & Stays",
@@ -3551,7 +3551,7 @@
  {
   "url": "/bike-trip-mawlynnong",
   "status": 200,
-  "words": 1516,
+  "words": 1514,
   "findings": [],
   "seo": {
    "title": "Bike Trip Mawlynnong 2026 — Route, Permits & Stays",
@@ -3595,7 +3595,7 @@
  {
   "url": "/bike-trip-meghalaya",
   "status": 200,
-  "words": 1483,
+  "words": 1481,
   "findings": [],
   "seo": {
    "title": "Bike Trip Meghalaya 2026 — Route, Permits & Stays",
@@ -3639,7 +3639,7 @@
  {
   "url": "/bike-trip-nongjrong",
   "status": 200,
-  "words": 1483,
+  "words": 1481,
   "findings": [],
   "seo": {
    "title": "Bike Trip Nongjrong 2026 — Route, Permits & Stays",
@@ -3683,7 +3683,7 @@
  {
   "url": "/bike-trip-pelling",
   "status": 200,
-  "words": 1515,
+  "words": 1513,
   "findings": [],
   "seo": {
    "title": "Bike Trip Pelling 2026 — Route, Permits & Stays",
@@ -3727,7 +3727,7 @@
  {
   "url": "/bike-trip-shillong",
   "status": 200,
-  "words": 1483,
+  "words": 1481,
   "findings": [],
   "seo": {
    "title": "Bike Trip Shillong 2026 — Route, Permits & Stays",
@@ -3771,7 +3771,7 @@
  {
   "url": "/bike-trip-shnongpdeng",
   "status": 200,
-  "words": 1512,
+  "words": 1510,
   "findings": [],
   "seo": {
    "title": "Bike Trip Shnongpdeng 2026 — Route, Permits & Stays",
@@ -3815,7 +3815,7 @@
  {
   "url": "/bike-trip-tawang",
   "status": 200,
-  "words": 1539,
+  "words": 1537,
   "findings": [],
   "seo": {
    "title": "Bike Trip Tawang 2026 — Route, Permits & Stays",
@@ -3859,7 +3859,7 @@
  {
   "url": "/bike-trip-ziro",
   "status": 200,
-  "words": 1518,
+  "words": 1516,
   "findings": [],
   "seo": {
    "title": "Bike Trip Ziro 2026 — Route, Permits & Stays",
@@ -3903,7 +3903,7 @@
  {
   "url": "/birdwatching-meghalaya",
   "status": 200,
-  "words": 1024,
+  "words": 1022,
   "findings": [],
   "seo": {
    "title": "Birdwatching in Meghalaya 2026 — Species Guide | XTSY",
@@ -3947,7 +3947,7 @@
  {
   "url": "/birthday-party-catering-shillong",
   "status": 200,
-  "words": 951,
+  "words": 949,
   "findings": [],
   "seo": {
    "title": "Birthday Party Catering in Shillong — Menus | TAB Bistro",
@@ -3991,7 +3991,7 @@
  {
   "url": "/birthday-party-restaurant-shillong",
   "status": 200,
-  "words": 1026,
+  "words": 1024,
   "findings": [],
   "seo": {
    "title": "Birthday Party Restaurant in Shillong | TAB Bistro",
@@ -4035,7 +4035,7 @@
  {
   "url": "/biryani-in-shillong",
   "status": 200,
-  "words": 1065,
+  "words": 1063,
   "findings": [],
   "seo": {
    "title": "Biryani Restaurant in Shillong — Biryani Menu | TAB Bistro",
@@ -4131,7 +4131,7 @@
  {
   "url": "/book/campsite",
   "status": 200,
-  "words": 299,
+  "words": 297,
   "findings": [],
   "seo": {
    "title": "Book the Dawki Riverside Campsite | XTSY",
@@ -4166,7 +4166,7 @@
  {
   "url": "/book/select",
   "status": 200,
-  "words": 318,
+  "words": 316,
   "findings": [],
   "seo": {
    "title": "Choose Your XTSY Property to Book",
@@ -4201,7 +4201,7 @@
  {
   "url": "/breakfast-in-shillong",
   "status": 200,
-  "words": 1048,
+  "words": 1046,
   "findings": [],
   "seo": {
    "title": "Breakfast in Shillong | TAB Bistro",
@@ -4245,7 +4245,7 @@
  {
   "url": "/brunch-in-shillong",
   "status": 200,
-  "words": 1027,
+  "words": 1025,
   "findings": [],
   "seo": {
    "title": "Brunch in Shillong — Best Weekend Brunch Spot | TAB Bistro",
@@ -4289,7 +4289,7 @@
  {
   "url": "/budget-hostels-shillong",
   "status": 200,
-  "words": 1237,
+  "words": 1235,
   "findings": [],
   "seo": {
    "title": "Budget-Friendly Hostels in Shillong from ₹399 | XTSY",
@@ -4350,7 +4350,7 @@
  {
   "url": "/budget-restaurants-in-shillong",
   "status": 200,
-  "words": 1025,
+  "words": 1023,
   "findings": [],
   "seo": {
    "title": "Affordable Restaurants in Shillong | TAB Bistro",
@@ -4394,7 +4394,7 @@
  {
   "url": "/budget-stay-near-neigrims",
   "status": 200,
-  "words": 1084,
+  "words": 1082,
   "findings": [],
   "seo": {
    "title": "Budget Stay NEIGRIMS (2026) | XTSY",
@@ -4440,7 +4440,7 @@
  {
   "url": "/budget-stay-shillong",
   "status": 200,
-  "words": 1576,
+  "words": 1574,
   "findings": [],
   "seo": {
    "title": "Budget Stay in Shillong — Hostels & Dorms | XTSY",
@@ -4486,7 +4486,7 @@
  {
   "url": "/budget-trip-meghalaya",
   "status": 200,
-  "words": 1342,
+  "words": 1340,
   "findings": [],
   "seo": {
    "title": "Budget Trip to Meghalaya — Complete Guide Under ₹10K",
@@ -4530,7 +4530,7 @@
  {
   "url": "/budget-trip-to-meghalaya",
   "status": 200,
-  "words": 635,
+  "words": 633,
   "findings": [],
   "seo": {
    "title": "Budget Trip to Meghalaya: Costs & Plan | XTSY",
@@ -4570,7 +4570,7 @@
  {
   "url": "/bulk-food-order-shillong",
   "status": 200,
-  "words": 969,
+  "words": 967,
   "findings": [],
   "seo": {
    "title": "Bulk Food Order in Shillong — Party & Corporate | TAB Bistro",
@@ -4614,7 +4614,7 @@
  {
   "url": "/cafe-and-desserts-shillong",
   "status": 200,
-  "words": 1071,
+  "words": 1069,
   "findings": [],
   "seo": {
    "title": "Café & Desserts Restaurant in Shillong | TAB Bistro",
@@ -4658,7 +4658,7 @@
  {
   "url": "/cafe-shillong",
   "status": 200,
-  "words": 1052,
+  "words": 1050,
   "findings": [],
   "seo": {
    "title": "Café in Shillong — Best Coffee, Music & Bites | XTSY",
@@ -4702,7 +4702,7 @@
  {
   "url": "/cafes-in-shillong",
   "status": 200,
-  "words": 1222,
+  "words": 1220,
   "findings": [],
   "seo": {
    "title": "12 Best Cafés in Shillong (2026): Prices & Picks",
@@ -4746,7 +4746,7 @@
  {
   "url": "/camping-in-shnongpdeng",
   "status": 200,
-  "words": 1064,
+  "words": 1062,
   "findings": [],
   "seo": {
    "title": "Camping in Shnongpdeng Meghalaya 2026 | XTSY",
@@ -4791,7 +4791,7 @@
  {
   "url": "/car-booking-shillong",
   "status": 200,
-  "words": 908,
+  "words": 906,
   "findings": [],
   "seo": {
    "title": "Car Booking Shillong — Instant Online | XTSY Rentals",
@@ -4835,7 +4835,7 @@
  {
   "url": "/car-rental-guwahati",
   "status": 200,
-  "words": 1090,
+  "words": 1088,
   "findings": [],
   "seo": {
    "title": "Car Rental in Guwahati — Best Rates 2026 | XTSY",
@@ -4879,7 +4879,7 @@
  {
   "url": "/catering-services-in-shillong",
   "status": 200,
-  "words": 1191,
+  "words": 1189,
   "findings": [],
   "seo": {
    "title": "Catering Services in Shillong | TAB Bistro",
@@ -4923,7 +4923,7 @@
  {
   "url": "/catering-shillong",
   "status": 200,
-  "words": 413,
+  "words": 411,
   "findings": [],
   "seo": {
    "title": "Catering in Shillong for Events & Groups | TAB Bistro",
@@ -4958,7 +4958,7 @@
  {
   "url": "/cherrapunji-guide",
   "status": 200,
-  "words": 1310,
+  "words": 1308,
   "findings": [],
   "seo": {
    "title": "Cherrapunji (Sohra) — Wettest Place on Earth | Guide",
@@ -5003,7 +5003,7 @@
  {
   "url": "/cherrapunji-tour-package",
   "status": 200,
-  "words": 2031,
+  "words": 2029,
   "findings": [],
   "seo": {
    "title": "Cherrapunji Tour Package 2026: XTSY Root Bridge Tours",
@@ -5047,7 +5047,7 @@
  {
   "url": "/cherrapunji-travel-guide",
   "status": 200,
-  "words": 1694,
+  "words": 1692,
   "findings": [],
   "seo": {
    "title": "Cherrapunji Travel Guide 2026 — Wettest Place on Earth",
@@ -5091,7 +5091,7 @@
  {
   "url": "/chinese-food-in-shillong",
   "status": 200,
-  "words": 1069,
+  "words": 1067,
   "findings": [],
   "seo": {
    "title": "Chinese Restaurant in Shillong — Chinese Menu | TAB Bistro",
@@ -5135,7 +5135,7 @@
  {
   "url": "/coffee-shop-shillong",
   "status": 200,
-  "words": 1081,
+  "words": 1079,
   "findings": [],
   "seo": {
    "title": "Coffee & Café Restaurant in Shillong | TAB Bistro",
@@ -5179,7 +5179,7 @@
  {
   "url": "/contact",
   "status": 200,
-  "words": 575,
+  "words": 573,
   "findings": [],
   "seo": {
    "title": "Contact XTSY Shillong: Phone, Address & Map",
@@ -5223,7 +5223,7 @@
  {
   "url": "/continental-restaurant-shillong",
   "status": 200,
-  "words": 1084,
+  "words": 1082,
   "findings": [],
   "seo": {
    "title": "Continental Restaurant in Shillong | TAB Bistro",
@@ -5267,7 +5267,7 @@
  {
   "url": "/corporate-catering-shillong",
   "status": 200,
-  "words": 977,
+  "words": 975,
   "findings": [],
   "seo": {
    "title": "Corporate Catering in Shillong — Office Events | TAB Bistro",
@@ -5311,7 +5311,7 @@
  {
   "url": "/corporate-event-catering-shillong",
   "status": 200,
-  "words": 1143,
+  "words": 1141,
   "findings": [],
   "seo": {
    "title": "Corporate & Event Catering in Shillong | TAB Bistro by XTSY",
@@ -5355,7 +5355,7 @@
  {
   "url": "/corporate-retreat-agartala",
   "status": 200,
-  "words": 1497,
+  "words": 1495,
   "findings": [],
   "seo": {
    "title": "Corporate Retreat in Agartala 2026 – XTSY",
@@ -5399,7 +5399,7 @@
  {
   "url": "/corporate-retreat-aizawl",
   "status": 200,
-  "words": 1503,
+  "words": 1501,
   "findings": [],
   "seo": {
    "title": "Corporate Retreat in Aizawl 2026 – XTSY",
@@ -5443,7 +5443,7 @@
  {
   "url": "/corporate-retreat-arunachal-pradesh",
   "status": 200,
-  "words": 1500,
+  "words": 1498,
   "findings": [],
   "seo": {
    "title": "Corporate Retreat in Arunachal Pradesh 2026 – XTSY",
@@ -5487,7 +5487,7 @@
  {
   "url": "/corporate-retreat-assam",
   "status": 200,
-  "words": 1394,
+  "words": 1392,
   "findings": [],
   "seo": {
    "title": "Corporate Retreat in Assam 2026 – XTSY",
@@ -5531,7 +5531,7 @@
  {
   "url": "/corporate-retreat-cherrapunji",
   "status": 200,
-  "words": 1505,
+  "words": 1503,
   "findings": [],
   "seo": {
    "title": "Corporate Retreat in Cherrapunji 2026 – XTSY",
@@ -5575,7 +5575,7 @@
  {
   "url": "/corporate-retreat-dawki",
   "status": 200,
-  "words": 1517,
+  "words": 1515,
   "findings": [],
   "seo": {
    "title": "Corporate Retreat in Dawki 2026 – XTSY",
@@ -5619,7 +5619,7 @@
  {
   "url": "/corporate-retreat-gangtok",
   "status": 200,
-  "words": 1516,
+  "words": 1514,
   "findings": [],
   "seo": {
    "title": "Corporate Retreat in Gangtok 2026 – XTSY",
@@ -5663,7 +5663,7 @@
  {
   "url": "/corporate-retreat-guwahati",
   "status": 200,
-  "words": 1497,
+  "words": 1495,
   "findings": [],
   "seo": {
    "title": "Corporate Retreat in Guwahati 2026 – XTSY",
@@ -5707,7 +5707,7 @@
  {
   "url": "/corporate-retreat-imphal",
   "status": 200,
-  "words": 1509,
+  "words": 1507,
   "findings": [],
   "seo": {
    "title": "Corporate Retreat in Imphal 2026 – XTSY",
@@ -5751,7 +5751,7 @@
  {
   "url": "/corporate-retreat-jowai",
   "status": 200,
-  "words": 1497,
+  "words": 1495,
   "findings": [],
   "seo": {
    "title": "Corporate Retreat in Jowai 2026 – XTSY",
@@ -5795,7 +5795,7 @@
  {
   "url": "/corporate-retreat-kaziranga",
   "status": 200,
-  "words": 1510,
+  "words": 1508,
   "findings": [],
   "seo": {
    "title": "Corporate Retreat in Kaziranga 2026 – XTSY",
@@ -5839,7 +5839,7 @@
  {
   "url": "/corporate-retreat-kohima",
   "status": 200,
-  "words": 1520,
+  "words": 1518,
   "findings": [],
   "seo": {
    "title": "Corporate Retreat in Kohima 2026 – XTSY",
@@ -5883,7 +5883,7 @@
  {
   "url": "/corporate-retreat-mawlynnong",
   "status": 200,
-  "words": 1514,
+  "words": 1512,
   "findings": [],
   "seo": {
    "title": "Corporate Retreat in Mawlynnong 2026 – XTSY",
@@ -5927,7 +5927,7 @@
  {
   "url": "/corporate-retreat-meghalaya",
   "status": 200,
-  "words": 1394,
+  "words": 1392,
   "findings": [],
   "seo": {
    "title": "Corporate Retreat in Meghalaya 2026 – XTSY",
@@ -5971,7 +5971,7 @@
  {
   "url": "/corporate-retreat-nagaland",
   "status": 200,
-  "words": 1484,
+  "words": 1482,
   "findings": [],
   "seo": {
    "title": "Corporate Retreat in Nagaland 2026 – XTSY",
@@ -6015,7 +6015,7 @@
  {
   "url": "/corporate-retreat-nongjrong",
   "status": 200,
-  "words": 1394,
+  "words": 1392,
   "findings": [],
   "seo": {
    "title": "Corporate Retreat in Nongjrong 2026 – XTSY",
@@ -6059,7 +6059,7 @@
  {
   "url": "/corporate-retreat-pelling",
   "status": 200,
-  "words": 1426,
+  "words": 1424,
   "findings": [],
   "seo": {
    "title": "Corporate Retreat in Pelling 2026 – XTSY",
@@ -6103,7 +6103,7 @@
  {
   "url": "/corporate-retreat-shillong",
   "status": 200,
-  "words": 950,
+  "words": 948,
   "findings": [],
   "seo": {
    "title": "Corporate Retreat in Shillong — Team Offsite | XTSY",
@@ -6147,7 +6147,7 @@
  {
   "url": "/corporate-retreat-shnongpdeng",
   "status": 200,
-  "words": 1423,
+  "words": 1421,
   "findings": [],
   "seo": {
    "title": "Corporate Retreat in Shnongpdeng 2026 – XTSY",
@@ -6191,7 +6191,7 @@
  {
   "url": "/corporate-retreat-tawang",
   "status": 200,
-  "words": 1537,
+  "words": 1535,
   "findings": [],
   "seo": {
    "title": "Corporate Retreat in Tawang 2026 – XTSY",
@@ -6235,7 +6235,7 @@
  {
   "url": "/corporate-retreat-ziro",
   "status": 200,
-  "words": 1429,
+  "words": 1427,
   "findings": [],
   "seo": {
    "title": "Corporate Retreat in Ziro 2026 – XTSY",
@@ -6279,7 +6279,7 @@
  {
   "url": "/couples-hostel-shillong",
   "status": 200,
-  "words": 1988,
+  "words": 1986,
   "findings": [],
   "seo": {
    "title": "Hostel for Couples in Shillong 2026: XTSY Private Rooms",
@@ -6325,7 +6325,7 @@
  {
   "url": "/dawki-guide",
   "status": 200,
-  "words": 1289,
+  "words": 1287,
   "findings": [],
   "seo": {
    "title": "Dawki — Crystal Clear Umngot River | Travel Guide",
@@ -6370,7 +6370,7 @@
  {
   "url": "/dawki-river-boating",
   "status": 200,
-  "words": 1354,
+  "words": 1352,
   "findings": [],
   "seo": {
    "title": "Dawki River Boating 2026 — Prices, Timings & Tips",
@@ -6415,7 +6415,7 @@
  {
   "url": "/dawki-to-mawlynnong-guide",
   "status": 200,
-  "words": 1360,
+  "words": 1358,
   "findings": [],
   "seo": {
    "title": "Dawki to Mawlynnong Day Trip Guide 2026 | XTSY",
@@ -6459,7 +6459,7 @@
  {
   "url": "/dawki-tour-package",
   "status": 200,
-  "words": 1983,
+  "words": 1981,
   "findings": [],
   "seo": {
    "title": "Dawki Tour Package 2026: Clear River & Camping | XTSY",
@@ -6503,7 +6503,7 @@
  {
   "url": "/dawki-umngot-river-guide",
   "status": 200,
-  "words": 1565,
+  "words": 1563,
   "findings": [],
   "seo": {
    "title": "Dawki & Umngot River Guide 2026 — Crystal Clear Waters",
@@ -6547,7 +6547,7 @@
  {
   "url": "/destination-wedding-catering-shillong",
   "status": 200,
-  "words": 971,
+  "words": 969,
   "findings": [],
   "seo": {
    "title": "Destination Wedding Catering in Shillong | TAB Bistro",
@@ -6591,7 +6591,7 @@
  {
   "url": "/destination-wedding-shillong",
   "status": 200,
-  "words": 943,
+  "words": 941,
   "findings": [],
   "seo": {
    "title": "Destination Wedding Venue in Shillong | XTSY",
@@ -6631,7 +6631,7 @@
  {
   "url": "/destinations",
   "status": 200,
-  "words": 536,
+  "words": 534,
   "findings": [],
   "seo": {
    "title": "Northeast India Destinations — State & City Guides | XTSY",
@@ -6669,7 +6669,7 @@
  {
   "url": "/destinations/arunachal-pradesh",
   "status": 200,
-  "words": 770,
+  "words": 768,
   "findings": [],
   "seo": {
    "title": "Arunachal Pradesh Travel Guide — Places, Routes & Stays",
@@ -6713,7 +6713,7 @@
  {
   "url": "/destinations/arunachal-pradesh/dirang",
   "status": 200,
-  "words": 444,
+  "words": 442,
   "findings": [],
   "seo": {
    "title": "Places to Visit in Dirang, Arunachal Pradesh | XTSY",
@@ -6748,7 +6748,7 @@
  {
   "url": "/destinations/arunachal-pradesh/itanagar",
   "status": 200,
-  "words": 444,
+  "words": 442,
   "findings": [],
   "seo": {
    "title": "Places to Visit in Itanagar, Arunachal Pradesh | XTSY",
@@ -6783,7 +6783,7 @@
  {
   "url": "/destinations/arunachal-pradesh/tawang",
   "status": 200,
-  "words": 443,
+  "words": 441,
   "findings": [],
   "seo": {
    "title": "Places to Visit in Tawang, Arunachal Pradesh | XTSY",
@@ -6818,7 +6818,7 @@
  {
   "url": "/destinations/arunachal-pradesh/ziro",
   "status": 200,
-  "words": 441,
+  "words": 439,
   "findings": [],
   "seo": {
    "title": "Places to Visit in Ziro, Arunachal Pradesh | XTSY",
@@ -6853,7 +6853,7 @@
  {
   "url": "/destinations/assam",
   "status": 200,
-  "words": 734,
+  "words": 732,
   "findings": [],
   "seo": {
    "title": "Assam Travel Guide — Places, Routes & Stays",
@@ -6897,7 +6897,7 @@
  {
   "url": "/destinations/assam/guwahati",
   "status": 200,
-  "words": 493,
+  "words": 491,
   "findings": [],
   "seo": {
    "title": "Places to Visit in Guwahati, Assam | XTSY",
@@ -6932,7 +6932,7 @@
  {
   "url": "/destinations/assam/jorhat",
   "status": 200,
-  "words": 476,
+  "words": 474,
   "findings": [],
   "seo": {
    "title": "Places to Visit in Jorhat, Assam | XTSY",
@@ -6967,7 +6967,7 @@
  {
   "url": "/destinations/assam/kaziranga",
   "status": 200,
-  "words": 477,
+  "words": 475,
   "findings": [],
   "seo": {
    "title": "Places to Visit in Kaziranga, Assam | XTSY",
@@ -7002,7 +7002,7 @@
  {
   "url": "/destinations/assam/majuli",
   "status": 200,
-  "words": 476,
+  "words": 474,
   "findings": [],
   "seo": {
    "title": "Places to Visit in Majuli, Assam | XTSY",
@@ -7037,7 +7037,7 @@
  {
   "url": "/destinations/manipur",
   "status": 200,
-  "words": 626,
+  "words": 624,
   "findings": [],
   "seo": {
    "title": "Manipur Travel Guide — Places, Routes & Stays",
@@ -7081,7 +7081,7 @@
  {
   "url": "/destinations/manipur/imphal",
   "status": 200,
-  "words": 432,
+  "words": 430,
   "findings": [],
   "seo": {
    "title": "Places to Visit in Imphal, Manipur | XTSY",
@@ -7116,7 +7116,7 @@
  {
   "url": "/destinations/manipur/loktak",
   "status": 200,
-  "words": 435,
+  "words": 433,
   "findings": [],
   "seo": {
    "title": "Places to Visit in Loktak (Moirang), Manipur | XTSY",
@@ -7151,7 +7151,7 @@
  {
   "url": "/destinations/manipur/ukhrul",
   "status": 200,
-  "words": 431,
+  "words": 429,
   "findings": [],
   "seo": {
    "title": "Places to Visit in Ukhrul, Manipur | XTSY",
@@ -7186,7 +7186,7 @@
  {
   "url": "/destinations/meghalaya",
   "status": 200,
-  "words": 1030,
+  "words": 1028,
   "findings": [],
   "seo": {
    "title": "Meghalaya Travel Guide — Places, Routes & Stays",
@@ -7230,7 +7230,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji",
   "status": 200,
-  "words": 738,
+  "words": 736,
   "findings": [],
   "seo": {
    "title": "Places to Visit in Cherrapunji (Sohra), Meghalaya | XTSY",
@@ -7265,7 +7265,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/arwah-cave",
   "status": 200,
-  "words": 1006,
+  "words": 1004,
   "findings": [],
   "seo": {
    "title": "Arwah Cave, Cherrapunji — Timings & How to Reach",
@@ -7309,7 +7309,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/dainthlen-falls",
   "status": 200,
-  "words": 982,
+  "words": 980,
   "findings": [],
   "seo": {
    "title": "Dainthlen Falls, Cherrapunji — Timings & How to Reach",
@@ -7353,7 +7353,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/double-decker-living-root-bridge",
   "status": 200,
-  "words": 1133,
+  "words": 1131,
   "findings": [],
   "seo": {
    "title": "Double Decker Living Root Bridge, Cherrapunji — Travel Guide",
@@ -7397,7 +7397,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/eco-park-sohra",
   "status": 200,
-  "words": 1008,
+  "words": 1006,
   "findings": [],
   "seo": {
    "title": "Eco Park Sohra, Cherrapunji — Timings & How to Reach",
@@ -7441,7 +7441,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/garden-of-caves",
   "status": 200,
-  "words": 1005,
+  "words": 1003,
   "findings": [],
   "seo": {
    "title": "Garden of Caves, Cherrapunji — Timings & How to Reach",
@@ -7485,7 +7485,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/krem-mawmluh",
   "status": 200,
-  "words": 981,
+  "words": 979,
   "findings": [],
   "seo": {
    "title": "Krem Mawmluh, Cherrapunji — Timings & How to Reach",
@@ -7529,7 +7529,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/kynrem-falls",
   "status": 200,
-  "words": 955,
+  "words": 953,
   "findings": [],
   "seo": {
    "title": "Kynrem Falls, Cherrapunji — Timings & How to Reach",
@@ -7573,7 +7573,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/mawsmai-cave",
   "status": 200,
-  "words": 997,
+  "words": 995,
   "findings": [],
   "seo": {
    "title": "Mawsmai Cave, Cherrapunji — Timings & How to Reach",
@@ -7617,7 +7617,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/nohkalikai-falls",
   "status": 200,
-  "words": 1611,
+  "words": 1609,
   "findings": [],
   "seo": {
    "title": "Nohkalikai Falls, Cherrapunji — Timings & How to Reach",
@@ -7661,7 +7661,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/nongriat-village",
   "status": 200,
-  "words": 1002,
+  "words": 1000,
   "findings": [],
   "seo": {
    "title": "Nongriat Village, Cherrapunji — Timings & How to Reach",
@@ -7705,7 +7705,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/rainbow-falls",
   "status": 200,
-  "words": 1041,
+  "words": 1039,
   "findings": [],
   "seo": {
    "title": "Rainbow Falls, Cherrapunji — Timings & How to Reach",
@@ -7749,7 +7749,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/seven-sisters-falls",
   "status": 200,
-  "words": 1015,
+  "words": 1013,
   "findings": [],
   "seo": {
    "title": "Seven Sisters Falls, Cherrapunji — Timings & How to Reach",
@@ -7793,7 +7793,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/wei-sawdong-falls",
   "status": 200,
-  "words": 1039,
+  "words": 1037,
   "findings": [],
   "seo": {
    "title": "Wei Sawdong Falls, Cherrapunji — Timings & How to Reach",
@@ -7837,7 +7837,7 @@
  {
   "url": "/destinations/meghalaya/dawki",
   "status": 200,
-  "words": 514,
+  "words": 512,
   "findings": [],
   "seo": {
    "title": "Places to Visit in Dawki, Meghalaya | XTSY",
@@ -7872,7 +7872,7 @@
  {
   "url": "/destinations/meghalaya/dawki/dawki-suspension-bridge",
   "status": 200,
-  "words": 1000,
+  "words": 998,
   "findings": [],
   "seo": {
    "title": "Dawki Suspension Bridge, Dawki — Timings & How to Reach",
@@ -7916,7 +7916,7 @@
  {
   "url": "/destinations/meghalaya/dawki/dawki-umngot-river",
   "status": 200,
-  "words": 1113,
+  "words": 1111,
   "findings": [],
   "seo": {
    "title": "Dawki – Umngot River, Dawki — Timings & How to Reach",
@@ -7960,7 +7960,7 @@
  {
   "url": "/destinations/meghalaya/dawki/shnongpdeng",
   "status": 200,
-  "words": 1016,
+  "words": 1014,
   "findings": [],
   "seo": {
    "title": "Shnongpdeng Village, Dawki — Timings & How to Reach",
@@ -8004,7 +8004,7 @@
  {
   "url": "/destinations/meghalaya/jowai",
   "status": 200,
-  "words": 564,
+  "words": 562,
   "findings": [],
   "seo": {
    "title": "Places to Visit in Jowai (Jaintia Hills), Meghalaya | XTSY",
@@ -8039,7 +8039,7 @@
  {
   "url": "/destinations/meghalaya/jowai/krang-suri-falls",
   "status": 200,
-  "words": 1020,
+  "words": 1018,
   "findings": [],
   "seo": {
    "title": "Krang Suri Falls, Jowai — Timings & How to Reach",
@@ -8083,7 +8083,7 @@
  {
   "url": "/destinations/meghalaya/jowai/krem-liat-prah",
   "status": 200,
-  "words": 947,
+  "words": 945,
   "findings": [],
   "seo": {
    "title": "Krem Liat Prah, Jowai — Timings & How to Reach",
@@ -8127,7 +8127,7 @@
  {
   "url": "/destinations/meghalaya/jowai/nartiang-monoliths",
   "status": 200,
-  "words": 985,
+  "words": 983,
   "findings": [],
   "seo": {
    "title": "Nartiang Monoliths, Jowai — Timings & How to Reach",
@@ -8171,7 +8171,7 @@
  {
   "url": "/destinations/meghalaya/jowai/phe-phe-falls",
   "status": 200,
-  "words": 958,
+  "words": 956,
   "findings": [],
   "seo": {
    "title": "Phe Phe Falls, Jowai — Timings & How to Reach",
@@ -8215,7 +8215,7 @@
  {
   "url": "/destinations/meghalaya/jowai/thadlaskein-lake",
   "status": 200,
-  "words": 958,
+  "words": 956,
   "findings": [],
   "seo": {
    "title": "Thadlaskein Lake, Jowai — Timings & How to Reach",
@@ -8259,7 +8259,7 @@
  {
   "url": "/destinations/meghalaya/mawlynnong",
   "status": 200,
-  "words": 471,
+  "words": 469,
   "findings": [],
   "seo": {
    "title": "Places to Visit in Mawlynnong, Meghalaya | XTSY",
@@ -8294,7 +8294,7 @@
  {
   "url": "/destinations/meghalaya/mawlynnong/mawlynnong-village",
   "status": 200,
-  "words": 991,
+  "words": 989,
   "findings": [],
   "seo": {
    "title": "Mawlynnong Village, Mawlynnong — Timings & How to Reach",
@@ -8338,7 +8338,7 @@
  {
   "url": "/destinations/meghalaya/mawsynram",
   "status": 200,
-  "words": 473,
+  "words": 471,
   "findings": [],
   "seo": {
    "title": "Places to Visit in Mawsynram, Meghalaya | XTSY",
@@ -8373,7 +8373,7 @@
  {
   "url": "/destinations/meghalaya/mawsynram/mawjymbuin-cave",
   "status": 200,
-  "words": 938,
+  "words": 936,
   "findings": [],
   "seo": {
    "title": "Mawjymbuin Cave, Mawsynram — Timings & How to Reach",
@@ -8417,7 +8417,7 @@
  {
   "url": "/destinations/meghalaya/nongstoin",
   "status": 200,
-  "words": 577,
+  "words": 575,
   "findings": [],
   "seo": {
    "title": "Places to Visit in Nongstoin, Meghalaya | XTSY",
@@ -8452,7 +8452,7 @@
  {
   "url": "/destinations/meghalaya/nongstoin/jakrem-hot-springs",
   "status": 200,
-  "words": 968,
+  "words": 966,
   "findings": [],
   "seo": {
    "title": "Jakrem Hot Springs, Nongstoin — Timings & How to Reach",
@@ -8496,7 +8496,7 @@
  {
   "url": "/destinations/meghalaya/nongstoin/langshiang-falls",
   "status": 200,
-  "words": 954,
+  "words": 952,
   "findings": [],
   "seo": {
    "title": "Langshiang Falls, Nongstoin — Timings & How to Reach",
@@ -8540,7 +8540,7 @@
  {
   "url": "/destinations/meghalaya/nongstoin/mawthadraishan-peak",
   "status": 200,
-  "words": 967,
+  "words": 965,
   "findings": [],
   "seo": {
    "title": "Mawthadraishan Peak, Nongstoin — Timings & How to Reach",
@@ -8584,7 +8584,7 @@
  {
   "url": "/destinations/meghalaya/nongstoin/nongkhnum-island",
   "status": 200,
-  "words": 968,
+  "words": 966,
   "findings": [],
   "seo": {
    "title": "Nongkhnum Island, Nongstoin — Timings & How to Reach",
@@ -8628,7 +8628,7 @@
  {
   "url": "/destinations/meghalaya/nongstoin/ranikor",
   "status": 200,
-  "words": 947,
+  "words": 945,
   "findings": [],
   "seo": {
    "title": "Ranikor, Nongstoin — Timings & How to Reach",
@@ -8672,7 +8672,7 @@
  {
   "url": "/destinations/meghalaya/shillong",
   "status": 200,
-  "words": 696,
+  "words": 694,
   "findings": [],
   "seo": {
    "title": "Places to Visit in Shillong, Meghalaya | XTSY",
@@ -8707,7 +8707,7 @@
  {
   "url": "/destinations/meghalaya/shillong/bishop-falls",
   "status": 200,
-  "words": 961,
+  "words": 959,
   "findings": [],
   "seo": {
    "title": "Bishop Falls, Shillong — Timings & How to Reach",
@@ -8751,7 +8751,7 @@
  {
   "url": "/destinations/meghalaya/shillong/elephant-falls",
   "status": 200,
-  "words": 1716,
+  "words": 1714,
   "findings": [],
   "seo": {
    "title": "Elephant Falls, Shillong — Timings, Entry Fee & How to Reach",
@@ -8795,7 +8795,7 @@
  {
   "url": "/destinations/meghalaya/shillong/laitlum-canyons",
   "status": 200,
-  "words": 1027,
+  "words": 1025,
   "findings": [],
   "seo": {
    "title": "Laitlum Canyons, Shillong — Timings & How to Reach",
@@ -8839,7 +8839,7 @@
  {
   "url": "/destinations/meghalaya/shillong/mawphlang-sacred-forest",
   "status": 200,
-  "words": 998,
+  "words": 996,
   "findings": [],
   "seo": {
    "title": "Mawphlang Sacred Forest, Shillong — Timings & How to Reach",
@@ -8883,7 +8883,7 @@
  {
   "url": "/destinations/meghalaya/shillong/mawryngkhang-bamboo-trail",
   "status": 200,
-  "words": 1005,
+  "words": 1003,
   "findings": [],
   "seo": {
    "title": "Mawryngkhang Bamboo Trail, Shillong — Timings & How to Reach",
@@ -8927,7 +8927,7 @@
  {
   "url": "/destinations/meghalaya/shillong/nongjrong-sunrise-viewpoint",
   "status": 200,
-  "words": 1006,
+  "words": 1004,
   "findings": [],
   "seo": {
    "title": "Nongjrong Sunrise Viewpoint, Shillong — Travel Guide",
@@ -8971,7 +8971,7 @@
  {
   "url": "/destinations/meghalaya/shillong/shillong-peak",
   "status": 200,
-  "words": 1025,
+  "words": 1023,
   "findings": [],
   "seo": {
    "title": "Shillong Peak, Shillong — Timings & How to Reach",
@@ -9015,7 +9015,7 @@
  {
   "url": "/destinations/meghalaya/shillong/spread-eagle-falls",
   "status": 200,
-  "words": 982,
+  "words": 980,
   "findings": [],
   "seo": {
    "title": "Spread Eagle Falls, Shillong — Timings & How to Reach",
@@ -9059,7 +9059,7 @@
  {
   "url": "/destinations/meghalaya/shillong/sweet-falls",
   "status": 200,
-  "words": 962,
+  "words": 960,
   "findings": [],
   "seo": {
    "title": "Sweet Falls, Shillong — Timings & How to Reach",
@@ -9103,7 +9103,7 @@
  {
   "url": "/destinations/meghalaya/shillong/umiam-lake",
   "status": 200,
-  "words": 1927,
+  "words": 1925,
   "findings": [],
   "seo": {
    "title": "Umiam Lake (Barapani): Boating & Shillong Travel Guide",
@@ -9147,7 +9147,7 @@
  {
   "url": "/destinations/meghalaya/shillong/wah-rilang-viewpoint",
   "status": 200,
-  "words": 981,
+  "words": 979,
   "findings": [],
   "seo": {
    "title": "Wah Rilang Viewpoint, Shillong — Timings & How to Reach",
@@ -9191,7 +9191,7 @@
  {
   "url": "/destinations/meghalaya/tura",
   "status": 200,
-  "words": 555,
+  "words": 553,
   "findings": [],
   "seo": {
    "title": "Places to Visit in Tura (Garo Hills), Meghalaya | XTSY",
@@ -9226,7 +9226,7 @@
  {
   "url": "/destinations/meghalaya/tura/balpakram-national-park",
   "status": 200,
-  "words": 987,
+  "words": 985,
   "findings": [],
   "seo": {
    "title": "Balpakram National Park, Tura — Timings & How to Reach",
@@ -9270,7 +9270,7 @@
  {
   "url": "/destinations/meghalaya/tura/nokrek-biosphere-reserve",
   "status": 200,
-  "words": 979,
+  "words": 977,
   "findings": [],
   "seo": {
    "title": "Nokrek Biosphere Reserve, Tura — Timings & How to Reach",
@@ -9314,7 +9314,7 @@
  {
   "url": "/destinations/meghalaya/tura/siju-cave",
   "status": 200,
-  "words": 943,
+  "words": 941,
   "findings": [],
   "seo": {
    "title": "Siju Cave, Tura — Timings & How to Reach",
@@ -9358,7 +9358,7 @@
  {
   "url": "/destinations/meghalaya/tura/tura-peak",
   "status": 200,
-  "words": 949,
+  "words": 947,
   "findings": [],
   "seo": {
    "title": "Tura Peak, Tura — Timings & How to Reach",
@@ -9402,7 +9402,7 @@
  {
   "url": "/destinations/mizoram",
   "status": 200,
-  "words": 653,
+  "words": 651,
   "findings": [],
   "seo": {
    "title": "Mizoram Travel Guide — Places, Routes & Stays",
@@ -9446,7 +9446,7 @@
  {
   "url": "/destinations/mizoram/aizawl",
   "status": 200,
-  "words": 438,
+  "words": 436,
   "findings": [],
   "seo": {
    "title": "Places to Visit in Aizawl, Mizoram | XTSY",
@@ -9481,7 +9481,7 @@
  {
   "url": "/destinations/mizoram/phawngpui",
   "status": 200,
-  "words": 434,
+  "words": 432,
   "findings": [],
   "seo": {
    "title": "Places to Visit in Phawngpui, Mizoram | XTSY",
@@ -9516,7 +9516,7 @@
  {
   "url": "/destinations/mizoram/reiek",
   "status": 200,
-  "words": 434,
+  "words": 432,
   "findings": [],
   "seo": {
    "title": "Places to Visit in Reiek, Mizoram | XTSY",
@@ -9551,7 +9551,7 @@
  {
   "url": "/destinations/nagaland",
   "status": 200,
-  "words": 679,
+  "words": 677,
   "findings": [],
   "seo": {
    "title": "Nagaland Travel Guide — Places, Routes & Stays",
@@ -9595,7 +9595,7 @@
  {
   "url": "/destinations/nagaland/dimapur",
   "status": 200,
-  "words": 428,
+  "words": 426,
   "findings": [],
   "seo": {
    "title": "Places to Visit in Dimapur, Nagaland | XTSY",
@@ -9630,7 +9630,7 @@
  {
   "url": "/destinations/nagaland/kohima",
   "status": 200,
-  "words": 433,
+  "words": 431,
   "findings": [],
   "seo": {
    "title": "Places to Visit in Kohima, Nagaland | XTSY",
@@ -9665,7 +9665,7 @@
  {
   "url": "/destinations/nagaland/mokokchung",
   "status": 200,
-  "words": 429,
+  "words": 427,
   "findings": [],
   "seo": {
    "title": "Places to Visit in Mokokchung, Nagaland | XTSY",
@@ -9700,7 +9700,7 @@
  {
   "url": "/destinations/tripura",
   "status": 200,
-  "words": 599,
+  "words": 597,
   "findings": [],
   "seo": {
    "title": "Tripura Travel Guide — Places, Routes & Stays",
@@ -9744,7 +9744,7 @@
  {
   "url": "/destinations/tripura/agartala",
   "status": 200,
-  "words": 415,
+  "words": 413,
   "findings": [],
   "seo": {
    "title": "Places to Visit in Agartala, Tripura | XTSY",
@@ -9779,7 +9779,7 @@
  {
   "url": "/destinations/tripura/neermahal",
   "status": 200,
-  "words": 416,
+  "words": 414,
   "findings": [],
   "seo": {
    "title": "Places to Visit in Neermahal (Melaghar), Tripura | XTSY",
@@ -9814,7 +9814,7 @@
  {
   "url": "/destinations/tripura/unakoti",
   "status": 200,
-  "words": 414,
+  "words": 412,
   "findings": [],
   "seo": {
    "title": "Places to Visit in Unakoti, Tripura | XTSY",
@@ -9849,7 +9849,7 @@
  {
   "url": "/dinner-in-shillong",
   "status": 200,
-  "words": 1038,
+  "words": 1036,
   "findings": [],
   "seo": {
    "title": "Dinner in Shillong — Best Dinner Restaurants | TAB Bistro",
@@ -9893,7 +9893,7 @@
  {
   "url": "/dorms-in-shillong",
   "status": 200,
-  "words": 1538,
+  "words": 1536,
   "findings": [],
   "seo": {
    "title": "Dorms in Shillong | Best Hostels & Budget Stays",
@@ -9939,7 +9939,7 @@
  {
   "url": "/elephant-falls-guide",
   "status": 200,
-  "words": 1243,
+  "words": 1241,
   "findings": [],
   "seo": {
    "title": "Elephant Falls Shillong — Three-Tiered Waterfall",
@@ -9984,7 +9984,7 @@
  {
   "url": "/elephant-falls-shillong",
   "status": 200,
-  "words": 1413,
+  "words": 1411,
   "findings": [],
   "seo": {
    "title": "Elephant Falls — Shillong's Most Accessible Waterfall",
@@ -10029,7 +10029,7 @@
  {
   "url": "/event-catering-shillong",
   "status": 200,
-  "words": 947,
+  "words": 945,
   "findings": [],
   "seo": {
    "title": "Event Catering in Shillong | TAB Bistro",
@@ -10073,7 +10073,7 @@
  {
   "url": "/expeditions",
   "status": 200,
-  "words": 576,
+  "words": 574,
   "findings": [
    {
     "rule": "aeo:no FAQ or question headings",
@@ -10113,7 +10113,7 @@
  {
   "url": "/expeditions/4x4/guwahati-to-kohima",
   "status": 200,
-  "words": 688,
+  "words": 686,
   "findings": [],
   "seo": {
    "title": "Guwahati to Kohima via Assam 4x4 Route | XTSY",
@@ -10152,7 +10152,7 @@
  {
   "url": "/expeditions/4x4/guwahati-to-shillong",
   "status": 200,
-  "words": 642,
+  "words": 640,
   "findings": [],
   "seo": {
    "title": "Guwahati to Shillong 4x4 Route | XTSY",
@@ -10191,7 +10191,7 @@
  {
   "url": "/expeditions/4x4/guwahati-to-tawang",
   "status": 200,
-  "words": 785,
+  "words": 783,
   "findings": [],
   "seo": {
    "title": "Guwahati to Tawang via Assam 4x4 Route | XTSY",
@@ -10230,7 +10230,7 @@
  {
   "url": "/expeditions/4x4/meghalaya-loop",
   "status": 200,
-  "words": 667,
+  "words": 665,
   "findings": [],
   "seo": {
    "title": "4x4 Expedition Meghalaya: Loop, Season & Cost | XTSY",
@@ -10269,7 +10269,7 @@
  {
   "url": "/expeditions/motorbike/guwahati-to-kohima",
   "status": 200,
-  "words": 691,
+  "words": 689,
   "findings": [],
   "seo": {
    "title": "Guwahati to Kohima via Assam Motorbike Route | XTSY",
@@ -10308,7 +10308,7 @@
  {
   "url": "/expeditions/motorbike/guwahati-to-shillong",
   "status": 200,
-  "words": 638,
+  "words": 636,
   "findings": [],
   "seo": {
    "title": "Guwahati to Shillong Motorbike Route | XTSY",
@@ -10347,7 +10347,7 @@
  {
   "url": "/expeditions/motorbike/guwahati-to-tawang",
   "status": 200,
-  "words": 784,
+  "words": 782,
   "findings": [],
   "seo": {
    "title": "Guwahati to Tawang via Assam Motorbike Route | XTSY",
@@ -10386,7 +10386,7 @@
  {
   "url": "/expeditions/motorbike/meghalaya-loop",
   "status": 200,
-  "words": 668,
+  "words": 666,
   "findings": [],
   "seo": {
    "title": "Meghalaya Loop Motorbike Route | XTSY",
@@ -10425,7 +10425,7 @@
  {
   "url": "/family-restaurant-shillong",
   "status": 200,
-  "words": 1013,
+  "words": 1011,
   "findings": [],
   "seo": {
    "title": "Family Restaurant in Shillong — Group & Kid-Friendly Dining",
@@ -10469,7 +10469,7 @@
  {
   "url": "/famous-restaurants-in-shillong",
   "status": 200,
-  "words": 1033,
+  "words": 1031,
   "findings": [],
   "seo": {
    "title": "Famous Restaurants in Shillong | TAB Bistro",
@@ -10513,7 +10513,7 @@
  {
   "url": "/faq",
   "status": 200,
-  "words": 1503,
+  "words": 1501,
   "findings": [],
   "seo": {
    "title": "Hostel FAQs — Shillong Rates, Safety & Booking | XTSY",
@@ -10568,7 +10568,7 @@
  {
   "url": "/female-travellers",
   "status": 200,
-  "words": 554,
+  "words": 552,
   "findings": [],
   "seo": {
    "title": "Solo Female Travellers in Shillong: Safe Stay | XTSY",
@@ -10606,7 +10606,7 @@
  {
   "url": "/fine-dining-shillong",
   "status": 200,
-  "words": 1026,
+  "words": 1024,
   "findings": [],
   "seo": {
    "title": "Fine Dining in Shillong | TAB Bistro",
@@ -10650,7 +10650,7 @@
  {
   "url": "/fishing-in-dawki",
   "status": 200,
-  "words": 1037,
+  "words": 1035,
   "findings": [],
   "seo": {
    "title": "Fishing in Dawki Meghalaya 2026 — Guide | XTSY",
@@ -10695,7 +10695,7 @@
  {
   "url": "/food-delivery-shillong",
   "status": 200,
-  "words": 1069,
+  "words": 1067,
   "findings": [],
   "seo": {
    "title": "Food Delivery in Shillong — Order Multi-Cuisine | TAB Bistro",
@@ -10739,7 +10739,7 @@
  {
   "url": "/gallery",
   "status": 200,
-  "words": 319,
+  "words": 317,
   "findings": [],
   "seo": {
    "title": "XTSY Gallery — Hostel, Glass Suite & Meghalaya Photos",
@@ -10774,7 +10774,7 @@
  {
   "url": "/glamping-in-shillong-last-minute",
   "status": 200,
-  "words": 1142,
+  "words": 1140,
   "findings": [],
   "seo": {
    "title": "Glamping in Shillong Last Minute (2026) | XTSY",
@@ -10820,7 +10820,7 @@
  {
   "url": "/glamping-in-shillong-now",
   "status": 200,
-  "words": 1140,
+  "words": 1138,
   "findings": [],
   "seo": {
    "title": "Glamping in Shillong Now (2026) | XTSY",
@@ -10866,7 +10866,7 @@
  {
   "url": "/glamping-in-shillong-this-weekend",
   "status": 200,
-  "words": 1142,
+  "words": 1140,
   "findings": [],
   "seo": {
    "title": "Glamping in Shillong This Weekend (2026) | XTSY",
@@ -10912,7 +10912,7 @@
  {
   "url": "/glamping-in-shillong-today",
   "status": 200,
-  "words": 1140,
+  "words": 1138,
   "findings": [],
   "seo": {
    "title": "Glamping in Shillong Today (2026) | XTSY",
@@ -10958,7 +10958,7 @@
  {
   "url": "/glamping-in-shillong-tomorrow",
   "status": 200,
-  "words": 1140,
+  "words": 1138,
   "findings": [],
   "seo": {
    "title": "Glamping in Shillong Tomorrow (2026) | XTSY",
@@ -11004,7 +11004,7 @@
  {
   "url": "/glamping-in-shillong-tonight",
   "status": 200,
-  "words": 1140,
+  "words": 1138,
   "findings": [],
   "seo": {
    "title": "Glamping in Shillong Tonight (2026) | XTSY",
@@ -11050,7 +11050,7 @@
  {
   "url": "/glamping-near-cherrapunji-airport",
   "status": 200,
-  "words": 1198,
+  "words": 1196,
   "findings": [],
   "seo": {
    "title": "Airport Glamping in Cherrapunji (2026) | XTSY",
@@ -11094,7 +11094,7 @@
  {
   "url": "/glamping-near-guwahati-airport",
   "status": 200,
-  "words": 1190,
+  "words": 1188,
   "findings": [],
   "seo": {
    "title": "Airport Glamping in Guwahati (2026) | XTSY",
@@ -11138,7 +11138,7 @@
  {
   "url": "/glamping-near-shillong-airport",
   "status": 200,
-  "words": 1139,
+  "words": 1137,
   "findings": [],
   "seo": {
    "title": "Airport Glamping in Shillong (2026) | XTSY",
@@ -11184,7 +11184,7 @@
  {
   "url": "/good-restaurants-in-shillong",
   "status": 200,
-  "words": 1030,
+  "words": 1028,
   "findings": [],
   "seo": {
    "title": "Good Restaurants in Shillong — Top Rated Dining 2026",
@@ -11228,7 +11228,7 @@
  {
   "url": "/group-booking-shillong",
   "status": 200,
-  "words": 1052,
+  "words": 1050,
   "findings": [],
   "seo": {
    "title": "Group Booking Shillong — Dorms & Rooms | XTSY",
@@ -11283,7 +11283,7 @@
  {
   "url": "/group-bookings-meghalaya",
   "status": 200,
-  "words": 924,
+  "words": 922,
   "findings": [],
   "seo": {
    "title": "Group Bookings in Meghalaya: Stays & Tours | XTSY",
@@ -11325,7 +11325,7 @@
  {
   "url": "/group-dining-shillong",
   "status": 200,
-  "words": 1022,
+  "words": 1020,
   "findings": [],
   "seo": {
    "title": "Group Dining in Shillong | TAB Bistro",
@@ -11369,7 +11369,7 @@
  {
   "url": "/group-stay-shillong",
   "status": 200,
-  "words": 1578,
+  "words": 1576,
   "findings": [],
   "seo": {
    "title": "Group Stay in Shillong — 4 to 20 Guests | XTSY",
@@ -11424,7 +11424,7 @@
  {
   "url": "/group-tour-agartala",
   "status": 200,
-  "words": 1527,
+  "words": 1525,
   "findings": [],
   "seo": {
    "title": "Group Tour Agartala 2026 – Custom Itineraries by XTSY",
@@ -11468,7 +11468,7 @@
  {
   "url": "/group-tour-aizawl",
   "status": 200,
-  "words": 1533,
+  "words": 1531,
   "findings": [],
   "seo": {
    "title": "Group Tour Aizawl 2026 – Custom Itineraries by XTSY",
@@ -11512,7 +11512,7 @@
  {
   "url": "/group-tour-arunachal-pradesh",
   "status": 200,
-  "words": 1529,
+  "words": 1527,
   "findings": [],
   "seo": {
    "title": "Group Tour Arunachal Pradesh 2026 – Custom Itineraries by…",
@@ -11556,7 +11556,7 @@
  {
   "url": "/group-tour-assam",
   "status": 200,
-  "words": 1511,
+  "words": 1509,
   "findings": [],
   "seo": {
    "title": "Group Tour Assam 2026 – Custom Itineraries by XTSY",
@@ -11600,7 +11600,7 @@
  {
   "url": "/group-tour-cherrapunji",
   "status": 200,
-  "words": 1535,
+  "words": 1533,
   "findings": [],
   "seo": {
    "title": "Group Tour Cherrapunji 2026 – Custom Itineraries by XTSY",
@@ -11644,7 +11644,7 @@
  {
   "url": "/group-tour-dawki",
   "status": 200,
-  "words": 1547,
+  "words": 1545,
   "findings": [],
   "seo": {
    "title": "Group Tour Dawki 2026 – Custom Itineraries by XTSY",
@@ -11688,7 +11688,7 @@
  {
   "url": "/group-tour-gangtok",
   "status": 200,
-  "words": 1546,
+  "words": 1544,
   "findings": [],
   "seo": {
    "title": "Group Tour Gangtok 2026 – Custom Itineraries by XTSY",
@@ -11732,7 +11732,7 @@
  {
   "url": "/group-tour-guwahati",
   "status": 200,
-  "words": 1527,
+  "words": 1525,
   "findings": [],
   "seo": {
    "title": "Group Tour Guwahati 2026 – Custom Itineraries by XTSY",
@@ -11776,7 +11776,7 @@
  {
   "url": "/group-tour-imphal",
   "status": 200,
-  "words": 1539,
+  "words": 1537,
   "findings": [],
   "seo": {
    "title": "Group Tour Imphal 2026 – Custom Itineraries by XTSY",
@@ -11820,7 +11820,7 @@
  {
   "url": "/group-tour-jowai",
   "status": 200,
-  "words": 1527,
+  "words": 1525,
   "findings": [],
   "seo": {
    "title": "Group Tour Jowai 2026 – Custom Itineraries by XTSY",
@@ -11864,7 +11864,7 @@
  {
   "url": "/group-tour-kaziranga",
   "status": 200,
-  "words": 1540,
+  "words": 1538,
   "findings": [],
   "seo": {
    "title": "Group Tour Kaziranga 2026 – Custom Itineraries by XTSY",
@@ -11908,7 +11908,7 @@
  {
   "url": "/group-tour-kohima",
   "status": 200,
-  "words": 1550,
+  "words": 1548,
   "findings": [],
   "seo": {
    "title": "Group Tour Kohima 2026 – Custom Itineraries by XTSY",
@@ -11952,7 +11952,7 @@
  {
   "url": "/group-tour-manipur",
   "status": 200,
-  "words": 1539,
+  "words": 1537,
   "findings": [],
   "seo": {
    "title": "Group Tour Manipur 2026 – Custom Itineraries by XTSY",
@@ -11996,7 +11996,7 @@
  {
   "url": "/group-tour-mawlynnong",
   "status": 200,
-  "words": 1544,
+  "words": 1542,
   "findings": [],
   "seo": {
    "title": "Group Tour Mawlynnong 2026 – Custom Itineraries by XTSY",
@@ -12040,7 +12040,7 @@
  {
   "url": "/group-tour-meghalaya",
   "status": 200,
-  "words": 1511,
+  "words": 1509,
   "findings": [],
   "seo": {
    "title": "Group Tour Meghalaya 2026 – Custom Itineraries by XTSY",
@@ -12084,7 +12084,7 @@
  {
   "url": "/group-tour-mizoram",
   "status": 200,
-  "words": 1533,
+  "words": 1531,
   "findings": [],
   "seo": {
    "title": "Group Tour Mizoram 2026 – Custom Itineraries by XTSY",
@@ -12128,7 +12128,7 @@
  {
   "url": "/group-tour-nagaland",
   "status": 200,
-  "words": 1514,
+  "words": 1512,
   "findings": [],
   "seo": {
    "title": "Group Tour Nagaland 2026 – Custom Itineraries by XTSY",
@@ -12172,7 +12172,7 @@
  {
   "url": "/group-tour-nongjrong",
   "status": 200,
-  "words": 1511,
+  "words": 1509,
   "findings": [],
   "seo": {
    "title": "Group Tour Nongjrong 2026 – Custom Itineraries by XTSY",
@@ -12216,7 +12216,7 @@
  {
   "url": "/group-tour-package-cherrapunji",
   "status": 200,
-  "words": 1548,
+  "words": 1546,
   "findings": [],
   "seo": {
    "title": "Group Tour Package Cherrapunji 2026 – Custom Itineraries…",
@@ -12260,7 +12260,7 @@
  {
   "url": "/group-tour-package-dawki",
   "status": 200,
-  "words": 1560,
+  "words": 1558,
   "findings": [],
   "seo": {
    "title": "Group Tour Package Dawki 2026 – Custom Itineraries by XTSY",
@@ -12304,7 +12304,7 @@
  {
   "url": "/group-tour-package-guwahati",
   "status": 200,
-  "words": 1540,
+  "words": 1538,
   "findings": [],
   "seo": {
    "title": "Group Tour Package Guwahati 2026 – Custom Itineraries by…",
@@ -12348,7 +12348,7 @@
  {
   "url": "/group-tour-package-mawlynnong",
   "status": 200,
-  "words": 1557,
+  "words": 1555,
   "findings": [],
   "seo": {
    "title": "Group Tour Package Mawlynnong 2026 – Custom Itineraries by…",
@@ -12392,7 +12392,7 @@
  {
   "url": "/group-tour-package-shillong",
   "status": 200,
-  "words": 1524,
+  "words": 1522,
   "findings": [],
   "seo": {
    "title": "Group Tour Package Shillong 2026 – Custom Itineraries by…",
@@ -12436,7 +12436,7 @@
  {
   "url": "/group-tour-pelling",
   "status": 200,
-  "words": 1543,
+  "words": 1541,
   "findings": [],
   "seo": {
    "title": "Group Tour Pelling 2026 – Custom Itineraries by XTSY",
@@ -12480,7 +12480,7 @@
  {
   "url": "/group-tour-shillong",
   "status": 200,
-  "words": 1511,
+  "words": 1509,
   "findings": [],
   "seo": {
    "title": "Group Tour Shillong 2026 – Custom Itineraries by XTSY",
@@ -12524,7 +12524,7 @@
  {
   "url": "/group-tour-shnongpdeng",
   "status": 200,
-  "words": 1540,
+  "words": 1538,
   "findings": [],
   "seo": {
    "title": "Group Tour Shnongpdeng 2026 – Custom Itineraries by XTSY",
@@ -12568,7 +12568,7 @@
  {
   "url": "/group-tour-sikkim",
   "status": 200,
-  "words": 1546,
+  "words": 1544,
   "findings": [],
   "seo": {
    "title": "Group Tour Sikkim 2026 – Custom Itineraries by XTSY",
@@ -12612,7 +12612,7 @@
  {
   "url": "/group-tour-tawang",
   "status": 200,
-  "words": 1567,
+  "words": 1565,
   "findings": [],
   "seo": {
    "title": "Group Tour Tawang 2026 – Custom Itineraries by XTSY",
@@ -12656,7 +12656,7 @@
  {
   "url": "/group-tour-tripura",
   "status": 200,
-  "words": 1527,
+  "words": 1525,
   "findings": [],
   "seo": {
    "title": "Group Tour Tripura 2026 – Custom Itineraries by XTSY",
@@ -12700,7 +12700,7 @@
  {
   "url": "/group-tour-ziro",
   "status": 200,
-  "words": 1546,
+  "words": 1544,
   "findings": [],
   "seo": {
    "title": "Group Tour Ziro 2026 – Custom Itineraries by XTSY",
@@ -12744,7 +12744,7 @@
  {
   "url": "/guest-house-shillong",
   "status": 200,
-  "words": 1041,
+  "words": 1039,
   "findings": [],
   "seo": {
    "title": "Guest House in Shillong — Affordable Stays | XTSY",
@@ -12799,7 +12799,7 @@
  {
   "url": "/guides",
   "status": 200,
-  "words": 2401,
+  "words": 2399,
   "findings": [],
   "seo": {
    "title": "All Shillong & Meghalaya Travel Guides A–Z | XTSY",
@@ -12837,7 +12837,7 @@
  {
   "url": "/guwahati-to-baghmara",
   "status": 200,
-  "words": 1530,
+  "words": 1528,
   "findings": [],
   "seo": {
    "title": "Guwahati to Baghmara (2026) | XTSY",
@@ -12881,7 +12881,7 @@
  {
   "url": "/guwahati-to-bomdila",
   "status": 200,
-  "words": 1559,
+  "words": 1557,
   "findings": [],
   "seo": {
    "title": "Guwahati to Bomdila (2026) | XTSY",
@@ -12925,7 +12925,7 @@
  {
   "url": "/guwahati-to-cherrapunji",
   "status": 200,
-  "words": 1527,
+  "words": 1525,
   "findings": [],
   "seo": {
    "title": "Guwahati to Cherrapunji (2026) | XTSY",
@@ -12969,7 +12969,7 @@
  {
   "url": "/guwahati-to-dawki",
   "status": 200,
-  "words": 1539,
+  "words": 1537,
   "findings": [],
   "seo": {
    "title": "Guwahati to Dawki (2026) | XTSY",
@@ -13013,7 +13013,7 @@
  {
   "url": "/guwahati-to-dzukou-valley",
   "status": 200,
-  "words": 1563,
+  "words": 1561,
   "findings": [],
   "seo": {
    "title": "Guwahati to Dzukou Valley (2026) | XTSY",
@@ -13057,7 +13057,7 @@
  {
   "url": "/guwahati-to-itanagar",
   "status": 200,
-  "words": 1506,
+  "words": 1504,
   "findings": [],
   "seo": {
    "title": "Guwahati to Itanagar (2026) | XTSY",
@@ -13101,7 +13101,7 @@
  {
   "url": "/guwahati-to-jorhat",
   "status": 200,
-  "words": 1506,
+  "words": 1504,
   "findings": [],
   "seo": {
    "title": "Guwahati to Jorhat (2026) | XTSY",
@@ -13145,7 +13145,7 @@
  {
   "url": "/guwahati-to-jowai",
   "status": 200,
-  "words": 1519,
+  "words": 1517,
   "findings": [],
   "seo": {
    "title": "Guwahati to Jowai (2026) | XTSY",
@@ -13189,7 +13189,7 @@
  {
   "url": "/guwahati-to-kamakhya",
   "status": 200,
-  "words": 1506,
+  "words": 1504,
   "findings": [],
   "seo": {
    "title": "Guwahati to Kamakhya (2026) | XTSY",
@@ -13233,7 +13233,7 @@
  {
   "url": "/guwahati-to-kaziranga",
   "status": 200,
-  "words": 1532,
+  "words": 1530,
   "findings": [],
   "seo": {
    "title": "Guwahati to Kaziranga (2026) | XTSY",
@@ -13277,7 +13277,7 @@
  {
   "url": "/guwahati-to-kohima",
   "status": 200,
-  "words": 1542,
+  "words": 1540,
   "findings": [],
   "seo": {
    "title": "Guwahati to Kohima (2026) | XTSY",
@@ -13321,7 +13321,7 @@
  {
   "url": "/guwahati-to-majuli",
   "status": 200,
-  "words": 1518,
+  "words": 1516,
   "findings": [],
   "seo": {
    "title": "Guwahati to Majuli (2026) | XTSY",
@@ -13365,7 +13365,7 @@
  {
   "url": "/guwahati-to-mawlynnong",
   "status": 200,
-  "words": 1536,
+  "words": 1534,
   "findings": [],
   "seo": {
    "title": "Guwahati to Mawlynnong (2026) | XTSY",
@@ -13409,7 +13409,7 @@
  {
   "url": "/guwahati-to-mawsynram",
   "status": 200,
-  "words": 1528,
+  "words": 1526,
   "findings": [],
   "seo": {
    "title": "Guwahati to Mawsynram (2026) | XTSY",
@@ -13453,7 +13453,7 @@
  {
   "url": "/guwahati-to-meghalaya-road-trip",
   "status": 200,
-  "words": 1330,
+  "words": 1328,
   "findings": [],
   "seo": {
    "title": "Guwahati to Meghalaya Road Trip Guide 2026 | XTSY",
@@ -13497,7 +13497,7 @@
  {
   "url": "/guwahati-to-mon",
   "status": 200,
-  "words": 1506,
+  "words": 1504,
   "findings": [],
   "seo": {
    "title": "Guwahati to Mon (2026) | XTSY — Routes, Costs & Stays",
@@ -13541,7 +13541,7 @@
  {
   "url": "/guwahati-to-nongstoin",
   "status": 200,
-  "words": 1506,
+  "words": 1504,
   "findings": [],
   "seo": {
    "title": "Guwahati to Nongstoin (2026) | XTSY",
@@ -13585,7 +13585,7 @@
  {
   "url": "/guwahati-to-pasighat",
   "status": 200,
-  "words": 1506,
+  "words": 1504,
   "findings": [],
   "seo": {
    "title": "Guwahati to Pasighat (2026) | XTSY",
@@ -13629,7 +13629,7 @@
  {
   "url": "/guwahati-to-shillong",
   "status": 200,
-  "words": 1503,
+  "words": 1501,
   "findings": [],
   "seo": {
    "title": "Guwahati to Shillong (2026) | XTSY",
@@ -13673,7 +13673,7 @@
  {
   "url": "/guwahati-to-shillong-transport",
   "status": 200,
-  "words": 1061,
+  "words": 1059,
   "findings": [],
   "seo": {
    "title": "Guwahati to Shillong — Transport Guide 2026 | XTSY",
@@ -13717,7 +13717,7 @@
  {
   "url": "/guwahati-to-sivasagar",
   "status": 200,
-  "words": 1506,
+  "words": 1504,
   "findings": [],
   "seo": {
    "title": "Guwahati to Sivasagar (2026) | XTSY",
@@ -13761,7 +13761,7 @@
  {
   "url": "/guwahati-to-tawang",
   "status": 200,
-  "words": 1559,
+  "words": 1557,
   "findings": [],
   "seo": {
    "title": "Guwahati to Tawang (2026) | XTSY",
@@ -13805,7 +13805,7 @@
  {
   "url": "/guwahati-to-tezpur",
   "status": 200,
-  "words": 1506,
+  "words": 1504,
   "findings": [],
   "seo": {
    "title": "Guwahati to Tezpur (2026) | XTSY",
@@ -13849,7 +13849,7 @@
  {
   "url": "/guwahati-to-tura",
   "status": 200,
-  "words": 1533,
+  "words": 1531,
   "findings": [],
   "seo": {
    "title": "Guwahati to Tura (2026) | XTSY",
@@ -13893,7 +13893,7 @@
  {
   "url": "/guwahati-to-williamnagar",
   "status": 200,
-  "words": 1506,
+  "words": 1504,
   "findings": [],
   "seo": {
    "title": "Guwahati to Williamnagar (2026) | XTSY",
@@ -13937,7 +13937,7 @@
  {
   "url": "/guwahati-to-ziro",
   "status": 200,
-  "words": 1541,
+  "words": 1539,
   "findings": [],
   "seo": {
    "title": "Guwahati to Ziro (2026) | XTSY",
@@ -13981,7 +13981,7 @@
  {
   "url": "/healthy-food-restaurant-shillong",
   "status": 200,
-  "words": 1070,
+  "words": 1068,
   "findings": [],
   "seo": {
    "title": "Healthy & Light Restaurant in Shillong | TAB Bistro",
@@ -14025,7 +14025,7 @@
  {
   "url": "/hidden-places-in-meghalaya",
   "status": 200,
-  "words": 920,
+  "words": 918,
   "findings": [],
   "seo": {
    "title": "Hidden Places in Meghalaya Tourists Miss | XTSY",
@@ -14065,7 +14065,7 @@
  {
   "url": "/homestay-in-cherrapunji",
   "status": 200,
-  "words": 1132,
+  "words": 1130,
   "findings": [],
   "seo": {
    "title": "Homestay in Cherrapunji — Local Experience | XTSY",
@@ -14109,7 +14109,7 @@
  {
   "url": "/homestay-in-dawki",
   "status": 200,
-  "words": 1088,
+  "words": 1086,
   "findings": [],
   "seo": {
    "title": "Homestay in Dawki — Near Umngot River | XTSY",
@@ -14153,7 +14153,7 @@
  {
   "url": "/homestay-in-mawlynnong",
   "status": 200,
-  "words": 1074,
+  "words": 1072,
   "findings": [],
   "seo": {
    "title": "Homestay in Mawlynnong — Asia's Cleanest Village",
@@ -14197,7 +14197,7 @@
  {
   "url": "/homestay-in-shillong-last-minute",
   "status": 200,
-  "words": 1137,
+  "words": 1135,
   "findings": [],
   "seo": {
    "title": "Homestay in Shillong Last Minute (2026) | XTSY",
@@ -14243,7 +14243,7 @@
  {
   "url": "/homestay-in-shillong-now",
   "status": 200,
-  "words": 1135,
+  "words": 1133,
   "findings": [],
   "seo": {
    "title": "Homestay in Shillong Now (2026) | XTSY",
@@ -14289,7 +14289,7 @@
  {
   "url": "/homestay-in-shillong-this-weekend",
   "status": 200,
-  "words": 1137,
+  "words": 1135,
   "findings": [],
   "seo": {
    "title": "Homestay in Shillong This Weekend (2026) | XTSY",
@@ -14335,7 +14335,7 @@
  {
   "url": "/homestay-in-shillong-today",
   "status": 200,
-  "words": 1135,
+  "words": 1133,
   "findings": [],
   "seo": {
    "title": "Homestay in Shillong Today (2026) | XTSY",
@@ -14381,7 +14381,7 @@
  {
   "url": "/homestay-in-shillong-tomorrow",
   "status": 200,
-  "words": 1135,
+  "words": 1133,
   "findings": [],
   "seo": {
    "title": "Homestay in Shillong Tomorrow (2026) | XTSY",
@@ -14427,7 +14427,7 @@
  {
   "url": "/homestay-in-shillong-tonight",
   "status": 200,
-  "words": 1135,
+  "words": 1133,
   "findings": [],
   "seo": {
    "title": "Homestay in Shillong Tonight (2026) | XTSY",
@@ -14473,7 +14473,7 @@
  {
   "url": "/homestay-near-cherrapunji-airport",
   "status": 200,
-  "words": 1193,
+  "words": 1191,
   "findings": [],
   "seo": {
    "title": "Airport Homestay in Cherrapunji (2026) | XTSY",
@@ -14517,7 +14517,7 @@
  {
   "url": "/homestay-near-guwahati-airport",
   "status": 200,
-  "words": 1185,
+  "words": 1183,
   "findings": [],
   "seo": {
    "title": "Airport Homestay in Guwahati (2026) | XTSY",
@@ -14561,7 +14561,7 @@
  {
   "url": "/homestay-near-shillong-airport",
   "status": 200,
-  "words": 1134,
+  "words": 1132,
   "findings": [],
   "seo": {
    "title": "Airport Homestay in Shillong (2026) | XTSY",
@@ -14607,7 +14607,7 @@
  {
   "url": "/homestay-shillong-city",
   "status": 200,
-  "words": 999,
+  "words": 997,
   "findings": [],
   "seo": {
    "title": "Homestay in Shillong City — Local Living | XTSY",
@@ -14662,7 +14662,7 @@
  {
   "url": "/homestays-in-shillong",
   "status": 200,
-  "words": 605,
+  "words": 603,
   "findings": [],
   "seo": {
    "title": "Homestays in Shillong: Options & Prices | XTSY",
@@ -14703,7 +14703,7 @@
  {
   "url": "/honeymoon-package-agartala",
   "status": 200,
-  "words": 1496,
+  "words": 1494,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Agartala 2026 – Custom by XTSY",
@@ -14747,7 +14747,7 @@
  {
   "url": "/honeymoon-package-aizawl",
   "status": 200,
-  "words": 1502,
+  "words": 1500,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Aizawl 2026 – Custom by XTSY",
@@ -14791,7 +14791,7 @@
  {
   "url": "/honeymoon-package-arunachal-pradesh",
   "status": 200,
-  "words": 1498,
+  "words": 1496,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Arunachal Pradesh 2026 – Custom by XTSY",
@@ -14835,7 +14835,7 @@
  {
   "url": "/honeymoon-package-assam",
   "status": 200,
-  "words": 1480,
+  "words": 1478,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Assam 2026 – Custom by XTSY",
@@ -14879,7 +14879,7 @@
  {
   "url": "/honeymoon-package-bomdila",
   "status": 200,
-  "words": 1533,
+  "words": 1531,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Bomdila 2026 – Custom by XTSY",
@@ -14923,7 +14923,7 @@
  {
   "url": "/honeymoon-package-champhai",
   "status": 200,
-  "words": 1480,
+  "words": 1478,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Champhai 2026 – Custom by XTSY",
@@ -14967,7 +14967,7 @@
  {
   "url": "/honeymoon-package-cherrapunji",
   "status": 200,
-  "words": 1504,
+  "words": 1502,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Cherrapunji 2026 – Custom by XTSY",
@@ -15011,7 +15011,7 @@
  {
   "url": "/honeymoon-package-dawki",
   "status": 200,
-  "words": 1516,
+  "words": 1514,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Dawki 2026 – Custom by XTSY",
@@ -15055,7 +15055,7 @@
  {
   "url": "/honeymoon-package-dzukou-valley",
   "status": 200,
-  "words": 1530,
+  "words": 1528,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Dzukou Valley 2026 – Custom by XTSY",
@@ -15099,7 +15099,7 @@
  {
   "url": "/honeymoon-package-gangtok",
   "status": 200,
-  "words": 1515,
+  "words": 1513,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Gangtok 2026 – Custom by XTSY",
@@ -15143,7 +15143,7 @@
  {
   "url": "/honeymoon-package-guwahati",
   "status": 200,
-  "words": 1496,
+  "words": 1494,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Guwahati 2026 – Custom by XTSY",
@@ -15187,7 +15187,7 @@
  {
   "url": "/honeymoon-package-haflong",
   "status": 200,
-  "words": 1480,
+  "words": 1478,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Haflong 2026 – Custom by XTSY",
@@ -15231,7 +15231,7 @@
  {
   "url": "/honeymoon-package-imphal",
   "status": 200,
-  "words": 1508,
+  "words": 1506,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Imphal 2026 – Custom by XTSY",
@@ -15275,7 +15275,7 @@
  {
   "url": "/honeymoon-package-itanagar",
   "status": 200,
-  "words": 1480,
+  "words": 1478,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Itanagar 2026 – Custom by XTSY",
@@ -15319,7 +15319,7 @@
  {
   "url": "/honeymoon-package-jorhat",
   "status": 200,
-  "words": 1480,
+  "words": 1478,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Jorhat 2026 – Custom by XTSY",
@@ -15363,7 +15363,7 @@
  {
   "url": "/honeymoon-package-jowai",
   "status": 200,
-  "words": 1496,
+  "words": 1494,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Jowai 2026 – Custom by XTSY",
@@ -15407,7 +15407,7 @@
  {
   "url": "/honeymoon-package-kaziranga",
   "status": 200,
-  "words": 1509,
+  "words": 1507,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Kaziranga 2026 – Custom by XTSY",
@@ -15451,7 +15451,7 @@
  {
   "url": "/honeymoon-package-kohima",
   "status": 200,
-  "words": 1519,
+  "words": 1517,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Kohima 2026 – Custom by XTSY",
@@ -15495,7 +15495,7 @@
  {
   "url": "/honeymoon-package-lachung",
   "status": 200,
-  "words": 1514,
+  "words": 1512,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Lachung 2026 – Custom by XTSY",
@@ -15539,7 +15539,7 @@
  {
   "url": "/honeymoon-package-loktak-lake",
   "status": 200,
-  "words": 1521,
+  "words": 1519,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Loktak Lake 2026 – Custom by XTSY",
@@ -15583,7 +15583,7 @@
  {
   "url": "/honeymoon-package-majuli",
   "status": 200,
-  "words": 1492,
+  "words": 1490,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Majuli 2026 – Custom by XTSY",
@@ -15627,7 +15627,7 @@
  {
   "url": "/honeymoon-package-manipur",
   "status": 200,
-  "words": 1508,
+  "words": 1506,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Manipur 2026 – Custom by XTSY",
@@ -15671,7 +15671,7 @@
  {
   "url": "/honeymoon-package-mawlynnong",
   "status": 200,
-  "words": 1513,
+  "words": 1511,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Mawlynnong 2026 – Custom by XTSY",
@@ -15715,7 +15715,7 @@
  {
   "url": "/honeymoon-package-mawsynram",
   "status": 200,
-  "words": 1502,
+  "words": 1500,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Mawsynram 2026 – Custom by XTSY",
@@ -15759,7 +15759,7 @@
  {
   "url": "/honeymoon-package-meghalaya",
   "status": 200,
-  "words": 1480,
+  "words": 1478,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Meghalaya 2026 – Custom by XTSY",
@@ -15803,7 +15803,7 @@
  {
   "url": "/honeymoon-package-mizoram",
   "status": 200,
-  "words": 1502,
+  "words": 1500,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Mizoram 2026 – Custom by XTSY",
@@ -15847,7 +15847,7 @@
  {
   "url": "/honeymoon-package-mokokchung",
   "status": 200,
-  "words": 1480,
+  "words": 1478,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Mokokchung 2026 – Custom by XTSY",
@@ -15891,7 +15891,7 @@
  {
   "url": "/honeymoon-package-nagaland",
   "status": 200,
-  "words": 1483,
+  "words": 1481,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Nagaland 2026 – Custom by XTSY",
@@ -15935,7 +15935,7 @@
  {
   "url": "/honeymoon-package-nongjrong",
   "status": 200,
-  "words": 1480,
+  "words": 1478,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Nongjrong 2026 – Custom by XTSY",
@@ -15979,7 +15979,7 @@
  {
   "url": "/honeymoon-package-pasighat",
   "status": 200,
-  "words": 1480,
+  "words": 1478,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Pasighat 2026 – Custom by XTSY",
@@ -16023,7 +16023,7 @@
  {
   "url": "/honeymoon-package-pelling",
   "status": 200,
-  "words": 1512,
+  "words": 1510,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Pelling 2026 – Custom by XTSY",
@@ -16067,7 +16067,7 @@
  {
   "url": "/honeymoon-package-reiek",
   "status": 200,
-  "words": 1480,
+  "words": 1478,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Reiek 2026 – Custom by XTSY",
@@ -16111,7 +16111,7 @@
  {
   "url": "/honeymoon-package-shillong",
   "status": 200,
-  "words": 1480,
+  "words": 1478,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Shillong 2026 – Custom by XTSY",
@@ -16155,7 +16155,7 @@
  {
   "url": "/honeymoon-package-shnongpdeng",
   "status": 200,
-  "words": 1509,
+  "words": 1507,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Shnongpdeng 2026 – Custom by XTSY",
@@ -16199,7 +16199,7 @@
  {
   "url": "/honeymoon-package-tawang",
   "status": 200,
-  "words": 1536,
+  "words": 1534,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Tawang 2026 – Custom by XTSY",
@@ -16243,7 +16243,7 @@
  {
   "url": "/honeymoon-package-tezpur",
   "status": 200,
-  "words": 1480,
+  "words": 1478,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Tezpur 2026 – Custom by XTSY",
@@ -16287,7 +16287,7 @@
  {
   "url": "/honeymoon-package-tsomgo-lake",
   "status": 200,
-  "words": 1530,
+  "words": 1528,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Tsomgo Lake 2026 – Custom by XTSY",
@@ -16331,7 +16331,7 @@
  {
   "url": "/honeymoon-package-tura",
   "status": 200,
-  "words": 1510,
+  "words": 1508,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Tura 2026 – Custom by XTSY",
@@ -16375,7 +16375,7 @@
  {
   "url": "/honeymoon-package-unakoti",
   "status": 200,
-  "words": 1492,
+  "words": 1490,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Unakoti 2026 – Custom by XTSY",
@@ -16419,7 +16419,7 @@
  {
   "url": "/honeymoon-package-ziro",
   "status": 200,
-  "words": 1515,
+  "words": 1513,
   "findings": [],
   "seo": {
    "title": "Honeymoon Package Ziro 2026 – Custom by XTSY",
@@ -16463,7 +16463,7 @@
  {
   "url": "/hospital-accommodation-shillong",
   "status": 200,
-  "words": 1000,
+  "words": 998,
   "findings": [],
   "seo": {
    "title": "Hospital Accommodation Shillong — Near NEIGRIHMS",
@@ -16518,7 +16518,7 @@
  {
   "url": "/hostel-booking",
   "status": 200,
-  "words": 1346,
+  "words": 1344,
   "findings": [],
   "seo": {
    "title": "Hostel Booking in Shillong — Direct from ₹399 | XTSY",
@@ -16563,7 +16563,7 @@
  {
   "url": "/hostel-in-shillong-last-minute",
   "status": 200,
-  "words": 1219,
+  "words": 1217,
   "findings": [],
   "seo": {
    "title": "Hostel in Shillong Last Minute — XTSY, New Shillong Township",
@@ -16626,7 +16626,7 @@
  {
   "url": "/hostel-in-shillong-now",
   "status": 200,
-  "words": 1217,
+  "words": 1215,
   "findings": [],
   "seo": {
    "title": "Hostel in Shillong Right Now — XTSY, New Shillong Township",
@@ -16689,7 +16689,7 @@
  {
   "url": "/hostel-in-shillong-this-weekend",
   "status": 200,
-  "words": 1217,
+  "words": 1215,
   "findings": [],
   "seo": {
    "title": "Hostel in Shillong This Weekend",
@@ -16752,7 +16752,7 @@
  {
   "url": "/hostel-in-shillong-tomorrow",
   "status": 200,
-  "words": 1211,
+  "words": 1209,
   "findings": [],
   "seo": {
    "title": "Hostel in Shillong Tomorrow — XTSY, New Shillong Township",
@@ -16815,7 +16815,7 @@
  {
   "url": "/hostel-in-shillong-tonight",
   "status": 200,
-  "words": 1211,
+  "words": 1209,
   "findings": [],
   "seo": {
    "title": "Hostel in Shillong Tonight — XTSY, New Shillong Township",
@@ -16878,7 +16878,7 @@
  {
   "url": "/hostel-near-cherrapunji-airport",
   "status": 200,
-  "words": 1368,
+  "words": 1366,
   "findings": [],
   "seo": {
    "title": "Hostel near Cherrapunji Airport",
@@ -16922,7 +16922,7 @@
  {
   "url": "/hostel-near-guwahati-airport",
   "status": 200,
-  "words": 1360,
+  "words": 1358,
   "findings": [],
   "seo": {
    "title": "Hostel near Guwahati Airport — Stays and Transfers via XTSY",
@@ -16966,7 +16966,7 @@
  {
   "url": "/hostel-near-iim-shillong",
   "status": 200,
-  "words": 1109,
+  "words": 1107,
   "findings": [],
   "seo": {
    "title": "Hostel IIM Shillong (2026) | XTSY",
@@ -17012,7 +17012,7 @@
  {
   "url": "/hostel-near-iit-guwahati",
   "status": 200,
-  "words": 1159,
+  "words": 1157,
   "findings": [],
   "seo": {
    "title": "Hostel IIT Guwahati (2026) | XTSY",
@@ -17056,7 +17056,7 @@
  {
   "url": "/hostel-near-imphal-airport",
   "status": 200,
-  "words": 1255,
+  "words": 1253,
   "findings": [],
   "seo": {
    "title": "Airport Hostel in Imphal (2026) | XTSY",
@@ -17100,7 +17100,7 @@
  {
   "url": "/hostel-near-kohima-airport",
   "status": 200,
-  "words": 1266,
+  "words": 1264,
   "findings": [],
   "seo": {
    "title": "Airport Hostel in Kohima (2026) | XTSY",
@@ -17144,7 +17144,7 @@
  {
   "url": "/hostel-near-me",
   "status": 200,
-  "words": 1507,
+  "words": 1505,
   "findings": [
    {
     "rule": "rating:review count",
@@ -17198,7 +17198,7 @@
  {
   "url": "/hostel-near-nehu",
   "status": 200,
-  "words": 1096,
+  "words": 1094,
   "findings": [],
   "seo": {
    "title": "Hostel NEHU (2026) | XTSY — Budget Rooms, 24/7 Check-in",
@@ -17244,7 +17244,7 @@
  {
   "url": "/hostel-near-nift-shillong",
   "status": 200,
-  "words": 1108,
+  "words": 1106,
   "findings": [],
   "seo": {
    "title": "Hostel NIFT Shillong (2026) | XTSY",
@@ -17290,7 +17290,7 @@
  {
   "url": "/hostel-near-police-bazar-shillong",
   "status": 200,
-  "words": 1234,
+  "words": 1232,
   "findings": [],
   "seo": {
    "title": "Hostel near Police Bazar Shillong? Where XTSY Is | XTSY",
@@ -17353,7 +17353,7 @@
  {
   "url": "/hostel-near-shillong-airport",
   "status": 200,
-  "words": 1240,
+  "words": 1238,
   "findings": [],
   "seo": {
    "title": "Hostel near Shillong Airport — XTSY, New Shillong Township",
@@ -17416,7 +17416,7 @@
  {
   "url": "/hostels-in-meghalaya",
   "status": 200,
-  "words": 1211,
+  "words": 1209,
   "findings": [],
   "seo": {
    "title": "Best Hostels in Meghalaya 2026 — Top Rated | XTSY",
@@ -17471,7 +17471,7 @@
  {
   "url": "/hostels-in-shillong-today",
   "status": 200,
-  "words": 1193,
+  "words": 1191,
   "findings": [],
   "seo": {
    "title": "Hostel in Shillong Today — XTSY, New Shillong Township",
@@ -17534,7 +17534,7 @@
  {
   "url": "/hotel-near-iim-shillong",
   "status": 200,
-  "words": 1109,
+  "words": 1107,
   "findings": [],
   "seo": {
    "title": "Hotel IIM Shillong (2026) | XTSY",
@@ -17580,7 +17580,7 @@
  {
   "url": "/hotel-near-nehu",
   "status": 200,
-  "words": 1096,
+  "words": 1094,
   "findings": [],
   "seo": {
    "title": "Hotel NEHU (2026) | XTSY — Budget Rooms, 24/7 Check-in",
@@ -17626,7 +17626,7 @@
  {
   "url": "/hotel-near-nift-shillong",
   "status": 200,
-  "words": 1108,
+  "words": 1106,
   "findings": [],
   "seo": {
    "title": "Hotel NIFT Shillong (2026) | XTSY",
@@ -17672,7 +17672,7 @@
  {
   "url": "/hotel-near-police-bazar",
   "status": 200,
-  "words": 1033,
+  "words": 1031,
   "findings": [],
   "seo": {
    "title": "Hotel Near Police Bazar Shillong — Best Options 2026",
@@ -17727,7 +17727,7 @@
  {
   "url": "/hotels-in-shillong",
   "status": 200,
-  "words": 622,
+  "words": 620,
   "findings": [],
   "seo": {
    "title": "Hotels in Shillong: Areas, Prices & Alternatives | XTSY",
@@ -17768,7 +17768,7 @@
  {
   "url": "/hotels-in-shillong-available-now",
   "status": 200,
-  "words": 1088,
+  "words": 1086,
   "findings": [],
   "seo": {
    "title": "Hotels in Shillong Available Now (1 January 1970)",
@@ -17823,7 +17823,7 @@
  {
   "url": "/how-to-reach-cherrapunji",
   "status": 200,
-  "words": 1328,
+  "words": 1326,
   "findings": [],
   "seo": {
    "title": "How to Reach Cherrapunji 2026 — From Shillong & More",
@@ -17867,7 +17867,7 @@
  {
   "url": "/how-to-reach-dawki",
   "status": 200,
-  "words": 1334,
+  "words": 1332,
   "findings": [],
   "seo": {
    "title": "How to Reach Dawki 2026 — Crystal River Guide | XTSY",
@@ -17911,7 +17911,7 @@
  {
   "url": "/how-to-reach-meghalaya-from-bangalore",
   "status": 200,
-  "words": 1250,
+  "words": 1248,
   "findings": [],
   "seo": {
    "title": "How to Reach Meghalaya from Bangalore 2026 — Guide",
@@ -17955,7 +17955,7 @@
  {
   "url": "/how-to-reach-meghalaya-from-delhi",
   "status": 200,
-  "words": 1278,
+  "words": 1276,
   "findings": [],
   "seo": {
    "title": "How to Reach Meghalaya from Delhi 2026 — Best Routes",
@@ -17999,7 +17999,7 @@
  {
   "url": "/how-to-reach-meghalaya-from-kolkata",
   "status": 200,
-  "words": 1253,
+  "words": 1251,
   "findings": [],
   "seo": {
    "title": "How to Reach Meghalaya from Kolkata 2026 — Guide",
@@ -18043,7 +18043,7 @@
  {
   "url": "/how-to-reach-meghalaya-from-mumbai",
   "status": 200,
-  "words": 1286,
+  "words": 1284,
   "findings": [],
   "seo": {
    "title": "How to Reach Meghalaya from Mumbai 2026 — Guide",
@@ -18087,7 +18087,7 @@
  {
   "url": "/how-to-reach-shillong",
   "status": 200,
-  "words": 1348,
+  "words": 1346,
   "findings": [],
   "seo": {
    "title": "How to Reach Shillong — Flights, Trains, Buses & Taxis",
@@ -18131,7 +18131,7 @@
  {
   "url": "/indo-chinese-restaurant-shillong",
   "status": 200,
-  "words": 1068,
+  "words": 1066,
   "findings": [],
   "seo": {
    "title": "Indo-Chinese Restaurant in Shillong | TAB Bistro",
@@ -18175,7 +18175,7 @@
  {
   "url": "/isabella-hostel-vs-xtsy",
   "status": 200,
-  "words": 1619,
+  "words": 1617,
   "findings": [],
   "seo": {
    "title": "Isabella Hostel vs XTSY Shillong Comparison 2026",
@@ -18221,7 +18221,7 @@
  {
   "url": "/italian-restaurant-shillong",
   "status": 200,
-  "words": 1073,
+  "words": 1071,
   "findings": [],
   "seo": {
    "title": "Italian Restaurant in Shillong — Italian Menu | TAB Bistro",
@@ -18265,7 +18265,7 @@
  {
   "url": "/juices-and-shakes-shillong",
   "status": 200,
-  "words": 907,
+  "words": 905,
   "findings": [],
   "seo": {
    "title": "Juices & Shakes Restaurant in Shillong | TAB Bistro",
@@ -18309,7 +18309,7 @@
  {
   "url": "/kayaking-in-meghalaya",
   "status": 200,
-  "words": 1007,
+  "words": 1005,
   "findings": [],
   "seo": {
    "title": "Kayaking in Meghalaya — Dawki & Shnongpdeng | XTSY",
@@ -18353,7 +18353,7 @@
  {
   "url": "/khasi-food-guide",
   "status": 200,
-  "words": 1015,
+  "words": 1013,
   "findings": [],
   "seo": {
    "title": "Khasi Food Guide — Traditional Meghalaya Cuisine",
@@ -18397,7 +18397,7 @@
  {
   "url": "/kongthong-whistling-village",
   "status": 200,
-  "words": 1341,
+  "words": 1339,
   "findings": [],
   "seo": {
    "title": "Kongthong — The Whistling Village of Meghalaya",
@@ -18441,7 +18441,7 @@
  {
   "url": "/krang-suri-falls-guide",
   "status": 200,
-  "words": 1261,
+  "words": 1259,
   "findings": [],
   "seo": {
    "title": "Krang Suri Falls — Blue Lagoon of Meghalaya | Guide",
@@ -18486,7 +18486,7 @@
  {
   "url": "/krang-suri-falls-meghalaya",
   "status": 200,
-  "words": 1405,
+  "words": 1403,
   "findings": [],
   "seo": {
    "title": "Krang Suri Falls — Meghalaya's Most Beautiful Swimming Hole",
@@ -18531,7 +18531,7 @@
  {
   "url": "/laitlum-canyons-guide",
   "status": 200,
-  "words": 1249,
+  "words": 1247,
   "findings": [],
   "seo": {
    "title": "Laitlum Canyons — Shillong's Best Viewpoint | Guide",
@@ -18576,7 +18576,7 @@
  {
   "url": "/laitlum-canyons-shillong",
   "status": 200,
-  "words": 1353,
+  "words": 1351,
   "findings": [],
   "seo": {
    "title": "Laitlum Canyons — Shillong's Most Dramatic Viewpoint",
@@ -18621,7 +18621,7 @@
  {
   "url": "/late-night-food-shillong",
   "status": 200,
-  "words": 1061,
+  "words": 1059,
   "findings": [],
   "seo": {
    "title": "Late Night in Shillong | TAB Bistro",
@@ -18665,7 +18665,7 @@
  {
   "url": "/living-root-bridge-trek",
   "status": 200,
-  "words": 1322,
+  "words": 1320,
   "findings": [],
   "seo": {
    "title": "Living Root Bridge Trek — Double Decker Root Bridge",
@@ -18710,7 +18710,7 @@
  {
   "url": "/living-root-bridges-meghalaya",
   "status": 200,
-  "words": 2222,
+  "words": 2220,
   "findings": [],
   "seo": {
    "title": "Living Root Bridges of Meghalaya: A 2026 Trekking Guide",
@@ -18754,7 +18754,7 @@
  {
   "url": "/long-stay-hostel-shillong",
   "status": 200,
-  "words": 1162,
+  "words": 1160,
   "findings": [],
   "seo": {
    "title": "Long Stay Hostel Shillong — Weekly & Monthly | XTSY",
@@ -18809,7 +18809,7 @@
  {
   "url": "/lunch-in-shillong",
   "status": 200,
-  "words": 1061,
+  "words": 1059,
   "findings": [],
   "seo": {
    "title": "Lunch in Shillong — Best Places for Lunch | TAB Bistro",
@@ -18853,7 +18853,7 @@
  {
   "url": "/luxury-glamping-shillong",
   "status": 200,
-  "words": 564,
+  "words": 562,
   "findings": [],
   "seo": {
    "title": "Luxury Glamping in Shillong & Meghalaya | XTSY",
@@ -18894,7 +18894,7 @@
  {
   "url": "/luxury-resorts-for-couples-shillong",
   "status": 200,
-  "words": 1046,
+  "words": 1044,
   "findings": [],
   "seo": {
    "title": "Luxury Resorts for Couples in Shillong | Experience by XTSY",
@@ -18949,7 +18949,7 @@
  {
   "url": "/luxury-stays-in-india",
   "status": 200,
-  "words": 1035,
+  "words": 1033,
   "findings": [],
   "seo": {
    "title": "Luxury Stays in India — Unique Experiences | XTSY",
@@ -19004,7 +19004,7 @@
  {
   "url": "/manipur-tour-packages",
   "status": 200,
-  "words": 1440,
+  "words": 1438,
   "findings": [],
   "seo": {
    "title": "Tour packages Manipur (2026) | XTSY",
@@ -19048,7 +19048,7 @@
  {
   "url": "/mawlynnong-cleanest-village",
   "status": 200,
-  "words": 1413,
+  "words": 1411,
   "findings": [],
   "seo": {
    "title": "Mawlynnong — Asia's Cleanest Village Guide 2026",
@@ -19093,7 +19093,7 @@
  {
   "url": "/mawlynnong-guide",
   "status": 200,
-  "words": 1288,
+  "words": 1286,
   "findings": [],
   "seo": {
    "title": "Mawlynnong — Asia's Cleanest Village | Guide",
@@ -19138,7 +19138,7 @@
  {
   "url": "/mawphlang-sacred-forest",
   "status": 200,
-  "words": 1387,
+  "words": 1385,
   "findings": [],
   "seo": {
    "title": "Mawphlang Sacred Forest — Ancient Protected Grove Guide",
@@ -19183,7 +19183,7 @@
  {
   "url": "/mawsmai-cave-cherrapunji",
   "status": 200,
-  "words": 1326,
+  "words": 1324,
   "findings": [],
   "seo": {
    "title": "Mawsmai Cave — Cherrapunji's Easy Limestone Cave Walk",
@@ -19228,7 +19228,7 @@
  {
   "url": "/meghalaya-adventure-package",
   "status": 200,
-  "words": 1145,
+  "words": 1143,
   "findings": [],
   "seo": {
    "title": "Meghalaya Adventure Package — Trek, Camp, Explore",
@@ -19272,7 +19272,7 @@
  {
   "url": "/meghalaya-adventure-tour",
   "status": 200,
-  "words": 647,
+  "words": 645,
   "findings": [],
   "seo": {
    "title": "Meghalaya Adventure Tour | Trek, River & Waterfalls | XTSY",
@@ -19307,7 +19307,7 @@
  {
   "url": "/meghalaya-backpacking-guide",
   "status": 200,
-  "words": 1418,
+  "words": 1416,
   "findings": [],
   "seo": {
    "title": "Meghalaya Backpacking Guide 2026 — Budget Travel Tips",
@@ -19351,7 +19351,7 @@
  {
   "url": "/meghalaya-caves",
   "status": 200,
-  "words": 743,
+  "words": 741,
   "findings": [],
   "seo": {
    "title": "Meghalaya Caves: Mawsmai, Arwah & Siju Guide | XTSY",
@@ -19392,7 +19392,7 @@
  {
   "url": "/meghalaya-couple-tour-package",
   "status": 200,
-  "words": 665,
+  "words": 663,
   "findings": [],
   "seo": {
    "title": "Meghalaya Couple Tour Package | XTSY Travel",
@@ -19432,7 +19432,7 @@
  {
   "url": "/meghalaya-festivals",
   "status": 200,
-  "words": 999,
+  "words": 997,
   "findings": [],
   "seo": {
    "title": "Meghalaya Festivals: When and Where to See Them | XTSY",
@@ -19470,7 +19470,7 @@
  {
   "url": "/meghalaya-honeymoon-package",
   "status": 200,
-  "words": 1190,
+  "words": 1188,
   "findings": [],
   "seo": {
    "title": "Meghalaya Honeymoon Package — ₹18,999/Couple | XTSY",
@@ -19514,7 +19514,7 @@
  {
   "url": "/meghalaya-in-april",
   "status": 200,
-  "words": 1289,
+  "words": 1287,
   "findings": [],
   "seo": {
    "title": "Meghalaya in April 2026 — Weather & Guide | XTSY",
@@ -19558,7 +19558,7 @@
  {
   "url": "/meghalaya-in-august",
   "status": 200,
-  "words": 1285,
+  "words": 1283,
   "findings": [],
   "seo": {
    "title": "Meghalaya in August 2026 — Weather & Guide | XTSY",
@@ -19602,7 +19602,7 @@
  {
   "url": "/meghalaya-in-december",
   "status": 200,
-  "words": 1286,
+  "words": 1284,
   "findings": [],
   "seo": {
    "title": "Meghalaya in December 2026 — Weather & Guide | XTSY",
@@ -19646,7 +19646,7 @@
  {
   "url": "/meghalaya-in-february",
   "status": 200,
-  "words": 1291,
+  "words": 1289,
   "findings": [],
   "seo": {
    "title": "Meghalaya in February 2026 — Weather & Guide | XTSY",
@@ -19690,7 +19690,7 @@
  {
   "url": "/meghalaya-in-january",
   "status": 200,
-  "words": 1293,
+  "words": 1291,
   "findings": [],
   "seo": {
    "title": "Meghalaya in January 2026 — Weather & Guide | XTSY",
@@ -19734,7 +19734,7 @@
  {
   "url": "/meghalaya-in-july",
   "status": 200,
-  "words": 1288,
+  "words": 1286,
   "findings": [],
   "seo": {
    "title": "Meghalaya in July 2026 — Weather & Guide | XTSY",
@@ -19778,7 +19778,7 @@
  {
   "url": "/meghalaya-in-june",
   "status": 200,
-  "words": 1289,
+  "words": 1287,
   "findings": [],
   "seo": {
    "title": "Meghalaya in June 2026 — Weather & Guide | XTSY",
@@ -19822,7 +19822,7 @@
  {
   "url": "/meghalaya-in-march",
   "status": 200,
-  "words": 1288,
+  "words": 1286,
   "findings": [],
   "seo": {
    "title": "Meghalaya in March 2026 — Weather & Guide | XTSY",
@@ -19866,7 +19866,7 @@
  {
   "url": "/meghalaya-in-may",
   "status": 200,
-  "words": 1288,
+  "words": 1286,
   "findings": [],
   "seo": {
    "title": "Meghalaya in May 2026 — Weather & Guide | XTSY",
@@ -19910,7 +19910,7 @@
  {
   "url": "/meghalaya-in-november",
   "status": 200,
-  "words": 1283,
+  "words": 1281,
   "findings": [],
   "seo": {
    "title": "Meghalaya in November 2026 — Weather & Guide | XTSY",
@@ -19954,7 +19954,7 @@
  {
   "url": "/meghalaya-in-october",
   "status": 200,
-  "words": 1288,
+  "words": 1286,
   "findings": [],
   "seo": {
    "title": "Meghalaya in October 2026 — Weather & Guide | XTSY",
@@ -19998,7 +19998,7 @@
  {
   "url": "/meghalaya-in-september",
   "status": 200,
-  "words": 1286,
+  "words": 1284,
   "findings": [],
   "seo": {
    "title": "Meghalaya in September 2026 — Weather & Guide | XTSY",
@@ -20042,7 +20042,7 @@
  {
   "url": "/meghalaya-itinerary",
   "status": 200,
-  "words": 1604,
+  "words": 1602,
   "findings": [],
   "seo": {
    "title": "Meghalaya Itinerary 2026 — 3, 5, 7 & 10 Day Plans",
@@ -20086,7 +20086,7 @@
  {
   "url": "/meghalaya-photo-gallery",
   "status": 200,
-  "words": 977,
+  "words": 975,
   "findings": [],
   "seo": {
    "title": "Meghalaya Photo Gallery: Real Trip Photos | XTSY",
@@ -20126,7 +20126,7 @@
  {
   "url": "/meghalaya-photography-tour",
   "status": 200,
-  "words": 1125,
+  "words": 1123,
   "findings": [],
   "seo": {
    "title": "Meghalaya Photography Tour — Capture the Beauty",
@@ -20170,7 +20170,7 @@
  {
   "url": "/meghalaya-tour-package-3-days",
   "status": 200,
-  "words": 1148,
+  "words": 1146,
   "findings": [],
   "seo": {
    "title": "3 Day Meghalaya Tour Package — ₹7,999 | XTSY",
@@ -20214,7 +20214,7 @@
  {
   "url": "/meghalaya-tour-package-5-days",
   "status": 200,
-  "words": 1171,
+  "words": 1169,
   "findings": [],
   "seo": {
    "title": "5 Day Meghalaya Tour Package — ₹13,999 | XTSY",
@@ -20258,7 +20258,7 @@
  {
   "url": "/meghalaya-tour-package-7-days",
   "status": 200,
-  "words": 1215,
+  "words": 1213,
   "findings": [],
   "seo": {
    "title": "7 Day Meghalaya Tour Package — ₹22,999 | XTSY",
@@ -20302,7 +20302,7 @@
  {
   "url": "/meghalaya-tour-packages",
   "status": 200,
-  "words": 575,
+  "words": 573,
   "findings": [],
   "seo": {
    "title": "Meghalaya Tour Packages 2026 — Starting ₹7,999 | XTSY",
@@ -20342,7 +20342,7 @@
  {
   "url": "/meghalaya-tour-packages-pillar",
   "status": 200,
-  "words": 1879,
+  "words": 1877,
   "findings": [],
   "seo": {
    "title": "Meghalaya Tour Packages 2026 | Local Experts at XTSY",
@@ -20386,7 +20386,7 @@
  {
   "url": "/meghalaya-travel-guide",
   "status": 200,
-  "words": 2300,
+  "words": 2298,
   "findings": [],
   "seo": {
    "title": "Meghalaya Travel Guide 2026 — Ultimate Planning Resource",
@@ -20430,7 +20430,7 @@
  {
   "url": "/meghalaya-trip-today",
   "status": 200,
-  "words": 1398,
+  "words": 1396,
   "findings": [],
   "seo": {
    "title": "Start Your Meghalaya Trip Today",
@@ -20474,7 +20474,7 @@
  {
   "url": "/meghalaya-viewpoints",
   "status": 200,
-  "words": 723,
+  "words": 721,
   "findings": [],
   "seo": {
    "title": "Best Viewpoints in Meghalaya | XTSY Travel",
@@ -20515,7 +20515,7 @@
  {
   "url": "/meghalaya-villages",
   "status": 200,
-  "words": 640,
+  "words": 638,
   "findings": [],
   "seo": {
    "title": "Meghalaya Villages: Mawlynnong & Beyond | XTSY",
@@ -20556,7 +20556,7 @@
  {
   "url": "/meghalaya-waterfalls",
   "status": 200,
-  "words": 1267,
+  "words": 1265,
   "findings": [],
   "seo": {
    "title": "Meghalaya Waterfalls: Nohkalikai & More | XTSY",
@@ -20597,7 +20597,7 @@
  {
   "url": "/merch",
   "status": 200,
-  "words": 769,
+  "words": 767,
   "findings": [
    {
     "rule": "aeo:no FAQ or question headings",
@@ -20637,7 +20637,7 @@
  {
   "url": "/mizoram-tour-packages",
   "status": 200,
-  "words": 1434,
+  "words": 1432,
   "findings": [],
   "seo": {
    "title": "Tour packages Mizoram (2026) | XTSY",
@@ -20681,7 +20681,7 @@
  {
   "url": "/monsoon-in-agartala",
   "status": 200,
-  "words": 1424,
+  "words": 1422,
   "findings": [],
   "seo": {
    "title": "Monsoon in Agartala 2026 – XTSY Travel Guide",
@@ -20725,7 +20725,7 @@
  {
   "url": "/monsoon-in-aizawl",
   "status": 200,
-  "words": 1430,
+  "words": 1428,
   "findings": [],
   "seo": {
    "title": "Monsoon in Aizawl 2026 – XTSY Travel Guide",
@@ -20769,7 +20769,7 @@
  {
   "url": "/monsoon-in-bomdila",
   "status": 200,
-  "words": 1461,
+  "words": 1459,
   "findings": [],
   "seo": {
    "title": "Monsoon in Bomdila 2026 – XTSY Travel Guide",
@@ -20813,7 +20813,7 @@
  {
   "url": "/monsoon-in-champhai",
   "status": 200,
-  "words": 1408,
+  "words": 1406,
   "findings": [],
   "seo": {
    "title": "Monsoon in Champhai 2026 – XTSY Travel Guide",
@@ -20857,7 +20857,7 @@
  {
   "url": "/monsoon-in-cherrapunji",
   "status": 200,
-  "words": 1432,
+  "words": 1430,
   "findings": [],
   "seo": {
    "title": "Monsoon in Cherrapunji 2026 – XTSY Travel Guide",
@@ -20901,7 +20901,7 @@
  {
   "url": "/monsoon-in-dawki",
   "status": 200,
-  "words": 1444,
+  "words": 1442,
   "findings": [],
   "seo": {
    "title": "Monsoon in Dawki 2026 – XTSY Travel Guide",
@@ -20945,7 +20945,7 @@
  {
   "url": "/monsoon-in-dzukou-valley",
   "status": 200,
-  "words": 1466,
+  "words": 1464,
   "findings": [],
   "seo": {
    "title": "Monsoon in Dzukou Valley 2026 – XTSY Travel Guide",
@@ -20989,7 +20989,7 @@
  {
   "url": "/monsoon-in-guwahati",
   "status": 200,
-  "words": 1424,
+  "words": 1422,
   "findings": [],
   "seo": {
    "title": "Monsoon in Guwahati 2026 – XTSY Travel Guide",
@@ -21033,7 +21033,7 @@
  {
   "url": "/monsoon-in-haflong",
   "status": 200,
-  "words": 1408,
+  "words": 1406,
   "findings": [],
   "seo": {
    "title": "Monsoon in Haflong 2026 – XTSY Travel Guide",
@@ -21077,7 +21077,7 @@
  {
   "url": "/monsoon-in-imphal",
   "status": 200,
-  "words": 1436,
+  "words": 1434,
   "findings": [],
   "seo": {
    "title": "Monsoon in Imphal 2026 – XTSY Travel Guide",
@@ -21121,7 +21121,7 @@
  {
   "url": "/monsoon-in-itanagar",
   "status": 200,
-  "words": 1408,
+  "words": 1406,
   "findings": [],
   "seo": {
    "title": "Monsoon in Itanagar 2026 – XTSY Travel Guide",
@@ -21165,7 +21165,7 @@
  {
   "url": "/monsoon-in-jorhat",
   "status": 200,
-  "words": 1408,
+  "words": 1406,
   "findings": [],
   "seo": {
    "title": "Monsoon in Jorhat 2026 – XTSY Travel Guide",
@@ -21209,7 +21209,7 @@
  {
   "url": "/monsoon-in-jowai",
   "status": 200,
-  "words": 1424,
+  "words": 1422,
   "findings": [],
   "seo": {
    "title": "Monsoon in Jowai 2026 – XTSY Travel Guide",
@@ -21253,7 +21253,7 @@
  {
   "url": "/monsoon-in-kaziranga",
   "status": 200,
-  "words": 1437,
+  "words": 1435,
   "findings": [],
   "seo": {
    "title": "Monsoon in Kaziranga 2026 – XTSY Travel Guide",
@@ -21297,7 +21297,7 @@
  {
   "url": "/monsoon-in-kohima",
   "status": 200,
-  "words": 1447,
+  "words": 1445,
   "findings": [],
   "seo": {
    "title": "Monsoon in Kohima 2026 – XTSY Travel Guide",
@@ -21341,7 +21341,7 @@
  {
   "url": "/monsoon-in-loktak-lake",
   "status": 200,
-  "words": 1457,
+  "words": 1455,
   "findings": [],
   "seo": {
    "title": "Monsoon in Loktak Lake 2026 – XTSY Travel Guide",
@@ -21385,7 +21385,7 @@
  {
   "url": "/monsoon-in-majuli",
   "status": 200,
-  "words": 1420,
+  "words": 1418,
   "findings": [],
   "seo": {
    "title": "Monsoon in Majuli 2026 – XTSY Travel Guide",
@@ -21429,7 +21429,7 @@
  {
   "url": "/monsoon-in-mawlynnong",
   "status": 200,
-  "words": 1441,
+  "words": 1439,
   "findings": [],
   "seo": {
    "title": "Monsoon in Mawlynnong 2026 – XTSY Travel Guide",
@@ -21473,7 +21473,7 @@
  {
   "url": "/monsoon-in-mawsynram",
   "status": 200,
-  "words": 1430,
+  "words": 1428,
   "findings": [],
   "seo": {
    "title": "Monsoon in Mawsynram 2026 – XTSY Travel Guide",
@@ -21517,7 +21517,7 @@
  {
   "url": "/monsoon-in-mokokchung",
   "status": 200,
-  "words": 1408,
+  "words": 1406,
   "findings": [],
   "seo": {
    "title": "Monsoon in Mokokchung 2026 – XTSY Travel Guide",
@@ -21561,7 +21561,7 @@
  {
   "url": "/monsoon-in-nongjrong",
   "status": 200,
-  "words": 1408,
+  "words": 1406,
   "findings": [],
   "seo": {
    "title": "Monsoon in Nongjrong 2026 – XTSY Travel Guide",
@@ -21605,7 +21605,7 @@
  {
   "url": "/monsoon-in-pasighat",
   "status": 200,
-  "words": 1408,
+  "words": 1406,
   "findings": [],
   "seo": {
    "title": "Monsoon in Pasighat 2026 – XTSY Travel Guide",
@@ -21649,7 +21649,7 @@
  {
   "url": "/monsoon-in-reiek",
   "status": 200,
-  "words": 1408,
+  "words": 1406,
   "findings": [],
   "seo": {
    "title": "Monsoon in Reiek 2026 – XTSY Travel Guide",
@@ -21693,7 +21693,7 @@
  {
   "url": "/monsoon-in-shillong",
   "status": 200,
-  "words": 1408,
+  "words": 1406,
   "findings": [],
   "seo": {
    "title": "Monsoon in Shillong 2026 – XTSY Travel Guide",
@@ -21737,7 +21737,7 @@
  {
   "url": "/monsoon-in-shnongpdeng",
   "status": 200,
-  "words": 1437,
+  "words": 1435,
   "findings": [],
   "seo": {
    "title": "Monsoon in Shnongpdeng 2026 – XTSY Travel Guide",
@@ -21781,7 +21781,7 @@
  {
   "url": "/monsoon-in-tawang",
   "status": 200,
-  "words": 1464,
+  "words": 1462,
   "findings": [],
   "seo": {
    "title": "Monsoon in Tawang 2026 – XTSY Travel Guide",
@@ -21825,7 +21825,7 @@
  {
   "url": "/monsoon-in-tezpur",
   "status": 200,
-  "words": 1408,
+  "words": 1406,
   "findings": [],
   "seo": {
    "title": "Monsoon in Tezpur 2026 – XTSY Travel Guide",
@@ -21869,7 +21869,7 @@
  {
   "url": "/monsoon-in-tura",
   "status": 200,
-  "words": 1438,
+  "words": 1436,
   "findings": [],
   "seo": {
    "title": "Monsoon in Tura 2026 – XTSY Travel Guide",
@@ -21913,7 +21913,7 @@
  {
   "url": "/monsoon-in-unakoti",
   "status": 200,
-  "words": 1420,
+  "words": 1418,
   "findings": [],
   "seo": {
    "title": "Monsoon in Unakoti 2026 – XTSY Travel Guide",
@@ -21957,7 +21957,7 @@
  {
   "url": "/monsoon-in-ziro",
   "status": 200,
-  "words": 1443,
+  "words": 1441,
   "findings": [],
   "seo": {
    "title": "Monsoon in Ziro 2026 – XTSY Travel Guide",
@@ -22001,7 +22001,7 @@
  {
   "url": "/motorbike-expedition-northeast-india",
   "status": 200,
-  "words": 634,
+  "words": 632,
   "findings": [],
   "seo": {
    "title": "Northeast India Motorbike Expedition — Routes | XTSY",
@@ -22036,7 +22036,7 @@
  {
   "url": "/multi-cuisine-restaurant-shillong",
   "status": 200,
-  "words": 923,
+  "words": 921,
   "findings": [],
   "seo": {
    "title": "Multi-Cuisine Restaurant in Shillong | TAB Bistro",
@@ -22080,7 +22080,7 @@
  {
   "url": "/nagaland-tour-packages",
   "status": 200,
-  "words": 1415,
+  "words": 1413,
   "findings": [],
   "seo": {
    "title": "Tour packages Nagaland (2026) | XTSY",
@@ -22124,7 +22124,7 @@
  {
   "url": "/nohkalikai-falls-guide",
   "status": 200,
-  "words": 1278,
+  "words": 1276,
   "findings": [],
   "seo": {
    "title": "Nohkalikai Falls — India's Tallest Waterfall | Guide",
@@ -22169,7 +22169,7 @@
  {
   "url": "/nohkalikai-falls-meghalaya",
   "status": 200,
-  "words": 1576,
+  "words": 1574,
   "findings": [],
   "seo": {
    "title": "Nohkalikai Falls — India's Tallest Waterfall Guide 2026",
@@ -22214,7 +22214,7 @@
  {
   "url": "/nongjrong-tour-package",
   "status": 200,
-  "words": 1100,
+  "words": 1098,
   "findings": [],
   "seo": {
    "title": "Nongjrong Tour Package — Sunrise & Root Bridges",
@@ -22258,7 +22258,7 @@
  {
   "url": "/noodles-in-shillong",
   "status": 200,
-  "words": 1066,
+  "words": 1064,
   "findings": [],
   "seo": {
    "title": "Noodles & Soups Restaurant in Shillong | TAB Bistro",
@@ -22302,7 +22302,7 @@
  {
   "url": "/north-east-trip-guide",
   "status": 200,
-  "words": 1375,
+  "words": 1373,
   "findings": [],
   "seo": {
    "title": "North East India Trip Guide 2026 | XTSY Travel",
@@ -22346,7 +22346,7 @@
  {
   "url": "/north-indian-restaurant-shillong",
   "status": 200,
-  "words": 1080,
+  "words": 1078,
   "findings": [],
   "seo": {
    "title": "North Indian Restaurant in Shillong | TAB Bistro",
@@ -22390,7 +22390,7 @@
  {
   "url": "/offbeat-meghalaya",
   "status": 200,
-  "words": 1335,
+  "words": 1333,
   "findings": [],
   "seo": {
    "title": "Offbeat Places in Meghalaya 2026 — Hidden Gems | XTSY",
@@ -22434,7 +22434,7 @@
  {
   "url": "/online-food-order-shillong",
   "status": 200,
-  "words": 1067,
+  "words": 1065,
   "findings": [],
   "seo": {
    "title": "Order Food Online in Shillong — Multi-Cuisine | TAB Bistro",
@@ -22478,7 +22478,7 @@
  {
   "url": "/outdoor-venue-shillong",
   "status": 200,
-  "words": 905,
+  "words": 903,
   "findings": [],
   "seo": {
    "title": "Outdoor Venue in Shillong — Events & Weddings | XTSY",
@@ -22522,7 +22522,7 @@
  {
   "url": "/parent-stay-near-iim-shillong",
   "status": 200,
-  "words": 1110,
+  "words": 1108,
   "findings": [],
   "seo": {
    "title": "Parent Stay IIM Shillong (2026) | XTSY",
@@ -22568,7 +22568,7 @@
  {
   "url": "/parent-stay-near-nehu",
   "status": 200,
-  "words": 1098,
+  "words": 1096,
   "findings": [],
   "seo": {
    "title": "Parent Stay NEHU (2026) | XTSY",
@@ -22614,7 +22614,7 @@
  {
   "url": "/parent-stay-near-nift-shillong",
   "status": 200,
-  "words": 1110,
+  "words": 1108,
   "findings": [],
   "seo": {
    "title": "Parent Stay NIFT Shillong (2026) | XTSY",
@@ -22660,7 +22660,7 @@
  {
   "url": "/partner-stays",
   "status": 200,
-  "words": 513,
+  "words": 511,
   "findings": [],
   "seo": {
    "title": "Become an XTSY Partner Stay in Meghalaya | XTSY",
@@ -22695,7 +22695,7 @@
  {
   "url": "/party-catering-shillong",
   "status": 200,
-  "words": 1173,
+  "words": 1171,
   "findings": [],
   "seo": {
    "title": "Party Catering & Bulk Food Orders in Shillong",
@@ -22739,7 +22739,7 @@
  {
   "url": "/party-food-order-shillong",
   "status": 200,
-  "words": 1023,
+  "words": 1021,
   "findings": [],
   "seo": {
    "title": "Party Food Orders in Shillong | TAB Bistro",
@@ -22783,7 +22783,7 @@
  {
   "url": "/patient-attendant-stay-neigrihms",
   "status": 200,
-  "words": 989,
+  "words": 987,
   "findings": [],
   "seo": {
    "title": "Patient Attendant Stay Near NEIGRIHMS — From ₹399",
@@ -22838,7 +22838,7 @@
  {
   "url": "/patient-attendant-stay-neigrims",
   "status": 200,
-  "words": 1085,
+  "words": 1083,
   "findings": [],
   "seo": {
    "title": "Patient Attendant Stay NEIGRIMS (2026) | XTSY",
@@ -22884,7 +22884,7 @@
  {
   "url": "/pet-friendly",
   "status": 200,
-  "words": 610,
+  "words": 608,
   "findings": [],
   "seo": {
    "title": "Pet Friendly Stay in Shillong, Meghalaya | XTSY",
@@ -22922,7 +22922,7 @@
  {
   "url": "/pet-friendly-restaurant-shillong",
   "status": 200,
-  "words": 1015,
+  "words": 1013,
   "findings": [],
   "seo": {
    "title": "Pet-Friendly Restaurant in Shillong | TAB Bistro",
@@ -22966,7 +22966,7 @@
  {
   "url": "/places-to-eat-in-shillong",
   "status": 200,
-  "words": 1036,
+  "words": 1034,
   "findings": [],
   "seo": {
    "title": "Places to Eat in Shillong — Restaurants, Cafés & Tandoor",
@@ -23010,7 +23010,7 @@
  {
   "url": "/places-to-visit-in-meghalaya",
   "status": 200,
-  "words": 1155,
+  "words": 1153,
   "findings": [],
   "seo": {
    "title": "Places to Visit in Meghalaya: Top 25 Spots | XTSY",
@@ -23051,7 +23051,7 @@
  {
   "url": "/places-to-visit-meghalaya",
   "status": 200,
-  "words": 1839,
+  "words": 1837,
   "findings": [],
   "seo": {
    "title": "80 Places to Visit in Meghalaya — Complete Destination Guide",
@@ -23095,7 +23095,7 @@
  {
   "url": "/plan-trip-with-ai",
   "status": 200,
-  "words": 954,
+  "words": 952,
   "findings": [],
   "seo": {
    "title": "Plan a Meghalaya & Northeast India Trip with AI | XTSY",
@@ -23134,7 +23134,7 @@
  {
   "url": "/pre-wedding-shoot-meghalaya",
   "status": 200,
-  "words": 946,
+  "words": 944,
   "findings": [],
   "seo": {
    "title": "Pre-Wedding Shoot in Meghalaya — Best Locations 2026",
@@ -23178,7 +23178,7 @@
  {
   "url": "/pre-wedding-shoot-venue-shillong",
   "status": 200,
-  "words": 1040,
+  "words": 1038,
   "findings": [],
   "seo": {
    "title": "Pre-Wedding Shoot Venue in Shillong | TAB Bistro",
@@ -23222,7 +23222,7 @@
  {
   "url": "/pricing-cancellation-policy",
   "status": 200,
-  "words": 1204,
+  "words": 1202,
   "findings": [],
   "seo": {
    "title": "Pricing & Cancellation Policy | XTSY Shillong",
@@ -23260,7 +23260,7 @@
  {
   "url": "/privacy-policy",
   "status": 200,
-  "words": 1357,
+  "words": 1358,
   "findings": [
    {
     "rule": "aeo:no FAQ or question headings",
@@ -23300,7 +23300,7 @@
  {
   "url": "/pure-veg-restaurant-shillong",
   "status": 200,
-  "words": 1070,
+  "words": 1068,
   "findings": [],
   "seo": {
    "title": "Pure Veg Restaurant in Shillong — Vegetarian Food Guide",
@@ -23344,7 +23344,7 @@
  {
   "url": "/rainbow-falls-guide",
   "status": 200,
-  "words": 1273,
+  "words": 1271,
   "findings": [],
   "seo": {
    "title": "Rainbow Falls Meghalaya — Nongriat Trek Guide",
@@ -23389,7 +23389,7 @@
  {
   "url": "/restaurant-in-police-bazar",
   "status": 200,
-  "words": 1218,
+  "words": 1216,
   "findings": [],
   "seo": {
    "title": "Restaurant in Police Bazar Shillong | TAB Bistro",
@@ -23433,7 +23433,7 @@
  {
   "url": "/restaurant-in-shillong",
   "status": 200,
-  "words": 2111,
+  "words": 2109,
   "findings": [
    {
     "rule": "placeholder:coming soon",
@@ -23482,7 +23482,7 @@
  {
   "url": "/restaurant-near-iim-shillong",
   "status": 200,
-  "words": 1272,
+  "words": 1270,
   "findings": [],
   "seo": {
    "title": "Restaurants Near IIM Shillong, New Shillong Township",
@@ -23526,7 +23526,7 @@
  {
   "url": "/restaurant-near-mlcu-shillong",
   "status": 200,
-  "words": 1255,
+  "words": 1253,
   "findings": [],
   "seo": {
    "title": "Restaurants Near MLCU, New Shillong Township",
@@ -23570,7 +23570,7 @@
  {
   "url": "/restaurant-near-neiah-shillong",
   "status": 200,
-  "words": 1259,
+  "words": 1257,
   "findings": [],
   "seo": {
    "title": "Restaurants Near NEIAH, New Shillong Township",
@@ -23614,7 +23614,7 @@
  {
   "url": "/restaurant-near-neigrims-shillong",
   "status": 200,
-  "words": 1278,
+  "words": 1276,
   "findings": [],
   "seo": {
    "title": "Restaurants Near NEIGRIMS, New Shillong Township",
@@ -23658,7 +23658,7 @@
  {
   "url": "/restaurant-near-nift-shillong",
   "status": 200,
-  "words": 1266,
+  "words": 1264,
   "findings": [],
   "seo": {
    "title": "Restaurants Near NIFT Shillong, New Shillong Township",
@@ -23702,7 +23702,7 @@
  {
   "url": "/restaurants-in-laitumkhrah",
   "status": 200,
-  "words": 1053,
+  "words": 1051,
   "findings": [],
   "seo": {
    "title": "Restaurants in Laitumkhrah Shillong — Cafés & Dining Guide",
@@ -23746,7 +23746,7 @@
  {
   "url": "/restaurants-in-new-shillong-township",
   "status": 200,
-  "words": 1085,
+  "words": 1083,
   "findings": [],
   "seo": {
    "title": "Restaurants in New Shillong Township, Shillong | TAB Bistro",
@@ -23790,7 +23790,7 @@
  {
   "url": "/restaurants-in-police-bazar-shillong",
   "status": 200,
-  "words": 1062,
+  "words": 1060,
   "findings": [],
   "seo": {
    "title": "Restaurants in Police Bazar Shillong — Best Dining & Food",
@@ -23834,7 +23834,7 @@
  {
   "url": "/romantic-restaurant-shillong",
   "status": 200,
-  "words": 1031,
+  "words": 1029,
   "findings": [],
   "seo": {
    "title": "Romantic Restaurant in Shillong — Couple Dining | TAB Bistro",
@@ -23878,7 +23878,7 @@
  {
   "url": "/safety-house-rules",
   "status": 200,
-  "words": 640,
+  "words": 638,
   "findings": [],
   "seo": {
    "title": "Hostel Safety & House Rules | XTSY",
@@ -23930,7 +23930,7 @@
  {
   "url": "/scooty-rental-shillong",
   "status": 200,
-  "words": 971,
+  "words": 969,
   "findings": [],
   "seo": {
    "title": "Scooty Rental in Shillong — From ₹500/Day | XTSY",
@@ -23974,7 +23974,7 @@
  {
   "url": "/self-drive-car-guwahati",
   "status": 200,
-  "words": 1123,
+  "words": 1121,
   "findings": [],
   "seo": {
    "title": "Self Drive Car Rental Guwahati 2026 | XTSY Rentals",
@@ -24018,7 +24018,7 @@
  {
   "url": "/shillong-cherry-blossom-festival",
   "status": 200,
-  "words": 1424,
+  "words": 1422,
   "findings": [],
   "seo": {
    "title": "Shillong Cherry Blossom Festival 2026: Dates & Stay",
@@ -24071,7 +24071,7 @@
  {
   "url": "/shillong-dormitory",
   "status": 200,
-  "words": 1120,
+  "words": 1118,
   "findings": [],
   "seo": {
    "title": "Dormitory in Shillong — Mixed & Female Dorms | XTSY",
@@ -24126,7 +24126,7 @@
  {
   "url": "/shillong-guide",
   "status": 200,
-  "words": 1274,
+  "words": 1272,
   "findings": [],
   "seo": {
    "title": "Shillong — The Scotland of the East | Complete Guide",
@@ -24170,7 +24170,7 @@
  {
   "url": "/shillong-last-minute-stays",
   "status": 200,
-  "words": 1127,
+  "words": 1125,
   "findings": [],
   "seo": {
    "title": "Last Minute Stays in Shillong — Available Now (1 January 19…",
@@ -24225,7 +24225,7 @@
  {
   "url": "/shillong-peak-viewpoint",
   "status": 200,
-  "words": 1424,
+  "words": 1422,
   "findings": [],
   "seo": {
    "title": "Shillong Peak — Highest Point & 360° Panoramic Views",
@@ -24270,7 +24270,7 @@
  {
   "url": "/shillong-stay-tonight",
   "status": 200,
-  "words": 1128,
+  "words": 1126,
   "findings": [],
   "seo": {
    "title": "Stay in Shillong Tonight — Rooms & Beds Available (1 Januar…",
@@ -24341,7 +24341,7 @@
  {
   "url": "/shillong-to-cherrapunji-road-trip",
   "status": 200,
-  "words": 1321,
+  "words": 1319,
   "findings": [],
   "seo": {
    "title": "Shillong to Cherrapunji Road Trip Guide 2026 | XTSY",
@@ -24385,7 +24385,7 @@
  {
   "url": "/shillong-to-dawki-trip",
   "status": 200,
-  "words": 1331,
+  "words": 1329,
   "findings": [],
   "seo": {
    "title": "Shillong to Dawki Trip Guide 2026 — XTSY",
@@ -24429,7 +24429,7 @@
  {
   "url": "/shillong-to-nongjrong",
   "status": 200,
-  "words": 1263,
+  "words": 1261,
   "findings": [],
   "seo": {
    "title": "Shillong to Nongjrong Trip Guide 2026 | XTSY",
@@ -24473,7 +24473,7 @@
  {
   "url": "/shillong-tour-package",
   "status": 200,
-  "words": 795,
+  "words": 793,
   "findings": [],
   "seo": {
    "title": "Shillong Tour Package with Stay & Cab | XTSY",
@@ -24513,7 +24513,7 @@
  {
   "url": "/shillong-tour-package-2-days",
   "status": 200,
-  "words": 1096,
+  "words": 1094,
   "findings": [],
   "seo": {
    "title": "Shillong Tour Package 2 Days — ₹4,999 | XTSY",
@@ -24557,7 +24557,7 @@
  {
   "url": "/shillong-travel-guide",
   "status": 200,
-  "words": 1617,
+  "words": 1615,
   "findings": [],
   "seo": {
    "title": "Shillong Travel Guide 2026 — Scotland of the East",
@@ -24601,7 +24601,7 @@
  {
   "url": "/shillong-vacation-planner",
   "status": 200,
-  "words": 1323,
+  "words": 1321,
   "findings": [],
   "seo": {
    "title": "Shillong Vacation Planner 2026 — Complete Guide",
@@ -24645,7 +24645,7 @@
  {
   "url": "/shillong-weekend-trip",
   "status": 200,
-  "words": 1247,
+  "words": 1245,
   "findings": [],
   "seo": {
    "title": "Shillong Weekend Trip — 2 Night 3 Day Plan",
@@ -24689,7 +24689,7 @@
  {
   "url": "/shnongpdeng-camping",
   "status": 200,
-  "words": 1295,
+  "words": 1293,
   "findings": [],
   "seo": {
    "title": "Shnongpdeng Camping Guide 2026 — River Adventures & Stays",
@@ -24734,7 +24734,7 @@
  {
   "url": "/sikkim-tour-packages",
   "status": 200,
-  "words": 1447,
+  "words": 1445,
   "findings": [],
   "seo": {
    "title": "Tour packages Sikkim (2026) | XTSY",
@@ -24778,7 +24778,7 @@
  {
   "url": "/solo-travel-hostel-shillong",
   "status": 200,
-  "words": 2031,
+  "words": 2029,
   "findings": [],
   "seo": {
    "title": "Solo Travel Hostel in Shillong 2026: Why XTSY is Safest",
@@ -24824,7 +24824,7 @@
  {
   "url": "/solo-trip-meghalaya",
   "status": 200,
-  "words": 1376,
+  "words": 1374,
   "findings": [],
   "seo": {
    "title": "Solo Trip to Meghalaya 2026 — Complete Guide | XTSY",
@@ -24868,7 +24868,7 @@
  {
   "url": "/south-indian-restaurant-shillong",
   "status": 200,
-  "words": 933,
+  "words": 931,
   "findings": [],
   "seo": {
    "title": "South Indian Restaurant in Shillong | TAB Bistro",
@@ -24912,7 +24912,7 @@
  {
   "url": "/stargaze-hostel-vs-xtsy",
   "status": 200,
-  "words": 1545,
+  "words": 1543,
   "findings": [],
   "seo": {
    "title": "Stargaze Hostel vs XTSY Shillong — Compare Now",
@@ -24958,7 +24958,7 @@
  {
   "url": "/stay-near-iim-shillong",
   "status": 200,
-  "words": 1109,
+  "words": 1107,
   "findings": [],
   "seo": {
    "title": "Stay IIM Shillong (2026) | XTSY",
@@ -25004,7 +25004,7 @@
  {
   "url": "/stay-near-iit-guwahati",
   "status": 200,
-  "words": 1159,
+  "words": 1157,
   "findings": [],
   "seo": {
    "title": "Stay IIT Guwahati (2026) | XTSY",
@@ -25048,7 +25048,7 @@
  {
   "url": "/stay-near-nehu",
   "status": 200,
-  "words": 1096,
+  "words": 1094,
   "findings": [],
   "seo": {
    "title": "Stay NEHU (2026) | XTSY — Budget Rooms, 24/7 Check-in",
@@ -25094,7 +25094,7 @@
  {
   "url": "/stay-near-neigrims",
   "status": 200,
-  "words": 1083,
+  "words": 1081,
   "findings": [],
   "seo": {
    "title": "Stay NEIGRIMS (2026) | XTSY — Stay Near, 24/7 Check-in",
@@ -25140,7 +25140,7 @@
  {
   "url": "/stay-near-nift-shillong",
   "status": 200,
-  "words": 1108,
+  "words": 1106,
   "findings": [],
   "seo": {
    "title": "Stay NIFT Shillong (2026) | XTSY",
@@ -25186,7 +25186,7 @@
  {
   "url": "/stays-in-shillong",
   "status": 200,
-  "words": 1032,
+  "words": 1030,
   "findings": [],
   "seo": {
    "title": "Best Stays in Shillong 2026 — Budget to Luxury | XTSY",
@@ -25241,7 +25241,7 @@
  {
   "url": "/street-food-police-bazar",
   "status": 200,
-  "words": 992,
+  "words": 990,
   "findings": [],
   "seo": {
    "title": "Street Food in Police Bazar Shillong — Guide | XTSY",
@@ -25285,7 +25285,7 @@
  {
   "url": "/student-accommodation-near-iim-shillong",
   "status": 200,
-  "words": 1110,
+  "words": 1108,
   "findings": [],
   "seo": {
    "title": "Student Accommodation IIM Shillong (2026) | XTSY",
@@ -25331,7 +25331,7 @@
  {
   "url": "/student-accommodation-near-nehu",
   "status": 200,
-  "words": 1098,
+  "words": 1096,
   "findings": [],
   "seo": {
    "title": "Student Accommodation NEHU (2026) | XTSY",
@@ -25377,7 +25377,7 @@
  {
   "url": "/student-accommodation-near-nift-shillong",
   "status": 200,
-  "words": 1110,
+  "words": 1108,
   "findings": [],
   "seo": {
    "title": "Student Accommodation NIFT Shillong (2026) | XTSY",
@@ -25423,7 +25423,7 @@
  {
   "url": "/suv-rental-shillong",
   "status": 200,
-  "words": 946,
+  "words": 944,
   "findings": [],
   "seo": {
    "title": "SUV Rental in Shillong — 4x4 for Meghalaya | XTSY",
@@ -25467,7 +25467,7 @@
  {
   "url": "/tab-bistro",
   "status": 200,
-  "words": 1479,
+  "words": 1477,
   "findings": [
    {
     "rule": "seo:description > 160 chars",
@@ -25522,7 +25522,7 @@
  {
   "url": "/tab-bistro-by-xtsy-restaurant",
   "status": 200,
-  "words": 1249,
+  "words": 1247,
   "findings": [],
   "seo": {
    "title": "TAB Bistro by XTSY — Multi-Cuisine Forest Restaurant in Shi…",
@@ -25566,7 +25566,7 @@
  {
   "url": "/takeaway-food-shillong",
   "status": 200,
-  "words": 1057,
+  "words": 1055,
   "findings": [],
   "seo": {
    "title": "Takeaway Food in Shillong — Pickup Meals | TAB Bistro",
@@ -25610,7 +25610,7 @@
  {
   "url": "/tandoor-restaurant-in-laitumkhrah",
   "status": 200,
-  "words": 1077,
+  "words": 1075,
   "findings": [],
   "seo": {
    "title": "Tandoor restaurant in Laitumkhrah Shillong | TAB Bistro",
@@ -25654,7 +25654,7 @@
  {
   "url": "/tandoor-restaurant-in-police-bazar-shillong",
   "status": 200,
-  "words": 1087,
+  "words": 1085,
   "findings": [],
   "seo": {
    "title": "Tandoor restaurant in Police Bazar Shillong | TAB Bistro",
@@ -25698,7 +25698,7 @@
  {
   "url": "/tandoor-restaurant-shillong",
   "status": 200,
-  "words": 1037,
+  "words": 1035,
   "findings": [],
   "seo": {
    "title": "Tandoor Restaurant in Shillong | TAB Bistro",
@@ -25742,7 +25742,7 @@
  {
   "url": "/tandoori-dishes-in-shillong",
   "status": 200,
-  "words": 1062,
+  "words": 1060,
   "findings": [],
   "seo": {
    "title": "Tandoori Dishes Restaurant in Shillong | TAB Bistro",
@@ -25786,7 +25786,7 @@
  {
   "url": "/terms-of-service",
   "status": 200,
-  "words": 1496,
+  "words": 1494,
   "findings": [
    {
     "rule": "aeo:no FAQ or question headings",
@@ -25835,7 +25835,7 @@
  {
   "url": "/things-to-do-in-meghalaya",
   "status": 200,
-  "words": 1888,
+  "words": 1886,
   "findings": [],
   "seo": {
    "title": "Things to Do in Meghalaya: 20 Ideas | XTSY",
@@ -25876,7 +25876,7 @@
  {
   "url": "/things-to-do-meghalaya",
   "status": 200,
-  "words": 1782,
+  "words": 1780,
   "findings": [],
   "seo": {
    "title": "50 Best Things to Do in Meghalaya | Activity Guide",
@@ -25920,7 +25920,7 @@
  {
   "url": "/top-restaurants-in-shillong",
   "status": 200,
-  "words": 1034,
+  "words": 1032,
   "findings": [],
   "seo": {
    "title": "Top Restaurants in Shillong | TAB Bistro",
@@ -25964,7 +25964,7 @@
  {
   "url": "/tour-operators-meghalaya",
   "status": 200,
-  "words": 1131,
+  "words": 1129,
   "findings": [],
   "seo": {
    "title": "Best Tour Operators in Meghalaya 2026 | XTSY",
@@ -26008,7 +26008,7 @@
  {
   "url": "/tour-operators-shillong",
   "status": 200,
-  "words": 1097,
+  "words": 1095,
   "findings": [],
   "seo": {
    "title": "Tour Operators in Shillong 2026 — Best Rated | XTSY",
@@ -26052,7 +26052,7 @@
  {
   "url": "/tours",
   "status": 200,
-  "words": 2878,
+  "words": 2876,
   "findings": [],
   "seo": {
    "title": "Northeast India Tour Packages from ₹7,999 | XTSY Travel",
@@ -26089,7 +26089,7 @@
  {
   "url": "/tours/4n-5d-shillong-meghalaya-tour",
   "status": 200,
-  "words": 861,
+  "words": 859,
   "findings": [],
   "seo": {
    "title": "4 Nights 5 Days Shillong Meghalaya Tour | XTSY Tours",
@@ -26133,7 +26133,7 @@
  {
   "url": "/tours/5d-meghalaya-trip-package",
   "status": 200,
-  "words": 743,
+  "words": 741,
   "findings": [],
   "seo": {
    "title": "5 Days Meghalaya Trip Package — 4 Nights / 5 Days | XTSY",
@@ -26177,7 +26177,7 @@
  {
   "url": "/tours/5n-6d-meghalaya-holiday-package",
   "status": 200,
-  "words": 799,
+  "words": 797,
   "findings": [],
   "seo": {
    "title": "5 Nights 6 Days Meghalaya Holiday Package | XTSY Tours",
@@ -26221,7 +26221,7 @@
  {
   "url": "/tours/5n-6d-tawang-tour",
   "status": 200,
-  "words": 1000,
+  "words": 998,
   "findings": [],
   "seo": {
    "title": "5 Nights 6 Days Tawang Tour — 5 Nights / 6 Days | XTSY",
@@ -26265,7 +26265,7 @@
  {
   "url": "/tours/6d-meghalaya-honeymoon-package",
   "status": 200,
-  "words": 792,
+  "words": 790,
   "findings": [],
   "seo": {
    "title": "6 Days Meghalaya Honeymoon Package | XTSY Tours",
@@ -26309,7 +26309,7 @@
  {
   "url": "/tours/6d-shillong-meghalaya-tour",
   "status": 200,
-  "words": 808,
+  "words": 806,
   "findings": [],
   "seo": {
    "title": "6 Days Shillong Meghalaya Tour — 5 Nights / 6 Days | XTSY",
@@ -26353,7 +26353,7 @@
  {
   "url": "/tours/6n-7d-arunachal-pradesh-tour",
   "status": 200,
-  "words": 925,
+  "words": 923,
   "findings": [],
   "seo": {
    "title": "6 Nights 7 Days Arunachal Pradesh Tour | XTSY Tours",
@@ -26397,7 +26397,7 @@
  {
   "url": "/tours/6n-7d-meghalaya-tour",
   "status": 200,
-  "words": 887,
+  "words": 885,
   "findings": [],
   "seo": {
    "title": "6 Nights 7 Days Meghalaya Tour — 6 Nights / 7 Days | XTSY",
@@ -26441,7 +26441,7 @@
  {
   "url": "/tours/7n-8d-tawang-tour",
   "status": 200,
-  "words": 1042,
+  "words": 1040,
   "findings": [],
   "seo": {
    "title": "7 Nights 8 Days Tawang Tour — 7 Nights / 8 Days | XTSY",
@@ -26485,7 +26485,7 @@
  {
   "url": "/tours/7n-guwahati-shillong-kaziranga-tour",
   "status": 200,
-  "words": 856,
+  "words": 854,
   "findings": [],
   "seo": {
    "title": "7 Nights Guwahati Shillong Kaziranga Tour | XTSY Tours",
@@ -26529,7 +26529,7 @@
  {
   "url": "/tours/alleppey-houseboat-kumarakom-backwaters",
   "status": 200,
-  "words": 830,
+  "words": 828,
   "findings": [],
   "seo": {
    "title": "Alleppey Houseboat & Kumarakom Backwaters — 3 Days | XTSY",
@@ -26572,7 +26572,7 @@
  {
   "url": "/tours/arunachal-bike-expedition-solo-friendly",
   "status": 200,
-  "words": 760,
+  "words": 758,
   "findings": [],
   "seo": {
    "title": "Arunachal Bike Expedition — Solo Friendly — 8 Days | XTSY",
@@ -26615,7 +26615,7 @@
  {
   "url": "/tours/arunachal-winter-cultural-festival",
   "status": 200,
-  "words": 950,
+  "words": 948,
   "findings": [],
   "seo": {
    "title": "Arunachal Winter Cultural Festival — 6 Days | XTSY",
@@ -26659,7 +26659,7 @@
  {
   "url": "/tours/assam-wildlife-tea-heritage",
   "status": 200,
-  "words": 882,
+  "words": 880,
   "findings": [],
   "seo": {
    "title": "Assam Wildlife & Tea Heritage — 6 Days from ₹28,999 | XTSY",
@@ -26703,7 +26703,7 @@
  {
   "url": "/tours/bali-wellness-culture-retreat",
   "status": 200,
-  "words": 932,
+  "words": 930,
   "findings": [],
   "seo": {
    "title": "Bali Wellness & Culture Retreat — 7 Days from ₹59,999 | XTSY",
@@ -26747,7 +26747,7 @@
  {
   "url": "/tours/bhutan-mindful-kingdom-journey",
   "status": 200,
-  "words": 887,
+  "words": 885,
   "findings": [],
   "seo": {
    "title": "Bhutan Mindful Kingdom Journey — 6 Days from ₹84,999 | XTSY",
@@ -26791,7 +26791,7 @@
  {
   "url": "/tours/bumla-pass-bike-expedition",
   "status": 200,
-  "words": 1152,
+  "words": 1150,
   "findings": [],
   "seo": {
    "title": "Bumla Pass Bike Expedition — 8 Days from ₹46,999 | XTSY",
@@ -26835,7 +26835,7 @@
  {
   "url": "/tours/char-dham-winter-pilgrimage-prep",
   "status": 200,
-  "words": 905,
+  "words": 903,
   "findings": [],
   "seo": {
    "title": "Char Dham Winter Pilgrimage Prep — 8 Days | XTSY",
@@ -26879,7 +26879,7 @@
  {
   "url": "/tours/classic-kerala-kochi-munnar-thekkady-alleppey",
   "status": 200,
-  "words": 987,
+  "words": 985,
   "findings": [],
   "seo": {
    "title": "Classic Kerala: Kochi, Munnar, Thekkady & Alleppey | XTSY",
@@ -26922,7 +26922,7 @@
  {
   "url": "/tours/dawki-crystal-waters-winter-escape",
   "status": 200,
-  "words": 763,
+  "words": 761,
   "findings": [],
   "seo": {
    "title": "Dawki Crystal Waters Winter Escape — 3 Days | XTSY",
@@ -26966,7 +26966,7 @@
  {
   "url": "/tours/dharamshala-mcleod-ganj-winter",
   "status": 200,
-  "words": 822,
+  "words": 820,
   "findings": [],
   "seo": {
    "title": "Dharamshala McLeod Ganj Winter — 5 Days from ₹31,999 | XTSY",
@@ -27010,7 +27010,7 @@
  {
   "url": "/tours/double-decker-root-bridge-cherrapunji",
   "status": 200,
-  "words": 846,
+  "words": 844,
   "findings": [],
   "seo": {
    "title": "Double Decker Root Bridge & Cherrapunji — 5 Days | XTSY",
@@ -27054,7 +27054,7 @@
  {
   "url": "/tours/dravidian-architecture-masterclass",
   "status": 200,
-  "words": 1001,
+  "words": 999,
   "findings": [],
   "seo": {
    "title": "Dravidian Architecture Masterclass — 10 Days | XTSY",
@@ -27098,7 +27098,7 @@
  {
   "url": "/tours/georgia-wine-mountains-trail",
   "status": 200,
-  "words": 919,
+  "words": 917,
   "findings": [],
   "seo": {
    "title": "Georgia Wine & Mountains Trail — 7 Days from ₹69,999 | XTSY",
@@ -27142,7 +27142,7 @@
  {
   "url": "/tours/grand-tamil-nadu-temple-circuit-premium-heritage",
   "status": 200,
-  "words": 1020,
+  "words": 1018,
   "findings": [],
   "seo": {
    "title": "Grand Tamil Nadu Temple Circuit — Premium Heritage | XTSY",
@@ -27186,7 +27186,7 @@
  {
   "url": "/tours/great-living-chola-temples-navagraha-circuit",
   "status": 200,
-  "words": 892,
+  "words": 890,
   "findings": [],
   "seo": {
    "title": "Great Living Chola Temples & Navagraha Circuit | XTSY Tours",
@@ -27229,7 +27229,7 @@
  {
   "url": "/tours/himachal-yoga-retreat-program",
   "status": 200,
-  "words": 903,
+  "words": 901,
   "findings": [],
   "seo": {
    "title": "Himachal Yoga Retreat Program — 6 Days from ₹39,999 | XTSY",
@@ -27273,7 +27273,7 @@
  {
   "url": "/tours/kerala-temple-trail-guruvayur-to-padmanabhaswamy",
   "status": 200,
-  "words": 890,
+  "words": 888,
   "findings": [],
   "seo": {
    "title": "Kerala Temple Trail: Guruvayur to Padmanabhaswamy | XTSY",
@@ -27316,7 +27316,7 @@
  {
   "url": "/tours/kerala-winter-backwaters-paradise",
   "status": 200,
-  "words": 818,
+  "words": 816,
   "findings": [],
   "seo": {
    "title": "Kerala Winter Backwaters Paradise — 5 Days | XTSY",
@@ -27360,7 +27360,7 @@
  {
   "url": "/tours/khaddum-expedition-krem-chympe",
   "status": 200,
-  "words": 808,
+  "words": 806,
   "findings": [],
   "seo": {
    "title": "Khaddum Expedition — Krem Chympe — 4 Days | XTSY",
@@ -27404,7 +27404,7 @@
  {
   "url": "/tours/kodaikanal-madurai-hills-and-temples",
   "status": 200,
-  "words": 922,
+  "words": 920,
   "findings": [],
   "seo": {
    "title": "Kodaikanal & Madurai: Hills and Temples — 5 Days | XTSY",
@@ -27447,7 +27447,7 @@
  {
   "url": "/tours/kodaikanal-winter-hill-retreat",
   "status": 200,
-  "words": 751,
+  "words": 749,
   "findings": [],
   "seo": {
    "title": "Kodaikanal Winter Hill Retreat — 3 Days from ₹20,999 | XTSY",
@@ -27491,7 +27491,7 @@
  {
   "url": "/tours/kohima-wwii-heritage-tribal-culture",
   "status": 200,
-  "words": 870,
+  "words": 868,
   "findings": [],
   "seo": {
    "title": "Kohima WWII Heritage & Tribal Culture — 4 Days | XTSY",
@@ -27535,7 +27535,7 @@
  {
   "url": "/tours/krang-suri-waterfall-budget-getaway",
   "status": 200,
-  "words": 711,
+  "words": 709,
   "findings": [],
   "seo": {
    "title": "Krang Suri Waterfall Budget Getaway — 2 Days | XTSY",
@@ -27579,7 +27579,7 @@
  {
   "url": "/tours/kullu-valley-winter-adventure",
   "status": 200,
-  "words": 778,
+  "words": 776,
   "findings": [],
   "seo": {
    "title": "Kullu Valley Winter Adventure — 4 Days from ₹26,999 | XTSY",
@@ -27623,7 +27623,7 @@
  {
   "url": "/tours/madurai-rameswaram-kanyakumari-temple-trail",
   "status": 200,
-  "words": 924,
+  "words": 922,
   "findings": [],
   "seo": {
    "title": "Madurai, Rameswaram & Kanyakumari Temple Trail | XTSY Tours",
@@ -27666,7 +27666,7 @@
  {
   "url": "/tours/mahabalipuram-pondicherry-chennai-heritage-coast",
   "status": 200,
-  "words": 895,
+  "words": 893,
   "findings": [],
   "seo": {
    "title": "Mahabalipuram, Pondicherry & Chennai Heritage Coast | XTSY",
@@ -27709,7 +27709,7 @@
  {
   "url": "/tours/manipur-loktak-lake-winter-discovery",
   "status": 200,
-  "words": 791,
+  "words": 789,
   "findings": [],
   "seo": {
    "title": "Manipur Loktak Lake Winter Discovery — 4 Days | XTSY",
@@ -27753,7 +27753,7 @@
  {
   "url": "/tours/meghalaya-biodiversity-research-expedition",
   "status": 200,
-  "words": 1014,
+  "words": 1012,
   "findings": [],
   "seo": {
    "title": "Meghalaya Biodiversity Research Expedition — 7 Days | XTSY",
@@ -27797,7 +27797,7 @@
  {
   "url": "/tours/meghalaya-waterfalls-budget-circuit",
   "status": 200,
-  "words": 733,
+  "words": 731,
   "findings": [],
   "seo": {
    "title": "Meghalaya Waterfalls Budget Circuit — 3 Days | XTSY",
@@ -27841,7 +27841,7 @@
  {
   "url": "/tours/morocco-culture-desert-caravan",
   "status": 200,
-  "words": 992,
+  "words": 990,
   "findings": [],
   "seo": {
    "title": "Morocco Culture & Desert Caravan — 8 Days | XTSY",
@@ -27885,7 +27885,7 @@
  {
   "url": "/tours/munnar-tea-hills-eravikulam",
   "status": 200,
-  "words": 850,
+  "words": 848,
   "findings": [],
   "seo": {
    "title": "Munnar Tea Hills & Eravikulam — 4 Days | XTSY",
@@ -27928,7 +27928,7 @@
  {
   "url": "/tours/nagaland-dzukou-valley-kohima-heritage",
   "status": 200,
-  "words": 905,
+  "words": 903,
   "findings": [],
   "seo": {
    "title": "Nagaland Dzukou Valley & Kohima Heritage — 5 Days | XTSY",
@@ -27972,7 +27972,7 @@
  {
   "url": "/tours/nainital-winter-lake-serenity",
   "status": 200,
-  "words": 784,
+  "words": 782,
   "findings": [],
   "seo": {
    "title": "Nainital Winter Lake Serenity — 4 Days from ₹24,999 | XTSY",
@@ -28016,7 +28016,7 @@
  {
   "url": "/tours/ne-india-solo-bike-circuit-meghalaya",
   "status": 200,
-  "words": 667,
+  "words": 665,
   "findings": [],
   "seo": {
    "title": "NE India Solo Bike Circuit — Meghalaya — 6 Days | XTSY",
@@ -28059,7 +28059,7 @@
  {
   "url": "/tours/nepal-himalayan-culture-trek-lite",
   "status": 200,
-  "words": 863,
+  "words": 861,
   "findings": [],
   "seo": {
    "title": "Nepal Himalayan Culture & Trek Lite — 7 Days | XTSY",
@@ -28103,7 +28103,7 @@
  {
   "url": "/tours/north-sikkim-winter-expedition",
   "status": 200,
-  "words": 922,
+  "words": 920,
   "findings": [],
   "seo": {
    "title": "North Sikkim Winter Expedition — 7 Days from ₹39,999 | XTSY",
@@ -28147,7 +28147,7 @@
  {
   "url": "/tours/northeast-ecological-immersion",
   "status": 200,
-  "words": 1018,
+  "words": 1016,
   "findings": [],
   "seo": {
    "title": "Northeast Ecological Immersion — 8 Days from ₹36,999 | XTSY",
@@ -28191,7 +28191,7 @@
  {
   "url": "/tours/ooty-coonoor-nilgiri-mountain-railway",
   "status": 200,
-  "words": 847,
+  "words": 845,
   "findings": [],
   "seo": {
    "title": "Ooty & Coonoor: Nilgiri Mountain Railway — 5 Days | XTSY",
@@ -28234,7 +28234,7 @@
  {
   "url": "/tours/pancha-bhoota-sthalam-the-five-elements-temples",
   "status": 200,
-  "words": 936,
+  "words": 934,
   "findings": [],
   "seo": {
    "title": "Pancha Bhoota Sthalam: The Five Elements Temples | XTSY",
@@ -28277,7 +28277,7 @@
  {
   "url": "/tours/pelling-kanchenjunga-winter-views",
   "status": 200,
-  "words": 774,
+  "words": 772,
   "findings": [],
   "seo": {
    "title": "Pelling Kanchenjunga Winter Views — 4 Days | XTSY",
@@ -28321,7 +28321,7 @@
  {
   "url": "/tours/phe-phe-moopun-waterfalls-adventure",
   "status": 200,
-  "words": 792,
+  "words": 790,
   "findings": [],
   "seo": {
    "title": "Phe Phe & Moopun Waterfalls Adventure — 3 Days | XTSY",
@@ -28365,7 +28365,7 @@
  {
   "url": "/tours/sacred-temples-of-south-india-9-day-spiritual-journey",
   "status": 200,
-  "words": 931,
+  "words": 929,
   "findings": [],
   "seo": {
    "title": "Sacred Temples of South India — 9 Day Spiritual Journey",
@@ -28409,7 +28409,7 @@
  {
   "url": "/tours/shillong-winter-cultural-sojourn",
   "status": 200,
-  "words": 756,
+  "words": 754,
   "findings": [],
   "seo": {
    "title": "Shillong Winter Cultural Sojourn — 2 Days from ₹7,999 | XTSY",
@@ -28453,7 +28453,7 @@
  {
   "url": "/tours/shimla-manali-solang-classic",
   "status": 200,
-  "words": 874,
+  "words": 872,
   "findings": [],
   "seo": {
    "title": "Shimla, Manali & Solang Classic — 6 Days | XTSY",
@@ -28496,7 +28496,7 @@
  {
   "url": "/tours/sikkim-peaceful-winter-retreat",
   "status": 200,
-  "words": 768,
+  "words": 766,
   "findings": [],
   "seo": {
    "title": "Sikkim Peaceful Winter Retreat — 4 Days from ₹21,999 | XTSY",
@@ -28540,7 +28540,7 @@
  {
   "url": "/tours/solo-female-traveller-ne-cultural-trail",
   "status": 200,
-  "words": 667,
+  "words": 665,
   "findings": [],
   "seo": {
    "title": "Solo Female Traveller — NE Cultural Trail — 5 Days | XTSY",
@@ -28583,7 +28583,7 @@
  {
   "url": "/tours/spiti-valley-circuit-via-kinnaur",
   "status": 200,
-  "words": 1053,
+  "words": 1051,
   "findings": [],
   "seo": {
    "title": "Spiti Valley Circuit via Kinnaur — 9 Days | XTSY",
@@ -28626,7 +28626,7 @@
  {
   "url": "/tours/sri-lanka-heritage-wildlife-loop",
   "status": 200,
-  "words": 988,
+  "words": 986,
   "findings": [],
   "seo": {
    "title": "Sri Lanka Heritage & Wildlife Loop — 8 Days | XTSY",
@@ -28670,7 +28670,7 @@
  {
   "url": "/tours/tawang-monastery-exploration",
   "status": 200,
-  "words": 1076,
+  "words": 1074,
   "findings": [],
   "seo": {
    "title": "Tawang Monastery Exploration — 6 Days from ₹33,999 | XTSY",
@@ -28714,7 +28714,7 @@
  {
   "url": "/tours/thailand-nature-culture-escape",
   "status": 200,
-  "words": 920,
+  "words": 918,
   "findings": [],
   "seo": {
    "title": "Thailand Nature & Culture Escape — 8 Days | XTSY",
@@ -28758,7 +28758,7 @@
  {
   "url": "/tours/thekkady-wildlife-spice-winter",
   "status": 200,
-  "words": 744,
+  "words": 742,
   "findings": [],
   "seo": {
    "title": "Thekkady Wildlife & Spice Winter — 3 Days | XTSY",
@@ -28802,7 +28802,7 @@
  {
   "url": "/tours/tri-nation-himalayan-motorbike-expedition",
   "status": 200,
-  "words": 659,
+  "words": 657,
   "findings": [],
   "seo": {
    "title": "Tri-Nation Himalayan Motorbike Expedition | XTSY Tours",
@@ -28845,7 +28845,7 @@
  {
   "url": "/tours/tripura-heritage-craft-trail",
   "status": 200,
-  "words": 786,
+  "words": 784,
   "findings": [],
   "seo": {
    "title": "Tripura Heritage & Craft Trail — 4 Days from ₹22,999 | XTSY",
@@ -28889,7 +28889,7 @@
  {
   "url": "/tours/turkey-history-landscape-route",
   "status": 200,
-  "words": 983,
+  "words": 981,
   "findings": [],
   "seo": {
    "title": "Turkey History & Landscape Route — 9 Days | XTSY",
@@ -28933,7 +28933,7 @@
  {
   "url": "/tours/varkala-cliffs-kovalam-trivandrum",
   "status": 200,
-  "words": 902,
+  "words": 900,
   "findings": [],
   "seo": {
    "title": "Varkala Cliffs, Kovalam & Trivandrum — 4 Days | XTSY",
@@ -28976,7 +28976,7 @@
  {
   "url": "/tours/vietnam-discovery-trail",
   "status": 200,
-  "words": 974,
+  "words": 972,
   "findings": [],
   "seo": {
    "title": "Vietnam Discovery Trail — 10 Days from ₹74,999 | XTSY",
@@ -29020,7 +29020,7 @@
  {
   "url": "/tours/wari-chora-hidden-gem-of-meghalaya",
   "status": 200,
-  "words": 844,
+  "words": 842,
   "findings": [],
   "seo": {
    "title": "Wari Chora — Hidden Gem of Meghalaya — 3 Days | XTSY",
@@ -29064,7 +29064,7 @@
  {
   "url": "/tours/wilderness-survival-camp-winter",
   "status": 200,
-  "words": 908,
+  "words": 906,
   "findings": [],
   "seo": {
    "title": "Wilderness Survival Camp (Winter) — 5 Days | XTSY",
@@ -29108,7 +29108,7 @@
  {
   "url": "/tours/winter-spiti-snow-expedition",
   "status": 200,
-  "words": 918,
+  "words": 916,
   "findings": [],
   "seo": {
    "title": "Winter Spiti Snow Expedition — 8 Days | XTSY",
@@ -29151,7 +29151,7 @@
  {
   "url": "/tours/xtsy-270-adventure-couple-circuit",
   "status": 200,
-  "words": 1482,
+  "words": 1480,
   "findings": [],
   "seo": {
    "title": "XTSY 270 Adventure Couple Circuit — 7 Days | XTSY",
@@ -29195,7 +29195,7 @@
  {
   "url": "/tours/xtsy-270-honeymoon-cloud-retreat",
   "status": 200,
-  "words": 666,
+  "words": 664,
   "findings": [],
   "seo": {
    "title": "XTSY 270 Honeymoon Cloud Retreat — 5 Days | XTSY",
@@ -29238,7 +29238,7 @@
  {
   "url": "/tours/xtsy-270-romantic-meghalaya-escape",
   "status": 200,
-  "words": 1315,
+  "words": 1313,
   "findings": [],
   "seo": {
    "title": "XTSY 270 Romantic Meghalaya Escape — 6 Days | XTSY",
@@ -29282,7 +29282,7 @@
  {
   "url": "/tours/xtsy-solo-traveller-pass-meghalaya",
   "status": 200,
-  "words": 657,
+  "words": 655,
   "findings": [],
   "seo": {
    "title": "XTSY Solo Traveller Pass — Meghalaya — 5 Days | XTSY",
@@ -29325,7 +29325,7 @@
  {
   "url": "/travel-agency-shillong",
   "status": 200,
-  "words": 1147,
+  "words": 1145,
   "findings": [],
   "seo": {
    "title": "Best Travel Agency in Shillong 2026 | XTSY Travel",
@@ -29369,7 +29369,7 @@
  {
   "url": "/travel-guide/guwahati-to-shillong-transport",
   "status": 200,
-  "words": 874,
+  "words": 872,
   "findings": [],
   "seo": {
    "title": "Guwahati to Shillong: Cab, Bus & Shared Taxi",
@@ -29411,7 +29411,7 @@
  {
   "url": "/travel-guide/how-to-reach-meghalaya",
   "status": 200,
-  "words": 1259,
+  "words": 1257,
   "findings": [],
   "seo": {
    "title": "How to Reach Meghalaya & Shillong (2026 Guide)",
@@ -29452,7 +29452,7 @@
  {
   "url": "/travel-guide/meghalaya-for-international-tourists",
   "status": 200,
-  "words": 1126,
+  "words": 1124,
   "findings": [],
   "seo": {
    "title": "Meghalaya for International Tourists: Visa & Permits",
@@ -29493,7 +29493,7 @@
  {
   "url": "/trekking-in-meghalaya",
   "status": 200,
-  "words": 1553,
+  "words": 1551,
   "findings": [],
   "seo": {
    "title": "Trekking in Meghalaya 2026 — 15 Best Trails & Routes",
@@ -29537,7 +29537,7 @@
  {
   "url": "/tripura-tour-packages",
   "status": 200,
-  "words": 1428,
+  "words": 1426,
   "findings": [],
   "seo": {
    "title": "Tour packages Tripura (2026) | XTSY",
@@ -29581,7 +29581,7 @@
  {
   "url": "/umiam-lake-shillong",
   "status": 200,
-  "words": 1265,
+  "words": 1263,
   "findings": [],
   "seo": {
    "title": "Umiam Lake (Barapani) — Shillong's Scenic Reservoir Guide",
@@ -29626,7 +29626,7 @@
  {
   "url": "/unique-luxury-stay-india",
   "status": 200,
-  "words": 1072,
+  "words": 1070,
   "findings": [],
   "seo": {
    "title": "Unique Luxury Stays in India — Experience by XTSY",
@@ -29681,7 +29681,7 @@
  {
   "url": "/vegetarian-food-in-shillong",
   "status": 200,
-  "words": 1037,
+  "words": 1035,
   "findings": [],
   "seo": {
    "title": "Vegetarian Food in Shillong — Where to Eat Veg | TAB Bistro",
@@ -29725,7 +29725,7 @@
  {
   "url": "/vehicle-rental-northeast",
   "status": 200,
-  "words": 937,
+  "words": 935,
   "findings": [],
   "seo": {
    "title": "Vehicle Rental Northeast India — Cars & Bikes | XTSY",
@@ -29769,7 +29769,7 @@
  {
   "url": "/waterfalls-in-meghalaya",
   "status": 200,
-  "words": 1809,
+  "words": 1807,
   "findings": [],
   "seo": {
    "title": "25 Stunning Waterfalls in Meghalaya: Guide",
@@ -29813,7 +29813,7 @@
  {
   "url": "/wedding-catering-services-shillong",
   "status": 200,
-  "words": 1199,
+  "words": 1197,
   "findings": [],
   "seo": {
    "title": "Wedding Catering Services in Shillong | TAB Bistro",
@@ -29857,7 +29857,7 @@
  {
   "url": "/wedding-catering-shillong",
   "status": 200,
-  "words": 977,
+  "words": 975,
   "findings": [],
   "seo": {
    "title": "Wedding Catering in Shillong — Menus & Packages | TAB Bistro",
@@ -29901,7 +29901,7 @@
  {
   "url": "/weekend-meghalaya-trip",
   "status": 200,
-  "words": 1203,
+  "words": 1201,
   "findings": [],
   "seo": {
    "title": "Weekend Meghalaya Trip 2026 — Day-by-Day Guide | XTSY",
@@ -29945,7 +29945,7 @@
  {
   "url": "/wei-sawdong-falls-guide",
   "status": 200,
-  "words": 1278,
+  "words": 1276,
   "findings": [],
   "seo": {
    "title": "Wei Sawdong Falls — Three-Tiered Hidden Gem",
@@ -29990,7 +29990,7 @@
  {
   "url": "/wei-sawdong-falls-meghalaya",
   "status": 200,
-  "words": 1369,
+  "words": 1367,
   "findings": [],
   "seo": {
    "title": "Wei Sawdong Falls — Meghalaya's Hidden Three-Tiered Gem",
@@ -30035,7 +30035,7 @@
  {
   "url": "/where-to-eat-in-shillong",
   "status": 200,
-  "words": 1055,
+  "words": 1053,
   "findings": [],
   "seo": {
    "title": "Where to Eat in Shillong — Local Food Guide | TAB Bistro",
@@ -30079,7 +30079,7 @@
  {
   "url": "/work-from-home",
   "status": 200,
-  "words": 549,
+  "words": 547,
   "findings": [],
   "seo": {
    "title": "Work From Meghalaya: Wifi, Desks & Long Stays | XTSY",
@@ -30117,7 +30117,7 @@
  {
   "url": "/workation-aizawl",
   "status": 200,
-  "words": 1545,
+  "words": 1543,
   "findings": [],
   "seo": {
    "title": "Workation in Aizawl 2026 – Long-Stay by XTSY",
@@ -30161,7 +30161,7 @@
  {
   "url": "/workation-cherrapunji",
   "status": 200,
-  "words": 1547,
+  "words": 1545,
   "findings": [],
   "seo": {
    "title": "Workation in Cherrapunji 2026 – Long-Stay by XTSY",
@@ -30205,7 +30205,7 @@
  {
   "url": "/workation-dawki",
   "status": 200,
-  "words": 1559,
+  "words": 1557,
   "findings": [],
   "seo": {
    "title": "Workation in Dawki 2026 – Long-Stay by XTSY",
@@ -30249,7 +30249,7 @@
  {
   "url": "/workation-gangtok",
   "status": 200,
-  "words": 1558,
+  "words": 1556,
   "findings": [],
   "seo": {
    "title": "Workation in Gangtok 2026 – Long-Stay by XTSY",
@@ -30293,7 +30293,7 @@
  {
   "url": "/workation-guwahati",
   "status": 200,
-  "words": 1539,
+  "words": 1537,
   "findings": [],
   "seo": {
    "title": "Workation in Guwahati 2026 – Long-Stay by XTSY",
@@ -30337,7 +30337,7 @@
  {
   "url": "/workation-kaziranga",
   "status": 200,
-  "words": 1552,
+  "words": 1550,
   "findings": [],
   "seo": {
    "title": "Workation in Kaziranga 2026 – Long-Stay by XTSY",
@@ -30381,7 +30381,7 @@
  {
   "url": "/workation-kohima",
   "status": 200,
-  "words": 1562,
+  "words": 1560,
   "findings": [],
   "seo": {
    "title": "Workation in Kohima 2026 – Long-Stay by XTSY",
@@ -30425,7 +30425,7 @@
  {
   "url": "/workation-mawlynnong",
   "status": 200,
-  "words": 1556,
+  "words": 1554,
   "findings": [],
   "seo": {
    "title": "Workation in Mawlynnong 2026 – Long-Stay by XTSY",
@@ -30469,7 +30469,7 @@
  {
   "url": "/workation-pelling",
   "status": 200,
-  "words": 1498,
+  "words": 1496,
   "findings": [],
   "seo": {
    "title": "Workation in Pelling 2026 – Long-Stay by XTSY",
@@ -30515,7 +30515,7 @@
  {
   "url": "/workation-shillong",
   "status": 200,
-  "words": 1488,
+  "words": 1486,
   "findings": [],
   "seo": {
    "title": "Workation in Shillong 2026 – Long-Stay by XTSY",
@@ -30561,7 +30561,7 @@
  {
   "url": "/workation-tawang",
   "status": 200,
-  "words": 1579,
+  "words": 1577,
   "findings": [],
   "seo": {
    "title": "Workation in Tawang 2026 – Long-Stay by XTSY",
@@ -30605,7 +30605,7 @@
  {
   "url": "/workation-ziro",
   "status": 200,
-  "words": 1499,
+  "words": 1497,
   "findings": [],
   "seo": {
    "title": "Workation in Ziro 2026 – Long-Stay by XTSY",
@@ -30651,7 +30651,7 @@
  {
   "url": "/xtsy-270",
   "status": 200,
-  "words": 632,
+  "words": 630,
   "findings": [],
   "seo": {
    "title": "Experience by XTSY — India's First Stargaze Glamp, Shillong",
@@ -30694,7 +30694,7 @@
  {
   "url": "/xtsy-adventure-campsite-dawki",
   "status": 200,
-  "words": 594,
+  "words": 592,
   "findings": [],
   "seo": {
    "title": "Dawki Campsite by the Umngot River | XTSY",
@@ -30734,7 +30734,7 @@
  {
   "url": "/xtsy-rentals",
   "status": 200,
-  "words": 681,
+  "words": 679,
   "findings": [],
   "seo": {
    "title": "Bike & Gear Rentals in Shillong | XTSY",
@@ -30773,7 +30773,7 @@
  {
   "url": "/xtsy-vs-zostel",
   "status": 200,
-  "words": 662,
+  "words": 660,
   "findings": [
    {
     "rule": "policy:pets",
@@ -30816,7 +30816,7 @@
  {
   "url": "/zion-backpackers-vs-xtsy",
   "status": 200,
-  "words": 1652,
+  "words": 1650,
   "findings": [],
   "seo": {
    "title": "Zion Backpackers vs XTSY Shillong — Compare",
@@ -30862,7 +30862,7 @@
  {
   "url": "/zip-lining-meghalaya",
   "status": 200,
-  "words": 990,
+  "words": 988,
   "findings": [],
   "seo": {
    "title": "Zip Lining in Meghalaya 2026 — Adventure Activity",
@@ -30906,7 +30906,7 @@
  {
   "url": "/zostel-vs-xtsy-shillong",
   "status": 200,
-  "words": 1051,
+  "words": 1049,
   "findings": [],
   "seo": {
    "title": "Zostel vs XTSY Shillong — Honest Comparison 2026",
