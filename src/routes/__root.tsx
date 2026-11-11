@@ -39,7 +39,6 @@ import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import ChatLauncher from "@/components/v2/ChatLauncher";
 import NotFound from "@/pages/NotFound";
 import { AppProvider } from "@/contexts/AppContext";
-import { HappyGuestsProvider } from "@/contexts/HappyGuestsContext";
 import { EnhancedAnalyticsProvider } from "@/hooks/useEnhancedAnalytics";
 import { TrafficAnalyticsProvider } from "@/hooks/useTrafficAnalytics";
 import { ConversionSignalsProvider } from "@/providers/ConversionSignalsProvider";
@@ -308,7 +307,6 @@ function RootComponent() {
             <ClientOnly fallback={null}>
               <PerformanceMonitor />
             </ClientOnly>
-            <HappyGuestsProvider>
                 <TrafficAnalyticsProvider>
                   <ConversionSignalsProvider>
                     <EnhancedAnalyticsProvider>
@@ -339,7 +337,6 @@ function RootComponent() {
                     </EnhancedAnalyticsProvider>
                   </ConversionSignalsProvider>
                 </TrafficAnalyticsProvider>
-            </HappyGuestsProvider>
           </div>
         </SecurityHeadersProvider>
       </AppProvider>
