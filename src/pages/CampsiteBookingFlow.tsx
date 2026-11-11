@@ -301,7 +301,7 @@ const CampsiteBookingFlow = memo(() => {
                 {submitting ? <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Submitting...</> : "Confirm Enquiry"}
               </Button>
               <p className="text-xs text-muted-foreground text-center">
-                Our team will WhatsApp you within 30 mins to confirm.
+                This opens WhatsApp with your details — send the message to reach our desk.
               </p>
             </motion.div>
           )}
