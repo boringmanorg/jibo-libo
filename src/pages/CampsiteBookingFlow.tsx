@@ -115,8 +115,10 @@ const CampsiteBookingFlow = memo(() => {
     if (!checkIn || !checkOut) return;
     setSubmitting(true);
     try {
-      setEnquiryId(localEnquiryRef());
+      const enquiryId = localEnquiryRef();
+      setEnquiryId(enquiryId);
       setStep("confirmation");
+      window.location.href = `${WHATSAPP}?text=${encodeURIComponent(`Namaste XTSY Team! I'd like to enquire about ${selectedPkg.title} at XTSY Adventure Campsite, Dawki. Enquiry ID: ${enquiryId}. Check-in: ${checkIn ? format(checkIn, 'yyyy-MM-dd') : ''}; check-out: ${checkOut ? format(checkOut, 'yyyy-MM-dd') : ''}; ${guests} guests × ${nights} nights at ₹${selectedPkg.price}/person/night. Estimated total ₹${total.toLocaleString('en-IN')}. Name: ${name}; email: ${email}; phone: ${phone}.${notes ? ` Requests: ${notes}.` : ''} Page: ${bookingPageSource()}. Please confirm availability.`)}`;
     } catch (err: any) {
       toast.error(err.message || "Could not submit enquiry. Please WhatsApp us.");
     } finally {
@@ -299,7 +301,7 @@ const CampsiteBookingFlow = memo(() => {
                 {submitting ? <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Submitting...</> : "Confirm Enquiry"}
               </Button>
               <p className="text-xs text-muted-foreground text-center">
-                Our team will WhatsApp you within 30 mins to confirm.
+                This opens WhatsApp with your details — send the message to reach our desk.
               </p>
             </motion.div>
           )}
@@ -314,7 +316,7 @@ const CampsiteBookingFlow = memo(() => {
               <h2 className="text-2xl font-bold mb-2">Enquiry Received!</h2>
               <p className="text-muted-foreground mb-1">Reference: <span className="font-mono font-semibold">{enquiryId}</span></p>
               <p className="text-sm text-muted-foreground mb-6">
-                Our team will WhatsApp you within 30 mins to confirm your camping dates.
+                Send the WhatsApp message that opened so the desk receives it and can confirm your dates.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                  <a href={`${WHATSAPP}?text=${encodeURIComponent(`Namaste XTSY Team! I'd like to enquire about ${selectedPkg.title} at XTSY Adventure Campsite, Dawki. Enquiry ID: ${enquiryId}. Check-in: ${checkIn ? format(checkIn, 'yyyy-MM-dd') : ''}; check-out: ${checkOut ? format(checkOut, 'yyyy-MM-dd') : ''}; ${guests} guests × ${nights} nights at ₹${selectedPkg.price}/person/night. Estimated total ₹${total.toLocaleString('en-IN')}. Name: ${name}; email: ${email}; phone: ${phone}.${notes ? ` Requests: ${notes}.` : ''} Page: ${bookingPageSource()}. Please confirm availability.`)}`}

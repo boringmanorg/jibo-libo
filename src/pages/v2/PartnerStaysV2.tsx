@@ -42,8 +42,11 @@ export default function PartnerStaysV2() {
       // create_enquiry needs a date range; for an application it records the day it was sent.
       const today = getLocalToday();
       const tomorrow = new Date(today.getTime() + 86400000);
+      void tomorrow;
       const ref = localEnquiryRef();
-      setDone(ref || 'received');
+      setDone(ref);
+      const msg = `Hi XTSY! Partner stay application (ref ${ref}). Name: ${f.name}; property: ${f.property}; town: ${f.town}; rooms: ${f.rooms}; email: ${f.email}; phone: ${f.phone}${f.listing ? `; listing: ${f.listing}` : ''}${f.notes ? `; notes: ${f.notes}` : ''}. Applied ${today.toDateString()}.`;
+      window.location.href = waLink(msg);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Could not send your application. Please message us on WhatsApp.');
     } finally {
@@ -91,7 +94,7 @@ export default function PartnerStaysV2() {
           <h2 className="xt-display m-0 text-[32px] leading-none">Apply</h2>
           {done ? (
             <p className="mt-4 text-[16px] leading-relaxed">
-              Thank you! Your application{done !== 'received' ? ` (reference ${done})` : ''} has reached the XTSY desk. We will call you within a few days.
+              Thank you! Your application{done !== 'received' ? ` (reference ${done})` : ''} is ready. Send the WhatsApp message that opened so it reaches the XTSY desk.
             </p>
           ) : (
             <form onSubmit={submit} className="mt-4 flex flex-col gap-3">
