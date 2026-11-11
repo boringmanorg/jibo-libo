@@ -84,7 +84,7 @@ const disabledProfiles: any = new Proxy(function () {}, {
   apply: () => disabledProfiles,
 });
 
-$1(visitorId: string): boolean {
+function checkRateLimitLocal(visitorId: string): boolean {
   const now = Date.now();
   const record = rateLimitMap.get(visitorId);
 
