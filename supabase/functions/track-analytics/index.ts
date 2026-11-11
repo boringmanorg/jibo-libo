@@ -372,15 +372,7 @@ Deno.serve(async (req) => {
               console.warn('[Analytics] Geo heatmap update failed - code: GH001');
             }
           }
-        } else {
-          await supabase.from('analytics_sessions')
-            .update({ 
-              page_views: (existingSession.page_views || 0) + 1,
-              is_bounce: false,
-              last_activity_at: new Date().toISOString(),
-            })
-            .eq('session_id', data.sessionId);
-        }
+        } // Existing sessions are never modified from caller-supplied session ids.
 
         await supabase.from('analytics_pageviews').insert({
           session_id: data.sessionId,
@@ -395,46 +387,8 @@ Deno.serve(async (req) => {
       }
 
       case 'pageview-end': {
-        await supabase.from('analytics_pageviews')
-          .update({
-            time_on_page_seconds: data.time_on_page_seconds,
-            scroll_depth_percent: data.scroll_depth_percent,
-            is_exit: data.is_exit || false,
-          })
-          .eq('session_id', data.sessionId)
-          .eq('page_path', data.page_path)
-          .order('created_at', { ascending: false })
-          .limit(1);
-
-        if (data.is_exit) {
-          const { data: session } = await supabase
-            .from('analytics_sessions')
-            .select('started_at')
-            .eq('session_id', data.sessionId)
-            .single();
-
-          if (session) {
-            const duration = Math.round(
-              (Date.now() - new Date(session.started_at).getTime()) / 1000
-            );
-
-            await supabase.from('analytics_sessions')
-              .update({
-                exit_page: data.page_path,
-                ended_at: new Date().toISOString(),
-                session_duration_seconds: duration,
-              })
-              .eq('session_id', data.sessionId);
-              
-            // Update traveller profile with session duration
-            await disabledProfiles
-              .update({
-                avg_session_duration: duration,
-              })
-              .eq('visitor_id', visitorId);
-          }
-        }
-
+        // Disabled: caller-supplied session ids cannot be bound to the caller, so existing
+        // sessions and page views are never updated from this public endpoint.
         break;
       }
 
