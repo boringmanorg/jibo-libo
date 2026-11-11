@@ -75,6 +75,15 @@ const RATE_WINDOW = 60000;
 const geoCache = new Map<string, { data: any; expiresAt: number }>();
 const GEO_CACHE_TTL = 10 * 60 * 1000; // 10 minutes
 
+// Security: anonymous callers cannot prove ownership of a visitor profile, so all
+// privileged traveller_profiles writes are disabled. This stub absorbs the old
+// query chains and resolves to an empty result.
+// deno-lint-ignore no-explicit-any
+const disabledProfiles: any = new Proxy(function () {}, {
+  get: (_t, p) => (p === 'then' ? (r: (v: unknown) => void) => r({ data: null, error: null }) : disabledProfiles),
+  apply: () => disabledProfiles,
+});
+
 function checkRateLimitLocal(visitorId: string): boolean {
   const now = Date.now();
   const record = rateLimitMap.get(visitorId);
@@ -293,7 +302,7 @@ Deno.serve(async (req) => {
 
     const parallelOps: Promise<any>[] = [
       supabase.from('traveller_events').insert(eventData),
-      supabase.from('traveller_profiles').upsert(profileUpdate, { onConflict: 'visitor_id' }),
+      disabledProfiles.upsert(profileUpdate, { onConflict: 'visitor_id' }),
     ];
 
     if (endpoint === 'pageview') {
@@ -418,7 +427,7 @@ Deno.serve(async (req) => {
               .eq('session_id', data.sessionId);
               
             // Update traveller profile with session duration
-            await supabase.from('traveller_profiles')
+            await disabledProfiles
               .update({
                 avg_session_duration: duration,
               })
@@ -455,7 +464,7 @@ Deno.serve(async (req) => {
             
           if (recentEvents) {
             const intentScore = calculateIntentScore(recentEvents);
-            await supabase.from('traveller_profiles')
+            await disabledProfiles
               .update({ booking_intent_score: intentScore })
               .eq('visitor_id', visitorId);
           }
@@ -481,7 +490,7 @@ Deno.serve(async (req) => {
 
         // Update traveller profile on completed booking
         if (data.is_completed && data.conversion_value) {
-          await supabase.from('traveller_profiles')
+          await disabledProfiles
             .update({
               total_bookings: supabase.rpc('increment', { x: 1 }),
               lifetime_value: supabase.rpc('add_to_lifetime_value', { amount: data.conversion_value }),
@@ -600,7 +609,7 @@ Deno.serve(async (req) => {
         if (data.travel_style) profileData.preferred_room_category = data.travel_style === 'luxury' ? 'luxury' : data.travel_style === 'budget' ? 'dormitory' : 'private';
         if (data.trip_purpose) profileData.preferred_season = data.trip_purpose; // Reusing field for trip type
         
-        await supabase.from('traveller_profiles')
+        await disabledProfiles
           .update(profileData)
           .eq('visitor_id', visitorId);
           
@@ -635,8 +644,7 @@ Deno.serve(async (req) => {
         
         // Update booking intent score on form engagement
         if (data.event_action === 'form_start' || data.event_action === 'field_focus') {
-          const { data: profile } = await supabase
-            .from('traveller_profiles')
+          const { data: profile } = await disabledProfiles
             .select('booking_intent_score')
             .eq('visitor_id', visitorId)
             .single();
@@ -644,7 +652,7 @@ Deno.serve(async (req) => {
           let newScore = (profile?.booking_intent_score || 0) + 5;
           if (data.event_action === 'form_start') newScore += 15;
           
-          await supabase.from('traveller_profiles')
+          await disabledProfiles
             .update({ 
               booking_intent_score: Math.min(newScore, 100),
               updated_at: new Date().toISOString()
@@ -670,10 +678,9 @@ Deno.serve(async (req) => {
           last_activity_at: new Date().toISOString(),
         };
 
-        await supabase
-          .from('traffic_sessions')
-          .update(sessionUpdate)
-          .eq('session_id', data.session_id);
+        // Security: anonymous callers cannot prove they own a session, so the
+        // privileged session-end update is disabled.
+        void sessionUpdate;
 
         break;
       }
