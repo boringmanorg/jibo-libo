@@ -104,10 +104,11 @@ Deno.serve(async (req) => {
           Deno.env.get('SUPABASE_URL')!,
           Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!,
         );
+        const esc = (v: unknown) => String(v).replace(/[&<>"']/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" } as Record<string, string>)[ch]);
         const htmlBody =
-          `<h2>${title}</h2><p>Base: ${base} · Checked: ${body.checked ?? '?'} URLs</p>` +
-          (failLines ? `<h3>Meta / soft-404 issues</h3><pre>${failLines}</pre>` : '') +
-          (hreflangLines ? `<h3>hreflang issues</h3><pre>${hreflangLines}</pre>` : '');
+          `<h2>${esc(title)}</h2><p>Base: ${esc(base)} · Checked: ${Number(body.checked) || 0} URLs</p>` +
+          (failLines ? `<h3>Meta / soft-404 issues</h3><pre>${esc(failLines)}</pre>` : '') +
+          (hreflangLines ? `<h3>hreflang issues</h3><pre>${esc(hreflangLines)}</pre>` : '');
         const { error } = await supabase.functions.invoke('send-transactional-email', {
           body: {
             to: alertEmail,
