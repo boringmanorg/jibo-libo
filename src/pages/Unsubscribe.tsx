@@ -1,143 +1,21 @@
-import { useEffect, useState, memo } from "react";
-import { useSearchParams } from "@/lib/router-compat";
-import { Helmet } from '@/lib/seo/helmet';
-import { Loader2, CheckCircle2, AlertCircle, MailX } from "lucide-react";
+import { memo } from "react";
+import { MailX } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Button } from "@/components/ui/button";
-import { supabase } from "@/integrations/supabase/client";
 
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
-const SUPABASE_ANON = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || "";
-
-type State =
-  | { kind: "validating" }
-  | { kind: "ready"; email?: string }
-  | { kind: "already" }
-  | { kind: "invalid"; message: string }
-  | { kind: "submitting" }
-  | { kind: "done" }
-  | { kind: "error"; message: string };
-
-const Unsubscribe = memo(() => {
-  const [params] = useSearchParams();
-  const token = params.get("token") || "";
-  const [state, setState] = useState<State>({ kind: "validating" });
-
-  useEffect(() => {
-    if (!token) {
-      setState({ kind: "invalid", message: "This page needs the unsubscribe link from one of our emails." });
-      return;
-    }
-    (async () => {
-      try {
-        const res = await fetch(
-          `${SUPABASE_URL}/functions/v1/handle-email-unsubscribe?token=${encodeURIComponent(token)}`,
-          { headers: { apikey: SUPABASE_ANON } }
-        );
-        const data = await res.json().catch(() => ({}));
-        if (!res.ok) {
-          setState({ kind: "invalid", message: data?.error || "Invalid or expired link." });
-          return;
-        }
-        if (data?.alreadyUnsubscribed || data?.already_unsubscribed) {
-          setState({ kind: "already" });
-          return;
-        }
-        setState({ kind: "ready", email: data?.email });
-      } catch (e: any) {
-        setState({ kind: "error", message: e?.message || "Could not validate link." });
-      }
-    })();
-  }, [token]);
-
-  const confirm = async () => {
-    setState({ kind: "submitting" });
-    try {
-      const { data, error } = await supabase.functions.invoke("handle-email-unsubscribe", {
-        body: { token },
-      });
-      if (error) throw error;
-      if ((data as any)?.error) throw new Error((data as any).error);
-      setState({ kind: "done" });
-    } catch (e: any) {
-      setState({ kind: "error", message: e?.message || "Unsubscribe failed." });
-    }
-  };
-
-  return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <Helmet>
-        <title>Unsubscribe | XTSY</title>
-        <meta name="robots" content="noindex,nofollow" />
-      </Helmet>
-      <Header />
-      <main className="flex-1 flex items-center justify-center px-4 py-16">
-        <div className="max-w-md w-full bg-card border border-border rounded-2xl p-8 text-center shadow-xs">
-          {state.kind === "validating" && (
-            <>
-              <Loader2 className="w-8 h-8 mx-auto mb-4 animate-spin text-muted-foreground" />
-              <p className="text-muted-foreground">Validating your link…</p>
-            </>
-          )}
-          {state.kind === "ready" && (
-            <>
-              <MailX className="w-10 h-10 mx-auto mb-4 text-primary" />
-              <h1 className="text-xl font-bold mb-2">Unsubscribe from XTSY emails?</h1>
-              <p className="text-sm text-muted-foreground mb-6">
-                {state.email ? <>You'll stop receiving emails at <b>{state.email}</b>.</> : "You'll stop receiving emails from us."}
-              </p>
-              <Button size="lg" className="w-full" onClick={confirm}>Confirm Unsubscribe</Button>
-            </>
-          )}
-          {state.kind === "submitting" && (
-            <>
-              <Loader2 className="w-8 h-8 mx-auto mb-4 animate-spin text-muted-foreground" />
-              <p className="text-muted-foreground">Unsubscribing…</p>
-            </>
-          )}
-          {state.kind === "already" && (
-            <>
-              <CheckCircle2 className="w-10 h-10 mx-auto mb-4 text-emerald-600" />
-              <h1 className="text-xl font-bold mb-2">Already unsubscribed</h1>
-              <p className="text-sm text-muted-foreground">You're not on our email list anymore.</p>
-            </>
-          )}
-          {state.kind === "done" && (
-            <>
-              <CheckCircle2 className="w-10 h-10 mx-auto mb-4 text-emerald-600" />
-              <h1 className="text-xl font-bold mb-2">You're unsubscribed</h1>
-              <p className="text-sm text-muted-foreground">We won't email you anymore. Sorry to see you go!</p>
-            </>
-          )}
-          {state.kind === "invalid" && (
-            <>
-              <AlertCircle className="w-10 h-10 mx-auto mb-4 text-muted-foreground" />
-              <h1 className="text-xl font-bold mb-2">This unsubscribe link is missing or has expired</h1>
-              <p className="text-sm text-muted-foreground">{state.message}</p>
-              <p className="text-sm text-muted-foreground mt-3">
-                To stop our emails, open the latest email from XTSY and use its unsubscribe link, or write to{" "}
-                <a className="underline" href="mailto:admin@xtsy.one?subject=Unsubscribe">admin@xtsy.one</a> with the subject “Unsubscribe”.
-              </p>
-            </>
-          )}
-          {state.kind === "error" && (
-            <>
-              <AlertCircle className="w-10 h-10 mx-auto mb-4 text-destructive" />
-              <h1 className="text-xl font-bold mb-2">We couldn't process your request</h1>
-              <p className="text-sm text-muted-foreground">{state.message}</p>
-              <p className="text-sm text-muted-foreground mt-3">
-                Please try again in a minute, or write to{" "}
-                <a className="underline" href="mailto:admin@xtsy.one?subject=Unsubscribe">admin@xtsy.one</a> with the subject “Unsubscribe”.
-              </p>
-            </>
-          )}
-        </div>
-      </main>
-      <Footer />
-    </div>
-  );
-});
-
+// XTSY sends no marketing email and keeps no subscriber list, so there is nothing to unsubscribe from.
+const Unsubscribe = memo(() => (
+  <>
+    <Header />
+    <main className="container mx-auto max-w-xl px-4 py-24 text-center">
+      <MailX className="mx-auto mb-4 h-10 w-10 text-muted-foreground" aria-hidden />
+      <h1 className="mb-3 text-2xl font-semibold text-foreground">No email list to leave</h1>
+      <p className="text-muted-foreground">
+        XTSY doesn't send marketing emails or keep a subscriber list. All booking conversations happen on WhatsApp at +91 8837317070.
+      </p>
+    </main>
+    <Footer />
+  </>
+));
 Unsubscribe.displayName = "Unsubscribe";
 export default Unsubscribe;
