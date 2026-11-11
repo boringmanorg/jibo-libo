@@ -118,7 +118,7 @@ const CampsiteBookingFlow = memo(() => {
       const enquiryId = localEnquiryRef();
       setEnquiryId(enquiryId);
       setStep("confirmation");
-      window.location.href = `${WHATSAPP}?text=${encodeURIComponent(`Namaste XTSY Team! I'd like to enquire about ${selectedPkg.title} at XTSY Adventure Campsite, Dawki. Enquiry ID: ${enquiryId}. Check-in: ${checkIn ? format(checkIn, 'yyyy-MM-dd') : ''}; check-out: ${checkOut ? format(checkOut, 'yyyy-MM-dd') : ''}; ${guests} guests × ${nights} nights at ₹${selectedPkg.price}/person/night. Estimated total ₹${total.toLocaleString('en-IN')}. Name: ${name}; email: ${email}; phone: ${phone}.${notes ? ` Requests: ${notes}.` : ''} Page: ${bookingPageSource()}. Please confirm availability.`)};
+      window.location.href = `${WHATSAPP}?text=${encodeURIComponent(`Namaste XTSY Team! I'd like to enquire about ${selectedPkg.title} at XTSY Adventure Campsite, Dawki. Enquiry ID: ${enquiryId}. Check-in: ${checkIn ? format(checkIn, 'yyyy-MM-dd') : ''}; check-out: ${checkOut ? format(checkOut, 'yyyy-MM-dd') : ''}; ${guests} guests × ${nights} nights at ₹${selectedPkg.price}/person/night. Estimated total ₹${total.toLocaleString('en-IN')}. Name: ${name}; email: ${email}; phone: ${phone}.${notes ? ` Requests: ${notes}.` : ''} Page: ${bookingPageSource()}. Please confirm availability.`)}`;
     } catch (err: any) {
       toast.error(err.message || "Could not submit enquiry. Please WhatsApp us.");
     } finally {
