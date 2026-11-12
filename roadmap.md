@@ -30,6 +30,7 @@ Approved scope: **Part 0 + Part 7 quick wins (7a, 7b, 7c, 7d, 7f)** first, then 
 - [x] 7f: all 30 selected pages return 200 and show 3–4 always-visible editorial questions; no Google PAA placement or AI citation guarantee. Existing guide FAQ schema reuses the same answers; duplicate visible accordion sections suppressed on selected pages.
 
 ## Verification (12 Nov 2026)
+- [ ] Current request: refresh the page directory with current titles, identify broken URLs without deleting owner-controlled routes, and deliver sitewide SEO architecture coverage.
 - Current run: 78 targeted tests passed; all 30 pages checked in the browser, desktop/phone answer screenshots reviewed, phone document has no horizontal overflow; build OK.
 - build OK; 177/177 unit tests pass (2 Playwright spec files fail to load under vitest — pre-existing config issue, unrelated)
 - /about/xtsy-facts returns 200; seo-check 0 errors
