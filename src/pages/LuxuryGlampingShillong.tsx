@@ -15,6 +15,7 @@ const LuxuryGlampingShillong = memo(() => {
     name: 'Experience by XTSY — Luxury Glamping Shillong',
     description: 'India\'s first 270° panoramic glass suite in Shillong, Meghalaya. Luxury glamping with mountain views, stargazing, and sunrise experiences.',
     url: 'https://xtsy.one/luxury-glamping-shillong',
+    image: 'https://xtsy.one/xtsy-color-logo.png',
     telephone: '+918837317070',
     address: {
       '@type': 'PostalAddress',
