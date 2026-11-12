@@ -75,6 +75,15 @@ const RATE_WINDOW = 60000;
 const geoCache = new Map<string, { data: any; expiresAt: number }>();
 const GEO_CACHE_TTL = 10 * 60 * 1000; // 10 minutes
 
+// Security: anonymous callers cannot prove ownership of a visitor profile, so all
+// privileged traveller_profiles writes are disabled. This stub absorbs the old
+// query chains and resolves to an empty result.
+// deno-lint-ignore no-explicit-any
+const disabledProfiles: any = new Proxy(function () {}, {
+  get: (_t, p) => (p === 'then' ? (r: (v: unknown) => void) => r({ data: null, error: null }) : disabledProfiles),
+  apply: () => disabledProfiles,
+});
+
 function checkRateLimitLocal(visitorId: string): boolean {
   const now = Date.now();
   const record = rateLimitMap.get(visitorId);
@@ -293,7 +302,7 @@ Deno.serve(async (req) => {
 
     const parallelOps: Promise<any>[] = [
       supabase.from('traveller_events').insert(eventData),
-      supabase.from('traveller_profiles').upsert(profileUpdate, { onConflict: 'visitor_id' }),
+      disabledProfiles.upsert(profileUpdate, { onConflict: 'visitor_id' }),
     ];
 
     if (endpoint === 'pageview') {
@@ -363,15 +372,7 @@ Deno.serve(async (req) => {
               console.warn('[Analytics] Geo heatmap update failed - code: GH001');
             }
           }
-        } else {
-          await supabase.from('analytics_sessions')
-            .update({ 
-              page_views: (existingSession.page_views || 0) + 1,
-              is_bounce: false,
-              last_activity_at: new Date().toISOString(),
-            })
-            .eq('session_id', data.sessionId);
-        }
+        } // Existing sessions are never modified from caller-supplied session ids.
 
         await supabase.from('analytics_pageviews').insert({
           session_id: data.sessionId,
@@ -386,46 +387,8 @@ Deno.serve(async (req) => {
       }
 
       case 'pageview-end': {
-        await supabase.from('analytics_pageviews')
-          .update({
-            time_on_page_seconds: data.time_on_page_seconds,
-            scroll_depth_percent: data.scroll_depth_percent,
-            is_exit: data.is_exit || false,
-          })
-          .eq('session_id', data.sessionId)
-          .eq('page_path', data.page_path)
-          .order('created_at', { ascending: false })
-          .limit(1);
-
-        if (data.is_exit) {
-          const { data: session } = await supabase
-            .from('analytics_sessions')
-            .select('started_at')
-            .eq('session_id', data.sessionId)
-            .single();
-
-          if (session) {
-            const duration = Math.round(
-              (Date.now() - new Date(session.started_at).getTime()) / 1000
-            );
-
-            await supabase.from('analytics_sessions')
-              .update({
-                exit_page: data.page_path,
-                ended_at: new Date().toISOString(),
-                session_duration_seconds: duration,
-              })
-              .eq('session_id', data.sessionId);
-              
-            // Update traveller profile with session duration
-            await supabase.from('traveller_profiles')
-              .update({
-                avg_session_duration: duration,
-              })
-              .eq('visitor_id', visitorId);
-          }
-        }
-
+        // Disabled: caller-supplied session ids cannot be bound to the caller, so existing
+        // sessions and page views are never updated from this public endpoint.
         break;
       }
 
@@ -455,7 +418,7 @@ Deno.serve(async (req) => {
             
           if (recentEvents) {
             const intentScore = calculateIntentScore(recentEvents);
-            await supabase.from('traveller_profiles')
+            await disabledProfiles
               .update({ booking_intent_score: intentScore })
               .eq('visitor_id', visitorId);
           }
@@ -481,7 +444,7 @@ Deno.serve(async (req) => {
 
         // Update traveller profile on completed booking
         if (data.is_completed && data.conversion_value) {
-          await supabase.from('traveller_profiles')
+          await disabledProfiles
             .update({
               total_bookings: supabase.rpc('increment', { x: 1 }),
               lifetime_value: supabase.rpc('add_to_lifetime_value', { amount: data.conversion_value }),
@@ -600,7 +563,7 @@ Deno.serve(async (req) => {
         if (data.travel_style) profileData.preferred_room_category = data.travel_style === 'luxury' ? 'luxury' : data.travel_style === 'budget' ? 'dormitory' : 'private';
         if (data.trip_purpose) profileData.preferred_season = data.trip_purpose; // Reusing field for trip type
         
-        await supabase.from('traveller_profiles')
+        await disabledProfiles
           .update(profileData)
           .eq('visitor_id', visitorId);
           
@@ -635,8 +598,7 @@ Deno.serve(async (req) => {
         
         // Update booking intent score on form engagement
         if (data.event_action === 'form_start' || data.event_action === 'field_focus') {
-          const { data: profile } = await supabase
-            .from('traveller_profiles')
+          const { data: profile } = await disabledProfiles
             .select('booking_intent_score')
             .eq('visitor_id', visitorId)
             .single();
@@ -644,7 +606,7 @@ Deno.serve(async (req) => {
           let newScore = (profile?.booking_intent_score || 0) + 5;
           if (data.event_action === 'form_start') newScore += 15;
           
-          await supabase.from('traveller_profiles')
+          await disabledProfiles
             .update({ 
               booking_intent_score: Math.min(newScore, 100),
               updated_at: new Date().toISOString()
@@ -670,10 +632,9 @@ Deno.serve(async (req) => {
           last_activity_at: new Date().toISOString(),
         };
 
-        await supabase
-          .from('traffic_sessions')
-          .update(sessionUpdate)
-          .eq('session_id', data.session_id);
+        // Security: anonymous callers cannot prove they own a session, so the
+        // privileged session-end update is disabled.
+        void sessionUpdate;
 
         break;
       }

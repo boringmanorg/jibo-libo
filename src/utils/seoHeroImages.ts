@@ -9,6 +9,7 @@
  */
 import { SEO_HERO_MANIFEST } from '@/data/seoHeroManifest';
 import { cdn } from '@/data/cdnImages';
+import { PEXELS_MEGHALAYA as PX } from '@/data/meghalayaPhotos';
 
 // Curated, CDN-hosted destination heroes.
 const IMG = {
@@ -90,13 +91,13 @@ const CATEGORY_HERO_MAP: Record<string, string> = {
   restaurants: IMG.mawlynnong2,
   'food-dining': IMG.mawlynnong2,
   weddings: IMG.umiam,
-  transport: IMG.laitlum,
+  transport: PX.windingRoad,
   'competitor-capture': IMG.laitlum,
-  seasonal: IMG.festival,
+  seasonal: PX.monsoonMist,
   events: IMG.festival,
   'travel-agency': IMG.dawki3,
   hospitals: IMG.umiam2,
-  'themed-trips': IMG.bhutan,
+  'themed-trips': PX.rootBridge,
   'group-tours': IMG.nongriat2,
   corporate: IMG.umiam,
   'road-bike-trips': IMG.bumla,

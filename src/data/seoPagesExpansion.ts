@@ -81,21 +81,6 @@ const competitorPages: SEOPageData[] = [
     ['zostel-vs-xtsy-shillong', 'backpacker-hostel-shillong'],
     ['zion backpackers shillong', 'zion vs xtsy', 'shillong hostel comparison']
   ),
-
-  mkPage('youth-hostel-shillong', 'hostels', 'Hostel',
-    'Youth Hostel in Shillong 2026 — From ₹399 | XTSY', 'Best youth hostel in Shillong for students & young travelers. Dorms from ₹399, social atmosphere, free WiFi. Book at XTSY Travellers Hostel.',
-    'Youth Hostel in Shillong', 'Looking for a youth hostel in Shillong? XTSY Travellers Hostel is the perfect choice for students, young professionals, and budget-conscious travelers exploring Meghalaya.',
-    [
-      { heading: 'Student & Youth-Friendly', content: 'XTSY welcomes young travelers with:', listItems: ['Dormitory beds from ₹399/night', 'Student group discounts available', 'Social lounge & gaming area', 'Community events & group treks', 'Free WiFi for remote work/study'] },
-      { heading: 'Safe & Social Environment', content: 'Our hostel provides a safe, inclusive space for young travelers. With 24/7 reception, secure lockers, CCTV coverage, and a vibrant community of fellow travelers.' },
-    ],
-    [
-      { question: 'Is XTSY suitable for students?', answer: 'Absolutely! XTSY is popular with college students and young travelers. We offer student-friendly pricing, group discounts, and a social atmosphere perfect for making new friends.' },
-      { question: 'Is there an age limit for hostels?', answer: 'XTSY welcomes guests of all ages. While most guests are between 18-35, we have no upper age limit and welcome anyone with a traveler\'s spirit.' },
-    ],
-    ['backpacker-hostel-shillong', 'budget-hostels-shillong', 'shillong-dormitory'],
-    ['youth hostel shillong', 'student hostel shillong', 'young traveler hostel meghalaya']
-  ),
 ];
 
 // ============================================================================

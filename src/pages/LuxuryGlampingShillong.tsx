@@ -6,6 +6,8 @@ import Footer from '@/components/Footer';
 import { Star, Heart, Mountain, Sparkles, MessageCircle, Camera, Moon, Sun, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PANORAMA_STAY_ONLY } from '@/data/panoramaPricing';
+import RankedPageQuestions from '@/components/seo/RankedPageQuestions';
+import { rankedQuestionsFor } from '@/data/rankedPageQuestions';
 const GLAMP_NIGHT = `₹${PANORAMA_STAY_ONLY.toLocaleString('en-IN')}`;
 
 const LuxuryGlampingShillong = memo(() => {
@@ -15,6 +17,7 @@ const LuxuryGlampingShillong = memo(() => {
     name: 'Experience by XTSY — Luxury Glamping Shillong',
     description: 'India\'s first 270° panoramic glass suite in Shillong, Meghalaya. Luxury glamping with mountain views, stargazing, and sunrise experiences.',
     url: 'https://xtsy.one/luxury-glamping-shillong',
+    image: 'https://xtsy.one/xtsy-color-logo.png',
     telephone: '+918837317070',
     address: {
       '@type': 'PostalAddress',
@@ -28,7 +31,7 @@ const LuxuryGlampingShillong = memo(() => {
     priceRange: `${GLAMP_NIGHT}/night`,
     amenityFeature: [
       { '@type': 'LocationFeatureSpecification', name: '270° Panoramic Glass Walls', value: true },
-      { '@type': 'LocationFeatureSpecification', name: 'Stargazing', value: true },
+      { '@type': 'LocationFeatureSpecification', name: 'Glass ceiling/walls with sky view', value: true },
       { '@type': 'LocationFeatureSpecification', name: 'Mountain Views', value: true },
       { '@type': 'LocationFeatureSpecification', name: 'Private Bathroom', value: true },
       { '@type': 'LocationFeatureSpecification', name: 'Premium Breakfast', value: true },
@@ -67,6 +70,12 @@ const LuxuryGlampingShillong = memo(() => {
   };
 
   const handleWhatsApp = () => window.open('https://wa.me/918837317070?text=Hi%2C%20I%20want%20to%20book%20the%20270%20Glass%20Suite', '_blank');
+  const visibleFaqData = {
+    ...faqData,
+    mainEntity: (rankedQuestionsFor('/luxury-glamping-shillong') ?? []).map(({ q, a }) => ({
+      '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a },
+    })),
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -80,7 +89,7 @@ const LuxuryGlampingShillong = memo(() => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://xtsy.one/luxury-glamping-shillong" />
         <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
-        <script type="application/ld+json">{JSON.stringify(faqData)}</script>
+        <script type="application/ld+json">{JSON.stringify(visibleFaqData)}</script>
       </Helmet>
 
       <Header />
@@ -103,7 +112,7 @@ const LuxuryGlampingShillong = memo(() => {
               <Button onClick={handleWhatsApp} className="gap-2">
                 <MessageCircle className="h-4 w-4" /> Book Experience by XTSY
               </Button>
-              <Link to="/xtsy-270">
+              <Link to="/experience-by-xtsy">
                 <Button variant="outline">View Full Details</Button>
               </Link>
             </div>
@@ -171,18 +180,7 @@ const LuxuryGlampingShillong = memo(() => {
             </div>
           </section>
 
-          {/* FAQ */}
-          <section>
-            <h2 className="text-2xl font-bold text-foreground">Frequently Asked Questions</h2>
-            <div className="mt-6 space-y-6">
-              {(faqData.mainEntity as any[]).map((faq, i) => (
-                <div key={i}>
-                  <h3 className="font-semibold text-foreground">{faq.name}</h3>
-                  <p className="mt-1 text-muted-foreground text-sm">{faq.acceptedAnswer.text}</p>
-                </div>
-              ))}
-            </div>
-          </section>
+          <RankedPageQuestions path="/luxury-glamping-shillong" />
 
           {/* CTA */}
           <section className="bg-primary/10 rounded-2xl p-8 text-center">
@@ -203,7 +201,7 @@ const LuxuryGlampingShillong = memo(() => {
               <Link to="/homestays-in-shillong" className="text-sm text-primary hover:underline">Homestays in Shillong</Link>
               <Link to="/destination-wedding-shillong" className="text-sm text-primary hover:underline">Destination Wedding</Link>
               <Link to="/meghalaya-couple-tour-package" className="text-sm text-primary hover:underline">Couple Tour Package</Link>
-              <Link to="/xtsy-270" className="text-sm text-primary hover:underline">270° Suite Full Details</Link>
+              <Link to="/experience-by-xtsy" className="text-sm text-primary hover:underline">270° Suite Full Details</Link>
               <Link to="/gallery" className="text-sm text-primary hover:underline">Photo Gallery</Link>
             </div>
           </nav>

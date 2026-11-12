@@ -21,15 +21,15 @@ type Vehicle = {
 };
 
 const CARS: Vehicle[] = [
-  { name: 'Hyundai i10 Nios', price: 1800, tag: 'City Hatchback', specs: ['Petrol', 'Manual', '5 seats'] },
-  { name: 'Tata Punch', price: 2000, tag: 'Compact SUV', specs: ['Petrol', 'Manual', '5 seats'] },
-  { name: 'Tata Indica', price: 2000, tag: 'Hatchback', specs: ['Diesel', 'Manual', '5 seats'] },
-  { name: 'Hyundai i20', price: 2000, tag: 'Premium Hatchback', specs: ['Petrol', 'Manual/Auto', '5 seats'] },
-  { name: 'Kia Sonet', price: 2500, tag: 'Compact Crossover', specs: ['Petrol/Diesel', 'Manual/Auto', '5 seats'] },
-  { name: 'Kia Seltos', price: 2800, tag: 'Crossover SUV', specs: ['Petrol/Diesel', 'Auto', '5 seats'] },
-  { name: 'Mahindra Thar', price: 3800, tag: 'Off-Road SUV', specs: ['Diesel', 'Manual/Auto', '4 seats'] },
-  { name: 'Mahindra Scorpio', price: 4000, tag: 'Full-Size SUV', specs: ['Diesel', 'Manual', '7 seats'] },
-  { name: 'Mahindra XUV 700', price: 4500, tag: 'Premium SUV', specs: ['Diesel/Petrol', 'Auto', '7 seats'], badge: 'Top End 2025' },
+  { name: 'Hyundai i20', price: 2000, tag: 'Premium Hatchback', specs: ['Manual', '5 seats', '400 km/day'] },
+  { name: 'Maruti Baleno', price: 2000, tag: 'Premium Hatchback', specs: ['Automatic', '5 seats', '400 km/day'] },
+  { name: 'Hyundai Venue', price: 2600, tag: 'Compact SUV', specs: ['Manual', '5 seats', '400 km/day'] },
+  { name: 'Kia Sonet', price: 2800, tag: 'Compact SUV', specs: ['Automatic', '5 seats', '400 km/day'] },
+  { name: 'Hyundai Creta', price: 3000, tag: 'Mid-size SUV', specs: ['Automatic', '5 seats', '400 km/day'] },
+  { name: 'Maruti Grand Vitara', price: 3000, tag: 'Mid-size SUV', specs: ['5 seats', '400 km/day'] },
+  { name: 'Mahindra Scorpio-N', price: 3800, tag: 'Hill SUV', specs: ['7 seats', '400 km/day'] },
+  { name: 'Toyota Innova Crysta', price: 3800, tag: 'Family MPV', specs: ['7 seats', '400 km/day'] },
+  { name: 'Mahindra XUV700', price: 4000, tag: 'Premium SUV', specs: ['7 seats', '400 km/day'], badge: 'Top end' },
 ];
 
 const BIKES: Vehicle[] = [
@@ -53,11 +53,11 @@ const FAQS = [
 // to publish. They are listed here with an enquiry CTA rather than left off the
 // site, because people search for both by name.
 const CARAVANS: Vehicle[] = [
-  { name: 'Caravan Camper Van', tag: 'Overland Camper', specs: ['Sleeps 2–4', 'Kitchenette', 'Driver included'], note: 'Quoted per trip', badge: 'New' },
+  { name: 'Caravan Sprinter', price: 18000, tag: 'Overland Camper', specs: ['Sleeps 2–4', 'Kitchenette', 'Driver included'], badge: 'New' },
 ];
 
 const URBANIA: Vehicle[] = [
-  { name: 'Force Urbania', tag: 'Luxury Van', specs: ['13–17 seats', 'Pushback seats', 'Driver included'], note: 'Quoted per trip', badge: 'Groups' },
+  { name: 'Force Urbania (AC)', price: 13000, tag: 'Luxury Van', specs: ['17 seats', 'Pushback seats', 'Driver included'], badge: 'Groups' },
 ];
 
 const bookText = (v: Vehicle) =>
@@ -76,7 +76,7 @@ export default function RentalsV2() {
     name: 'XTSY Rentals',
     url: 'https://xtsy.one/xtsy-rentals',
     telephone: '+918837317070',
-    priceRange: '₹1,300 - ₹4,500 per day; caravan and Urbania quoted per trip',
+    priceRange: '₹1,300 - ₹18,000 per day',
     address: { '@type': 'PostalAddress', streetAddress: 'Mawdiangdiang Road, New Shillong Township', addressLocality: 'Shillong', addressRegion: 'Meghalaya', postalCode: '793018', addressCountry: 'IN' },
   };
   return (
@@ -96,16 +96,16 @@ export default function RentalsV2() {
           eyebrowColor="#E07A8B"
           eyebrow="XTSY Rentals · Self-drive cars, bikes, caravan & Urbania"
           title="Your wheels for the Northeast."
-          text={`Self-drive cars from ${inr(1800)} a day, Royal Enfields from ${inr(1300)}, plus a caravan camper and a 17-seat Force Urbania quoted per trip. Fully insured, 24/7 roadside support, driver on request. Pick up at XTSY in New Shillong Township.`}
+          text={`Self-drive cars from ${inr(2000)} a day with 400 km included, Royal Enfields from ${inr(1300)}, a 17-seat Force Urbania from ${inr(13000)} and a caravan from ${inr(18000)}. Fully insured, 24/7 roadside support, driver on request. Pick up at XTSY in New Shillong Township.`}
           actions={<><Btn to="#fleet">See the fleet</Btn><Btn to={waLink('Hi XTSY! I want to rent a vehicle. Dates: …', 'xtsy-rentals')} kind="outline-light">Ask on WhatsApp</Btn></>}
           media={<Photo src={IMG.bumla} alt="Royal Enfield on a Northeast expedition" eager tone="night" className="aspect-[628/520] rounded-[32px]" />}
         />
 
         <Section id="fleet">
-          <H2 eyebrow="Per day · fuel extra · caravan and Urbania per trip">The fleet</H2>
-          <div role="tablist" aria-label="Vehicle type" className="flex gap-2">
+          <H2 eyebrow="Per day · 400 km/day included · extra km ₹10 · fuel extra">The fleet</H2>
+          <div role="tablist" aria-label="Vehicle type" className="grid grid-cols-2 gap-2 sm:flex">
             {(['cars', 'bikes', 'caravan', 'urbania'] as const).map((t) => (
-              <button key={t} type="button" role="tab" aria-selected={tab === t} onClick={() => setTab(t)} className={`xt-chip h-12 rounded-full border-[1.5px] px-6 text-[15px] font-extrabold ${tab === t ? 'border-xt-slate bg-xt-slate text-xt-paper' : 'border-xt-stone text-xt-ink'}`}>
+              <button key={t} type="button" role="tab" aria-selected={tab === t} onClick={() => setTab(t)} className={`xt-chip h-[55px] min-w-0 whitespace-nowrap rounded-full border-[1.5px] px-4 text-[15px] sm:px-6 font-extrabold ${tab === t ? 'border-xt-slate bg-xt-slate text-xt-paper' : 'border-xt-stone text-xt-ink'}`}>
                 {`${TAB_LABELS[t]} · ${FLEETS[t].length}`}
               </button>
             ))}
@@ -117,13 +117,13 @@ export default function RentalsV2() {
                 <span className="text-[13px] font-extrabold uppercase tracking-wider text-xt-mute">{v.tag}</span>
                 <h3 className="m-0 text-[24px] font-extrabold leading-tight">{v.name}</h3>
                 <div className="flex flex-wrap gap-1.5">{v.specs.map((s) => <span key={s} className="rounded-full bg-xt-sand px-3 py-1 text-[13px] font-bold">{s}</span>)}</div>
-                <div className="mt-auto flex items-center justify-between gap-3 pt-3">
+                <div className="mt-auto flex flex-wrap items-center justify-between gap-3 pt-3">
                   {v.price ? (
                     <span className="text-[22px] font-extrabold">{inr(v.price)}<span className="text-[13px] font-semibold text-xt-mute">/day</span></span>
                   ) : (
                     <span className="text-[17px] font-extrabold leading-tight">{v.note ?? 'On request'}</span>
                   )}
-                  <Btn to={waLink(bookText(v), 'xtsy-rentals')} className="h-11 px-5 text-[14px]">{v.price ? 'Book on WhatsApp' : 'Get a quote'}</Btn>
+                  <Btn to={waLink(bookText(v), 'xtsy-rentals')} className="h-[55px] shrink-0 px-5 text-[14px]">{v.price ? 'Book on WhatsApp' : 'Get a quote'}</Btn>
                 </div>
               </article>
             ))}

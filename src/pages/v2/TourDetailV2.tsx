@@ -1,3 +1,4 @@
+import { WaAnchor } from '@/components/WaAnchor';
 /**
  * /tours/$slug — tour package detail (redesign). Same data, schema, booking
  * modal and permit advisory as before; only the presentation changed.
@@ -129,7 +130,6 @@ export default function TourDetailV2() {
         description={`${tour.description}`.slice(0, 155)}
         keywords={`${tour.title}, ${tour.location} tour, ${tour.category} tour, ${tour.duration} Meghalaya package, XTSY Travel`}
         canonicalUrl={tourUrl}
-        structuredData={[tourSchema, tourBreadcrumb, faqSchema]}
       />
       <PageShell bar={onRequest ? { label: 'Get a quote', to: enquire, note: 'Price on request' } : { label: 'Book this tour', onClick: () => setIsBookingOpen(true), note: `${displayPrice} per person` }} cta={{ title: 'Want it your way?', sub: 'Every itinerary can change. Tell a travel expert your dates and pace on WhatsApp.', bookTo: '/plan-trip-with-ai', bookLabel: 'Build a trip with AI' }}>
         <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: 'Tours', to: '/tours' }, { label: tour.title }]} />
@@ -141,7 +141,7 @@ export default function TourDetailV2() {
               <span className="rounded-full bg-xt-sand px-3.5 py-1.5 text-[13px] font-extrabold">{tour.difficulty}</span>
               {tour.exclusive && <span className="rounded-full bg-xt-crimson px-3.5 py-1.5 text-[13px] font-extrabold text-white">XTSY Exclusive</span>}
             </div>
-            <h1 className="xt-in xt-d1 xt-display m-0 text-[52px] leading-[0.9] sm:text-[80px]">{tour.title}</h1>
+            <h1 className="xt-in xt-d1 xt-display m-0 text-[52px] leading-[0.9] sm:text-[80px]">{tour.h1 || tour.title}</h1>
             <div className="xt-in xt-d2 flex flex-wrap gap-x-5 gap-y-2 text-[15px] font-bold text-xt-mute">
               <span title="XTSY's rating on Google">★ {GOOGLE_RATING.label}</span>
               <span>{tour.location}</span>
@@ -151,7 +151,7 @@ export default function TourDetailV2() {
             </div>
             <div className="xt-in xt-d3 flex flex-wrap items-center gap-3">
               {onRequest
-                ? <a href={enquire} target="_blank" rel="noopener noreferrer" className="xt-btn flex h-12 items-center rounded-full bg-xt-crimson px-6 text-[15px] font-extrabold text-white hover:text-white">Get a quote</a>
+                ? <WaAnchor href={enquire} className="xt-btn flex h-12 items-center rounded-full bg-xt-crimson px-6 text-[15px] font-extrabold text-white hover:text-white">Get a quote</WaAnchor>
                 : <button type="button" onClick={() => setIsBookingOpen(true)} className="xt-btn flex h-12 items-center rounded-full bg-xt-crimson px-6 text-[15px] font-extrabold text-white">Book this tour</button>}
               <span className="text-[15px] font-extrabold">{onRequest ? 'Price on request' : `${displayPrice} per person`}</span>
             </div>
@@ -225,7 +225,7 @@ export default function TourDetailV2() {
                 ) : (
                   <div className="flex flex-col items-start gap-3 rounded-3xl bg-white p-8">
                     <p className="m-0 text-[16px] text-xt-mute">Detailed day-by-day itinerary available on request.</p>
-                    <a href={waLink(`Hi! I'd like the detailed itinerary for "${tour.title}"`)} target="_blank" rel="noopener noreferrer" className="xt-btn flex h-12 items-center rounded-full border-[1.5px] border-xt-ink px-6 text-[15px] font-extrabold text-xt-ink hover:text-xt-ink">Request itinerary</a>
+                    <WaAnchor href={waLink(`Hi! I'd like the detailed itinerary for "${tour.title}"`)} className="xt-btn flex h-12 items-center rounded-full border-[1.5px] border-xt-ink px-6 text-[15px] font-extrabold text-xt-ink hover:text-xt-ink">Request itinerary</WaAnchor>
                   </div>
                 ))}</div>
 
@@ -276,11 +276,11 @@ export default function TourDetailV2() {
                 <span>{tour.duration}</span><span>{tour.location}</span><span>Best: {tour.bestSeason}</span>{tour.groupSize && <span>{tour.groupSize}</span>}
               </div>
               {onRequest ? (
-                <a href={enquire} target="_blank" rel="noopener noreferrer" className="xt-btn flex h-14 items-center justify-center rounded-full bg-xt-crimson text-[16px] font-extrabold text-white hover:text-white">Get a quote on WhatsApp</a>
+                <WaAnchor href={enquire} className="xt-btn flex h-14 items-center justify-center rounded-full bg-xt-crimson text-[16px] font-extrabold text-white hover:text-white">Get a quote on WhatsApp</WaAnchor>
               ) : (
                 <>
                   <button type="button" onClick={() => setIsBookingOpen(true)} className="xt-btn h-14 rounded-full bg-xt-crimson text-[16px] font-extrabold text-white">Book this tour</button>
-                  <a href={enquire} target="_blank" rel="noopener noreferrer" className="xt-btn flex h-12 items-center justify-center rounded-full border-[1.5px] border-xt-paper text-[15px] font-extrabold text-xt-paper hover:text-xt-paper">Enquire on WhatsApp</a>
+                  <WaAnchor href={enquire} className="xt-btn flex h-12 items-center justify-center rounded-full border-[1.5px] border-xt-paper text-[15px] font-extrabold text-xt-paper hover:text-xt-paper">Enquire on WhatsApp</WaAnchor>
                 </>
               )}
               <ul className="m-0 flex list-none flex-col gap-1.5 border-t border-[#383D52] p-0 pt-4 text-[13px] text-xt-fog">

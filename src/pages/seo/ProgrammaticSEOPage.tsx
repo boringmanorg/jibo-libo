@@ -1,3 +1,4 @@
+import { WaAnchor } from '@/components/WaAnchor';
 import { useParams, Link, Navigate } from '@/lib/router-compat';
 import NotFound from '@/pages/NotFound';
 import { Helmet } from '@/lib/seo/helmet';
@@ -53,6 +54,7 @@ const buildSchema = (page: SEOPageData) => {
 
     Object.assign(base, {
       address: { '@type': 'PostalAddress', streetAddress: 'Mawdiangdiang Road', addressLocality: 'Shillong', addressRegion: 'Meghalaya', postalCode: '793018', addressCountry: 'IN' },
+      image: 'https://xtsy.one/xtsy-color-logo.png',
       telephone: '+91-8837317070',
       priceRange: '₹399 - ₹4,999',
       geo: { '@type': 'GeoCoordinates', latitude: 25.6025457, longitude: 91.9448902 },
@@ -380,15 +382,13 @@ const ProgrammaticSEOPage = () => {
                 Quick Answer for Travelers
               </div>
               <p className="text-foreground leading-relaxed">{safeQuickAnswer}</p>
-              <a
+              <WaAnchor
                 href={waLink}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
               >
                 <MessageCircle className="h-4 w-4" />
                 Get instant help on WhatsApp
-              </a>
+              </WaAnchor>
             </div>
           )}
 

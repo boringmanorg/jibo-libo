@@ -5,6 +5,9 @@ import Footer from '@/components/Footer';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { Check, Star, Calendar, Users, MapPin } from 'lucide-react';
 import PageFaq from '@/components/seo/PageFaq';
+import { openWhatsApp } from '@/utils/privacyCompliantWhatsApp';
+import StayAndTourCTA from '@/components/seo/StayAndTourCTA';
+import { SATURDAY_GROUP_TOUR as T } from '@/data/saturdayGroupTour';
 
 const packages = [
   {
@@ -19,7 +22,7 @@ const packages = [
     price: '₹7,999',
     duration: '3 Days / 2 Nights',
     highlights: ['Shillong Peak & Umiam Lake', 'Elephant Falls', 'Laitlum Canyons', 'Stay at XTSY Hostel', 'Breakfast included'],
-    tag: 'Budget Friendly',
+    tag: 'Short break',
   },
   {
     title: '7-Day Complete Meghalaya',
@@ -63,7 +66,30 @@ const MeghalayaTourPackages = () => {
             <Link to="/expeditions" className="text-primary underline">motorbike and 4x4 expeditions</Link>.
           </p>
 
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <section aria-label="In short" className="mt-8 rounded-xl border-l-4 border-primary bg-muted/40 p-6">
+            <p className="text-xs font-bold tracking-wider text-muted-foreground">IN SHORT</p>
+            <p className="mt-2 text-foreground leading-relaxed">
+              XTSY's Meghalaya group tour is {T.duration} and costs ₹{T.pricePerPerson.toLocaleString('en-IN')} per person, departing on the {T.schedule} with a minimum of {T.minGroup} guests. You stay 3 nights at XTSY Travellers Hostel in New Shillong Township and 1 night at XTSY Dawki (Shnongpdeng) Riverside Camping, with transport and breakfast included.
+            </p>
+          </section>
+
+          <section className="mt-8 rounded-xl border border-border p-6">
+            <h2 className="text-2xl font-bold text-foreground">Saturday Group Tour: {T.duration}</h2>
+            <p className="mt-2 text-3xl font-bold text-foreground">₹{T.pricePerPerson.toLocaleString('en-IN')}<span className="text-sm font-normal text-muted-foreground"> / person (₹{T.pricePerNight.toLocaleString('en-IN')} per night)</span></p>
+            <ul className="mt-4 space-y-2">
+              {T.includes.map((h) => (
+                <li key={h} className="flex items-start gap-2 text-sm text-muted-foreground"><Check className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />{h}</li>
+              ))}
+            </ul>
+            <h3 className="mt-6 text-lg font-semibold text-foreground">Day-by-day itinerary</h3>
+            <p className="mt-2 text-sm text-muted-foreground">{'{{GROUP_TOUR_ITINERARY}}'}</p>
+            <p className="mt-4 text-sm text-muted-foreground">{T.cancellation} Pickup point: {'{{PICKUP_POINT}}'}.</p>
+          </section>
+
+          <div className="mt-8"><StayAndTourCTA showDates /></div>
+
+          <h2 className="mt-12 text-2xl font-bold text-foreground">Private Meghalaya tour packages</h2>
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8">
             {packages.map((pkg) => (
               <div key={pkg.title} className="rounded-xl border border-border p-6 hover:border-primary/30 transition-colors">
                 {pkg.tag && (
@@ -84,14 +110,13 @@ const MeghalayaTourPackages = () => {
                     </li>
                   ))}
                 </ul>
-                <a
-                  href={`https://wa.me/918837317070?text=Hi, I'm interested in the ${pkg.title} package.`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  type="button"
+                  onClick={() => openWhatsApp(`Hi, I'm interested in the ${pkg.title} package.`)}
                   className="mt-6 block w-full text-center px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
                 >
                   Book via WhatsApp
-                </a>
+                </button>
               </div>
             ))}
           </div>

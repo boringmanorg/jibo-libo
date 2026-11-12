@@ -32,10 +32,10 @@ export function stayHubCopy(v: StayHubVariant) {
     // the rating, which is the strongest trust signal available in a result.
     title: budget
       ? `Budget-Friendly Hostels in Shillong from ${dorm} | XTSY`
-      : `Hostels in Shillong: ${GOOGLE_RATING.value}★, Women-Only Dorms & Private Rooms`,
+      : `Hostels in Shillong from ${dorm}: Women-Only Dorm, ${GOOGLE_RATING.value}★ | XTSY`,
     description: budget
       ? `XTSY dorm beds from ${dorm}, women-only dorm, lockers, Wi-Fi and TAB Bistro on site in New Shillong Township. Book direct, no OTA mark-up.`
-      : `Compare XTSY dorms from ${dorm}/night, women-only dorms and private rooms in New Shillong Township. View room prices and send a WhatsApp booking enquiry.`,
+      : `Stay among the pines of New Shillong Township at XTSY (${GOOGLE_RATING.value}★, ${GOOGLE_RATING.count} Google reviews). Dorms from ${dorm}, a 4-bed women-only dorm, private rooms and TAB Bistro. Enquire on WhatsApp.`,
     h1: budget ? 'Budget-friendly hostels in Shillong' : 'Hostels in Shillong',
     eyebrow: budget ? `Budget beds from ${dorm} · book direct` : 'The 2026 guide · by the team that runs XTSY',
     quick: budget

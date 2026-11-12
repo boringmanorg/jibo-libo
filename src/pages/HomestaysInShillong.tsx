@@ -21,6 +21,11 @@ const HomestaysInShillong = memo(() => {
         item: {
           '@type': 'LodgingBusiness',
           name: 'XTSY Travellers Hostel',
+          url: 'https://xtsy.one/best-hostel-in-shillong',
+          image: 'https://xtsy.one/xtsy-color-logo.png',
+          telephone: '+91-8837317070',
+          address: { '@type': 'PostalAddress', streetAddress: 'Mawdiangdiang Road, New Shillong Township', addressLocality: 'Shillong', addressRegion: 'Meghalaya', postalCode: '793018', addressCountry: 'IN' },
+          geo: { '@type': 'GeoCoordinates', latitude: 25.6025457, longitude: 91.9448902 },
           description: 'Hostel with homestay vibes — community kitchen, local food, and cultural experiences',
           priceRange: '₹399 - ₹4,999',
         },

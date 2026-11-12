@@ -81,7 +81,7 @@ export function Stays() {
     { title: 'Dorm beds', price: `from ${inr(lowestDormPrice())}`, text: '6 and 8-bed mixed dorms with curtains, lockers and charging points.', img: first(IMG.mixedDorm), to: '/book', tone: 'sand' as const },
     { title: 'Female Dorm', price: inr(roomPrice('4-bed-female-only-dorm').now), text: '4-bed women-only dorm with female staff on call.', img: first(IMG.femaleDorm), to: '/female-travellers', tone: 'crimson' as const },
     { title: 'King Double', price: inr(roomPrice('king-double-room').now), text: 'A private room for two, with a view of the pines.', img: first(IMG.king), to: '/book', tone: 'pine' as const },
-    { title: 'Experience by XTSY', price: `from ${inr(suite.now)}`, text: '₹5,999 a night, all inclusive (stay only). Decoration +₹2,500 per stay.', img: first(IMG.suite), to: '/xtsy-270', tone: 'night' as const },
+    { title: 'Experience by XTSY', price: `from ${inr(suite.now)}`, text: '₹5,999 a night, all inclusive (stay only). Decoration +₹2,500 per stay.', img: first(IMG.suite), to: '/experience-by-xtsy', tone: 'night' as const },
   ];
   return (
     <section className={`${PAD} flex flex-col gap-8 py-12`}>
@@ -161,7 +161,7 @@ export function StateExplorer() {
 export function PrimeRail() {
   const suite = roomPrice('xtsy-270');
   const prime = [
-    { t: 'Experience by XTSY', cat: 'INDIA’S FIRST STARGAZE GLAMP', d: 'A 270° panoramic glass suite for couples, proposals and anniversaries.', price: inr(suite.now), note: `per night · was ${inr(suite.was)}`, img: IMG.suite[1] ?? first(IMG.suite), to: '/xtsy-270', tone: 'night' as const },
+    { t: 'Experience by XTSY', cat: 'INDIA’S FIRST STARGAZE GLAMP', d: 'A 270° panoramic glass suite for couples, proposals and anniversaries.', price: inr(suite.now), note: `per night · was ${inr(suite.was)}`, img: IMG.suite[1] ?? first(IMG.suite), to: '/experience-by-xtsy', tone: 'night' as const },
     { t: 'Pet Friendly Stays', cat: 'PET TRAVEL', d: 'Cats and birds most welcome; dogs depending on breed and size.', price: 'Ask the desk', note: 'about any extra charges', img: COVERS.pet, to: '/pet-friendly', tone: 'pine' as const },
     { t: 'Group Trips', cat: 'GROUPS OF 6–60', d: 'Whole-dorm stays, colleges, families and company offsites, with transport and TAB Bistro meals.', price: 'Per-person rates', note: 'quote in ~1 hour', img: COVERS.groups, to: '/group-bookings-meghalaya', tone: 'sand' as const },
     { t: 'Female Travellers', cat: 'WOMEN SAFETY', d: 'Women-only dorm, secure lockers and female staff on call.', price: inr(roomPrice('4-bed-female-only-dorm').now), note: 'per bed / night', img: COVERS.women, to: '/female-travellers', tone: 'crimson' as const },
@@ -211,7 +211,7 @@ export function GlampFeature() {
             <span className="font-display text-[52px] leading-none">{inr(suite.now)}<span className="text-[20px] text-xt-fog">/night</span></span>
             {suite.was > suite.now && <span className="text-[14px] text-[#A3ABC2]"><s>{inr(suite.was)}</s> regular rate</span>}
           </div>
-          <Link to="/xtsy-270" className="xt-btn flex h-14 items-center rounded-full bg-xt-crimson px-7 text-[16px] font-extrabold text-white hover:text-white">Explore the glamp</Link>
+          <Link to="/experience-by-xtsy" className="xt-btn flex h-14 items-center rounded-full bg-xt-crimson px-7 text-[16px] font-extrabold text-white hover:text-white">Explore the glamp</Link>
         </div>
       </div>
     </section>
@@ -232,7 +232,7 @@ export function BistroFeature() {
         </div>
         <div className="flex flex-wrap gap-3">
           <Link to="/tab-bistro" className="xt-btn flex h-[52px] items-center rounded-full bg-xt-ink px-6 text-[15px] font-extrabold text-xt-paper hover:text-xt-paper">View the menu</Link>
-          <Link to="/tab-bistro/catering" className="xt-btn flex h-[52px] items-center rounded-full border-[1.5px] border-xt-ink px-6 text-[15px] font-extrabold text-xt-ink hover:text-xt-ink">Catering &amp; events</Link>
+          <Link to="/catering-shillong" className="xt-btn flex h-[52px] items-center rounded-full border-[1.5px] border-xt-ink px-6 text-[15px] font-extrabold text-xt-ink hover:text-xt-ink">Catering &amp; events</Link>
         </div>
       </div>
       <div className="xt-reveal relative">

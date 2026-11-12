@@ -1,3 +1,4 @@
+import { WaAnchor } from '@/components/WaAnchor';
 /**
  * /merch — XTSY travel & work-from-anywhere merch (coming soon; "Notify me").
  * No prices yet: each piece lets the guest ask to be told when it drops.
@@ -112,15 +113,13 @@ export default function MerchV2() {
                     {on ? (
                       <button type="button" onClick={() => setAsked({ ...asked, [p.id]: false })} className="flex h-11 items-center gap-2 rounded-full border-[1.5px] border-xt-slate bg-xt-slate px-4 text-[14px] font-bold text-xt-paper">✓ On the list</button>
                     ) : (
-                      <a
+                      <WaAnchor
                         href={waLink(`Hi XTSY! Please notify me when the ${p.name} drops.`)}
-                        target="_blank"
-                        rel="noopener noreferrer"
                         onClick={() => setAsked({ ...asked, [p.id]: true })}
                         className="flex h-11 items-center rounded-full border-[1.5px] border-xt-crimson px-4 text-[14px] font-bold text-xt-crimson hover:text-xt-crimson"
                       >
                         Notify me
-                      </a>
+                      </WaAnchor>
                     )}
                   </div>
                 </article>

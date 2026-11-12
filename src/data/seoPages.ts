@@ -564,7 +564,7 @@ const tourPages: SEOPageData[] = [
     ['meghalaya honeymoon package', 'honeymoon in meghalaya', 'romantic trip meghalaya', 'couples meghalaya trip']
   ),
 
-  tour('nongjrong-tour-package', 'Nongjrong Tour Package — Sunrise & Root Bridges', 'Book Nongjrong tour package from Shillong. Famous sunrise viewpoint, living root bridges, Khasi village trek. Full-day guided tour.', 'Nongjrong Tour Package — Sunrise & Root Bridges', 'Nongjrong is one of Meghalaya\'s hidden gems, famous for its breathtaking sunrise viewpoint and living root bridges. This full-day guided tour from Shillong takes you through authentic Khasi village life.',
+  tour('nongjrong-tour-package', 'Nongjrong Tour Package from Shillong | XTSY', 'Book Nongjrong tour package from Shillong. Famous sunrise viewpoint, living root bridges, Khasi village trek. Full-day guided tour.', 'Nongjrong Sunrise & Living Root Bridges Day Tour', 'Nongjrong is one of Meghalaya\'s hidden gems, famous for its breathtaking sunrise viewpoint and living root bridges. This full-day guided tour from Shillong takes you through authentic Khasi village life.',
     [
       { heading: 'Tour Highlights', content: 'What you\'ll experience:', listItems: ['Pre-dawn departure for sunrise viewpoint', 'Panoramic views of river valleys & clouds', 'Living root bridge trek', 'Traditional Khasi village visit', 'Local Khasi lunch', 'Return to Shillong by evening'] },
       { heading: 'Pricing', content: '₹2,500/person for full-day guided tour including transport, guide, and local lunch.' },

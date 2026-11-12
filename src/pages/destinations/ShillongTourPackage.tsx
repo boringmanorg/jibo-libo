@@ -7,6 +7,7 @@ import DestinationCard from '@/components/destinations/DestinationCard';
 import { getDestinationsByRegion } from '@/data/meghalayaDestinations';
 import { Check, Calendar } from 'lucide-react';
 import PageFaq from '@/components/seo/PageFaq';
+import { openWhatsApp } from '@/utils/privacyCompliantWhatsApp';
 
 const ShillongTourPackage = () => {
   const nearShillong = getDestinationsByRegion('Near Shillong').slice(0, 6);
@@ -61,14 +62,13 @@ const ShillongTourPackage = () => {
           <section className="mt-12 bg-primary/10 rounded-2xl p-8 text-center">
             <h2 className="text-2xl font-bold text-foreground">Book Shillong Tour — Starting ₹7,999</h2>
             <p className="mt-2 text-muted-foreground">Includes stay at XTSY, breakfast, guided tours, and transfers.</p>
-            <a
-              href="https://wa.me/918837317070?text=Hi, I'm interested in the Shillong tour package."
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
+              onClick={() => openWhatsApp("Hi, I'm interested in the Shillong tour package.")}
               className="mt-4 inline-block px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90"
             >
               Book via WhatsApp
-            </a>
+            </button>
           </section>
 
           <nav className="mt-8 border-t border-border pt-8">

@@ -58,12 +58,12 @@ export function useRestaurantReviews() {
   const [reviews] = useState<RestaurantReview[]>(STATIC_REVIEWS);
 
   const submitReview = useCallback(
-    async (_input: ReviewSubmission): Promise<{ success: boolean; error?: string }> => ({
-      success: false,
-      error:
-        "Reviews are collected on our Google listing now. Please leave your review there — it helps other travellers find us.",
-    }),
-    [],
+    async (_input: ReviewSubmission): Promise<{ success: boolean; error?: string }> => {
+      // Reviews are collected on Google, not stored on the site.
+      if (typeof window !== "undefined") window.location.href = "https://g.page/tabbistrobyxtsy";
+      return { success: true };
+    },
+    []
   );
 
   const stats = useMemo(() => {

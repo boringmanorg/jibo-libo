@@ -1,15 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
-import FranchiseInstall from "@/pages/install/FranchiseInstall";
-import { buildRouteHead } from "@/lib/seo-head";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
+// Partner sign-in is retired: XTSY has no logins. Old links go home.
 export const Route = createFileRoute("/franchise/install")({
-  head: () =>
-    buildRouteHead({
-      path: "/franchise/install",
-      title: "Install the XTSY Franchise App",
-      description:
-        "Install the XTSY franchise partner app for property dashboards, inventory control and booking notifications on your phone.",
-      noIndex: true,
-    }),
-  component: FranchiseInstall,
+  beforeLoad: () => {
+    throw redirect({ to: "/", statusCode: 301 });
+  },
 });

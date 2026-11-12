@@ -14,3 +14,8 @@
 - Keep SECURITY DEFINER functions that call `auth.*` owned by a role with USAGE on the `auth` schema; ownership repairs must retain caller-bound admin checks, backend-only OTP execution and narrowly scoped write grants, because the migration role cannot access auth and an ownership handover must not expose privileged operations.
 - Reconcile TAB Bistro's Google hours and lunch wording only from shared site policy constants through a secret-authenticated published callback; use one hourly backend job, a database lease, validate-before-write and readback, never visitor-triggered writes or preview scheduling, to preserve listing scope and prevent concurrent updates.
 - Enforce external conversion eligibility in the browser-safe shared conversion policy and route traffic-service emissions through dataLayerService; this keeps admin diagnostics independent while preventing unvalidated or low-intent signals from reaching GTM.
+
+- Guest-facing code must not call the database; data access goes through `@/lib/offlineBackend` and content comes from static data modules, so the Cloud database can stay paused without breaking the site.
+- Keep the selected ranking-page answers in a browser-safe editorial module and render them visibly through the shared page shell; reuse those answers in existing guide schema so visible and structured answers cannot drift.
+- Directory labels use complete current page titles; static-route titles take precedence over colliding catalogue entries, and redirects/private routes stay out of the public directory to avoid misleading or broken discovery links.
+- Saturday group tour terms and departure dates come only from the browser-safe saturdayGroupTour data module; this keeps the tour page and destination CTAs consistent.

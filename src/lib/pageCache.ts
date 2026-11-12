@@ -27,7 +27,7 @@ type Entry = { t: number; status: number; headers: [string, string][]; body: Arr
 const memory = new Map<string, Entry>();
 /** Last shared-cache outcome, reported in the x-xtsy-edge header for diagnosis. */
 let edgeState = 'unknown';
-const inflight = new Map<string, Promise<Response>>();
+const inflight = new Map<string, Promise<Entry | null>>();
 
 export function cacheKey(request: Request): string | null {
   if (request.method !== 'GET') return null;
@@ -180,11 +180,18 @@ export function heroLinkHeader(html: string): string | null {
 
 /** Render, store if cacheable, and return a fresh response. Concurrent requests share one render. */
 async function renderAndStore(key: string, render: () => Promise<Response>): Promise<Response> {
+  // Only buffered entries are shared between requests; a Response stream belongs to the request that
+  // created it, and reusing it from another request makes the Worker runtime throw.
   const running = inflight.get(key);
-  if (running) return (await running).clone();
-  const p = (async () => {
+  if (running) {
+    const shared = await running.catch(() => null);
+    if (shared) return respond(shared, 'MISS');
+    return render();
+  }
+  let own: Response | null = null;
+  const p = (async (): Promise<Entry | null> => {
     const res = await render();
-    if (!storable(res)) return res;
+    if (!storable(res)) { own = res; return null; }
     const body = await res.arrayBuffer();
     const headers = [...res.headers.entries()].filter(([k]) => !/^(content-length|content-encoding)$/i.test(k));
     try {
@@ -195,11 +202,13 @@ async function renderAndStore(key: string, render: () => Promise<Response>): Pro
     }
     const entry: Entry = { t: Date.now(), status: res.status, headers, body };
     await write(key, entry);
-    return respond(entry, 'MISS');
+    return entry;
   })();
   inflight.set(key, p);
   try {
-    return (await p).clone();
+    const entry = await p;
+    if (entry) return respond(entry, 'MISS');
+    return own as unknown as Response;
   } finally {
     inflight.delete(key);
   }

@@ -20,6 +20,9 @@ import { destinationPath, getCitySlugForDestination, getCityBySlug } from '@/dat
 import { inr, lowestDormPrice } from '@/components/v2/pricing';
 import { PageShell, Breadcrumbs, PAD } from '@/components/v2/blocks';
 import { Photo } from '@/components/v2/primitives';
+import { rankedQuestionsFor } from '@/data/rankedPageQuestions';
+import StayAndTourCTA from '@/components/seo/StayAndTourCTA';
+import { quickFactsFor, DESTINATION_GUIDE_UPDATED } from '@/data/destinationQuickFacts';
 
 const SHILLONG_HOSTEL_LINK_SLUGS = new Set(['dawki-umngot-river', 'nohkalikai-falls', 'umiam-lake']);
 /** Older copy hard-codes the 2025 dorm rate; show the live one from the booking engine. */
@@ -41,8 +44,8 @@ function BookingCTA({ destination, placement }: { destination: MeghalayaDestinat
         <p className="m-0 max-w-2xl text-[15px] leading-relaxed text-xt-fog">{anchor}. Dorm beds, private rooms and Experience by XTSY — a well-rated base for exploring {destination.name} and the rest of {destination.region}. For nights away, we book trusted partner stays and transport.</p>
       </div>
       <div className="flex shrink-0 flex-col gap-2.5 sm:flex-row">
-        <Link to="/book" onClick={() => handleClick('availability_check')} className="xt-btn flex h-12 items-center justify-center rounded-full bg-xt-crimson px-6 text-[15px] font-extrabold text-white hover:text-white">Book hostel online</Link>
-        <Link to="/best-hostel-in-shillong" onClick={() => handleClick('book_now')} className="xt-btn flex h-12 items-center justify-center rounded-full border-[1.5px] border-xt-paper px-6 text-[15px] font-extrabold text-xt-paper hover:text-xt-paper">View hostel &amp; rooms</Link>
+        <Link to="/book" onClick={() => handleClick('availability_check')} className="xt-btn flex h-12 items-center justify-center rounded-full bg-xt-crimson px-6 text-[15px] font-extrabold text-white hover:text-white">Book a bed at XTSY</Link>
+        <Link to="/best-hostel-in-shillong" onClick={() => handleClick('book_now')} className="xt-btn flex h-12 items-center justify-center rounded-full border-[1.5px] border-xt-paper px-6 text-[15px] font-extrabold text-xt-paper hover:text-xt-paper">Compare hostel rooms</Link>
       </div>
     </section>
   );
@@ -56,6 +59,7 @@ export default function DestinationV2() {
 
   if ((slug && GONE_SLUGS.has(slug)) || runtimeStatus === 410) return <NotFound statusCode={410} />;
   if (!destination) return <NotFound />;
+  const quick = quickFactsFor(destination);
 
   const images = getDestinationImages(destination.slug, 6);
   const realImages = images.filter((i) => !i.src.endsWith('placeholder.svg'));
@@ -64,7 +68,8 @@ export default function DestinationV2() {
   const showShillongHostelLink = SHILLONG_HOSTEL_LINK_SLUGS.has(destination.slug);
 
   const topThings = destination.thingsToDo.slice(0, 3).join(', ');
-  const faqs: { q: string; a: string }[] = [
+  const rankedQuestions = rankedQuestionsFor(destinationPath(destination.slug));
+  const faqs: { q: string; a: string }[] = rankedQuestions ?? [
     { q: `What is the best time to visit ${destination.name}?`, a: destination.bestTimeToVisit },
     { q: `How do I reach ${destination.name} from Shillong?`, a: destination.howToReach },
     { q: `What are the top things to do at ${destination.name}?`, a: `Popular things to do at ${destination.name} include ${topThings}. ${destination.shortDescription}` },
@@ -104,7 +109,7 @@ export default function DestinationV2() {
     containedInPlace: { '@type': 'Place', name: `${destination.region}, Meghalaya` },
     image: images.map((img) => ({ '@type': 'ImageObject', url: img.src, name: img.alt })),
     datePublished: '2024-01-15',
-    dateModified: '2026-06-25',
+    dateModified: quick ? DESTINATION_GUIDE_UPDATED : '2026-06-25',
   };
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
@@ -220,11 +225,29 @@ export default function DestinationV2() {
 
         <section className={`${PAD} grid gap-12 py-16 lg:grid-cols-12`}>
           <article className="flex min-w-0 flex-col gap-10 lg:col-span-8">
+            {quick && (
+              <section aria-label={`${destination.name} in short`} className="xt-reveal flex flex-col gap-4">
+                <div className="rounded-[20px] border-l-4 border-xt-crimson bg-white p-6">
+                  <p className="m-0 text-[12px] font-extrabold tracking-wider text-xt-mute">IN SHORT</p>
+                  <p className="m-0 mt-2 text-[18px] leading-relaxed">{quick.inShort}</p>
+                </div>
+                <table className="w-full border-collapse text-left text-[15px]">
+                  <caption className="mb-2 text-left text-[18px] font-extrabold">Quick facts</caption>
+                  <tbody>
+                    {quick.rows.map(([k, v]) => (
+                      <tr key={k} className="border-b border-xt-line"><th scope="row" className="w-[40%] py-2.5 pr-4 font-bold">{k}</th><td className="py-2.5">{v}</td></tr>
+                    ))}
+                  </tbody>
+                </table>
+                <p className="m-0 text-[13px] text-xt-mute">By the XTSY Voyage team, New Shillong · Last updated: {DESTINATION_GUIDE_UPDATED}</p>
+              </section>
+            )}
             <section className="xt-reveal flex flex-col gap-3">
               <H2>Overview</H2>
               <p className="m-0 whitespace-pre-line font-serif text-[18px] leading-[1.7] sm:text-[20px]">{destination.description}</p>
             </section>
             <BookingCTA destination={destination} placement="top" />
+            {quick && <StayAndTourCTA place={destination.name} />}
             {showShillongHostelLink && <ShillongHostelLinkBlock nearName={destination.name} source={`destination_${destination.slug}`} />}
             {destination.deepDive?.map((b) => (
               <section key={b.heading} className="xt-reveal flex flex-col gap-3">
@@ -283,7 +306,7 @@ export default function DestinationV2() {
               <div className="flex flex-col gap-3 rounded-[24px] bg-white p-7">
                 <h3 className="m-0 text-[20px] font-extrabold">Stay nearby</h3>
                 <p className="m-0 text-[15px] leading-relaxed text-xt-mute">Base yourself at XTSY in New Shillong (dorm beds from {inr(lowestDormPrice())}). For nights away, we book trusted partner stays and transport.</p>
-                <Link to="/book" className="xt-btn flex h-12 items-center justify-center rounded-full border-[1.5px] border-xt-ink text-[15px] font-extrabold text-xt-ink hover:text-xt-ink">Book direct</Link>
+                <Link to="/book" className="xt-btn flex h-12 items-center justify-center rounded-full bg-xt-crimson text-[15px] font-extrabold text-white hover:text-white">Book your XTSY stay</Link>
               </div>
             </div>
           </aside>
@@ -307,7 +330,7 @@ export default function DestinationV2() {
           </section>
         )}
 
-        <section className={`${PAD} grid gap-10 pb-14 lg:grid-cols-12`}>
+        {!rankedQuestions && <section className={`${PAD} grid gap-10 pb-14 lg:grid-cols-12`}>
           <div className="lg:col-span-4"><H2>{destination.name} — FAQs</H2></div>
           <div className="flex flex-col gap-3 lg:col-span-8">
             {faqs.map(({ q, a }) => (
@@ -317,7 +340,7 @@ export default function DestinationV2() {
               </div>
             ))}
           </div>
-        </section>
+        </section>}
 
         <section className={`${PAD} flex flex-col gap-10 pb-10`}>
           <BookingCTA destination={destination} placement="bottom" />
@@ -332,11 +355,12 @@ export default function DestinationV2() {
                 { to: '/shillong-tour-package', label: 'Shillong Tour Package' },
                 { to: '/best-time-to-visit-meghalaya', label: 'Best Time to Visit' },
                 { to: '/meghalaya-travel-guide', label: 'Meghalaya Travel Guide' },
-                { to: '/best-hostel-in-shillong', label: 'Best Hostel in Shillong' },
+                { to: '/best-hostel-in-shillong', label: 'Hostels in Shillong', hot: true },
+                { to: '/book', label: 'Book XTSY in Shillong', hot: true },
                 { to: '/tours', label: 'Northeast India Tours' },
                 { to: '/meghalaya-photo-gallery', label: 'Photo Gallery' },
               ].filter((l, i, arr) => arr.findIndex((x) => x.to === l.to) === i).map((l) => (
-                <Link key={l.to} to={l.to} className="rounded-full border-[1.5px] border-xt-stone px-4 py-2 text-[14px] font-bold text-xt-ink hover:text-xt-crimson">{l.label}</Link>
+                <Link key={l.to} to={l.to} className={`rounded-full border-[1.5px] px-4 py-2 text-[14px] ${'hot' in l && l.hot ? 'border-xt-crimson bg-xt-crimson/5 font-extrabold text-xt-crimson hover:text-xt-crimson' : 'border-xt-stone font-bold text-xt-ink hover:text-xt-crimson'}`}>{l.label}</Link>
               ))}
             </div>
           </nav>}

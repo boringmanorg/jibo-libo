@@ -1,3 +1,4 @@
+import { WaAnchor } from '@/components/WaAnchor';
 /**
  * SiteHeader (v2) — sand header with announcement strip, main nav, search,
  * sign-in / account, "Book now" and a full-screen mobile menu.
@@ -14,7 +15,7 @@ const IntelligentSearchOverlay = lazy(() => import('@/components/IntelligentSear
 
 export const MAIN_NAV = [
   { to: '/best-hostel-in-shillong', label: 'Stays' },
-  { to: '/xtsy-270', label: 'Experience by XTSY' },
+  { to: '/experience-by-xtsy', label: 'Experience by XTSY' },
   { to: '/tours', label: 'Tours' },
   { to: '/tab-bistro', label: 'TAB Bistro' },
   { to: '/work-from-home', label: 'Workation' },
@@ -27,7 +28,7 @@ const MENU_GROUPS = [
     title: 'Stay',
     links: [
       { to: '/book', label: 'Book a room' },
-      { to: '/xtsy-270', label: 'Experience by XTSY' },
+      { to: '/experience-by-xtsy', label: 'Experience by XTSY' },
       { to: '/xtsy-adventure-campsite-dawki', label: 'Dawki camping (partner)' },
       { to: '/pet-friendly', label: 'Pet-friendly stays' },
       { to: '/female-travellers', label: 'Women safe stays' },
@@ -182,7 +183,7 @@ export default function SiteHeader() {
             ))}
           </div>
           <div className="flex flex-wrap items-center gap-3 border-t border-white/10 px-4 py-8 sm:px-8 lg:px-14">
-            <a href={waLink()} className="flex h-12 items-center rounded-full bg-xt-crimson px-6 font-bold text-white hover:text-white">WhatsApp {WHATSAPP_DISPLAY}</a>
+            <WaAnchor href={waLink()} className="flex h-12 items-center rounded-full bg-xt-crimson px-6 font-bold text-white hover:text-white">WhatsApp {WHATSAPP_DISPLAY}</WaAnchor>
             <Link to="/install" className="flex h-12 items-center rounded-full border-[1.5px] border-xt-paper/40 px-6 font-bold text-xt-paper">Install the app</Link>
           </div>
         </div>

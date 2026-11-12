@@ -29,14 +29,12 @@ const BOT_AGENTS = [
   'feedfetcher-google', 'google-read-aloud',
 ];
 
-// AI training scrapers — return 403 at the edge (CF Security Insights:
-// "Review and block AI bots"). Live-answer agents (ChatGPT-User,
-// PerplexityBot, OAI-SearchBot) are intentionally NOT in this list so
-// xtsy.one keeps showing up in user-initiated AI answers.
+// AI crawlers are WELCOMED (SEO master prompt, Part 7a): robots.txt explicitly
+// allows GPTBot, ClaudeBot, PerplexityBot, Google-Extended etc., so the edge
+// must not 403 them — AI engines can't cite pages they cannot fetch.
+// Only abusive scrapers with no answer-engine value stay blocked.
 const BLOCKED_AI_AGENTS = [
-  'gptbot', 'claudebot', 'claude-web', 'anthropic-ai', 'ccbot',
-  'cohere-ai', 'bytespider', 'omgilibot', 'diffbot', 'imagesiftbot',
-  'google-extended', 'petalbot', 'mistralai-user',
+  'bytespider', 'omgilibot', 'petalbot',
 ];
 
 function isBot(userAgent) {

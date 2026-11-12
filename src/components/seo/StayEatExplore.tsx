@@ -45,7 +45,7 @@ const StayEatExplore = ({
       icon: PartyPopper,
       title: 'Catering & Events',
       desc: 'Planning a wedding, corporate retreat, or party? TAB Bistro handles event, wedding, and bulk catering across Shillong & Meghalaya.',
-      to: '/tab-bistro/catering',
+      to: '/catering-shillong',
       cta: 'Get a Catering Quote',
     },
     {

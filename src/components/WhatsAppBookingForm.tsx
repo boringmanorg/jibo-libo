@@ -21,7 +21,7 @@ import { useLocationConsent } from "@/hooks/useLocationConsent";
 import { useFormEngagement } from "@/hooks/useFormEngagement";
 import { useEnhancedAnalytics } from "@/hooks/useEnhancedAnalytics";
 import { XTSY270_DATA } from "@/data/rooms/xtsy270";
-import { PANORAMA_STAY_ONLY, currentRoomRate, quoteStay } from '@/data/panoramaPricing';
+import { PANORAMA_STAY_ONLY, currentRoomRate, quoteStay, displayRoomName } from '@/data/panoramaPricing';
 
 // All Indian states and union territories
 const INDIAN_STATES = [
@@ -367,7 +367,7 @@ const WhatsAppBookingForm = ({ isOpen, onClose }: WhatsAppBookingFormProps) => {
 
     // Build warm, branded WhatsApp message for XTSY Travellers Hostel
     const roomsText = selectedRooms.length > 0 
-      ? selectedRooms.map(room => `   • ${room.roomTypeName} × ${room.quantity}${isXtsy270Room(room.roomTypeName) ? ` — Stay only (₹${PANORAMA_STAY_ONLY.toLocaleString('en-IN')}/night, all inclusive)${panoramaDecoration ? '; Decoration +₹2,500 once (rose petals, scented candles, bouquet, cake)' : ''}` : ` (₹${room.price.toLocaleString('en-IN')}/night)`}`).join('\n')
+      ? selectedRooms.map(room => `   • ${displayRoomName(room.roomTypeName)} × ${room.quantity}${isXtsy270Room(room.roomTypeName) ? ` — Stay only (₹${PANORAMA_STAY_ONLY.toLocaleString('en-IN')}/night, all inclusive)${panoramaDecoration ? '; Decoration +₹2,500 once (rose petals, scented candles, bouquet, cake)' : ''}` : ` (₹${room.price.toLocaleString('en-IN')}/night)`}`).join('\n')
       : '   • To be decided';
 
     const addOnsText = [];
@@ -781,7 +781,7 @@ Looking forward to hearing from you. Thank you! 🌟`;
                           className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700"
                         >
                           <div className="flex-1">
-                            <p className="font-medium text-sm">{room.roomTypeName}</p>
+                            <p className="font-medium text-sm">{displayRoomName(room.roomTypeName)}</p>
                             <p className="text-xs text-muted-foreground">
                                {formatPrice(isXtsy270Room(room.roomTypeName) ? PANORAMA_STAY_ONLY : room.price)}{priceLabel} × {room.quantity} {unitLabel} × {nights || 0} nights = {formatPrice((isXtsy270Room(room.roomTypeName) ? PANORAMA_STAY_ONLY : room.price) * room.quantity * (nights || 0))}
                             </p>

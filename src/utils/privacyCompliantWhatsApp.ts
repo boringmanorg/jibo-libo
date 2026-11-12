@@ -20,6 +20,9 @@ export function openWhatsAppDirectly(
   }
 }
 
+/** Shared helper name from the SEO master prompt: builds the wa.me URL in JS so no wa.me <a href> sits in the HTML (crawlers get 429 from wa.me). */
+export const openWhatsApp = openWhatsAppDirectly;
+
 /** Page metadata only; never forward query parameters or referrer identifiers. */
 export function bookingPageSource(): string {
   if (typeof window === 'undefined') return 'XTSY booking';

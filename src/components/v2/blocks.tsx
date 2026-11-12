@@ -1,3 +1,4 @@
+import { WaAnchor } from '@/components/WaAnchor';
 /**
  * Page-building blocks for inner pages of the 2026 redesign.
  */
@@ -10,6 +11,9 @@ import SiteFooter from './SiteFooter';
 import CtaBand from './CtaBand';
 import { Eyebrow, Photo, XtsyMark, waLink } from './primitives';
 import { inr, lowestDormPrice } from './pricing';
+import RankedPageQuestions from '@/components/seo/RankedPageQuestions';
+import { rankedQuestionsFor } from '@/data/rankedPageQuestions';
+import { useLocation } from '@tanstack/react-router';
 
 export const PAD = 'px-4 sm:px-8 lg:px-16';
 
@@ -62,7 +66,7 @@ export function PageShell({
   return (
     <div className={cn('xt min-h-screen', action && 'pb-[72px] md:pb-0')}>
       <SiteHeader />
-      <main>{children}</main>
+      <main>{children}<RankedPageQuestions /></main>
       {cta !== false && <CtaBand {...(cta || {})} />}
       <SiteFooter />
       {action && <MobileBookBar {...action} />}
@@ -83,6 +87,7 @@ const BTN: Record<BtnKind, string> = {
 export function Btn({ to, kind = 'primary', children, className, onClick }: { to?: string; kind?: BtnKind; children: ReactNode; className?: string; onClick?: () => void }) {
   const cls = cn('xt-btn inline-flex h-14 items-center justify-center gap-2 rounded-full px-7 text-[16px] font-extrabold', BTN[kind], className);
   if (!to) return <button type="button" onClick={onClick} className={cls}>{children}</button>;
+  if (/^https:\/\/wa\.me\//.test(to)) return <WaAnchor href={to} onClick={onClick} className={cls}>{children}</WaAnchor>;
   if (/^(https?:|tel:|mailto:|#)/.test(to)) {
     const ext = /^https?:/.test(to);
     return <a href={to} onClick={onClick} className={cls} {...(ext ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{children}</a>;
@@ -252,6 +257,8 @@ export function PriceCards({ cards }: { cards: PriceCard[] }) {
 /** Accordion FAQ with FAQPage structured data. */
 export function FaqList({ faqs, schema = true, title = 'Good to know' }: { faqs: { q: string; a: string }[]; schema?: boolean; title?: ReactNode }) {
   const [open, setOpen] = useState(0);
+  const location = useLocation();
+  if (rankedQuestionsFor(location.pathname)) return null;
   return (
     <section className={cn(PAD, 'grid gap-8 py-16 lg:grid-cols-12 lg:gap-10 lg:py-20')}>
       {schema && (

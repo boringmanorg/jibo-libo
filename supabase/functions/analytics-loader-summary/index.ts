@@ -164,16 +164,17 @@ Deno.serve(async (req) => {
       else console.error('Slack dispatch failed:', res.status, await res.text());
     }
 
+    const esc = (v: unknown) => String(v).replace(/[&<>"']/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" } as Record<string, string>)[ch]);
     const alertEmail = Deno.env.get('SEO_ALERT_EMAIL');
     if (alertEmail) {
       try {
         const htmlBody =
-          `<h2>${title}</h2>` +
+          `<h2>${esc(title)}</h2>` +
           `<p><strong>Overall load success:</strong> ${summary.overallSuccessRate}</p>` +
           `<p><strong>First-party (/cs):</strong> ${summary.firstParty.loaded}/${summary.firstParty.attempts} (${summary.firstParty.successRate})<br/>` +
           `<strong>CDN fallback:</strong> ${summary.cdn.loaded}/${summary.cdn.attempts} (${summary.cdn.successRate})</p>` +
-          `<h3>Top block reasons</h3><ul>${(topReasons.length ? topReasons : [['none', 0]]).map(([r, c]) => `<li>${r}: ${c}</li>`).join('')}</ul>` +
-          `<h3>Blocked by browser</h3><ul>${(topBrowsers.length ? topBrowsers : [['none', 0]]).map(([b, c]) => `<li>${b}: ${c}</li>`).join('')}</ul>`;
+          `<h3>Top block reasons</h3><ul>${(topReasons.length ? topReasons : [['none', 0]]).map(([r, c]) => `<li>${esc(r)}: ${esc(c)}</li>`).join('')}</ul>` +
+          `<h3>Blocked by browser</h3><ul>${(topBrowsers.length ? topBrowsers : [['none', 0]]).map(([b, c]) => `<li>${esc(b)}: ${esc(c)}</li>`).join('')}</ul>`;
         const { error } = await supabase.functions.invoke('send-transactional-email', {
           body: {
             to: alertEmail,

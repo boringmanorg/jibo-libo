@@ -55,7 +55,8 @@ export default function ExperienceByXtsy() {
           muted="#C9CFDD"
           eyebrowColor="#E07A8B"
           eyebrow="India’s First Stargaze Glamp · Sleep under the stars"
-          title="Experience by XTSY"
+          size="md"
+          title="Experience by XTSY: The Romantic Couple Stay in India is now at New Shillong, Meghalaya"
           decoration={
             <svg viewBox="0 0 1440 820" preserveAspectRatio="xMidYMid slice" aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full">
               <g fill="#F4EFE8">

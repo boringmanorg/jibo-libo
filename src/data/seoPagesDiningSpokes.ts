@@ -64,7 +64,6 @@ export const DINING_SPOKE_SLUGS: string[] = [
   'tab-bistro-by-xtsy-restaurant',
   'best-chinese-restaurant-in-shillong',
   'restaurant-in-police-bazar',
-  'best-restaurant-shillong',
   'catering-services-in-shillong',
   'wedding-catering-services-shillong',
   'party-catering-shillong',
@@ -135,26 +134,7 @@ export const DINING_SPOKE_PAGES: SEOPageData[] = [
     'TAB Bistro by XTSY is a multi-cuisine restaurant in New Shillong Township, a cab ride from Police Bazar, serving tandoor, Indo-Chinese, North Indian gravies and biryani, open daily for breakfast 8:45 AM–12 PM & dinner 5–11 PM.',
   ),
 
-  // ── 4. BEST RESTAURANT SHILLONG ───────────────────────────────────────────
-  spoke(
-    'best-restaurant-shillong',
-    'Best Restaurant in Shillong 2026 — Top Multi-Cuisine Dining | TAB Bistro',
-    'Among the best-rated restaurants in Shillong — TAB Bistro by XTSY. Tandoor, Indo-Chinese, North Indian, biryani & pasta. Open for breakfast 8:45 AM–12 PM & dinner 5–11 PM.',
-    'Best Restaurant in Shillong',
-    'Searching for the best restaurant in Shillong? TAB Bistro by XTSY blends a stunning pine-forest setting with a genuinely wide, well-executed multi-cuisine menu — clay-oven tandoor, Indo-Chinese, North Indian gravies, XTSY dum biriyani, South Indian and hand-crafted pasta — making it a top pick for travellers and locals alike.',
-    [
-      { heading: 'What Makes a Restaurant the Best in Shillong', content: 'TAB Bistro checks every box travellers look for:', listItems: ['Wide, consistent multi-cuisine menu', 'Memorable forest-dining ambience', 'Veg, non-veg, vegan & Jain options', 'Friendly service & fair pricing', 'Dinner until 11 PM, last order 10:30 PM'] },
-      { heading: 'The TAB Bistro Menu', content: 'Ten-plus cuisines, all cooked fresh:', listItems: ['Clay-oven tandoor', 'North Indian curries & biryani', 'Indo-Chinese wok dishes', 'Hand-crafted pasta', 'XTSY dum biriyani & chicken mandi'] },
-      { heading: 'Best for Every Occasion', content: 'From solo travellers to big celebrations, TAB Bistro fits the moment.', listItems: ['Couple dinners with forest views', 'Family meals & full veg sections', 'Group celebrations & parties', 'Work-friendly café brunches'] },
-      { heading: 'Café, Breakfast & Desserts', content: 'A full café complements the kitchen with coffee, thick shakes, mojitos and a breakfast spread served 8:45 AM–12 PM.', listItems: ['Espresso, cappuccino & mojitos', 'Breakfast 8:45 AM–12 PM', 'Ice cream & fruit bowls', 'Wi-Fi-friendly seating'] },
-      { heading: 'More Than a Restaurant — Catering & Events', content: 'As the dining arm of the XTSY group, TAB Bistro also caters weddings, corporate events and parties across Meghalaya.', listItems: ['Wedding & destination-wedding catering', 'Corporate & retreat catering', 'Party & birthday menus', 'Bulk and party food orders'] },
-      { heading: 'Visit TAB Bistro', content: 'TAB Bistro is on Mawdiangdiang Road, New Shillong Township, near NIFT and IIM Shillong. Reserve your table on WhatsApp at +91 88373 17070 or browse the full menu on the TAB Bistro page.' },
-    ],
-    [...baseFaqs, { question: 'What is the best restaurant in Shillong for tourists?', answer: 'TAB Bistro by XTSY is a favourite with tourists thanks to its forest setting, broad multi-cuisine menu and location beside XTSY Travellers Hostel — convenient for travellers exploring Meghalaya.' }, { question: 'Is TAB Bistro expensive?', answer: 'TAB Bistro is mid-range and fair value for its setting and menu range, with an extra 15% in-house discount for XTSY hostel guests.' }],
-    ['best-place-to-eat-in-shillong', 'best-food-in-shillong', 'restaurant-in-shillong', 'tab-bistro-by-xtsy-restaurant', 'best-chinese-restaurant-in-shillong'],
-    ['best restaurant shillong', 'best restaurant in shillong', 'top restaurant in shillong', 'best place to eat in shillong', 'multi cuisine restaurant shillong'],
-    'TAB Bistro by XTSY is widely rated among the best restaurants in Shillong — a multi-cuisine forest restaurant serving tandoor, Indo-Chinese, North Indian gravies, biryani and pasta, open daily for breakfast 8:45 AM–12 PM & dinner 5–11 PM.',
-  ),
+  // 'best-restaurant-shillong' removed: 301 → /best-restaurants-shillong (duplicate-title fix, Semrush E3).
 
   // ── 5. CATERING SERVICES HUB ──────────────────────────────────────────────
   spoke(
@@ -172,10 +152,10 @@ export const DINING_SPOKE_PAGES: SEOPageData[] = [
       { heading: 'Get a Catering Quote', content: 'Tell us your event date, venue, guest count and cuisine preferences for a tailored quote. Message TAB Bistro catering on WhatsApp at +91 88373 17070 or open the catering page to start.' },
     ],
     [...baseFaqs, { question: 'How much notice does TAB Bistro need for catering?', answer: 'For parties we suggest a few days; for weddings and large corporate events, a couple of weeks helps us plan menus, staff and tastings. Last-minute bulk orders are accommodated where possible.' }, { question: 'Can TAB Bistro cater pure-veg or Jain events?', answer: 'Yes — we offer fully vegetarian, vegan and Jain-friendly catering menus, as well as mixed veg and non-veg spreads.' }],
-    ['wedding-catering-services-shillong', 'corporate-event-catering-shillong', 'party-catering-shillong', 'tab-bistro-by-xtsy-restaurant', 'best-restaurant-shillong'],
+    ['wedding-catering-services-shillong', 'corporate-event-catering-shillong', 'party-catering-shillong', 'tab-bistro-by-xtsy-restaurant', 'best-restaurants-shillong'],
     ['catering services in shillong', 'catering in shillong', 'caterers in shillong', 'event catering shillong', 'bulk food order shillong', 'order party food near me'],
     'TAB Bistro by XTSY provides full catering services in Shillong — weddings, corporate events, parties and bulk orders — with multi-cuisine menus and dishes cooked to order. Get a quote on WhatsApp at +91 88373 17070.',
-    '/tab-bistro/catering',
+    '/catering-shillong',
   ),
 
   // ── 6. WEDDING CATERING ───────────────────────────────────────────────────
@@ -197,7 +177,7 @@ export const DINING_SPOKE_PAGES: SEOPageData[] = [
     ['catering-services-in-shillong', 'corporate-event-catering-shillong', 'party-catering-shillong', 'destination-wedding-shillong', 'tab-bistro-by-xtsy-restaurant'],
     ['wedding catering services shillong', 'wedding catering shillong', 'destination wedding catering', 'wedding caterers in shillong', 'wedding food catering meghalaya'],
     'TAB Bistro by XTSY provides wedding and destination-wedding catering across Shillong and Meghalaya, with multi-day multi-cuisine menus, dishes cooked to order and full service staff. Get a quote at +91 88373 17070.',
-    '/tab-bistro/catering',
+    '/catering-shillong',
   ),
 
   // ── 7. PARTY CATERING ─────────────────────────────────────────────────────
@@ -205,7 +185,7 @@ export const DINING_SPOKE_PAGES: SEOPageData[] = [
     'party-catering-shillong',
     'Party Catering & Bulk Food Orders in Shillong | TAB Bistro by XTSY',
     'Party catering and bulk food orders in Shillong by TAB Bistro by XTSY. Birthdays, get-togethers & celebrations with multi-cuisine menus. Order party food on WhatsApp.',
-    'Party Catering & Bulk Food Orders in Shillong',
+    'Party Catering in Shillong: Birthdays, Get-Togethers & Bulk Orders',
     'From birthday bashes to house parties and get-togethers, TAB Bistro by XTSY makes party food easy in Shillong — multi-cuisine menus, dishes cooked to order and reliable bulk orders, delivered or set up so you can enjoy your own party.',
     [
       { heading: 'Party Catering Made Easy', content: 'Host without the stress — we cook, you celebrate:', listItems: ['Birthday & house-party catering', 'Get-together & reunion menus', 'Tandoori dishes & appetizers, cooked to order', 'Bulk and party food orders', 'Setup & service options'] },
@@ -219,7 +199,7 @@ export const DINING_SPOKE_PAGES: SEOPageData[] = [
     ['catering-services-in-shillong', 'wedding-catering-services-shillong', 'corporate-event-catering-shillong', 'tab-bistro-by-xtsy-restaurant', 'best-chinese-restaurant-in-shillong'],
     ['party catering shillong', 'bulk food order shillong', 'order party food near me', 'birthday party catering shillong', 'bulk order food near me'],
     'TAB Bistro by XTSY offers party catering and bulk food orders in Shillong — birthdays, get-togethers and celebrations — with multi-cuisine menus and dishes cooked to order. Order on WhatsApp at +91 88373 17070.',
-    '/tab-bistro/catering',
+    '/catering-shillong',
   ),
 
   // ── 8. CORPORATE CATERING ─────────────────────────────────────────────────
@@ -238,9 +218,9 @@ export const DINING_SPOKE_PAGES: SEOPageData[] = [
       { heading: 'Get a Corporate Catering Quote', content: 'Tell us your date, location, headcount and menu preferences for a tailored corporate quote. Message TAB Bistro on WhatsApp at +91 88373 17070 or open the catering page.' },
     ],
     [...baseFaqs, { question: 'Does TAB Bistro offer recurring office lunch catering?', answer: 'Yes — TAB Bistro can set up recurring daily or weekly office lunch catering with rotating multi-cuisine menus. Share your schedule and headcount for a plan.' }, { question: 'Can you cater corporate retreats outside Shillong?', answer: 'Yes — TAB Bistro caters corporate retreats and off-sites across Meghalaya, with on-site cooking options and bundled XTSY stays and team experiences.' }],
-    ['catering-services-in-shillong', 'wedding-catering-services-shillong', 'party-catering-shillong', 'tab-bistro-by-xtsy-restaurant', 'best-restaurant-shillong'],
+    ['catering-services-in-shillong', 'wedding-catering-services-shillong', 'party-catering-shillong', 'tab-bistro-by-xtsy-restaurant', 'best-restaurants-shillong'],
     ['corporate catering shillong', 'corporate event catering shillong', 'office lunch catering shillong', 'conference catering shillong', 'event catering shillong'],
     'TAB Bistro by XTSY provides corporate and event catering in Shillong — office lunches, conferences and retreats — with hygienic multi-cuisine menus and on-time delivery. Get a quote at +91 88373 17070.',
-    '/tab-bistro/catering',
+    '/catering-shillong',
   ),
 ];

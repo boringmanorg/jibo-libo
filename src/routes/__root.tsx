@@ -39,7 +39,6 @@ import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import ChatLauncher from "@/components/v2/ChatLauncher";
 import NotFound from "@/pages/NotFound";
 import { AppProvider } from "@/contexts/AppContext";
-import { UserAuthProvider } from "@/contexts/UserAuthContext";
 import { EnhancedAnalyticsProvider } from "@/hooks/useEnhancedAnalytics";
 import { TrafficAnalyticsProvider } from "@/hooks/useTrafficAnalytics";
 import { ConversionSignalsProvider } from "@/providers/ConversionSignalsProvider";
@@ -151,9 +150,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "apple-touch-icon", href: "/xtsy-favicon.png" },
       { rel: "dns-prefetch", href: "//www.googletagmanager.com" },
       { rel: "dns-prefetch", href: "//wa.me" },
-      { rel: "alternate", hrefLang: "en", href: "https://xtsy.one/" },
-      { rel: "alternate", hrefLang: "en-IN", href: "https://xtsy.one/" },
-      { rel: "alternate", hrefLang: "x-default", href: "https://xtsy.one/" },
     ],
     scripts: [
       { children: HYDRATED_CLASS_SCRIPT },
@@ -307,7 +303,6 @@ function RootComponent() {
             <ClientOnly fallback={null}>
               <PerformanceMonitor />
             </ClientOnly>
-              <UserAuthProvider>
                 <TrafficAnalyticsProvider>
                   <ConversionSignalsProvider>
                     <EnhancedAnalyticsProvider>
@@ -338,7 +333,6 @@ function RootComponent() {
                     </EnhancedAnalyticsProvider>
                   </ConversionSignalsProvider>
                 </TrafficAnalyticsProvider>
-              </UserAuthProvider>
           </div>
         </SecurityHeadersProvider>
       </AppProvider>

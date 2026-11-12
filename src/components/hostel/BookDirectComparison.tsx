@@ -2,6 +2,7 @@ import { memo } from 'react';
 import { Link } from '@/lib/router-compat';
 import { Check, X, MessageCircle, IndianRupee } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { openWhatsApp } from '@/utils/privacyCompliantWhatsApp';
 
 interface Row {
   feature: string;
@@ -83,14 +84,8 @@ const BookDirectComparison = memo(({ className = '' }: { className?: string }) =
           <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
             <Link to="/book">Book Direct &amp; Save</Link>
           </Button>
-          <Button asChild size="lg" variant="outline">
-            <a
-              href="https://wa.me/918837317070?text=Hi%20XTSY%2C%20I%20found%20a%20cheaper%20rate%20on%20an%20OTA%20%E2%80%94%20can%20you%20match%20it%3F"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <MessageCircle className="w-4 h-4 mr-2" aria-hidden="true" /> Ask for a price match
-            </a>
+          <Button size="lg" variant="outline" onClick={() => openWhatsApp('Hi XTSY, I found a lower rate on an OTA — can you match it?')}>
+            <MessageCircle className="w-4 h-4 mr-2" aria-hidden="true" /> Ask for a price match
           </Button>
         </div>
       </div>

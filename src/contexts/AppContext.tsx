@@ -1,7 +1,7 @@
 import { SELF_TRACKING_ENABLED } from '@/lib/selfTracking';
 import * as React from 'react';
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { getSupabase } from '@/integrations/supabase/lazy';
+import { getSupabase } from '@/lib/offlineBackend';
 import { deferUntilIdle } from '@/utils/deferUntilIdle';
 
 interface Currency {
@@ -98,6 +98,8 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
       return;
     }
 
+    // Fixed fallback rates: no backend call.
+    return;
     try {
       const { data, error } = await (await getSupabase()).functions.invoke('fetch-exchange-rates', {
         body: {},

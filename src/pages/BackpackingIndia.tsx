@@ -8,6 +8,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import BookDirectComparison from '@/components/hostel/BookDirectComparison';
 import HostelDealsFAQ from '@/components/hostel/HostelDealsFAQ';
 import { hostelDealFaqEntities } from '@/data/hostelBookingFaqs';
+import { openWhatsApp } from '@/utils/privacyCompliantWhatsApp';
 import {
   Backpack, IndianRupee, Train, MapPin, CalendarCheck, MessageCircle,
   Bed, Check, Compass, Sun, Wallet, Shield,
@@ -342,14 +343,8 @@ const BackpackingIndia = memo(() => {
               <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
                 <Link to="/book"><CalendarCheck className="w-5 h-5 mr-2" aria-hidden="true" /> Check Availability &amp; Book</Link>
               </Button>
-              <Button asChild size="lg" variant="outline">
-                <a
-                  href="https://wa.me/918837317070?text=Hi%20XTSY%2C%20I%27m%20backpacking%20India%20and%20want%20to%20stay%20in%20Shillong"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <MessageCircle className="w-5 h-5 mr-2" aria-hidden="true" /> WhatsApp us
-                </a>
+              <Button size="lg" variant="outline" onClick={() => openWhatsApp("Hi XTSY, I'm backpacking India and want to stay in Shillong")}>
+                <MessageCircle className="w-5 h-5 mr-2" aria-hidden="true" /> WhatsApp us
               </Button>
             </div>
           </div>

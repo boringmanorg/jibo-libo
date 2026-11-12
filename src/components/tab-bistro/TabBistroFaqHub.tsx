@@ -2,6 +2,7 @@ import { memo } from "react";
 import { Helmet } from '@/lib/seo/helmet';
 import { Link } from "@/lib/router-compat";
 import { Utensils, ShoppingBag, Truck, PartyPopper } from "lucide-react";
+import { openWhatsApp } from '@/utils/privacyCompliantWhatsApp';
 
 interface FaqItem {
   q: string;
@@ -62,7 +63,7 @@ const groups: FaqGroup[] = [
         a: (
           <>
             Yes. You can place takeaway and online food orders directly with TAB Bistro on WhatsApp at{" "}
-            <a href="https://wa.me/918837317070" className="text-amber-400 underline">+91 88373 17070</a> —
+            <button type="button" onClick={() => openWhatsApp("Hi TAB Bistro, I'd like to place a takeaway order.")} className="text-amber-400 underline">+91 88373 17070</button> —
             pick any cuisine from{" "}
             <a href="#xtsy-specials" className="text-amber-400 underline">XTSY Specials</a> and we'll pack it fresh.
           </>
@@ -92,7 +93,7 @@ const groups: FaqGroup[] = [
         a: (
           <>
             Yes — message us on{" "}
-            <a href="https://wa.me/918837317070" className="text-amber-400 underline">WhatsApp +91 88373 17070</a>{" "}
+            <button type="button" onClick={() => openWhatsApp("Hi TAB Bistro, I'd like to ask about delivery.")} className="text-amber-400 underline">WhatsApp +91 88373 17070</button>{" "}
             with your order and location and we'll confirm delivery availability and timing.
           </>
         ),
@@ -103,7 +104,7 @@ const groups: FaqGroup[] = [
         a: (
           <>
             Absolutely. For large group, party or office orders, use our{" "}
-            <Link to="/tab-bistro/catering" className="text-amber-400 underline">catering & bulk-orders page</Link>{" "}
+            <Link to="/catering-shillong" className="text-amber-400 underline">catering & bulk-orders page</Link>{" "}
             for the best rates and planning.
           </>
         ),
@@ -122,7 +123,7 @@ const groups: FaqGroup[] = [
           <>
             Yes. TAB Bistro by XTSY handles wedding catering, corporate events, private parties and bulk food
             orders across Shillong and Meghalaya. Get a quote on the{" "}
-            <Link to="/tab-bistro/catering" className="text-amber-400 underline">catering page</Link>.
+            <Link to="/catering-shillong" className="text-amber-400 underline">catering page</Link>.
           </>
         ),
         text: "Yes. TAB Bistro by XTSY handles wedding catering, corporate events, private parties and bulk food orders across Shillong and Meghalaya. Get a quote on the catering page.",
@@ -133,7 +134,7 @@ const groups: FaqGroup[] = [
           <>
             Yes — we cater corporate offsites, conferences and office parties with multi-cuisine set menus,
             dishes cooked to order and packed meal boxes. See the{" "}
-            <Link to="/tab-bistro/catering" className="text-amber-400 underline">corporate catering details</Link>.
+            <Link to="/catering-shillong" className="text-amber-400 underline">corporate catering details</Link>.
           </>
         ),
         text: "Yes — we cater corporate offsites, conferences and office parties with multi-cuisine set menus, dishes cooked to order and packed meal boxes. See the corporate catering details.",
