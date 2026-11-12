@@ -7,7 +7,6 @@ User-agent: Googlebot
 Allow: /
 Allow: /places-to-visit/
 Disallow: /admin
-Disallow: /book
 Disallow: /admin-login
 Disallow: /all-pages
 Disallow: /franchise
@@ -18,7 +17,6 @@ User-agent: Bingbot
 Allow: /
 Allow: /places-to-visit/
 Disallow: /admin
-Disallow: /book
 Disallow: /admin-login
 Disallow: /all-pages
 Disallow: /franchise
@@ -28,7 +26,6 @@ User-agent: Yandex
 Allow: /
 Allow: /places-to-visit/
 Disallow: /admin
-Disallow: /book
 Disallow: /franchise
 Crawl-delay: 2
 
@@ -36,29 +33,24 @@ User-agent: Baiduspider
 Allow: /
 Allow: /places-to-visit/
 Disallow: /admin
-Disallow: /book
 Disallow: /franchise
 
 User-agent: NaverBot
 Allow: /
 Allow: /places-to-visit/
 Disallow: /admin
-Disallow: /book
 Disallow: /franchise
 
 User-agent: DuckDuckBot
 Allow: /
-Disallow: /book
 
 User-agent: Sogou
 Allow: /
 Disallow: /admin
-Disallow: /book
 Disallow: /franchise
 
 User-agent: Applebot
 Allow: /
-Disallow: /book
 
 # ── Social previews ──────────────────────────────────────────────
 User-agent: Twitterbot
@@ -76,110 +68,84 @@ Allow: /
 # ── AI crawlers & answer engines (explicitly welcomed) ───────────
 User-agent: GPTBot
 Allow: /
-Disallow: /book
 
 User-agent: ChatGPT-User
 Allow: /
-Disallow: /book
 
 User-agent: OAI-SearchBot
 Allow: /
-Disallow: /book
 
 User-agent: ClaudeBot
 Allow: /
-Disallow: /book
 
 User-agent: Claude-Web
 Allow: /
-Disallow: /book
 
 User-agent: Claude-User
 Allow: /
-Disallow: /book
 
 User-agent: anthropic-ai
 Allow: /
-Disallow: /book
 
 User-agent: PerplexityBot
 Allow: /
-Disallow: /book
 
 User-agent: Perplexity-User
 Allow: /
-Disallow: /book
 
 User-agent: Google-Extended
 Allow: /
-Disallow: /book
 
 User-agent: GoogleOther
 Allow: /
-Disallow: /book
 
 User-agent: Applebot-Extended
 Allow: /
-Disallow: /book
 
 User-agent: Amazonbot
 Allow: /
-Disallow: /book
 
 User-agent: Bytespider
 Allow: /
-Disallow: /book
 
 User-agent: Meta-ExternalAgent
 Allow: /
-Disallow: /book
 
 User-agent: Meta-ExternalFetcher
 Allow: /
-Disallow: /book
 
 User-agent: FacebookBot
 Allow: /
-Disallow: /book
 
 User-agent: cohere-ai
 Allow: /
-Disallow: /book
 
 User-agent: MistralAI-User
 Allow: /
-Disallow: /book
 
 User-agent: DuckAssistBot
 Allow: /
-Disallow: /book
 
 User-agent: YouBot
 Allow: /
-Disallow: /book
 
 User-agent: ImagesiftBot
 Allow: /
-Disallow: /book
 
 User-agent: Diffbot
 Allow: /
-Disallow: /book
 
 User-agent: Timpibot
 Allow: /
-Disallow: /book
 
 User-agent: CCBot
 Allow: /
-Disallow: /book
 
 # ── Default ──────────────────────────────────────────────────────
 User-agent: *
 Allow: /
 Allow: /places-to-visit/
 Disallow: /admin
-Disallow: /book
 Disallow: /admin-login
 Disallow: /all-pages
 Disallow: /franchise
