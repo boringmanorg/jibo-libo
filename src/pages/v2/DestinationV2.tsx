@@ -21,6 +21,8 @@ import { inr, lowestDormPrice } from '@/components/v2/pricing';
 import { PageShell, Breadcrumbs, PAD } from '@/components/v2/blocks';
 import { Photo } from '@/components/v2/primitives';
 import { rankedQuestionsFor } from '@/data/rankedPageQuestions';
+import StayAndTourCTA from '@/components/seo/StayAndTourCTA';
+import { quickFactsFor, DESTINATION_GUIDE_UPDATED } from '@/data/destinationQuickFacts';
 
 const SHILLONG_HOSTEL_LINK_SLUGS = new Set(['dawki-umngot-river', 'nohkalikai-falls', 'umiam-lake']);
 /** Older copy hard-codes the 2025 dorm rate; show the live one from the booking engine. */
@@ -172,6 +174,7 @@ export default function DestinationV2() {
     { k: 'BASE', v: 'New Shillong', s: 'Stay at XTSY' },
   ];
 
+  const quick = quickFactsFor(destination);
   const H2 = ({ children }: { children: ReactNode }) => <h2 className="xt-display m-0 text-[40px] leading-none sm:text-[52px]">{children}</h2>;
 
   return (
@@ -222,11 +225,29 @@ export default function DestinationV2() {
 
         <section className={`${PAD} grid gap-12 py-16 lg:grid-cols-12`}>
           <article className="flex min-w-0 flex-col gap-10 lg:col-span-8">
+            {quick && (
+              <section aria-label={`${destination.name} in short`} className="xt-reveal flex flex-col gap-4">
+                <div className="rounded-[20px] border-l-4 border-xt-crimson bg-white p-6">
+                  <p className="m-0 text-[12px] font-extrabold tracking-wider text-xt-mute">IN SHORT</p>
+                  <p className="m-0 mt-2 text-[18px] leading-relaxed">{quick.inShort}</p>
+                </div>
+                <table className="w-full border-collapse text-left text-[15px]">
+                  <caption className="mb-2 text-left text-[18px] font-extrabold">Quick facts</caption>
+                  <tbody>
+                    {quick.rows.map(([k, v]) => (
+                      <tr key={k} className="border-b border-xt-line"><th scope="row" className="w-[40%] py-2.5 pr-4 font-bold">{k}</th><td className="py-2.5">{v}</td></tr>
+                    ))}
+                  </tbody>
+                </table>
+                <p className="m-0 text-[13px] text-xt-mute">By the XTSY Voyage team, New Shillong · Last updated: {DESTINATION_GUIDE_UPDATED}</p>
+              </section>
+            )}
             <section className="xt-reveal flex flex-col gap-3">
               <H2>Overview</H2>
               <p className="m-0 whitespace-pre-line font-serif text-[18px] leading-[1.7] sm:text-[20px]">{destination.description}</p>
             </section>
             <BookingCTA destination={destination} placement="top" />
+            {quick && <StayAndTourCTA place={destination.name} />}
             {showShillongHostelLink && <ShillongHostelLinkBlock nearName={destination.name} source={`destination_${destination.slug}`} />}
             {destination.deepDive?.map((b) => (
               <section key={b.heading} className="xt-reveal flex flex-col gap-3">
