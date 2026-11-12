@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { Heart, Check, Calendar } from 'lucide-react';
 import PageFaq from '@/components/seo/PageFaq';
+import { openWhatsApp } from '@/utils/privacyCompliantWhatsApp';
 
 const MeghalayaCoupleTourPackage = () => (
   <div className="min-h-screen bg-background">
@@ -54,14 +55,13 @@ const MeghalayaCoupleTourPackage = () => (
               </li>
             ))}
           </ul>
-          <a
-            href="https://wa.me/918837317070?text=Hi, I'm interested in the Meghalaya Couple Tour Package."
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            type="button"
+            onClick={() => openWhatsApp("Hi, I'm interested in the Meghalaya Couple Tour Package.")}
             className="mt-6 block w-full text-center px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90"
           >
             Book via WhatsApp
-          </a>
+          </button>
         </div>
 
         <nav className="mt-12 border-t border-border pt-8">
