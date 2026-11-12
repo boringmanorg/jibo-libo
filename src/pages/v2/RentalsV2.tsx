@@ -105,7 +105,7 @@ export default function RentalsV2() {
           <H2 eyebrow="Per day · 400 km/day included · extra km ₹10 · fuel extra">The fleet</H2>
           <div role="tablist" aria-label="Vehicle type" className="grid grid-cols-2 gap-2 sm:flex">
             {(['cars', 'bikes', 'caravan', 'urbania'] as const).map((t) => (
-              <button key={t} type="button" role="tab" aria-selected={tab === t} onClick={() => setTab(t)} className={`xt-chip h-[48px] min-w-0 whitespace-nowrap rounded-full border-[1.5px] px-4 text-[15px] sm:px-6 font-extrabold ${tab === t ? 'border-xt-slate bg-xt-slate text-xt-paper' : 'border-xt-stone text-xt-ink'}`}>
+              <button key={t} type="button" role="tab" aria-selected={tab === t} onClick={() => setTab(t)} className={`xt-chip h-[55px] min-w-0 whitespace-nowrap rounded-full border-[1.5px] px-4 text-[15px] sm:px-6 font-extrabold ${tab === t ? 'border-xt-slate bg-xt-slate text-xt-paper' : 'border-xt-stone text-xt-ink'}`}>
                 {`${TAB_LABELS[t]} · ${FLEETS[t].length}`}
               </button>
             ))}
@@ -123,7 +123,7 @@ export default function RentalsV2() {
                   ) : (
                     <span className="text-[17px] font-extrabold leading-tight">{v.note ?? 'On request'}</span>
                   )}
-                  <Btn to={waLink(bookText(v), 'xtsy-rentals')} className="h-[48px] shrink-0 px-5 text-[14px]">{v.price ? 'Book on WhatsApp' : 'Get a quote'}</Btn>
+                  <Btn to={waLink(bookText(v), 'xtsy-rentals')} className="h-[55px] shrink-0 px-5 text-[14px]">{v.price ? 'Book on WhatsApp' : 'Get a quote'}</Btn>
                 </div>
               </article>
             ))}
