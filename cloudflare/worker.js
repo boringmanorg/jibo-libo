@@ -9,7 +9,7 @@
  */
 
 // Set at deploy time so the probe identifies which build answered.
-const BUILD_STAMP = '2026-10-30T08:45Z';
+const BUILD_STAMP = '2026-11-12T14:30Z';
 
 // Bot user-agent patterns
 const BOT_AGENTS = [

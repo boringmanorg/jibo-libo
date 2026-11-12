@@ -27,6 +27,7 @@ import { Route as CheapHostelInShillongRouteImport } from './routes/cheap-hostel
 import { Route as CheapHostelShillongRouteImport } from './routes/cheap-hostel-shillong'
 import { Route as CheapHostelsShillongRouteImport } from './routes/cheap-hostels-shillong'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ContactUsRouteImport } from './routes/contact-us'
 import { Route as DestinationWeddingShillongRouteImport } from './routes/destination-wedding-shillong'
 import { Route as ExperienceByXtsyRouteImport } from './routes/experience-by-xtsy'
 import { Route as FaqRouteImport } from './routes/faq'
@@ -57,14 +58,17 @@ import { Route as PetFriendlyRouteImport } from './routes/pet-friendly'
 import { Route as PlacesToVisitInMeghalayaRouteImport } from './routes/places-to-visit-in-meghalaya'
 import { Route as PlanTripWithAiRouteImport } from './routes/plan-trip-with-ai'
 import { Route as PricingCancellationPolicyRouteImport } from './routes/pricing-cancellation-policy'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as RefundCancellationPolicyRouteImport } from './routes/refund-cancellation-policy'
 import { Route as RestaurantInShillongRouteImport } from './routes/restaurant-in-shillong'
 import { Route as SafetyHouseRulesRouteImport } from './routes/safety-house-rules'
 import { Route as ShillongTourPackageRouteImport } from './routes/shillong-tour-package'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TermsOfServiceRouteImport } from './routes/terms-of-service'
 import { Route as ThingsToDoInMeghalayaRouteImport } from './routes/things-to-do-in-meghalaya'
+import { Route as TravelRouteImport } from './routes/travel'
 import { Route as WorkFromHomeRouteImport } from './routes/work-from-home'
 import { Route as Xtsy270RouteImport } from './routes/xtsy-270'
 import { Route as XtsyAdventureCampsiteDawkiRouteImport } from './routes/xtsy-adventure-campsite-dawki'
@@ -184,6 +188,11 @@ const CheapHostelsShillongRoute = CheapHostelsShillongRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactUsRoute = ContactUsRouteImport.update({
+  id: '/contact-us',
+  path: '/contact-us',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DestinationWeddingShillongRoute =
@@ -341,6 +350,11 @@ const PricingCancellationPolicyRoute =
     path: '/pricing-cancellation-policy',
     getParentRoute: () => rootRouteImport,
   } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
   id: '/privacy-policy',
   path: '/privacy-policy',
@@ -351,6 +365,12 @@ const ProfileRoute = ProfileRouteImport.update({
   path: '/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RefundCancellationPolicyRoute =
+  RefundCancellationPolicyRouteImport.update({
+    id: '/refund-cancellation-policy',
+    path: '/refund-cancellation-policy',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const RestaurantInShillongRoute = RestaurantInShillongRouteImport.update({
   id: '/restaurant-in-shillong',
   path: '/restaurant-in-shillong',
@@ -379,6 +399,11 @@ const TermsOfServiceRoute = TermsOfServiceRouteImport.update({
 const ThingsToDoInMeghalayaRoute = ThingsToDoInMeghalayaRouteImport.update({
   id: '/things-to-do-in-meghalaya',
   path: '/things-to-do-in-meghalaya',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TravelRoute = TravelRouteImport.update({
+  id: '/travel',
+  path: '/travel',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WorkFromHomeRoute = WorkFromHomeRouteImport.update({
@@ -548,6 +573,7 @@ export interface FileRoutesByFullPath {
   '/cheap-hostel-shillong': typeof CheapHostelShillongRoute
   '/cheap-hostels-shillong': typeof CheapHostelsShillongRoute
   '/contact': typeof ContactRoute
+  '/contact-us': typeof ContactUsRoute
   '/destination-wedding-shillong': typeof DestinationWeddingShillongRoute
   '/experience-by-xtsy': typeof ExperienceByXtsyRoute
   '/faq': typeof FaqRoute
@@ -578,14 +604,17 @@ export interface FileRoutesByFullPath {
   '/places-to-visit-in-meghalaya': typeof PlacesToVisitInMeghalayaRoute
   '/plan-trip-with-ai': typeof PlanTripWithAiRoute
   '/pricing-cancellation-policy': typeof PricingCancellationPolicyRoute
+  '/privacy': typeof PrivacyRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/profile': typeof ProfileRoute
+  '/refund-cancellation-policy': typeof RefundCancellationPolicyRoute
   '/restaurant-in-shillong': typeof RestaurantInShillongRoute
   '/safety-house-rules': typeof SafetyHouseRulesRoute
   '/shillong-tour-package': typeof ShillongTourPackageRoute
   '/terms': typeof TermsRoute
   '/terms-of-service': typeof TermsOfServiceRoute
   '/things-to-do-in-meghalaya': typeof ThingsToDoInMeghalayaRoute
+  '/travel': typeof TravelRoute
   '/work-from-home': typeof WorkFromHomeRoute
   '/xtsy-270': typeof Xtsy270Route
   '/xtsy-adventure-campsite-dawki': typeof XtsyAdventureCampsiteDawkiRoute
@@ -634,6 +663,7 @@ export interface FileRoutesByTo {
   '/cheap-hostel-shillong': typeof CheapHostelShillongRoute
   '/cheap-hostels-shillong': typeof CheapHostelsShillongRoute
   '/contact': typeof ContactRoute
+  '/contact-us': typeof ContactUsRoute
   '/destination-wedding-shillong': typeof DestinationWeddingShillongRoute
   '/experience-by-xtsy': typeof ExperienceByXtsyRoute
   '/faq': typeof FaqRoute
@@ -664,14 +694,17 @@ export interface FileRoutesByTo {
   '/places-to-visit-in-meghalaya': typeof PlacesToVisitInMeghalayaRoute
   '/plan-trip-with-ai': typeof PlanTripWithAiRoute
   '/pricing-cancellation-policy': typeof PricingCancellationPolicyRoute
+  '/privacy': typeof PrivacyRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/profile': typeof ProfileRoute
+  '/refund-cancellation-policy': typeof RefundCancellationPolicyRoute
   '/restaurant-in-shillong': typeof RestaurantInShillongRoute
   '/safety-house-rules': typeof SafetyHouseRulesRoute
   '/shillong-tour-package': typeof ShillongTourPackageRoute
   '/terms': typeof TermsRoute
   '/terms-of-service': typeof TermsOfServiceRoute
   '/things-to-do-in-meghalaya': typeof ThingsToDoInMeghalayaRoute
+  '/travel': typeof TravelRoute
   '/work-from-home': typeof WorkFromHomeRoute
   '/xtsy-270': typeof Xtsy270Route
   '/xtsy-adventure-campsite-dawki': typeof XtsyAdventureCampsiteDawkiRoute
@@ -721,6 +754,7 @@ export interface FileRoutesById {
   '/cheap-hostel-shillong': typeof CheapHostelShillongRoute
   '/cheap-hostels-shillong': typeof CheapHostelsShillongRoute
   '/contact': typeof ContactRoute
+  '/contact-us': typeof ContactUsRoute
   '/destination-wedding-shillong': typeof DestinationWeddingShillongRoute
   '/experience-by-xtsy': typeof ExperienceByXtsyRoute
   '/faq': typeof FaqRoute
@@ -751,14 +785,17 @@ export interface FileRoutesById {
   '/places-to-visit-in-meghalaya': typeof PlacesToVisitInMeghalayaRoute
   '/plan-trip-with-ai': typeof PlanTripWithAiRoute
   '/pricing-cancellation-policy': typeof PricingCancellationPolicyRoute
+  '/privacy': typeof PrivacyRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/profile': typeof ProfileRoute
+  '/refund-cancellation-policy': typeof RefundCancellationPolicyRoute
   '/restaurant-in-shillong': typeof RestaurantInShillongRoute
   '/safety-house-rules': typeof SafetyHouseRulesRoute
   '/shillong-tour-package': typeof ShillongTourPackageRoute
   '/terms': typeof TermsRoute
   '/terms-of-service': typeof TermsOfServiceRoute
   '/things-to-do-in-meghalaya': typeof ThingsToDoInMeghalayaRoute
+  '/travel': typeof TravelRoute
   '/work-from-home': typeof WorkFromHomeRoute
   '/xtsy-270': typeof Xtsy270Route
   '/xtsy-adventure-campsite-dawki': typeof XtsyAdventureCampsiteDawkiRoute
@@ -809,6 +846,7 @@ export interface FileRouteTypes {
     | '/cheap-hostel-shillong'
     | '/cheap-hostels-shillong'
     | '/contact'
+    | '/contact-us'
     | '/destination-wedding-shillong'
     | '/experience-by-xtsy'
     | '/faq'
@@ -839,14 +877,17 @@ export interface FileRouteTypes {
     | '/places-to-visit-in-meghalaya'
     | '/plan-trip-with-ai'
     | '/pricing-cancellation-policy'
+    | '/privacy'
     | '/privacy-policy'
     | '/profile'
+    | '/refund-cancellation-policy'
     | '/restaurant-in-shillong'
     | '/safety-house-rules'
     | '/shillong-tour-package'
     | '/terms'
     | '/terms-of-service'
     | '/things-to-do-in-meghalaya'
+    | '/travel'
     | '/work-from-home'
     | '/xtsy-270'
     | '/xtsy-adventure-campsite-dawki'
@@ -895,6 +936,7 @@ export interface FileRouteTypes {
     | '/cheap-hostel-shillong'
     | '/cheap-hostels-shillong'
     | '/contact'
+    | '/contact-us'
     | '/destination-wedding-shillong'
     | '/experience-by-xtsy'
     | '/faq'
@@ -925,14 +967,17 @@ export interface FileRouteTypes {
     | '/places-to-visit-in-meghalaya'
     | '/plan-trip-with-ai'
     | '/pricing-cancellation-policy'
+    | '/privacy'
     | '/privacy-policy'
     | '/profile'
+    | '/refund-cancellation-policy'
     | '/restaurant-in-shillong'
     | '/safety-house-rules'
     | '/shillong-tour-package'
     | '/terms'
     | '/terms-of-service'
     | '/things-to-do-in-meghalaya'
+    | '/travel'
     | '/work-from-home'
     | '/xtsy-270'
     | '/xtsy-adventure-campsite-dawki'
@@ -981,6 +1026,7 @@ export interface FileRouteTypes {
     | '/cheap-hostel-shillong'
     | '/cheap-hostels-shillong'
     | '/contact'
+    | '/contact-us'
     | '/destination-wedding-shillong'
     | '/experience-by-xtsy'
     | '/faq'
@@ -1011,14 +1057,17 @@ export interface FileRouteTypes {
     | '/places-to-visit-in-meghalaya'
     | '/plan-trip-with-ai'
     | '/pricing-cancellation-policy'
+    | '/privacy'
     | '/privacy-policy'
     | '/profile'
+    | '/refund-cancellation-policy'
     | '/restaurant-in-shillong'
     | '/safety-house-rules'
     | '/shillong-tour-package'
     | '/terms'
     | '/terms-of-service'
     | '/things-to-do-in-meghalaya'
+    | '/travel'
     | '/work-from-home'
     | '/xtsy-270'
     | '/xtsy-adventure-campsite-dawki'
@@ -1068,6 +1117,7 @@ export interface RootRouteChildren {
   CheapHostelShillongRoute: typeof CheapHostelShillongRoute
   CheapHostelsShillongRoute: typeof CheapHostelsShillongRoute
   ContactRoute: typeof ContactRoute
+  ContactUsRoute: typeof ContactUsRoute
   DestinationWeddingShillongRoute: typeof DestinationWeddingShillongRoute
   ExperienceByXtsyRoute: typeof ExperienceByXtsyRoute
   FaqRoute: typeof FaqRoute
@@ -1098,14 +1148,17 @@ export interface RootRouteChildren {
   PlacesToVisitInMeghalayaRoute: typeof PlacesToVisitInMeghalayaRoute
   PlanTripWithAiRoute: typeof PlanTripWithAiRoute
   PricingCancellationPolicyRoute: typeof PricingCancellationPolicyRoute
+  PrivacyRoute: typeof PrivacyRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   ProfileRoute: typeof ProfileRoute
+  RefundCancellationPolicyRoute: typeof RefundCancellationPolicyRoute
   RestaurantInShillongRoute: typeof RestaurantInShillongRoute
   SafetyHouseRulesRoute: typeof SafetyHouseRulesRoute
   ShillongTourPackageRoute: typeof ShillongTourPackageRoute
   TermsRoute: typeof TermsRoute
   TermsOfServiceRoute: typeof TermsOfServiceRoute
   ThingsToDoInMeghalayaRoute: typeof ThingsToDoInMeghalayaRoute
+  TravelRoute: typeof TravelRoute
   WorkFromHomeRoute: typeof WorkFromHomeRoute
   Xtsy270Route: typeof Xtsy270Route
   XtsyAdventureCampsiteDawkiRoute: typeof XtsyAdventureCampsiteDawkiRoute
@@ -1262,6 +1315,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact-us': {
+      id: '/contact-us'
+      path: '/contact-us'
+      fullPath: '/contact-us'
+      preLoaderRoute: typeof ContactUsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/destination-wedding-shillong': {
@@ -1474,6 +1534,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PricingCancellationPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/privacy-policy': {
       id: '/privacy-policy'
       path: '/privacy-policy'
@@ -1486,6 +1553,13 @@ declare module '@tanstack/react-router' {
       path: '/profile'
       fullPath: '/profile'
       preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/refund-cancellation-policy': {
+      id: '/refund-cancellation-policy'
+      path: '/refund-cancellation-policy'
+      fullPath: '/refund-cancellation-policy'
+      preLoaderRoute: typeof RefundCancellationPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/restaurant-in-shillong': {
@@ -1528,6 +1602,13 @@ declare module '@tanstack/react-router' {
       path: '/things-to-do-in-meghalaya'
       fullPath: '/things-to-do-in-meghalaya'
       preLoaderRoute: typeof ThingsToDoInMeghalayaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/travel': {
+      id: '/travel'
+      path: '/travel'
+      fullPath: '/travel'
+      preLoaderRoute: typeof TravelRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/work-from-home': {
@@ -1748,6 +1829,7 @@ const rootRouteChildren: RootRouteChildren = {
   CheapHostelShillongRoute: CheapHostelShillongRoute,
   CheapHostelsShillongRoute: CheapHostelsShillongRoute,
   ContactRoute: ContactRoute,
+  ContactUsRoute: ContactUsRoute,
   DestinationWeddingShillongRoute: DestinationWeddingShillongRoute,
   ExperienceByXtsyRoute: ExperienceByXtsyRoute,
   FaqRoute: FaqRoute,
@@ -1779,14 +1861,17 @@ const rootRouteChildren: RootRouteChildren = {
   PlacesToVisitInMeghalayaRoute: PlacesToVisitInMeghalayaRoute,
   PlanTripWithAiRoute: PlanTripWithAiRoute,
   PricingCancellationPolicyRoute: PricingCancellationPolicyRoute,
+  PrivacyRoute: PrivacyRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   ProfileRoute: ProfileRoute,
+  RefundCancellationPolicyRoute: RefundCancellationPolicyRoute,
   RestaurantInShillongRoute: RestaurantInShillongRoute,
   SafetyHouseRulesRoute: SafetyHouseRulesRoute,
   ShillongTourPackageRoute: ShillongTourPackageRoute,
   TermsRoute: TermsRoute,
   TermsOfServiceRoute: TermsOfServiceRoute,
   ThingsToDoInMeghalayaRoute: ThingsToDoInMeghalayaRoute,
+  TravelRoute: TravelRoute,
   WorkFromHomeRoute: WorkFromHomeRoute,
   Xtsy270Route: Xtsy270Route,
   XtsyAdventureCampsiteDawkiRoute: XtsyAdventureCampsiteDawkiRoute,
