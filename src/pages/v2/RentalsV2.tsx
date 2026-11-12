@@ -103,9 +103,9 @@ export default function RentalsV2() {
 
         <Section id="fleet">
           <H2 eyebrow="Per day · 400 km/day included · extra km ₹10 · fuel extra">The fleet</H2>
-          <div role="tablist" aria-label="Vehicle type" className="flex gap-2">
+          <div role="tablist" aria-label="Vehicle type" className="grid grid-cols-2 gap-2 sm:flex">
             {(['cars', 'bikes', 'caravan', 'urbania'] as const).map((t) => (
-              <button key={t} type="button" role="tab" aria-selected={tab === t} onClick={() => setTab(t)} className={`xt-chip h-12 rounded-full border-[1.5px] px-6 text-[15px] font-extrabold ${tab === t ? 'border-xt-slate bg-xt-slate text-xt-paper' : 'border-xt-stone text-xt-ink'}`}>
+              <button key={t} type="button" role="tab" aria-selected={tab === t} onClick={() => setTab(t)} className={`xt-chip h-[55px] min-w-0 whitespace-nowrap rounded-full border-[1.5px] px-4 text-[15px] sm:px-6 font-extrabold ${tab === t ? 'border-xt-slate bg-xt-slate text-xt-paper' : 'border-xt-stone text-xt-ink'}`}>
                 {`${TAB_LABELS[t]} · ${FLEETS[t].length}`}
               </button>
             ))}
@@ -117,13 +117,13 @@ export default function RentalsV2() {
                 <span className="text-[13px] font-extrabold uppercase tracking-wider text-xt-mute">{v.tag}</span>
                 <h3 className="m-0 text-[24px] font-extrabold leading-tight">{v.name}</h3>
                 <div className="flex flex-wrap gap-1.5">{v.specs.map((s) => <span key={s} className="rounded-full bg-xt-sand px-3 py-1 text-[13px] font-bold">{s}</span>)}</div>
-                <div className="mt-auto flex items-center justify-between gap-3 pt-3">
+                <div className="mt-auto flex flex-wrap items-center justify-between gap-3 pt-3">
                   {v.price ? (
                     <span className="text-[22px] font-extrabold">{inr(v.price)}<span className="text-[13px] font-semibold text-xt-mute">/day</span></span>
                   ) : (
                     <span className="text-[17px] font-extrabold leading-tight">{v.note ?? 'On request'}</span>
                   )}
-                  <Btn to={waLink(bookText(v), 'xtsy-rentals')} className="h-11 px-5 text-[14px]">{v.price ? 'Book on WhatsApp' : 'Get a quote'}</Btn>
+                  <Btn to={waLink(bookText(v), 'xtsy-rentals')} className="h-[55px] shrink-0 px-5 text-[14px]">{v.price ? 'Book on WhatsApp' : 'Get a quote'}</Btn>
                 </div>
               </article>
             ))}
