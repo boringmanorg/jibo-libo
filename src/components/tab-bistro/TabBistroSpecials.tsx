@@ -3,6 +3,7 @@ import { Link } from "@/lib/router-compat";
 import {
   Star, Soup, Salad, Drumstick, Globe2, Leaf, ShoppingBag, PartyPopper,
 } from "lucide-react";
+import { openWhatsApp } from '@/utils/privacyCompliantWhatsApp';
 
 /**
  * XTSY Specials — multi-cuisine showcase with cuisine-based filter / tabbed
