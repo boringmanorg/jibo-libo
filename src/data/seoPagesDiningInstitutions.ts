@@ -210,7 +210,7 @@ const institutionPage = (i: Institution): SEOPageData => ({
         'and pasta, not a token dish or two, so a mixed veg and non-veg table works without compromise.',
     },
   ],
-  relatedSlugs: ['restaurant-in-shillong', 'best-restaurant-in-shillong', 'breakfast-in-shillong'],
+  relatedSlugs: ['restaurant-in-shillong', 'best-restaurants-shillong', 'breakfast-in-shillong'],
   ctaText: TAB_CTA,
   ctaLink: TAB_LINK,
   keywords: [
