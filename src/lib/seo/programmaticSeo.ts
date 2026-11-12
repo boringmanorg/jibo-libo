@@ -16,6 +16,7 @@ import { inr, lowestDormPrice, roomPrice } from '@/components/v2/pricing';
 import { PANORAMA_STAY_ONLY } from '@/data/panoramaPricing';
 import { CLUSTERS, PLACES, type Place } from '@/lib/travel/places';
 import { fromXtsy } from '@/lib/travel/routing';
+import { STATIC_PAGE_DIRECTORY } from '@/data/staticPageDirectory';
 
 const SITE = 'https://xtsy.one';
 export const SEO_CONTENT_UPDATED = '2026-10-22';
@@ -258,16 +259,22 @@ const shortLabel = (page: SEOPageData) => {
   return label.replace(/(\s+(for|in))?\s*\(?20\d\d\)?$/i, '').trim();
 };
 
-export type GuideGroup = { category: string; label: string; hub?: string; pages: { slug: string; label: string }[] };
+export type GuideGroup = { category: string; label: string; hub?: string; pages: { slug: string; label: string; description?: string }[] };
 
 /** Every live, indexable guide grouped by category: the crawlable A–Z at /guides. */
 export function guideDirectory(): GuideGroup[] {
   const groups = new Map<string, GuideGroup>();
+  const staticPaths = new Set<string>(STATIC_PAGE_DIRECTORY.map((p) => p.path));
+  groups.set('XTSY pages', {
+    category: 'site', label: 'XTSY pages',
+    pages: STATIC_PAGE_DIRECTORY.map((p) => ({ slug: p.path === '/' ? '' : p.path.slice(1), label: p.title, description: p.description })),
+  });
   for (const page of ALL_SEO_PAGES) {
-    if (!isIndexableSEOSlug(page.slug) || isThinSEOPage(page)) continue;
+    if (staticPaths.has(`/${page.slug}`) || !isIndexableSEOSlug(page.slug) || isThinSEOPage(page)) continue;
     const label = CATEGORY_LABELS[page.category] ?? 'More guides';
     if (!groups.has(label)) groups.set(label, { category: page.category, label, hub: CATEGORY_HUB[page.category], pages: [] });
-    groups.get(label)!.pages.push({ slug: page.slug, label: shortLabel(page) });
+    const group = groups.get(label);
+    if (group) group.pages.push({ slug: page.slug, label: page.title, description: page.metaDescription });
   }
   const out = [...groups.values()];
   for (const g of out) g.pages.sort((a, b) => a.label.localeCompare(b.label));
