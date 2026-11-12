@@ -71,6 +71,7 @@ import { Route as Xtsy270RouteImport } from './routes/xtsy-270'
 import { Route as XtsyAdventureCampsiteDawkiRouteImport } from './routes/xtsy-adventure-campsite-dawki'
 import { Route as XtsyRentalsRouteImport } from './routes/xtsy-rentals'
 import { Route as XtsyVsZostelRouteImport } from './routes/xtsy-vs-zostel'
+import { Route as AboutXtsyFactsRouteImport } from './routes/about/xtsy-facts'
 import { Route as BookIndexRouteImport } from './routes/book/index'
 import { Route as BookCampsiteRouteImport } from './routes/book/campsite'
 import { Route as BookSelectRouteImport } from './routes/book/select'
@@ -412,6 +413,11 @@ const XtsyVsZostelRoute = XtsyVsZostelRouteImport.update({
   path: '/xtsy-vs-zostel',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutXtsyFactsRoute = AboutXtsyFactsRouteImport.update({
+  id: '/xtsy-facts',
+  path: '/xtsy-facts',
+  getParentRoute: () => AboutRoute,
+} as any)
 const BookIndexRoute = BookIndexRouteImport.update({
   id: '/book/',
   path: '/book/',
@@ -535,7 +541,7 @@ export interface FileRoutesByFullPath {
   '/3-day-meghalaya-itinerary': typeof R3DayMeghalayaItineraryRoute
   '/4x4-expedition-meghalaya': typeof R4x4ExpeditionMeghalayaRoute
   '/5-day-meghalaya-itinerary': typeof R5DayMeghalayaItineraryRoute
-  '/about': typeof AboutRoute
+  '/about': typeof AboutRouteWithChildren
   '/adventure-tours-northeast-india': typeof AdventureToursNortheastIndiaRoute
   '/auth': typeof AuthRoute
   '/backpacking-india': typeof BackpackingIndiaRoute
@@ -592,6 +598,7 @@ export interface FileRoutesByFullPath {
   '/xtsy-adventure-campsite-dawki': typeof XtsyAdventureCampsiteDawkiRoute
   '/xtsy-rentals': typeof XtsyRentalsRoute
   '/xtsy-vs-zostel': typeof XtsyVsZostelRoute
+  '/about/xtsy-facts': typeof AboutXtsyFactsRoute
   '/book/campsite': typeof BookCampsiteRoute
   '/book/select': typeof BookSelectRoute
   '/franchise/install': typeof FranchiseInstallRoute
@@ -621,7 +628,7 @@ export interface FileRoutesByTo {
   '/3-day-meghalaya-itinerary': typeof R3DayMeghalayaItineraryRoute
   '/4x4-expedition-meghalaya': typeof R4x4ExpeditionMeghalayaRoute
   '/5-day-meghalaya-itinerary': typeof R5DayMeghalayaItineraryRoute
-  '/about': typeof AboutRoute
+  '/about': typeof AboutRouteWithChildren
   '/adventure-tours-northeast-india': typeof AdventureToursNortheastIndiaRoute
   '/auth': typeof AuthRoute
   '/backpacking-india': typeof BackpackingIndiaRoute
@@ -678,6 +685,7 @@ export interface FileRoutesByTo {
   '/xtsy-adventure-campsite-dawki': typeof XtsyAdventureCampsiteDawkiRoute
   '/xtsy-rentals': typeof XtsyRentalsRoute
   '/xtsy-vs-zostel': typeof XtsyVsZostelRoute
+  '/about/xtsy-facts': typeof AboutXtsyFactsRoute
   '/book/campsite': typeof BookCampsiteRoute
   '/book/select': typeof BookSelectRoute
   '/franchise/install': typeof FranchiseInstallRoute
@@ -708,7 +716,7 @@ export interface FileRoutesById {
   '/3-day-meghalaya-itinerary': typeof R3DayMeghalayaItineraryRoute
   '/4x4-expedition-meghalaya': typeof R4x4ExpeditionMeghalayaRoute
   '/5-day-meghalaya-itinerary': typeof R5DayMeghalayaItineraryRoute
-  '/about': typeof AboutRoute
+  '/about': typeof AboutRouteWithChildren
   '/adventure-tours-northeast-india': typeof AdventureToursNortheastIndiaRoute
   '/auth': typeof AuthRoute
   '/backpacking-india': typeof BackpackingIndiaRoute
@@ -765,6 +773,7 @@ export interface FileRoutesById {
   '/xtsy-adventure-campsite-dawki': typeof XtsyAdventureCampsiteDawkiRoute
   '/xtsy-rentals': typeof XtsyRentalsRoute
   '/xtsy-vs-zostel': typeof XtsyVsZostelRoute
+  '/about/xtsy-facts': typeof AboutXtsyFactsRoute
   '/book/campsite': typeof BookCampsiteRoute
   '/book/select': typeof BookSelectRoute
   '/franchise/install': typeof FranchiseInstallRoute
@@ -853,6 +862,7 @@ export interface FileRouteTypes {
     | '/xtsy-adventure-campsite-dawki'
     | '/xtsy-rentals'
     | '/xtsy-vs-zostel'
+    | '/about/xtsy-facts'
     | '/book/campsite'
     | '/book/select'
     | '/franchise/install'
@@ -939,6 +949,7 @@ export interface FileRouteTypes {
     | '/xtsy-adventure-campsite-dawki'
     | '/xtsy-rentals'
     | '/xtsy-vs-zostel'
+    | '/about/xtsy-facts'
     | '/book/campsite'
     | '/book/select'
     | '/franchise/install'
@@ -1025,6 +1036,7 @@ export interface FileRouteTypes {
     | '/xtsy-adventure-campsite-dawki'
     | '/xtsy-rentals'
     | '/xtsy-vs-zostel'
+    | '/about/xtsy-facts'
     | '/book/campsite'
     | '/book/select'
     | '/franchise/install'
@@ -1055,7 +1067,7 @@ export interface RootRouteChildren {
   R3DayMeghalayaItineraryRoute: typeof R3DayMeghalayaItineraryRoute
   R4x4ExpeditionMeghalayaRoute: typeof R4x4ExpeditionMeghalayaRoute
   R5DayMeghalayaItineraryRoute: typeof R5DayMeghalayaItineraryRoute
-  AboutRoute: typeof AboutRoute
+  AboutRoute: typeof AboutRouteWithChildren
   AdventureToursNortheastIndiaRoute: typeof AdventureToursNortheastIndiaRoute
   AuthRoute: typeof AuthRoute
   BackpackingIndiaRoute: typeof BackpackingIndiaRoute
@@ -1572,6 +1584,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof XtsyVsZostelRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about/xtsy-facts': {
+      id: '/about/xtsy-facts'
+      path: '/xtsy-facts'
+      fullPath: '/about/xtsy-facts'
+      preLoaderRoute: typeof AboutXtsyFactsRouteImport
+      parentRoute: typeof AboutRoute
+    }
     '/book/': {
       id: '/book/'
       path: '/book'
@@ -1729,13 +1748,23 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AboutRouteChildren {
+  AboutXtsyFactsRoute: typeof AboutXtsyFactsRoute
+}
+
+const AboutRouteChildren: AboutRouteChildren = {
+  AboutXtsyFactsRoute: AboutXtsyFactsRoute,
+}
+
+const AboutRouteWithChildren = AboutRoute._addFileChildren(AboutRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SlugRoute: SlugRoute,
   R3DayMeghalayaItineraryRoute: R3DayMeghalayaItineraryRoute,
   R4x4ExpeditionMeghalayaRoute: R4x4ExpeditionMeghalayaRoute,
   R5DayMeghalayaItineraryRoute: R5DayMeghalayaItineraryRoute,
-  AboutRoute: AboutRoute,
+  AboutRoute: AboutRouteWithChildren,
   AdventureToursNortheastIndiaRoute: AdventureToursNortheastIndiaRoute,
   AuthRoute: AuthRoute,
   BackpackingIndiaRoute: BackpackingIndiaRoute,
