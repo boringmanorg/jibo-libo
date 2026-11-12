@@ -21,6 +21,8 @@ Approved scope: **Part 0 + Part 7 quick wins (7a, 7b, 7c, 7d, 7f)** first, then 
 - [x] scripts/seo-check.mjs — 0 errors (538 pages, 12 sitemaps)
 
 ## Part 7 quick wins
+- [ ] Current approval: inspect existing Cloudflare Worker deployment and regenerate the KV page cache once; no recurring jobs.
+- [ ] Current approval: select 30 leading pages from live search data and add visible, content-matched question answers.
 - [x] 7a: robots.txt already allows AI crawlers; removed worker 403 on GPTBot/ClaudeBot/etc. — NEEDS WORKER REDEPLOY (owner action)
 - [x] 7b: llms.txt + llms-full.txt — corrected Bistro hours, added stargazing caution + facts page
 - [x] 7c: answer-first blocks verified rendering (data-quick-answer) on programmatic pages
