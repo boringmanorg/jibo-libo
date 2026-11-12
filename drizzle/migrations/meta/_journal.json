@@ -85,6 +85,13 @@
       "when": 1792645250505,
       "tag": "0011_bistro_google_sync_state",
       "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1794460794610,
+      "tag": "0012_lock_down_unused_privileged_functions",
+      "breakpoints": true
     }
   ]
 }
