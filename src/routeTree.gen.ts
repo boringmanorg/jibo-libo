@@ -14,7 +14,6 @@ import { Route as SlugRouteImport } from './routes/$slug'
 import { Route as R3DayMeghalayaItineraryRouteImport } from './routes/3-day-meghalaya-itinerary'
 import { Route as R4x4ExpeditionMeghalayaRouteImport } from './routes/4x4-expedition-meghalaya'
 import { Route as R5DayMeghalayaItineraryRouteImport } from './routes/5-day-meghalaya-itinerary'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as AdventureToursNortheastIndiaRouteImport } from './routes/adventure-tours-northeast-india'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as BackpackingIndiaRouteImport } from './routes/backpacking-india'
@@ -71,6 +70,7 @@ import { Route as Xtsy270RouteImport } from './routes/xtsy-270'
 import { Route as XtsyAdventureCampsiteDawkiRouteImport } from './routes/xtsy-adventure-campsite-dawki'
 import { Route as XtsyRentalsRouteImport } from './routes/xtsy-rentals'
 import { Route as XtsyVsZostelRouteImport } from './routes/xtsy-vs-zostel'
+import { Route as AboutIndexRouteImport } from './routes/about.index'
 import { Route as AboutXtsyFactsRouteImport } from './routes/about/xtsy-facts'
 import { Route as BookIndexRouteImport } from './routes/book/index'
 import { Route as BookCampsiteRouteImport } from './routes/book/campsite'
@@ -118,11 +118,6 @@ const R4x4ExpeditionMeghalayaRoute = R4x4ExpeditionMeghalayaRouteImport.update({
 const R5DayMeghalayaItineraryRoute = R5DayMeghalayaItineraryRouteImport.update({
   id: '/5-day-meghalaya-itinerary',
   path: '/5-day-meghalaya-itinerary',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdventureToursNortheastIndiaRoute =
@@ -413,10 +408,15 @@ const XtsyVsZostelRoute = XtsyVsZostelRouteImport.update({
   path: '/xtsy-vs-zostel',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutIndexRoute = AboutIndexRouteImport.update({
+  id: '/about/',
+  path: '/about/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutXtsyFactsRoute = AboutXtsyFactsRouteImport.update({
-  id: '/xtsy-facts',
-  path: '/xtsy-facts',
-  getParentRoute: () => AboutRoute,
+  id: '/about/xtsy-facts',
+  path: '/about/xtsy-facts',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const BookIndexRoute = BookIndexRouteImport.update({
   id: '/book/',
@@ -541,7 +541,6 @@ export interface FileRoutesByFullPath {
   '/3-day-meghalaya-itinerary': typeof R3DayMeghalayaItineraryRoute
   '/4x4-expedition-meghalaya': typeof R4x4ExpeditionMeghalayaRoute
   '/5-day-meghalaya-itinerary': typeof R5DayMeghalayaItineraryRoute
-  '/about': typeof AboutRouteWithChildren
   '/adventure-tours-northeast-india': typeof AdventureToursNortheastIndiaRoute
   '/auth': typeof AuthRoute
   '/backpacking-india': typeof BackpackingIndiaRoute
@@ -609,6 +608,7 @@ export interface FileRoutesByFullPath {
   '/travel-guide/guwahati-to-shillong-transport': typeof TravelGuideGuwahatiToShillongTransportRoute
   '/travel-guide/how-to-reach-meghalaya': typeof TravelGuideHowToReachMeghalayaRoute
   '/travel-guide/meghalaya-for-international-tourists': typeof TravelGuideMeghalayaForInternationalTouristsRoute
+  '/about/': typeof AboutIndexRoute
   '/book/': typeof BookIndexRoute
   '/destinations/': typeof DestinationsIndexRoute
   '/expeditions/': typeof ExpeditionsIndexRoute
@@ -628,7 +628,6 @@ export interface FileRoutesByTo {
   '/3-day-meghalaya-itinerary': typeof R3DayMeghalayaItineraryRoute
   '/4x4-expedition-meghalaya': typeof R4x4ExpeditionMeghalayaRoute
   '/5-day-meghalaya-itinerary': typeof R5DayMeghalayaItineraryRoute
-  '/about': typeof AboutRouteWithChildren
   '/adventure-tours-northeast-india': typeof AdventureToursNortheastIndiaRoute
   '/auth': typeof AuthRoute
   '/backpacking-india': typeof BackpackingIndiaRoute
@@ -696,6 +695,7 @@ export interface FileRoutesByTo {
   '/travel-guide/guwahati-to-shillong-transport': typeof TravelGuideGuwahatiToShillongTransportRoute
   '/travel-guide/how-to-reach-meghalaya': typeof TravelGuideHowToReachMeghalayaRoute
   '/travel-guide/meghalaya-for-international-tourists': typeof TravelGuideMeghalayaForInternationalTouristsRoute
+  '/about': typeof AboutIndexRoute
   '/book': typeof BookIndexRoute
   '/destinations': typeof DestinationsIndexRoute
   '/expeditions': typeof ExpeditionsIndexRoute
@@ -716,7 +716,6 @@ export interface FileRoutesById {
   '/3-day-meghalaya-itinerary': typeof R3DayMeghalayaItineraryRoute
   '/4x4-expedition-meghalaya': typeof R4x4ExpeditionMeghalayaRoute
   '/5-day-meghalaya-itinerary': typeof R5DayMeghalayaItineraryRoute
-  '/about': typeof AboutRouteWithChildren
   '/adventure-tours-northeast-india': typeof AdventureToursNortheastIndiaRoute
   '/auth': typeof AuthRoute
   '/backpacking-india': typeof BackpackingIndiaRoute
@@ -784,6 +783,7 @@ export interface FileRoutesById {
   '/travel-guide/guwahati-to-shillong-transport': typeof TravelGuideGuwahatiToShillongTransportRoute
   '/travel-guide/how-to-reach-meghalaya': typeof TravelGuideHowToReachMeghalayaRoute
   '/travel-guide/meghalaya-for-international-tourists': typeof TravelGuideMeghalayaForInternationalTouristsRoute
+  '/about/': typeof AboutIndexRoute
   '/book/': typeof BookIndexRoute
   '/destinations/': typeof DestinationsIndexRoute
   '/expeditions/': typeof ExpeditionsIndexRoute
@@ -805,7 +805,6 @@ export interface FileRouteTypes {
     | '/3-day-meghalaya-itinerary'
     | '/4x4-expedition-meghalaya'
     | '/5-day-meghalaya-itinerary'
-    | '/about'
     | '/adventure-tours-northeast-india'
     | '/auth'
     | '/backpacking-india'
@@ -873,6 +872,7 @@ export interface FileRouteTypes {
     | '/travel-guide/guwahati-to-shillong-transport'
     | '/travel-guide/how-to-reach-meghalaya'
     | '/travel-guide/meghalaya-for-international-tourists'
+    | '/about/'
     | '/book/'
     | '/destinations/'
     | '/expeditions/'
@@ -892,7 +892,6 @@ export interface FileRouteTypes {
     | '/3-day-meghalaya-itinerary'
     | '/4x4-expedition-meghalaya'
     | '/5-day-meghalaya-itinerary'
-    | '/about'
     | '/adventure-tours-northeast-india'
     | '/auth'
     | '/backpacking-india'
@@ -960,6 +959,7 @@ export interface FileRouteTypes {
     | '/travel-guide/guwahati-to-shillong-transport'
     | '/travel-guide/how-to-reach-meghalaya'
     | '/travel-guide/meghalaya-for-international-tourists'
+    | '/about'
     | '/book'
     | '/destinations'
     | '/expeditions'
@@ -979,7 +979,6 @@ export interface FileRouteTypes {
     | '/3-day-meghalaya-itinerary'
     | '/4x4-expedition-meghalaya'
     | '/5-day-meghalaya-itinerary'
-    | '/about'
     | '/adventure-tours-northeast-india'
     | '/auth'
     | '/backpacking-india'
@@ -1047,6 +1046,7 @@ export interface FileRouteTypes {
     | '/travel-guide/guwahati-to-shillong-transport'
     | '/travel-guide/how-to-reach-meghalaya'
     | '/travel-guide/meghalaya-for-international-tourists'
+    | '/about/'
     | '/book/'
     | '/destinations/'
     | '/expeditions/'
@@ -1067,7 +1067,6 @@ export interface RootRouteChildren {
   R3DayMeghalayaItineraryRoute: typeof R3DayMeghalayaItineraryRoute
   R4x4ExpeditionMeghalayaRoute: typeof R4x4ExpeditionMeghalayaRoute
   R5DayMeghalayaItineraryRoute: typeof R5DayMeghalayaItineraryRoute
-  AboutRoute: typeof AboutRouteWithChildren
   AdventureToursNortheastIndiaRoute: typeof AdventureToursNortheastIndiaRoute
   AuthRoute: typeof AuthRoute
   BackpackingIndiaRoute: typeof BackpackingIndiaRoute
@@ -1124,6 +1123,7 @@ export interface RootRouteChildren {
   XtsyAdventureCampsiteDawkiRoute: typeof XtsyAdventureCampsiteDawkiRoute
   XtsyRentalsRoute: typeof XtsyRentalsRoute
   XtsyVsZostelRoute: typeof XtsyVsZostelRoute
+  AboutXtsyFactsRoute: typeof AboutXtsyFactsRoute
   BookCampsiteRoute: typeof BookCampsiteRoute
   BookSelectRoute: typeof BookSelectRoute
   FranchiseInstallRoute: typeof FranchiseInstallRoute
@@ -1134,6 +1134,7 @@ export interface RootRouteChildren {
   TravelGuideGuwahatiToShillongTransportRoute: typeof TravelGuideGuwahatiToShillongTransportRoute
   TravelGuideHowToReachMeghalayaRoute: typeof TravelGuideHowToReachMeghalayaRoute
   TravelGuideMeghalayaForInternationalTouristsRoute: typeof TravelGuideMeghalayaForInternationalTouristsRoute
+  AboutIndexRoute: typeof AboutIndexRoute
   BookIndexRoute: typeof BookIndexRoute
   DestinationsIndexRoute: typeof DestinationsIndexRoute
   ExpeditionsIndexRoute: typeof ExpeditionsIndexRoute
@@ -1183,13 +1184,6 @@ declare module '@tanstack/react-router' {
       path: '/5-day-meghalaya-itinerary'
       fullPath: '/5-day-meghalaya-itinerary'
       preLoaderRoute: typeof R5DayMeghalayaItineraryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/adventure-tours-northeast-india': {
@@ -1584,12 +1578,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof XtsyVsZostelRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about/': {
+      id: '/about/'
+      path: '/about'
+      fullPath: '/about/'
+      preLoaderRoute: typeof AboutIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about/xtsy-facts': {
       id: '/about/xtsy-facts'
-      path: '/xtsy-facts'
+      path: '/about/xtsy-facts'
       fullPath: '/about/xtsy-facts'
       preLoaderRoute: typeof AboutXtsyFactsRouteImport
-      parentRoute: typeof AboutRoute
+      parentRoute: typeof rootRouteImport
     }
     '/book/': {
       id: '/book/'
@@ -1748,23 +1749,12 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface AboutRouteChildren {
-  AboutXtsyFactsRoute: typeof AboutXtsyFactsRoute
-}
-
-const AboutRouteChildren: AboutRouteChildren = {
-  AboutXtsyFactsRoute: AboutXtsyFactsRoute,
-}
-
-const AboutRouteWithChildren = AboutRoute._addFileChildren(AboutRouteChildren)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SlugRoute: SlugRoute,
   R3DayMeghalayaItineraryRoute: R3DayMeghalayaItineraryRoute,
   R4x4ExpeditionMeghalayaRoute: R4x4ExpeditionMeghalayaRoute,
   R5DayMeghalayaItineraryRoute: R5DayMeghalayaItineraryRoute,
-  AboutRoute: AboutRouteWithChildren,
   AdventureToursNortheastIndiaRoute: AdventureToursNortheastIndiaRoute,
   AuthRoute: AuthRoute,
   BackpackingIndiaRoute: BackpackingIndiaRoute,
@@ -1822,6 +1812,7 @@ const rootRouteChildren: RootRouteChildren = {
   XtsyAdventureCampsiteDawkiRoute: XtsyAdventureCampsiteDawkiRoute,
   XtsyRentalsRoute: XtsyRentalsRoute,
   XtsyVsZostelRoute: XtsyVsZostelRoute,
+  AboutXtsyFactsRoute: AboutXtsyFactsRoute,
   BookCampsiteRoute: BookCampsiteRoute,
   BookSelectRoute: BookSelectRoute,
   FranchiseInstallRoute: FranchiseInstallRoute,
@@ -1834,6 +1825,7 @@ const rootRouteChildren: RootRouteChildren = {
   TravelGuideHowToReachMeghalayaRoute: TravelGuideHowToReachMeghalayaRoute,
   TravelGuideMeghalayaForInternationalTouristsRoute:
     TravelGuideMeghalayaForInternationalTouristsRoute,
+  AboutIndexRoute: AboutIndexRoute,
   BookIndexRoute: BookIndexRoute,
   DestinationsIndexRoute: DestinationsIndexRoute,
   ExpeditionsIndexRoute: ExpeditionsIndexRoute,

@@ -5,7 +5,7 @@ import { buildRouteHead } from "@/lib/seo-head";
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  '@id': 'https://xtsy.one/#organization',
+  '@id': 'https://xtsy.one/about/xtsy-facts#organization',
   name: 'XTSY',
   legalName: 'XTSY Ventures Private Limited',
   url: 'https://xtsy.one',
