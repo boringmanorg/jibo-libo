@@ -135,7 +135,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "preconnect", href: "https://kzhsxemkntfwsakhkylt.supabase.co", crossOrigin: "anonymous" },
       // Brand fonts are bundled (hashed /assets URLs, cached for a year; their @font-face rules are
       // in the main stylesheet) and preloaded so headlines render in Staatliches from the first paint.
       { rel: "preload", as: "font", type: "font/woff2", href: staatlichesLatin, crossOrigin: "anonymous" },

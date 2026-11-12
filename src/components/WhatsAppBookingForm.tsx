@@ -11,8 +11,12 @@ import { VisuallyHidden } from "@/components/ui/visually-hidden";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { MessageCircle, Calendar, Users, Phone, Trash2, Home, AlertCircle, MapPin, Info, ChevronDown, ChevronUp, Sparkles, X, ArrowLeft, Gift } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
-import { getRoomTypes } from "@/lib/rooms.functions";
+import { offlineBackend as supabase } from "@/lib/offlineBackend";
+import { ROOM_TYPES } from "@/config/roomTypes";
+
+// Owner-approved static room list; no database lookup.
+const getRoomTypes = async () =>
+  Object.values(ROOM_TYPES).filter((r) => r.isBookable).map((r) => ({ id: r.id, name: r.name, category: r.category, base_price: r.basePrice, capacity: r.capacity }));
 import { toast } from "@/hooks/use-toast";
 import { saveWhatsAppBooking } from "@/services/formBookingService";
 import FoodAddonsSection from "@/components/FoodAddonsSection";

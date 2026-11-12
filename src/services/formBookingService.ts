@@ -1,5 +1,5 @@
 import { localEnquiryRef } from '@/lib/localEnquiry';
-import { supabase } from "@/integrations/supabase/client";
+import { offlineBackend as supabase } from "@/lib/offlineBackend";
 import { validateWhatsAppBooking } from "@/utils/whatsappBookingValidation";
 import { validateXTSY270Inquiry, validateTourInquiry } from "@/utils/inquiryValidation";
 

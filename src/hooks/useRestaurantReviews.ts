@@ -5,7 +5,7 @@
  * pending until an admin approves it.
  */
 import { useState, useEffect, useCallback, useMemo } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import { offlineBackend as supabase } from "@/lib/offlineBackend";
 
 export interface RestaurantReview {
   id: string;
@@ -86,59 +86,10 @@ export function useRestaurantReviews() {
   }, [fetchReviews]);
 
   const submitReview = useCallback(
-    async (input: ReviewSubmission): Promise<{ success: boolean; error?: string }> => {
-      try {
-        let photoUrls: string[] = [];
-
-        if (input.photo) {
-          // SECURITY: validate uploaded file type and size before touching
-          // public storage to prevent arbitrary/malicious file hosting.
-          const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp"];
-          const MAX_BYTES = 5 * 1024 * 1024; // 5MB
-          const EXT_BY_TYPE: Record<string, string> = {
-            "image/jpeg": "jpg",
-            "image/png": "png",
-            "image/webp": "webp",
-          };
-
-          if (!ALLOWED_TYPES.includes(input.photo.type)) {
-            return { success: false, error: "Only JPG, PNG or WebP images are allowed." };
-          }
-          if (input.photo.size > MAX_BYTES) {
-            return { success: false, error: "Image must be 5MB or smaller." };
-          }
-
-          const ext = EXT_BY_TYPE[input.photo.type] || "jpg";
-          const path = `pending/${crypto.randomUUID()}.${ext}`;
-          const { error: upErr } = await supabase.storage
-            .from("review-media")
-            .upload(path, input.photo, {
-              cacheControl: "31536000",
-              upsert: false,
-              contentType: input.photo.type,
-            });
-          if (!upErr) {
-            const { data: pub } = supabase.storage.from("review-media").getPublicUrl(path);
-            if (pub?.publicUrl) photoUrls = [pub.publicUrl];
-          }
-        }
-
-        const { error } = await supabase.from("restaurant_reviews").insert({
-          guest_name: input.guestName.trim().slice(0, 120),
-          rating: input.rating,
-          review_text: input.reviewText.trim().slice(0, 2000) || null,
-          visit_type: input.visitType || null,
-          photos: photoUrls.length ? photoUrls : null,
-          source: "Direct",
-          approved: false,
-          verified: false,
-        });
-
-        if (error) return { success: false, error: error.message };
-        return { success: true };
-      } catch (e) {
-        return { success: false, error: e instanceof Error ? e.message : "Submission failed" };
-      }
+    async (_input: ReviewSubmission): Promise<{ success: boolean; error?: string }> => {
+      // Reviews are collected on Google, not stored on the site.
+      if (typeof window !== "undefined") window.location.href = "https://g.page/tabbistrobyxtsy";
+      return { success: true };
     },
     []
   );

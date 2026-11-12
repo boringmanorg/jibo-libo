@@ -6,7 +6,7 @@
  * Layer 3: Server-Side Safeguards (Behavioral validation)
  */
 
-import { getSupabase } from '@/integrations/supabase/lazy';
+import { getSupabase } from '@/lib/offlineBackend';
 
 // =============================================
 // TYPE DEFINITIONS

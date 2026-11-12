@@ -2,7 +2,7 @@ import { readConsent } from '@/lib/consent';
 import { SELF_TRACKING_ENABLED } from '@/lib/selfTracking';
 import { useEffect, useRef } from 'react';
 import { useLocation } from '@/lib/router-compat';
-import { getSupabase } from '@/integrations/supabase/lazy';
+import { getSupabase } from '@/lib/offlineBackend';
 
 /**
  * Real User Monitoring — captures LCP/INP/CLS/FCP/TTFB via PerformanceObserver
