@@ -2,6 +2,7 @@ import { memo } from "react";
 import { Helmet } from '@/lib/seo/helmet';
 import { Link } from "@/lib/router-compat";
 import { Utensils, ShoppingBag, Truck, PartyPopper } from "lucide-react";
+import { openWhatsApp } from '@/utils/privacyCompliantWhatsApp';
 
 interface FaqItem {
   q: string;
@@ -62,7 +63,7 @@ const groups: FaqGroup[] = [
         a: (
           <>
             Yes. You can place takeaway and online food orders directly with TAB Bistro on WhatsApp at{" "}
-            <a href="https://wa.me/918837317070" className="text-amber-400 underline">+91 88373 17070</a> —
+            <button type="button" onClick={() => openWhatsApp("Hi TAB Bistro, I'd like to place a takeaway order.")} className="text-amber-400 underline">+91 88373 17070</button> —
             pick any cuisine from{" "}
             <a href="#xtsy-specials" className="text-amber-400 underline">XTSY Specials</a> and we'll pack it fresh.
           </>
@@ -92,7 +93,7 @@ const groups: FaqGroup[] = [
         a: (
           <>
             Yes — message us on{" "}
-            <a href="https://wa.me/918837317070" className="text-amber-400 underline">WhatsApp +91 88373 17070</a>{" "}
+            <button type="button" onClick={() => openWhatsApp("Hi TAB Bistro, I'd like to ask about delivery.")} className="text-amber-400 underline">WhatsApp +91 88373 17070</button>{" "}
             with your order and location and we'll confirm delivery availability and timing.
           </>
         ),
