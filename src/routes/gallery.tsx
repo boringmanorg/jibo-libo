@@ -10,6 +10,8 @@ export const Route = createFileRoute("/gallery")({
       description:
         "See inside XTSY Shillong — Experience by XTSY, dormitories, common areas and mountain views. Real photos from India's biggest hostel in Meghalaya.",
       keywords: "XTSY photos, Shillong hostel gallery, glass suite photos, hostel rooms Meghalaya",
+      noIndex: true,
+      noIndexFollow: true,
     }),
   component: Gallery,
 });

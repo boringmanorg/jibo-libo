@@ -29,7 +29,7 @@ const LuxuryGlampingShillong = memo(() => {
     priceRange: `${GLAMP_NIGHT}/night`,
     amenityFeature: [
       { '@type': 'LocationFeatureSpecification', name: '270° Panoramic Glass Walls', value: true },
-      { '@type': 'LocationFeatureSpecification', name: 'Stargazing', value: true },
+      { '@type': 'LocationFeatureSpecification', name: 'Glass ceiling/walls with sky view', value: true },
       { '@type': 'LocationFeatureSpecification', name: 'Mountain Views', value: true },
       { '@type': 'LocationFeatureSpecification', name: 'Private Bathroom', value: true },
       { '@type': 'LocationFeatureSpecification', name: 'Premium Breakfast', value: true },

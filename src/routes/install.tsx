@@ -9,6 +9,8 @@ export const Route = createFileRoute("/install")({
       title: "Install the XTSY App on Your Phone",
       description:
         "Add the XTSY app to your home screen for faster booking, offline trip details, booking updates and member-only direct rates on Shillong stays.",
+      noIndex: true,
+      noIndexFollow: true,
     }),
   component: UserInstall,
 });
