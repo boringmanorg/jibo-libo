@@ -22,6 +22,7 @@ import { inr, lowestDormPrice, roomPrice } from '@/components/v2/pricing';
 import { PageShell, Breadcrumbs, PAD } from '@/components/v2/blocks';
 import { waLink } from '@/components/v2/primitives';
 import { avifSrcSet } from '@/data/cdnImages';
+import { rankedQuestionsFor } from '@/data/rankedPageQuestions';
 
 const NE_STATES = [
   { to: '/destinations/meghalaya', t: 'Meghalaya', d: 'Root bridges, Dawki, Cherrapunji — base yourself at XTSY.' },
@@ -121,7 +122,7 @@ export default function ProgrammaticV2() {
               </section>
             ))}
 
-            {page.faqs.length > 0 && (
+            {!rankedQuestionsFor(`/${page.slug}`) && page.faqs.length > 0 && (
               <section className="flex flex-col gap-3">
                 <h2 className="xt-display m-0 text-[32px] leading-none sm:text-[40px]">Frequently asked questions</h2>
                 {page.faqs.map((f) => <Faq key={f.question} q={f.question} a={f.answer} />)}

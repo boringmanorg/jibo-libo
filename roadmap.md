@@ -9,7 +9,7 @@ Approved scope: **Part 0 + Part 7 quick wins (7a, 7b, 7c, 7d, 7f)** first, then 
 - Stargazing never guaranteed; StargazingAckGate modal before WhatsApp CTAs on stargazing pages (rule 6a).
 
 ## Part 0 — zero Semrush audit errors/warnings
-- [x] E1: hreflang — source is clean (nothing emits hreflang); stale tags live in the Cloudflare KV prerender cache → purge/re-prerender on next deploy (owner action)
+- [ ] E1: prior cache diagnosis disproved by live Cloudflare inventory on 12 Nov: the active site has only an ASSETS binding, and the alleged prerender namespace contains no HTML pages. Root head still emits homepage hreflang; a separate targeted hreflang correction remains pending.
 - [x] E2: JSON-LD — /xtsy-270 LodgingBusiness offers→makesOffer; tour provider→Organization {name:XTSY, url}; removed "Stargazing" amenity claim (rule 6a)
 - [x] E3: /best-restaurant-in-shillong + /best-restaurant-shillong removed → 301 /best-restaurants-shillong (edge _redirects, sitemaps, internal links)
 - [x] W1: all 11 raw wa.me anchors → buttons via shared openWhatsApp() helper
@@ -21,15 +21,16 @@ Approved scope: **Part 0 + Part 7 quick wins (7a, 7b, 7c, 7d, 7f)** first, then 
 - [x] scripts/seo-check.mjs — 0 errors (538 pages, 12 sitemaps)
 
 ## Part 7 quick wins
-- [ ] Current approval: inspect existing Cloudflare Worker deployment and regenerate the KV page cache once; no recurring jobs.
-- [ ] Current approval: select 30 leading pages from live search data and add visible, content-matched question answers.
-- [x] 7a: robots.txt already allows AI crawlers; removed worker 403 on GPTBot/ClaudeBot/etc. — NEEDS WORKER REDEPLOY (owner action)
+- [x] Current approval: inspected existing Cloudflare deployment and cache. No page cache exists to regenerate (only two configuration-named keys); no deletion or traffic changes performed. Live site is an asset-hosting Worker, which cannot be redeployed through Lovable's Cloudflare connector.
+- [x] Current approval: selected exactly 30 leading pages by Google clicks (12 Oct–9 Nov) and added visible, content-matched answers.
+- [ ] 7a: source crawler block removed, but edge-seo Worker is only on the probe path; production is a different asset-hosting Worker. Its app redeployment is unsupported here; use Lovable Publish for the app, not replacement Worker infrastructure.
 - [x] 7b: llms.txt + llms-full.txt — corrected Bistro hours, added stargazing caution + facts page
 - [x] 7c: answer-first blocks verified rendering (data-quick-answer) on programmatic pages
 - [x] 7d: NEW /about/xtsy-facts + Organization/Breadcrumb JSON-LD, linked from /about, sitemap, llms.txt
-- [ ] 7f: PAA/AI-Overview blocks on top ~30 ranking pages (quickAnswer exists; full pass pending)
+- [x] 7f: all 30 selected pages return 200 and show 3–4 always-visible editorial questions; no Google PAA placement or AI citation guarantee. Existing guide FAQ schema reuses the same answers; duplicate visible accordion sections suppressed on selected pages.
 
 ## Verification (12 Nov 2026)
+- Current run: 78 targeted tests passed; all 30 pages checked in the browser, desktop/phone answer screenshots reviewed, phone document has no horizontal overflow; build OK.
 - build OK; 177/177 unit tests pass (2 Playwright spec files fail to load under vitest — pre-existing config issue, unrelated)
 - /about/xtsy-facts returns 200; seo-check 0 errors
 - Placeholder to fill: {{FOUNDED_DATE}} on /about/xtsy-facts

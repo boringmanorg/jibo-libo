@@ -18,6 +18,7 @@ export const Route = createFileRoute("/")({
         "best hostel in Shillong, hostel in Shillong, hostels in Shillong, budget-friendly hostel Shillong, budget stay Shillong, dorm in Shillong, backpacker hostel Meghalaya",
       // Preload the real hero photo (responsive WebP) so it is the first image the browser fetches.
       preloadImage: hero?.src ?? HERO_IMAGE.src,
+      image: hero?.src ?? HERO_IMAGE.src,
       preloadImageSrcSet: hero?.srcSet,
       preloadImageSizes: hero ? "100vw" : undefined,
       // Typed AVIF preload: browsers without AVIF skip it and use the WebP <source>.

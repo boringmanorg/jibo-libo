@@ -20,6 +20,7 @@ import { destinationPath, getCitySlugForDestination, getCityBySlug } from '@/dat
 import { inr, lowestDormPrice } from '@/components/v2/pricing';
 import { PageShell, Breadcrumbs, PAD } from '@/components/v2/blocks';
 import { Photo } from '@/components/v2/primitives';
+import { rankedQuestionsFor } from '@/data/rankedPageQuestions';
 
 const SHILLONG_HOSTEL_LINK_SLUGS = new Set(['dawki-umngot-river', 'nohkalikai-falls', 'umiam-lake']);
 /** Older copy hard-codes the 2025 dorm rate; show the live one from the booking engine. */
@@ -64,7 +65,8 @@ export default function DestinationV2() {
   const showShillongHostelLink = SHILLONG_HOSTEL_LINK_SLUGS.has(destination.slug);
 
   const topThings = destination.thingsToDo.slice(0, 3).join(', ');
-  const faqs: { q: string; a: string }[] = [
+  const rankedQuestions = rankedQuestionsFor(destinationPath(destination.slug));
+  const faqs: { q: string; a: string }[] = rankedQuestions ?? [
     { q: `What is the best time to visit ${destination.name}?`, a: destination.bestTimeToVisit },
     { q: `How do I reach ${destination.name} from Shillong?`, a: destination.howToReach },
     { q: `What are the top things to do at ${destination.name}?`, a: `Popular things to do at ${destination.name} include ${topThings}. ${destination.shortDescription}` },
@@ -307,7 +309,7 @@ export default function DestinationV2() {
           </section>
         )}
 
-        <section className={`${PAD} grid gap-10 pb-14 lg:grid-cols-12`}>
+        {!rankedQuestions && <section className={`${PAD} grid gap-10 pb-14 lg:grid-cols-12`}>
           <div className="lg:col-span-4"><H2>{destination.name} — FAQs</H2></div>
           <div className="flex flex-col gap-3 lg:col-span-8">
             {faqs.map(({ q, a }) => (
@@ -317,7 +319,7 @@ export default function DestinationV2() {
               </div>
             ))}
           </div>
-        </section>
+        </section>}
 
         <section className={`${PAD} flex flex-col gap-10 pb-10`}>
           <BookingCTA destination={destination} placement="bottom" />

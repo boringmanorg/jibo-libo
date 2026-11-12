@@ -13,6 +13,7 @@ import { getRelatedPages, getPagesByCategory } from '@/data/seoPages';
 import { RECOVERY_REDIRECTS } from '@/data/seoAffectedSlugs';
 import { CANONICAL_TWIN } from '@/data/seoIndexPolicy';
 import { getWheelLinks } from '@/data/seoLinkingWheel';
+import { rankedQuestionsFor } from '@/data/rankedPageQuestions';
 
 // ---------- Guide pages (/$slug) ----------
 
@@ -40,6 +41,8 @@ export function programmaticPayload(slug: string): ProgrammaticPayload {
   }
   if (isThinSEOPage(model.page)) return { status: 'thin' };
   const { page, hero } = model;
+  const questions = rankedQuestionsFor(`/${slug}`);
+  if (questions) model.page = { ...page, faqs: questions.map(({ q, a }) => ({ question: q, answer: a })) };
   const head: RouteHeadInput = {
     path: `/${CANONICAL_TWIN[page.slug] ?? page.slug}`,
     title: page.title,
@@ -48,13 +51,13 @@ export function programmaticPayload(slug: string): ProgrammaticPayload {
     // Near-duplicate "hostel in <other town> tonight" pages: visible, but not indexed.
     noIndex: model.noindex,
     noIndexFollow: model.noindex,
-    image: `https://xtsy.one${hero.src}`,
+    image: hero.src.startsWith('https://') ? hero.src : `https://xtsy.one${hero.src}`,
     ogType: page.schemaType === 'Article' || page.schemaType === 'TravelGuide' ? 'article' : 'website',
     preloadImage: hero.src,
     preloadImageSrcSet: hero.srcSet,
     preloadImageSizes: hero.srcSet ? '(max-width: 1024px) 100vw, 40vw' : undefined,
     // All structured data is server-rendered so AI crawlers that don't run JS still see it.
-    jsonLd: schemaFor(page),
+    jsonLd: schemaFor(model.page),
   };
   return {
     status: 'ok',
