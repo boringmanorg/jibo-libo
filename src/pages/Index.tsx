@@ -7,6 +7,7 @@ import SiteFooter from "@/components/v2/SiteFooter";
 import CtaBand from "@/components/v2/CtaBand";
 import HomeHero from "@/components/v2/home/HomeHero";
 import RankedPageQuestions from '@/components/seo/RankedPageQuestions';
+import { rankedQuestionsFor } from '@/data/rankedPageQuestions';
 import {
   LastMinuteBar, StatsStrip, PromiseMarquee, Trending, Stays, CampsiteBanner, StateExplorer,
   PrimeRail, GlampFeature, BistroFeature, ToursRow, TonightDeals, ExpeditionsBanner, Reviews,
@@ -22,7 +23,7 @@ const Index = memo(() => {
   const homeFaqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: HOME_FAQS.map(([q, a]) => ({
+    mainEntity: (rankedQuestionsFor('/') ?? []).map(({ q, a }) => ({
       '@type': 'Question',
       name: q,
       acceptedAnswer: { '@type': 'Answer', text: a },

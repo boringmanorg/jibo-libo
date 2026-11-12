@@ -11,6 +11,8 @@ import CtaBand from './CtaBand';
 import { Eyebrow, Photo, XtsyMark, waLink } from './primitives';
 import { inr, lowestDormPrice } from './pricing';
 import RankedPageQuestions from '@/components/seo/RankedPageQuestions';
+import { rankedQuestionsFor } from '@/data/rankedPageQuestions';
+import { useLocation } from '@tanstack/react-router';
 
 export const PAD = 'px-4 sm:px-8 lg:px-16';
 
@@ -253,6 +255,8 @@ export function PriceCards({ cards }: { cards: PriceCard[] }) {
 /** Accordion FAQ with FAQPage structured data. */
 export function FaqList({ faqs, schema = true, title = 'Good to know' }: { faqs: { q: string; a: string }[]; schema?: boolean; title?: ReactNode }) {
   const [open, setOpen] = useState(0);
+  const location = useLocation();
+  if (rankedQuestionsFor(location.pathname)) return null;
   return (
     <section className={cn(PAD, 'grid gap-8 py-16 lg:grid-cols-12 lg:gap-10 lg:py-20')}>
       {schema && (

@@ -51,7 +51,7 @@ export function programmaticPayload(slug: string): ProgrammaticPayload {
     // Near-duplicate "hostel in <other town> tonight" pages: visible, but not indexed.
     noIndex: model.noindex,
     noIndexFollow: model.noindex,
-    image: `https://xtsy.one${hero.src}`,
+    image: hero.src.startsWith('https://') ? hero.src : `https://xtsy.one${hero.src}`,
     ogType: page.schemaType === 'Article' || page.schemaType === 'TravelGuide' ? 'article' : 'website',
     preloadImage: hero.src,
     preloadImageSrcSet: hero.srcSet,

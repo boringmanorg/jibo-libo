@@ -5,6 +5,7 @@ import { Link } from "@/lib/router-compat";
 import { Card } from "@/components/ui/card";
 import { Bus, Car, Users, Plane, ArrowRight } from "lucide-react";
 import RankedPageQuestions from '@/components/seo/RankedPageQuestions';
+import { rankedQuestionsFor } from '@/data/rankedPageQuestions';
 
 const CANONICAL = "https://xtsy.one/travel-guide/guwahati-to-shillong-transport";
 
@@ -33,7 +34,7 @@ export default function GuwahatiToShillongTransport() {
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
-      mainEntity: faqs.map(f => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+      mainEntity: (rankedQuestionsFor('/travel-guide/guwahati-to-shillong-transport') ?? faqs).map(f => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
     },
     {
       "@context": "https://schema.org",
