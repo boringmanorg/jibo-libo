@@ -12,20 +12,18 @@ import { Button } from '@/components/ui/button';
 // The directory arrives from the route loader (server function); no guide data is bundled.
 const route = getRouteApi('/guides');
 import { PageShell, PageHero, Breadcrumbs, PAD } from '@/components/v2/blocks';
-import { IMG } from '@/data/v2Images';
-
-const first = (v: string | string[]) => (Array.isArray(v) ? v[0] : v);
+import { IMG, COVERS, first } from '@/data/v2Images';
 /** Topic card photos — XTSY's own property and destination photos only. */
 const TOPIC_PHOTO: Record<string, string> = {
   'Travel guides': IMG.meghalaya, 'Food & dining': first(IMG.bistro), 'Themed trips': IMG.laitlum,
-  Itineraries: IMG.nohkalikai, 'Seasonal guides': IMG.umiam, 'Group trips': IMG.groups,
-  Hostels: first(IMG.mixedDorm) || IMG.home, Stays: IMG.home, 'Tour packages': IMG.dawki,
+  Itineraries: IMG.nohkalikai, 'Seasonal guides': IMG.umiam, 'Group trips': COVERS.groups,
+  Hostels: first(IMG.mixedDorm) || COVERS.home, Stays: COVERS.home, 'Tour packages': IMG.dawki,
   Destinations: IMG.mawlynnong, Attractions: IMG.rootBridge, Activities: IMG.krangSuri,
-  Glamping: first(IMG.suite) || IMG.terrace, Hotels: IMG.about, Homestays: IMG.terrace,
+  Glamping: first(IMG.suite) || COVERS.terrace, Hotels: COVERS.about, Homestays: COVERS.terrace,
   Rentals: IMG.bumla, 'Road & bike trips': IMG.bumla, Transport: IMG.assam,
-  Workation: IMG.workation, 'Weddings & events': IMG.wedding, Events: IMG.sevenSisters,
-  'Corporate offsites': IMG.commonRoom, 'Stays near hospitals': IMG.contact,
-  'Hostel comparison': IMG.commonRoom, 'Travel agency': IMG.sikkim, 'XTSY pages': IMG.home,
+  Workation: COVERS.workation, 'Weddings & events': COVERS.wedding, Events: IMG.sevenSisters,
+  'Corporate offsites': COVERS.commonRoom, 'Stays near hospitals': COVERS.contact,
+  'Hostel comparison': COVERS.commonRoom, 'Travel agency': IMG.sikkim, 'XTSY pages': COVERS.home,
 };
 
 const idOf = (label: string) => label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
