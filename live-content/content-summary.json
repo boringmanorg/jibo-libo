@@ -1,20 +1,20 @@
 {
  "site": "https://xtsy.one",
- "pages": 702,
+ "pages": 700,
  "pagesWithFindings": 10,
  "siteFiles": {
   "/robots.txt": {
    "status": 200,
-   "bytes": 2394,
+   "bytes": 2938,
    "blocksAIBots": false
   },
   "/llms.txt": {
    "status": 200,
-   "bytes": 6421
+   "bytes": 6785
   },
   "/llms-full.txt": {
    "status": 200,
-   "bytes": 10559
+   "bytes": 10735
   }
  },
  "info": {
@@ -28,13 +28,27 @@
   }
  },
  "rules": {
-  "aeo:no FAQ or question headings": {
-   "pages": 4,
+  "placeholder:coming soon": {
+   "pages": 3,
    "examples": [
-    "/terms-of-service — ",
+    "/tab-bistro — on. Book a table View the menu WhatsApp us Rooftop terrace · café coming soon North Indian Indo-Chinese Thai Contin",
+    "/merch — lso ask Is XTSY merchandise available to buy now? The collection is coming soon. The page offers a Notify me enquiry r",
+    "/restaurant-in-shillong —  Dining A rooftop terrace with panoramic views — the rooftop café is coming soon. Traveller's Feast Multi-cuisine din"
+   ]
+  },
+  "aeo:no FAQ or question headings": {
+   "pages": 3,
+   "examples": [
     "/privacy-policy — ",
-    "/expeditions — ",
-    "/merch — "
+    "/terms-of-service — ",
+    "/expeditions — "
+   ]
+  },
+  "seo:description > 160 chars": {
+   "pages": 2,
+   "examples": [
+    "/tab-bistro — 181: Live tandoor, XTSY dum biryani, Indo-Chinese, North Indian gravies, South Indian breakfast…",
+    "/best-hostel-in-shillong — 174: Stay among the pines of New Shillong Township at XTSY (4.7★, 252 Google reviews). Dorms fr…"
    ]
   },
   "policy:pets": {
@@ -42,13 +56,6 @@
    "examples": [
     "/xtsy-vs-zostel — d and size). Zostel Shillong lists an 18+ rule, groups of up to 6 and no pets. Does XTSY arrange trips for groups? Yes",
     "/best-hostel-in-shillong — nd birds welcome, dogs by breed and size 18+ only, groups of up to 6, no pets Guest rating 4.7★ from 252 Google reviews"
-   ]
-  },
-  "placeholder:coming soon": {
-   "pages": 2,
-   "examples": [
-    "/tab-bistro — on. Book a table View the menu WhatsApp us Rooftop terrace · café coming soon North Indian Indo-Chinese Thai Contin",
-    "/restaurant-in-shillong —  Dining A rooftop terrace with panoramic views — the rooftop café is coming soon. Traveller's Feast Multi-cuisine din"
    ]
   },
   "rating:review count": {
@@ -69,12 +76,6 @@
    "pages": 1,
    "examples": [
     "/ —  Check-out strictly 10 AM Check-in Check-out Guests 1 guest 2 guests 3 guests 4"
-   ]
-  },
-  "seo:description > 160 chars": {
-   "pages": 1,
-   "examples": [
-    "/tab-bistro — 181: Live tandoor, XTSY dum biryani, Indo-Chinese, North Indian gravies, South Indian breakfast…"
    ]
   },
   "price:king/private room": {
