@@ -11,7 +11,7 @@ import { rankedQuestionsFor } from '@/data/rankedPageQuestions';
 import {
   LastMinuteBar, StatsStrip, PromiseMarquee, Trending, Stays, CampsiteBanner, StateExplorer,
   PrimeRail, GlampFeature, BistroFeature, ToursRow, TonightDeals, ExpeditionsBanner, Reviews,
-  HomeFaq, SeoLinks, HOME_FAQS,
+  SeoLinks,
 } from "@/components/v2/home/HomeSections";
 
 const Index = memo(() => {
