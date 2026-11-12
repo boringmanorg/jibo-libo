@@ -12,6 +12,19 @@ import { Button } from '@/components/ui/button';
 // The directory arrives from the route loader (server function); no guide data is bundled.
 const route = getRouteApi('/guides');
 import { PageShell, PageHero, Breadcrumbs, PAD } from '@/components/v2/blocks';
+import { IMG, COVERS, first } from '@/data/v2Images';
+/** Topic card photos — XTSY's own property and destination photos only. */
+const TOPIC_PHOTO: Record<string, string> = {
+  'Travel guides': IMG.meghalaya, 'Food & dining': first(IMG.bistro), 'Themed trips': IMG.laitlum,
+  Itineraries: IMG.nohkalikai, 'Seasonal guides': IMG.umiam, 'Group trips': COVERS.groups,
+  Hostels: first(IMG.mixedDorm) || COVERS.home, Stays: COVERS.home, 'Tour packages': IMG.dawki,
+  Destinations: IMG.mawlynnong, Attractions: IMG.rootBridge, Activities: IMG.krangSuri,
+  Glamping: first(IMG.suite) || COVERS.terrace, Hotels: COVERS.about, Homestays: COVERS.terrace,
+  Rentals: IMG.bumla, 'Road & bike trips': IMG.bumla, Transport: IMG.assam,
+  Workation: COVERS.workation, 'Weddings & events': COVERS.wedding, Events: IMG.sevenSisters,
+  'Corporate offsites': COVERS.commonRoom, 'Stays near hospitals': COVERS.contact,
+  'Hostel comparison': COVERS.commonRoom, 'Travel agency': IMG.sikkim, 'XTSY pages': COVERS.home,
+};
 
 const idOf = (label: string) => label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
@@ -28,10 +41,25 @@ export default function GuidesDirectoryV2() {
       <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: 'All guides' }]} />
       <PageHero
         size="md"
-        eyebrow="A–Z directory"
-        title="XTSY page directory."
+        eyebrow="Travel guides"
+        title="Plan Shillong & Meghalaya."
         text={<p className="m-0">{total} pages · Shillong stays, Meghalaya travel, Northeast itineraries, TAB Bistro and XTSY services.</p>}
       />
+      <section aria-label="Guide topics" className={`${PAD} bg-xt-paper py-8`}>
+        <ul className="m-0 grid list-none gap-4 p-0 sm:grid-cols-2 lg:grid-cols-4">
+          {groups.map((g) => (
+            <li key={g.label}>
+              <a href={`#${idOf(g.label)}`} onClick={() => setTopic('')} className="group relative block aspect-[4/3] overflow-hidden rounded-3xl bg-xt-sand">
+                <img src={TOPIC_PHOTO[g.label] ?? IMG.meghalaya} alt={`${g.label} in Shillong and Meghalaya`} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <span className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 bg-gradient-to-t from-xt-ink/85 to-transparent p-5 text-xt-paper">
+                  <span className="text-[20px] font-extrabold leading-tight">{g.label}</span>
+                  <span className="rounded-full bg-xt-paper/90 px-3 py-1 text-[13px] font-extrabold text-xt-ink">{g.pages.length}</span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
       <div className={`${PAD} grid gap-4 border-y border-xt-line bg-xt-paper py-6 md:grid-cols-[1fr_240px]`}>
         <div className="relative">
           <Search aria-hidden className="absolute left-4 top-4 h-5 w-5 text-xt-mute" />
