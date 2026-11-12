@@ -1,5 +1,5 @@
 /**
- * /tab-bistro/catering and /catering-shillong — TAB Bistro catering (redesign).
+ * /catering-shillong and /catering-shillong — TAB Bistro catering (redesign).
  * Enquiries are saved to catering_enquiries (admin is notified).
  */
 import { useState, type FormEvent } from 'react';
@@ -16,7 +16,7 @@ const KINDS = [
   { t: 'Bulk orders', d: 'Meal boxes for teams, colleges and events.', cls: 'bg-xt-cream text-xt-ink' },
 ];
 
-export default function CateringV2({ canonical = 'https://xtsy.one/tab-bistro/catering' }: { canonical?: string }) {
+export default function CateringV2({ canonical = 'https://xtsy.one/catering-shillong' }: { canonical?: string }) {
   const [f, setF] = useState({ name: '', phone: '', type: 'Wedding', guests: '', date: '', message: '' });
   const [busy, setBusy] = useState(false);
   const [done, setDone] = useState(false);

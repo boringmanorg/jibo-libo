@@ -253,7 +253,7 @@ export function TableBookingForm({ id = 'table-booking-form' }: { id?: string })
       )}
       <p className="m-0 text-[13px] text-xt-mute sm:col-span-2">
         {lunch ? 'Lunch is preorder only — availability, your order and the price must be confirmed on WhatsApp. No payment now.' : 'No payment now — we hold your request and confirm on WhatsApp.'} {BISTRO_HOURS_SENTENCE} For more than{' '}
-        {MAX_PARTY} guests, <Link to="/tab-bistro/catering" className="font-extrabold text-xt-crimson">plan an event</Link>.
+        {MAX_PARTY} guests, <Link to="/catering-shillong" className="font-extrabold text-xt-crimson">plan an event</Link>.
       </p>
     </form>
   );

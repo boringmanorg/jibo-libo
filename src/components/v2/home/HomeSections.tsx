@@ -232,7 +232,7 @@ export function BistroFeature() {
         </div>
         <div className="flex flex-wrap gap-3">
           <Link to="/tab-bistro" className="xt-btn flex h-[52px] items-center rounded-full bg-xt-ink px-6 text-[15px] font-extrabold text-xt-paper hover:text-xt-paper">View the menu</Link>
-          <Link to="/tab-bistro/catering" className="xt-btn flex h-[52px] items-center rounded-full border-[1.5px] border-xt-ink px-6 text-[15px] font-extrabold text-xt-ink hover:text-xt-ink">Catering &amp; events</Link>
+          <Link to="/catering-shillong" className="xt-btn flex h-[52px] items-center rounded-full border-[1.5px] border-xt-ink px-6 text-[15px] font-extrabold text-xt-ink hover:text-xt-ink">Catering &amp; events</Link>
         </div>
       </div>
       <div className="xt-reveal relative">

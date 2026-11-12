@@ -103,7 +103,7 @@ const groups: FaqGroup[] = [
         a: (
           <>
             Absolutely. For large group, party or office orders, use our{" "}
-            <Link to="/tab-bistro/catering" className="text-amber-400 underline">catering & bulk-orders page</Link>{" "}
+            <Link to="/catering-shillong" className="text-amber-400 underline">catering & bulk-orders page</Link>{" "}
             for the best rates and planning.
           </>
         ),
@@ -122,7 +122,7 @@ const groups: FaqGroup[] = [
           <>
             Yes. TAB Bistro by XTSY handles wedding catering, corporate events, private parties and bulk food
             orders across Shillong and Meghalaya. Get a quote on the{" "}
-            <Link to="/tab-bistro/catering" className="text-amber-400 underline">catering page</Link>.
+            <Link to="/catering-shillong" className="text-amber-400 underline">catering page</Link>.
           </>
         ),
         text: "Yes. TAB Bistro by XTSY handles wedding catering, corporate events, private parties and bulk food orders across Shillong and Meghalaya. Get a quote on the catering page.",
@@ -133,7 +133,7 @@ const groups: FaqGroup[] = [
           <>
             Yes — we cater corporate offsites, conferences and office parties with multi-cuisine set menus,
             dishes cooked to order and packed meal boxes. See the{" "}
-            <Link to="/tab-bistro/catering" className="text-amber-400 underline">corporate catering details</Link>.
+            <Link to="/catering-shillong" className="text-amber-400 underline">corporate catering details</Link>.
           </>
         ),
         text: "Yes — we cater corporate offsites, conferences and office parties with multi-cuisine set menus, dishes cooked to order and packed meal boxes. See the corporate catering details.",

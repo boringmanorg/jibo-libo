@@ -146,7 +146,7 @@ const TabBistroSpecials = memo(() => {
           <ShoppingBag className="w-4 h-4" /> Order / Takeaway on WhatsApp
         </a>
         <Link
-          to="/tab-bistro/catering"
+          to="/catering-shillong"
           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-card border border-border hover:border-amber-500/40 text-foreground font-semibold text-sm transition-colors"
         >
           <PartyPopper className="w-4 h-4 text-amber-400" /> Catering & Bulk Orders
