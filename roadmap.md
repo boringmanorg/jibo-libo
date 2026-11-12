@@ -30,6 +30,7 @@ Approved scope: **Part 0 + Part 7 quick wins (7a, 7b, 7c, 7d, 7f)** first, then 
 - [x] 7f: all 30 selected pages return 200 and show 3–4 always-visible editorial questions; no Google PAA placement or AI citation guarantee. Existing guide FAQ schema reuses the same answers; duplicate visible accordion sections suppressed on selected pages.
 
 ## Verification (12 Nov 2026)
+- [x] Current request: refreshed /guides with 541 full-title entries, search and topic filtering; 488 original directory URLs and 689 sitemap URLs checked in preview with zero terminal HTTP errors, 14 sitemap redirects documented; delivered architecture report and URL CSV. Editor URL picker is platform-owned and unchanged. New directory requires publish.
 - Current run: 78 targeted tests passed; all 30 pages checked in the browser, desktop/phone answer screenshots reviewed, phone document has no horizontal overflow; build OK.
 - build OK; 177/177 unit tests pass (2 Playwright spec files fail to load under vitest — pre-existing config issue, unrelated)
 - /about/xtsy-facts returns 200; seo-check 0 errors
