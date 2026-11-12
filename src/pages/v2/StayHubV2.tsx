@@ -74,7 +74,7 @@ export default function StayHubV2({ variant }: { variant: StayHubVariant }) {
         <h2 className="xt-display m-0 text-[36px] leading-none sm:text-[48px]">Rooms and today’s direct prices</h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {list.map((r) => (
-            <Link key={r.id} to={r.id === 'xtsy-270' ? '/xtsy-270' : '/book'} className="xt-lift flex flex-col overflow-hidden rounded-3xl bg-white text-xt-ink hover:text-xt-ink">
+            <Link key={r.id} to={r.id === 'xtsy-270' ? '/experience-by-xtsy' : '/book'} className="xt-lift flex flex-col overflow-hidden rounded-3xl bg-white text-xt-ink hover:text-xt-ink">
               <Photo src={ROOM_IMG[r.id]} alt={r.id === '8-bed-mixed-dorm' ? 'Bunks with curtains in an XTSY mixed dorm' : r.name} tone="sand" sizes="(max-width: 640px) 100vw, 20vw" className="aspect-[4/3]" />
               <div className="flex flex-col gap-1.5 p-5">
                 <span className="text-[16px] font-extrabold">{r.name}</span>

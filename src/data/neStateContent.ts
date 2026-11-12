@@ -36,7 +36,7 @@ const XTSY_STAYS: StayLink[] = [
   },
   {
     label: 'XTSY 270 — glamping & private stays',
-    href: '/xtsy-270',
+    href: '/experience-by-xtsy',
     note: 'Valley-view glamping and premium rooms for couples and small groups.',
   },
   {

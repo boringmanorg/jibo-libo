@@ -48,7 +48,7 @@ const STATIC_ROUTES: { path: string; priority: string; changefreq: string; lastm
   { path: '/4x4-expedition-meghalaya', priority: '0.8', changefreq: 'monthly', lastmod: TODAY },
   { path: '/merch', priority: '0.6', changefreq: 'monthly', lastmod: TODAY },
   { path: '/plan-trip-with-ai', priority: '0.8', changefreq: 'weekly', lastmod: TODAY },
-  { path: '/xtsy-270', priority: '0.8', changefreq: 'weekly', lastmod: TODAY },
+  { path: '/experience-by-xtsy', priority: '0.8', changefreq: 'weekly', lastmod: TODAY },
   { path: '/xtsy-rentals', priority: '0.8', changefreq: 'weekly', lastmod: TODAY },
   { path: '/work-from-home', priority: '0.7', changefreq: 'monthly', lastmod: TODAY },
   { path: '/female-travellers', priority: '0.7', changefreq: 'monthly', lastmod: TODAY },

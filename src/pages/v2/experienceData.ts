@@ -10,7 +10,7 @@ export function experienceSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': ['LodgingBusiness', 'Accommodation'],
-    '@id': 'https://xtsy.one/xtsy-270#suite',
+    '@id': 'https://xtsy.one/experience-by-xtsy#suite',
     containedInPlace: { '@id': 'https://xtsy.one/#hostel' },
     geo: { '@type': 'GeoCoordinates', latitude: 25.6025457, longitude: 91.9448902 },
     telephone: '+918837317070',
@@ -31,7 +31,7 @@ export function experienceSchema() {
     amenityFeature: XTSY270_DATA.features.map((f) => ({ '@type': 'LocationFeatureSpecification', name: f, value: true })),
     // LodgingBusiness must not use `offers` (Semrush structured-data error); makesOffer is the valid property.
     makesOffer: [
-      { '@type': 'Offer', name: 'Stay only', price: String(now || PANORAMA_STAY_ONLY), priceCurrency: 'INR', availability: 'https://schema.org/LimitedAvailability', url: 'https://xtsy.one/xtsy-270' },
+      { '@type': 'Offer', name: 'Stay only', price: String(now || PANORAMA_STAY_ONLY), priceCurrency: 'INR', availability: 'https://schema.org/LimitedAvailability', url: 'https://xtsy.one/experience-by-xtsy' },
     ],
   };
 }

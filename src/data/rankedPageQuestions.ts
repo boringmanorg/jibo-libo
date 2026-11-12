@@ -22,7 +22,7 @@ export const RANKED_PAGE_QUESTIONS: Record<string, RankedQuestion[]> = {
     { q: 'Are XTSY stays in other towns owned by XTSY?', a: partnerQuestion.a },
     { q: 'Can I eat at XTSY?', a: `TAB Bistro by XTSY is on site. ${BISTRO_HOURS_SENTENCE}` },
   ],
-  '/xtsy-270': suiteQuestions,
+  '/experience-by-xtsy': suiteQuestions,
   '/work-from-home': [
     { q: 'What is included in XTSY’s Shillong workation plans?', a: 'The page lists weekly, monthly and quarterly plans with a stay, Wi-Fi, workspace access and breakfast. Laundry and other inclusions vary by plan, so confirm the selected plan with the desk.' },
     { q: 'Where is the workation stay?', a: 'The XTSY workation stay is at XTSY Travellers Hostel in New Shillong Township, with TAB Bistro on site for meals and coffee.' },

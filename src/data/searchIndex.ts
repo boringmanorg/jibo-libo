@@ -72,7 +72,7 @@ function buildSearchIndex(): SearchEntry[] {
       category: 'stays',
       icon: room.kind === 'dorm' ? '🛏️' : room.category === 'luxury' ? '✨' : '👫',
       image: room.image,
-      url: room.id === 'xtsy-270' ? '/xtsy-270' : '/search?location=shillong',
+      url: room.id === 'xtsy-270' ? '/experience-by-xtsy' : '/search?location=shillong',
       price: `₹${room.discountedPrice}`,
       location: 'Shillong, Meghalaya',
       keywords: [
@@ -102,7 +102,7 @@ function buildSearchIndex(): SearchEntry[] {
       category: 'stays',
       icon: prop.category === 'luxury' ? '💎' : '🏠',
       image: prop.heroImage,
-      url: prop.slug === 'xtsy-luxury' ? '/xtsy-270' : '/properties',
+      url: prop.slug === 'xtsy-luxury' ? '/experience-by-xtsy' : '/properties',
       price: `₹${prop.priceRange.min}–₹${prop.priceRange.max}`,
       location: 'Shillong, Meghalaya',
       keywords: [
@@ -123,7 +123,7 @@ function buildSearchIndex(): SearchEntry[] {
     description: 'India\'s first 270° panoramic glass house for stargazing experiences',
     category: 'experiences',
     icon: '🌌',
-    url: '/xtsy-270',
+    url: '/experience-by-xtsy',
     location: 'Shillong',
     keywords: [
       'glass house stay', 'stargazing hotel', 'glass cabin india', 'romantic stay shillong',

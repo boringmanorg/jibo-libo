@@ -6,8 +6,8 @@ import xtsyMilkyway2 from '@/assets/xtsy-270-milkyway2.jpeg';
 import xtsyInterior from '@/assets/xtsy-270-interior.jpeg';
 
 export const XTSY270_DATA = {
-  path: '/xtsy-270',
-  canonicalUrl: 'https://xtsy.one/xtsy-270',
+  path: '/experience-by-xtsy',
+  canonicalUrl: 'https://xtsy.one/experience-by-xtsy',
   name: "Experience by XTSY – India's First Stargaze Glamp",
   shortName: 'Experience by XTSY',
   seoTitle: 'Experience by XTSY – India\'s First Stargaze Glamp | Shillong, Meghalaya',
