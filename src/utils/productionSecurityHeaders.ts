@@ -5,7 +5,6 @@
 
 export interface SecurityHeadersConfig {
   isDevelopment?: boolean;
-  supabaseUrl?: string;
   customDomains?: string[];
   enableHSTS?: boolean;
 }
@@ -13,7 +12,6 @@ export interface SecurityHeadersConfig {
 export function generateProductionSecurityHeaders(config: SecurityHeadersConfig = {}) {
   const {
     isDevelopment = import.meta.env.MODE === 'development',
-    supabaseUrl = (import.meta.env.VITE_SUPABASE_URL as string) || 'https://kzhsxemkntfwsakhkylt.supabase.co',
     customDomains = [],
     enableHSTS = !isDevelopment
   } = config;
@@ -32,9 +30,9 @@ export function generateProductionSecurityHeaders(config: SecurityHeadersConfig 
       // Scripts: GTM, GA4, Google Ads (inline needed for GTM to inject tags).
       // 'self' covers the first-party /cs/uxa proxy path; Contentsquare/Hotjar kept as fallback origins.
       "script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: https://www.googletagmanager.com https://tagmanager.google.com https://www.google-analytics.com https://ssl.google-analytics.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://www.googlesyndication.com https://pagead2.googlesyndication.com https://adservice.google.com https://www.gstatic.com https://ssl.gstatic.com https://www.google.com https://www.google.co.in https://tagassistant.google.com https://t.contentsquare.net https://*.contentsquare.net https://script.hotjar.com https://static.hotjar.com",
-      // Connect: API endpoints for analytics + Supabase + Contentsquare/Hotjar beacons + Sentry error
+      // Connect: analytics + Contentsquare/Hotjar beacons + Sentry error
       // reports (without the Sentry ingest hosts every crash report was blocked by this policy).
-      `connect-src 'self' https://kzhsxemkntfwsakhkylt.supabase.co wss://kzhsxemkntfwsakhkylt.supabase.co https://*.supabase.co wss://*.supabase.co https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://region1.google-analytics.com https://www.googletagmanager.com https://*.googletagmanager.com https://tagassistant.google.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://stats.g.doubleclick.net https://td.doubleclick.net https://*.g.doubleclick.net https://adservice.google.com https://www.google.com https://www.google.co.in https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://fonts.googleapis.com https://fonts.gstatic.com https://t.contentsquare.net https://*.contentsquare.net https://*.hotjar.com https://*.hotjar.io https://*.doubleclick.net wss://*.hotjar.com https://*.ingest.sentry.io https://*.ingest.us.sentry.io https://ipapi.co`,
+      `connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://region1.google-analytics.com https://www.googletagmanager.com https://*.googletagmanager.com https://tagassistant.google.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://stats.g.doubleclick.net https://td.doubleclick.net https://*.g.doubleclick.net https://adservice.google.com https://www.google.com https://www.google.co.in https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://fonts.googleapis.com https://fonts.gstatic.com https://t.contentsquare.net https://*.contentsquare.net https://*.hotjar.com https://*.hotjar.io https://*.doubleclick.net wss://*.hotjar.com https://*.ingest.sentry.io https://*.ingest.us.sentry.io https://ipapi.co`,
       // Frames: Allow GTM preview/debug mode
       "frame-src 'self' https://www.googletagmanager.com https://tagassistant.google.com https://td.doubleclick.net https://*.doubleclick.net https://www.google.com https://*.hotjar.com",
       "frame-ancestors 'self' https://tagassistant.google.com https://tagmanager.google.com",

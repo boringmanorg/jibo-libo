@@ -25,6 +25,11 @@ on:
       - "cloudflare/**"
       - "public/seo-slim-map.json"
       - "scripts/generateWorkerSlimMap.ts"
+      # The worker serves 301/410s from this map, so a change to it -- or to the
+      # script that builds it -- must redeploy the worker. Without these two the
+      # map could change on main while the edge kept serving the old one.
+      - "public/seo-redirect-map.json"
+      - "scripts/generateWorkerRedirectMap.ts"
       - ".github/workflows/cloudflare-deploy.yml"
   workflow_dispatch:
 
