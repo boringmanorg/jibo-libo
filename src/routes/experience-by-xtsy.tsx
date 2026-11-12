@@ -9,7 +9,7 @@ export const Route = createFileRoute("/experience-by-xtsy")({
       path: "/experience-by-xtsy",
       ogType: "product",
       jsonLd: [experienceSchema()],
-      title: "Experience by XTSY — India's First Stargaze Glamp, Shillong",
+      title: "Experience by XTSY: Romantic Couple Stay, New Shillong",
       description:
         "Experience by XTSY, India's first stargaze glamp: a 270° panoramic glass suite in New Shillong Township. Photos, what's included and rates. Book direct.",
     }),

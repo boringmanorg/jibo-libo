@@ -16,7 +16,7 @@ export function experienceSchema() {
     telephone: '+918837317070',
     checkinTime: '11:00',
     checkoutTime: '10:00',
-    name: "Experience by XTSY – India's First Stargaze Glamp",
+    name: "Experience by XTSY: The Romantic Couple Stay in India is now at New Shillong, Meghalaya",
     description: 'A 270° panoramic glass suite for couples at XTSY Travellers Hostel, New Shillong Township, Meghalaya.',
     url: XTSY270_DATA.canonicalUrl,
     image: IMG.suite.slice(0, 4).map((p) => `https://xtsy.one${p}`),
