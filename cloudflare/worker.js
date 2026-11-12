@@ -312,6 +312,26 @@ export default {
     const url = new URL(request.url);
     const userAgent = request.headers.get('user-agent') || '';
 
+    // ── Canonical host: 301 www → apex ───────────────────────────────────────
+    // Both hosts served 200 for the whole site, so every page existed twice. The
+    // 12 Nov crawl found 712 pages on www and 721 on the apex: identical content,
+    // double the crawl budget, and every audit count inflated ~2x. Canonical tags
+    // already pointed at the apex, but a canonical is a hint and a 301 is not.
+    // Placed before everything else so no other path can answer on www.
+    if (url.hostname.toLowerCase().startsWith('www.')) {
+      const target = new URL(url);
+      target.hostname = url.hostname.slice(4);
+      return new Response(null, {
+        status: 301,
+        headers: {
+          location: target.toString(),
+          'cache-control': 'public, max-age=3600',
+          'x-redirect-source': 'canonical-host',
+          'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
+        },
+      });
+    }
+
     // --- Liveness probe -------------------------------------------------
     // Returns before every other code path, so a response here proves the
     // route dispatches to this Worker. While the routes are limited to this
@@ -375,6 +395,7 @@ export default {
             location: targetUrl,
             'cache-control': 'public, max-age=3600',
             'x-redirect-source': 'static-redirect-map',
+            'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
           },
         });
       }
@@ -387,6 +408,7 @@ export default {
             'content-type': 'text/plain; charset=utf-8',
             'cache-control': 'public, max-age=3600',
             'x-redirect-source': 'static-redirect-map',
+            'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
           },
         });
       }
@@ -453,7 +475,7 @@ export default {
         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.googletagmanager.com https://tagmanager.google.com",
         "font-src 'self' data: https://fonts.gstatic.com https://*.hotjar.com",
         "script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: https://www.googletagmanager.com https://tagmanager.google.com https://www.google-analytics.com https://ssl.google-analytics.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://www.googlesyndication.com https://pagead2.googlesyndication.com https://adservice.google.com https://www.gstatic.com https://ssl.gstatic.com https://www.google.com https://www.google.co.in https://tagassistant.google.com https://t.contentsquare.net https://*.contentsquare.net https://script.hotjar.com https://static.hotjar.com",
-        "connect-src 'self' https://kzhsxemkntfwsakhkylt.supabase.co wss://kzhsxemkntfwsakhkylt.supabase.co https://*.supabase.co wss://*.supabase.co https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://region1.google-analytics.com https://www.googletagmanager.com https://*.googletagmanager.com https://tagassistant.google.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://stats.g.doubleclick.net https://td.doubleclick.net https://*.g.doubleclick.net https://adservice.google.com https://www.google.com https://www.google.co.in https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://fonts.googleapis.com https://fonts.gstatic.com https://t.contentsquare.net https://*.contentsquare.net https://*.hotjar.com https://*.hotjar.io https://ipapi.co https://*.doubleclick.net wss://*.hotjar.com",
+        "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://region1.google-analytics.com https://www.googletagmanager.com https://*.googletagmanager.com https://tagassistant.google.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://stats.g.doubleclick.net https://td.doubleclick.net https://*.g.doubleclick.net https://adservice.google.com https://www.google.com https://www.google.co.in https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://fonts.googleapis.com https://fonts.gstatic.com https://t.contentsquare.net https://*.contentsquare.net https://*.hotjar.com https://*.hotjar.io https://ipapi.co https://*.doubleclick.net wss://*.hotjar.com",
         "frame-src 'self' https://www.googletagmanager.com https://tagassistant.google.com https://td.doubleclick.net https://*.doubleclick.net https://www.google.com https://*.hotjar.com",
         "frame-ancestors 'self' https://tagassistant.google.com https://tagmanager.google.com",
         "base-uri 'self'",
