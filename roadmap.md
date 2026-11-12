@@ -1,82 +1,34 @@
-- [ ] Fill sitewide photo-card gaps using relevant existing assets and Pexels; verify homepage Prime and public catalogue grids, preserving prices, URLs and copy.
-- [x] Verify stale duplicate metadata: homepage, About and 3-day itinerary have one title, description and self-canonical in server HTML and browser DOM; finding recorded as fixed.
-- [x] Expand the existing 10-day Meghalaya itinerary with overnight logistics, trek preparation and weather alternatives; preview verified, SEO finding recorded as fixed awaiting rescan and publishing. Redirect tests: 52 passed; legacy SEO regression suite cannot load because it references removed index.html and obsolete rates.
-- [x] Update existing /faq and add /safety-house-rules using current rates, published quiet hours and strict property times; verified rendering, FAQs and self-canonicals.
-- [x] Harden dorm catalogue matching; verify real pending enquiries and WhatsApp messages for all three dorms at ₹399/₹499/₹599, with server GST checks preserved.
-- [x] Verify India search volumes; broad terms have demand, exact priority question volumes remain unknown (research recorded).
-- [x] Update ownership footer including Travel by XTSY and budget wording, preserving URLs, verbatim reviews and hidden search keywords.
-- [x] Finish four adventure guides with itinerary, safety, logistics and visible FAQs; verify page rendering and single self-canonicals.
-- [x] Submit live adventure sitemap to Google and verify recorded submission; processing pending, inspected Northeast guide discovered but not indexed.
-- [x] Check budget-page canonicals and legacy redirects: one self-canonical per hub, duplicate aliases redirect 301.
-- [x] Check analytics scripts and rejection flow: both GTM scripts return 200, GA4 script returns 404; rejecting non-essential still grants analytics and creates Google cookies.
-- [ ] Publish expanded adventure content and corrected absolute cover-image metadata (awaiting publishing).
-- [x] Fix optional analytics consent: six tests pass; fresh visits and returning rejection create no cookies, tracking requests or identifiers; analytics-only acceptance starts existing tags. Publish pending; GA4 property configuration remains separate.
-- [ ] Fix remaining uploaded-checklist P0 priorities: duplicate budget-hostel canonicals and GA4 loading error, preserving consent and validation.
-- [ ] Verify fixes and record external blockers for tour photos and manual Google re-indexing.
-- [ ] Align existing adventure tour, activity, expedition, and local city pages with approved search terms.
-- [ ] Improve on-site search discovery and relevant internal links without creating doorway pages.
-- [ ] Keep sitemap coverage accurate and validate metadata, links, desktop/mobile views, and type safety.
-- [x] Use the existing TAB Bistro cover consistently wherever Bistro is featured.
-- [x] Carry the current homepage palette and typography across guest-facing pages without changing admin tools or booking logic.
-- [x] Verify representative public pages on desktop and mobile.
-- [ ] Panorama package and decoration pricing match summary, tax, WhatsApp and saved enquiry.
-- [ ] Persist guest WhatsApp, room and campsite enquiries with dates, guests and totals; verify with real rooms.
-- [x] Add distinct detailed Northeast adventure landing pages and submit their live sitemap to Google; direct indexing requests require Search Console UI.
-- [x] Refresh homepage in selected photographic editorial direction without changing room rates.
-- [ ] Normalize New Shillong Township address and strict 11 AM / 10 AM property times in SEO and AEO.
-- [ ] Flat nightly price for unspecified room: waiting on room name and amount from owner.
-- [x] Improve /best-hostel-in-shillong search title, description and contextual FAQ, safety and arrival links; verified single self-canonical, working destinations, unchanged displayed rates/policies and desktop/mobile rendering. Eight booking quote tests pass; publish needed for the live URL.
-- [x] Investigate the two open live error findings: published room list and realtime writes now work; marked historical findings stale. Restore missing backend-only cache/rate-limit grants; verify exchange-rate cache hits. Review measured weekly traffic without identifying anonymous visitors or treating visits as conversions.
+# Roadmap — Master SEO prompt (xtsy.one)
 
-## Done 2026-10-17
-- [x] Restored step-by-step booking funnel tracking (booking_step_view per step; re-enabled self-tracking; granted traffic_* table access incl. trigger owner sandbox_exec)
-- [x] Added "Book / Enquire" button on /xtsy-270 leading to /book?property=xtsy-experience
+Approved scope: **Part 0 + Part 7 quick wins (7a, 7b, 7c, 7d, 7f)** first, then continue part by part.
 
-## Done 2026-10-19
-- [x] Move affected admin/booking functions and trigger dependencies off the restricted owner; no remaining restricted SECURITY DEFINER routines directly call auth. Preserve validation, bind admin actors, restrict OTP execution to backend. Thirteen tests pass; authenticated role check and forged-actor denial verified; real table enquiry XTH-ENQ-002 saved and shown in the UI. Full admin approval/settlement mutations were not executed on live guest bookings.
-- [x] Added a clear "Book a table" action on /tab-bistro (hero primary + phone sticky bar) opening an on-page table request form: date, time, guests, name, WhatsApp, email, notes. Request is saved as a pending enquiry (XTH-ENQ ref, time and page source kept) and WhatsApp opens with the same details; a request is not a confirmed table. Verified end to end in the preview.
-- [x] Repaired create_enquiry and role helpers owned by the restricted migration role; completed the remaining affected booking/admin handover above.
-- [ ] QA table enquiry XTH-ENQ-001 ("QA Table Test", qa.table@example.com) is still pending in the enquiries list — delete when convenient.
-- [ ] QA table enquiry XTH-ENQ-002 ("QA Ownership Repair") remains pending; cleanup awaits owner authorization.
-- [x] Add lunch preorder-only requests to the TAB Bistro table form, preserving existing hours and saving before WhatsApp confirmation; three tests passed and real request XTH-ENQ-004 saved with matching lunch time, order and reference in the captured WhatsApp redirect. Preview build clean; publish pending.
-- [ ] QA lunch requests XTH-ENQ-003 and XTH-ENQ-004 ("QA Lunch Preorder", explicitly marked test-only) remain pending; cleanup awaits owner authorization.
+## Owner decisions (this session)
+- /xtsy-270: new URL `/romantic-glass-glamping/stay-in-meghalaya/shillong`, branded "Experience by XTSY — India's First Stargaze Glass Glamping", with stargaze weather cautions. (Part 3a, later)
+- Saturday tour REVIVED with new terms: 1st & 3rd Saturday every month (all months), 4N/5D only, min 4 per group, ₹2,800/night/person, ₹10,000/person total for 4N; stay+transport+breakfast included; 3N XTSY Hostel + 1N XTSY Dawki (Shnongpdeng) Riverside Camping (breakfast, dinner, bonfire at both). Focus on current + upcoming week. (Part 2b, later)
+- "youth hostel shillong" stays EXCLUDED.
+- Stargazing never guaranteed; StargazingAckGate modal before WhatsApp CTAs on stargazing pages (rule 6a).
 
-## Current request 2026-10-21
-- [x] Improve existing Umiam Lake title, description and 10 contextual planning links; verified single self-canonical, unchanged activity/cab rates and working destinations. Publish pending.
-- [x] Improve existing TAB Bistro introduction, meal-planning content and links for restaurants in Shillong; hours/menu unchanged, table-form action verified. 63 booking/redirect tests pass; preview has no page errors. Publish pending.
+## Part 0 — zero Semrush audit errors/warnings
+- [ ] E1: remove all hreflang tags (site is English-only; keep lang="en-IN")
+- [ ] E2: fix JSON-LD builders (LodgingBusiness makesOffer, TouristTrip provider as Organization, one @graph per page)
+- [ ] E3: /best-restaurant-in-shillong + /best-restaurant-shillong → 301 /best-restaurants-shillong
+- [ ] W1: wa.me <a href> → <button> + shared openWhatsApp(text) helper (keep tel: in footer)
+- [ ] W3: fix H1 = title on 10 pages
+- [ ] W4: /install + /gallery → noindex,follow, out of sitemaps
+- [ ] W5: /__l5e/events.js cache headers (report if not controllable from repo)
+- [ ] www→non-www: replace www.xtsy.one everywhere; 301 redirect (report if hosting-level)
+- [ ] Notices: internal links to redirected URLs; /book noindex + out of sitemap
+- [ ] scripts/seo-check.mjs build check (titles, H1, hreflang, www, wa.me links, canonical, JSON-LD, word count, sitemap)
 
-## Current request 2026-10-22
-- [ ] Link TAB Bistro's Google Business Profile and automatically reconcile published site hours and lunch-preorder wording, with protected scheduling and unchanged name/address/phone.
-- [ ] Verify changed and unchanged syncs, unauthorized rejection, scheduling and existing Bistro request rules; publish required to activate the live callback.
+## Part 7 quick wins
+- [ ] 7a: robots.txt — explicitly allow AI crawlers (GPTBot, ClaudeBot, PerplexityBot, etc.), keep Disallow /book
+- [ ] 7b: rewrite /llms.txt + generate /llms-full.txt
+- [ ] 7c: answer-first format components ("In short" block, Quick facts table, PAA-style H2/H3, last-updated byline)
+- [ ] 7d: NEW /about/xtsy-facts entity page + Organization JSON-LD
+- [ ] 7f: PAA/AI-Overview blocks on top ~30 ranking pages
 
-## Current request 2026-10-25
-- [x] Correct website Instagram links to owner-confirmed @xtsy.one; exclude inactive Hostelworld. Google listing phone/website/locality and review links verified; street-address wording differs and needs owner confirmation before changing Google arrival directions.
-- [x] Prepare voluntary honest-review requests and labelled existing-page links/copy in the XTSY guest growth collection. Seven pages verified; no duplicate pages or completed hostel SEO edits repeated.
-- [ ] Post/share through @xtsy.one and send review requests to genuine recent guests: blocked by unavailable publishing/sending access and no eligible recipient/audience list. No messages or posts sent.
-- [x] Remove misleading online-payment/instant-confirmation copy from hostel-booking page and shared payment FAQ; primary hostel enquiry save-before-WhatsApp retained, Bistro uses a same-tab post-save redirect to avoid popup blocking. Eleven quote/request tests pass; site changes require publishing.
-
-## Current request 2026-10-28
-- [ ] Improve AI trip answers for accuracy and guest-first recommendations, with XTSY only where relevant.
-- [ ] Repair plan-confirmation enquiries so the saved itinerary reaches the desk through WhatsApp and an expected email notification; references must not imply confirmed bookings.
-- [ ] Verify trip answers and a saved guest itinerary handoff end to end, preserving consent and no online payments.
-
-## Current request 2026-10-30
-- [x] Remove Saturday group departure from catalogue-driven SEO, FAQs, internal promotions and sitemap; retired URL returns 301 to /tours. Four public pages and sitemap verified; 54 tests pass, preview clean. Publishing required.
-
-## Approved analytics corrections 2026-11-01
-- [x] Enforce the four approved conversion events and validation at the shared event boundary; preserve admin-first diagnostics and consent. Nineteen consent/conversion regression tests pass.
-- [ ] Correct GTM consent/event mappings and duplicate Contentsquare loaders; account access required before external container edits.
-- [ ] Verify consent rejection, analytics-only delivery and qualified-event safeguards; GA4 property settings require report/admin access. Leave sitemaps unchanged.
-
-## Current request 2026-11-02
-- [x] Complete site-side event validation and consent-safe mapping safeguards, then run regression tests. Stable event_name/eventName aliases added; admin, synthetic and unvalidated external pushes blocked; internal diagnostics retained.
-- [ ] Apply external GTM corrections: blocked by unavailable GTM editing connection (earlier connection declined); do not change Google Ads connection or sitemaps.
-- [x] Check analytics-only GA4 collection responses and rejection on the live site: 3 November, analytics-only loads GTM but produces no observed GA4 collect request or GA cookie; duplicate Contentsquare errors remain in the external container. No tracking requests/cookies before consent or after rejection/reload. GA4 ingestion/report visibility remain unverified.
-
-## Current request 2026-11-03
-- [x] Finish shared tracking validation and stable event-name mappings; verify consent and conversion rules. Pending/missing confirmation evidence cannot become booking_confirmed; legacy conversion actions stay internal. Existing signal hook no longer writes session count without analytics consent.
-- [ ] Verify successful live analytics-only GA4 collection after external GTM corrections: blocked by missing authorized GTM editing access. Existing custom-connector creation was declined; no replacement created, Google Ads and sitemaps unchanged. Website safeguards require publishing.
-
-## Done 2026-11-06
-- [x] Review showcase: fetched real Google reviews from both listings (hostel 253 total at 4.7, bistro 34 at 4.7); curated best five-star reviews verbatim into src/data/featuredGoogleReviews.ts; homepage shows Nupur Kothari, Safique, Asmita Saha under "4.7 on Google from 252 reviews"; /tab-bistro "Diners say" pins Daiamonlang Khardewsaw, Sumar Shylla, Sai Priya with Google labels (live route is BistroV2, not pages/TabBistro). Verified in preview, no page errors. Publish pending.
-- [ ] Open: bistro "Find us"/FAQ hours text (8:45 AM–12 PM, 5–11 PM from tabBistroHours.ts) differs from owner-stated 8:45–11:45 AM and 4:30–11 PM; flagged, awaiting owner decision.
+## Later parts (not yet approved for this run)
+- Part 1: prerendering/SSG, redirects map, lost pages, prune thin pages, seo-inventory.csv
+- Part 2: /hostel-in-shillong, /meghalaya-tour-packages (Saturday tour per owner terms), rentals
+- Part 3: couples segment incl. /xtsy-270 move per owner decision
+- Parts 4–6, 7e, 7g–7j
