@@ -23,7 +23,7 @@ import {
   sendSessionQuality,
   setUserProperties,
 } from '@/utils/ga4Integration';
-import { getSupabase } from '@/integrations/supabase/lazy';
+import { getSupabase } from '@/lib/offlineBackend';
 import { deferUntilIdle } from '@/utils/deferUntilIdle';
 
 export interface TrafficAnalyticsState {

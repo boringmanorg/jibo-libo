@@ -5,7 +5,7 @@
  * pending until an admin approves it.
  */
 import { useState, useEffect, useCallback, useMemo } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import { offlineBackend as supabase } from "@/lib/offlineBackend";
 
 export interface RestaurantReview {
   id: string;
@@ -86,8 +86,12 @@ export function useRestaurantReviews() {
   }, [fetchReviews]);
 
   const submitReview = useCallback(
-    async (input: ReviewSubmission): Promise<{ success: boolean; error?: string }> => {
+    async (_input: ReviewSubmission): Promise<{ success: boolean; error?: string }> => {
+      // Reviews are collected on Google, not stored on the site.
+      if (typeof window !== "undefined") window.location.href = "https://g.page/tabbistrobyxtsy";
+      return { success: true };
       try {
+        const input = _input;
         let photoUrls: string[] = [];
 
         if (input.photo) {

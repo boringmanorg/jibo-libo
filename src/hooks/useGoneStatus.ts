@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getSupabase } from '@/integrations/supabase/lazy';
+import { getSupabase } from '@/lib/offlineBackend';
 import { GONE_SLUGS } from "@/data/seoGoneSlugs";
 
 /**

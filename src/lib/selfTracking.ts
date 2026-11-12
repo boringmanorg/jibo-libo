@@ -7,4 +7,4 @@
  * back on. All tracking remains consent-gated: nothing is written before analytics
  * consent, and admin sessions are excluded.
  */
-export const SELF_TRACKING_ENABLED = true;
+export const SELF_TRACKING_ENABLED = false;

@@ -1,7 +1,7 @@
 import { SELF_TRACKING_ENABLED } from '@/lib/selfTracking';
 import { useEffect, useCallback, useRef } from 'react';
 import { useLocation } from '@/lib/router-compat';
-import { supabase } from '@/integrations/supabase/client';
+import { offlineBackend as supabase } from '@/lib/offlineBackend';
 import { 
   isLovableSession, 
   initLovableSessionDetection, 

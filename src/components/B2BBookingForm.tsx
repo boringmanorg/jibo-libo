@@ -9,7 +9,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { VisuallyHidden } from "@/components/ui/visually-hidden";
 import { Building2, Calendar, Users, IndianRupee, Minus, Plus } from "lucide-react";
 import { useApp } from "@/contexts/AppContext";
-import { supabase } from "@/integrations/supabase/client";
+import { offlineBackend as supabase } from "@/lib/offlineBackend";
 import { useToast } from "@/hooks/use-toast";
 import FoodAddonsSection from "@/components/FoodAddonsSection";
 import { routeGTMEvent } from "@/utils/gtmEventRouter";

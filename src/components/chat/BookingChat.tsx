@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, User, Building2, Check, CheckCheck, X, Sparkles, Lightbulb, Bell } from 'lucide-react';
-import { supabase } from '@/integrations/supabase/client';
+import { offlineBackend as supabase } from '@/lib/offlineBackend';
 import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
 

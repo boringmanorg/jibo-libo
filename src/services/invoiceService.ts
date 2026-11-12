@@ -1,4 +1,4 @@
-import { supabase } from '@/integrations/supabase/client';
+import { offlineBackend as supabase } from '@/lib/offlineBackend';
 
 export interface InvoiceData {
   guestName: string;
