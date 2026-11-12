@@ -1,3 +1,4 @@
+import { WaAnchor } from '@/components/WaAnchor';
 /**
  * SiteHeader (v2) — sand header with announcement strip, main nav, search,
  * sign-in / account, "Book now" and a full-screen mobile menu.
@@ -182,7 +183,7 @@ export default function SiteHeader() {
             ))}
           </div>
           <div className="flex flex-wrap items-center gap-3 border-t border-white/10 px-4 py-8 sm:px-8 lg:px-14">
-            <a href={waLink()} className="flex h-12 items-center rounded-full bg-xt-crimson px-6 font-bold text-white hover:text-white">WhatsApp {WHATSAPP_DISPLAY}</a>
+            <WaAnchor href={waLink()} className="flex h-12 items-center rounded-full bg-xt-crimson px-6 font-bold text-white hover:text-white">WhatsApp {WHATSAPP_DISPLAY}</WaAnchor>
             <Link to="/install" className="flex h-12 items-center rounded-full border-[1.5px] border-xt-paper/40 px-6 font-bold text-xt-paper">Install the app</Link>
           </div>
         </div>

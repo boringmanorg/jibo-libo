@@ -1,3 +1,4 @@
+import { WaAnchor } from '@/components/WaAnchor';
 /**
  * /best-hostel-in-shillong and /budget-hostels-shillong — the Shillong stay hubs.
  * JSON-LD is rendered by the route head (server-side); this page shows the same
@@ -63,7 +64,7 @@ export default function StayHubV2({ variant }: { variant: StayHubVariant }) {
           </div>
           <div className="flex flex-wrap gap-2">
             <Link to="/book" className="xt-btn flex h-12 items-center rounded-full bg-xt-crimson px-6 text-[15px] font-extrabold text-white hover:text-white">Book a stay</Link>
-            <a href={waLink('Hi XTSY! I want to book a bed in Shillong. Dates: … Guests: …', 'stay')} target="_blank" rel="noopener noreferrer" className="xt-btn flex h-12 items-center rounded-full border-[1.5px] border-xt-ink px-6 text-[15px] font-extrabold text-xt-ink hover:text-xt-ink">Book on WhatsApp</a>
+            <WaAnchor href={waLink('Hi XTSY! I want to book a bed in Shillong. Dates: … Guests: …', 'stay')} className="xt-btn flex h-12 items-center rounded-full border-[1.5px] border-xt-ink px-6 text-[15px] font-extrabold text-xt-ink hover:text-xt-ink">Book on WhatsApp</WaAnchor>
           </div>
         </div>
         <Photo src={COVERS.home} alt="XTSY Travellers Hostel among the pines of New Shillong Township" eager tone="pine" sizes="(max-width: 1024px) 100vw, 40vw" className="aspect-[4/5] rounded-[28px] sm:aspect-[5/4] lg:col-span-5" />

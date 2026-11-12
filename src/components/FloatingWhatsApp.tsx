@@ -1,3 +1,4 @@
+import { WaAnchor } from '@/components/WaAnchor';
 import { useLocation } from '@/lib/router-compat';
 import { useEffect, useState, useCallback } from 'react';
 import whatsappIcon from '@/assets/whatsapp-icon.svg';
@@ -73,16 +74,14 @@ const FloatingWhatsApp = () => {
   }, [location.pathname]);
 
   return (
-    <a
+    <WaAnchor
       href={href}
-      target="_blank"
-      rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
       onClick={handleClick}
       className="fixed bottom-20 md:bottom-6 right-4 z-50 w-14 h-14 min-w-[56px] min-h-[56px] rounded-full bg-[#25D366] hover:bg-[#1ebe5b] flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-200 touch-manipulation"
     >
       <img src={whatsappIcon} alt="WhatsApp" width="32" height="32" className="w-8 h-8" />
-    </a>
+    </WaAnchor>
   );
 };
 

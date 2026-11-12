@@ -1,3 +1,4 @@
+import { WaAnchor } from '@/components/WaAnchor';
 import { Link } from '@/lib/router-compat';
 import { SpinningMark, WHATSAPP_DISPLAY, waLink } from './primitives';
 
@@ -21,10 +22,10 @@ export default function CtaBand({
           <p className="m-0 text-[17px] leading-relaxed text-[#F7E4E8] sm:text-[18px]">{sub}</p>
         </div>
         <div className="relative flex shrink-0 flex-col gap-3">
-          <a href={waLink()} className="xt-btn flex h-14 items-center justify-center gap-2.5 rounded-full bg-xt-paper px-7 text-[16px] font-extrabold text-xt-ink hover:text-xt-ink">
+          <WaAnchor href={waLink()} className="xt-btn flex h-14 items-center justify-center gap-2.5 rounded-full bg-xt-paper px-7 text-[16px] font-extrabold text-xt-ink hover:text-xt-ink">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.3A8.5 8.5 0 1 1 21 12z" /></svg>
             WhatsApp {WHATSAPP_DISPLAY}
-          </a>
+          </WaAnchor>
           <Link to={bookTo} className="xt-btn flex h-14 items-center justify-center rounded-full border-[1.5px] border-white px-7 text-[16px] font-extrabold text-white hover:text-white">
             {bookLabel}
           </Link>

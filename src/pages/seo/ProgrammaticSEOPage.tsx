@@ -1,3 +1,4 @@
+import { WaAnchor } from '@/components/WaAnchor';
 import { useParams, Link, Navigate } from '@/lib/router-compat';
 import NotFound from '@/pages/NotFound';
 import { Helmet } from '@/lib/seo/helmet';
@@ -381,15 +382,13 @@ const ProgrammaticSEOPage = () => {
                 Quick Answer for Travelers
               </div>
               <p className="text-foreground leading-relaxed">{safeQuickAnswer}</p>
-              <a
+              <WaAnchor
                 href={waLink}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
               >
                 <MessageCircle className="h-4 w-4" />
                 Get instant help on WhatsApp
-              </a>
+              </WaAnchor>
             </div>
           )}
 

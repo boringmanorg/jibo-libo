@@ -39,7 +39,8 @@ export function tourHead(slug: string): RouteHeadInput {
   }
   const numericPrice = parseInt(String(tour.price).replace(/[^\d]/g, ''), 10) || undefined;
   const absolute = `https://xtsy.one${url}`;
-  const images = tour.images?.length ? [tour.image, ...tour.images] : [tour.image];
+  const abs = (u: string) => (/^https?:/.test(u) ? u : `https://xtsy.one${u.startsWith('/') ? '' : '/'}${u}`);
+  const images = (tour.images?.length ? [tour.image, ...tour.images] : [tour.image]).filter(Boolean).map(abs);
   const tourSchema: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'TouristTrip',

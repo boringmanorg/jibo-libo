@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import AboutV2 from "@/pages/v2/AboutV2";
 import { buildRouteHead } from "@/lib/seo-head";
 
-export const Route = createFileRoute("/about")({
+export const Route = createFileRoute("/about/")({
   head: () =>
     buildRouteHead({
       path: "/about",
