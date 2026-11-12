@@ -112,7 +112,7 @@ const LuxuryGlampingShillong = memo(() => {
               <Button onClick={handleWhatsApp} className="gap-2">
                 <MessageCircle className="h-4 w-4" /> Book Experience by XTSY
               </Button>
-              <Link to="/xtsy-270">
+              <Link to="/experience-by-xtsy">
                 <Button variant="outline">View Full Details</Button>
               </Link>
             </div>
@@ -201,7 +201,7 @@ const LuxuryGlampingShillong = memo(() => {
               <Link to="/homestays-in-shillong" className="text-sm text-primary hover:underline">Homestays in Shillong</Link>
               <Link to="/destination-wedding-shillong" className="text-sm text-primary hover:underline">Destination Wedding</Link>
               <Link to="/meghalaya-couple-tour-package" className="text-sm text-primary hover:underline">Couple Tour Package</Link>
-              <Link to="/xtsy-270" className="text-sm text-primary hover:underline">270° Suite Full Details</Link>
+              <Link to="/experience-by-xtsy" className="text-sm text-primary hover:underline">270° Suite Full Details</Link>
               <Link to="/gallery" className="text-sm text-primary hover:underline">Photo Gallery</Link>
             </div>
           </nav>

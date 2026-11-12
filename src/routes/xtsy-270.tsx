@@ -1,17 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
-import ExperienceByXtsy from "@/pages/v2/ExperienceByXtsy";
-import { experienceSchema } from "@/pages/v2/experienceData";
-import { buildRouteHead } from "@/lib/seo-head";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
+/** Old glass suite address; permanently moved to /experience-by-xtsy. */
 export const Route = createFileRoute("/xtsy-270")({
-  head: () =>
-    buildRouteHead({
-      path: "/xtsy-270",
-      ogType: "product",
-      jsonLd: [experienceSchema()],
-      title: "Experience by XTSY — India's First Stargaze Glamp, Shillong",
-      description:
-        "Experience by XTSY, India's first stargaze glamp: a 270° panoramic glass suite in New Shillong Township. Photos, what's included and rates. Book direct.",
-    }),
-  component: ExperienceByXtsy,
+  beforeLoad: () => {
+    throw redirect({ to: "/experience-by-xtsy", statusCode: 301 });
+  },
 });

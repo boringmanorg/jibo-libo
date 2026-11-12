@@ -28,6 +28,7 @@ import { Route as CheapHostelShillongRouteImport } from './routes/cheap-hostel-s
 import { Route as CheapHostelsShillongRouteImport } from './routes/cheap-hostels-shillong'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DestinationWeddingShillongRouteImport } from './routes/destination-wedding-shillong'
+import { Route as ExperienceByXtsyRouteImport } from './routes/experience-by-xtsy'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as FemaleTravellersRouteImport } from './routes/female-travellers'
 import { Route as GalleryRouteImport } from './routes/gallery'
@@ -193,6 +194,11 @@ const DestinationWeddingShillongRoute =
     path: '/destination-wedding-shillong',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ExperienceByXtsyRoute = ExperienceByXtsyRouteImport.update({
+  id: '/experience-by-xtsy',
+  path: '/experience-by-xtsy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FaqRoute = FaqRouteImport.update({
   id: '/faq',
   path: '/faq',
@@ -555,6 +561,7 @@ export interface FileRoutesByFullPath {
   '/cheap-hostels-shillong': typeof CheapHostelsShillongRoute
   '/contact': typeof ContactRoute
   '/destination-wedding-shillong': typeof DestinationWeddingShillongRoute
+  '/experience-by-xtsy': typeof ExperienceByXtsyRoute
   '/faq': typeof FaqRoute
   '/female-travellers': typeof FemaleTravellersRoute
   '/gallery': typeof GalleryRoute
@@ -642,6 +649,7 @@ export interface FileRoutesByTo {
   '/cheap-hostels-shillong': typeof CheapHostelsShillongRoute
   '/contact': typeof ContactRoute
   '/destination-wedding-shillong': typeof DestinationWeddingShillongRoute
+  '/experience-by-xtsy': typeof ExperienceByXtsyRoute
   '/faq': typeof FaqRoute
   '/female-travellers': typeof FemaleTravellersRoute
   '/gallery': typeof GalleryRoute
@@ -730,6 +738,7 @@ export interface FileRoutesById {
   '/cheap-hostels-shillong': typeof CheapHostelsShillongRoute
   '/contact': typeof ContactRoute
   '/destination-wedding-shillong': typeof DestinationWeddingShillongRoute
+  '/experience-by-xtsy': typeof ExperienceByXtsyRoute
   '/faq': typeof FaqRoute
   '/female-travellers': typeof FemaleTravellersRoute
   '/gallery': typeof GalleryRoute
@@ -819,6 +828,7 @@ export interface FileRouteTypes {
     | '/cheap-hostels-shillong'
     | '/contact'
     | '/destination-wedding-shillong'
+    | '/experience-by-xtsy'
     | '/faq'
     | '/female-travellers'
     | '/gallery'
@@ -906,6 +916,7 @@ export interface FileRouteTypes {
     | '/cheap-hostels-shillong'
     | '/contact'
     | '/destination-wedding-shillong'
+    | '/experience-by-xtsy'
     | '/faq'
     | '/female-travellers'
     | '/gallery'
@@ -993,6 +1004,7 @@ export interface FileRouteTypes {
     | '/cheap-hostels-shillong'
     | '/contact'
     | '/destination-wedding-shillong'
+    | '/experience-by-xtsy'
     | '/faq'
     | '/female-travellers'
     | '/gallery'
@@ -1081,6 +1093,7 @@ export interface RootRouteChildren {
   CheapHostelsShillongRoute: typeof CheapHostelsShillongRoute
   ContactRoute: typeof ContactRoute
   DestinationWeddingShillongRoute: typeof DestinationWeddingShillongRoute
+  ExperienceByXtsyRoute: typeof ExperienceByXtsyRoute
   FaqRoute: typeof FaqRoute
   FemaleTravellersRoute: typeof FemaleTravellersRoute
   GalleryRoute: typeof GalleryRoute
@@ -1282,6 +1295,13 @@ declare module '@tanstack/react-router' {
       path: '/destination-wedding-shillong'
       fullPath: '/destination-wedding-shillong'
       preLoaderRoute: typeof DestinationWeddingShillongRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/experience-by-xtsy': {
+      id: '/experience-by-xtsy'
+      path: '/experience-by-xtsy'
+      fullPath: '/experience-by-xtsy'
+      preLoaderRoute: typeof ExperienceByXtsyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -1769,6 +1789,7 @@ const rootRouteChildren: RootRouteChildren = {
   CheapHostelsShillongRoute: CheapHostelsShillongRoute,
   ContactRoute: ContactRoute,
   DestinationWeddingShillongRoute: DestinationWeddingShillongRoute,
+  ExperienceByXtsyRoute: ExperienceByXtsyRoute,
   FaqRoute: FaqRoute,
   FemaleTravellersRoute: FemaleTravellersRoute,
   GalleryRoute: GalleryRoute,

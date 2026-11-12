@@ -45,7 +45,7 @@ Approved scope: **Part 0 + Part 7 quick wins (7a, 7b, 7c, 7d, 7f)** first, then 
 ## SEO audit brief (12 Nov 2026) — open
 - [x] Task 1 audit errors (hreflang, schema, wa.me buttons, canonical, robots /book kept blocked)
 - [x] Task 2 inventory: seo-inventory.csv — awaiting owner approval before any 301/noindex
-- [ ] Rename glass suite copy to "Experience by XTSY: The Romantic Couple Stay in India is now at New Shillong, Meghalaya" (URL target unconfirmed)
-- [ ] Task 3 answer blocks/quick facts on 30 pages (placeholders allowed; tour terms 4N/5D ₹10,000)
-- [ ] Task 4 /hostel-in-shillong (blocked: overlaps /best-hostel-in-shillong — owner approval) and /meghalaya-tour-packages rebuild
-- [ ] Task 5 waterfall expansions + Mawsynram/Nartiang/Balpakram
+- [x] Rename glass suite copy to "Experience by XTSY: The Romantic Couple Stay in India is now at New Shillong, Meghalaya" → /experience-by-xtsy, /xtsy-270 301
+- [~] Task 3 answer blocks (In short + Quick facts + Stay & tour on 20 destination guides; owner fills placeholders)/quick facts on 30 pages (placeholders allowed; tour terms 4N/5D ₹10,000)
+- [x] Task 4: /hostel-in-shillong dropped (duplicate); /meghalaya-tour-packages features Saturday tour
+- [ ] Task 5 copy expansion needs owner-verified facts: waterfall expansions + Mawsynram/Nartiang/Balpakram

@@ -17,7 +17,7 @@ export const STATIC_ROUTES: ReadonlyArray<string> = [
   '/about',
   '/gallery',
   '/tours',
-  '/xtsy-270',
+  '/experience-by-xtsy',
   '/pet-friendly',
   '/xtsy-vs-zostel',
   '/female-travellers',

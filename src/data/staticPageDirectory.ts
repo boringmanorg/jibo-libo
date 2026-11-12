@@ -266,7 +266,7 @@ export const STATIC_PAGE_DIRECTORY = [
     "description": "Remote work from Shillong at XTSY: wifi speeds, dedicated desks, power backup, quiet hours and discounted weekly and monthly long-stay rates."
   },
   {
-    "path": "/xtsy-270",
+    "path": "/experience-by-xtsy",
     "title": "Experience by XTSY — India's First Stargaze Glamp, Shillong",
     "description": "Experience by XTSY, India's first stargaze glamp: a 270° panoramic glass suite in New Shillong Township. Photos, what's included and rates. Book direct."
   },

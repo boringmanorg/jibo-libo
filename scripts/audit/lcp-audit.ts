@@ -18,7 +18,7 @@ const BASE = (process.env.BASE_URL || 'https://xtsy.one').replace(/\/$/, '');
 const OUT = process.env.OUT_DIR || 'shots/lcp';
 const RUNS = Number(process.env.RUNS || 3);
 const ROUTES = (process.env.LCP_ROUTES || [
-  '/', '/best-hostel-in-shillong', '/xtsy-270', '/tab-bistro', '/tours', '/tours/5n-6d-tawang-tour',
+  '/', '/best-hostel-in-shillong', '/experience-by-xtsy', '/tab-bistro', '/tours', '/tours/5n-6d-tawang-tour',
   '/destinations/meghalaya', '/destinations/meghalaya/shillong', '/destinations/meghalaya/cherrapunji/nohkalikai-falls',
   '/living-root-bridges-meghalaya', '/cheap-hostels-shillong', '/travel-guide/how-to-reach-meghalaya',
   '/female-travellers', '/xtsy-adventure-campsite-dawki', '/guides', '/faq', '/book',

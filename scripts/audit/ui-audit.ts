@@ -15,7 +15,7 @@ const BASE = process.env.BASE_URL || 'http://localhost:4174';
 const OUT = process.env.OUT_DIR || 'shots/ui';
 const AXE = fs.readFileSync(process.env.AXE_PATH || 'node_modules/axe-core/axe.min.js', 'utf8');
 const ROUTES = (process.env.UI_ROUTES || [
-  '/', '/best-hostel-in-shillong', '/xtsy-270', '/book', '/book/campsite', '/tours', '/tours/5n-6d-tawang-tour', '/tours/bhutan-mindful-kingdom-journey',
+  '/', '/best-hostel-in-shillong', '/experience-by-xtsy', '/book', '/book/campsite', '/tours', '/tours/5n-6d-tawang-tour', '/tours/bhutan-mindful-kingdom-journey',
   '/expeditions', '/destinations', '/destinations/meghalaya', '/destinations/meghalaya/shillong', '/destinations/meghalaya/cherrapunji/nohkalikai-falls',
   '/shillong-dormitory', '/meghalaya-waterfalls', '/plan-trip-with-ai', '/tab-bistro', '/gallery', '/about', '/contact', '/faq', '/pet-friendly',
   '/female-travellers', '/work-from-home', '/group-bookings-meghalaya', '/merch', '/meghalaya-tour-packages', '/things-to-do-in-meghalaya',

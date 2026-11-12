@@ -11,7 +11,7 @@ export const STATIC_ROUTES = [
   '/faq',
   '/tours',
   '/travel',
-  '/xtsy-270',
+  '/experience-by-xtsy',
   '/xtsy-rentals',
   '/work-from-home',
   '/female-travellers',

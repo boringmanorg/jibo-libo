@@ -15,7 +15,7 @@ const IntelligentSearchOverlay = lazy(() => import('@/components/IntelligentSear
 
 export const MAIN_NAV = [
   { to: '/best-hostel-in-shillong', label: 'Stays' },
-  { to: '/xtsy-270', label: 'Experience by XTSY' },
+  { to: '/experience-by-xtsy', label: 'Experience by XTSY' },
   { to: '/tours', label: 'Tours' },
   { to: '/tab-bistro', label: 'TAB Bistro' },
   { to: '/work-from-home', label: 'Workation' },
@@ -28,7 +28,7 @@ const MENU_GROUPS = [
     title: 'Stay',
     links: [
       { to: '/book', label: 'Book a room' },
-      { to: '/xtsy-270', label: 'Experience by XTSY' },
+      { to: '/experience-by-xtsy', label: 'Experience by XTSY' },
       { to: '/xtsy-adventure-campsite-dawki', label: 'Dawki camping (partner)' },
       { to: '/pet-friendly', label: 'Pet-friendly stays' },
       { to: '/female-travellers', label: 'Women safe stays' },

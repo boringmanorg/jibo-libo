@@ -173,7 +173,7 @@ function mainEntity(page: SEOPageData, url: string, hero: Hero): Record<string, 
       makesOffer: [
         { '@type': 'Offer', name: 'Dorm bed', price: String(lowestDormPrice()), priceCurrency: 'INR', url: `${SITE}/book` },
         { '@type': 'Offer', name: 'King Double Room', price: String(roomPrice('king-double-room').now), priceCurrency: 'INR', url: `${SITE}/book` },
-        { '@type': 'Offer', name: 'Experience by XTSY (glass suite)', price: String(PANORAMA_STAY_ONLY), priceCurrency: 'INR', url: `${SITE}/xtsy-270` },
+        { '@type': 'Offer', name: 'Experience by XTSY (glass suite)', price: String(PANORAMA_STAY_ONLY), priceCurrency: 'INR', url: `${SITE}/experience-by-xtsy` },
       ],
     };
   }
