@@ -28,7 +28,7 @@ export function quickFactsFor(d: MeghalayaDestination) {
   const km = k.km ?? '{{KM}}';
   const time = k.time ?? '{{TIME}}';
   const season = firstClause(d.bestTimeToVisit);
-  const inShort = `${d.shortDescription.replace(/\s*—\s*/g, ', ').replace(/\.$/, '')}. It is ${km} from Shillong (${time}); best time: ${season.charAt(0).toLowerCase()}${season.slice(1)}. Stay at XTSY Travellers Hostel in New Shillong Township as your base.`;
+  const inShort = `${d.shortDescription.replace(/\s*—\s*/g, ', ').replace(/\.$/, '')}. It is ${km} from Shillong (${time}); best time: ${season}. Stay at XTSY Travellers Hostel in New Shillong Township as your base.`;
   const rows: [string, string][] = [
     ['Location', `${d.name}, ${d.region}, Meghalaya`],
     ['Distance from Shillong', `${km} (${time})`],
