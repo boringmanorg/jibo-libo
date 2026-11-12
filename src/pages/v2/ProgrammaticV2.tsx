@@ -1,3 +1,4 @@
+import { WaAnchor } from '@/components/WaAnchor';
 /**
  * /$slug — the ~530 programmatic SEO pages in the 2026 design.
  *
@@ -79,7 +80,7 @@ export default function ProgrammaticV2() {
             <p data-quick-answer className="m-0 max-w-[720px] text-[18px] leading-relaxed text-xt-ink">{answer}</p>
             <div className="flex flex-wrap gap-2">
               <Link to="/book" className="xt-btn flex h-11 items-center rounded-full bg-xt-crimson px-5 text-[14px] font-extrabold text-white hover:text-white">Book a stay</Link>
-              <a href={waLink(`Hi XTSY! I'm looking at: ${page.h1}`)} target="_blank" rel="noopener noreferrer" className="xt-btn flex h-11 items-center rounded-full border-[1.5px] border-xt-ink px-5 text-[14px] font-extrabold text-xt-ink hover:text-xt-ink">Ask on WhatsApp</a>
+              <WaAnchor href={waLink(`Hi XTSY! I'm looking at: ${page.h1}`)} className="xt-btn flex h-11 items-center rounded-full border-[1.5px] border-xt-ink px-5 text-[14px] font-extrabold text-xt-ink hover:text-xt-ink">Ask on WhatsApp</WaAnchor>
               <button type="button" onClick={() => openTripChat(`Plan a trip: ${page.h1}`)} className="xt-btn flex h-11 items-center gap-2 rounded-full bg-xt-ink px-5 text-[14px] font-extrabold text-xt-paper">✦ Plan this with AI</button>
             </div>
           </div>

@@ -1,3 +1,4 @@
+import { WaAnchor } from '@/components/WaAnchor';
 /**
  * /tours — XTSY Voyage tour packages (redesign). Signature packages (fixed
  * prices) first, then every tour in the catalogue with filters.
@@ -50,7 +51,7 @@ function TourCard({ to, title, duration, badge, text, price, img, enquire }: { t
             : <span className="text-[19px] font-extrabold">{price} <span className="text-[13px] font-semibold text-xt-mute">/person</span></span>}
           <div className="flex gap-2">
             <Link to={to} className="xt-btn flex h-11 items-center rounded-full border-[1.5px] border-xt-ink px-4 text-[14px] font-extrabold text-xt-ink hover:text-xt-ink">Itinerary</Link>
-            <a href={enquire} target="_blank" rel="noopener noreferrer" className="xt-btn flex h-11 items-center rounded-full bg-xt-crimson px-4 text-[14px] font-extrabold text-white hover:text-white">{onRequest ? 'Get a quote' : 'Enquire'}</a>
+            <WaAnchor href={enquire} className="xt-btn flex h-11 items-center rounded-full bg-xt-crimson px-4 text-[14px] font-extrabold text-white hover:text-white">{onRequest ? 'Get a quote' : 'Enquire'}</WaAnchor>
           </div>
         </div>
       </div>
