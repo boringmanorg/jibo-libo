@@ -258,7 +258,9 @@ export const RECOVERY_REDIRECTS: Readonly<Record<string, string>> = {
   'rooftop-cafe-shillong': '/tab-bistro',
   'pure-vegetarian-restaurant-shillong': '/tab-bistro',
   // Real routes that Google sees but render as homepage / 404 due to typo
-  'faq': '/about',
+  // 'faq' — REMOVED from this map: /faq is a live route (FaqV2) and is
+  // listed in sitemap-static.xml. Redirecting it to /about would 301 away a
+  // canonical, indexed page. Do not re-add.
   // Workation intent alias → canonical work-from-home page
   'remote-work-stay-shillong': '/work-from-home',
   'monthly-stay-mizoram': '/destinations/mizoram',

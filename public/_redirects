@@ -5,7 +5,6 @@
 #   - www.xtsy.one -> https://xtsy.one/*: Single Redirect rule
 #
 # Do not add absolute hostname source patterns or the unsupported "!" suffix.
-/xtsy-270 /experience-by-xtsy 301
 
 # Strip /index.html
 /index.html / 301
