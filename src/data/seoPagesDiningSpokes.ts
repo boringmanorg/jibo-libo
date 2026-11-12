@@ -185,7 +185,7 @@ export const DINING_SPOKE_PAGES: SEOPageData[] = [
     'party-catering-shillong',
     'Party Catering & Bulk Food Orders in Shillong | TAB Bistro by XTSY',
     'Party catering and bulk food orders in Shillong by TAB Bistro by XTSY. Birthdays, get-togethers & celebrations with multi-cuisine menus. Order party food on WhatsApp.',
-    'Party Catering & Bulk Food Orders in Shillong',
+    'Party Catering in Shillong: Birthdays, Get-Togethers & Bulk Orders',
     'From birthday bashes to house parties and get-togethers, TAB Bistro by XTSY makes party food easy in Shillong — multi-cuisine menus, dishes cooked to order and reliable bulk orders, delivered or set up so you can enjoy your own party.',
     [
       { heading: 'Party Catering Made Easy', content: 'Host without the stress — we cook, you celebrate:', listItems: ['Birthday & house-party catering', 'Get-together & reunion menus', 'Tandoori dishes & appetizers, cooked to order', 'Bulk and party food orders', 'Setup & service options'] },

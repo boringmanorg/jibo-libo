@@ -1402,6 +1402,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     "metaDescription": "Need a bed in Shillong this weekend? XTSY Travellers Hostel is in New Shillong Township, near NIFT and IIM Shillong. Dorms from ₹399, female-only dorm, private rooms. WhatsApp +91 88373 17070.",
     "quickAnswer": "XTSY Travellers Hostel is on Mawdiangdiang Road, New Shillong Township (793018), near NIFT Shillong and IIM Shillong. Book a bed for this weekend at xtsy.one/book or on WhatsApp +91 88373 17070; dorm beds start at ₹399.",
     "title": "Hostel in Shillong This Weekend — XTSY, New Shillong Township",
+    "h1": "Need a Bed in Shillong This Weekend?",
     "sections": [
       {
         "heading": "Where XTSY is",

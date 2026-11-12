@@ -94,7 +94,7 @@ export const LAST_MINUTE_SEO_PAGES: SEOPageData[] = [
     category: 'travel-guides',
     title: `Start Your Meghalaya Trip Today — Stays & Tours Available Now`,
     metaDescription: `Planning a spontaneous Meghalaya trip? Stays available from ₹399/night and curated tour packages ready to start today. Book accommodation and adventures instantly.`,
-    h1: 'Start Your Meghalaya Trip Today',
+    h1: 'Spontaneous Meghalaya Trip? Stays & Tours Are Ready',
     intro: `The best trips are the ones you don't overthink. Meghalaya is calling — and stays, tours, and adventures are available right now. Whether you're already in Guwahati or planning from Delhi, we'll help you start exploring today.`,
     sections: [
       {
