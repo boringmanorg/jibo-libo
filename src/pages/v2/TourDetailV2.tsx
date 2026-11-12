@@ -130,7 +130,6 @@ export default function TourDetailV2() {
         description={`${tour.description}`.slice(0, 155)}
         keywords={`${tour.title}, ${tour.location} tour, ${tour.category} tour, ${tour.duration} Meghalaya package, XTSY Travel`}
         canonicalUrl={tourUrl}
-        structuredData={[tourSchema, tourBreadcrumb, faqSchema]}
       />
       <PageShell bar={onRequest ? { label: 'Get a quote', to: enquire, note: 'Price on request' } : { label: 'Book this tour', onClick: () => setIsBookingOpen(true), note: `${displayPrice} per person` }} cta={{ title: 'Want it your way?', sub: 'Every itinerary can change. Tell a travel expert your dates and pace on WhatsApp.', bookTo: '/plan-trip-with-ai', bookLabel: 'Build a trip with AI' }}>
         <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: 'Tours', to: '/tours' }, { label: tour.title }]} />

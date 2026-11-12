@@ -1,3 +1,4 @@
+import { WaAnchor } from '@/components/WaAnchor';
 /**
  * Page-building blocks for inner pages of the 2026 redesign.
  */
@@ -86,6 +87,7 @@ const BTN: Record<BtnKind, string> = {
 export function Btn({ to, kind = 'primary', children, className, onClick }: { to?: string; kind?: BtnKind; children: ReactNode; className?: string; onClick?: () => void }) {
   const cls = cn('xt-btn inline-flex h-14 items-center justify-center gap-2 rounded-full px-7 text-[16px] font-extrabold', BTN[kind], className);
   if (!to) return <button type="button" onClick={onClick} className={cls}>{children}</button>;
+  if (/^https:\/\/wa\.me\//.test(to)) return <WaAnchor href={to} onClick={onClick} className={cls}>{children}</WaAnchor>;
   if (/^(https?:|tel:|mailto:|#)/.test(to)) {
     const ext = /^https?:/.test(to);
     return <a href={to} onClick={onClick} className={cls} {...(ext ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{children}</a>;
