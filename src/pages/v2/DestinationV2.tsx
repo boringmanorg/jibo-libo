@@ -41,8 +41,8 @@ function BookingCTA({ destination, placement }: { destination: MeghalayaDestinat
         <p className="m-0 max-w-2xl text-[15px] leading-relaxed text-xt-fog">{anchor}. Dorm beds, private rooms and Experience by XTSY — a well-rated base for exploring {destination.name} and the rest of {destination.region}. For nights away, we book trusted partner stays and transport.</p>
       </div>
       <div className="flex shrink-0 flex-col gap-2.5 sm:flex-row">
-        <Link to="/book" onClick={() => handleClick('availability_check')} className="xt-btn flex h-12 items-center justify-center rounded-full bg-xt-crimson px-6 text-[15px] font-extrabold text-white hover:text-white">Book hostel online</Link>
-        <Link to="/best-hostel-in-shillong" onClick={() => handleClick('book_now')} className="xt-btn flex h-12 items-center justify-center rounded-full border-[1.5px] border-xt-paper px-6 text-[15px] font-extrabold text-xt-paper hover:text-xt-paper">View hostel &amp; rooms</Link>
+        <Link to="/book" onClick={() => handleClick('availability_check')} className="xt-btn flex h-12 items-center justify-center rounded-full bg-xt-crimson px-6 text-[15px] font-extrabold text-white hover:text-white">Book a bed at XTSY Travellers Hostel</Link>
+        <Link to="/best-hostel-in-shillong" onClick={() => handleClick('book_now')} className="xt-btn flex h-12 items-center justify-center rounded-full border-[1.5px] border-xt-paper px-6 text-[15px] font-extrabold text-xt-paper hover:text-xt-paper">Compare hostel rooms in Shillong</Link>
       </div>
     </section>
   );
@@ -283,7 +283,7 @@ export default function DestinationV2() {
               <div className="flex flex-col gap-3 rounded-[24px] bg-white p-7">
                 <h3 className="m-0 text-[20px] font-extrabold">Stay nearby</h3>
                 <p className="m-0 text-[15px] leading-relaxed text-xt-mute">Base yourself at XTSY in New Shillong (dorm beds from {inr(lowestDormPrice())}). For nights away, we book trusted partner stays and transport.</p>
-                <Link to="/book" className="xt-btn flex h-12 items-center justify-center rounded-full border-[1.5px] border-xt-ink text-[15px] font-extrabold text-xt-ink hover:text-xt-ink">Book direct</Link>
+                <Link to="/book" className="xt-btn flex h-12 items-center justify-center rounded-full border-[1.5px] border-xt-ink text-[15px] font-extrabold text-xt-ink hover:text-xt-ink">Book your XTSY hostel stay near {destination.name}</Link>
               </div>
             </div>
           </aside>
@@ -332,7 +332,8 @@ export default function DestinationV2() {
                 { to: '/shillong-tour-package', label: 'Shillong Tour Package' },
                 { to: '/best-time-to-visit-meghalaya', label: 'Best Time to Visit' },
                 { to: '/meghalaya-travel-guide', label: 'Meghalaya Travel Guide' },
-                { to: '/best-hostel-in-shillong', label: 'Best Hostel in Shillong' },
+                { to: '/best-hostel-in-shillong', label: 'XTSY Travellers Hostel rooms & prices' },
+                { to: '/book', label: 'Book XTSY Travellers Hostel in Shillong' },
                 { to: '/tours', label: 'Northeast India Tours' },
                 { to: '/meghalaya-photo-gallery', label: 'Photo Gallery' },
               ].filter((l, i, arr) => arr.findIndex((x) => x.to === l.to) === i).map((l) => (
