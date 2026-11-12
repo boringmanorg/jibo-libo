@@ -283,7 +283,7 @@ export default function DestinationV2() {
               <div className="flex flex-col gap-3 rounded-[24px] bg-white p-7">
                 <h3 className="m-0 text-[20px] font-extrabold">Stay nearby</h3>
                 <p className="m-0 text-[15px] leading-relaxed text-xt-mute">Base yourself at XTSY in New Shillong (dorm beds from {inr(lowestDormPrice())}). For nights away, we book trusted partner stays and transport.</p>
-                <Link to="/book" className="xt-btn flex h-12 items-center justify-center rounded-full border-[1.5px] border-xt-ink text-[15px] font-extrabold text-xt-ink hover:text-xt-ink">Book your XTSY stay</Link>
+                <Link to="/book" className="xt-btn flex h-12 items-center justify-center rounded-full bg-xt-crimson text-[15px] font-extrabold text-white hover:text-white">Book your XTSY stay</Link>
               </div>
             </div>
           </aside>
@@ -332,12 +332,12 @@ export default function DestinationV2() {
                 { to: '/shillong-tour-package', label: 'Shillong Tour Package' },
                 { to: '/best-time-to-visit-meghalaya', label: 'Best Time to Visit' },
                 { to: '/meghalaya-travel-guide', label: 'Meghalaya Travel Guide' },
-                { to: '/best-hostel-in-shillong', label: 'XTSY rooms & prices' },
-                { to: '/book', label: 'Book XTSY in Shillong' },
+                { to: '/best-hostel-in-shillong', label: 'XTSY rooms & prices', hot: true },
+                { to: '/book', label: 'Book XTSY in Shillong', hot: true },
                 { to: '/tours', label: 'Northeast India Tours' },
                 { to: '/meghalaya-photo-gallery', label: 'Photo Gallery' },
               ].filter((l, i, arr) => arr.findIndex((x) => x.to === l.to) === i).map((l) => (
-                <Link key={l.to} to={l.to} className="rounded-full border-[1.5px] border-xt-stone px-4 py-2 text-[14px] font-bold text-xt-ink hover:text-xt-crimson">{l.label}</Link>
+                <Link key={l.to} to={l.to} className={`rounded-full border-[1.5px] px-4 py-2 text-[14px] ${'hot' in l && l.hot ? 'border-xt-crimson bg-xt-crimson/5 font-extrabold text-xt-crimson hover:text-xt-crimson' : 'border-xt-stone font-bold text-xt-ink hover:text-xt-crimson'}`}>{l.label}</Link>
               ))}
             </div>
           </nav>}
