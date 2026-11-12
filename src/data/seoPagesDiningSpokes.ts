@@ -138,7 +138,7 @@ export const DINING_SPOKE_PAGES: SEOPageData[] = [
   // ── 4. BEST RESTAURANT SHILLONG ───────────────────────────────────────────
   spoke(
     'best-restaurant-shillong',
-    'Best Restaurant in Shillong 2026 — Top Multi-Cuisine Dining | TAB Bistro',
+    'Top-Rated Restaurant Shillong: Forest Dining & Tandoor | TAB Bistro',
     'Among the best-rated restaurants in Shillong — TAB Bistro by XTSY. Tandoor, Indo-Chinese, North Indian, biryani & pasta. Open for breakfast 8:45 AM–12 PM & dinner 5–11 PM.',
     'Best Restaurant in Shillong',
     'Searching for the best restaurant in Shillong? TAB Bistro by XTSY blends a stunning pine-forest setting with a genuinely wide, well-executed multi-cuisine menu — clay-oven tandoor, Indo-Chinese, North Indian gravies, XTSY dum biriyani, South Indian and hand-crafted pasta — making it a top pick for travellers and locals alike.',

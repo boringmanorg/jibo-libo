@@ -332,7 +332,7 @@ export default function DestinationV2() {
                 { to: '/shillong-tour-package', label: 'Shillong Tour Package' },
                 { to: '/best-time-to-visit-meghalaya', label: 'Best Time to Visit' },
                 { to: '/meghalaya-travel-guide', label: 'Meghalaya Travel Guide' },
-                { to: '/best-hostel-in-shillong', label: 'XTSY rooms & prices', hot: true },
+                { to: '/best-hostel-in-shillong', label: 'Hostels in Shillong', hot: true },
                 { to: '/book', label: 'Book XTSY in Shillong', hot: true },
                 { to: '/tours', label: 'Northeast India Tours' },
                 { to: '/meghalaya-photo-gallery', label: 'Photo Gallery' },
