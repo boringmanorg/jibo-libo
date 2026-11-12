@@ -133,7 +133,7 @@ const buildSchema = (page: SEOPageData) => {
       priceRange: '₹₹',
       acceptsReservations: 'True',
       hasMenu: 'https://xtsy.one/tab-bistro',
-      sameAs: ['https://www.instagram.com/tabbistrobyxtsy', 'https://g.page/tabbistrobyxtsy'],
+      sameAs: ['https://www.instagram.com/xtsy.one', 'https://g.page/tabbistrobyxtsy'],
       openingHoursSpecification: [{
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
@@ -196,7 +196,7 @@ const ORG_SCHEMA = {
   name: 'XTSY Travellers Hostel',
   url: 'https://xtsy.one',
   logo: 'https://storage.googleapis.com/gpt-engineer-file-uploads/1WJsBBRRZpg9MH8fICqqeJ2sC6q1/social-images/social-1765259372136-with_padding.png',
-  sameAs: ['https://www.instagram.com/xtsytravellershostel', 'https://www.facebook.com/xtsytravellershostel'],
+  sameAs: ['https://www.instagram.com/xtsy.one', 'https://www.facebook.com/xtsytravellershostel'],
   contactPoint: { '@type': 'ContactPoint', telephone: '+91-8837317070', contactType: 'customer service' },
 };
 

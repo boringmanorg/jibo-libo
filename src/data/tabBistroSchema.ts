@@ -14,7 +14,7 @@ export const TAB_BISTRO_IMAGE = new URL(BISTRO_COVER, TAB_BISTRO_URL).href;
 export const TAB_BISTRO_PHONE = "+918837317070";
 export const TAB_BISTRO_OPENS = BISTRO_BREAKFAST.opens;
 export const TAB_BISTRO_CLOSES = BISTRO_EVENING.closes;
-export const TAB_BISTRO_INSTAGRAM = "https://www.instagram.com/tabbistrobyxtsy";
+export const TAB_BISTRO_INSTAGRAM = "https://www.instagram.com/xtsy.one";
 export const TAB_BISTRO_GOOGLE = "https://g.page/tabbistrobyxtsy";
 export const TAB_BISTRO_SAME_AS = [TAB_BISTRO_INSTAGRAM, TAB_BISTRO_GOOGLE];
 
