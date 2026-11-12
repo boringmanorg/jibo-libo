@@ -8,7 +8,6 @@
 /xtsy-270 /experience-by-xtsy 301
 
 # Strip /index.html
-/xtsy-270 /experience-by-xtsy 301
 /index.html / 301
 
 # Duplicate-title consolidation (Semrush E3): both ranked for the same query.
