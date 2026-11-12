@@ -55,7 +55,10 @@ export default function PlanTripV2() {
           <p className="m-0 text-[13px] text-xt-mute">Estimates for planning; hill roads and weather change times. See <Link to="/tours" className="font-bold text-xt-crimson">tour packages</Link> or <Link to="/best-hostel-in-shillong" className="font-bold text-xt-crimson">where to stay in Shillong</Link>.</p>
         </section>
 
-        <FaqList faqs={faqs} title="Planning questions" />
+        {/* schema={false}: planTripSchema() in planTripData.ts already emits the FAQPage.
+            FaqList defaults to schema=true, so leaving it on put two identical
+            FAQPage blocks on the page, which is a structured-data error. */}
+        <FaqList faqs={faqs} title="Planning questions" schema={false} />
       </PageShell>
     </>
   );
