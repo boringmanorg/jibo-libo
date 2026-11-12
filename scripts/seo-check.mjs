@@ -26,7 +26,9 @@ const grep = (pattern, paths) => {
   }
 };
 
-const www = grep('www\\.xtsy\\.one', 'src public');
+const wwwRaw = grep('www\\.xtsy\\.one', 'src public');
+// Ignore comment lines (e.g. the _redirects header explaining the zone-level www rule).
+const www = wwwRaw.split('\n').filter((l) => l && !l.split(/:\d+:/)[1]?.trim().startsWith('#')).join('\n');
 if (www) errors.push(`www.xtsy.one URLs found (use https://xtsy.one):\n${www}`);
 
 const hreflang = grep('hreflang', 'src');
