@@ -140,7 +140,7 @@ export default function BistroV2() {
               <Btn to="#book-a-table" kind="outline">Request a lunch preorder</Btn>
             </div>
           </div>
-          <p className="m-0 max-w-3xl text-[17px] leading-relaxed">Planning more than a meal? Explore our <Link to="/tab-bistro/catering" className="font-bold text-xt-crimson underline underline-offset-4">catering and bulk orders</Link> for an event, or compare <Link to="/best-hostel-in-shillong" className="font-bold text-xt-crimson underline underline-offset-4">XTSY stays in New Shillong Township</Link> and <Link to="/destinations/meghalaya/shillong" className="font-bold text-xt-crimson underline underline-offset-4">places to visit in Shillong</Link> for your trip.</p>
+          <p className="m-0 max-w-3xl text-[17px] leading-relaxed">Planning more than a meal? Explore our <Link to="/catering-shillong" className="font-bold text-xt-crimson underline underline-offset-4">catering and bulk orders</Link> for an event, or compare <Link to="/best-hostel-in-shillong" className="font-bold text-xt-crimson underline underline-offset-4">XTSY stays in New Shillong Township</Link> and <Link to="/destinations/meghalaya/shillong" className="font-bold text-xt-crimson underline underline-offset-4">places to visit in Shillong</Link> for your trip.</p>
         </Section>
 
 
@@ -164,7 +164,7 @@ export default function BistroV2() {
               <h2 className="xt-display m-0 text-[44px] leading-[0.95] sm:text-[64px]">Weddings, offices and big birthdays</h2>
               <p className="m-0 text-[17px] leading-relaxed text-xt-fog">Multi-cuisine buffets, custom menus and live stations, cooked by the TAB kitchen and served wherever you need us.</p>
               <div className="flex flex-wrap gap-3">
-                <Btn to="/tab-bistro/catering">Plan an event</Btn>
+                <Btn to="/catering-shillong">Plan an event</Btn>
                 <Btn to="/destination-wedding-shillong" kind="outline-light">Wedding catering</Btn>
               </div>
             </div>
@@ -197,7 +197,7 @@ export default function BistroV2() {
           </div>
           <div className="xt-reveal flex flex-col justify-center gap-3 rounded-3xl bg-xt-cream p-8 sm:p-10">
             <h2 className="xt-display m-0 text-[36px] leading-none">More from the kitchen</h2>
-            <Link to="/tab-bistro/catering" className="text-[16px] font-extrabold hover:text-xt-crimson">Catering & bulk orders →</Link>
+            <Link to="/catering-shillong" className="text-[16px] font-extrabold hover:text-xt-crimson">Catering & bulk orders →</Link>
             <Link to="/restaurant-in-shillong" className="text-[16px] font-extrabold hover:text-xt-crimson">Restaurant in Shillong guide →</Link>
             <Link to="/destination-wedding-shillong" className="text-[16px] font-extrabold hover:text-xt-crimson">Destination weddings →</Link>
           </div>

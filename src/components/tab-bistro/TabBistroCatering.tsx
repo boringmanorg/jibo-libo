@@ -42,7 +42,7 @@ const TabBistroCatering = memo(() => (
         ))}
       </div>
       <Link
-        to="/tab-bistro/catering"
+        to="/catering-shillong"
         className="inline-flex items-center gap-2 mt-6 px-5 py-2.5 rounded-full bg-amber-500 hover:bg-amber-600 text-black font-semibold text-sm transition-colors"
       >
         Catering & Bulk Orders — Get a Quote <ArrowRight className="w-4 h-4" />

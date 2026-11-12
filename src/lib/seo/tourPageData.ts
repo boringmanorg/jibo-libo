@@ -57,7 +57,7 @@ export function tourHead(slug: string): RouteHeadInput {
           },
         }
       : {}),
-    provider: { '@type': 'TravelAgency', name: 'XTSY Travel', url: 'https://xtsy.one/tours' },
+    provider: { '@type': 'Organization', name: 'XTSY', url: 'https://xtsy.one' },
     ...(numericPrice
       ? { offers: { '@type': 'Offer', price: numericPrice, priceCurrency: 'INR', availability: 'https://schema.org/InStock', url: absolute } }
       : {}),

@@ -141,7 +141,7 @@ export default function TourDetailV2() {
               <span className="rounded-full bg-xt-sand px-3.5 py-1.5 text-[13px] font-extrabold">{tour.difficulty}</span>
               {tour.exclusive && <span className="rounded-full bg-xt-crimson px-3.5 py-1.5 text-[13px] font-extrabold text-white">XTSY Exclusive</span>}
             </div>
-            <h1 className="xt-in xt-d1 xt-display m-0 text-[52px] leading-[0.9] sm:text-[80px]">{tour.title}</h1>
+            <h1 className="xt-in xt-d1 xt-display m-0 text-[52px] leading-[0.9] sm:text-[80px]">{tour.h1 || tour.title}</h1>
             <div className="xt-in xt-d2 flex flex-wrap gap-x-5 gap-y-2 text-[15px] font-bold text-xt-mute">
               <span title="XTSY's rating on Google">★ {GOOGLE_RATING.label}</span>
               <span>{tour.location}</span>

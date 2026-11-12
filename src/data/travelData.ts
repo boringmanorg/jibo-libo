@@ -71,6 +71,8 @@ export interface TourPackage {
   highlights: string[];
   bestSeason: string;
   exclusive?: boolean;
+  /** Optional on-page H1 when it must differ from the title (SEO: H1 ≠ <title>). */
+  h1?: string;
   international?: boolean;
   visaInfo?: string;
   groupSize?: string;
@@ -557,6 +559,7 @@ export const heartlandTours: Record<string, TourPackage[]> = {
     {
       id: 82,
       title: "Sacred Temples of South India — 9 Day Spiritual Journey",
+      h1: "A 9-Day Spiritual Journey Through South India's Sacred Temples",
       description: "Immersive winter pilgrimage through Tamil Nadu's holiest shrines — witness ancient rituals, experience temple festivals.",
       duration: "9 Days",
       difficulty: "Easy",

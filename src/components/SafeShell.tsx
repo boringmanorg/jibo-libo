@@ -14,6 +14,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Home, MapPin, MessageCircle, RefreshCw, AlertTriangle } from 'lucide-react';
+import { openWhatsApp } from '@/utils/privacyCompliantWhatsApp';
 
 export interface SafeShellProps {
   /** 404 | 500 | 'error' — controls heading + status meta */
@@ -85,10 +86,8 @@ const SafeShell = ({ variant = 'error', title, message, onRetry, compact = false
                   <MapPin className="mr-2 h-4 w-4" /> Browse Tours
                 </Link>
               </Button>
-              <Button asChild variant="ghost" size="lg">
-                <a href="https://wa.me/918837317070" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-                  <MessageCircle className="mr-2 h-4 w-4" /> WhatsApp
-                </a>
+              <Button variant="ghost" size="lg" onClick={() => openWhatsApp('Hi XTSY, I need help with the website.')} aria-label="Chat on WhatsApp">
+                <MessageCircle className="mr-2 h-4 w-4" /> WhatsApp
               </Button>
             </div>
           )}

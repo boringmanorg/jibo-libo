@@ -673,18 +673,7 @@ services.forEach((s) => {
 // 4) GENERAL "BEST / TOP / WHERE TO EAT" CLUSTER
 // ===========================================================================
 const generals: Occasion[] = [
-  {
-    slug: 'best-restaurant-in-shillong',
-    h1: 'Best Restaurant in Shillong',
-    title: 'Best Restaurant in Shillong 2026 — Top Multi-Cuisine | TAB Bistro',
-    metaWord: 'the best restaurant in Shillong',
-    intro: 'Searching for the single best restaurant in Shillong? TAB Bistro by XTSY combines six kitchens on one menu, a clay-oven tandoor and a forest-side setting that locals and travellers return to.',
-    points1: { h: 'Why TAB Bistro Tops the List', items: ['Multi-cuisine menu', 'Live clay-oven tandoor', 'Veg & non-veg menus', 'Scenic forest dining', 'In-house guest discount of 15%'] },
-    points2: { h: 'What to Order', items: ['Tandoori platters', 'North Indian gravies & dal makhani', 'Indo-Chinese noodles & chopsuey', 'Alfredo & arrabiata pasta', 'Coffee, shakes & ice cream'] },
-    keywords: ['best restaurant in shillong', 'shillong best restaurant', 'best restaurants shillong', 'best food in shillong', 'best restaurant'],
-    quick: 'TAB Bistro by XTSY is among the best restaurants in Shillong — a multi-cuisine forest-dining spot with tandoor and global flavours, open for breakfast 8:45 AM–12 PM & dinner 5–11 PM.',
-    faqQ: 'Which is the best restaurant in Shillong?',
-  },
+  // 'best-restaurant-in-shillong' removed: 301 → /best-restaurants-shillong (duplicate-title fix, Semrush E3).
   {
     slug: 'top-restaurants-in-shillong',
     h1: 'Top Restaurants in Shillong',

@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { Check, Star, Calendar, Users, MapPin } from 'lucide-react';
 import PageFaq from '@/components/seo/PageFaq';
+import { openWhatsApp } from '@/utils/privacyCompliantWhatsApp';
 
 const packages = [
   {
@@ -84,14 +85,13 @@ const MeghalayaTourPackages = () => {
                     </li>
                   ))}
                 </ul>
-                <a
-                  href={`https://wa.me/918837317070?text=Hi, I'm interested in the ${pkg.title} package.`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  type="button"
+                  onClick={() => openWhatsApp(`Hi, I'm interested in the ${pkg.title} package.`)}
                   className="mt-6 block w-full text-center px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
                 >
                   Book via WhatsApp
-                </a>
+                </button>
               </div>
             ))}
           </div>

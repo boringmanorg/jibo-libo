@@ -119,6 +119,7 @@ export default function AboutV2() {
               <li><strong className="text-xt-paper">By train:</strong> Guwahati Railway Station, then shared taxis to Shillong from ISBT.</li>
               <li><strong className="text-xt-paper">By road:</strong> NH6 from Guwahati through the Ri-Bhoi pine forests.</li>
               <li className="pt-2"><Btn to="/contact" kind="light">Contact the desk</Btn></li>
+              <li><Btn to="/about/xtsy-facts" kind="light">XTSY fact sheet</Btn></li>
             </ul>
           </div>
         </section>

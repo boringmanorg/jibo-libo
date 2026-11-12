@@ -8,3 +8,9 @@
 
 # Strip /index.html
 /index.html / 301
+
+# Duplicate-title consolidation (Semrush E3): both ranked for the same query.
+/best-restaurant-in-shillong /best-restaurants-shillong 301
+/best-restaurant-shillong /best-restaurants-shillong 301
+# Catering hub consolidation (route-level 301 also exists; this catches it at the edge).
+/tab-bistro/catering /catering-shillong 301

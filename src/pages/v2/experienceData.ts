@@ -29,9 +29,9 @@ export function experienceSchema() {
       addressCountry: 'IN',
     },
     amenityFeature: XTSY270_DATA.features.map((f) => ({ '@type': 'LocationFeatureSpecification', name: f, value: true })),
-    offers: { '@type': 'Offer', priceCurrency: 'INR', price: String(now), availability: 'https://schema.org/LimitedAvailability', url: 'https://xtsy.one/xtsy-270' },
+    // LodgingBusiness must not use `offers` (Semrush structured-data error); makesOffer is the valid property.
     makesOffer: [
-      { '@type': 'Offer', name: 'Stay only', price: String(PANORAMA_STAY_ONLY), priceCurrency: 'INR' },
+      { '@type': 'Offer', name: 'Stay only', price: String(now || PANORAMA_STAY_ONLY), priceCurrency: 'INR', availability: 'https://schema.org/LimitedAvailability', url: 'https://xtsy.one/xtsy-270' },
     ],
   };
 }
