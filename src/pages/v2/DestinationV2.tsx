@@ -59,6 +59,7 @@ export default function DestinationV2() {
 
   if ((slug && GONE_SLUGS.has(slug)) || runtimeStatus === 410) return <NotFound statusCode={410} />;
   if (!destination) return <NotFound />;
+  const quick = quickFactsFor(destination);
 
   const images = getDestinationImages(destination.slug, 6);
   const realImages = images.filter((i) => !i.src.endsWith('placeholder.svg'));
@@ -108,7 +109,7 @@ export default function DestinationV2() {
     containedInPlace: { '@type': 'Place', name: `${destination.region}, Meghalaya` },
     image: images.map((img) => ({ '@type': 'ImageObject', url: img.src, name: img.alt })),
     datePublished: '2024-01-15',
-    dateModified: '2026-06-25',
+    dateModified: quick ? DESTINATION_GUIDE_UPDATED : '2026-06-25',
   };
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
@@ -174,7 +175,6 @@ export default function DestinationV2() {
     { k: 'BASE', v: 'New Shillong', s: 'Stay at XTSY' },
   ];
 
-  const quick = quickFactsFor(destination);
   const H2 = ({ children }: { children: ReactNode }) => <h2 className="xt-display m-0 text-[40px] leading-none sm:text-[52px]">{children}</h2>;
 
   return (
