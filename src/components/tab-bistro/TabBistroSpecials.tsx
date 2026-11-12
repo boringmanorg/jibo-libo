@@ -137,14 +137,13 @@ const TabBistroSpecials = memo(() => {
 
       {/* Order / cater CTAs */}
       <div className="flex flex-wrap gap-3 mt-8">
-        <a
-          href="https://wa.me/918837317070?text=Hi,%20I'd%20like%20to%20place%20a%20food%20order%20from%20TAB%20Bistro%20XTSY%20Specials."
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          type="button"
+          onClick={() => openWhatsApp("Hi, I'd like to place a food order from TAB Bistro XTSY Specials.")}
           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-emerald-500 hover:bg-emerald-600 text-black font-semibold text-sm transition-colors"
         >
           <ShoppingBag className="w-4 h-4" /> Order / Takeaway on WhatsApp
-        </a>
+        </button>
         <Link
           to="/catering-shillong"
           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-card border border-border hover:border-amber-500/40 text-foreground font-semibold text-sm transition-colors"
