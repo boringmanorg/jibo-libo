@@ -63,6 +63,20 @@ interface Failure {
 
 const clientOnlyRoutes = new Set<string>();
 
+/**
+ * Permanently removed URLs. These are real routes that render a "removed" page,
+ * and src/server.ts rewrites the response to a real HTTP 410. A 410 is the
+ * correct answer here, so the generic "every route must be 2xx" rule would
+ * report a passing contract as a failure. Assert the exact status instead,
+ * which also guards the 410 against regressing to a soft 404.
+ */
+const goneRoutes = new Set<string>();
+
+async function loadGoneRoutes() {
+  const { GONE_SLUGS } = await import('../src/data/seoGoneSlugs');
+  for (const slug of GONE_SLUGS) goneRoutes.add(`/${slug}`);
+}
+
 async function checkSsr(route: string): Promise<Failure | null> {
   const url = `${BASE}${route}`;
   try {
@@ -75,6 +89,11 @@ async function checkSsr(route: string): Promise<Failure | null> {
     });
     const html = await res.text();
 
+    if (goneRoutes.has(route)) {
+      return res.status === 410
+        ? null
+        : { route, reason: `expected HTTP 410 (permanently removed), got ${res.status}` };
+    }
     if (res.status >= 400) return { route, reason: `HTTP ${res.status}` };
     if (!/text\/html/.test(res.headers.get('content-type') ?? '')) {
       return { route, reason: `non-HTML content-type: ${res.headers.get('content-type')}` };
@@ -161,6 +180,7 @@ async function checkHydration(routes: string[]): Promise<Failure[]> {
 }
 
 async function main() {
+  await loadGoneRoutes();
   const routes = extractRoutes();
   console.log(`Smoke testing ${routes.length} routes against ${BASE}\n`);
 
@@ -187,7 +207,9 @@ async function main() {
     // Anonymous CI sessions redirect/blank these protected screens by design;
     // their public login/install routes are covered separately by SSR smoke.
     const authGatedRoutes = new Set(['/franchise', '/franchise/bookings', '/franchise/availability', '/franchise/messages', '/franchise/more']);
-    const ssrRoutes = routes.filter((r) => !clientOnlyRoutes.has(r) && !authGatedRoutes.has(r));
+    const ssrRoutes = routes.filter(
+      (r) => !clientOnlyRoutes.has(r) && !authGatedRoutes.has(r) && !goneRoutes.has(r),
+    );
     const step = Math.max(1, Math.floor(ssrRoutes.length / Math.max(1, SAMPLE - 5)));
     const sample = [
       ...ssrRoutes.filter((_, i) => i % step === 0),
