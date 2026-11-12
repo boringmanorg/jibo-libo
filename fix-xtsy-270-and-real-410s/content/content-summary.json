@@ -33,16 +33,16 @@
    "examples": [
     "/meghalaya-tour-packages —  Breakfast, dinner and a bonfire at both stays Day-by-day itinerary {{GROUP_TOUR_ITINERARY}} No free cancellation; th",
     "/meghalaya-tour-packages — ree cancellation; the booking amount is non-refundable. Pickup point: {{PICKUP_POINT}} . Stay & tour with XTSY Base yo",
-    "/destinations/meghalaya/cherrapunji/nohkalikai-falls — rrapunji, plunging into a turquoise pool below dramatic cliffs. It is {{KM}} from Shillong ({{TIME}}); best time: July t",
-    "/destinations/meghalaya/cherrapunji/nohkalikai-falls — o a turquoise pool below dramatic cliffs. It is {{KM}} from Shillong ({{TIME}}); best time: July to September for peak w",
-    "/destinations/meghalaya/cherrapunji/nohkalikai-falls — kalikai Falls, Cherrapunji & Sohra, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checke",
-    "/destinations/meghalaya/cherrapunji/nohkalikai-falls — Falls, Cherrapunji & Sohra, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT",
-    "/destinations/meghalaya/cherrapunji/nohkalikai-falls — Sohra, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timin",
-    "/destinations/meghalaya/cherrapunji/nohkalikai-falls — nce from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best se",
-    "/destinations/meghalaya/cherrapunji/nohkalikai-falls — ME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best season July to September for pea",
-    "/destinations/meghalaya/cherrapunji/nohkalikai-falls — } Best season July to September for peak water flow Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the X",
-    "/destinations/meghalaya/cherrapunji/nohkalikai-falls — ber for peak water flow Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the XTSY Voyage team, New Shillong",
-    "/destinations/meghalaya/shillong/laitlum-canyons — h sweeping valley views and trekking routes to remote villages. It is {{KM}} from Shillong ({{TIME}}); best time: Octobe"
+    "/destinations/meghalaya/jowai/krang-suri-falls — rant turquoise pool in the Jaintia Hills, perfect for swimming. It is {{KM}} from Shillong ({{TIME}}); best time: Octobe",
+    "/destinations/meghalaya/jowai/krang-suri-falls —  the Jaintia Hills, perfect for swimming. It is {{KM}} from Shillong ({{TIME}}); best time: October to March for swimmab",
+    "/destinations/meghalaya/jowai/krang-suri-falls — on Krang Suri Falls, Jaintia Hills, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checke",
+    "/destinations/meghalaya/jowai/krang-suri-falls —  Suri Falls, Jaintia Hills, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT",
+    "/destinations/meghalaya/jowai/krang-suri-falls — Hills, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timin",
+    "/destinations/meghalaya/jowai/krang-suri-falls — nce from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best se",
+    "/destinations/meghalaya/jowai/krang-suri-falls — ME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best season October to March for swim",
+    "/destinations/meghalaya/jowai/krang-suri-falls — est season October to March for swimmable conditions Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the X",
+    "/destinations/meghalaya/jowai/krang-suri-falls — or swimmable conditions Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the XTSY Voyage team, New Shillong",
+    "/destinations/meghalaya/cherrapunji/double-decker-living-root-bridge — g tree roots, one of the world's most extraordinary structures. It is {{KM}} from Shillong ({{TIME}}); best time: Novemb"
    ]
   },
   "placeholder:coming soon": {
@@ -56,8 +56,8 @@
   "aeo:no FAQ or question headings": {
    "pages": 3,
    "examples": [
-    "/terms-of-service — ",
     "/privacy-policy — ",
+    "/terms-of-service — ",
     "/expeditions — "
    ]
   },
