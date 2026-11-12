@@ -1287,8 +1287,8 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
         ]
       }
     ],
-    "title": "Hostel in Shillong Today — XTSY, New Shillong Township",
-    "h1": "Hostel in Shillong Today",
+    "title": "Hostels in Shillong Today — Beds from ₹399 | XTSY",
+    "h1": "Hostels in Shillong with Beds Free Today",
     "faqs": [
       {
         "question": "Where exactly is XTSY Travellers Hostel?",
