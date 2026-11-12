@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import BookDirectComparison from '@/components/hostel/BookDirectComparison';
 import { hostelDealFaqs } from '@/data/hostelBookingFaqs';
+import { openWhatsApp } from '@/utils/privacyCompliantWhatsApp';
 import {
   Star, Wifi, Shield, MapPin, Phone, MessageCircle, Check,
   Bed, CalendarCheck, IndianRupee, Clock, CreditCard, BadgeCheck,
@@ -154,10 +155,8 @@ const HostelBookingShillong = memo(() => {
               <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
                 <Link to="/book"><CalendarCheck className="w-5 h-5 mr-2" /> Check Availability & Book</Link>
               </Button>
-              <Button asChild size="lg" variant="outline">
-                <a href="https://wa.me/918837317070?text=Hi%20XTSY%2C%20I%27d%20like%20to%20book%20a%20hostel%20bed%20in%20Shillong" target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="w-5 h-5 mr-2" /> WhatsApp to Book
-                </a>
+              <Button size="lg" variant="outline" onClick={() => openWhatsApp("Hi XTSY, I'd like to book a hostel bed in Shillong")}>
+                <MessageCircle className="w-5 h-5 mr-2" /> WhatsApp to Book
               </Button>
             </div>
             <p className="mt-4 text-xs text-muted-foreground">

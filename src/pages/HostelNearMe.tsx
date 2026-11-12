@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import BookDirectComparison from '@/components/hostel/BookDirectComparison';
 import { hostelDealFaqs } from '@/data/hostelBookingFaqs';
+import { openWhatsApp } from '@/utils/privacyCompliantWhatsApp';
 import {
   MapPin, Navigation, Clock, Phone, MessageCircle, Star,
   Plane, Bus, Car, Footprints, Compass, Check, Wifi, Shield,
@@ -339,14 +340,8 @@ const HostelNearMe = memo(() => {
               <Button size="lg" asChild>
                 <Link to="/book">Check availability</Link>
               </Button>
-              <Button size="lg" variant="outline" asChild>
-                <a
-                  href="https://wa.me/918837317070?text=Hi%20XTSY%2C%20I%27m%20nearby%20—%20is%20there%20a%20bed%20available%20tonight%3F"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <MessageCircle className="mr-2 h-4 w-4" /> WhatsApp us
-                </a>
+              <Button size="lg" variant="outline" onClick={() => openWhatsApp("Hi XTSY, I'm nearby — is there a bed available tonight?")}>
+                <MessageCircle className="mr-2 h-4 w-4" /> WhatsApp us
               </Button>
             </div>
           </div>
