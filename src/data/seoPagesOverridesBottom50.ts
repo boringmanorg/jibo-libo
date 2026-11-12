@@ -119,7 +119,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     "slug": "hostel-near-police-bazar-shillong",
     "quickAnswer": "XTSY is not in Police Bazar — it is on Mawdiangdiang Road, New Shillong Township (793018), a cab ride from the city centre, near NIFT Shillong and IIM Shillong. Dorm beds start at ₹399; WhatsApp +91 88373 17070.",
     "title": "Hostel near Police Bazar Shillong? Where XTSY Is | XTSY",
-    "intro": "Searching for a hostel near Police Bazar? XTSY Travellers Hostel is on Mawdiangdiang Road in New Shillong Township, Shillong, near NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. To be clear about the location: XTSY is not in Police Bazar or central Shillong. It sits in the quieter New Shillong Township area, and Police Bazar is a cab ride away when you want the markets and street food. You can book a mixed or female-only dorm bed, a King Double room or Experience by XTSY, with TAB Bistro on site. For a bed in Shillong, book at xtsy.one/book or message the XTSY desk on WhatsApp +91 88373 17070 for live availability.",
+    "intro": "Searching for a hostel near Police Bazar? XTSY Travellers Hostel is on Mawdiangdiang Road in New Shillong Township, Shillong, near NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. To be clear about the location: XTSY is not in Police Bazar or central Shillong. It sits in the quieter New Shillong Township area, and Police Bazar is a cab ride away when you want the markets and street food. You can book a mixed or female-only dorm bed, a King Double room or Experience by XTSY, with TAB Bistro on site. For a bed in Shillong, book at xtsy.one/book or message the XTSY desk on WhatsApp +91 88373 17070 — we confirm availability there.",
     "sections": [
       {
         "heading": "Where XTSY is",
@@ -158,7 +158,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "question": "Can I book a bed in Shillong?",
-        "answer": "Yes, subject to availability. Check live availability at xtsy.one/book or message +91 88373 17070 on WhatsApp."
+        "answer": "Yes, subject to availability. Send your dates at xtsy.one/book or message +91 88373 17070 — we confirm availability on WhatsApp."
       },
       {
         "question": "What are the check-in and check-out times?",
@@ -1091,7 +1091,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "question": "Can I book a bed for today?",
-        "answer": "Yes, subject to availability. Check live availability at xtsy.one/book or message +91 88373 17070 on WhatsApp."
+        "answer": "Yes, subject to availability. Send your dates at xtsy.one/book or message +91 88373 17070 — we confirm availability on WhatsApp."
       },
       {
         "question": "What are the check-in and check-out times?",
@@ -1103,7 +1103,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       }
     ],
     "h1": "Hostel in Shillong Today",
-    "intro": "Need a bed in Shillong today? XTSY Travellers Hostel is on Mawdiangdiang Road in New Shillong Township, Shillong, near NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. You can book a mixed or female-only dorm bed, a King Double room or Experience by XTSY, with TAB Bistro on site. For a bed for today, book at xtsy.one/book or message the XTSY desk on WhatsApp +91 88373 17070 for live availability.",
+    "intro": "Need a bed in Shillong today? XTSY Travellers Hostel is on Mawdiangdiang Road in New Shillong Township, Shillong, near NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. You can book a mixed or female-only dorm bed, a King Double room or Experience by XTSY, with TAB Bistro on site. For a bed for today, book at xtsy.one/book or message the XTSY desk on WhatsApp +91 88373 17070 — we confirm availability there.",
     "sections": [
       {
         "heading": "Where XTSY is",
@@ -1145,8 +1145,8 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
   },
   {
     "slug": "hostels-in-shillong-today",
-    "intro": "Need a bed in Shillong today? XTSY Travellers Hostel is on Mawdiangdiang Road in New Shillong Township, Shillong, near NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. You can book a mixed or female-only dorm bed, a King Double room or Experience by XTSY, with TAB Bistro on site. For a bed for today, book at xtsy.one/book or message the XTSY desk on WhatsApp +91 88373 17070 for live availability.",
-    "metaDescription": "Looking for hostels in Shillong with beds free today? XTSY Travellers Hostel in New Shillong Township has dorms from ₹399, a women-only dorm and private rooms. WhatsApp +91 88373 17070.",
+"intro": "Need a bed in Shillong today? XTSY Travellers Hostel is on Mawdiangdiang Road in New Shillong Township, Shillong, near NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. You can book a mixed or female-only dorm bed, a King Double room or Experience by XTSY, with TAB Bistro on site. For a bed for today, book at xtsy.one/book or message the XTSY desk on WhatsApp +91 88373 17070 — we confirm availability there.",
+"metaDescription": "Looking for hostels in Shillong with beds free today? XTSY Travellers Hostel in New Shillong Township has dorms from ₹399, a women-only dorm and private rooms. WhatsApp +91 88373 17070.",
     "quickAnswer": "XTSY Travellers Hostel is on Mawdiangdiang Road, New Shillong Township (793018), near NIFT Shillong and IIM Shillong. Book a bed for today at xtsy.one/book or on WhatsApp +91 88373 17070; dorm beds start at ₹399.",
     "sections": [
       {
@@ -1187,7 +1187,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "question": "Can I book a bed for today?",
-        "answer": "Yes, subject to availability. Check live availability at xtsy.one/book or message +91 88373 17070 on WhatsApp."
+        "answer": "Yes, subject to availability. Send your dates at xtsy.one/book or message +91 88373 17070 — we confirm availability on WhatsApp."
       },
       {
         "question": "What are the check-in and check-out times?",
@@ -1223,7 +1223,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "question": "Can I book a bed for tonight?",
-        "answer": "Yes, subject to availability. Check live availability at xtsy.one/book or message +91 88373 17070 on WhatsApp."
+        "answer": "Yes, subject to availability. Send your dates at xtsy.one/book or message +91 88373 17070 — we confirm availability on WhatsApp."
       },
       {
         "question": "What are the check-in and check-out times?",
@@ -1234,7 +1234,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
         "answer": "No. XTSY's own property is only in New Shillong Township. In other places, XTSY arranges stays, transport and travel help through trusted travel partners."
       }
     ],
-    "intro": "Need a bed in Shillong tonight? XTSY Travellers Hostel is on Mawdiangdiang Road in New Shillong Township, Shillong, near NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. You can book a mixed or female-only dorm bed, a King Double room or Experience by XTSY, with TAB Bistro on site. For a bed for tonight, book at xtsy.one/book or message the XTSY desk on WhatsApp +91 88373 17070 for live availability.",
+    "intro": "Need a bed in Shillong tonight? XTSY Travellers Hostel is on Mawdiangdiang Road in New Shillong Township, Shillong, near NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. You can book a mixed or female-only dorm bed, a King Double room or Experience by XTSY, with TAB Bistro on site. For a bed for tonight, book at xtsy.one/book or message the XTSY desk on WhatsApp +91 88373 17070 — we confirm availability there.",
     "h1": "Hostel in Shillong Tonight",
     "metaDescription": "Need a bed in Shillong tonight? XTSY Travellers Hostel is in New Shillong Township, near NIFT and IIM Shillong. Dorms from ₹399, female-only dorm, private rooms. WhatsApp +91 88373 17070.",
     "sections": [
@@ -1275,7 +1275,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
   },
   {
     "slug": "hostel-in-shillong-this-weekend",
-    "intro": "Need a bed in Shillong this weekend? XTSY Travellers Hostel is on Mawdiangdiang Road in New Shillong Township, Shillong, near NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. You can book a mixed or female-only dorm bed, a King Double room or Experience by XTSY, with TAB Bistro on site. For a bed for this weekend, book at xtsy.one/book or message the XTSY desk on WhatsApp +91 88373 17070 for live availability.",
+    "intro": "Need a bed in Shillong this weekend? XTSY Travellers Hostel is on Mawdiangdiang Road in New Shillong Township, Shillong, near NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. You can book a mixed or female-only dorm bed, a King Double room or Experience by XTSY, with TAB Bistro on site. For a bed for this weekend, book at xtsy.one/book or message the XTSY desk on WhatsApp +91 88373 17070 — we confirm availability there.",
     "keywords": [
       "hostel in shillong",
       "shillong backpacker stay",
@@ -1327,7 +1327,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "question": "Can I book a bed for this weekend?",
-        "answer": "Yes, subject to availability. Check live availability at xtsy.one/book or message +91 88373 17070 on WhatsApp."
+        "answer": "Yes, subject to availability. Send your dates at xtsy.one/book or message +91 88373 17070 — we confirm availability on WhatsApp."
       },
       {
         "question": "What are the check-in and check-out times?",
@@ -1351,7 +1351,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     ],
     "quickAnswer": "XTSY Travellers Hostel is on Mawdiangdiang Road, New Shillong Township (793018), near NIFT Shillong and IIM Shillong. Book a bed at short notice at xtsy.one/book or on WhatsApp +91 88373 17070; dorm beds start at ₹399.",
     "h1": "Hostel in Shillong Last Minute",
-    "intro": "Need a bed in Shillong at the last minute? XTSY Travellers Hostel is on Mawdiangdiang Road in New Shillong Township, Shillong, near NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. You can book a mixed or female-only dorm bed, a King Double room or Experience by XTSY, with TAB Bistro on site. For a bed at short notice, book at xtsy.one/book or message the XTSY desk on WhatsApp +91 88373 17070 for live availability.",
+    "intro": "Need a bed in Shillong at the last minute? XTSY Travellers Hostel is on Mawdiangdiang Road in New Shillong Township, Shillong, near NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. You can book a mixed or female-only dorm bed, a King Double room or Experience by XTSY, with TAB Bistro on site. For a bed at short notice, book at xtsy.one/book or message the XTSY desk on WhatsApp +91 88373 17070 — we confirm availability there.",
     "sections": [
       {
         "heading": "Where XTSY is",
@@ -1390,7 +1390,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "question": "Can I book a bed at short notice?",
-        "answer": "Yes, subject to availability. Check live availability at xtsy.one/book or message +91 88373 17070 on WhatsApp."
+        "answer": "Yes, subject to availability. Send your dates at xtsy.one/book or message +91 88373 17070 — we confirm availability on WhatsApp."
       },
       {
         "question": "What are the check-in and check-out times?",
@@ -1416,7 +1416,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "question": "Can I book a bed for tomorrow?",
-        "answer": "Yes, subject to availability. Check live availability at xtsy.one/book or message +91 88373 17070 on WhatsApp."
+        "answer": "Yes, subject to availability. Send your dates at xtsy.one/book or message +91 88373 17070 — we confirm availability on WhatsApp."
       },
       {
         "question": "What are the check-in and check-out times?",
@@ -1440,7 +1440,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       "police bazar hostels"
     ],
     "h1": "Hostel in Shillong Tomorrow",
-    "intro": "Need a bed in Shillong tomorrow? XTSY Travellers Hostel is on Mawdiangdiang Road in New Shillong Township, Shillong, near NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. You can book a mixed or female-only dorm bed, a King Double room or Experience by XTSY, with TAB Bistro on site. For a bed for tomorrow, book at xtsy.one/book or message the XTSY desk on WhatsApp +91 88373 17070 for live availability.",
+    "intro": "Need a bed in Shillong tomorrow? XTSY Travellers Hostel is on Mawdiangdiang Road in New Shillong Township, Shillong, near NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. You can book a mixed or female-only dorm bed, a King Double room or Experience by XTSY, with TAB Bistro on site. For a bed for tomorrow, book at xtsy.one/book or message the XTSY desk on WhatsApp +91 88373 17070 — we confirm availability there.",
     "sections": [
       {
         "heading": "Where XTSY is",
@@ -1471,7 +1471,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
   {
     "slug": "hostel-in-shillong-now",
     "title": "Hostel in Shillong Right Now — XTSY, New Shillong Township",
-    "intro": "Need a bed in Shillong right now? XTSY Travellers Hostel is on Mawdiangdiang Road in New Shillong Township, Shillong, near NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. You can book a mixed or female-only dorm bed, a King Double room or Experience by XTSY, with TAB Bistro on site. For a bed for right now, book at xtsy.one/book or message the XTSY desk on WhatsApp +91 88373 17070 for live availability.",
+    "intro": "Need a bed in Shillong right now? XTSY Travellers Hostel is on Mawdiangdiang Road in New Shillong Township, Shillong, near NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. You can book a mixed or female-only dorm bed, a King Double room or Experience by XTSY, with TAB Bistro on site. For a bed for right now, book at xtsy.one/book or message the XTSY desk on WhatsApp +91 88373 17070 — we confirm availability there.",
     "keywords": [
       "hostel in shillong",
       "shillong backpackers stay",
@@ -1492,7 +1492,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "question": "Can I book a bed for right now?",
-        "answer": "Yes, subject to availability. Check live availability at xtsy.one/book or message +91 88373 17070 on WhatsApp."
+        "answer": "Yes, subject to availability. Send your dates at xtsy.one/book or message +91 88373 17070 — we confirm availability on WhatsApp."
       },
       {
         "question": "What are the check-in and check-out times?",
@@ -1536,7 +1536,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
   {
     "slug": "hostel-near-shillong-airport",
     "title": "Hostel near Shillong Airport — XTSY, New Shillong Township",
-    "intro": "Flying into Shillong Airport at Umroi? XTSY Travellers Hostel is on Mawdiangdiang Road in New Shillong Township, Shillong, near NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Shillong Airport is at Umroi, outside the city; XTSY can arrange the cab from the airport, or from Guwahati if you fly in there. You can book a mixed or female-only dorm bed, a King Double room or Experience by XTSY, with TAB Bistro on site. For a bed after your flight, book at xtsy.one/book or message the XTSY desk on WhatsApp +91 88373 17070 for live availability.",
+    "intro": "Flying into Shillong Airport at Umroi? XTSY Travellers Hostel is on Mawdiangdiang Road in New Shillong Township, Shillong, near NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Shillong Airport is at Umroi, outside the city; XTSY can arrange the cab from the airport, or from Guwahati if you fly in there. You can book a mixed or female-only dorm bed, a King Double room or Experience by XTSY, with TAB Bistro on site. For a bed after your flight, book at xtsy.one/book or message the XTSY desk on WhatsApp +91 88373 17070 — we confirm availability there.",
     "quickAnswer": "XTSY Travellers Hostel is on Mawdiangdiang Road, New Shillong Township (793018), near NIFT Shillong and IIM Shillong. Book a bed after your flight at xtsy.one/book or on WhatsApp +91 88373 17070; dorm beds start at ₹399.",
     "keywords": [
       "shillong airport hostel",
@@ -1557,7 +1557,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "question": "Can I book a bed after your flight?",
-        "answer": "Yes, subject to availability. Check live availability at xtsy.one/book or message +91 88373 17070 on WhatsApp."
+        "answer": "Yes, subject to availability. Send your dates at xtsy.one/book or message +91 88373 17070 — we confirm availability on WhatsApp."
       },
       {
         "question": "What are the check-in and check-out times?",
@@ -1813,7 +1813,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "heading": "How to Lock In Your Stay Tonight",
-        "content": "The fastest, safest way to secure a bed tonight is to message XTSY directly. We confirm live availability at our Shillong hostel and can advise on Cherrapunji logistics in the same chat.",
+        "content": "The fastest, safest way to secure a bed tonight is to message XTSY directly. We confirm availability at our Shillong hostel and can advise on Cherrapunji logistics in the same chat.",
         "listItems": [
           "WhatsApp +91 8837317070 with your arrival time and group size",
           "Get real-time bed/room availability instantly",

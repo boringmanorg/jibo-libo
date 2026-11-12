@@ -2,7 +2,7 @@ import { WaAnchor } from '@/components/WaAnchor';
 /**
  * /best-hostel-in-shillong and /budget-hostels-shillong — the Shillong stay hubs.
  * JSON-LD is rendered by the route head (server-side); this page shows the same
- * facts, prices (live inventory) and FAQs.
+ * facts, prices (static owner-approved catalogue) and FAQs.
  */
 import { useState } from 'react';
 import { Link } from '@/lib/router-compat';
@@ -52,7 +52,7 @@ export default function StayHubV2({ variant }: { variant: StayHubVariant }) {
   ];
 
   return (
-    <PageShell cta={{ title: 'Your bed in the pines is waiting.', sub: 'Live availability for dorms, private rooms and Experience by XTSY — book direct for the base rate.', bookTo: '/book', bookLabel: 'Check availability' }}>
+    <PageShell cta={{ title: 'Your bed in the pines is waiting.', sub: 'We confirm availability on WhatsApp for dorms, private rooms and Experience by XTSY — book direct for the base rate.', bookTo: '/book', bookLabel: 'Check availability' }}>
       <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: c.h1 }]} />
       <section className={`${PAD} grid items-center gap-8 py-8 lg:grid-cols-12 lg:py-12`}>
         <div className="flex flex-col gap-5 lg:col-span-7">

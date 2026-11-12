@@ -6,11 +6,14 @@ that touches the worker or the slim SEO map).
 
 ## What the worker does
 
-1. **Legacy 301 redirects** — looks slugs up via the `seo-redirect-resolver`
-   Supabase function and issues real HTTP 301s for both bots and humans.
-2. **Bot prerender** — if a route is cached in the `PRERENDER_CACHE` KV
+1. **Legacy 301/410s** — looks slugs up in `public/seo-redirect-map.json`,
+   generated at `prebuild` from `RECOVERY_REDIRECTS` and `GONE_SLUGS`, and issues
+   real HTTP 301s and 410s for both bots and humans. No backend call.
+2. **First-party `/cs/` proxy** — forwards allow-listed Contentsquare/Hotjar
+   paths straight to the upstream CDN, so the tag is served from xtsy.one.
+3. **Bot prerender** — if a route is cached in the `PRERENDER_CACHE` KV
    namespace, bots get the static HTML directly.
-3. **Per-route SEO head rewrite** (the important one) — for every HTML
+4. **Per-route SEO head rewrite** (the important one) — for every HTML
    response, reads `{title, description}` for the current slug from the
    `SEO_SLIM_MAP` KV namespace and rewrites `<title>`, `<meta
    name=description>`, `<link rel=canonical>`, `og:url`, `og:title`,

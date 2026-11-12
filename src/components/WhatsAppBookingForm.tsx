@@ -11,12 +11,7 @@ import { VisuallyHidden } from "@/components/ui/visually-hidden";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { MessageCircle, Calendar, Users, Phone, Trash2, Home, AlertCircle, MapPin, Info, ChevronDown, ChevronUp, Sparkles, X, ArrowLeft, Gift } from "lucide-react";
-import { offlineBackend as supabase } from "@/lib/offlineBackend";
 import { ROOM_TYPES } from "@/config/roomTypes";
-
-// Owner-approved static room list; no database lookup.
-const getRoomTypes = async () =>
-  Object.values(ROOM_TYPES).filter((r) => r.isBookable).map((r) => ({ id: r.id, name: r.name, category: r.category, base_price: r.basePrice, capacity: r.capacity }));
 import { toast } from "@/hooks/use-toast";
 import { saveWhatsAppBooking } from "@/services/formBookingService";
 import FoodAddonsSection from "@/components/FoodAddonsSection";
@@ -167,69 +162,27 @@ const WhatsAppBookingForm = ({ isOpen, onClose }: WhatsAppBookingFormProps) => {
     }
   }, [formData.checkIn, formData.checkOut]);
 
-  // Fetch room types from Supabase edge function
+  // Room types come from the static owner-approved catalogue (src/config/roomTypes.ts).
+  // This used to call the getRoomTypes server fn and fall back to a direct room_types
+  // query. With no database both failed: the server fn threw, the fallback returned
+  // null without an error, so neither branch ran and the form sat on "Failed to load
+  // room types" with nothing selectable -- the guest could not book at all.
   useEffect(() => {
-    const fetchRoomTypes = async () => {
-      setLoadingRooms(true);
-      setRoomsError("");
-      
-      try {
-        console.log('Fetching room types...');
-        const data = await getRoomTypes().catch((e: unknown) => {
-          console.error('Error fetching room types:', e);
-          return null;
-        });
-        const error = data ? null : new Error('Failed to load room types');
-
-        if (error) {
-          console.error('Error fetching room types:', error);
-          setRoomsError('Failed to load room types');
-          
-          // Fallback: Load directly from Supabase table
-          console.log('Attempting fallback: loading from room_types table...');
-          const { data: roomTypesData, error: tableError } = await supabase
-            .from('room_types')
-            .select('*')
-            .eq('is_active', true);
-          
-          if (tableError) {
-            console.error('Fallback also failed:', tableError);
-          } else if (roomTypesData) {
-            setRoomTypes(((roomTypesData) as unknown as RoomType[]).filter(isAvailableRoom));
-            setRoomsError("");
-            console.log('Loaded room types from fallback:', roomTypesData.length);
-          }
-        } else if (data) {
-          setRoomTypes((data as unknown as RoomType[]).filter(isAvailableRoom));
-          console.log('Loaded room types:', data.length);
-        }
-      } catch (err) {
-        console.error('Exception fetching room types:', err);
-        setRoomsError('Failed to load room types');
-        
-        // Fallback: Load directly from Supabase table
-        try {
-          const { data: roomTypesData, error: tableError } = await supabase
-            .from('room_types')
-            .select('*')
-            .eq('is_active', true);
-          
-          if (!tableError && roomTypesData) {
-            setRoomTypes(((roomTypesData) as unknown as RoomType[]).filter(isAvailableRoom));
-            setRoomsError("");
-            console.log('Loaded room types from fallback after exception:', roomTypesData.length);
-          }
-        } catch (fallbackErr) {
-          console.error('Fallback failed:', fallbackErr);
-        }
-      } finally {
-        setLoadingRooms(false);
-      }
-    };
-
-    if (isOpen) {
-      fetchRoomTypes();
-    }
+    if (!isOpen) return;
+    setLoadingRooms(true);
+    setRoomsError("");
+    const rooms: RoomType[] = Object.values(ROOM_TYPES)
+      .filter((r) => r.isBookable)
+      .sort((a, b) => a.displayOrder - b.displayOrder)
+      .map((r) => ({
+        id: r.id,
+        name: r.name,
+        category: r.category,
+        base_price: r.basePrice,
+        capacity: r.capacity,
+      }));
+    setRoomTypes(rooms.filter(isAvailableRoom));
+    setLoadingRooms(false);
   }, [isOpen]);
 
   const handleInputChange = (field: string, value: any) => {

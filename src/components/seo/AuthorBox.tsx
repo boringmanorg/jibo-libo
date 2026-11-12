@@ -12,7 +12,7 @@ const AUTHOR_SCHEMA = {
   areaServed: { '@type': 'Place', name: 'Meghalaya, Northeast India' },
   knowsAbout: ['Meghalaya tourism', 'Shillong hostels', 'Living root bridges', 'Northeast India travel'],
   sameAs: [
-    'https://www.instagram.com/xtsytravellershostel',
+    'https://www.instagram.com/xtsy.one',
     'https://www.facebook.com/xtsytravellershostel',
   ],
 };

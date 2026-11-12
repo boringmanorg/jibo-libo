@@ -65,7 +65,6 @@ import { Route as ShillongTourPackageRouteImport } from './routes/shillong-tour-
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TermsOfServiceRouteImport } from './routes/terms-of-service'
 import { Route as ThingsToDoInMeghalayaRouteImport } from './routes/things-to-do-in-meghalaya'
-import { Route as UnsubscribeRouteImport } from './routes/unsubscribe'
 import { Route as WorkFromHomeRouteImport } from './routes/work-from-home'
 import { Route as Xtsy270RouteImport } from './routes/xtsy-270'
 import { Route as XtsyAdventureCampsiteDawkiRouteImport } from './routes/xtsy-adventure-campsite-dawki'
@@ -89,7 +88,6 @@ import { Route as ToursSlugRouteImport } from './routes/tours/$slug'
 import { Route as TravelGuideGuwahatiToShillongTransportRouteImport } from './routes/travel-guide/guwahati-to-shillong-transport'
 import { Route as TravelGuideHowToReachMeghalayaRouteImport } from './routes/travel-guide/how-to-reach-meghalaya'
 import { Route as TravelGuideMeghalayaForInternationalTouristsRouteImport } from './routes/travel-guide/meghalaya-for-international-tourists'
-import { Route as DotlovableOauthConsentRouteImport } from './routes/[.]lovable.oauth.consent'
 import { Route as DestinationsStateIndexRouteImport } from './routes/destinations/$state/index'
 import { Route as ExpeditionsTypeRouteRouteImport } from './routes/expeditions/$type/$route'
 import { Route as ApiPublicHooksBistroGoogleSyncRouteImport } from './routes/api/public/hooks/bistro-google-sync'
@@ -383,11 +381,6 @@ const ThingsToDoInMeghalayaRoute = ThingsToDoInMeghalayaRouteImport.update({
   path: '/things-to-do-in-meghalaya',
   getParentRoute: () => rootRouteImport,
 } as any)
-const UnsubscribeRoute = UnsubscribeRouteImport.update({
-  id: '/unsubscribe',
-  path: '/unsubscribe',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const WorkFromHomeRoute = WorkFromHomeRouteImport.update({
   id: '/work-from-home',
   path: '/work-from-home',
@@ -507,11 +500,6 @@ const TravelGuideMeghalayaForInternationalTouristsRoute =
     path: '/travel-guide/meghalaya-for-international-tourists',
     getParentRoute: () => rootRouteImport,
   } as any)
-const DotlovableOauthConsentRoute = DotlovableOauthConsentRouteImport.update({
-  id: '/.lovable/oauth/consent',
-  path: '/.lovable/oauth/consent',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const DestinationsStateIndexRoute = DestinationsStateIndexRouteImport.update({
   id: '/destinations/$state/',
   path: '/destinations/$state/',
@@ -598,7 +586,6 @@ export interface FileRoutesByFullPath {
   '/terms': typeof TermsRoute
   '/terms-of-service': typeof TermsOfServiceRoute
   '/things-to-do-in-meghalaya': typeof ThingsToDoInMeghalayaRoute
-  '/unsubscribe': typeof UnsubscribeRoute
   '/work-from-home': typeof WorkFromHomeRoute
   '/xtsy-270': typeof Xtsy270Route
   '/xtsy-adventure-campsite-dawki': typeof XtsyAdventureCampsiteDawkiRoute
@@ -622,7 +609,6 @@ export interface FileRoutesByFullPath {
   '/franchise/': typeof FranchiseIndexRoute
   '/tab-bistro/': typeof TabBistroIndexRoute
   '/tours/': typeof ToursIndexRoute
-  '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/expeditions/$type/$route': typeof ExpeditionsTypeRouteRoute
   '/destinations/$state/': typeof DestinationsStateIndexRoute
   '/api/public/hooks/bistro-google-sync': typeof ApiPublicHooksBistroGoogleSyncRoute
@@ -686,7 +672,6 @@ export interface FileRoutesByTo {
   '/terms': typeof TermsRoute
   '/terms-of-service': typeof TermsOfServiceRoute
   '/things-to-do-in-meghalaya': typeof ThingsToDoInMeghalayaRoute
-  '/unsubscribe': typeof UnsubscribeRoute
   '/work-from-home': typeof WorkFromHomeRoute
   '/xtsy-270': typeof Xtsy270Route
   '/xtsy-adventure-campsite-dawki': typeof XtsyAdventureCampsiteDawkiRoute
@@ -710,7 +695,6 @@ export interface FileRoutesByTo {
   '/franchise': typeof FranchiseIndexRoute
   '/tab-bistro': typeof TabBistroIndexRoute
   '/tours': typeof ToursIndexRoute
-  '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/expeditions/$type/$route': typeof ExpeditionsTypeRouteRoute
   '/destinations/$state': typeof DestinationsStateIndexRoute
   '/api/public/hooks/bistro-google-sync': typeof ApiPublicHooksBistroGoogleSyncRoute
@@ -775,7 +759,6 @@ export interface FileRoutesById {
   '/terms': typeof TermsRoute
   '/terms-of-service': typeof TermsOfServiceRoute
   '/things-to-do-in-meghalaya': typeof ThingsToDoInMeghalayaRoute
-  '/unsubscribe': typeof UnsubscribeRoute
   '/work-from-home': typeof WorkFromHomeRoute
   '/xtsy-270': typeof Xtsy270Route
   '/xtsy-adventure-campsite-dawki': typeof XtsyAdventureCampsiteDawkiRoute
@@ -799,7 +782,6 @@ export interface FileRoutesById {
   '/franchise/': typeof FranchiseIndexRoute
   '/tab-bistro/': typeof TabBistroIndexRoute
   '/tours/': typeof ToursIndexRoute
-  '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/expeditions/$type/$route': typeof ExpeditionsTypeRouteRoute
   '/destinations/$state/': typeof DestinationsStateIndexRoute
   '/api/public/hooks/bistro-google-sync': typeof ApiPublicHooksBistroGoogleSyncRoute
@@ -865,7 +847,6 @@ export interface FileRouteTypes {
     | '/terms'
     | '/terms-of-service'
     | '/things-to-do-in-meghalaya'
-    | '/unsubscribe'
     | '/work-from-home'
     | '/xtsy-270'
     | '/xtsy-adventure-campsite-dawki'
@@ -889,7 +870,6 @@ export interface FileRouteTypes {
     | '/franchise/'
     | '/tab-bistro/'
     | '/tours/'
-    | '/.lovable/oauth/consent'
     | '/expeditions/$type/$route'
     | '/destinations/$state/'
     | '/api/public/hooks/bistro-google-sync'
@@ -953,7 +933,6 @@ export interface FileRouteTypes {
     | '/terms'
     | '/terms-of-service'
     | '/things-to-do-in-meghalaya'
-    | '/unsubscribe'
     | '/work-from-home'
     | '/xtsy-270'
     | '/xtsy-adventure-campsite-dawki'
@@ -977,7 +956,6 @@ export interface FileRouteTypes {
     | '/franchise'
     | '/tab-bistro'
     | '/tours'
-    | '/.lovable/oauth/consent'
     | '/expeditions/$type/$route'
     | '/destinations/$state'
     | '/api/public/hooks/bistro-google-sync'
@@ -1041,7 +1019,6 @@ export interface FileRouteTypes {
     | '/terms'
     | '/terms-of-service'
     | '/things-to-do-in-meghalaya'
-    | '/unsubscribe'
     | '/work-from-home'
     | '/xtsy-270'
     | '/xtsy-adventure-campsite-dawki'
@@ -1065,7 +1042,6 @@ export interface FileRouteTypes {
     | '/franchise/'
     | '/tab-bistro/'
     | '/tours/'
-    | '/.lovable/oauth/consent'
     | '/expeditions/$type/$route'
     | '/destinations/$state/'
     | '/api/public/hooks/bistro-google-sync'
@@ -1130,7 +1106,6 @@ export interface RootRouteChildren {
   TermsRoute: typeof TermsRoute
   TermsOfServiceRoute: typeof TermsOfServiceRoute
   ThingsToDoInMeghalayaRoute: typeof ThingsToDoInMeghalayaRoute
-  UnsubscribeRoute: typeof UnsubscribeRoute
   WorkFromHomeRoute: typeof WorkFromHomeRoute
   Xtsy270Route: typeof Xtsy270Route
   XtsyAdventureCampsiteDawkiRoute: typeof XtsyAdventureCampsiteDawkiRoute
@@ -1154,7 +1129,6 @@ export interface RootRouteChildren {
   FranchiseIndexRoute: typeof FranchiseIndexRoute
   TabBistroIndexRoute: typeof TabBistroIndexRoute
   ToursIndexRoute: typeof ToursIndexRoute
-  DotlovableOauthConsentRoute: typeof DotlovableOauthConsentRoute
   ExpeditionsTypeRouteRoute: typeof ExpeditionsTypeRouteRoute
   DestinationsStateIndexRoute: typeof DestinationsStateIndexRoute
   ApiPublicHooksBistroGoogleSyncRoute: typeof ApiPublicHooksBistroGoogleSyncRoute
@@ -1556,13 +1530,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ThingsToDoInMeghalayaRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/unsubscribe': {
-      id: '/unsubscribe'
-      path: '/unsubscribe'
-      fullPath: '/unsubscribe'
-      preLoaderRoute: typeof UnsubscribeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/work-from-home': {
       id: '/work-from-home'
       path: '/work-from-home'
@@ -1724,13 +1691,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TravelGuideMeghalayaForInternationalTouristsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/.lovable/oauth/consent': {
-      id: '/.lovable/oauth/consent'
-      path: '/.lovable/oauth/consent'
-      fullPath: '/.lovable/oauth/consent'
-      preLoaderRoute: typeof DotlovableOauthConsentRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/destinations/$state/': {
       id: '/destinations/$state/'
       path: '/destinations/$state'
@@ -1827,7 +1787,6 @@ const rootRouteChildren: RootRouteChildren = {
   TermsRoute: TermsRoute,
   TermsOfServiceRoute: TermsOfServiceRoute,
   ThingsToDoInMeghalayaRoute: ThingsToDoInMeghalayaRoute,
-  UnsubscribeRoute: UnsubscribeRoute,
   WorkFromHomeRoute: WorkFromHomeRoute,
   Xtsy270Route: Xtsy270Route,
   XtsyAdventureCampsiteDawkiRoute: XtsyAdventureCampsiteDawkiRoute,
@@ -1853,7 +1812,6 @@ const rootRouteChildren: RootRouteChildren = {
   FranchiseIndexRoute: FranchiseIndexRoute,
   TabBistroIndexRoute: TabBistroIndexRoute,
   ToursIndexRoute: ToursIndexRoute,
-  DotlovableOauthConsentRoute: DotlovableOauthConsentRoute,
   ExpeditionsTypeRouteRoute: ExpeditionsTypeRouteRoute,
   DestinationsStateIndexRoute: DestinationsStateIndexRoute,
   ApiPublicHooksBistroGoogleSyncRoute: ApiPublicHooksBistroGoogleSyncRoute,

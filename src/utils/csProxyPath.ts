@@ -2,7 +2,7 @@
  * csProxyPath — pure resolver for the first-party Contentsquare/Hotjar proxy.
  *
  * Shared, framework-free logic used by:
- *   • supabase/functions/cs-proxy (inlined copy — Deno can't import `src`)
+ *   • cloudflare/worker.js (inlined copy — the worker can't import `src`)
  *   • tests/cspAndProxy.test.ts (imports this module directly)
  *
  * It maps a first-party sub-path (everything after `/cs/` or `/cs-proxy/`) to a

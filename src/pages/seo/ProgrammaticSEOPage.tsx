@@ -135,7 +135,7 @@ const buildSchema = (page: SEOPageData) => {
       priceRange: '₹₹',
       acceptsReservations: 'True',
       hasMenu: 'https://xtsy.one/tab-bistro',
-      sameAs: ['https://www.instagram.com/tabbistrobyxtsy', 'https://g.page/tabbistrobyxtsy'],
+      sameAs: ['https://www.instagram.com/xtsy.one', 'https://g.page/tabbistrobyxtsy'],
       openingHoursSpecification: [{
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
@@ -198,7 +198,7 @@ const ORG_SCHEMA = {
   name: 'XTSY Travellers Hostel',
   url: 'https://xtsy.one',
   logo: 'https://storage.googleapis.com/gpt-engineer-file-uploads/1WJsBBRRZpg9MH8fICqqeJ2sC6q1/social-images/social-1765259372136-with_padding.png',
-  sameAs: ['https://www.instagram.com/xtsytravellershostel', 'https://www.facebook.com/xtsytravellershostel'],
+  sameAs: ['https://www.instagram.com/xtsy.one', 'https://www.facebook.com/xtsytravellershostel'],
   contactPoint: { '@type': 'ContactPoint', telephone: '+91-8837317070', contactType: 'customer service' },
 };
 
@@ -495,7 +495,7 @@ const ProgrammaticSEOPage = () => {
           {/* Bottom CTA — no prices, WhatsApp first */}
           <section className="mt-12 bg-gradient-to-r from-primary/10 to-primary/5 rounded-2xl p-8 text-center">
             <h2 className="text-2xl font-bold text-foreground">Plan Your Meghalaya Trip with XTSY</h2>
-            <p className="mt-2 text-muted-foreground">Talk to our local team for live availability, custom itineraries, and the best rate for your dates — usually within minutes on WhatsApp.</p>
+            <p className="mt-2 text-muted-foreground">Talk to our local team for availability, custom itineraries, and the best rate for your dates — usually within minutes on WhatsApp.</p>
             <div className="mt-4 flex flex-col sm:flex-row gap-3 justify-center">
               <a href={waBookHref} target="_blank" rel="noopener noreferrer" className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors">
                 Book Now

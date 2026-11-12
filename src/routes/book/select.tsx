@@ -10,7 +10,7 @@ export const Route = createFileRoute("/book/select")({
       noIndexFollow: true,
       title: "Choose Your XTSY Property to Book",
       description:
-        "Pick between XTSY Travellers Hostel Shillong, Experience by XTSY and the Dawki adventure campsite, then check live availability and book direct.",
+        "Pick between XTSY Travellers Hostel Shillong, Experience by XTSY and the Dawki adventure campsite, then check availability and book direct.",
     }),
   component: PropertySelector,
 });

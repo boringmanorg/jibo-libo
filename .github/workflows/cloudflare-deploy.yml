@@ -13,7 +13,6 @@ name: Deploy Cloudflare Worker (xtsy-edge-seo)
 #   CLOUDFLARE_ACCOUNT_ID    — Cloudflare account ID (32-char hex)
 #   CF_KV_PRERENDER_ID       — KV namespace ID for PRERENDER_CACHE
 #   CF_KV_SLIM_MAP_ID        — KV namespace ID for SEO_SLIM_MAP
-#   SUPABASE_ANON_KEY        — optional; enables legacy-redirect resolver
 #
 # Create the two KV namespaces (one-time, from your machine):
 #   npx wrangler kv namespace create PRERENDER_CACHE
@@ -44,7 +43,6 @@ jobs:
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       CF_KV_PRERENDER_ID: ${{ secrets.CF_KV_PRERENDER_ID }}
       CF_KV_SLIM_MAP_ID: ${{ secrets.CF_KV_SLIM_MAP_ID }}
-      SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
       GH_TOKEN: ${{ github.token }}
     steps:
       - name: Sanity-check required secrets
@@ -149,11 +147,9 @@ jobs:
         run: |
           set -o pipefail
           rc=0
-          if [ -n "$SUPABASE_ANON_KEY" ]; then
-            npx -y wrangler@latest deploy --var SUPABASE_ANON_KEY:"$SUPABASE_ANON_KEY" 2>&1 | tee deploy.log || rc=$?
-          else
-            npx -y wrangler@latest deploy 2>&1 | tee deploy.log || rc=$?
-          fi
+          # No Supabase var: the worker serves 301/410s from the static redirect map
+          # and proxies /cs itself, so it needs no backend credential.
+          npx -y wrangler@latest deploy 2>&1 | tee deploy.log || rc=$?
           # Wrangler's reason for refusing is the useful part: put it in the check annotations
           # so a failed deploy explains itself without opening the raw log.
           if [ $rc -ne 0 ]; then

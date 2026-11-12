@@ -85,7 +85,7 @@ const HostelBookingShillong = memo(() => {
     },
     {
       q: 'Is same-day hostel booking possible?',
-      a: 'Yes. Outside peak season, same-day online hostel booking usually goes through. Check live availability at xtsy.one/book or WhatsApp +91 88373 17070 for immediate confirmation.',
+      a: 'Yes. Outside peak season, same-day online hostel booking usually goes through. Send your dates at xtsy.one/book or WhatsApp +91 88373 17070 for confirmation.',
     },
     {
       q: 'What payment methods are accepted?',

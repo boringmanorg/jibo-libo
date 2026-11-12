@@ -9,7 +9,6 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { VisuallyHidden } from "@/components/ui/visually-hidden";
 import { Building2, Calendar, Users, IndianRupee, Minus, Plus } from "lucide-react";
 import { useApp } from "@/contexts/AppContext";
-import { offlineBackend as supabase } from "@/lib/offlineBackend";
 import { useToast } from "@/hooks/use-toast";
 import FoodAddonsSection from "@/components/FoodAddonsSection";
 import { routeGTMEvent } from "@/utils/gtmEventRouter";
@@ -139,30 +138,8 @@ const B2BBookingForm = ({
     });
 
     try {
-      // Use secure RPC function with server-side validation
-      const { data, error } = await supabase.rpc('create_booking_secure', {
-        p_guest_name: formData.companyName || 'Guest',
-        p_email: formData.email || 'inquiry@xtsy.one',
-        p_whatsapp_number: formData.phone || '+910000000000',
-        p_city: formData.city || undefined,
-        p_pincode: formData.pincode || undefined,
-        p_check_in: formData.checkIn || new Date().toISOString().split('T')[0],
-        p_check_out: formData.checkOut || new Date(Date.now() + 86400000).toISOString().split('T')[0],
-        p_guests: formData.guests || 1,
-        p_room_type: isCoupleFocused ? 'Couple Getaway' : 'B2B Booking',
-        p_room_type_id: isCoupleFocused ? 'couple-getaway' : 'b2b-booking',
-        p_quantity: 1,
-        p_subtotal: isCoupleFocused ? 0 : totalPrice,
-        p_taxes: isCoupleFocused ? 0 : gst,
-        p_total_amount: isCoupleFocused ? 0 : finalTotal,
-        p_special_requests: formData.specialRequests || undefined
-      });
+      // No backend: the enquiry reaches the XTSY desk through the WhatsApp hand-off below.
 
-      // Log error but don't block WhatsApp redirect
-      if (error) {
-        console.error('Error saving booking:', error.message);
-      }
-      
       // Build beautiful WhatsApp message with all details
       const foodAddons = [];
       if (formData.breakfast) {

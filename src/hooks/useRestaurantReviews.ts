@@ -1,11 +1,19 @@
 /**
  * Reviews for TAB Bistro by XTSY.
- * Reads approved restaurant_reviews from Supabase (fresh SEO content) and
- * lets visitors submit a new review (text + optional photo) which stays
- * pending until an admin approves it.
+ *
+ * Served from the static curated set in src/data/featuredGoogleReviews.ts. The site
+ * has no database dependency, so there is nothing to fetch and nothing to persist.
+ *
+ * Previously this read `restaurant_reviews` from Supabase and let visitors submit a
+ * review that stayed pending until an admin approved it. Both halves are gone: the
+ * backend is no longer used, and there is no admin surface to approve anything, so a
+ * submitted review could never have appeared. `submitReview` therefore reports
+ * honestly that on-site submission is closed rather than silently accepting a review
+ * that goes nowhere -- guests are pointed at the Google listing instead, where a
+ * review actually counts.
  */
-import { useState, useEffect, useCallback, useMemo } from "react";
-import { offlineBackend as supabase } from "@/lib/offlineBackend";
+import { useCallback, useMemo, useState } from "react";
+import { featuredBistroReviews } from "@/data/featuredGoogleReviews";
 
 export interface RestaurantReview {
   id: string;
@@ -31,59 +39,23 @@ export interface ReviewSubmission {
   photo?: File | null;
 }
 
-interface DBRow {
-  id: string;
-  guest_name: string;
-  rating: number;
-  review_text: string | null;
-  photos: string[] | null;
-  visit_type: string | null;
-  price_range: string | null;
-  owner_reply: string | null;
-  local_guide: boolean | null;
-  verified: boolean | null;
-  created_at: string;
-}
-
-const fmt = (iso: string) =>
-  new Date(iso).toLocaleDateString("en-IN", { month: "long", year: "numeric" });
+/** Curated Google reviews, shaped for the review showcases. */
+const STATIC_REVIEWS: RestaurantReview[] = featuredBistroReviews.map((r, i) => ({
+  id: `featured-${i}`,
+  name: r.name,
+  rating: r.rating,
+  comment: r.comment,
+  isoDate: r.date,
+  date: r.date,
+  ownerReply: r.ownerReply,
+  localGuide: false,
+  verified: true,
+  photos: [],
+  source: "Google" as const,
+}));
 
 export function useRestaurantReviews() {
-  const [reviews, setReviews] = useState<RestaurantReview[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  const fetchReviews = useCallback(async () => {
-    setLoading(true);
-    const { data, error } = await supabase
-      .from("restaurant_reviews")
-      .select("*")
-      .eq("approved", true)
-      .order("created_at", { ascending: false });
-
-    if (!error && data) {
-      setReviews(
-        (data as DBRow[]).map((r) => ({
-          id: r.id,
-          name: r.guest_name,
-          rating: r.rating,
-          comment: r.review_text || "Great experience!",
-          isoDate: r.created_at,
-          date: fmt(r.created_at),
-          visitType: r.visit_type || undefined,
-          priceRange: r.price_range || undefined,
-          ownerReply: r.owner_reply || undefined,
-          localGuide: !!r.local_guide,
-          verified: !!r.verified,
-          photos: r.photos || [],
-        }))
-      );
-    }
-    setLoading(false);
-  }, []);
-
-  useEffect(() => {
-    fetchReviews();
-  }, [fetchReviews]);
+  const [reviews] = useState<RestaurantReview[]>(STATIC_REVIEWS);
 
   const submitReview = useCallback(
     async (_input: ReviewSubmission): Promise<{ success: boolean; error?: string }> => {
@@ -101,5 +73,7 @@ export function useRestaurantReviews() {
     return { count, average };
   }, [reviews]);
 
-  return { reviews, loading, stats, submitReview, refetch: fetchReviews };
+  const refetch = useCallback(async () => {}, []);
+
+  return { reviews, loading: false, stats, submitReview, refetch };
 }

@@ -87,11 +87,21 @@ const BackpackingIndia = memo(() => {
     url: CANONICAL,
     inLanguage: 'en-IN',
     about: ['Backpacking India', 'Budget travel India', 'Hostels in India', 'Northeast India travel'],
+    // `image` is required for Article rich results; `datePublished` is required and
+    // `dateModified` expected. Without them Google rejects the Article entirely, which
+    // is what the structured-data audit flagged on this page.
+    image: ['https://xtsy.one/lovable-uploads/160f683c-a41c-41fd-8bdb-700d74a7e027.png'],
+    datePublished: '2026-01-15',
+    dateModified: '2026-11-12',
     author: { '@type': 'Organization', name: 'XTSY Travellers Hostel' },
     publisher: {
       '@type': 'Organization',
       name: 'XTSY Ventures Private Limited',
       url: 'https://xtsy.one/',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://xtsy.one/lovable-uploads/160f683c-a41c-41fd-8bdb-700d74a7e027.png',
+      },
     },
   };
 
@@ -99,11 +109,15 @@ const BackpackingIndia = memo(() => {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: '30-Day Backpacking India Itinerary',
+    // Each ListItem needs a url (or a nested `item`); position/name/description alone
+    // is not a valid ItemList entry. The stages are sections of this page, so they
+    // point at their own anchors.
     itemListElement: itinerary.map((s, i) => ({
       '@type': 'ListItem',
       position: i + 1,
       name: s.label,
       description: s.detail,
+      url: `${CANONICAL}#stage-${i + 1}`,
     })),
   };
 
@@ -193,7 +207,7 @@ const BackpackingIndia = memo(() => {
             </p>
             <ol className="mt-8 space-y-4">
               {itinerary.map((s, i) => (
-                <li key={s.label} className="flex gap-4">
+                <li key={s.label} id={`stage-${i + 1}`} className="flex gap-4">
                   <span className="flex-shrink-0 w-9 h-9 rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center text-sm">
                     {i + 1}
                   </span>

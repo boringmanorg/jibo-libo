@@ -258,10 +258,11 @@ export const useAnalytics = () => {
         },
       });
 
-      navigator.sendBeacon?.(
-        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/track-analytics`,
-        data
-      );
+      // No backend: the site has no database dependency, so there is nowhere to send
+      // this. GTM/GA4 already receive page and engagement events client-side. This was
+      // the last ungated direct call -- it bypassed the backend client entirely, so
+      // neutralising that client did not stop it.
+      void data;
     };
 
     window.addEventListener('beforeunload', handleUnload);
