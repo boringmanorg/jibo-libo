@@ -16,3 +16,4 @@
 - Enforce external conversion eligibility in the browser-safe shared conversion policy and route traffic-service emissions through dataLayerService; this keeps admin diagnostics independent while preventing unvalidated or low-intent signals from reaching GTM.
 
 - Guest-facing code must not call the database; data access goes through `@/lib/offlineBackend` and content comes from static data modules, so the Cloud database can stay paused without breaking the site.
+- Keep the selected ranking-page answers in a browser-safe editorial module and render them visibly through the shared page shell; reuse those answers in existing guide schema so visible and structured answers cannot drift.

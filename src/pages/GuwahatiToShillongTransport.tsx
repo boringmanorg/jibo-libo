@@ -4,6 +4,7 @@ import SEOHead from "@/components/SEOHead";
 import { Link } from "@/lib/router-compat";
 import { Card } from "@/components/ui/card";
 import { Bus, Car, Users, Plane, ArrowRight } from "lucide-react";
+import RankedPageQuestions from '@/components/seo/RankedPageQuestions';
 
 const CANONICAL = "https://xtsy.one/travel-guide/guwahati-to-shillong-transport";
 
@@ -133,17 +134,7 @@ export default function GuwahatiToShillongTransport() {
           <p>Most travelers spend 1–2 nights in Shillong first, then head to <Link className="text-primary underline" to="/dawki-umngot-river-guide">Dawki</Link>, <Link className="text-primary underline" to="/cherrapunji-travel-guide">Cherrapunji</Link>, or <Link className="text-primary underline" to="/meghalaya-villages">Mawlynnong & Kongthong</Link>. Book onward transport at the hostel front desk — better rates than street cabs.</p>
         </section>
 
-        <section className="mb-10">
-          <h2 className="text-2xl font-bold mb-4">FAQs</h2>
-          <div className="space-y-4">
-            {faqs.map(f => (
-              <div key={f.q} className="border-l-4 border-primary/40 pl-4">
-                <h3 className="font-semibold mb-1">{f.q}</h3>
-                <p className="text-foreground/90">{f.a}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+        <RankedPageQuestions path="/travel-guide/guwahati-to-shillong-transport" />
 
         <section className="rounded-xl bg-gradient-to-br from-primary/10 to-rose-500/10 p-6 sm:p-8 border border-primary/20">
           <div className="flex items-start gap-3 mb-3">

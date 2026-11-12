@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import { Star, Heart, Mountain, Sparkles, MessageCircle, Camera, Moon, Sun, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PANORAMA_STAY_ONLY } from '@/data/panoramaPricing';
+import RankedPageQuestions from '@/components/seo/RankedPageQuestions';
 const GLAMP_NIGHT = `₹${PANORAMA_STAY_ONLY.toLocaleString('en-IN')}`;
 
 const LuxuryGlampingShillong = memo(() => {
@@ -172,18 +173,7 @@ const LuxuryGlampingShillong = memo(() => {
             </div>
           </section>
 
-          {/* FAQ */}
-          <section>
-            <h2 className="text-2xl font-bold text-foreground">Frequently Asked Questions</h2>
-            <div className="mt-6 space-y-6">
-              {(faqData.mainEntity as any[]).map((faq, i) => (
-                <div key={i}>
-                  <h3 className="font-semibold text-foreground">{faq.name}</h3>
-                  <p className="mt-1 text-muted-foreground text-sm">{faq.acceptedAnswer.text}</p>
-                </div>
-              ))}
-            </div>
-          </section>
+          <RankedPageQuestions path="/luxury-glamping-shillong" />
 
           {/* CTA */}
           <section className="bg-primary/10 rounded-2xl p-8 text-center">

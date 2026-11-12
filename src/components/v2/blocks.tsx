@@ -10,6 +10,7 @@ import SiteFooter from './SiteFooter';
 import CtaBand from './CtaBand';
 import { Eyebrow, Photo, XtsyMark, waLink } from './primitives';
 import { inr, lowestDormPrice } from './pricing';
+import RankedPageQuestions from '@/components/seo/RankedPageQuestions';
 
 export const PAD = 'px-4 sm:px-8 lg:px-16';
 
@@ -62,7 +63,7 @@ export function PageShell({
   return (
     <div className={cn('xt min-h-screen', action && 'pb-[72px] md:pb-0')}>
       <SiteHeader />
-      <main>{children}</main>
+      <main>{children}<RankedPageQuestions /></main>
       {cta !== false && <CtaBand {...(cta || {})} />}
       <SiteFooter />
       {action && <MobileBookBar {...action} />}

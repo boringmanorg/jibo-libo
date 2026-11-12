@@ -6,6 +6,7 @@ import SiteHeader from "@/components/v2/SiteHeader";
 import SiteFooter from "@/components/v2/SiteFooter";
 import CtaBand from "@/components/v2/CtaBand";
 import HomeHero from "@/components/v2/home/HomeHero";
+import RankedPageQuestions from '@/components/seo/RankedPageQuestions';
 import {
   LastMinuteBar, StatsStrip, PromiseMarquee, Trending, Stays, CampsiteBanner, StateExplorer,
   PrimeRail, GlampFeature, BistroFeature, ToursRow, TonightDeals, ExpeditionsBanner, Reviews,
@@ -58,7 +59,7 @@ const Index = memo(() => {
           <TonightDeals />
           <ExpeditionsBanner />
           <Reviews />
-          <HomeFaq />
+          <RankedPageQuestions path="/" />
           <SeoLinks />
           <CtaBand />
         </main>
