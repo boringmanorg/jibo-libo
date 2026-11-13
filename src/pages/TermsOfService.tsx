@@ -145,7 +145,7 @@ export const TermsOfService: React.FC = () => {
               <h3 className="text-xl font-medium mb-3 mt-6 text-foreground">5.2 Booking Modifications</h3>
               <p>Instead of cancellation, you may request a modification:</p>
               <ul className="list-disc pl-6 space-y-2 mt-3">
-                <li>Date modification allowed within 90 days from original check-in</li>
+                <li>Date modification allowed within 15 days from original check-in</li>
                 <li>Only one modification permitted per booking</li>
                 <li>Request must be made at least 48 hours before original check-in</li>
                 <li>Subject to availability and any rate difference</li>

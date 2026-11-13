@@ -15,6 +15,7 @@ import { createTourEnquiry } from '@/services/tourBookingService';
 import { INITIAL_STATE, WELCOME, respond, type ChatAction, type ChatState, type Reply } from '@/lib/travel/assistant';
 import { planToText, type Plan } from '@/lib/travel/planner';
 import { waLink } from './primitives';
+import { STARGAZING_NOTICE, STARGAZING_ACK_LABEL } from '@/data/stargazingPolicy';
 
 interface Msg { from: 'you' | 'xtsy'; text: string; plan?: Plan; chips?: string[]; actions?: ChatAction[] }
 const KEY = 'xtsy_trip_chat_v1';
@@ -81,6 +82,7 @@ export default function TripChat({ variant = 'embedded', className, onClose, ini
   const [sendFor, setSendFor] = useState<Plan | null>(null);
   const [lead, setLead] = useState({ name: '', phone: '', email: '', dates: '' });
   const [sending, setSending] = useState(false);
+  const [starAck, setStarAck] = useState(false);
   const listRef = useRef<HTMLDivElement>(null);
   const started = useRef(false);
 
@@ -177,7 +179,9 @@ export default function TripChat({ variant = 'embedded', className, onClose, ini
         `${ref}Name: ${lead.name.trim() || '—'}\n` +
         `Dates: ${lead.dates.trim() || 'Flexible'}\n` +
         `Travellers: ${sendFor.input.travellers}\n\n` +
-        `${text}\n\nPlease confirm stays, cabs and the final price.`;
+        `${text}\n\n` +
+        (starAck ? `I've read and accepted the stargazing note (not promised; UV-treated glass, ~30% less visibility; sky-dependent).\n\n` : '') +
+        `Please confirm stays, cabs and the final price.`;
       window.open(waLink(handoff, 'trip-planner'), '_blank', 'noopener');
       setMsgs((m) => [...m, { from: 'xtsy', text: `Sent to the XTSY desk${res.enquiryId ? ` (ref **${res.enquiryId}**)` : ''}, and I've opened WhatsApp with your full itinerary so the desk has it in the chat too. We’ll reply to confirm stays, cabs and prices — usually within an hour.`, chips: ['Where should I stay in Shillong?', 'Check-in time?'] }]);
     } else {
@@ -244,19 +248,39 @@ export default function TripChat({ variant = 'embedded', className, onClose, ini
             {[0, 1, 2].map((d) => <span key={d} className="xt-typing h-2 w-2 rounded-full bg-xt-rose" style={{ animationDelay: `${d * 0.15}s` }} />)}
           </div>
         )}
-        {sendFor && (
+        {sendFor && (() => {
+          // Gate only where it is relevant: the suite, or any mention of stars.
+          const haystack = (msgs.map((m) => m.text).join(' ') + ' ' + planToText(sendFor)).toLowerCase();
+          const needsStarAck = /stargaz|star ?gaz|starry|night sky|milky ?way|\bstars\b|experience by xtsy|glass suite|sky suite/.test(haystack);
+          return (
           <form onSubmit={submitLead} className="grid gap-2.5 rounded-2xl bg-white p-4 text-xt-ink sm:grid-cols-2">
             <p className="m-0 text-[14px] font-bold sm:col-span-2">Send this {sendFor.input.days}-day plan to the XTSY desk. We’ll confirm stays, cabs and prices on WhatsApp.</p>
             <label className="flex flex-col gap-1 text-[12px] font-extrabold tracking-wide text-xt-mute">NAME<input required value={lead.name} onChange={(e) => setLead({ ...lead, name: e.target.value })} className={field} autoComplete="name" /></label>
             <label className="flex flex-col gap-1 text-[12px] font-extrabold tracking-wide text-xt-mute">WHATSAPP<input required type="tel" inputMode="tel" value={lead.phone} onChange={(e) => setLead({ ...lead, phone: e.target.value })} className={field} autoComplete="tel" /></label>
             <label className="flex flex-col gap-1 text-[12px] font-extrabold tracking-wide text-xt-mute">EMAIL<input required type="email" value={lead.email} onChange={(e) => setLead({ ...lead, email: e.target.value })} className={field} autoComplete="email" /></label>
             <label className="flex flex-col gap-1 text-[12px] font-extrabold tracking-wide text-xt-mute">DATES<input value={lead.dates} placeholder="e.g. 12–16 Dec" onChange={(e) => setLead({ ...lead, dates: e.target.value })} className={field} /></label>
+            {needsStarAck && (
+              <div className="sm:col-span-2 rounded-xl border-[1.5px] border-xt-line bg-[#FFF7F7] p-3">
+                <p className="m-0 text-[12px] leading-relaxed text-xt-ink">{STARGAZING_NOTICE}</p>
+                <label className="mt-2 flex items-start gap-2 text-[12px] font-bold text-xt-ink">
+                  <input
+                    type="checkbox"
+                    required
+                    checked={starAck}
+                    onChange={(e) => setStarAck(e.target.checked)}
+                    className="mt-0.5 h-4 w-4 shrink-0"
+                  />
+                  <span>{STARGAZING_ACK_LABEL}</span>
+                </label>
+              </div>
+            )}
             <div className="flex gap-2 sm:col-span-2">
-              <button type="submit" disabled={sending} className="xt-btn h-11 flex-1 rounded-full bg-xt-crimson text-[14px] font-extrabold text-white disabled:opacity-60">{sending ? 'Sending…' : 'Send to the XTSY desk'}</button>
+              <button type="submit" disabled={sending || (needsStarAck && !starAck)} className="xt-btn h-11 flex-1 rounded-full bg-xt-crimson text-[14px] font-extrabold text-white disabled:opacity-60">{sending ? 'Sending…' : 'Send to the XTSY desk'}</button>
               <button type="button" onClick={() => setSendFor(null)} className="h-11 rounded-full border-[1.5px] border-xt-line px-4 text-[14px] font-bold">Cancel</button>
             </div>
           </form>
-        )}
+          );
+        })()}
       </div>
 
       <form onSubmit={(e) => { e.preventDefault(); ask(input); }} className="flex items-center gap-2 border-t border-white/10 p-3 sm:p-4">

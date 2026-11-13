@@ -1028,7 +1028,9 @@ export const RETIRED_DINING_SLUGS: ReadonlySet<string> = new Set<string>([
   'biryani-in-police-bazar-shillong',
   'family-restaurant-in-laitumkhrah',
   // Group 3 — added 31 Oct 2026, confirmed by the owner
-  'live-music-restaurant-shillong',            // XTSY does not host live music
+  'live-music-restaurant-shillong',            // excluded: a pre-booked music event is possible,
+                                                 // but there is no regular live music, so this
+                                                 // keyword would misrepresent the venue
   // Group 2 — food not on the menu
   'khasi-food-restaurant-shillong',                 // no Khasi dishes are served, deliberately
   'thai-restaurant-shillong',                       // no Thai dishes on the menu

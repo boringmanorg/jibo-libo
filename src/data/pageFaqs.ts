@@ -99,7 +99,7 @@ export const PAGE_FAQS: Record<string, PageFaq[]> = {
   ],
   '/pricing-cancellation-policy': [
     { q: 'Can I cancel and get a refund?', a: 'No. There is no free cancellation: the booking amount is non-refundable, and no-shows are treated as cancellations.' },
-    { q: 'Can I change my dates instead?', a: 'Yes, once per booking. The new dates must fall within 90 days of the original check-in, you must ask at least 48 hours before check-in, and any rate difference is paid at the time of change.' },
+    { q: 'Can I change my dates instead?', a: 'Yes, once per booking. The new dates must fall within 15 days of the original check-in, you must ask at least 48 hours before check-in, and any rate difference is paid at the time of change.' },
     { q: 'Are prices all inclusive?', a: 'Room prices shown on xtsy.one are all inclusive: dorm beds from ₹399, King Double ₹2,399 and Experience by XTSY ₹5,999 (stay only).' },
     { q: 'Who do I contact about a booking?', a: 'Email booking@xtsy.one for bookings, or admin@xtsy.one for policy questions.' },
   ],

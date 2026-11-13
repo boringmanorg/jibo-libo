@@ -40,7 +40,7 @@ export function buildTopics(): Topic[] {
       ['Do you rent bikes and cars?', 'Yes. Royal Enfields from ₹1,300 a day and cars from ₹1,800, booked through trusted rental partners, with drivers on request.'],
     ] },
     { id: 'booking', n: 'Booking & payments', q: [
-      ['What is your cancellation policy?', 'All advance payments are non-refundable. You can modify a booking once within 90 days of the original check-in, requested at least 48 hours before, subject to availability and any rate difference. No refunds for no-shows. Full details are on the Pricing & Cancellation Policy page.'],
+      ['What is your cancellation policy?', 'All advance payments are non-refundable. You can modify a booking once within 15 days of the original check-in, requested at least 48 hours before, subject to availability and any rate difference. No refunds for no-shows. Full details are on the Pricing & Cancellation Policy page.'],
       ['What payment methods work?', 'UPI, bank transfers, cards and cash. International guests can pay by PayPal or wire transfer.'],
       ['Is airport pickup available?', 'Yes, from Guwahati Airport and Shillong Airport (Umroi). Ask the desk when you book.'],
       ['Do groups get discounts?', 'Groups of 6+ get special rates on stays and tours. Colleges, corporates and clubs: message us for a quote.'],

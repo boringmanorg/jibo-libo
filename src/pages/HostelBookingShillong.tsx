@@ -93,7 +93,7 @@ const HostelBookingShillong = memo(() => {
     },
     {
       q: 'Can I cancel or modify my booking?',
-      a: 'The booking amount is non-refundable — there is no free cancellation. Bookings can be modified once within 90 days of the original check-in (request at least 48 hours before), subject to availability and any rate difference.',
+      a: 'The booking amount is non-refundable — there is no free cancellation. Bookings can be modified once within 15 days of the original check-in (request at least 48 hours before), subject to availability and any rate difference.',
     },
     ...hostelDealFaqs,
   ];
@@ -175,7 +175,7 @@ const HostelBookingShillong = memo(() => {
               {[
                 { icon: IndianRupee, title: 'More affordable than OTAs', desc: 'No commission markup vs Hostelworld / Booking.com.' },
                 { icon: Clock, title: 'WhatsApp Confirmation', desc: 'The desk replies to confirm availability.' },
-                { icon: Shield, title: 'One Free Date Change', desc: 'Booking amount is non-refundable; change dates once within 90 days.' },
+                { icon: Shield, title: 'One Free Date Change', desc: 'Booking amount is non-refundable; change dates once within 15 days.' },
                 { icon: CreditCard, title: 'No Online Payment', desc: 'Send an enquiry; payment arrangements follow desk confirmation.' },
               ].map((f) => (
                 <Card key={f.title} className="border-border/50">

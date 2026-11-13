@@ -232,7 +232,7 @@ export const PricingCancellationPolicy: React.FC = () => {
                   Bookings can be <strong>modified instead of cancelled</strong>, subject to availability:
                 </p>
                 <ul className="space-y-2 text-foreground/90">
-                  <li>• Date modification allowed within <strong>90 days</strong> from original check-in date</li>
+                  <li>• Date modification allowed within <strong>15 days</strong> from original check-in date</li>
                   <li>• Only <strong>one-time modification</strong> permitted per booking</li>
                   <li>• Room type upgrades/downgrades subject to availability and fare difference</li>
                   <li>• Modification request must be made at least 48 hours before original check-in</li>

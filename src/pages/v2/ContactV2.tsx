@@ -19,7 +19,7 @@ const TOPICS = ['A room or dorm bed', 'Experience by XTSY', 'A tour package', 'B
 const CONTACT_FAQS = [
   { q: 'What is the fastest way to reach XTSY?', a: 'WhatsApp the XTSY desk on +91 88373 17070 — it is answered day and night. You can also email booking@xtsy.one for bookings and enquiries, or admin@xtsy.one for billing, invoices and policies.' },
   { q: 'What are the check-in and check-out times?', a: 'Check-in is from 11 AM and check-out is at 10 AM. Arriving late? Message the desk on WhatsApp so we can plan your arrival.' },
-  { q: 'Can I cancel my booking?', a: 'There is no free cancellation: the booking amount is non-refundable. You can change your dates once within 90 days of the original check-in (ask at least 48 hours before), subject to availability.' },
+  { q: 'Can I cancel my booking?', a: 'There is no free cancellation: the booking amount is non-refundable. You can change your dates once within 15 days of the original check-in (ask at least 48 hours before), subject to availability.' },
   { q: 'Can I bring my pet?', a: 'Cats and birds are most welcome. Dogs are accepted depending on breed and size. Contact the XTSY desk before booking for any additional charges.' },
 ];
 
