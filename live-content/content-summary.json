@@ -1,7 +1,7 @@
 {
  "site": "https://xtsy.one",
- "pages": 700,
- "pagesWithFindings": 10,
+ "pages": 701,
+ "pagesWithFindings": 33,
  "siteFiles": {
   "/robots.txt": {
    "status": 200,
@@ -10,11 +10,11 @@
   },
   "/llms.txt": {
    "status": 200,
-   "bytes": 6785
+   "bytes": 6795
   },
   "/llms-full.txt": {
    "status": 200,
-   "bytes": 10735
+   "bytes": 10745
   }
  },
  "info": {
@@ -28,6 +28,23 @@
   }
  },
  "rules": {
+  "placeholder:template token": {
+   "pages": 178,
+   "examples": [
+    "/meghalaya-tour-packages —  Breakfast, dinner and a bonfire at both stays Day-by-day itinerary {{GROUP_TOUR_ITINERARY}} No free cancellation; th",
+    "/meghalaya-tour-packages — ree cancellation; the booking amount is non-refundable. Pickup point: {{PICKUP_POINT}} . Stay & tour with XTSY Base yo",
+    "/destinations/meghalaya/jowai/krang-suri-falls — rant turquoise pool in the Jaintia Hills, perfect for swimming. It is {{KM}} from Shillong ({{TIME}}); best time: Octobe",
+    "/destinations/meghalaya/jowai/krang-suri-falls —  the Jaintia Hills, perfect for swimming. It is {{KM}} from Shillong ({{TIME}}); best time: October to March for swimmab",
+    "/destinations/meghalaya/jowai/krang-suri-falls — on Krang Suri Falls, Jaintia Hills, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checke",
+    "/destinations/meghalaya/jowai/krang-suri-falls —  Suri Falls, Jaintia Hills, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT",
+    "/destinations/meghalaya/jowai/krang-suri-falls — Hills, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timin",
+    "/destinations/meghalaya/jowai/krang-suri-falls — nce from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best se",
+    "/destinations/meghalaya/jowai/krang-suri-falls — ME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best season October to March for swim",
+    "/destinations/meghalaya/jowai/krang-suri-falls — est season October to March for swimmable conditions Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the X",
+    "/destinations/meghalaya/jowai/krang-suri-falls — or swimmable conditions Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the XTSY Voyage team, New Shillong",
+    "/destinations/meghalaya/cherrapunji/nohkalikai-falls — rrapunji, plunging into a turquoise pool below dramatic cliffs. It is {{KM}} from Shillong ({{TIME}}); best time: July t"
+   ]
+  },
   "placeholder:coming soon": {
    "pages": 3,
    "examples": [
@@ -42,6 +59,13 @@
     "/privacy-policy — ",
     "/terms-of-service — ",
     "/expeditions — "
+   ]
+  },
+  "seo:duplicate description": {
+   "pages": 2,
+   "examples": [
+    "/experience-by-xtsy — 2 pages: experience by xtsy, india's first stargaze glamp: a 270° panoramic glass suite i",
+    "/xtsy-270 — 2 pages: experience by xtsy, india's first stargaze glamp: a 270° panoramic glass suite i"
    ]
   },
   "seo:description > 160 chars": {

@@ -2,7 +2,7 @@
  {
   "url": "/",
   "status": 200,
-  "words": 1771,
+  "words": 1774,
   "findings": [
    {
     "rule": "policy:check-in time",
@@ -547,7 +547,7 @@
  {
   "url": "/2-day-shillong-itinerary",
   "status": 200,
-  "words": 1220,
+  "words": 1219,
   "findings": [],
   "seo": {
    "title": "2-Day Shillong Itinerary — Perfect Weekend Plan",
@@ -1332,7 +1332,7 @@
  {
   "url": "/4-day-meghalaya-itinerary",
   "status": 200,
-  "words": 1209,
+  "words": 1208,
   "findings": [],
   "seo": {
    "title": "4-Day Meghalaya Itinerary 2026 — Day-by-Day Guide | XTSY",
@@ -1495,7 +1495,7 @@
  {
   "url": "/6-day-meghalaya-itinerary",
   "status": 200,
-  "words": 1216,
+  "words": 1215,
   "findings": [],
   "seo": {
    "title": "6-Day Meghalaya Itinerary 2026 — Day-by-Day Guide | XTSY",
@@ -1583,7 +1583,7 @@
  {
   "url": "/8-day-meghalaya-itinerary",
   "status": 200,
-  "words": 1217,
+  "words": 1216,
   "findings": [],
   "seo": {
    "title": "8-Day Meghalaya Itinerary 2026 — Day-by-Day Guide | XTSY",
@@ -1994,6 +1994,7 @@
     "PostalAddress",
     "ContactPoint",
     "Article",
+    "ImageObject",
     "ItemList",
     "ListItem",
     "BreadcrumbList",
@@ -2238,8 +2239,8 @@
   "seo": {
    "title": "Best Glamping in Cherrapunji (2026) | XTSY",
    "titleLen": 42,
-   "desc": "Book a best glamping in Cherrapunji. Live availability, best rates and 24/7 check-in. Get instant help on WhatsApp.",
-   "descLen": 115,
+   "desc": "Book a best glamping in Cherrapunji. Availability confirmed on WhatsApp, best rates and 24/7 check-in. Get instant help on WhatsApp.",
+   "descLen": 132,
    "canonical": "https://xtsy.one/best-glamping-in-cherrapunji",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -2282,8 +2283,8 @@
   "seo": {
    "title": "Best Glamping in Guwahati (2026) | XTSY",
    "titleLen": 39,
-   "desc": "Book a best glamping in Guwahati. Live availability, best rates and 24/7 check-in. Get instant help on WhatsApp.",
-   "descLen": 112,
+   "desc": "Book a best glamping in Guwahati. Availability confirmed on WhatsApp, best rates and 24/7 check-in. Get instant help on WhatsApp.",
+   "descLen": 129,
    "canonical": "https://xtsy.one/best-glamping-in-guwahati",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -2326,8 +2327,8 @@
   "seo": {
    "title": "Best Glamping in Shillong (2026) | XTSY",
    "titleLen": 39,
-   "desc": "Book a best glamping in Shillong. Live availability, best rates and 24/7 check-in. Get instant help on WhatsApp.",
-   "descLen": 112,
+   "desc": "Book a best glamping in Shillong. Availability confirmed on WhatsApp, best rates and 24/7 check-in. Get instant help on WhatsApp.",
+   "descLen": 129,
    "canonical": "https://xtsy.one/best-glamping-in-shillong",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -2372,8 +2373,8 @@
   "seo": {
    "title": "Best Homestay in Cherrapunji (2026) | XTSY",
    "titleLen": 42,
-   "desc": "Book a best homestay in Cherrapunji. Live availability, best rates and 24/7 check-in. Get instant help on WhatsApp.",
-   "descLen": 115,
+   "desc": "Book a best homestay in Cherrapunji. Availability confirmed on WhatsApp, best rates and 24/7 check-in. Get instant help on WhatsApp.",
+   "descLen": 132,
    "canonical": "https://xtsy.one/best-homestay-in-cherrapunji",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -2416,8 +2417,8 @@
   "seo": {
    "title": "Best Homestay in Guwahati (2026) | XTSY",
    "titleLen": 39,
-   "desc": "Book a best homestay in Guwahati. Live availability, best rates and 24/7 check-in. Get instant help on WhatsApp.",
-   "descLen": 112,
+   "desc": "Book a best homestay in Guwahati. Availability confirmed on WhatsApp, best rates and 24/7 check-in. Get instant help on WhatsApp.",
+   "descLen": 129,
    "canonical": "https://xtsy.one/best-homestay-in-guwahati",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -2460,8 +2461,8 @@
   "seo": {
    "title": "Best Homestay in Shillong (2026) | XTSY",
    "titleLen": 39,
-   "desc": "Book a best homestay in Shillong. Live availability, best rates and 24/7 check-in. Get instant help on WhatsApp.",
-   "descLen": 112,
+   "desc": "Book a best homestay in Shillong. Availability confirmed on WhatsApp, best rates and 24/7 check-in. Get instant help on WhatsApp.",
+   "descLen": 129,
    "canonical": "https://xtsy.one/best-homestay-in-shillong",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -2594,8 +2595,8 @@
   "seo": {
    "title": "Best Hostel in Imphal (2026) | XTSY",
    "titleLen": 35,
-   "desc": "Book a best hostel in Imphal. Live availability, best rates and 24/7 check-in. Get instant help on WhatsApp. WhatsApp +91 88373 17070 for instant booking help.",
-   "descLen": 159,
+   "desc": "Book a best hostel in Imphal. Availability confirmed on WhatsApp, best rates and 24/7 check-in. Get instant help on WhatsApp.",
+   "descLen": 125,
    "canonical": "https://xtsy.one/best-hostel-in-imphal",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -2638,8 +2639,8 @@
   "seo": {
    "title": "Best Hostel in Kohima (2026) | XTSY",
    "titleLen": 35,
-   "desc": "Book a best hostel in Kohima. Live availability, best rates and 24/7 check-in. Get instant help on WhatsApp. WhatsApp +91 88373 17070 for instant booking help.",
-   "descLen": 159,
+   "desc": "Book a best hostel in Kohima. Availability confirmed on WhatsApp, best rates and 24/7 check-in. Get instant help on WhatsApp.",
+   "descLen": 125,
    "canonical": "https://xtsy.one/best-hostel-in-kohima",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -2677,7 +2678,7 @@
  {
   "url": "/best-hostel-in-shillong",
   "status": 200,
-  "words": 1645,
+  "words": 1648,
   "findings": [
    {
     "rule": "seo:description > 160 chars",
@@ -3819,7 +3820,7 @@
  {
   "url": "/birdwatching-meghalaya",
   "status": 200,
-  "words": 1019,
+  "words": 1018,
   "findings": [],
   "seo": {
    "title": "Birdwatching in Meghalaya 2026 — Species Guide | XTSY",
@@ -4087,8 +4088,8 @@
   "seo": {
    "title": "Choose Your XTSY Property to Book",
    "titleLen": 33,
-   "desc": "Pick between XTSY Travellers Hostel Shillong, Experience by XTSY and the Dawki adventure campsite, then check live availability and book direct.",
-   "descLen": 144,
+   "desc": "Pick between XTSY Travellers Hostel Shillong, Experience by XTSY and the Dawki adventure campsite, then check availability and book direct.",
+   "descLen": 139,
    "canonical": "https://xtsy.one/book/select",
    "robots": "noindex, follow",
    "h1": [
@@ -4205,7 +4206,7 @@
  {
   "url": "/budget-hostels-shillong",
   "status": 200,
-  "words": 1232,
+  "words": 1235,
   "findings": [],
   "seo": {
    "title": "Budget-Friendly Hostels in Shillong from ₹399 | XTSY",
@@ -4662,7 +4663,7 @@
  {
   "url": "/camping-in-shnongpdeng",
   "status": 200,
-  "words": 1059,
+  "words": 1058,
   "findings": [],
   "seo": {
    "title": "Camping in Shnongpdeng Meghalaya 2026 | XTSY",
@@ -4707,7 +4708,7 @@
  {
   "url": "/car-booking-shillong",
   "status": 200,
-  "words": 903,
+  "words": 902,
   "findings": [],
   "seo": {
    "title": "Car Booking Shillong — Instant Online | XTSY Rentals",
@@ -4751,7 +4752,7 @@
  {
   "url": "/car-rental-guwahati",
   "status": 200,
-  "words": 1085,
+  "words": 1084,
   "findings": [],
   "seo": {
    "title": "Car Rental in Guwahati — Best Rates 2026 | XTSY",
@@ -4874,7 +4875,7 @@
  {
   "url": "/cherrapunji-guide",
   "status": 200,
-  "words": 1305,
+  "words": 1304,
   "findings": [],
   "seo": {
    "title": "Cherrapunji (Sohra) — Wettest Place on Earth | Guide",
@@ -6019,7 +6020,7 @@
  {
   "url": "/corporate-retreat-shillong",
   "status": 200,
-  "words": 945,
+  "words": 944,
   "findings": [],
   "seo": {
    "title": "Corporate Retreat in Shillong — Team Offsite | XTSY",
@@ -6241,7 +6242,7 @@
  {
   "url": "/dawki-guide",
   "status": 200,
-  "words": 1284,
+  "words": 1283,
   "findings": [],
   "seo": {
    "title": "Dawki — Crystal Clear Umngot River | Travel Guide",
@@ -6331,7 +6332,7 @@
  {
   "url": "/dawki-to-mawlynnong-guide",
   "status": 200,
-  "words": 1355,
+  "words": 1354,
   "findings": [],
   "seo": {
    "title": "Dawki to Mawlynnong Day Trip Guide 2026 | XTSY",
@@ -7099,7 +7100,7 @@
  {
   "url": "/destinations/meghalaya",
   "status": 200,
-  "words": 1025,
+  "words": 1024,
   "findings": [],
   "seo": {
    "title": "Meghalaya Travel Guide — Places, Routes & Stays",
@@ -7266,8 +7267,45 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/double-decker-living-root-bridge",
   "status": 200,
-  "words": 1135,
-  "findings": [],
+  "words": 1301,
+  "findings": [
+   {
+    "rule": "placeholder:template token",
+    "detail": "g tree roots, one of the world's most extraordinary structures. It is {{KM}} from Shillong ({{TIME}}); best time: Novemb"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "he world's most extraordinary structures. It is {{KM}} from Shillong ({{TIME}}); best time: November to March for dry tr"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "g Root Bridge, Cherrapunji & Sohra, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checke"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ridge, Cherrapunji & Sohra, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "Sohra, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timin"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "nce from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best se"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best season November to March for dry"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "season November to March for dry trekking conditions Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the X"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "dry trekking conditions Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the XTSY Voyage team, New Shillong"
+   }
+  ],
   "seo": {
    "title": "Double Decker Living Root Bridge, Cherrapunji — Travel Guide",
    "titleLen": 60,
@@ -7303,7 +7341,7 @@
    "firstParagraphWords": 17,
    "mentionsBrand": true,
    "mentionsLocation": true,
-   "updatedDate": false
+   "updatedDate": true
   },
   "info": []
  },
@@ -7442,8 +7480,45 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/kynrem-falls",
   "status": 200,
-  "words": 912,
-  "findings": [],
+  "words": 1069,
+  "findings": [
+   {
+    "rule": "placeholder:template token",
+    "detail": "fall within Thangkharang Park, one of the tallest in Meghalaya. It is {{KM}} from Shillong ({{TIME}}); best time: June t"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ng Park, one of the tallest in Meghalaya. It is {{KM}} from Shillong ({{TIME}}); best time: June to September for dramat"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": " Kynrem Falls, Cherrapunji & Sohra, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checke"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "Falls, Cherrapunji & Sohra, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "Sohra, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timin"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "nce from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best se"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best season June to September for dra"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "est season June to September for dramatic water flow Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the X"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "for dramatic water flow Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the XTSY Voyage team, New Shillong"
+   }
+  ],
   "seo": {
    "title": "Kynrem Falls, Cherrapunji — Timings & How to Reach",
    "titleLen": 50,
@@ -7479,15 +7554,52 @@
    "firstParagraphWords": 13,
    "mentionsBrand": true,
    "mentionsLocation": true,
-   "updatedDate": false
+   "updatedDate": true
   },
   "info": []
  },
  {
   "url": "/destinations/meghalaya/cherrapunji/mawsmai-cave",
   "status": 200,
-  "words": 999,
-  "findings": [],
+  "words": 1147,
+  "findings": [
+   {
+    "rule": "placeholder:template token",
+    "detail": "Cherrapunji with stunning stalactite and stalagmite formations. It is {{KM}} from Shillong ({{TIME}}); best time: Octobe"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ing stalactite and stalagmite formations. It is {{KM}} from Shillong ({{TIME}}); best time: October to May. Stay at XTSY"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": " Mawsmai Cave, Cherrapunji & Sohra, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checke"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": " Cave, Cherrapunji & Sohra, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "Sohra, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timin"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "nce from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best se"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best season October to May Trek diff"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "}}) Timings {{TIMINGS}} Best season October to May Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the X"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "t season October to May Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the XTSY Voyage team, New Shillong"
+   }
+  ],
   "seo": {
    "title": "Mawsmai Cave, Cherrapunji — Timings & How to Reach",
    "titleLen": 50,
@@ -7523,15 +7635,52 @@
    "firstParagraphWords": 12,
    "mentionsBrand": true,
    "mentionsLocation": true,
-   "updatedDate": false
+   "updatedDate": true
   },
   "info": []
  },
  {
   "url": "/destinations/meghalaya/cherrapunji/nohkalikai-falls",
   "status": 200,
-  "words": 1613,
-  "findings": [],
+  "words": 1771,
+  "findings": [
+   {
+    "rule": "placeholder:template token",
+    "detail": "rrapunji, plunging into a turquoise pool below dramatic cliffs. It is {{KM}} from Shillong ({{TIME}}); best time: July t"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "o a turquoise pool below dramatic cliffs. It is {{KM}} from Shillong ({{TIME}}); best time: July to September for peak w"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "kalikai Falls, Cherrapunji & Sohra, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checke"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "Falls, Cherrapunji & Sohra, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "Sohra, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timin"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "nce from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best se"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best season July to September for pea"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "} Best season July to September for peak water flow Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the X"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ber for peak water flow Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the XTSY Voyage team, New Shillong"
+   }
+  ],
   "seo": {
    "title": "Nohkalikai Falls, Cherrapunji — Timings & How to Reach",
    "titleLen": 54,
@@ -7567,7 +7716,7 @@
    "firstParagraphWords": 8,
    "mentionsBrand": true,
    "mentionsLocation": true,
-   "updatedDate": false
+   "updatedDate": true
   },
   "info": []
  },
@@ -7662,8 +7811,45 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/seven-sisters-falls",
   "status": 200,
-  "words": 945,
-  "findings": [],
+  "words": 1109,
+  "findings": [
+   {
+    "rule": "placeholder:template token",
+    "detail": "matic cliffs near Cherrapunji, named after the seven NE states. It is {{KM}} from Shillong ({{TIME}}); best time: June t"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "rapunji, named after the seven NE states. It is {{KM}} from Shillong ({{TIME}}); best time: June to September for all se"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "Sisters Falls, Cherrapunji & Sohra, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checke"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "Falls, Cherrapunji & Sohra, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "Sohra, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timin"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "nce from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best se"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best season June to September for all"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ason June to September for all seven streams to flow Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the X"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "l seven streams to flow Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the XTSY Voyage team, New Shillong"
+   }
+  ],
   "seo": {
    "title": "Seven Sisters Falls, Cherrapunji — Timings & How to Reach",
    "titleLen": 57,
@@ -7699,7 +7885,7 @@
    "firstParagraphWords": 15,
    "mentionsBrand": true,
    "mentionsLocation": true,
-   "updatedDate": false
+   "updatedDate": true
   },
   "info": []
  },
@@ -7829,8 +8015,45 @@
  {
   "url": "/destinations/meghalaya/dawki/dawki-umngot-river",
   "status": 200,
-  "words": 1059,
-  "findings": [],
+  "words": 1219,
+  "findings": [
+   {
+    "rule": "placeholder:template token",
+    "detail": "to float in mid-air, Meghalaya's most photographed destination. It is {{KM}} from Shillong ({{TIME}}); best time: Novemb"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "eghalaya's most photographed destination. It is {{KM}} from Shillong ({{TIME}}); best time: November to February for the"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "awki – Umngot River, Jaintia Hills, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checke"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "mngot River, Jaintia Hills, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "Hills, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timin"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "nce from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best se"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best season November to February for "
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "t season November to February for the clearest water Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the X"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": " for the clearest water Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the XTSY Voyage team, New Shillong"
+   }
+  ],
   "seo": {
    "title": "Dawki – Umngot River, Dawki — Timings & How to Reach",
    "titleLen": 52,
@@ -7866,15 +8089,52 @@
    "firstParagraphWords": 14,
    "mentionsBrand": true,
    "mentionsLocation": true,
-   "updatedDate": false
+   "updatedDate": true
   },
   "info": []
  },
  {
   "url": "/destinations/meghalaya/dawki/shnongpdeng",
   "status": 200,
-  "words": 1018,
-  "findings": [],
+  "words": 1179,
+  "findings": [
+   {
+    "rule": "placeholder:template token",
+    "detail": "r Umngot River, kayaking, cliff jumping, and riverside camping. It is {{KM}} from Shillong ({{TIME}}); best time: Novemb"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ng, cliff jumping, and riverside camping. It is {{KM}} from Shillong ({{TIME}}); best time: November to March for crysta"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "Shnongpdeng Village, Jaintia Hills, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checke"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "eng Village, Jaintia Hills, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "Hills, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timin"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "nce from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best se"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best season November to March for cry"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "to March for crystal-clear water and camping weather Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the X"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ter and camping weather Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the XTSY Voyage team, New Shillong"
+   }
+  ],
   "seo": {
    "title": "Shnongpdeng Village, Dawki — Timings & How to Reach",
    "titleLen": 51,
@@ -7910,7 +8170,7 @@
    "firstParagraphWords": 15,
    "mentionsBrand": true,
    "mentionsLocation": true,
-   "updatedDate": false
+   "updatedDate": true
   },
   "info": []
  },
@@ -7952,8 +8212,45 @@
  {
   "url": "/destinations/meghalaya/jowai/krang-suri-falls",
   "status": 200,
-  "words": 1022,
-  "findings": [],
+  "words": 1179,
+  "findings": [
+   {
+    "rule": "placeholder:template token",
+    "detail": "rant turquoise pool in the Jaintia Hills, perfect for swimming. It is {{KM}} from Shillong ({{TIME}}); best time: Octobe"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": " the Jaintia Hills, perfect for swimming. It is {{KM}} from Shillong ({{TIME}}); best time: October to March for swimmab"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "on Krang Suri Falls, Jaintia Hills, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checke"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": " Suri Falls, Jaintia Hills, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "Hills, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timin"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "nce from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best se"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best season October to March for swim"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "est season October to March for swimmable conditions Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the X"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "or swimmable conditions Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the XTSY Voyage team, New Shillong"
+   }
+  ],
   "seo": {
    "title": "Krang Suri Falls, Jowai — Timings & How to Reach",
    "titleLen": 48,
@@ -7989,7 +8286,7 @@
    "firstParagraphWords": 15,
    "mentionsBrand": true,
    "mentionsLocation": true,
-   "updatedDate": false
+   "updatedDate": true
   },
   "info": []
  },
@@ -8040,8 +8337,45 @@
  {
   "url": "/destinations/meghalaya/jowai/nartiang-monoliths",
   "status": 200,
-  "words": 987,
-  "findings": [],
+  "words": 1130,
+  "findings": [
+   {
+    "rule": "placeholder:template token",
+    "detail": "monoliths erected by Jaintia kings, among the tallest in India. It is {{KM}} from Shillong ({{TIME}}); best time: Year-r"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "aintia kings, among the tallest in India. It is {{KM}} from Shillong ({{TIME}}); best time: Year-round. Stay at XTSY Tra"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": " Nartiang Monoliths, Jaintia Hills, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checke"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "g Monoliths, Jaintia Hills, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "Hills, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timin"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "nce from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best se"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best season Year-round Trek difficul"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "DATE}}) Timings {{TIMINGS}} Best season Year-round Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the X"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": " Best season Year-round Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the XTSY Voyage team, New Shillong"
+   }
+  ],
   "seo": {
    "title": "Nartiang Monoliths, Jowai — Timings & How to Reach",
    "titleLen": 50,
@@ -8077,15 +8411,52 @@
    "firstParagraphWords": 13,
    "mentionsBrand": true,
    "mentionsLocation": true,
-   "updatedDate": false
+   "updatedDate": true
   },
   "info": []
  },
  {
   "url": "/destinations/meghalaya/jowai/phe-phe-falls",
   "status": 200,
-  "words": 960,
-  "findings": [],
+  "words": 1118,
+  "findings": [
+   {
+    "rule": "placeholder:template token",
+    "detail": "Jaintia Hills with a stunning turquoise pool amid dense forest. It is {{KM}} from Shillong ({{TIME}}); best time: Octobe"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "tunning turquoise pool amid dense forest. It is {{KM}} from Shillong ({{TIME}}); best time: October to March for swimmab"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ation Phe Phe Falls, Jaintia Hills, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checke"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "e Phe Falls, Jaintia Hills, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "Hills, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timin"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "nce from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best se"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best season October to March for swim"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "est season October to March for swimmable conditions Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the X"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "or swimmable conditions Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the XTSY Voyage team, New Shillong"
+   }
+  ],
   "seo": {
    "title": "Phe Phe Falls, Jowai — Timings & How to Reach",
    "titleLen": 45,
@@ -8121,7 +8492,7 @@
    "firstParagraphWords": 15,
    "mentionsBrand": true,
    "mentionsLocation": true,
-   "updatedDate": false
+   "updatedDate": true
   },
   "info": []
  },
@@ -8497,8 +8868,45 @@
  {
   "url": "/destinations/meghalaya/nongstoin/nongkhnum-island",
   "status": 200,
-  "words": 970,
-  "findings": [],
+  "words": 1136,
+  "findings": [
+   {
+    "rule": "placeholder:template token",
+    "detail": "nd, a hidden gem with sandy riverbanks in the West Khasi Hills. It is {{KM}} from Shillong ({{TIME}}); best time: Novemb"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "sandy riverbanks in the West Khasi Hills. It is {{KM}} from Shillong ({{TIME}}); best time: November to March for dry co"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "Nongkhnum Island, West Khasi Hills, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checke"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "m Island, West Khasi Hills, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "Hills, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timin"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "nce from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best se"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best season November to March for dry"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ch for dry conditions and accessible river crossings Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the X"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "essible river crossings Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the XTSY Voyage team, New Shillong"
+   }
+  ],
   "seo": {
    "title": "Nongkhnum Island, Nongstoin — Timings & How to Reach",
    "titleLen": 52,
@@ -8534,7 +8942,7 @@
    "firstParagraphWords": 17,
    "mentionsBrand": true,
    "mentionsLocation": true,
-   "updatedDate": false
+   "updatedDate": true
   },
   "info": []
  },
@@ -8620,8 +9028,45 @@
  {
   "url": "/destinations/meghalaya/shillong/bishop-falls",
   "status": 200,
-  "words": 963,
-  "findings": [],
+  "words": 1120,
+  "findings": [
+   {
+    "rule": "placeholder:template token",
+    "detail": "alls, plunging 130 meters into a forested valley near Shillong. It is {{KM}} from Shillong ({{TIME}}); best time: June t"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ers into a forested valley near Shillong. It is {{KM}} from Shillong ({{TIME}}); best time: June to October for the best"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "cation Bishop Falls, Near Shillong, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checke"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ishop Falls, Near Shillong, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "llong, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timin"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "nce from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best se"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best season June to October for the b"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "GS}} Best season June to October for the best views Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the X"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ober for the best views Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the XTSY Voyage team, New Shillong"
+   }
+  ],
   "seo": {
    "title": "Bishop Falls, Shillong — Timings & How to Reach",
    "titleLen": 47,
@@ -8657,15 +9102,36 @@
    "firstParagraphWords": 14,
    "mentionsBrand": true,
    "mentionsLocation": true,
-   "updatedDate": false
+   "updatedDate": true
   },
   "info": []
  },
  {
   "url": "/destinations/meghalaya/shillong/elephant-falls",
   "status": 200,
-  "words": 1718,
-  "findings": [],
+  "words": 1905,
+  "findings": [
+   {
+    "rule": "placeholder:template token",
+    "detail": "a Distance from Shillong 12 km (about 30 minutes by road) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timin"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ng 12 km (about 30 minutes by road) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best se"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "road) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best season June to September for the"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "l, full-flow falls (expect spray and slippery steps) Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the X"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ray and slippery steps) Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the XTSY Voyage team, New Shillong"
+   }
+  ],
   "seo": {
    "title": "Elephant Falls, Shillong — Timings, Entry Fee & How to Reach",
    "titleLen": 60,
@@ -8701,15 +9167,52 @@
    "firstParagraphWords": 8,
    "mentionsBrand": true,
    "mentionsLocation": true,
-   "updatedDate": false
+   "updatedDate": true
   },
   "info": []
  },
  {
   "url": "/destinations/meghalaya/shillong/laitlum-canyons",
   "status": 200,
-  "words": 1029,
-  "findings": [],
+  "words": 1184,
+  "findings": [
+   {
+    "rule": "placeholder:template token",
+    "detail": "h sweeping valley views and trekking routes to remote villages. It is {{KM}} from Shillong ({{TIME}}); best time: Octobe"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "s and trekking routes to remote villages. It is {{KM}} from Shillong ({{TIME}}); best time: October to March for clear v"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ion Laitlum Canyons, Near Shillong, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checke"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "lum Canyons, Near Shillong, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "llong, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timin"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "nce from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best se"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best season October to March for clea"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "INGS}} Best season October to March for clear views Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the X"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "o March for clear views Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the XTSY Voyage team, New Shillong"
+   }
+  ],
   "seo": {
    "title": "Laitlum Canyons, Shillong — Timings & How to Reach",
    "titleLen": 50,
@@ -8745,7 +9248,7 @@
    "firstParagraphWords": 14,
    "mentionsBrand": true,
    "mentionsLocation": true,
-   "updatedDate": false
+   "updatedDate": true
   },
   "info": []
  },
@@ -8840,8 +9343,45 @@
  {
   "url": "/destinations/meghalaya/shillong/nongjrong-sunrise-viewpoint",
   "status": 200,
-  "words": 950,
-  "findings": [],
+  "words": 1113,
+  "findings": [
+   {
+    "rule": "placeholder:template token",
+    "detail": "ise viewpoint where clouds form an ocean below the Khasi Hills. It is {{KM}} from Shillong ({{TIME}}); best time: Novemb"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ouds form an ocean below the Khasi Hills. It is {{KM}} from Shillong ({{TIME}}); best time: November to February for the"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "unrise Viewpoint, East Khasi Hills, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checke"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "iewpoint, East Khasi Hills, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "Hills, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timin"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "nce from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best se"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best season November to February for "
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "February for the most dramatic sea-of-clouds sunrise Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the X"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "c sea-of-clouds sunrise Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the XTSY Voyage team, New Shillong"
+   }
+  ],
   "seo": {
    "title": "Nongjrong Sunrise Viewpoint, Shillong — Travel Guide",
    "titleLen": 52,
@@ -8877,7 +9417,7 @@
    "firstParagraphWords": 13,
    "mentionsBrand": true,
    "mentionsLocation": true,
-   "updatedDate": false
+   "updatedDate": true
   },
   "info": []
  },
@@ -8928,8 +9468,45 @@
  {
   "url": "/destinations/meghalaya/shillong/spread-eagle-falls",
   "status": 200,
-  "words": 984,
-  "findings": [],
+  "words": 1142,
+  "findings": [
+   {
+    "rule": "placeholder:template token",
+    "detail": "ear Shillong where water spreads across rocks like eagle wings. It is {{KM}} from Shillong ({{TIME}}); best time: June t"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "er spreads across rocks like eagle wings. It is {{KM}} from Shillong ({{TIME}}); best time: June to September for full w"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": " Spread Eagle Falls, Near Shillong, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checke"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "Eagle Falls, Near Shillong, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "llong, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timin"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "nce from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best se"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best season June to September for ful"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": " Best season June to September for full water spread Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the X"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "r for full water spread Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the XTSY Voyage team, New Shillong"
+   }
+  ],
   "seo": {
    "title": "Spread Eagle Falls, Shillong — Timings & How to Reach",
    "titleLen": 53,
@@ -8965,15 +9542,52 @@
    "firstParagraphWords": 13,
    "mentionsBrand": true,
    "mentionsLocation": true,
-   "updatedDate": false
+   "updatedDate": true
   },
   "info": []
  },
  {
   "url": "/destinations/meghalaya/shillong/sweet-falls",
   "status": 200,
-  "words": 964,
-  "findings": [],
+  "words": 1121,
+  "findings": [
+   {
+    "rule": "placeholder:template token",
+    "detail": "ust 5 km from Shillong city center, plunging down steep cliffs. It is {{KM}} from Shillong ({{TIME}}); best time: June t"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": " city center, plunging down steep cliffs. It is {{KM}} from Shillong ({{TIME}}); best time: June to September for peak w"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ocation Sweet Falls, Near Shillong, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checke"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "Sweet Falls, Near Shillong, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "llong, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timin"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "nce from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best se"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best season June to September for pea"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "} Best season June to September for peak water flow Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the X"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ber for peak water flow Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the XTSY Voyage team, New Shillong"
+   }
+  ],
   "seo": {
    "title": "Sweet Falls, Shillong — Timings & How to Reach",
    "titleLen": 46,
@@ -9009,15 +9623,52 @@
    "firstParagraphWords": 14,
    "mentionsBrand": true,
    "mentionsLocation": true,
-   "updatedDate": false
+   "updatedDate": true
   },
   "info": []
  },
  {
   "url": "/destinations/meghalaya/shillong/umiam-lake",
   "status": 200,
-  "words": 1681,
-  "findings": [],
+  "words": 1853,
+  "findings": [
+   {
+    "rule": "placeholder:template token",
+    "detail": "fect for boating, kayaking and sunset viewpoints near Shillong. It is {{KM}} from Shillong ({{TIME}}); best time: Octobe"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "king and sunset viewpoints near Shillong. It is {{KM}} from Shillong ({{TIME}}); best time: October to May for clear blu"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "Location Umiam Lake, Near Shillong, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checke"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": " Umiam Lake, Near Shillong, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "llong, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timin"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "nce from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best se"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best season October to May for clear "
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "lue skies, pleasant weather and the best reflections Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the X"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "nd the best reflections Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the XTSY Voyage team, New Shillong"
+   }
+  ],
   "seo": {
    "title": "Umiam Lake (Barapani): Boating & Shillong Travel Guide",
    "titleLen": 54,
@@ -9053,15 +9704,52 @@
    "firstParagraphWords": 8,
    "mentionsBrand": true,
    "mentionsLocation": true,
-   "updatedDate": false
+   "updatedDate": true
   },
   "info": []
  },
  {
   "url": "/destinations/meghalaya/shillong/wah-rilang-viewpoint",
   "status": 200,
-  "words": 983,
-  "findings": [],
+  "words": 1143,
+  "findings": [
+   {
+    "rule": "placeholder:template token",
+    "detail": "in the East Khasi Hills with misty valley panoramas at sunrise. It is {{KM}} from Shillong ({{TIME}}); best time: Novemb"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "s with misty valley panoramas at sunrise. It is {{KM}} from Shillong ({{TIME}}); best time: November to March for sunris"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "Rilang Viewpoint, East Khasi Hills, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checke"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "iewpoint, East Khasi Hills, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "Hills, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timin"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "nce from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best se"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best season November to March for sun"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "Best season November to March for sunrise mist views Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the X"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": " for sunrise mist views Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the XTSY Voyage team, New Shillong"
+   }
+  ],
   "seo": {
    "title": "Wah Rilang Viewpoint, Shillong — Timings & How to Reach",
    "titleLen": 55,
@@ -9097,7 +9785,7 @@
    "firstParagraphWords": 14,
    "mentionsBrand": true,
    "mentionsLocation": true,
-   "updatedDate": false
+   "updatedDate": true
   },
   "info": []
  },
@@ -9139,8 +9827,45 @@
  {
   "url": "/destinations/meghalaya/tura/balpakram-national-park",
   "status": 200,
-  "words": 989,
-  "findings": [],
+  "words": 1151,
+  "findings": [
+   {
+    "rule": "placeholder:template token",
+    "detail": "remote national park with dramatic cliffs and diverse wildlife. It is {{KM}} from Shillong ({{TIME}}); best time: Octobe"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ith dramatic cliffs and diverse wildlife. It is {{KM}} from Shillong ({{TIME}}); best time: October to March for wildlif"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "alpakram National Park, Garo Hills, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checke"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": " National Park, Garo Hills, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "Hills, Meghalaya Distance from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timin"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "nce from Shillong {{KM}} ({{TIME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best se"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ME}}) Entry fee {{ENTRY_FEE}} (checked {{FACT_CHECK_DATE}}) Timings {{TIMINGS}} Best season October to March for wild"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "October to March for wildlife sightings and trekking Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the X"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": " sightings and trekking Trek difficulty {{TREK_DIFFICULTY}} Parking {{PARKING}} By the XTSY Voyage team, New Shillong"
+   }
+  ],
   "seo": {
    "title": "Balpakram National Park, Tura — Timings & How to Reach",
    "titleLen": 54,
@@ -9176,7 +9901,7 @@
    "firstParagraphWords": 16,
    "mentionsBrand": true,
    "mentionsLocation": true,
-   "updatedDate": false
+   "updatedDate": true
   },
   "info": []
  },
@@ -9852,7 +10577,7 @@
  {
   "url": "/elephant-falls-guide",
   "status": 200,
-  "words": 1238,
+  "words": 1237,
   "findings": [],
   "seo": {
    "title": "Elephant Falls Shillong — Three-Tiered Waterfall",
@@ -9897,7 +10622,7 @@
  {
   "url": "/elephant-falls-shillong",
   "status": 200,
-  "words": 1408,
+  "words": 1407,
   "findings": [],
   "seo": {
    "title": "Elephant Falls — Shillong's Most Accessible Waterfall",
@@ -10336,6 +11061,51 @@
   "info": []
  },
  {
+  "url": "/experience-by-xtsy",
+  "status": 200,
+  "words": 608,
+  "findings": [
+   {
+    "rule": "seo:duplicate description",
+    "detail": "2 pages: experience by xtsy, india's first stargaze glamp: a 270° panoramic glass suite i"
+   }
+  ],
+  "seo": {
+   "title": "Experience by XTSY: Romantic Couple Stay, New Shillong",
+   "titleLen": 54,
+   "desc": "Experience by XTSY, India's first stargaze glamp: a 270° panoramic glass suite in New Shillong Township. Photos, what's included and rates. Book direct.",
+   "descLen": 152,
+   "canonical": "https://xtsy.one/experience-by-xtsy",
+   "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
+   "h1": [
+    "Experience by XTSY: The Romantic Couple Stay in India is now at New Shillong, Meghalaya"
+   ],
+   "ogImage": true,
+   "imgs": 9,
+   "imgsNoAlt": 0
+  },
+  "aeo": {
+   "schemaTypes": [
+    "WebSite",
+    "Organization",
+    "PostalAddress",
+    "ContactPoint",
+    "LodgingBusiness",
+    "Accommodation",
+    "GeoCoordinates",
+    "LocationFeatureSpecification",
+    "Offer"
+   ],
+   "faqSchemaQuestions": 0,
+   "questionHeadings": 4,
+   "firstParagraphWords": 24,
+   "mentionsBrand": true,
+   "mentionsLocation": true,
+   "updatedDate": false
+  },
+  "info": []
+ },
+ {
   "url": "/family-restaurant-shillong",
   "status": 200,
   "words": 1009,
@@ -10563,7 +11333,7 @@
  {
   "url": "/fishing-in-dawki",
   "status": 200,
-  "words": 1032,
+  "words": 1031,
   "findings": [],
   "seo": {
    "title": "Fishing in Dawki Meghalaya 2026 — Guide | XTSY",
@@ -10692,8 +11462,8 @@
   "seo": {
    "title": "Glamping in Shillong Last Minute (2026) | XTSY",
    "titleLen": 46,
-   "desc": "Book a glamping in Shillong for last minute. Live availability, best rates and 24/7 check-in. Get instant help on WhatsApp.",
-   "descLen": 123,
+   "desc": "Book a glamping in Shillong for last minute. Availability confirmed on WhatsApp, best rates and 24/7 check-in. Get instant help on WhatsApp.",
+   "descLen": 140,
    "canonical": "https://xtsy.one/glamping-in-shillong-last-minute",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -10738,8 +11508,8 @@
   "seo": {
    "title": "Glamping in Shillong Now (2026) | XTSY",
    "titleLen": 38,
-   "desc": "Book a glamping in Shillong for now. Live availability, best rates and 24/7 check-in. Get instant help on WhatsApp.",
-   "descLen": 115,
+   "desc": "Book a glamping in Shillong for now. Availability confirmed on WhatsApp, best rates and 24/7 check-in. Get instant help on WhatsApp.",
+   "descLen": 132,
    "canonical": "https://xtsy.one/glamping-in-shillong-now",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -10784,8 +11554,8 @@
   "seo": {
    "title": "Glamping in Shillong This Weekend (2026) | XTSY",
    "titleLen": 47,
-   "desc": "Book a glamping in Shillong for this weekend. Live availability, best rates and 24/7 check-in. Get instant help on WhatsApp.",
-   "descLen": 124,
+   "desc": "Book a glamping in Shillong for this weekend. Availability confirmed on WhatsApp, best rates and 24/7 check-in. Get instant help on WhatsApp.",
+   "descLen": 141,
    "canonical": "https://xtsy.one/glamping-in-shillong-this-weekend",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -10830,8 +11600,8 @@
   "seo": {
    "title": "Glamping in Shillong Today (2026) | XTSY",
    "titleLen": 40,
-   "desc": "Book a glamping in Shillong for today. Live availability, best rates and 24/7 check-in. Get instant help on WhatsApp.",
-   "descLen": 117,
+   "desc": "Book a glamping in Shillong for today. Availability confirmed on WhatsApp, best rates and 24/7 check-in. Get instant help on WhatsApp.",
+   "descLen": 134,
    "canonical": "https://xtsy.one/glamping-in-shillong-today",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -10876,8 +11646,8 @@
   "seo": {
    "title": "Glamping in Shillong Tomorrow (2026) | XTSY",
    "titleLen": 43,
-   "desc": "Book a glamping in Shillong for tomorrow. Live availability, best rates and 24/7 check-in. Get instant help on WhatsApp.",
-   "descLen": 120,
+   "desc": "Book a glamping in Shillong for tomorrow. Availability confirmed on WhatsApp, best rates and 24/7 check-in. Get instant help on WhatsApp.",
+   "descLen": 137,
    "canonical": "https://xtsy.one/glamping-in-shillong-tomorrow",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -10922,8 +11692,8 @@
   "seo": {
    "title": "Glamping in Shillong Tonight (2026) | XTSY",
    "titleLen": 42,
-   "desc": "Book a glamping in Shillong for tonight. Live availability, best rates and 24/7 check-in. Get instant help on WhatsApp.",
-   "descLen": 119,
+   "desc": "Book a glamping in Shillong for tonight. Availability confirmed on WhatsApp, best rates and 24/7 check-in. Get instant help on WhatsApp.",
+   "descLen": 136,
    "canonical": "https://xtsy.one/glamping-in-shillong-tonight",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -10968,8 +11738,8 @@
   "seo": {
    "title": "Airport Glamping in Cherrapunji (2026) | XTSY",
    "titleLen": 45,
-   "desc": "Book a airport glamping in Cherrapunji. Live availability, best rates and 24/7 check-in. Get instant help on WhatsApp.",
-   "descLen": 118,
+   "desc": "Book a airport glamping in Cherrapunji. Availability confirmed on WhatsApp, best rates and 24/7 check-in. Get instant help on WhatsApp.",
+   "descLen": 135,
    "canonical": "https://xtsy.one/glamping-near-cherrapunji-airport",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -11012,8 +11782,8 @@
   "seo": {
    "title": "Airport Glamping in Guwahati (2026) | XTSY",
    "titleLen": 42,
-   "desc": "Book a airport glamping in Guwahati. Live availability, best rates and 24/7 check-in. Get instant help on WhatsApp.",
-   "descLen": 115,
+   "desc": "Book a airport glamping in Guwahati. Availability confirmed on WhatsApp, best rates and 24/7 check-in. Get instant help on WhatsApp.",
+   "descLen": 132,
    "canonical": "https://xtsy.one/glamping-near-guwahati-airport",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -11056,8 +11826,8 @@
   "seo": {
    "title": "Airport Glamping in Shillong (2026) | XTSY",
    "titleLen": 42,
-   "desc": "Book a airport glamping in Shillong. Live availability, best rates and 24/7 check-in. Get instant help on WhatsApp.",
-   "descLen": 115,
+   "desc": "Book a airport glamping in Shillong. Availability confirmed on WhatsApp, best rates and 24/7 check-in. Get instant help on WhatsApp.",
+   "descLen": 132,
    "canonical": "https://xtsy.one/glamping-near-shillong-airport",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -13366,7 +14136,7 @@
  {
   "url": "/guwahati-to-meghalaya-road-trip",
   "status": 200,
-  "words": 1325,
+  "words": 1324,
   "findings": [],
   "seo": {
    "title": "Guwahati to Meghalaya Road Trip Guide 2026 | XTSY",
@@ -13586,7 +14356,7 @@
  {
   "url": "/guwahati-to-shillong-transport",
   "status": 200,
-  "words": 1056,
+  "words": 1055,
   "findings": [],
   "seo": {
    "title": "Guwahati to Shillong — Transport Guide 2026 | XTSY",
@@ -14115,8 +14885,8 @@
   "seo": {
    "title": "Homestay in Shillong Last Minute (2026) | XTSY",
    "titleLen": 46,
-   "desc": "Book a homestay in Shillong for last minute. Live availability, best rates and 24/7 check-in. Get instant help on WhatsApp.",
-   "descLen": 123,
+   "desc": "Book a homestay in Shillong for last minute. Availability confirmed on WhatsApp, best rates and 24/7 check-in. Get instant help on WhatsApp.",
+   "descLen": 140,
    "canonical": "https://xtsy.one/homestay-in-shillong-last-minute",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -14161,8 +14931,8 @@
   "seo": {
    "title": "Homestay in Shillong Now (2026) | XTSY",
    "titleLen": 38,
-   "desc": "Book a homestay in Shillong for now. Live availability, best rates and 24/7 check-in. Get instant help on WhatsApp.",
-   "descLen": 115,
+   "desc": "Book a homestay in Shillong for now. Availability confirmed on WhatsApp, best rates and 24/7 check-in. Get instant help on WhatsApp.",
+   "descLen": 132,
    "canonical": "https://xtsy.one/homestay-in-shillong-now",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -14207,8 +14977,8 @@
   "seo": {
    "title": "Homestay in Shillong This Weekend (2026) | XTSY",
    "titleLen": 47,
-   "desc": "Book a homestay in Shillong for this weekend. Live availability, best rates and 24/7 check-in. Get instant help on WhatsApp.",
-   "descLen": 124,
+   "desc": "Book a homestay in Shillong for this weekend. Availability confirmed on WhatsApp, best rates and 24/7 check-in. Get instant help on WhatsApp.",
+   "descLen": 141,
    "canonical": "https://xtsy.one/homestay-in-shillong-this-weekend",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -14253,8 +15023,8 @@
   "seo": {
    "title": "Homestay in Shillong Today (2026) | XTSY",
    "titleLen": 40,
-   "desc": "Book a homestay in Shillong for today. Live availability, best rates and 24/7 check-in. Get instant help on WhatsApp.",
-   "descLen": 117,
+   "desc": "Book a homestay in Shillong for today. Availability confirmed on WhatsApp, best rates and 24/7 check-in. Get instant help on WhatsApp.",
+   "descLen": 134,
    "canonical": "https://xtsy.one/homestay-in-shillong-today",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -14299,8 +15069,8 @@
   "seo": {
    "title": "Homestay in Shillong Tomorrow (2026) | XTSY",
    "titleLen": 43,
-   "desc": "Book a homestay in Shillong for tomorrow. Live availability, best rates and 24/7 check-in. Get instant help on WhatsApp.",
-   "descLen": 120,
+   "desc": "Book a homestay in Shillong for tomorrow. Availability confirmed on WhatsApp, best rates and 24/7 check-in. Get instant help on WhatsApp.",
+   "descLen": 137,
    "canonical": "https://xtsy.one/homestay-in-shillong-tomorrow",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -14345,8 +15115,8 @@
   "seo": {
    "title": "Homestay in Shillong Tonight (2026) | XTSY",
    "titleLen": 42,
-   "desc": "Book a homestay in Shillong for tonight. Live availability, best rates and 24/7 check-in. Get instant help on WhatsApp.",
-   "descLen": 119,
+   "desc": "Book a homestay in Shillong for tonight. Availability confirmed on WhatsApp, best rates and 24/7 check-in. Get instant help on WhatsApp.",
+   "descLen": 136,
    "canonical": "https://xtsy.one/homestay-in-shillong-tonight",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -14391,8 +15161,8 @@
   "seo": {
    "title": "Airport Homestay in Cherrapunji (2026) | XTSY",
    "titleLen": 45,
-   "desc": "Book a airport homestay in Cherrapunji. Live availability, best rates and 24/7 check-in. Get instant help on WhatsApp.",
-   "descLen": 118,
+   "desc": "Book a airport homestay in Cherrapunji. Availability confirmed on WhatsApp, best rates and 24/7 check-in. Get instant help on WhatsApp.",
+   "descLen": 135,
    "canonical": "https://xtsy.one/homestay-near-cherrapunji-airport",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -14435,8 +15205,8 @@
   "seo": {
    "title": "Airport Homestay in Guwahati (2026) | XTSY",
    "titleLen": 42,
-   "desc": "Book a airport homestay in Guwahati. Live availability, best rates and 24/7 check-in. Get instant help on WhatsApp.",
-   "descLen": 115,
+   "desc": "Book a airport homestay in Guwahati. Availability confirmed on WhatsApp, best rates and 24/7 check-in. Get instant help on WhatsApp.",
+   "descLen": 132,
    "canonical": "https://xtsy.one/homestay-near-guwahati-airport",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -14479,8 +15249,8 @@
   "seo": {
    "title": "Airport Homestay in Shillong (2026) | XTSY",
    "titleLen": 42,
-   "desc": "Book a airport homestay in Shillong. Live availability, best rates and 24/7 check-in. Get instant help on WhatsApp.",
-   "descLen": 115,
+   "desc": "Book a airport homestay in Shillong. Availability confirmed on WhatsApp, best rates and 24/7 check-in. Get instant help on WhatsApp.",
+   "descLen": 132,
    "canonical": "https://xtsy.one/homestay-near-shillong-airport",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -16432,7 +17202,7 @@
  {
   "url": "/hostel-booking",
   "status": 200,
-  "words": 1341,
+  "words": 1340,
   "findings": [],
   "seo": {
    "title": "Hostel Booking in Shillong — Direct from ₹399 | XTSY",
@@ -16477,7 +17247,7 @@
  {
   "url": "/hostel-in-shillong-last-minute",
   "status": 200,
-  "words": 1214,
+  "words": 1220,
   "findings": [],
   "seo": {
    "title": "Hostel in Shillong Last Minute — XTSY, New Shillong Township",
@@ -16540,7 +17310,7 @@
  {
   "url": "/hostel-in-shillong-now",
   "status": 200,
-  "words": 1212,
+  "words": 1218,
   "findings": [],
   "seo": {
    "title": "Hostel in Shillong Right Now — XTSY, New Shillong Township",
@@ -16603,7 +17373,7 @@
  {
   "url": "/hostel-in-shillong-this-weekend",
   "status": 200,
-  "words": 1216,
+  "words": 1222,
   "findings": [],
   "seo": {
    "title": "Hostel in Shillong This Weekend",
@@ -16666,7 +17436,7 @@
  {
   "url": "/hostel-in-shillong-tomorrow",
   "status": 200,
-  "words": 1206,
+  "words": 1212,
   "findings": [],
   "seo": {
    "title": "Hostel in Shillong Tomorrow — XTSY, New Shillong Township",
@@ -16729,7 +17499,7 @@
  {
   "url": "/hostel-in-shillong-tonight",
   "status": 200,
-  "words": 1206,
+  "words": 1212,
   "findings": [],
   "seo": {
    "title": "Hostel in Shillong Tonight — XTSY, New Shillong Township",
@@ -16975,8 +17745,8 @@
   "seo": {
    "title": "Airport Hostel in Imphal (2026) | XTSY",
    "titleLen": 38,
-   "desc": "Book a airport hostel in Imphal. Live availability, best rates and 24/7 check-in. Get instant help on WhatsApp.",
-   "descLen": 111,
+   "desc": "Book a airport hostel in Imphal. Availability confirmed on WhatsApp, best rates and 24/7 check-in. Get instant help on WhatsApp.",
+   "descLen": 128,
    "canonical": "https://xtsy.one/hostel-near-imphal-airport",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -17019,8 +17789,8 @@
   "seo": {
    "title": "Airport Hostel in Kohima (2026) | XTSY",
    "titleLen": 38,
-   "desc": "Book a airport hostel in Kohima. Live availability, best rates and 24/7 check-in. Get instant help on WhatsApp.",
-   "descLen": 111,
+   "desc": "Book a airport hostel in Kohima. Availability confirmed on WhatsApp, best rates and 24/7 check-in. Get instant help on WhatsApp.",
+   "descLen": 128,
    "canonical": "https://xtsy.one/hostel-near-kohima-airport",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -17204,7 +17974,7 @@
  {
   "url": "/hostel-near-police-bazar-shillong",
   "status": 200,
-  "words": 1229,
+  "words": 1235,
   "findings": [],
   "seo": {
    "title": "Hostel near Police Bazar Shillong? Where XTSY Is | XTSY",
@@ -17267,7 +18037,7 @@
  {
   "url": "/hostel-near-shillong-airport",
   "status": 200,
-  "words": 1235,
+  "words": 1241,
   "findings": [],
   "seo": {
    "title": "Hostel near Shillong Airport — XTSY, New Shillong Township",
@@ -17385,7 +18155,7 @@
  {
   "url": "/hostels-in-shillong-today",
   "status": 200,
-  "words": 1194,
+  "words": 1200,
   "findings": [],
   "seo": {
    "title": "Hostels in Shillong Today — Beds from ₹399 | XTSY",
@@ -17683,7 +18453,7 @@
  {
   "url": "/hotels-in-shillong-available-now",
   "status": 200,
-  "words": 1086,
+  "words": 1089,
   "findings": [],
   "seo": {
    "title": "Hotels in Shillong Available Now (1 January 1970)",
@@ -17738,7 +18508,7 @@
  {
   "url": "/how-to-reach-cherrapunji",
   "status": 200,
-  "words": 1323,
+  "words": 1322,
   "findings": [],
   "seo": {
    "title": "How to Reach Cherrapunji 2026 — From Shillong & More",
@@ -17782,7 +18552,7 @@
  {
   "url": "/how-to-reach-dawki",
   "status": 200,
-  "words": 1329,
+  "words": 1328,
   "findings": [],
   "seo": {
    "title": "How to Reach Dawki 2026 — Crystal River Guide | XTSY",
@@ -17826,7 +18596,7 @@
  {
   "url": "/how-to-reach-meghalaya-from-bangalore",
   "status": 200,
-  "words": 1245,
+  "words": 1244,
   "findings": [],
   "seo": {
    "title": "How to Reach Meghalaya from Bangalore 2026 — Guide",
@@ -17870,7 +18640,7 @@
  {
   "url": "/how-to-reach-meghalaya-from-delhi",
   "status": 200,
-  "words": 1273,
+  "words": 1272,
   "findings": [],
   "seo": {
    "title": "How to Reach Meghalaya from Delhi 2026 — Best Routes",
@@ -17914,7 +18684,7 @@
  {
   "url": "/how-to-reach-meghalaya-from-kolkata",
   "status": 200,
-  "words": 1248,
+  "words": 1247,
   "findings": [],
   "seo": {
    "title": "How to Reach Meghalaya from Kolkata 2026 — Guide",
@@ -17958,7 +18728,7 @@
  {
   "url": "/how-to-reach-meghalaya-from-mumbai",
   "status": 200,
-  "words": 1281,
+  "words": 1280,
   "findings": [],
   "seo": {
    "title": "How to Reach Meghalaya from Mumbai 2026 — Guide",
@@ -18002,7 +18772,7 @@
  {
   "url": "/how-to-reach-shillong",
   "status": 200,
-  "words": 1343,
+  "words": 1342,
   "findings": [],
   "seo": {
    "title": "How to Reach Shillong — Flights, Trains, Buses & Taxis",
@@ -18224,7 +18994,7 @@
  {
   "url": "/kayaking-in-meghalaya",
   "status": 200,
-  "words": 1002,
+  "words": 1001,
   "findings": [],
   "seo": {
    "title": "Kayaking in Meghalaya — Dawki & Shnongpdeng | XTSY",
@@ -18356,7 +19126,7 @@
  {
   "url": "/krang-suri-falls-guide",
   "status": 200,
-  "words": 1256,
+  "words": 1255,
   "findings": [],
   "seo": {
    "title": "Krang Suri Falls — Blue Lagoon of Meghalaya | Guide",
@@ -18446,7 +19216,7 @@
  {
   "url": "/laitlum-canyons-guide",
   "status": 200,
-  "words": 1244,
+  "words": 1243,
   "findings": [],
   "seo": {
    "title": "Laitlum Canyons — Shillong's Best Viewpoint | Guide",
@@ -18580,7 +19350,7 @@
  {
   "url": "/living-root-bridge-trek",
   "status": 200,
-  "words": 1314,
+  "words": 1313,
   "findings": [],
   "seo": {
    "title": "Living Root Bridge Trek — Double Decker Root Bridge",
@@ -19008,7 +19778,7 @@
  {
   "url": "/mawlynnong-guide",
   "status": 200,
-  "words": 1283,
+  "words": 1282,
   "findings": [],
   "seo": {
    "title": "Mawlynnong — Asia's Cleanest Village | Guide",
@@ -19143,7 +19913,7 @@
  {
   "url": "/meghalaya-adventure-package",
   "status": 200,
-  "words": 1137,
+  "words": 1136,
   "findings": [],
   "seo": {
    "title": "Meghalaya Adventure Package — Trek, Camp, Explore",
@@ -19385,7 +20155,7 @@
  {
   "url": "/meghalaya-honeymoon-package",
   "status": 200,
-  "words": 1182,
+  "words": 1181,
   "findings": [],
   "seo": {
    "title": "Meghalaya Honeymoon Package — ₹18,999/Couple | XTSY",
@@ -19429,7 +20199,7 @@
  {
   "url": "/meghalaya-in-april",
   "status": 200,
-  "words": 1284,
+  "words": 1283,
   "findings": [],
   "seo": {
    "title": "Meghalaya in April 2026 — Weather & Guide | XTSY",
@@ -19473,7 +20243,7 @@
  {
   "url": "/meghalaya-in-august",
   "status": 200,
-  "words": 1280,
+  "words": 1279,
   "findings": [],
   "seo": {
    "title": "Meghalaya in August 2026 — Weather & Guide | XTSY",
@@ -19517,7 +20287,7 @@
  {
   "url": "/meghalaya-in-december",
   "status": 200,
-  "words": 1281,
+  "words": 1280,
   "findings": [],
   "seo": {
    "title": "Meghalaya in December 2026 — Weather & Guide | XTSY",
@@ -19561,7 +20331,7 @@
  {
   "url": "/meghalaya-in-february",
   "status": 200,
-  "words": 1286,
+  "words": 1285,
   "findings": [],
   "seo": {
    "title": "Meghalaya in February 2026 — Weather & Guide | XTSY",
@@ -19605,7 +20375,7 @@
  {
   "url": "/meghalaya-in-january",
   "status": 200,
-  "words": 1288,
+  "words": 1287,
   "findings": [],
   "seo": {
    "title": "Meghalaya in January 2026 — Weather & Guide | XTSY",
@@ -19649,7 +20419,7 @@
  {
   "url": "/meghalaya-in-july",
   "status": 200,
-  "words": 1283,
+  "words": 1282,
   "findings": [],
   "seo": {
    "title": "Meghalaya in July 2026 — Weather & Guide | XTSY",
@@ -19693,7 +20463,7 @@
  {
   "url": "/meghalaya-in-june",
   "status": 200,
-  "words": 1284,
+  "words": 1283,
   "findings": [],
   "seo": {
    "title": "Meghalaya in June 2026 — Weather & Guide | XTSY",
@@ -19737,7 +20507,7 @@
  {
   "url": "/meghalaya-in-march",
   "status": 200,
-  "words": 1283,
+  "words": 1282,
   "findings": [],
   "seo": {
    "title": "Meghalaya in March 2026 — Weather & Guide | XTSY",
@@ -19781,7 +20551,7 @@
  {
   "url": "/meghalaya-in-may",
   "status": 200,
-  "words": 1283,
+  "words": 1282,
   "findings": [],
   "seo": {
    "title": "Meghalaya in May 2026 — Weather & Guide | XTSY",
@@ -19825,7 +20595,7 @@
  {
   "url": "/meghalaya-in-november",
   "status": 200,
-  "words": 1278,
+  "words": 1277,
   "findings": [],
   "seo": {
    "title": "Meghalaya in November 2026 — Weather & Guide | XTSY",
@@ -19869,7 +20639,7 @@
  {
   "url": "/meghalaya-in-october",
   "status": 200,
-  "words": 1283,
+  "words": 1282,
   "findings": [],
   "seo": {
    "title": "Meghalaya in October 2026 — Weather & Guide | XTSY",
@@ -19913,7 +20683,7 @@
  {
   "url": "/meghalaya-in-september",
   "status": 200,
-  "words": 1281,
+  "words": 1280,
   "findings": [],
   "seo": {
    "title": "Meghalaya in September 2026 — Weather & Guide | XTSY",
@@ -20041,7 +20811,7 @@
  {
   "url": "/meghalaya-photography-tour",
   "status": 200,
-  "words": 1117,
+  "words": 1116,
   "findings": [],
   "seo": {
    "title": "Meghalaya Photography Tour — Capture the Beauty",
@@ -20085,7 +20855,7 @@
  {
   "url": "/meghalaya-tour-package-3-days",
   "status": 200,
-  "words": 1140,
+  "words": 1139,
   "findings": [],
   "seo": {
    "title": "3 Day Meghalaya Tour Package — ₹7,999 | XTSY",
@@ -20129,7 +20899,7 @@
  {
   "url": "/meghalaya-tour-package-5-days",
   "status": 200,
-  "words": 1163,
+  "words": 1162,
   "findings": [],
   "seo": {
    "title": "5 Day Meghalaya Tour Package — ₹13,999 | XTSY",
@@ -20173,7 +20943,7 @@
  {
   "url": "/meghalaya-tour-package-7-days",
   "status": 200,
-  "words": 1204,
+  "words": 1203,
   "findings": [],
   "seo": {
    "title": "7 Day Meghalaya Tour Package — ₹22,999 | XTSY",
@@ -20217,13 +20987,22 @@
  {
   "url": "/meghalaya-tour-packages",
   "status": 200,
-  "words": 570,
-  "findings": [],
+  "words": 756,
+  "findings": [
+   {
+    "rule": "placeholder:template token",
+    "detail": " Breakfast, dinner and a bonfire at both stays Day-by-day itinerary {{GROUP_TOUR_ITINERARY}} No free cancellation; th"
+   },
+   {
+    "rule": "placeholder:template token",
+    "detail": "ree cancellation; the booking amount is non-refundable. Pickup point: {{PICKUP_POINT}} . Stay & tour with XTSY Base yo"
+   }
+  ],
   "seo": {
-   "title": "Meghalaya Tour Packages 2026 — Starting ₹7,999 | XTSY",
-   "titleLen": 53,
-   "desc": "Meghalaya tour packages from ₹7,999: Shillong, Cherrapunji, Dawki and the living root bridges, with stays, meals and transport included. Book direct.",
-   "descLen": 149,
+   "title": "Meghalaya Tour Package: Saturday Group 4N/5D ₹10,000 | XTSY",
+   "titleLen": 59,
+   "desc": "Meghalaya group tour, 4N/5D for ₹10,000 per person on the 1st and 3rd Saturday: XTSY hostel stay, Dawki camping, transport and breakfast. Enquire today.",
+   "descLen": 152,
    "canonical": "https://xtsy.one/meghalaya-tour-packages",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -20345,7 +21124,7 @@
  {
   "url": "/meghalaya-trip-today",
   "status": 200,
-  "words": 1429,
+  "words": 1428,
   "findings": [],
   "seo": {
    "title": "Start Your Meghalaya Trip Today",
@@ -22039,7 +22818,7 @@
  {
   "url": "/nohkalikai-falls-guide",
   "status": 200,
-  "words": 1273,
+  "words": 1272,
   "findings": [],
   "seo": {
    "title": "Nohkalikai Falls — India's Tallest Waterfall | Guide",
@@ -22129,7 +22908,7 @@
  {
   "url": "/nongjrong-tour-package",
   "status": 200,
-  "words": 1089,
+  "words": 1088,
   "findings": [],
   "seo": {
    "title": "Nongjrong Tour Package from Shillong | XTSY",
@@ -22217,7 +22996,7 @@
  {
   "url": "/north-east-trip-guide",
   "status": 200,
-  "words": 1370,
+  "words": 1369,
   "findings": [],
   "seo": {
    "title": "North East India Trip Guide 2026 | XTSY Travel",
@@ -22305,7 +23084,7 @@
  {
   "url": "/offbeat-meghalaya",
   "status": 200,
-  "words": 1327,
+  "words": 1326,
   "findings": [],
   "seo": {
    "title": "Offbeat Places in Meghalaya 2026 — Hidden Gems | XTSY",
@@ -22393,7 +23172,7 @@
  {
   "url": "/outdoor-venue-shillong",
   "status": 200,
-  "words": 900,
+  "words": 899,
   "findings": [],
   "seo": {
    "title": "Outdoor Venue in Shillong — Events & Weddings | XTSY",
@@ -23037,7 +23816,7 @@
     "Question",
     "Answer"
    ],
-   "faqSchemaQuestions": 12,
+   "faqSchemaQuestions": 6,
    "questionHeadings": 8,
    "firstParagraphWords": 38,
    "mentionsBrand": true,
@@ -23259,7 +24038,7 @@
  {
   "url": "/rainbow-falls-guide",
   "status": 200,
-  "words": 1268,
+  "words": 1267,
   "findings": [],
   "seo": {
    "title": "Rainbow Falls Meghalaya — Nongriat Trek Guide",
@@ -23348,7 +24127,7 @@
  {
   "url": "/restaurant-in-shillong",
   "status": 200,
-  "words": 2106,
+  "words": 2112,
   "findings": [
    {
     "rule": "placeholder:coming soon",
@@ -23377,6 +24156,9 @@
     "ContactPoint",
     "Restaurant",
     "OpeningHoursSpecification",
+    "Review",
+    "Person",
+    "Rating",
     "Menu",
     "MenuSection",
     "MenuItem",
@@ -23845,7 +24627,7 @@
  {
   "url": "/scooty-rental-shillong",
   "status": 200,
-  "words": 966,
+  "words": 965,
   "findings": [],
   "seo": {
    "title": "Scooty Rental in Shillong — From ₹500/Day | XTSY",
@@ -23889,7 +24671,7 @@
  {
   "url": "/self-drive-car-guwahati",
   "status": 200,
-  "words": 1118,
+  "words": 1117,
   "findings": [],
   "seo": {
    "title": "Self Drive Car Rental Guwahati 2026 | XTSY Rentals",
@@ -24041,7 +24823,7 @@
  {
   "url": "/shillong-guide",
   "status": 200,
-  "words": 1269,
+  "words": 1268,
   "findings": [],
   "seo": {
    "title": "Shillong — The Scotland of the East | Complete Guide",
@@ -24140,7 +24922,7 @@
  {
   "url": "/shillong-peak-viewpoint",
   "status": 200,
-  "words": 1419,
+  "words": 1418,
   "findings": [],
   "seo": {
    "title": "Shillong Peak — Highest Point & 360° Panoramic Views",
@@ -24185,7 +24967,7 @@
  {
   "url": "/shillong-stay-tonight",
   "status": 200,
-  "words": 1129,
+  "words": 1133,
   "findings": [],
   "seo": {
    "title": "Stay in Shillong Tonight — Rooms & Beds Available (1 Januar…",
@@ -24256,7 +25038,7 @@
  {
   "url": "/shillong-to-cherrapunji-road-trip",
   "status": 200,
-  "words": 1316,
+  "words": 1315,
   "findings": [],
   "seo": {
    "title": "Shillong to Cherrapunji Road Trip Guide 2026 | XTSY",
@@ -24300,7 +25082,7 @@
  {
   "url": "/shillong-to-dawki-trip",
   "status": 200,
-  "words": 1326,
+  "words": 1325,
   "findings": [],
   "seo": {
    "title": "Shillong to Dawki Trip Guide 2026 — XTSY",
@@ -24344,7 +25126,7 @@
  {
   "url": "/shillong-to-nongjrong",
   "status": 200,
-  "words": 1255,
+  "words": 1254,
   "findings": [],
   "seo": {
    "title": "Shillong to Nongjrong Trip Guide 2026 | XTSY",
@@ -24428,7 +25210,7 @@
  {
   "url": "/shillong-tour-package-2-days",
   "status": 200,
-  "words": 1088,
+  "words": 1087,
   "findings": [],
   "seo": {
    "title": "Shillong Tour Package 2 Days — ₹4,999 | XTSY",
@@ -24516,7 +25298,7 @@
  {
   "url": "/shillong-vacation-planner",
   "status": 200,
-  "words": 1318,
+  "words": 1317,
   "findings": [],
   "seo": {
    "title": "Shillong Vacation Planner 2026 — Complete Guide",
@@ -24560,7 +25342,7 @@
  {
   "url": "/shillong-weekend-trip",
   "status": 200,
-  "words": 1242,
+  "words": 1241,
   "findings": [],
   "seo": {
    "title": "Shillong Weekend Trip — 2 Night 3 Day Plan",
@@ -24739,7 +25521,7 @@
  {
   "url": "/solo-trip-meghalaya",
   "status": 200,
-  "words": 1371,
+  "words": 1370,
   "findings": [],
   "seo": {
    "title": "Solo Trip to Meghalaya 2026 — Complete Guide | XTSY",
@@ -25338,7 +26120,7 @@
  {
   "url": "/suv-rental-shillong",
   "status": 200,
-  "words": 941,
+  "words": 940,
   "findings": [],
   "seo": {
    "title": "SUV Rental in Shillong — 4x4 for Meghalaya | XTSY",
@@ -25417,6 +26199,9 @@
     "GeoCoordinates",
     "OpeningHoursSpecification",
     "AggregateRating",
+    "Review",
+    "Person",
+    "Rating",
     "Menu",
     "MenuSection",
     "MenuItem",
@@ -25876,7 +26661,7 @@
  {
   "url": "/tour-operators-meghalaya",
   "status": 200,
-  "words": 1123,
+  "words": 1122,
   "findings": [],
   "seo": {
    "title": "Best Tour Operators in Meghalaya 2026 | XTSY",
@@ -25920,7 +26705,7 @@
  {
   "url": "/tour-operators-shillong",
   "status": 200,
-  "words": 1089,
+  "words": 1088,
   "findings": [],
   "seo": {
    "title": "Tour Operators in Shillong 2026 — Best Rated | XTSY",
@@ -26027,13 +26812,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 60,
    "mentionsBrand": true,
@@ -26071,13 +26852,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 44,
    "mentionsBrand": true,
@@ -26115,13 +26892,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 51,
    "mentionsBrand": true,
@@ -26159,13 +26932,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 51,
    "mentionsBrand": true,
@@ -26203,13 +26972,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 44,
    "mentionsBrand": true,
@@ -26247,13 +27012,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 49,
    "mentionsBrand": true,
@@ -26291,13 +27052,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 52,
    "mentionsBrand": true,
@@ -26335,13 +27092,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 57,
    "mentionsBrand": true,
@@ -26379,13 +27132,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 51,
    "mentionsBrand": true,
@@ -26423,13 +27172,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 52,
    "mentionsBrand": true,
@@ -26466,13 +27211,9 @@
     "TouristTrip",
     "ItemList",
     "ListItem",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 65,
    "mentionsBrand": true,
@@ -26509,13 +27250,9 @@
     "TouristTrip",
     "Offer",
     "BreadcrumbList",
-    "ListItem",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "ListItem"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 56,
    "mentionsBrand": true,
@@ -26553,13 +27290,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 46,
    "mentionsBrand": true,
@@ -26597,13 +27330,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 47,
    "mentionsBrand": true,
@@ -26641,13 +27370,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 53,
    "mentionsBrand": true,
@@ -26685,13 +27410,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 52,
    "mentionsBrand": true,
@@ -26729,13 +27450,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 46,
    "mentionsBrand": true,
@@ -26773,13 +27490,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 46,
    "mentionsBrand": true,
@@ -26816,13 +27529,9 @@
     "TouristTrip",
     "ItemList",
     "ListItem",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 67,
    "mentionsBrand": true,
@@ -26860,13 +27569,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 47,
    "mentionsBrand": true,
@@ -26904,13 +27609,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 46,
    "mentionsBrand": true,
@@ -26948,13 +27649,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 47,
    "mentionsBrand": true,
@@ -26992,13 +27689,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 45,
    "mentionsBrand": true,
@@ -27036,13 +27729,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 52,
    "mentionsBrand": true,
@@ -27080,13 +27769,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 50,
    "mentionsBrand": true,
@@ -27123,13 +27808,9 @@
     "TouristTrip",
     "ItemList",
     "ListItem",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 5,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 7,
    "firstParagraphWords": 68,
    "mentionsBrand": true,
@@ -27167,13 +27848,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 53,
    "mentionsBrand": true,
@@ -27210,13 +27887,9 @@
     "TouristTrip",
     "ItemList",
     "ListItem",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 5,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 7,
    "firstParagraphWords": 61,
    "mentionsBrand": true,
@@ -27254,13 +27927,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 45,
    "mentionsBrand": true,
@@ -27298,13 +27967,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 52,
    "mentionsBrand": true,
@@ -27341,13 +28006,9 @@
     "TouristTrip",
     "ItemList",
     "ListItem",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 5,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 7,
    "firstParagraphWords": 67,
    "mentionsBrand": true,
@@ -27385,13 +28046,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 46,
    "mentionsBrand": true,
@@ -27429,13 +28086,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 47,
    "mentionsBrand": true,
@@ -27473,13 +28126,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 46,
    "mentionsBrand": true,
@@ -27517,13 +28166,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 45,
    "mentionsBrand": true,
@@ -27560,13 +28205,9 @@
     "TouristTrip",
     "ItemList",
     "ListItem",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 5,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 7,
    "firstParagraphWords": 62,
    "mentionsBrand": true,
@@ -27603,13 +28244,9 @@
     "TouristTrip",
     "ItemList",
     "ListItem",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 5,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 7,
    "firstParagraphWords": 67,
    "mentionsBrand": true,
@@ -27647,13 +28284,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 46,
    "mentionsBrand": true,
@@ -27691,13 +28324,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 51,
    "mentionsBrand": true,
@@ -27735,13 +28364,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 46,
    "mentionsBrand": true,
@@ -27779,13 +28404,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 53,
    "mentionsBrand": true,
@@ -27822,13 +28443,9 @@
     "TouristTrip",
     "ItemList",
     "ListItem",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 60,
    "mentionsBrand": true,
@@ -27866,13 +28483,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 47,
    "mentionsBrand": true,
@@ -27910,13 +28523,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 45,
    "mentionsBrand": true,
@@ -27953,13 +28562,9 @@
     "TouristTrip",
     "Offer",
     "BreadcrumbList",
-    "ListItem",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "ListItem"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 56,
    "mentionsBrand": true,
@@ -27997,13 +28602,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 53,
    "mentionsBrand": true,
@@ -28041,13 +28642,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 45,
    "mentionsBrand": true,
@@ -28085,13 +28682,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 52,
    "mentionsBrand": true,
@@ -28128,13 +28721,9 @@
     "TouristTrip",
     "ItemList",
     "ListItem",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 62,
    "mentionsBrand": true,
@@ -28171,13 +28760,9 @@
     "TouristTrip",
     "ItemList",
     "ListItem",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 5,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 7,
    "firstParagraphWords": 68,
    "mentionsBrand": true,
@@ -28215,13 +28800,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 45,
    "mentionsBrand": true,
@@ -28259,13 +28840,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 42,
    "mentionsBrand": true,
@@ -28303,13 +28880,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 52,
    "mentionsBrand": true,
@@ -28347,13 +28920,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 45,
    "mentionsBrand": true,
@@ -28390,13 +28959,9 @@
     "TouristTrip",
     "ItemList",
     "ListItem",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 66,
    "mentionsBrand": true,
@@ -28434,13 +28999,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 45,
    "mentionsBrand": true,
@@ -28477,13 +29038,9 @@
     "TouristTrip",
     "Offer",
     "BreadcrumbList",
-    "ListItem",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "ListItem"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 52,
    "mentionsBrand": true,
@@ -28520,13 +29077,9 @@
     "TouristTrip",
     "ItemList",
     "ListItem",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 5,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 7,
    "firstParagraphWords": 61,
    "mentionsBrand": true,
@@ -28564,13 +29117,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 54,
    "mentionsBrand": true,
@@ -28608,13 +29157,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 45,
    "mentionsBrand": true,
@@ -28652,13 +29197,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 53,
    "mentionsBrand": true,
@@ -28696,13 +29237,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 46,
    "mentionsBrand": true,
@@ -28739,13 +29276,9 @@
     "TouristTrip",
     "Offer",
     "BreadcrumbList",
-    "ListItem",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "ListItem"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 53,
    "mentionsBrand": true,
@@ -28783,13 +29316,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 46,
    "mentionsBrand": true,
@@ -28827,13 +29356,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 53,
    "mentionsBrand": true,
@@ -28870,13 +29395,9 @@
     "TouristTrip",
     "ItemList",
     "ListItem",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 5,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 7,
    "firstParagraphWords": 60,
    "mentionsBrand": true,
@@ -28914,13 +29435,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 50,
    "mentionsBrand": true,
@@ -28958,13 +29475,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 49,
    "mentionsBrand": true,
@@ -29002,13 +29515,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 52,
    "mentionsBrand": true,
@@ -29045,13 +29554,9 @@
     "TouristTrip",
     "ItemList",
     "ListItem",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 5,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 7,
    "firstParagraphWords": 60,
    "mentionsBrand": true,
@@ -29089,13 +29594,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 49,
    "mentionsBrand": true,
@@ -29132,13 +29633,9 @@
     "TouristTrip",
     "Offer",
     "BreadcrumbList",
-    "ListItem",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "ListItem"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 49,
    "mentionsBrand": true,
@@ -29176,13 +29673,9 @@
     "ItemList",
     "ListItem",
     "Offer",
-    "BreadcrumbList",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "BreadcrumbList"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 49,
    "mentionsBrand": true,
@@ -29219,13 +29712,9 @@
     "TouristTrip",
     "Offer",
     "BreadcrumbList",
-    "ListItem",
-    "TravelAgency",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "ListItem"
    ],
-   "faqSchemaQuestions": 4,
+   "faqSchemaQuestions": 0,
    "questionHeadings": 6,
    "firstParagraphWords": 54,
    "mentionsBrand": true,
@@ -29237,7 +29726,7 @@
  {
   "url": "/travel-agency-shillong",
   "status": 200,
-  "words": 1139,
+  "words": 1138,
   "findings": [],
   "seo": {
    "title": "Best Travel Agency in Shillong 2026 | XTSY Travel",
@@ -29637,7 +30126,7 @@
  {
   "url": "/vehicle-rental-northeast",
   "status": 200,
-  "words": 932,
+  "words": 931,
   "findings": [],
   "seo": {
    "title": "Vehicle Rental Northeast India — Cars & Bikes | XTSY",
@@ -29813,7 +30302,7 @@
  {
   "url": "/weekend-meghalaya-trip",
   "status": 200,
-  "words": 1198,
+  "words": 1197,
   "findings": [],
   "seo": {
    "title": "Weekend Meghalaya Trip 2026 — Day-by-Day Guide | XTSY",
@@ -29857,7 +30346,7 @@
  {
   "url": "/wei-sawdong-falls-guide",
   "status": 200,
-  "words": 1273,
+  "words": 1272,
   "findings": [],
   "seo": {
    "title": "Wei Sawdong Falls — Three-Tiered Hidden Gem",
@@ -30060,7 +30549,7 @@
    ],
    "faqSchemaQuestions": 8,
    "questionHeadings": 4,
-   "firstParagraphWords": 27,
+   "firstParagraphWords": 28,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -30070,7 +30559,7 @@
  {
   "url": "/workation-cherrapunji",
   "status": 200,
-  "words": 1358,
+  "words": 1359,
   "findings": [],
   "seo": {
    "title": "Workation in Cherrapunji 2026 – Long-Stay by XTSY",
@@ -30104,7 +30593,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 7,
-   "firstParagraphWords": 27,
+   "firstParagraphWords": 28,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -30148,7 +30637,7 @@
    ],
    "faqSchemaQuestions": 8,
    "questionHeadings": 4,
-   "firstParagraphWords": 27,
+   "firstParagraphWords": 28,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -30192,7 +30681,7 @@
    ],
    "faqSchemaQuestions": 8,
    "questionHeadings": 4,
-   "firstParagraphWords": 27,
+   "firstParagraphWords": 28,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -30236,7 +30725,7 @@
    ],
    "faqSchemaQuestions": 8,
    "questionHeadings": 4,
-   "firstParagraphWords": 27,
+   "firstParagraphWords": 28,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -30280,7 +30769,7 @@
    ],
    "faqSchemaQuestions": 8,
    "questionHeadings": 4,
-   "firstParagraphWords": 27,
+   "firstParagraphWords": 28,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -30324,7 +30813,7 @@
    ],
    "faqSchemaQuestions": 8,
    "questionHeadings": 4,
-   "firstParagraphWords": 27,
+   "firstParagraphWords": 28,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -30368,7 +30857,7 @@
    ],
    "faqSchemaQuestions": 8,
    "questionHeadings": 4,
-   "firstParagraphWords": 27,
+   "firstParagraphWords": 28,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -30414,7 +30903,7 @@
    ],
    "faqSchemaQuestions": 8,
    "questionHeadings": 3,
-   "firstParagraphWords": 27,
+   "firstParagraphWords": 28,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -30424,7 +30913,7 @@
  {
   "url": "/workation-shillong",
   "status": 200,
-  "words": 1296,
+  "words": 1297,
   "findings": [],
   "seo": {
    "title": "Workation in Shillong 2026 – Long-Stay by XTSY",
@@ -30460,7 +30949,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 6,
-   "firstParagraphWords": 27,
+   "firstParagraphWords": 28,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -30470,7 +30959,7 @@
  {
   "url": "/workation-tawang",
   "status": 200,
-  "words": 1397,
+  "words": 1398,
   "findings": [],
   "seo": {
    "title": "Workation in Tawang 2026 – Long-Stay by XTSY",
@@ -30504,7 +30993,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 7,
-   "firstParagraphWords": 27,
+   "firstParagraphWords": 28,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -30550,7 +31039,7 @@
    ],
    "faqSchemaQuestions": 8,
    "questionHeadings": 3,
-   "firstParagraphWords": 27,
+   "firstParagraphWords": 28,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -30560,17 +31049,22 @@
  {
   "url": "/xtsy-270",
   "status": 200,
-  "words": 596,
-  "findings": [],
+  "words": 639,
+  "findings": [
+   {
+    "rule": "seo:duplicate description",
+    "detail": "2 pages: experience by xtsy, india's first stargaze glamp: a 270° panoramic glass suite i"
+   }
+  ],
   "seo": {
-   "title": "Experience by XTSY — India's First Stargaze Glamp, Shillong",
-   "titleLen": 59,
+   "title": "Experience by XTSY: Romantic Couple Stay, New Shillong",
+   "titleLen": 54,
    "desc": "Experience by XTSY, India's first stargaze glamp: a 270° panoramic glass suite in New Shillong Township. Photos, what's included and rates. Book direct.",
    "descLen": 152,
-   "canonical": "https://xtsy.one/xtsy-270",
+   "canonical": "https://xtsy.one/experience-by-xtsy",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
-    "Experience by XTSY"
+    "Experience by XTSY: The Romantic Couple Stay in India is now at New Shillong, Meghalaya"
    ],
    "ogImage": true,
    "imgs": 9,
@@ -30586,10 +31080,13 @@
     "Accommodation",
     "GeoCoordinates",
     "LocationFeatureSpecification",
-    "Offer"
+    "Offer",
+    "FAQPage",
+    "Question",
+    "Answer"
    ],
-   "faqSchemaQuestions": 0,
-   "questionHeadings": 4,
+   "faqSchemaQuestions": 5,
+   "questionHeadings": 6,
    "firstParagraphWords": 24,
    "mentionsBrand": true,
    "mentionsLocation": true,
@@ -30768,7 +31265,7 @@
  {
   "url": "/zip-lining-meghalaya",
   "status": 200,
-  "words": 985,
+  "words": 984,
   "findings": [],
   "seo": {
    "title": "Zip Lining in Meghalaya 2026 — Adventure Activity",
