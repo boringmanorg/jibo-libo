@@ -119,6 +119,9 @@ export function serverOnlySecurityHeaders(config: SecurityHeadersConfig = {}): R
     // public/_headers declares these, but that file only covers static assets —
     // server-rendered HTML never received them, which is every page on the site.
     // Both are header-only (no meta equivalent that works), so they belong here.
+    // Mirrors the policy public/_headers already declares. That file only covers
+    // static assets, so HTML responses carried no HSTS at all.
+    'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
     'Referrer-Policy': 'strict-origin-when-cross-origin',
     'Permissions-Policy':
       'geolocation=(), microphone=(), camera=(), payment=(), usb=(), bluetooth=(), interest-cohort=()',
