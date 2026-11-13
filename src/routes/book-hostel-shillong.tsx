@@ -10,6 +10,8 @@ export const Route = createFileRoute("/book-hostel-shillong")({
         "Book direct at XTSY Travellers Hostel Shillong. Mixed dorms from Rs 399, private rooms and Experience by XTSY, booked direct at the base rate.",
     }),
   beforeLoad: () => {
-    throw redirect({ to: "/hostel-booking", replace: true });
+    // 301, not the router default of 307: this rename is permanent, and a 307
+    // tells Google not to consolidate the old URL's ranking onto the new one.
+    throw redirect({ to: "/hostel-booking", replace: true, statusCode: 301 });
   },
 });

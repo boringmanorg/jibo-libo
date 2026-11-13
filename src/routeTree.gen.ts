@@ -69,6 +69,7 @@ import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TermsOfServiceRouteImport } from './routes/terms-of-service'
 import { Route as ThingsToDoInMeghalayaRouteImport } from './routes/things-to-do-in-meghalaya'
 import { Route as TravelRouteImport } from './routes/travel'
+import { Route as UnsubscribeRouteImport } from './routes/unsubscribe'
 import { Route as WorkFromHomeRouteImport } from './routes/work-from-home'
 import { Route as Xtsy270RouteImport } from './routes/xtsy-270'
 import { Route as XtsyAdventureCampsiteDawkiRouteImport } from './routes/xtsy-adventure-campsite-dawki'
@@ -406,6 +407,11 @@ const TravelRoute = TravelRouteImport.update({
   path: '/travel',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UnsubscribeRoute = UnsubscribeRouteImport.update({
+  id: '/unsubscribe',
+  path: '/unsubscribe',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WorkFromHomeRoute = WorkFromHomeRouteImport.update({
   id: '/work-from-home',
   path: '/work-from-home',
@@ -615,6 +621,7 @@ export interface FileRoutesByFullPath {
   '/terms-of-service': typeof TermsOfServiceRoute
   '/things-to-do-in-meghalaya': typeof ThingsToDoInMeghalayaRoute
   '/travel': typeof TravelRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/work-from-home': typeof WorkFromHomeRoute
   '/xtsy-270': typeof Xtsy270Route
   '/xtsy-adventure-campsite-dawki': typeof XtsyAdventureCampsiteDawkiRoute
@@ -705,6 +712,7 @@ export interface FileRoutesByTo {
   '/terms-of-service': typeof TermsOfServiceRoute
   '/things-to-do-in-meghalaya': typeof ThingsToDoInMeghalayaRoute
   '/travel': typeof TravelRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/work-from-home': typeof WorkFromHomeRoute
   '/xtsy-270': typeof Xtsy270Route
   '/xtsy-adventure-campsite-dawki': typeof XtsyAdventureCampsiteDawkiRoute
@@ -796,6 +804,7 @@ export interface FileRoutesById {
   '/terms-of-service': typeof TermsOfServiceRoute
   '/things-to-do-in-meghalaya': typeof ThingsToDoInMeghalayaRoute
   '/travel': typeof TravelRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/work-from-home': typeof WorkFromHomeRoute
   '/xtsy-270': typeof Xtsy270Route
   '/xtsy-adventure-campsite-dawki': typeof XtsyAdventureCampsiteDawkiRoute
@@ -888,6 +897,7 @@ export interface FileRouteTypes {
     | '/terms-of-service'
     | '/things-to-do-in-meghalaya'
     | '/travel'
+    | '/unsubscribe'
     | '/work-from-home'
     | '/xtsy-270'
     | '/xtsy-adventure-campsite-dawki'
@@ -978,6 +988,7 @@ export interface FileRouteTypes {
     | '/terms-of-service'
     | '/things-to-do-in-meghalaya'
     | '/travel'
+    | '/unsubscribe'
     | '/work-from-home'
     | '/xtsy-270'
     | '/xtsy-adventure-campsite-dawki'
@@ -1068,6 +1079,7 @@ export interface FileRouteTypes {
     | '/terms-of-service'
     | '/things-to-do-in-meghalaya'
     | '/travel'
+    | '/unsubscribe'
     | '/work-from-home'
     | '/xtsy-270'
     | '/xtsy-adventure-campsite-dawki'
@@ -1159,6 +1171,7 @@ export interface RootRouteChildren {
   TermsOfServiceRoute: typeof TermsOfServiceRoute
   ThingsToDoInMeghalayaRoute: typeof ThingsToDoInMeghalayaRoute
   TravelRoute: typeof TravelRoute
+  UnsubscribeRoute: typeof UnsubscribeRoute
   WorkFromHomeRoute: typeof WorkFromHomeRoute
   Xtsy270Route: typeof Xtsy270Route
   XtsyAdventureCampsiteDawkiRoute: typeof XtsyAdventureCampsiteDawkiRoute
@@ -1611,6 +1624,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TravelRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/unsubscribe': {
+      id: '/unsubscribe'
+      path: '/unsubscribe'
+      fullPath: '/unsubscribe'
+      preLoaderRoute: typeof UnsubscribeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/work-from-home': {
       id: '/work-from-home'
       path: '/work-from-home'
@@ -1872,6 +1892,7 @@ const rootRouteChildren: RootRouteChildren = {
   TermsOfServiceRoute: TermsOfServiceRoute,
   ThingsToDoInMeghalayaRoute: ThingsToDoInMeghalayaRoute,
   TravelRoute: TravelRoute,
+  UnsubscribeRoute: UnsubscribeRoute,
   WorkFromHomeRoute: WorkFromHomeRoute,
   Xtsy270Route: Xtsy270Route,
   XtsyAdventureCampsiteDawkiRoute: XtsyAdventureCampsiteDawkiRoute,
