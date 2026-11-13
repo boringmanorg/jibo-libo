@@ -98,10 +98,10 @@ function withGoneStatus(request: Request, response: Response): Response {
 /**
  * www -> apex, as a 301.
  *
- * This belongs here rather than in the edge worker. cloudflare/worker.js has
- * carried a canonical-host redirect for a while, but that worker is bound to a
- * single canary route and a Custom Domain on this app outranks its route
- * patterns, so its copy has never run on real traffic. www.xtsy.one reaches
+ * This lives here because this is the worker that serves the site. A separate
+ * edge worker used to carry this redirect, but it was bound to a single canary
+ * route and a Custom Domain on this app outranked its route patterns, so it
+ * never ran on real traffic; it has since been retired. www.xtsy.one reaches
  * THIS worker, so a redirect placed here actually executes.
  *
  * Runs before the page cache and before SSR: there is no point rendering, or

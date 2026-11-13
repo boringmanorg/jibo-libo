@@ -9,7 +9,7 @@
     "sitemaps:tours": "bun scripts/generateTourPackageSitemap.ts && tsx scripts/writeSitemapIndex.ts",
     "sitemaps:audit": "tsx scripts/sitemapHealthAudit.ts",
     "seo:intelligence": "tsx scripts/seoIntelligenceAudit.ts",
-    "prebuild": "tsx scripts/generateWorkerSlimMap.ts && tsx scripts/generateWorkerRedirectMap.ts && npm run sitemaps:rebuild",
+    "prebuild": "tsx scripts/generateWorkerSlimMap.ts && npm run sitemaps:rebuild",
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
