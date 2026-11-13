@@ -116,6 +116,12 @@ export function serverOnlySecurityHeaders(config: SecurityHeadersConfig = {}): R
     'Content-Security-Policy': frameAncestors,
     'X-Frame-Options': 'SAMEORIGIN',
     'X-Content-Type-Options': 'nosniff',
+    // public/_headers declares these, but that file only covers static assets —
+    // server-rendered HTML never received them, which is every page on the site.
+    // Both are header-only (no meta equivalent that works), so they belong here.
+    'Referrer-Policy': 'strict-origin-when-cross-origin',
+    'Permissions-Policy':
+      'geolocation=(), microphone=(), camera=(), payment=(), usb=(), bluetooth=(), interest-cohort=()',
   };
 }
 

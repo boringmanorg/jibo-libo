@@ -5,7 +5,14 @@ import whatsappIcon from '@/assets/whatsapp-icon.svg';
 import { routeGTMEvent } from '@/utils/gtmEventRouter';
 
 const WHATSAPP_NUMBER = '918837317070';
-const HIDDEN_ROUTES = ['/admin', '/booking'];
+// The booking flow is /book (and /book/select, /book/campsite) — there has never
+// been a /booking route, so this list previously matched nothing and the button
+// showed throughout checkout. Matched as "exact or child path" on purpose:
+// startsWith('/book') would also swallow /book-hostel-shillong, a landing page
+// that wants the WhatsApp CTA.
+const HIDDEN_ROUTES = ['/admin', '/book'];
+export const isHiddenPath = (pathname: string) =>
+  HIDDEN_ROUTES.some((r) => pathname === r || pathname.startsWith(`${r}/`));
 
 const HOMEPAGE_MESSAGE = 'Hey, Tell me more about XTSY!';
 
@@ -53,9 +60,6 @@ const FloatingWhatsApp = () => {
     return () => window.cancelAnimationFrame(id);
   }, [location.pathname]);
 
-  const isHidden = HIDDEN_ROUTES.some(route => location.pathname.startsWith(route));
-  if (isHidden) return null;
-
   const handleClick = useCallback(() => {
     // Re-resolve at click time for absolute accuracy
     const msg = buildWelcomeMessage(location.pathname);
@@ -72,6 +76,11 @@ const FloatingWhatsApp = () => {
       },
     });
   }, [location.pathname]);
+
+  // Must come after every hook: React requires the same hook count on each
+  // render, so returning before useCallback threw "Rendered fewer hooks than
+  // expected" the moment a client-side navigation crossed into a hidden route.
+  if (isHiddenPath(location.pathname)) return null;
 
   return (
     <WaAnchor
