@@ -69,20 +69,32 @@ const MeghalayaTourPackages = () => {
           <section aria-label="In short" className="mt-8 rounded-xl border-l-4 border-primary bg-muted/40 p-6">
             <p className="text-xs font-bold tracking-wider text-muted-foreground">IN SHORT</p>
             <p className="mt-2 text-foreground leading-relaxed">
-              XTSY's Meghalaya group tour is {T.duration} and costs ₹{T.pricePerPerson.toLocaleString('en-IN')} per person, departing on the {T.schedule} with a minimum of {T.minGroup} guests. You stay 3 nights at XTSY Travellers Hostel in New Shillong Township and 1 night at XTSY Dawki (Shnongpdeng) Riverside Camping, with transport and breakfast included.
+              XTSY's Meghalaya group tour is {T.duration} and costs ₹{T.pricePerPerson.toLocaleString('en-IN')} per person, departing on the {T.schedule} with a minimum of {T.minGroup} guests — ₹{T.groupTotal.toLocaleString('en-IN')} for a group of {T.minGroup}. You are picked up in Guwahati and stay all 3 nights at XTSY Travellers Hostel in New Shillong Township, covering Cherrapunji and Jowai, with transport and breakfast included.
             </p>
           </section>
 
           <section className="mt-8 rounded-xl border border-border p-6">
             <h2 className="text-2xl font-bold text-foreground">Saturday Group Tour: {T.duration}</h2>
-            <p className="mt-2 text-3xl font-bold text-foreground">₹{T.pricePerPerson.toLocaleString('en-IN')}<span className="text-sm font-normal text-muted-foreground"> / person (₹{T.pricePerNight.toLocaleString('en-IN')} per night)</span></p>
+            <p className="mt-2 text-3xl font-bold text-foreground">₹{T.pricePerPerson.toLocaleString('en-IN')}<span className="text-sm font-normal text-muted-foreground"> / person (₹{T.pricePerDay.toLocaleString('en-IN')} per day)</span></p>
             <ul className="mt-4 space-y-2">
               {T.includes.map((h) => (
                 <li key={h} className="flex items-start gap-2 text-sm text-muted-foreground"><Check className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />{h}</li>
               ))}
             </ul>
             <h3 className="mt-6 text-lg font-semibold text-foreground">Day-by-day itinerary</h3>
-            <p className="mt-2 text-sm text-muted-foreground">We send the full day-by-day plan and the pickup point on WhatsApp once you pick a departure date. Groups run with a minimum of {T.minGroup} guests.</p>
+            <p className="mt-2 text-sm text-muted-foreground">{T.route}</p>
+            <ol className="mt-4 space-y-4">
+              {T.itinerary.map((d) => (
+                <li key={d.day}>
+                  <p className="text-sm font-semibold text-foreground">Day {d.day} — {d.title}{d.overnight ? ` · overnight in ${d.overnight}` : ''}</p>
+                  <ul className="mt-1 space-y-1">
+                    {d.stops.map((stop) => (
+                      <li key={stop} className="flex items-start gap-2 text-sm text-muted-foreground"><Check className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />{stop}</li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ol>
             <p className="mt-4 text-sm text-muted-foreground">{T.cancellation}</p>
           </section>
 
