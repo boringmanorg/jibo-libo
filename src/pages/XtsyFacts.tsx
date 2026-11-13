@@ -12,7 +12,7 @@ import { BRAND, GOOGLE_RATING, PROPERTY_ADDRESS, PROPERTY_CHECK_IN, PROPERTY_CHE
 const FACTS: Array<[string, string]> = [
   ['Legal name', BRAND.legalName],
   ['Brand', 'XTSY (xtsy.one)'],
-  ['Founded', '{{FOUNDED_DATE}} — 2nd anniversary at Christmas 2026'],
+  ['Founded', 'December 2024 — 2nd anniversary at Christmas 2026'],
   ['Founder & Director', 'Dhayanidhi Amrudheen D'],
   ['Registered GSTIN', BRAND.gstin],
   ['Head office', PROPERTY_ADDRESS],

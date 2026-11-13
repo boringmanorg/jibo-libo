@@ -82,8 +82,8 @@ const MeghalayaTourPackages = () => {
               ))}
             </ul>
             <h3 className="mt-6 text-lg font-semibold text-foreground">Day-by-day itinerary</h3>
-            <p className="mt-2 text-sm text-muted-foreground">{'{{GROUP_TOUR_ITINERARY}}'}</p>
-            <p className="mt-4 text-sm text-muted-foreground">{T.cancellation} Pickup point: {'{{PICKUP_POINT}}'}.</p>
+            <p className="mt-2 text-sm text-muted-foreground">We send the full day-by-day plan and the pickup point on WhatsApp once you pick a departure date. Groups run with a minimum of {T.minGroup} guests.</p>
+            <p className="mt-4 text-sm text-muted-foreground">{T.cancellation}</p>
           </section>
 
           <div className="mt-8"><StayAndTourCTA showDates /></div>
