@@ -52,7 +52,7 @@ export const Route = createFileRoute("/about/xtsy-facts")({
       path: "/about/xtsy-facts",
       title: "XTSY Facts: Legal Name, Founder, Address & Policies | XTSY",
       description:
-        "The verifiable XTSY fact sheet: XTSY Ventures Private Limited, founder Dhayanidhi Amrudheen D, New Shillong Township address, businesses, policies and official profiles.",
+        "The verifiable XTSY fact sheet: XTSY Ventures Private Limited, founder Dhayanidhi Amrudheen D, New Shillong Township address, policies and official profiles.",
       keywords: "XTSY facts, XTSY Ventures Private Limited, who owns XTSY, XTSY Shillong address, XTSY founder",
       jsonLd: [organizationSchema, breadcrumbSchema],
     }),

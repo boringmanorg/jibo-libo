@@ -35,7 +35,7 @@ export function stayHubCopy(v: StayHubVariant) {
       : `Hostels in Shillong from ${dorm}: Women-Only Dorm, ${GOOGLE_RATING.value}★ | XTSY`,
     description: budget
       ? `XTSY dorm beds from ${dorm}, women-only dorm, lockers, Wi-Fi and TAB Bistro on site in New Shillong Township. Book direct, no OTA mark-up.`
-      : `Stay among the pines of New Shillong Township at XTSY (${GOOGLE_RATING.value}★, ${GOOGLE_RATING.count} Google reviews). Dorms from ${dorm}, a 4-bed women-only dorm, private rooms and TAB Bistro. Enquire on WhatsApp.`,
+      : `Stay among the pines of New Shillong Township at XTSY (${GOOGLE_RATING.value}★, ${GOOGLE_RATING.count} Google reviews). Dorms from ${dorm}, a 4-bed women-only dorm, private rooms and TAB Bistro.`,
     h1: budget ? 'Budget-friendly hostels in Shillong' : 'Hostels in Shillong',
     eyebrow: budget ? `Budget beds from ${dorm} · book direct` : 'The 2026 guide · by the team that runs XTSY',
     quick: budget
