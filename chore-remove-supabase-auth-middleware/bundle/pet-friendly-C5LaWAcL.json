@@ -1,0 +1,116 @@
+{
+  "results": [
+    {
+      "bundleName": ".output/public/assets/pet-friendly-C5LaWAcL.js",
+      "totalBytes": 129588,
+      "mappedBytes": 128227,
+      "unmappedBytes": 1279,
+      "eolBytes": 82,
+      "sourceMapCommentBytes": 0,
+      "files": {
+        "[no source]": {
+          "size": 1621
+        },
+        "../../../node_modules/lucide-react/dist/esm/icons/arrow-left.js": {
+          "size": 105
+        },
+        "../../../node_modules/lucide-react/dist/esm/icons/circle-alert.js": {
+          "size": 186
+        },
+        "../../../node_modules/lucide-react/dist/esm/icons/trash-2.js": {
+          "size": 264
+        },
+        "../../../node_modules/@radix-ui/react-checkbox/dist/index.mjs": {
+          "size": 3854
+        },
+        "../../../src/components/ui/checkbox.tsx": {
+          "size": 557
+        },
+        "../../../node_modules/zod/v4/core/util.js": {
+          "size": 8955
+        },
+        "../../../node_modules/zod/v4/core/core.js": {
+          "size": 1706
+        },
+        "../../../node_modules/zod/v4/core/errors.js": {
+          "size": 1770
+        },
+        "../../../node_modules/zod/v4/core/parse.js": {
+          "size": 2420
+        },
+        "../../../node_modules/zod/v4/core/regexes.js": {
+          "size": 3073
+        },
+        "../../../node_modules/zod/v4/core/checks.js": {
+          "size": 4847
+        },
+        "../../../node_modules/zod/v4/core/doc.js": {
+          "size": 612
+        },
+        "../../../node_modules/zod/v4/core/versions.js": {
+          "size": 29
+        },
+        "../../../node_modules/zod/v4/core/schemas.js": {
+          "size": 20540
+        },
+        "../../../node_modules/zod/v4/core/memoizer.js": {
+          "size": 3265
+        },
+        "../../../node_modules/zod/v4/locales/en.js": {
+          "size": 2671
+        },
+        "../../../node_modules/zod/v4/core/registries.js": {
+          "size": 704
+        },
+        "../../../node_modules/zod/v4/core/api.js": {
+          "size": 4964
+        },
+        "../../../node_modules/zod/v4/core/to-json-schema.js": {
+          "size": 8602
+        },
+        "../../../node_modules/zod/v4/core/json-schema-processors.js": {
+          "size": 6864
+        },
+        "../../../node_modules/zod/v4/classic/errors.js": {
+          "size": 796
+        },
+        "../../../node_modules/zod/v4/classic/parse.js": {
+          "size": 108
+        },
+        "../../../node_modules/zod/v4/classic/schemas.js": {
+          "size": 12149
+        },
+        "../../../src/utils/whatsappBookingValidation.ts": {
+          "size": 1840
+        },
+        "../../../src/services/formBookingService.ts": {
+          "size": 444
+        },
+        "../../../src/hooks/useLocationConsent.tsx": {
+          "size": 1208
+        },
+        "../../../src/hooks/useFormEngagement.tsx": {
+          "size": 1933
+        },
+        "../../../src/components/WhatsAppBookingForm.tsx": {
+          "size": 26337
+        },
+        "../../../src/pages/v2/PetFriendlyV2.tsx": {
+          "size": 5793
+        },
+        "../../../src/routes/pet-friendly.tsx?tsr-split=component": {
+          "size": 10
+        },
+        "[sourceMappingURL]": {
+          "size": 0
+        },
+        "[unmapped]": {
+          "size": 1279
+        },
+        "[EOLs]": {
+          "size": 82
+        }
+      }
+    }
+  ]
+}
