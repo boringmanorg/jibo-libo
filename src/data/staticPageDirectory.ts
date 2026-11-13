@@ -28,7 +28,7 @@ export const STATIC_PAGE_DIRECTORY = [
   {
     "path": "/about/xtsy-facts",
     "title": "XTSY Facts: Legal Name, Founder, Address & Policies | XTSY",
-    "description": "The verifiable XTSY fact sheet: XTSY Ventures Private Limited, founder Dhayanidhi Amrudheen D, New Shillong Township address, businesses, policies and official profiles."
+    "description": "The verifiable XTSY fact sheet: XTSY Ventures Private Limited, founder Dhayanidhi Amrudheen D, New Shillong Township address, policies and official profiles."
   },
   {
     "path": "/adventure-tours-northeast-india",
@@ -43,7 +43,7 @@ export const STATIC_PAGE_DIRECTORY = [
   {
     "path": "/best-hostel-in-shillong",
     "title": "Hostels in Shillong from ₹399: Women-Only Dorm, 4.7★ | XTSY",
-    "description": "Stay among the pines of New Shillong Township at XTSY (4.7★, 252 Google reviews). Dorms from ₹399, a 4-bed women-only dorm, private rooms and TAB Bistro. Enquire on WhatsApp."
+    "description": "Stay among the pines of New Shillong Township at XTSY (4.7★, 252 Google reviews). Dorms from ₹399, a 4-bed women-only dorm, private rooms and TAB Bistro."
   },
   {
     "path": "/best-time-to-visit-meghalaya",
