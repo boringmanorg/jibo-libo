@@ -130,7 +130,7 @@ export function factsFor(page: SEOPageData): Fact[] {
       { k: 'Glass suite', v: `Experience by XTSY ${inr(PANORAMA_STAY_ONLY)}, all inclusive` },
       { k: 'Check-in / out', v: '11 AM / 10 AM (strict)' },
       { k: 'Pets', v: 'Cats & birds welcome; dogs by breed and size' },
-      { k: 'Cancellation', v: 'Booking amount non-refundable; one date change within 90 days' },
+      { k: 'Cancellation', v: 'Booking amount non-refundable; one date change within 15 days' },
     );
   }
   for (const p of placesOf(page)) {

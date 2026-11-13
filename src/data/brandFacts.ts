@@ -47,7 +47,7 @@ export const OWN_PROPERTIES = [
     tagline: "India's First Stargaze Glamp",
     city: 'New Shillong Township, Shillong',
     description:
-      'A first-of-its-kind panoramic glass suite designed for stargazing, anniversaries and slow luxury — built and operated in Shillong.',
+      'A first-of-its-kind 270° panoramic glass suite for anniversaries and slow luxury, built and operated in Shillong. Stargazing is not promoted or promised: the glass is UV-treated and views depend on day-to-day sky conditions.',
   },
 ] as const;
 

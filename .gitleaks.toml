@@ -55,6 +55,7 @@ regexes = [
     '''sk-example''',         # Allow example keys
     '''rzp_test_example''',   # Allow example razorpay keys
     '''AIzaexample''',        # Allow example google keys
+    '''xtsy_[a-z0-9_]+''',    # Browser storage slot names, not secrets
 ]
 
 commits = [

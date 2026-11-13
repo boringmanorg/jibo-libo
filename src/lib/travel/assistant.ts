@@ -10,6 +10,7 @@
  * For stays, XTSY always comes first: its own hostel in New Shillong Township
  * for anything within day-trip range, and XTSY-booked partner stays further out.
  */
+import { STARGAZING_NOTICE, STARGAZING_SHORT } from '@/data/stargazingPolicy';
 import { CLUSTERS, PLACES, PLACE_BY_ID, XTSY, type ClusterId, type Place } from './places';
 import { XTSY_POINT, pointOfHub, pointOfPlace, travel } from './routing';
 import { buildPlan, fmtH, type Plan, type TripStyle } from './planner';
@@ -17,6 +18,8 @@ import { inr, lowestDormPrice, roomPrice } from '@/components/v2/pricing';
 import { PANORAMA_DECORATION, PANORAMA_STAY_ONLY } from '@/data/panoramaPricing';
 
 export interface ChatState {
+  /** Set once a guest raises stargazing, so every later plan carries the notice. */
+  askedStargazing?: boolean;
   days?: number;
   placeIds: string[];
   travellers?: number;
@@ -212,7 +215,12 @@ const FACTS: [RegExp, () => string, string[]][] = [
   [/\b(ilp|permit|permits|pap|rap)\b/, () => `Meghalaya and Assam need no permit. **Arunachal**, **Nagaland**, **Mizoram** and **Manipur** need an Inner Line Permit for Indian travellers (foreign nationals need a Protected Area Permit for Arunachal). **Sikkim**: Tsomgo, Nathula and North Sikkim need local permits. The XTSY desk helps with paperwork for trips we plan.`, ['Tawang in 7 days', 'Kohima & Dzukou trip']],
   [/workation|work from|wifi|wi-fi|remote work|digital nomad|coworking/, () => 'XTSY runs workation stays with fast Wi-Fi, desks and long-stay rates (weekly and monthly plans on the Workation page), with TAB Bistro downstairs.', ['Workation plans', 'Plan a slow 10-day trip']],
   [/group|college|corporate|offsite|students|school trip/, () => 'We plan group trips for 6–60 people: whole-dorm stays at XTSY, tempo or SUV transport, guides and TAB Bistro meals, with GST invoices on request.', ['Plan a group trip for 20', 'Group bookings page']],
-  [/cancel|refund/, () => 'The booking amount is **non-refundable** — there is no free cancellation. You can change your dates **once within 90 days** of the original check-in (ask at least 48 hours before), subject to availability and any rate difference. Full terms are on the Pricing & Cancellation Policy page.', ['Talk to the desk on WhatsApp']],
+  // Stargazing is never promised. Wording lives in src/data/stargazingPolicy.ts
+  // so this answer, the suite page and the booking gate cannot drift apart.
+  [/stargaz|star ?gaz|night sky|milky ?way|\bastro|see (the )?stars|star view|starry/, () => STARGAZING_NOTICE, ['Experience by XTSY', 'Talk to the desk on WhatsApp']],
+  [/live music|music event|\bband\b|\bdj\b|\bgig\b|live performance/, () => 'We do not run regular live music nights. We can host a music event if it is pre-booked with the desk — message us with your dates and what you have in mind and we will tell you what is possible.', ['Talk to the desk on WhatsApp', 'Plan a group trip']],
+  [/bonfire|camp ?fire|fire ?pit/, () => 'A bonfire runs every night for in-house guests and stays open till late. Private parties on the property also run late into the night.', ['Check availability', 'Plan a 3-day trip']],
+  [/cancel|refund|change (my |the )?dates?|date change|reschedul|postpone|move (my )?booking|modify (my )?booking/, () => 'The booking amount is **non-refundable** — there is no free cancellation. You can change your dates **once within 15 days** of the original check-in (ask at least 48 hours before), subject to availability and any rate difference. Full terms are on the Pricing & Cancellation Policy page.', ['Talk to the desk on WhatsApp']],
 ];
 
 function priceAnswer(): string {
@@ -259,6 +267,20 @@ export function respond(message: string, prev: ChatState): { reply: Reply; state
   if (/^(thanks|thank you|thx|great|awesome|perfect|ok|okay|cool)\b/.test(t) && t.length < 25) {
     return { reply: { text: 'Happy to help! When you’re ready, send the plan to the XTSY desk and we’ll confirm stays, cabs and prices on WhatsApp.', chips: ['Make it 1 day longer', 'Add a camping night at Dawki'], actions: state.hasPlan ? ['send', 'whatsapp', 'book'] : [] }, state };
   }
+
+  // Stargazing, live music and bonfire are brand-critical facts: a guest asking
+  // about them must get the answer, never an itinerary. They are checked before
+  // anything else so no trip-shaped phrasing can swallow the question.
+  const ALWAYS_ANSWER = /stargaz|star ?gaz|night sky|milky ?way|see (the )?stars|starry|live music|music event|bonfire|camp ?fire/;
+  // Answer outright only when it is a question rather than a trip request.
+  // "4 days with stargazing" still gets its itinerary; the notice is appended
+  // to the plan instead of replacing it, so the caveat travels either way.
+  if (ALWAYS_ANSWER.test(t) && !parseDays(t)) {
+    for (const [re, answer, chips] of FACTS) {
+      if (re.test(t)) return { reply: { text: answer(), chips, actions: [] }, state };
+    }
+  }
+  if (/stargaz|star ?gaz|night sky|milky ?way|see (the )?stars|starry/.test(t)) state.askedStargazing = true;
 
   const places = findPlaces(message);
   const mentionsTrip = /\b(plan|trip|itinerary|tour|days?|nights?|week|weekend|visit|go to|travel|holiday|vacation|honeymoon|package)\b/.test(t);
@@ -333,6 +355,7 @@ function planReply(plan: Plan, state: ChatState): Reply {
   if (nightsOther) stays.push(`${nightsOther} at partner stays the XTSY desk books`);
   if (stays.length) lines.push(`Stays: ${stays.join(' + ')}.`);
   if (!plan.nightsAtXtsy) lines.push(`Tip: add 2 days at the start for Shillong and Cherrapunji with nights at ${XTSY.name} — Guwahati is on the way.`);
+  if (state.askedStargazing) lines.push(`\u{1F30C} ${STARGAZING_SHORT}`);
   if (state.styles.includes('romantic')) lines.push(`💫 Make one night special at **Experience by XTSY**, India’s First Stargaze Glamp: ${inr(PANORAMA_STAY_ONLY)} a night, all inclusive (decoration +${inr(PANORAMA_DECORATION)}).`);
   for (const d of plan.dropped) lines.push(`⚠️ I left out **${d.name}**: ${d.reason}. Add ${d.extraDays} ${d.extraDays === 1 ? 'day' : 'days'} to fit it in.`);
   if (plan.added.length) lines.push(`You had spare time, so I added: ${plan.added.join(', ')}. Say “remove …” to drop any.`);

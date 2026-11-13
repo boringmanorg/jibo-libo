@@ -33,12 +33,12 @@ const BUSINESSES: Array<[string, string]> = [
 ];
 
 const POLICIES: Array<[string, string]> = [
-  ['Cancellation', 'No free cancellation; the booking amount is non-refundable. One date change is allowed within 90 days, subject to availability.'],
+  ['Cancellation', 'No free cancellation; the booking amount is non-refundable. One date change is allowed within 15 days, subject to availability.'],
   ['Pets', 'Cats and birds welcome; dogs depending on breed and size — contact the XTSY desk about any extra charges.'],
   ['Couples', 'All adult couples are welcome, married or not. Both guests need a valid government photo ID at check-in.'],
-  ['Stargazing', 'Stargazing depends on day-to-day weather and sky visibility. XTSY does not guarantee stargazing, and bookings are not cancelled or refunded for weather or visibility.'],
+  ['Stargazing', 'Not promoted and never promised. The suite glass is UV-treated, cutting visibility by about 30%, and views depend strictly on day-to-day sky conditions. Please do not call or enquire specifically for stargazing. Bookings are not cancelled or refunded for weather or poor sky visibility.'],
   ['Property scope', "XTSY's only property is in New Shillong Township, Shillong. Stays elsewhere (Cherrapunji, Dawki and beyond) are arranged through trusted local partners."],
-  ['Events', 'Bonfires and private parties are available on the property. No live music. The rooftop terrace is not a café.'],
+  ['Events', 'A bonfire runs every night for in-house guests and stays open till late. Private parties run on the property late into the night. Live music is not a regular fixture, but XTSY can host a music event if it is pre-booked with the desk. The rooftop terrace is not yet a working café.'],
 ];
 
 const PROFILES: Array<[string, string]> = [

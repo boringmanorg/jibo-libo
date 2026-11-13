@@ -27,7 +27,7 @@ export const hostelDealFaqs: HostelFaq[] = [
   },
   {
     q: 'What happens if I need to cancel or change my dates?',
-    a: 'The booking amount is non-refundable — there is no free cancellation. You can change your dates once within 90 days of the original check-in (ask at least 48 hours before), subject to availability and any rate difference — just WhatsApp us. OTA bookings follow that OTA’s policy.',
+    a: 'The booking amount is non-refundable — there is no free cancellation. You can change your dates once within 15 days of the original check-in (ask at least 48 hours before), subject to availability and any rate difference — just WhatsApp us. OTA bookings follow that OTA’s policy.',
   },
   {
     q: 'Do I pay upfront when I book?',

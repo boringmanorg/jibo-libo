@@ -10,7 +10,7 @@ const suitePrice = `₹${PANORAMA_STAY_ONLY.toLocaleString('en-IN')}`;
 const suiteQuestions: RankedQuestion[] = [
   { q: 'Where is Experience by XTSY in Shillong?', a: 'Experience by XTSY is a panoramic glass suite at XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, near IIM Shillong and NIFT Shillong.' },
   { q: 'What does an Experience by XTSY stay include?', a: `The ${suitePrice} nightly rate is GST-inclusive for the stay only. The suite has a queen bed for two, a private en-suite bathroom, climate control and Wi-Fi. Breakfast is not included.` },
-  { q: 'Is stargazing guaranteed from the glass suite?', a: 'No. Sky visibility depends on clouds, rain, mist and other weather conditions. The panoramic glass suite can offer sky views on clear nights, but a booking does not guarantee visible stars.' },
+  { q: 'Is stargazing guaranteed from the glass suite?', a: 'No, and we do not promote it. The suite glass is UV-treated, which reduces visibility by around 30%, and what you can see depends strictly on day-to-day sky conditions — clouds, rain and mist. Please do not book or enquire specifically for stargazing. Bookings are not cancelled or refunded for weather or poor sky visibility.' },
 ];
 const partnerQuestion = { q: 'Does XTSY own accommodation here?', a: 'XTSY’s own property is only in New Shillong Township. For nights outside Shillong, the desk arranges accommodation through trusted local partners; confirm the property, facilities and availability before booking.' };
 const enquiryQuestion = { q: 'How can I request a tailored itinerary?', a: 'Share your dates, group size, preferred stops and budget with the XTSY desk on WhatsApp. Ask the desk to confirm the itinerary, transport, stays, inclusions and quote before booking.' };

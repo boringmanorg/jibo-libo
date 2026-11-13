@@ -22,16 +22,10 @@ scripts/indexing/indexnow-submit.ts:generic-api-key:14
 scripts/indexing/indexnow-submit.ts:generic-secret:14
 scripts/optimize-and-upload-images.ts:generic-secret:13
 scripts/storage-cache-control.ts:generic-secret:11
-src/components/v2/TripChat.tsx:generic-secret:20
-src/contexts/UserAuthContext.tsx:generic-secret:12
-src/contexts/UserAuthContext.tsx:generic-secret:13
-src/contexts/UserAuthContext.tsx:generic-secret:14
 src/hooks/useConversionSignals.ts:generic-secret:160
 src/lib/seo/tourPageData.ts:generic-secret:24
 src/utils/aiReferralTracking.ts:generic-secret:45
 supabase/functions/fetch-exchange-rates/index.ts:generic-secret:9
-supabase/functions/send-transactional-email/index.ts:generic-secret:249
-supabase/functions/send-transactional-email/index.ts:generic-secret:364
 supabase/functions/seo-crawl-request/index.ts:generic-api-key:19
 supabase/functions/seo-crawl-request/index.ts:generic-secret:19
 supabase/migrations/20260601072100_effebe3c-25b6-476e-9257-9fb36c3e4139.sql:jwt:19
