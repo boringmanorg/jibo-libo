@@ -95,8 +95,54 @@ function withGoneStatus(request: Request, response: Response): Response {
   });
 }
 
+/**
+ * www -> apex, as a 301.
+ *
+ * This lives here because this is the worker that serves the site. A separate
+ * edge worker used to carry this redirect, but it was bound to a single canary
+ * route and a Custom Domain on this app outranked its route patterns, so it
+ * never ran on real traffic; it has since been retired. www.xtsy.one reaches
+ * THIS worker, so a redirect placed here actually executes.
+ *
+ * Runs before the page cache and before SSR: there is no point rendering, or
+ * caching, a page we are about to redirect away from.
+ *
+ * Matches the www host exactly. Never fires on the apex, on localhost, or on a
+ * preview hostname, so local development and previews are untouched.
+ */
+const CANONICAL_HOST = "xtsy.one";
+const HSTS = "max-age=63072000; includeSubDomains; preload";
+
+export function canonicalHostRedirect(request: Request): Response | null {
+  let url: URL;
+  try {
+    url = new URL(request.url);
+  } catch {
+    return null;
+  }
+  if (url.hostname.toLowerCase() !== `www.${CANONICAL_HOST}`) return null;
+
+  url.protocol = "https:";
+  url.hostname = CANONICAL_HOST;
+  url.port = "";
+  // url.pathname and url.search are carried over untouched, so a link to
+  // www.xtsy.one/tab-bistro?utm_source=x keeps both its path and its campaign.
+  return new Response(null, {
+    status: 301,
+    headers: {
+      location: url.toString(),
+      "cache-control": "public, max-age=3600",
+      "x-redirect-source": "canonical-host",
+      "strict-transport-security": HSTS,
+    },
+  });
+}
+
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
+    const hostRedirect = canonicalHostRedirect(request);
+    if (hostRedirect) return hostRedirect;
+
     try {
       const handler = await getServerEntry();
       // Public pages are served from the page cache when possible (see src/lib/pageCache.ts).

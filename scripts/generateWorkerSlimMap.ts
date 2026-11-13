@@ -1,6 +1,6 @@
 /**
  * Emits `public/seo-slim-map.json` — the slim title/description map keyed by
- * URL slug. Consumed by `cloudflare/worker.js` at edge to rewrite
+ * URL slug. Was consumed by the retired edge worker to rewrite
  * canonical/og:url/og:title/og:description/<title> for non-JS clients
  * (Slackbot, Facebook, LinkedIn, vanilla curl) before the SPA hydrates.
  *
