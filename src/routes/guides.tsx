@@ -9,8 +9,8 @@ export const Route = createFileRoute("/guides")({
     const items = loaderData?.groups.flatMap((g) => g.pages) ?? [];
     return buildRouteHead({
       path: "/guides",
-      title: "XTSY Page Directory — Stays, Tours & Meghalaya Guides",
-      description: "Find XTSY stays, TAB Bistro, services and travel guides by current page title or URL. Browse Shillong, Meghalaya and Northeast India by topic.",
+      title: "Shillong & Meghalaya Guides, Adventure Routes | XTSY",
+      description: "Browse Shillong and Meghalaya guides, Northeast itineraries and road or bike routes. Find destinations, stays, dining and transport guides grouped by topic.",
       keywords: "Shillong travel guides, Meghalaya guides, Northeast India travel guide, XTSY guides",
       jsonLd: [{
         "@context": "https://schema.org",
