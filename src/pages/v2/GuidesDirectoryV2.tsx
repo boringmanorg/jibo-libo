@@ -14,6 +14,7 @@ const route = getRouteApi('/guides');
 import { PageShell, PageHero, Breadcrumbs, PAD } from '@/components/v2/blocks';
 import { IMG, COVERS, first } from '@/data/v2Images';
 import { PEXELS_MEGHALAYA as PX } from '@/data/meghalayaPhotos';
+import { RENTAL_VEHICLE_PHOTO } from '@/data/relevantTravelPhotos';
 /** Topic card photos — XTSY's own property and destination photos only. */
 const TOPIC_PHOTO: Record<string, string> = {
   'Travel guides': PX.hills, 'Food & dining': first(IMG.bistro), 'Themed trips': PX.rootBridge,
@@ -21,7 +22,7 @@ const TOPIC_PHOTO: Record<string, string> = {
   Hostels: first(IMG.mixedDorm) || COVERS.home, Stays: COVERS.home, 'Tour packages': PX.dawkiBoat,
   Destinations: PX.mawphanlur, Attractions: PX.nohkalikai, Activities: PX.krangShuri,
   Glamping: first(IMG.suite) || COVERS.terrace, Hotels: COVERS.about, Homestays: COVERS.terrace,
-  Rentals: IMG.bumla, 'Road & bike trips': IMG.bumla, Transport: PX.windingRoad,
+  Rentals: RENTAL_VEHICLE_PHOTO.src, 'Road & bike trips': IMG.bumla, Transport: PX.windingRoad,
   Workation: COVERS.workation, 'Weddings & events': COVERS.wedding, Events: PX.umiamBoats,
   'Corporate offsites': COVERS.commonRoom, 'Stays near hospitals': COVERS.contact,
   'Hostel comparison': COVERS.commonRoom, 'Travel agency': IMG.sikkim, 'XTSY pages': COVERS.home,
@@ -51,7 +52,7 @@ export default function GuidesDirectoryV2() {
           {groups.map((g) => (
             <li key={g.label}>
               <a href={`#${idOf(g.label)}`} onClick={() => setTopic('')} className="group relative block aspect-[4/3] overflow-hidden rounded-3xl bg-xt-sand">
-                <img src={TOPIC_PHOTO[g.label] ?? IMG.meghalaya} alt={`${g.label} in Shillong and Meghalaya`} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <img src={TOPIC_PHOTO[g.label] ?? IMG.meghalaya} alt={g.label === 'Rentals' ? RENTAL_VEHICLE_PHOTO.alt : `${g.label} in Shillong and Meghalaya`} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 <span className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 bg-gradient-to-t from-xt-ink/85 to-transparent p-5 text-xt-paper">
                   <span className="text-[20px] font-extrabold leading-tight">{g.label}</span>
                   <span className="rounded-full bg-xt-paper/90 px-3 py-1 text-[13px] font-extrabold text-xt-ink">{g.pages.length}</span>

@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import XtsyFacts from "@/pages/XtsyFacts";
 import { buildRouteHead } from "@/lib/seo-head";
+import { BRAND } from '@/data/brandFacts';
 
 const organizationSchema = {
   '@context': 'https://schema.org',
@@ -8,15 +9,15 @@ const organizationSchema = {
   '@id': 'https://xtsy.one/about/xtsy-facts#organization',
   name: 'XTSY',
   legalName: 'XTSY Ventures Private Limited',
+  foundingDate: BRAND.incorporationDate,
+  description: BRAND.companyDescription,
   url: 'https://xtsy.one',
   logo: 'https://xtsy.one/xtsy-color-logo.png',
   founder: { '@type': 'Person', name: 'Dhayanidhi Amrudheen D' },
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Mawdiangdiang Road, New Shillong Township',
-    addressLocality: 'Shillong',
-    addressRegion: 'Meghalaya',
-    postalCode: '793018',
+    addressLocality: BRAND.hqCity,
+    addressRegion: BRAND.hqState,
     addressCountry: 'IN',
   },
   location: {
@@ -28,6 +29,7 @@ const organizationSchema = {
     { '@type': 'ContactPoint', contactType: 'customer support', email: 'admin@xtsy.one' },
   ],
   sameAs: [
+    BRAND.coreDomains[1],
     'https://www.youtube.com/@XTSY_Voyage',
     'https://www.instagram.com/xtsy.one',
     'https://maps.app.goo.gl/UnP9PfbSJdafMFMM6',
@@ -55,7 +57,7 @@ export const Route = createFileRoute("/about/xtsy-facts")({
       path: "/about/xtsy-facts",
       title: "XTSY Facts: Legal Name, Founder, Address & Policies | XTSY",
       description:
-        "The verifiable XTSY fact sheet: XTSY Ventures Private Limited, founder Dhayanidhi Amrudheen D, New Shillong Township address, policies and official profiles.",
+        "XTSY Ventures Private Limited: Coimbatore startup incorporated 29 September 2026, hospitality franchises, tourism and SaaS development for Indian businesses.",
       keywords: "XTSY facts, XTSY Ventures Private Limited, who owns XTSY, XTSY Shillong address, XTSY founder",
       jsonLd: [organizationSchema, breadcrumbSchema],
     }),

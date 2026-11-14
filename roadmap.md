@@ -1,5 +1,10 @@
 # Roadmap — Master SEO prompt (xtsy.one)
 
+## Photos and company corrections — 14 November 2026
+- [x] Shared photo selectors now cover all 43 destinations and every tour: 29 missing destination photos use truthfully labelled Meghalaya regional landscapes; eight empty tour cards use reviewed regional Pexels photos. Corrected car-versus-bike and Seven Sisters image selection. All 88 selected photo URLs returned actual images.
+- [x] Removed inactive entity GST references from public source and updated company facts, About, contact, guide copy, Organization schema and AI reference files: Coimbatore, incorporated 29 September 2026, franchise/SaaS scope and both core domains. Approved prices and tax calculations untouched.
+- [x] Six pages checked on desktop/phone: photos render, company facts present, no overflow or page errors. 47 targeted tests passed; build OK. Individual landmark photography remains unavailable for the 29 regional substitutes; no generated or misleading landmark images used. Changes require publish.
+
 ## Ahrefs audit — 14 November 2026
 - [x] Verified all 706 exported page entries in preview: all return 200, with descriptions 110–160 characters and no visible template codes.
 - [x] Corrected the 44 schema-domain defects, placeholder/relative schema images, missing sitemap coverage and hidden-page regeneration. Photographer profile URLs normalised with trailing slashes; external readback blocked by Pexels, so redirect resolution remains unverified.

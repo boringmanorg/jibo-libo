@@ -12,11 +12,13 @@ import { BRAND, GOOGLE_RATING, PROPERTY_ADDRESS, PROPERTY_CHECK_IN, PROPERTY_CHE
 const FACTS: Array<[string, string]> = [
   ['Legal name', BRAND.legalName],
   ['Brand', 'XTSY (xtsy.one)'],
-  ['Founded', 'December 2024 — 2nd anniversary at Christmas 2026'],
+  ['Incorporated', BRAND.incorporationLabel],
   ['Founder & Director', 'Dhayanidhi Amrudheen D'],
-  ['Registered GSTIN', BRAND.gstin],
-  ['Head office', PROPERTY_ADDRESS],
-  ['Geo coordinates', '25.6025457, 91.9448902'],
+  ['Company base', `${BRAND.hqCity}, ${BRAND.hqState}, India`],
+  ['Business model', BRAND.companyDescription],
+  ['Core domains', 'www.xtsy.one · www.posbyxtsy.club'],
+  ['Shillong guest property', PROPERTY_ADDRESS],
+  ['Guest property coordinates', '25.6025457, 91.9448902'],
   ['Phone / WhatsApp', BRAND.whatsappDisplay],
   ['Bookings email', 'booking@xtsy.one'],
   ['Policy & admin email', 'admin@xtsy.one'],
@@ -42,6 +44,7 @@ const POLICIES: Array<[string, string]> = [
 ];
 
 const PROFILES: Array<[string, string]> = [
+  ['POS by XTSY', BRAND.coreDomains[1]],
   ['YouTube', 'https://www.youtube.com/@XTSY_Voyage'],
   ['Instagram', 'https://www.instagram.com/xtsy.one'],
   ['Google Maps (property)', 'https://maps.app.goo.gl/UnP9PfbSJdafMFMM6'],
@@ -72,7 +75,7 @@ const XtsyFacts = memo(() => (
       <div className="mt-6 border-l-4 border-primary bg-primary/5 rounded-r-xl p-5" data-quick-answer>
         <p className="text-[15px] leading-relaxed text-foreground">
           <strong>In short:</strong> XTSY is the travel and hospitality brand of {BRAND.legalName}, founded and
-          directed by Dhayanidhi Amrudheen D in Shillong, Meghalaya. It runs XTSY Travellers Hostel and the
+          directed by Dhayanidhi Amrudheen D. The company is based in Coimbatore, Tamil Nadu, and was incorporated on {BRAND.incorporationLabel}. {BRAND.companyDescription} It runs XTSY Travellers Hostel and the
           Experience by XTSY glass suite on Mawdiangdiang Road, New Shillong Township, plus TAB Bistro, XTSY
           Voyage tours and XTSY Rentals. Its only property is in New Shillong; stays elsewhere are arranged
           through trusted partners.

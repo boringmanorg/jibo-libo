@@ -4,13 +4,22 @@
  * placeholder instead of an unrelated or AI-generated image.
  */
 import { IMG, first } from './v2Images';
+import { TRAVEL_PHOTOS, RENTAL_VEHICLE_PHOTO } from './relevantTravelPhotos';
 
 const RULES: [RegExp, string][] = [
+  [/car rental|self.drive car|vehicle rental|4x4/i, RENTAL_VEHICLE_PHOTO.src],
+  [/winter spiti|spiti snow/i, TRAVEL_PHOTOS['tour-67'].src],
+  [/spiti|kinnaur/i, TRAVEL_PHOTOS['tour-65'].src],
+  [/munnar|eravikulam/i, TRAVEL_PHOTOS['tour-74'].src],
+  [/varkala|kovalam/i, TRAVEL_PHOTOS['tour-77'].src],
+  [/ooty|coonoor|nilgiri/i, TRAVEL_PHOTOS['tour-86'].src],
+  [/guruvayur|padmanabhaswamy|kerala temple/i, TRAVEL_PHOTOS['tour-93'].src],
+  [/madurai|rameswaram|kanyakumari/i, TRAVEL_PHOTOS['tour-90'].src],
+  [/seven sister/i, IMG.sevenSisters],
   [/xtsy 270|experience by xtsy|glass|stargaz|honeymoon cloud|romantic/i, first(IMG.suite)],
   [/dawki|umngot|shnongpdeng/i, IMG.dawki],
   [/root bridge|nongriat/i, IMG.rootBridge],
   [/nohkalikai|cherrapunji|cherrapunjee|sohra/i, IMG.nohkalikai],
-  [/seven sister/i, IMG.sevenSisters],
   [/krang suri|krang shuri|jaintia/i, IMG.krangSuri],
   [/mawlynnong/i, IMG.mawlynnong],
   [/mawsmai|cave|krem/i, IMG.mawsmai],

@@ -18,6 +18,7 @@ import { CLUSTERS, PLACES, type Place } from '@/lib/travel/places';
 import { fromXtsy } from '@/lib/travel/routing';
 import { STATIC_PAGE_DIRECTORY } from '@/data/staticPageDirectory';
 import { schemaImage } from './metadataText';
+import { RENTAL_VEHICLE_PHOTO } from '@/data/relevantTravelPhotos';
 
 const SITE = 'https://xtsy.one';
 export const SEO_CONTENT_UPDATED = '2026-10-22';
@@ -83,13 +84,14 @@ export function heroFor(page: SEOPageData): Hero {
   else if (c === 'group-tours' || c === 'corporate') src = COVERS.groups;
   else if (c === 'weddings') src = COVERS.wedding;
   else if (c === 'workation') src = COVERS.workation;
-  else if (c === 'rentals' || c === 'road-bike-trips') src = IMG.bumla;
+  else if (c === 'rentals') src = /bike|scooter|motorcycle/i.test(page.h1) ? IMG.bumla : RENTAL_VEHICLE_PHOTO.src;
+  else if (c === 'road-bike-trips') src = photoFor(page.h1, page.slug.replace(/-/g, ' ')) || IMG.bumla;
   else if (STAY_CATS.has(c)) {
     const town = townOf(page);
     src = town ? photoFor(town) || COVERS.home : [COVERS.home, COVERS.about, COVERS.contact][page.slug.length % 3];
   } else src = photoFor(page.h1, page.slug.replace(/-/g, ' ')) || IMG.meghalaya;
   const r = responsiveImage(src);
-  return { src: r?.src ?? src, srcSet: r?.srcSet, w: r?.w, h: r?.h, alt: page.h1 };
+  return { src: r?.src ?? src, srcSet: r?.srcSet, w: r?.w, h: r?.h, alt: src === RENTAL_VEHICLE_PHOTO.src ? RENTAL_VEHICLE_PHOTO.alt : page.h1 };
 }
 
 export interface Fact { k: string; v: string }

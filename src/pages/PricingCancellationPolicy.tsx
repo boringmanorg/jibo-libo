@@ -123,12 +123,10 @@ export const PricingCancellationPolicy: React.FC = () => {
                 </table>
               </div>
 
-              <h3 className="text-xl font-medium mb-3 mt-6 text-foreground">1.3 GST Invoice & Compliance</h3>
+              <h3 className="text-xl font-medium mb-3 mt-6 text-foreground">1.3 Billing Enquiries</h3>
               <ul className="list-disc pl-6 space-y-2">
-                <li>All invoices include GSTIN, SAC codes, and proper tax breakdowns</li>
-                <li>GST-compliant invoices are provided for all bookings</li>
-                <li>Business guests can claim Input Tax Credit (ITC) on eligible services</li>
-                <li>Our GSTIN is displayed on all official documents and invoices</li>
+                <li>Contact the XTSY desk about invoice and company billing requirements before confirming a booking.</li>
+                <li>Approved prices and applicable tax calculations are unchanged.</li>
               </ul>
             </section>
 

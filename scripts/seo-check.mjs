@@ -26,7 +26,7 @@ const grep = (pattern, paths) => {
   }
 };
 
-const wwwRaw = grep('www\\.xtsy\\.one', 'src public');
+const wwwRaw = grep('(https?://|href=.{0,2}//)www\\.xtsy\\.one', 'src public');
 // Ignore comment lines (e.g. the _redirects header explaining the zone-level www rule).
 const www = wwwRaw.split('\n').filter((l) => {
   const source = l.split(/:\d+:/)[1]?.trim() ?? '';

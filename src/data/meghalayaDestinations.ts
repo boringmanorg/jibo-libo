@@ -32,6 +32,7 @@ export interface MeghalayaDestination {
 
 import { cdnMany } from './cdnImages';
 import { reviewedPhoto, reviewedAlt } from './tourPhotos';
+import { regionalDestinationPhoto } from './relevantTravelPhotos';
 
 // Destination slug -> uploaded gallery photos (rehosted on the Lovable CDN).
 const DESTINATION_IMAGE_KEYS: Record<string, string[]> = {
@@ -57,7 +58,7 @@ const DESTINATION_IMAGES: Record<string, string[]> = Object.fromEntries(
 
 export const getDestinationImageUrl = (slug: string, index: number = 1) => {
   const imgs = DESTINATION_IMAGES[slug];
-  if (!imgs || imgs.length === 0) return '/placeholder.svg';
+  if (!imgs || imgs.length === 0) return reviewedPhoto(`dest-${slug}`) || regionalDestinationPhoto(slug).src;
   return imgs[(index - 1) % imgs.length] ?? imgs[0];
 };
 
@@ -79,9 +80,10 @@ const destinationImageOverrides: Record<string, number[]> = {
 
 export const getDestinationImages = (slug: string, count: number = 3) => {
   // No XTSY photo of this place: use the reviewed Pexels photograph of it, if any.
-  if (!knownImageIndices[slug] && !destinationImageOverrides[slug]) {
+  if (!knownImageIndices[slug]) {
     const px = reviewedPhoto(`dest-${slug}`);
     if (px) return [{ src: px, alt: reviewedAlt(`dest-${slug}`) ?? `${slug.replace(/-/g, ' ')} Meghalaya` }];
+    return [regionalDestinationPhoto(slug)];
   }
   const overrides = destinationImageOverrides[slug];
   if (overrides) {

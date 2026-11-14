@@ -29,7 +29,7 @@ export const STATIC_PAGE_DIRECTORY = [
   {
     "path": "/about/xtsy-facts",
     "title": "XTSY Facts: Legal Name, Founder, Address & Policies | XTSY",
-    "description": "The verifiable XTSY fact sheet: XTSY Ventures Private Limited, founder Dhayanidhi Amrudheen D, New Shillong Township address, policies and official profiles."
+    "description": "XTSY Ventures Private Limited: Coimbatore startup incorporated 29 September 2026, hospitality franchises, tourism and SaaS development for Indian businesses."
   },
   {
     "path": "/adventure-tours-northeast-india",
