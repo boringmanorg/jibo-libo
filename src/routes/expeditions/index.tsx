@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { collectionSchema } from "@/lib/seo/pageEntitySchema";
 import { ExpeditionsIndexV2 as ExpeditionsIndex } from "@/pages/v2/ExpeditionsV2";
 import { buildRouteHead } from "@/lib/seo-head";
 
@@ -6,6 +7,7 @@ export const Route = createFileRoute("/expeditions/")({
   head: () =>
     buildRouteHead({
       path: "/expeditions",
+      jsonLd: [collectionSchema({ path: "/expeditions", name: "Motorbike & 4x4 Expeditions in Northeast India | XTSY", description: "Plan motorbike expeditions across Northeast India and 4x4 expeditions in Meghalaya. Compare Guwahati, Tawang, Kohima and Shillong loops, permits and seasons." })],
       title: "Motorbike & 4x4 Expeditions in Northeast India | XTSY",
       description:
         "Plan motorbike expeditions across Northeast India and 4x4 expeditions in Meghalaya. Compare Guwahati, Tawang, Kohima and Shillong loops, permits and seasons.",
