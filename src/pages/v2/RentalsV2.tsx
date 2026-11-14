@@ -83,8 +83,8 @@ export default function RentalsV2() {
   return (
     <>
       <SEOHead
-        title="Car & Bike Rentals in Assam & Meghalaya | XTSY"
-        description="Explore XTSY car and bike rentals for Assam and Meghalaya, including Guwahati and Shillong. View vehicles, listed rates and enquire on WhatsApp."
+        title="Assam & Meghalaya Car, Bike & Urbania Rentals | XTSY"
+        description="Browse self-drive cars, Royal Enfield bikes, a caravan and Force Urbania for Assam and Meghalaya. Compare daily rates and confirm availability on WhatsApp."
         keywords="self drive car shillong, bike rental shillong, caravan rental shillong, urbania rental shillong, tempo traveller shillong, royal enfield rental meghalaya, car rental shillong"
         canonicalUrl="https://xtsy.one/xtsy-rentals"
       />

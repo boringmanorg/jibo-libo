@@ -6,9 +6,9 @@ export const Route = createFileRoute("/xtsy-rentals")({
   head: () =>
     buildRouteHead({
       path: "/xtsy-rentals",
-      title: "Car & Bike Rentals in Assam & Meghalaya | XTSY",
+      title: "Assam & Meghalaya Car, Bike & Urbania Rentals | XTSY",
       description:
-        "Explore XTSY car and bike rentals for Assam and Meghalaya, including Guwahati and Shillong. View vehicles, listed rates and enquire on WhatsApp.",
+        "Browse self-drive cars, Royal Enfield bikes, a caravan and Force Urbania for Assam and Meghalaya. Compare daily rates and confirm availability on WhatsApp.",
       keywords: "car rental Assam, car rental Meghalaya, bike rental Shillong, self drive Guwahati, XTSY rentals",
     }),
   component: XTSYRentals,
