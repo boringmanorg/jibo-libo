@@ -1,0 +1,71 @@
+{
+ "checkedAt": "2026-11-14T17:53:44.675Z",
+ "site": "http://localhost:4174",
+ "sitemaps": [
+  {
+   "sitemap": "https://xtsy.one/sitemap-static.xml",
+   "status": 200,
+   "urls": 58
+  },
+  {
+   "sitemap": "https://xtsy.one/sitemap-hostel.xml",
+   "status": 200,
+   "urls": 77
+  },
+  {
+   "sitemap": "https://xtsy.one/sitemap-tour-packages.xml",
+   "status": 200,
+   "urls": 73
+  },
+  {
+   "sitemap": "https://xtsy.one/sitemap-tours.xml",
+   "status": 200,
+   "urls": 88
+  },
+  {
+   "sitemap": "https://xtsy.one/sitemap-destinations.xml",
+   "status": 200,
+   "urls": 79
+  },
+  {
+   "sitemap": "https://xtsy.one/sitemap-guides.xml",
+   "status": 200,
+   "urls": 134
+  },
+  {
+   "sitemap": "https://xtsy.one/sitemap-programmatic.xml",
+   "status": 200,
+   "urls": 56
+  },
+  {
+   "sitemap": "https://xtsy.one/sitemap-dining.xml",
+   "status": 200,
+   "urls": 49
+  },
+  {
+   "sitemap": "https://xtsy.one/sitemap-misc.xml",
+   "status": 200,
+   "urls": 20
+  },
+  {
+   "sitemap": "https://xtsy.one/sitemap-images.xml",
+   "status": 200,
+   "urls": 2
+  }
+ ],
+ "urlsChecked": 634,
+ "healthy": 634,
+ "withIssues": 0,
+ "byIssue": {},
+ "medianMs": 26,
+ "p95Ms": 56,
+ "withStructuredData": 634,
+ "withQuickAnswer": 442,
+ "extra": {
+  "robots": 200,
+  "llms": 200,
+  "llmsFull": 200,
+  "indexNowKey": 200,
+  "home": "XTSY Travellers Hostel, New Shillong | Dorms & Stays"
+ }
+}
