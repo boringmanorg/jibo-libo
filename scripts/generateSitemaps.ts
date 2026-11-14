@@ -5,13 +5,14 @@
  * directly from the SEO registry on every deploy.
  *
  * Also cross-checks the GSC coverage drilldown (RECOVERY_LIVE_PAGES +
- * RECOVERY_FILTERED_OUT) and alerts (exit 2) if any flagged slug is missing
+ * RECOVERY_FILTERED_OUT) and alerts (exit 2) if any indexable flagged slug is missing
  * from the generated sitemap.
  */
 import * as fs from 'fs';
 import * as path from 'path';
 import { ALL_SEO_PAGES } from '../src/data/seoPages';
 import { isIndexableSEOSlug } from '../src/data/seoIndexPolicy';
+import { checkSitemapCoverage } from './sitemapCoverage';
 import { STATIC_ROUTES } from '../src/utils/seoSlugRegistry';
 import {
   RECOVERY_FILTERED_OUT,
@@ -21,12 +22,10 @@ import {
 
 const PUBLIC = path.join(process.cwd(), 'public');
 const HOST = 'https://xtsy.one';
-const TODAY = new Date().toISOString().split('T')[0];
 
 function xmlUrl(loc: string, priority: number, changefreq = 'weekly'): string {
   return `  <url>
     <loc>${HOST}${loc.startsWith('/') ? loc : '/' + loc}</loc>
-    <lastmod>${TODAY}</lastmod>
     <changefreq>${changefreq}</changefreq>
     <priority>${priority.toFixed(1)}</priority>
   </url>`;
@@ -110,7 +109,7 @@ console.log(` ↳ Skipped (legacy places redirect): ${skippedLegacyPlaces}`);
 
 // ── Coverage cross-check ──
 const coverageSlugs = [...RECOVERY_LIVE_PAGES, ...RECOVERY_FILTERED_OUT];
-const missing = coverageSlugs.filter(s => !includedSlugs.has(s));
+const { missing, excluded } = checkSitemapCoverage(coverageSlugs, includedSlugs, ALL_SEO_PAGES);
 
 console.log('═══════════════════════════════════════════════');
 console.log(' SITEMAP GENERATION REPORT');
@@ -118,6 +117,7 @@ console.log('══════════════════════�
 console.log(` Static URLs        : ${staticUrls.length}`);
 console.log(` Priority URLs      : ${priorityUrls.length}`);
 console.log(` GSC coverage slugs : ${coverageSlugs.length}`);
+console.log(` Policy exclusions  : ${excluded.length}`);
 console.log(` Missing from map   : ${missing.length}`);
 console.log('───────────────────────────────────────────────');
 
@@ -127,4 +127,4 @@ if (missing.length > 0) {
   process.exit(2);
 }
 
-console.log(' ✅ All GSC coverage slugs present in sitemap.');
+console.log(' ✅ All indexable GSC coverage slugs present in sitemap.');

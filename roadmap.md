@@ -1,5 +1,8 @@
 # Roadmap — Master SEO prompt (xtsy.one)
 
+## Production sitemap build failure — 14 November 2026
+- [ ] Align historical GSC coverage validation with intentional service exclusions, retain missing-indexable-page failures, remove generated URL lastmod dates, and verify the sitemap publishing sequence and regression tests.
+
 ## Service SEO coverage — 14 November 2026
 - [x] Audited 538 programmatic guides: 91 outside owner service coverage are excluded from indexing/discovery; 69 previously advertised noindex/redirect URLs removed from sitemap branches. Page addresses preserved.
 - [x] Khasi/traditional-food listings redirect to TAB Bistro before metadata; cuisine promotion removed from dining registry. Rental page, schema and AI reference files now use Assam/Meghalaya scope; general tours/expeditions remain unrestricted.

@@ -23,5 +23,6 @@
 - Saturday group tour terms and departure dates come only from the browser-safe saturdayGroupTour data module; this keeps the tour page and destination CTAs consistent.
 - Keep page dates on Article/WebPage entities, coordinates on Place entities and schema images absolute and placeholder-free; schema.org domains must match the entity being described.
 - Sitemap pruning must exclude all intentionally noindex guest utilities and prefer active catalogue pages over stale recovery aliases, matching route resolution; regenerated lists must not hide live guides or reintroduce hidden pages.
+- Historical sitemap recovery checks must apply the shared indexing policy and still fail for missing indexable pages; omit generation-date URL lastmod values because they are not content-change timestamps.
 - Reuse company identity from brandFacts for visible facts and Organization schema, keeping corporate headquarters separate from guest-property addresses.
 - Missing landmark photos may use reviewed regional landscapes with truthful regional alt text; never relabel another landmark or generate a documentary travel photo.
