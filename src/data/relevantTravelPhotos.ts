@@ -7,6 +7,9 @@ import spiti from '@/assets/travel/spiti-valley.jpg.asset.json';
 import train from '@/assets/travel/nilgiri-blue-train.jpg.asset.json';
 import tamilTemple from '@/assets/travel/tamil-nadu-temple-street.jpg.asset.json';
 import winterSpiti from '@/assets/travel/spiti-key-monastery-winter.jpg.asset.json';
+import suv from '@/assets/travel/mountain-road-suv.jpg.asset.json';
+
+export const RENTAL_VEHICLE_PHOTO = { src: suv.url, alt: 'SUV on a mountain road in India; representative vehicle photograph, not XTSY fleet inventory' };
 
 export const TRAVEL_PHOTOS: Record<string, { src: string; alt: string }> = {
   'tour-74': { src: munnar.url, alt: 'Tea plantations and hills in Munnar, Kerala' },

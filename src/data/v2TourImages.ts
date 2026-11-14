@@ -4,9 +4,10 @@
  * placeholder instead of an unrelated or AI-generated image.
  */
 import { IMG, first } from './v2Images';
-import { TRAVEL_PHOTOS } from './relevantTravelPhotos';
+import { TRAVEL_PHOTOS, RENTAL_VEHICLE_PHOTO } from './relevantTravelPhotos';
 
 const RULES: [RegExp, string][] = [
+  [/car rental|self.drive car|vehicle rental|4x4/i, RENTAL_VEHICLE_PHOTO.src],
   [/winter spiti|spiti snow/i, TRAVEL_PHOTOS['tour-67'].src],
   [/spiti|kinnaur/i, TRAVEL_PHOTOS['tour-65'].src],
   [/munnar|eravikulam/i, TRAVEL_PHOTOS['tour-74'].src],
