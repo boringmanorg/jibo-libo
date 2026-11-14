@@ -1,10 +1,10 @@
 # Roadmap — Master SEO prompt (xtsy.one)
 
 ## Ahrefs audit — 14 November 2026
-- [ ] Verify the uploaded audit's affected URLs against current site content.
-- [ ] Fix confirmed sitemap, redirect-link, metadata and structured-data defects without changing owner-controlled policies or page URLs.
-- [ ] Check public template codes, run targeted regression tests and verify affected pages on desktop and phone.
-- [ ] Report remaining notices and any issues that require hosting changes or owner facts.
+- [x] Verified all 706 exported page entries in preview: all return 200, with descriptions 110–160 characters and no visible template codes.
+- [x] Corrected the 44 schema-domain defects, placeholder/relative schema images, missing sitemap coverage and hidden-page regeneration. Photographer profile URLs normalised with trailing slashes; external readback blocked by Pexels, so redirect resolution remains unverified.
+- [x] 207 tests passed, 4 skipped; static SEO checker clean, build OK. Five pages verified on desktop/phone with no overflow or browser errors; guide-to-tour navigation and Quick facts checked.
+- [x] Remaining: hosting-level HTTP/www redirect chain and crawl-time performance require hosting evidence; image-sitemap overlap is intentional. Optional Article/Product/ItemList notices are not blanket schema requirements. Google title rewrites cannot be forced. Kynrem photo missing and Bistro cuisine copy needs owner factual review; neither changed speculatively. Publish required; audit recount pending a new crawl.
 
 Approved scope: **Part 0 + Part 7 quick wins (7a, 7b, 7c, 7d, 7f)** first, then continue part by part.
 
