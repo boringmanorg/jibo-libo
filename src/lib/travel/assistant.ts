@@ -220,7 +220,7 @@ const FACTS: [RegExp, () => string, string[]][] = [
   [/stargaz|star ?gaz|night sky|milky ?way|\bastro|see (the )?stars|star view|starry/, () => STARGAZING_NOTICE, ['Experience by XTSY', 'Talk to the desk on WhatsApp']],
   [/live music|music event|\bband\b|\bdj\b|\bgig\b|live performance/, () => 'We do not run regular live music nights. We can host a music event if it is pre-booked with the desk — message us with your dates and what you have in mind and we will tell you what is possible.', ['Talk to the desk on WhatsApp', 'Plan a group trip']],
   [/bonfire|camp ?fire|fire ?pit/, () => 'A bonfire runs every night for in-house guests and stays open till late. Private parties on the property also run late into the night.', ['Check availability', 'Plan a 3-day trip']],
-  [/cancel|refund|change (my |the )?dates?|date change|reschedul|postpone|move (my )?booking|modify (my )?booking/, () => 'The booking amount is **non-refundable** — there is no free cancellation. You can change your dates **once within 15 days** of the original check-in (ask at least 48 hours before), subject to availability and any rate difference. Full terms are on the Pricing & Cancellation Policy page.', ['Talk to the desk on WhatsApp']],
+  [/cancel|refund|(?:change|move|modify|amend|shift).{0,40}(?:booking|reservation|dates?|check.?in)|date change|reschedul|postpone/, () => 'The booking amount is **non-refundable** — there is no free cancellation. You can change your dates **once within 15 days** of the original check-in (ask at least 48 hours before), subject to availability and any rate difference. Full terms are on the Pricing & Cancellation Policy page.', ['Talk to the desk on WhatsApp']],
 ];
 
 function priceAnswer(): string {
@@ -281,6 +281,22 @@ export function respond(message: string, prev: ChatState): { reply: Reply; state
     }
   }
   if (/stargaz|star ?gaz|night sky|milky ?way|see (the )?stars|starry/.test(t)) state.askedStargazing = true;
+
+  // Policy questions must not be mistaken for itinerary edits, even with dates.
+  const bookingPolicy = FACTS.find(([re]) => re.source.startsWith('cancel|refund'));
+  if (bookingPolicy?.[0].test(t)) {
+    return { reply: { text: bookingPolicy[1](), chips: bookingPolicy[2], actions: [] }, state };
+  }
+  const asksLiveWeather = /\bforecast\b/.test(t) ||
+    (/weather|temperature|\brain\b|raining|rainfall|how cold|how hot/.test(t) &&
+      /today|tomorrow|tonight|right now|currently|current|live|this (?:week|weekend|morning|evening)|next (?:week|weekend)|\bnow\b|\bwill\b|\bon\b/.test(t));
+  if (asksLiveWeather) {
+    return { reply: {
+      text: 'I don’t have access to a live weather forecast, so I can’t confirm the weather for your requested date or time. Check an up-to-date forecast from the India Meteorological Department before travelling. Seasonal advice is only a planning guide, not a forecast for today or tomorrow.',
+      chips: ['What is the best time to visit Meghalaya?', 'What should I pack?'],
+      actions: [],
+    }, state };
+  }
 
   const places = findPlaces(message);
   const mentionsTrip = /\b(plan|trip|itinerary|tour|days?|nights?|week|weekend|visit|go to|travel|holiday|vacation|honeymoon|package)\b/.test(t);
