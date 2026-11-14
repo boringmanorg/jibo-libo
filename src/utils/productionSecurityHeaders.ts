@@ -38,6 +38,9 @@ export function generateProductionSecurityHeaders(config: SecurityHeadersConfig 
       "frame-ancestors 'self' https://tagassistant.google.com https://tagmanager.google.com",
       "base-uri 'self'",
       "form-action 'self'",
+      // public/_headers always declared object-src 'none'; the generator had
+      // omitted it, leaving same-origin <object>/<embed> allowed via default-src.
+      "object-src 'none'",
       "upgrade-insecure-requests"
     ].join('; '),
 
@@ -102,18 +105,29 @@ export function withProductionSecurityHeaders(
 }
 
 /**
- * Directives and headers a browser ignores when they arrive in a <meta http-equiv> tag.
- * Sending them that way only logs console errors on every page; they must be real HTTP headers
- * (see serverOnlySecurityHeaders, applied in src/server.ts).
+ * The headers every server-rendered HTML response carries, applied in src/server.ts.
+ *
+ * The full Content-Security-Policy is served here as a real response header. It
+ * used to arrive as a <meta> tag injected from a useEffect, which is after
+ * hydration — by then the document and its scripts have already loaded, so the
+ * policy protected nothing on first load. A header governs the page from the
+ * first byte, and unlike meta it may carry frame-ancestors.
+ *
+ * generateProductionSecurityHeaders() also proposes non-CSP headers; those are
+ * deliberately NOT adopted here, because each would break the site as it is:
+ *   - 'Cache-Control: no-store' would disable all page caching,
+ *   - 'Cross-Origin-Embedder-Policy: require-corp' blocks every third-party
+ *     resource that lacks CORP headers (GTM, Google Fonts),
+ *   - 'X-Frame-Options: DENY' contradicts the CSP's own frame-ancestors
+ *     allowance for Tag Assistant,
+ *   - 'Referrer-Policy: no-referrer' strips attribution analytics relies on.
+ * Only its CSP is the source of truth.
  */
-const META_IGNORED_CSP_DIRECTIVES = ['frame-ancestors', 'report-uri', 'report-to', 'sandbox'];
-
-/** The part of the policy that only works as an HTTP header: framing protection and nosniff. */
 export function serverOnlySecurityHeaders(config: SecurityHeadersConfig = {}): Record<string, string> {
-  const csp = generateProductionSecurityHeaders(config)['Content-Security-Policy'] || '';
-  const frameAncestors = csp.split(';').map((d) => d.trim()).find((d) => d.startsWith('frame-ancestors')) || "frame-ancestors 'self'";
+  const csp = generateProductionSecurityHeaders(config)['Content-Security-Policy'] ||
+    "default-src 'self'; frame-ancestors 'self'";
   return {
-    'Content-Security-Policy': frameAncestors,
+    'Content-Security-Policy': csp,
     'X-Frame-Options': 'SAMEORIGIN',
     'X-Content-Type-Options': 'nosniff',
     // public/_headers declares these, but that file only covers static assets —
@@ -126,29 +140,6 @@ export function serverOnlySecurityHeaders(config: SecurityHeadersConfig = {}): R
     'Permissions-Policy':
       'geolocation=(), microphone=(), camera=(), payment=(), usb=(), bluetooth=(), interest-cohort=()',
   };
-}
-
-/**
- * Client-side Content-Security-Policy via a meta tag. Only the CSP is emitted, minus the
- * directives browsers ignore in meta form; every other security header is header-only and is
- * either sent by the server or not applicable to a page.
- */
-export function applyClientSideSecurityHeaders(config: SecurityHeadersConfig = {}) {
-  if (typeof document === 'undefined') return;
-
-  const csp = (generateProductionSecurityHeaders(config)['Content-Security-Policy'] || '')
-    .split(';')
-    .map((d) => d.trim())
-    .filter((d) => d && !META_IGNORED_CSP_DIRECTIVES.some((x) => d.startsWith(x)))
-    .join('; ');
-
-  document.querySelectorAll('meta[data-security-header]').forEach(meta => meta.remove());
-  if (!csp) return;
-  const meta = document.createElement('meta');
-  meta.setAttribute('http-equiv', 'Content-Security-Policy');
-  meta.setAttribute('content', csp);
-  meta.setAttribute('data-security-header', 'true');
-  document.head.appendChild(meta);
 }
 
 /**
