@@ -20,11 +20,14 @@ import type { SEOSection } from './seoPages';
 export const BRAND = {
   legalName: 'XTSY Ventures Private Limited',
   brand: 'XTSY',
-  hqCity: 'Shillong',
-  hqState: 'Meghalaya',
+  hqCity: 'Coimbatore',
+  hqState: 'Tamil Nadu',
+  incorporationDate: '2026-09-29',
+  incorporationLabel: '29 September 2026',
+  companyDescription: 'A Coimbatore-based startup offering franchise-model businesses across hostels, restaurants and tourism, plus SaaS development support for its infrastructure and businesses across India.',
+  coreDomains: ['https://xtsy.one', 'https://www.posbyxtsy.club'],
   whatsapp: '+918837317070',
   whatsappDisplay: '+91 88373 17070',
-  gstin: '17QSKPK1714H1ZE',
 } as const;
 
 /** XTSY's Google rating — used for the hostel, tours, travel and the Dawki campsite (booked via XTSY). */
@@ -82,7 +85,7 @@ export const GROUP_VENTURES = [
   },
   {
     name: 'XTSY Hospitality Tech',
-    summary: 'AI-powered booking, channel-management and traveller-intelligence platform.',
+    summary: 'SaaS development support for XTSY infrastructure and businesses across India, including POS by XTSY at www.posbyxtsy.club.',
   },
   {
     name: "Asia's First Stargazing Resort (upcoming)",
@@ -114,7 +117,7 @@ export const whyXTSYSection = (): SEOSection => ({
 
 export const aboutXTSYGroupSection = (): SEOSection => ({
   heading: `About ${BRAND.brand} — Powered by ${BRAND.legalName}`,
-  content: `${BRAND.brand} is an integrated travel & hospitality group from ${BRAND.hqCity}, ${BRAND.hqState}. Our group operates two own properties in Shillong and a curated services arm across Northeast India.`,
+  content: `${BRAND.legalName} is ${BRAND.companyDescription} Incorporated on ${BRAND.incorporationLabel}. Its core domains are www.xtsy.one and www.posbyxtsy.club. Guest stays operate in New Shillong Township; the company is based in ${BRAND.hqCity}, ${BRAND.hqState}.`,
   listItems: GROUP_VENTURES.map(v => `${v.name} — ${v.summary}`).concat([
     `${PARTNER_NETWORK_NOTE}`,
   ]),

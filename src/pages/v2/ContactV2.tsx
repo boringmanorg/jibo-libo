@@ -1,12 +1,13 @@
 /**
  * /contact — Contact (redesign). Keeps every business detail the payment
- * gateway onboarding needs: address, phone, emails, GSTIN, support hours.
+ * guest desk needs: address, phone, emails and support hours.
  */
 import { useState, type FormEvent } from 'react';
 import { Helmet } from '@/lib/seo/helmet';
 import { Link } from '@/lib/router-compat';
 import { PageShell, PAD, FaqList } from '@/components/v2/blocks';
 import { SpinningMark, waLink, WHATSAPP_DISPLAY } from '@/components/v2/primitives';
+import { BRAND } from '@/data/brandFacts';
 
 const PHONE = '+91 8837317070';
 const PHONE_TEL = '+918837317070';
@@ -106,8 +107,8 @@ export default function ContactV2() {
               <Link to="/travel-guide/how-to-reach-meghalaya" className="text-[15px] font-extrabold text-[#F7C9D1] underline-offset-4 hover:underline">How to reach Shillong →</Link>
             </div>
             <dl className="xt-reveal m-0 grid gap-4 rounded-[28px] border-[1.5px] border-xt-line p-8 text-[15px]">
-              <div><dt className="font-extrabold">Registered address</dt><dd className="m-0 text-xt-mute">{ADDRESS}</dd></div>
-              <div><dt className="font-extrabold">GSTIN</dt><dd className="m-0 text-xt-mute">17QSKPK1714H1ZE</dd></div>
+              <div><dt className="font-extrabold">Guest property address</dt><dd className="m-0 text-xt-mute">{ADDRESS}</dd></div>
+              <div><dt className="font-extrabold">Company</dt><dd className="m-0 text-xt-mute">{BRAND.legalName} · {BRAND.hqCity}, {BRAND.hqState} · Incorporated {BRAND.incorporationLabel}</dd></div>
               <div><dt className="font-extrabold">Support hours</dt><dd className="m-0 text-xt-mute">Monday – Sunday, 8:00 AM – 10:00 PM IST (WhatsApp 24/7)</dd></div>
               <div><dt className="font-extrabold">Bookings & partnerships</dt><dd className="m-0"><a href={`mailto:${EMAIL}`} className="text-xt-crimson">{EMAIL}</a></dd></div>
               <div><dt className="font-extrabold">Admin, billing, invoices & policies</dt><dd className="m-0"><a href={`mailto:${SUPPORT}`} className="text-xt-crimson">{SUPPORT}</a></dd></div>
