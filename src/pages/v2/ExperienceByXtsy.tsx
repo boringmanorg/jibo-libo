@@ -47,7 +47,7 @@ export default function ExperienceByXtsy() {
 
   return (
     <>
-      <SEOHead title={XTSY270_DATA.seoTitle} description={XTSY270_DATA.seoDescription} keywords={(XTSY270_DATA as { seoKeywords?: string }).seoKeywords} canonicalUrl={XTSY270_DATA.canonicalUrl} ogType="product" />
+      <SEOHead title="Experience by XTSY | Glass Glamping for Two, New Shillong" description="Stay in a 270° panoramic glass suite for two in New Shillong Township, Meghalaya. View photos, amenities and rates; enquire on WhatsApp for availability." keywords={(XTSY270_DATA as { seoKeywords?: string }).seoKeywords} canonicalUrl={XTSY270_DATA.canonicalUrl} ogType="product" />
       <PageShell bar={{ label: 'Book a stay', to: wa, note: `Experience by XTSY · ${inr(now)} a night, incl. taxes` }} cta={{ title: 'One suite. One night. Yours?', sub: 'Reserve on WhatsApp. Book 48 hours ahead for decoration and concierge.' }}>
         <PageHero
           bg="#1F2438"
