@@ -2,10 +2,26 @@ import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 
 // Live permission regression checks: no writes, no personal data returned or logged.
-const config = Object.fromEntries(readFileSync('.env', 'utf8').split('\n').filter(line => line.includes('=')).map(line => {
-  const position = line.indexOf('=');
-  return [line.slice(0, position), line.slice(position + 1).replace(/^['"]|['"]$/g, '')];
-}));
+//
+// .env is deliberately not committed, so it is absent on CI and on any fresh
+// clone. Reading it eagerly threw ENOENT at import time, before the skip logic
+// below could run, failing the whole unit-test job. Missing credentials now
+// mean the same thing as an unreachable backend: skip, don't fail.
+function readEnvFile(): Record<string, string> {
+  let raw: string;
+  try {
+    raw = readFileSync('.env', 'utf8');
+  } catch {
+    return {};
+  }
+  return Object.fromEntries(
+    raw.split('\n').filter((line) => line.includes('=')).map((line) => {
+      const position = line.indexOf('=');
+      return [line.slice(0, position), line.slice(position + 1).replace(/^['"]|['"]$/g, '')];
+    }),
+  );
+}
+const config = readEnvFile();
 const url = config.VITE_SUPABASE_URL;
 const key = config.VITE_SUPABASE_PUBLISHABLE_KEY ?? config.VITE_SUPABASE_ANON_KEY;
 const session = process.env.LOVABLE_BROWSER_SUPABASE_SESSION_JSON;
@@ -23,7 +39,7 @@ async function backendReachable() {
   }
 }
 const reachable = await backendReachable();
-if (!reachable) console.warn(`Skipping live booking permission checks: backend at ${url ?? '(no URL)'} is unreachable.`);
+if (!reachable) console.warn(`Skipping live booking permission checks: ${url ? `backend at ${url} is unreachable` : 'no .env credentials available'}.`);
 const live = it.skipIf(!reachable);
 const liveSignedIn = it.skipIf(!reachable || !token);
 

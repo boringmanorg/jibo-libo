@@ -9,12 +9,6 @@
 .env.example:generic-secret:14
 .env.example:generic-secret:3
 .env.example:generic-secret:9
-.env:generic-secret:2
-.env:generic-secret:5
-.env:jwt:2
-.env:jwt:5
-.env:supabase-service-key:2
-.env:supabase-service-key:5
 scripts/audit-supabase-assets.ts:generic-secret:13
 scripts/batchGenerateSEOHeroes.ts:jwt:18
 scripts/batchGenerateSEOHeroes.ts:supabase-service-key:18
