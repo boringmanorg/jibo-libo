@@ -17,6 +17,7 @@ import { PANORAMA_STAY_ONLY } from '@/data/panoramaPricing';
 import { CLUSTERS, PLACES, type Place } from '@/lib/travel/places';
 import { fromXtsy } from '@/lib/travel/routing';
 import { STATIC_PAGE_DIRECTORY } from '@/data/staticPageDirectory';
+import { schemaImage } from './metadataText';
 
 const SITE = 'https://xtsy.one';
 export const SEO_CONTENT_UPDATED = '2026-10-22';
@@ -151,7 +152,7 @@ export function factsFor(page: SEOPageData): Fact[] {
 export const goesBeyondShillong = (page: SEOPageData) => TRAVEL_CATS.has(page.category) || !!townOf(page);
 
 function mainEntity(page: SEOPageData, url: string, hero: Hero): Record<string, unknown> {
-  const base: Record<string, unknown> = { '@type': page.schemaType, '@id': `${url}#main`, name: page.h1, description: page.metaDescription, url, image: `${SITE}${hero.src}` };
+  const base: Record<string, unknown> = { '@type': page.schemaType, '@id': `${url}#main`, name: page.h1, description: page.metaDescription, url, image: schemaImage(hero.src) };
   if (['Hostel', 'LodgingBusiness', 'Hotel'].includes(page.schemaType)) {
     const town = townOf(page);
     if (town) {
@@ -181,7 +182,7 @@ function mainEntity(page: SEOPageData, url: string, hero: Hero): Record<string, 
   if (page.schemaType === 'Restaurant') return { ...base, '@id': `${SITE}/tab-bistro#restaurant`, name: 'TAB Bistro by XTSY', servesCuisine: ['North Indian', 'Tandoor', 'Indo-Chinese', 'Biryani', 'South Indian', 'Pasta'], telephone: '+91-8837317070', address: { '@type': 'PostalAddress', streetAddress: 'Mawdiangdiang Road, New Shillong Township', addressLocality: 'Shillong', addressRegion: 'Meghalaya', postalCode: '793018', addressCountry: 'IN' } };
   if (page.schemaType === 'TouristAttraction') {
     const p = placesOf(page)[0];
-    return { ...base, ...(p ? { geo: { '@type': 'GeoCoordinates', latitude: p.lat, longitude: p.lng } } : {}), isAccessibleForFree: true, address: { '@type': 'PostalAddress', addressRegion: 'Meghalaya', addressCountry: 'IN' } };
+    return { ...base, ...(p ? { geo: { '@type': 'GeoCoordinates', latitude: p.lat, longitude: p.lng } } : {}), address: { '@type': 'PostalAddress', addressRegion: 'Meghalaya', addressCountry: 'IN' } };
   }
   // Guides, articles, everything else.
   return { ...base, '@type': 'Article', headline: page.h1, author: { '@type': 'Organization', name: 'XTSY Travel', url: SITE }, publisher: { '@id': `${SITE}/#organization` }, datePublished: '2025-01-01', dateModified: SEO_CONTENT_UPDATED };
@@ -201,7 +202,7 @@ export function schemaFor(page: SEOPageData): Record<string, unknown>[] {
       inLanguage: 'en-IN',
       isPartOf: { '@type': 'WebSite', '@id': `${SITE}/#website`, url: SITE, name: 'XTSY Travel' },
       about: { '@id': `${SITE}/#hostel` },
-      primaryImageOfPage: { '@type': 'ImageObject', url: `${SITE}${hero.src}` },
+      primaryImageOfPage: { '@type': 'ImageObject', url: schemaImage(hero.src) },
       dateModified: SEO_CONTENT_UPDATED,
       mainEntity: { '@id': `${url}#main` },
       speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', '[data-quick-answer]', '[data-key-facts]'] },

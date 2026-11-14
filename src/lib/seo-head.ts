@@ -54,7 +54,7 @@ function avifPreload(href?: string, srcSet?: string) {
 export function buildRouteHead(input: RouteHeadInput) {
   const av = input.preloadImage ? avifPreload(input.preloadImage, input.preloadImageSrcSet) : null;
   const url = canonicalFor(input.path);
-  const image = input.image || DEFAULT_OG_IMAGE;
+  const image = input.image?.startsWith('https://') ? input.image : undefined;
 
   return {
     meta: [
@@ -71,11 +71,11 @@ export function buildRouteHead(input: RouteHeadInput) {
       { property: "og:title", content: input.title },
       { property: "og:description", content: input.description },
       { property: "og:url", content: url },
-      { property: "og:image", content: image },
+      ...(image ? [{ property: "og:image", content: image }] : []),
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: input.title },
       { name: "twitter:description", content: input.description },
-      { name: "twitter:image", content: image },
+      ...(image ? [{ name: "twitter:image", content: image }] : []),
     ],
     links: [
       { rel: "canonical", href: url },

@@ -19,3 +19,5 @@
 - Keep the selected ranking-page answers in a browser-safe editorial module and render them visibly through the shared page shell; reuse those answers in existing guide schema so visible and structured answers cannot drift.
 - Directory labels use complete current page titles; static-route titles take precedence over colliding catalogue entries, and redirects/private routes stay out of the public directory to avoid misleading or broken discovery links.
 - Saturday group tour terms and departure dates come only from the browser-safe saturdayGroupTour data module; this keeps the tour page and destination CTAs consistent.
+- Keep page dates on Article/WebPage entities, coordinates on Place entities and schema images absolute and placeholder-free; schema.org domains must match the entity being described.
+- Sitemap pruning must exclude all intentionally noindex guest utilities after generation, including gallery and install; regenerated lists must not reintroduce hidden pages.

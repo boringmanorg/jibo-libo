@@ -19,7 +19,10 @@ const organizationSchema = {
     postalCode: '793018',
     addressCountry: 'IN',
   },
-  geo: { '@type': 'GeoCoordinates', latitude: 25.6025457, longitude: 91.9448902 },
+  location: {
+    '@type': 'Place', name: 'XTSY, New Shillong Township',
+    geo: { '@type': 'GeoCoordinates', latitude: 25.6025457, longitude: 91.9448902 },
+  },
   contactPoint: [
     { '@type': 'ContactPoint', contactType: 'reservations', email: 'booking@xtsy.one', telephone: '+91-8837317070' },
     { '@type': 'ContactPoint', contactType: 'customer support', email: 'admin@xtsy.one' },

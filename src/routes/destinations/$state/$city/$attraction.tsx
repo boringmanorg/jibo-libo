@@ -4,6 +4,8 @@ import { buildRouteHead } from "@/lib/seo-head";
 import { getDestinationBySlug } from "@/data/meghalayaDestinations";
 import { getStateBySlug, getCityBySlug } from "@/data/neTaxonomy";
 import { fitTitle } from "@/lib/seo/fitTitle";
+import { describePage, schemaImage } from "@/lib/seo/metadataText";
+import { getDestinationImages } from "@/data/meghalayaDestinations";
 
 export const Route = createFileRoute("/destinations/$state/$city/$attraction")({
   head: ({ params }) => {
@@ -33,7 +35,9 @@ export const Route = createFileRoute("/destinations/$state/$city/$attraction")({
       return buildRouteHead({
         path: `/destinations/${params.state}/${params.city}/${params.attraction}`,
         title,
-        description: description.slice(0, 158),
+        description: describePage(description, 'Plan your visit with best-season advice, directions, nearby stops and XTSY stays in New Shillong.'),
+        image: dest ? schemaImage(getDestinationImages(dest.slug, 1)[0]?.src ?? '') : undefined,
+        ogType: 'article',
         keywords: dest?.seoKeywords,
         noIndex: !dest,
       });
