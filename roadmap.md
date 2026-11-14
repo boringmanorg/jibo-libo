@@ -1,7 +1,7 @@
 # Roadmap — Master SEO prompt (xtsy.one)
 
 ## Production sitemap build failure — 14 November 2026
-- [ ] Align historical GSC coverage validation with intentional service exclusions, retain missing-indexable-page failures, remove generated URL lastmod dates, and verify the sitemap publishing sequence and regression tests.
+- [x] Historical GSC coverage validation now respects intentional service exclusions and still fails for missing indexable pages. Removed generation-date URL lastmod logic; the exact sitemap publishing sequence exits successfully (four intentional exclusions, zero missing pages), 16 targeted tests pass, SEO checker reports zero errors, and preview build is OK. Production deployment not requested in this turn.
 
 ## Service SEO coverage — 14 November 2026
 - [x] Audited 538 programmatic guides: 91 outside owner service coverage are excluded from indexing/discovery; 69 previously advertised noindex/redirect URLs removed from sitemap branches. Page addresses preserved.
