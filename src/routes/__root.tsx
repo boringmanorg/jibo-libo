@@ -31,7 +31,6 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import PerformanceMonitor from "@/components/PerformanceMonitor";
-import SecurityHeadersProvider from "@/components/SecurityHeadersProvider";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import RouteErrorBoundary from "@/components/RouteErrorBoundary";
 import ConsentModal from "@/components/consent/ConsentModal";
@@ -293,12 +292,6 @@ function RootComponent() {
   return (
     <HelmetProvider>
       <AppProvider>
-        <SecurityHeadersProvider
-          config={{
-            isDevelopment: import.meta.env.MODE === "development",
-            enableHSTS: import.meta.env.MODE === "production",
-          }}
-        >
           <div className={isGuestPage ? "dark public-design" : "dark"} id="main-content">
             <ClientOnly fallback={null}>
               <PerformanceMonitor />
@@ -334,7 +327,6 @@ function RootComponent() {
                   </ConversionSignalsProvider>
                 </TrafficAnalyticsProvider>
           </div>
-        </SecurityHeadersProvider>
       </AppProvider>
     </HelmetProvider>
   );
