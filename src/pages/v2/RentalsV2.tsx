@@ -43,7 +43,7 @@ const FAQS = [
   { q: 'What documents are required for renting?', a: 'Valid driving license, government ID proof (Aadhaar/Passport), and a security deposit. For bikes, a motorcycle endorsement on your license is required.' },
   { q: 'What is the fuel policy?', a: "Vehicles are provided with a full tank. Please return with a full tank or we'll charge ₹150/litre above market price." },
   { q: 'Is a driver available?', a: 'Yes! We provide experienced local drivers at ₹800-1200/day extra depending on the vehicle. They know all the scenic routes and hidden spots.' },
-  { q: 'What about inter-state travel?', a: 'Inter-state travel is allowed with prior approval. Additional permits may be required for certain states like Arunachal Pradesh (ILP).' },
+  { q: 'Where can I use the rental?', a: 'Rental coverage is Assam and Meghalaya, including Guwahati and Shillong. Confirm your pickup point, route and interstate permissions with the desk before booking.' },
   { q: 'What is the cancellation policy?', a: 'The booking amount is non-refundable — there is no free cancellation. You can change the pickup date once, subject to availability. No refund for no-shows. The security deposit is refunded when the vehicle is returned.' },
   { q: 'Is there a minimum rental period?', a: 'Minimum rental is 1 day (24 hours). Weekly and monthly discounts available - contact us for special rates.' },
 ];
@@ -76,14 +76,15 @@ export default function RentalsV2() {
     name: 'XTSY Rentals',
     url: 'https://xtsy.one/xtsy-rentals',
     telephone: '+918837317070',
+    areaServed: [{ '@type': 'State', name: 'Assam' }, { '@type': 'State', name: 'Meghalaya' }],
     priceRange: '₹1,300 - ₹18,000 per day',
     address: { '@type': 'PostalAddress', streetAddress: 'Mawdiangdiang Road, New Shillong Township', addressLocality: 'Shillong', addressRegion: 'Meghalaya', postalCode: '793018', addressCountry: 'IN' },
   };
   return (
     <>
       <SEOHead
-        title="Self-Drive Car, Bike, Caravan & Urbania Rentals in Shillong | XTSY Rentals"
-        description="Self-drive cars, Royal Enfield bikes, a caravan camper and a 17-seat Force Urbania from New Shillong Township. Fully insured, 24/7 roadside support, driver on request. Book on WhatsApp."
+        title="Car & Bike Rentals in Assam & Meghalaya | XTSY"
+        description="Explore XTSY car and bike rentals for Assam and Meghalaya, including Guwahati and Shillong. View vehicles, listed rates and enquire on WhatsApp."
         keywords="self drive car shillong, bike rental shillong, caravan rental shillong, urbania rental shillong, tempo traveller shillong, royal enfield rental meghalaya, car rental shillong"
         canonicalUrl="https://xtsy.one/xtsy-rentals"
       />
@@ -95,7 +96,7 @@ export default function RentalsV2() {
           muted="#C9CDD8"
           eyebrowColor="#E07A8B"
           eyebrow="XTSY Rentals · Self-drive cars, bikes, caravan & Urbania"
-          title="Your wheels for the Northeast."
+          title="XTSY Rentals — Assam & Meghalaya."
           text={`Self-drive cars from ${inr(2000)} a day with 400 km included, Royal Enfields from ${inr(1300)}, a 17-seat Force Urbania from ${inr(13000)} and a caravan from ${inr(18000)}. Fully insured, 24/7 roadside support, driver on request. Pick up at XTSY in New Shillong Township.`}
           actions={<><Btn to="#fleet">See the fleet</Btn><Btn to={waLink('Hi XTSY! I want to rent a vehicle. Dates: …', 'xtsy-rentals')} kind="outline-light">Ask on WhatsApp</Btn></>}
           media={<Photo src={IMG.bumla} alt="Royal Enfield on a Northeast expedition" eager tone="night" className="aspect-[628/520] rounded-[32px]" />}
