@@ -11,6 +11,12 @@ export function excludedFoodListing(slug: string): boolean {
   return EXCLUDED_FOOD_LISTING.test(slug);
 }
 
+/** Remove excluded cuisine promotion, not cultural references to Khasi people or places. */
+export function removeExcludedCuisine(text: string): string {
+  const banned = /khasi (?:food|cuisine|dish|specialit|tradition)|traditional (?:food|cuisine)|jadoh|doh[- ]khlieh|tungrymbai/i;
+  return text.split(/(?<=[.!?])\s+/).filter((sentence) => !banned.test(sentence)).join(' ').trim();
+}
+
 export function serviceCoverageReason(page: CoveragePage): string | null {
   const { slug, category } = page;
   if (excludedFoodListing(slug)) return 'Excluded Khasi/traditional-food listing';

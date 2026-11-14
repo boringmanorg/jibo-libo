@@ -278,8 +278,8 @@ export const STATIC_PAGE_DIRECTORY = [
   },
   {
     "path": "/xtsy-rentals",
-    "title": "Bike & Gear Rentals in Shillong | XTSY",
-    "description": "Rent bikes, scooters, helmets and trekking gear in Shillong from XTSY, with daily rates, deposit terms, documents required and Meghalaya route suggestions."
+    "title": "Car & Bike Rentals in Assam & Meghalaya | XTSY",
+    "description": "Explore XTSY car and bike rentals for Assam and Meghalaya, including Guwahati and Shillong. View vehicles, listed rates and enquire on WhatsApp."
   },
   {
     "path": "/xtsy-vs-zostel",

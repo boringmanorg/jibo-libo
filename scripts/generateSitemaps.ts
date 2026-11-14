@@ -86,7 +86,7 @@ function pushUnique(url: string, priority: number) {
 // into a sitemap, so destination/attraction pages are skipped here.
 let skippedLegacyPlaces = 0;
 for (const page of ALL_SEO_PAGES) {
-  if (!isIndexableSEOSlug(page.slug)) continue;
+  if (!isIndexableSEOSlug(page.slug, page)) continue;
   const isDest = page.category === 'destinations' || page.category === 'attractions';
   includedSlugs.add(page.slug);
   if (isDest) { skippedLegacyPlaces++; continue; }
