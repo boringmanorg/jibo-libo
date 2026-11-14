@@ -36,7 +36,7 @@ export function reviewedPhoto(key: string): string {
 }
 
 /** Alt text for a reviewed photo (the photographer's own description), if any. */
-export const reviewedAlt = (key: string): string | undefined => TRAVEL_PHOTOS[key]?.alt ?? (PEXELS_PHOTOS[key] ?? PEXELS_PHOTOS[SHARED_PHOTOS[key] ?? ''])?.alt || undefined;
+export const reviewedAlt = (key: string): string | undefined => TRAVEL_PHOTOS[key]?.alt ?? ((PEXELS_PHOTOS[key] ?? PEXELS_PHOTOS[SHARED_PHOTOS[key] ?? ''])?.alt || undefined);
 
 /** Credit for a Pexels photo shown on the page, or null for XTSY's own photos. */
 export function photoCredit(key: string): { name: string; url: string; pexelsUrl: string } | null {
