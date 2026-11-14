@@ -20,4 +20,4 @@
 - Directory labels use complete current page titles; static-route titles take precedence over colliding catalogue entries, and redirects/private routes stay out of the public directory to avoid misleading or broken discovery links.
 - Saturday group tour terms and departure dates come only from the browser-safe saturdayGroupTour data module; this keeps the tour page and destination CTAs consistent.
 - Keep page dates on Article/WebPage entities, coordinates on Place entities and schema images absolute and placeholder-free; schema.org domains must match the entity being described.
-- Sitemap pruning must exclude all intentionally noindex guest utilities after generation, including gallery and install; regenerated lists must not reintroduce hidden pages.
+- Sitemap pruning must exclude all intentionally noindex guest utilities and prefer active catalogue pages over stale recovery aliases, matching route resolution; regenerated lists must not hide live guides or reintroduce hidden pages.

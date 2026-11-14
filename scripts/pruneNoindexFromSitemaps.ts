@@ -8,10 +8,12 @@ import path from 'path';
 import { isConsolidatedSEOSlug } from '../src/data/seoIndexPolicy';
 import { RECOVERY_REDIRECTS } from '../src/data/seoAffectedSlugs';
 import { STATIC_ROUTES } from '../src/utils/seoSlugRegistry';
+import { ALL_SEO_PAGES } from '../src/data/seoPages';
 
 const PUBLIC = path.resolve('public');
 const NOINDEX_STATIC_ROUTES = new Set(['book', 'book/select', 'book/campsite', 'gallery', 'install']);
 const STATIC_ROUTE_SET = new Set(STATIC_ROUTES.map((route) => route.startsWith('/') ? route.slice(1) : route));
+const ACTIVE_GUIDE_SET = new Set(ALL_SEO_PAGES.map((page) => page.slug));
 let removed = 0;
 for (const f of fs.readdirSync(PUBLIC).filter((x) => /^sitemap.*\.xml$/.test(x))) {
   const file = path.join(PUBLIC, f);
@@ -19,7 +21,8 @@ for (const f of fs.readdirSync(PUBLIC).filter((x) => /^sitemap.*\.xml$/.test(x))
   const out = xml.replace(/\s*<url>\s*<loc>https:\/\/xtsy\.one\/([^<]*)<\/loc>[\s\S]*?<\/url>/g, (m, slug: string) => {
     const cleanSlug = slug.endsWith('/') ? slug.slice(0, -1) : slug;
     const isKnownStaticRoute = STATIC_ROUTE_SET.has(cleanSlug);
-    const isRecoveryRedirect = !isKnownStaticRoute && Object.prototype.hasOwnProperty.call(RECOVERY_REDIRECTS, cleanSlug);
+    // Like programmaticPayload, active guide content wins over a stale recovery alias.
+    const isRecoveryRedirect = !isKnownStaticRoute && !ACTIVE_GUIDE_SET.has(cleanSlug) && Object.prototype.hasOwnProperty.call(RECOVERY_REDIRECTS, cleanSlug);
     if (isConsolidatedSEOSlug(cleanSlug) || NOINDEX_STATIC_ROUTES.has(cleanSlug) || isRecoveryRedirect) {
       removed++;
       return '';
