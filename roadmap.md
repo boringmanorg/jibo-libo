@@ -1,5 +1,10 @@
 # Roadmap — Master SEO prompt (xtsy.one)
 
+## Photos and company corrections — 14 November 2026
+- [ ] Audit missing and title-mismatched card/guide photos; use relevant real licensed photos, including Kynrem Falls.
+- [ ] Remove the inactive entity GST number sitewide and update company facts, incorporation date, business scope and domains.
+- [ ] Verify photo rendering on desktop/phone and test company facts without changing approved prices or tax calculations.
+
 ## Ahrefs audit — 14 November 2026
 - [x] Verified all 706 exported page entries in preview: all return 200, with descriptions 110–160 characters and no visible template codes.
 - [x] Corrected the 44 schema-domain defects, placeholder/relative schema images, missing sitemap coverage and hidden-page regeneration. Photographer profile URLs normalised with trailing slashes; external readback blocked by Pexels, so redirect resolution remains unverified.
