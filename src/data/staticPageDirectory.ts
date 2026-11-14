@@ -1,4 +1,5 @@
 /** Verified public route-title snapshot, 12 Nov 2026. Refresh when a static route title changes. */
+import { BISTRO_HOURS_META } from './tabBistroHours';
 export const STATIC_PAGE_DIRECTORY = [
   {
     "path": "/",
@@ -228,7 +229,7 @@ export const STATIC_PAGE_DIRECTORY = [
   {
     "path": "/tab-bistro",
     "title": "Restaurant in New Shillong: Tandoor, Biryani & Indo-Chinese",
-    "description": "Live tandoor, XTSY dum biryani, Indo-Chinese, North Indian gravies, South Indian breakfast and hand-crafted pasta, in New Shillong Township. Breakfast 8:45 AM–12 PM, dinner 5–11 PM."
+    "description": `TAB Bistro, New Shillong: tandoor, dum biryani & Indo-Chinese. ${BISTRO_HOURS_META}`
   },
   {
     "path": "/terms-of-service",
