@@ -1,9 +1,9 @@
 # Roadmap — Master SEO prompt (xtsy.one)
 
 ## Trip assistant guest-first stays — 14 November 2026
-- [ ] Inventory all 90-day and 15-day date-change policy occurrences without changing either version.
-- [ ] Recommend stay type and location from guest needs before mentioning XTSY; preserve prices and local-only execution.
-- [ ] Run answer-routing tests and verify recommendations through the trip assistant.
+- [x] Inventoried both policy windows, public pages, AI reference files, shared data, tests and 75 eligible generated guide entries; delivered the inventory without changing policies.
+- [x] Stay answers and itinerary introductions lead with guest room/location needs; matching New Shillong rooms are optional, central/distant/accessibility requirements do not trigger a property offer. Prices and local-only execution preserved; fixed-base itineraries clearly remain proposals, not reservations.
+- [x] 24 targeted tests pass; five stay questions verified in the browser and screenshot reviewed; build OK. Changes require publish. Policy reconciliation awaits the owner's selection of 90 or 15 days.
 
 ## Failing SEO findings — 14 November 2026
 - [x] Fresh foundations scan: all nine HTTP, crawler, sitemap, page-basics and metadata checks pass.
