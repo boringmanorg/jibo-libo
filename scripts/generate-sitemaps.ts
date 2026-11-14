@@ -33,67 +33,67 @@ const CATEGORY_CONFIG: Record<string, { priority: string; changefreq: string }> 
 };
 
 // Static routes with their config
-const STATIC_ROUTES: { path: string; priority: string; changefreq: string; lastmod: string }[] = [
-  { path: '/', priority: '1.0', changefreq: 'daily', lastmod: TODAY },
-  { path: '/about', priority: '0.7', changefreq: 'monthly', lastmod: TODAY },
-  { path: '/gallery', priority: '0.7', changefreq: 'weekly', lastmod: TODAY },
-  { path: '/guides', priority: '0.7', changefreq: 'weekly', lastmod: TODAY },
-  { path: '/faq', priority: '0.6', changefreq: 'monthly', lastmod: TODAY },
-  { path: '/safety-house-rules', priority: '0.6', changefreq: 'monthly', lastmod: TODAY },
-  { path: '/tours', priority: '0.9', changefreq: 'daily', lastmod: TODAY },
-  { path: '/expeditions', priority: '0.8', changefreq: 'weekly', lastmod: TODAY },
-  { path: '/adventure-tours-northeast-india', priority: '0.8', changefreq: 'monthly', lastmod: TODAY },
-  { path: '/meghalaya-adventure-tour', priority: '0.8', changefreq: 'monthly', lastmod: TODAY },
-  { path: '/motorbike-expedition-northeast-india', priority: '0.8', changefreq: 'monthly', lastmod: TODAY },
-  { path: '/4x4-expedition-meghalaya', priority: '0.8', changefreq: 'monthly', lastmod: TODAY },
-  { path: '/merch', priority: '0.6', changefreq: 'monthly', lastmod: TODAY },
-  { path: '/plan-trip-with-ai', priority: '0.8', changefreq: 'weekly', lastmod: TODAY },
-  { path: '/experience-by-xtsy', priority: '0.8', changefreq: 'weekly', lastmod: TODAY },
-  { path: '/xtsy-rentals', priority: '0.8', changefreq: 'weekly', lastmod: TODAY },
-  { path: '/work-from-home', priority: '0.7', changefreq: 'monthly', lastmod: TODAY },
-  { path: '/female-travellers', priority: '0.7', changefreq: 'monthly', lastmod: TODAY },
-  { path: '/pet-friendly', priority: '0.7', changefreq: 'monthly', lastmod: TODAY },
-  { path: '/tab-bistro', priority: '0.7', changefreq: 'weekly', lastmod: TODAY },
-  { path: '/xtsy-vs-zostel', priority: '0.7', changefreq: 'monthly', lastmod: TODAY },
-  { path: '/book', priority: '0.9', changefreq: 'daily', lastmod: TODAY },
-  { path: '/best-hostel-in-shillong', priority: '0.8', changefreq: 'weekly', lastmod: TODAY },
-  { path: '/budget-hostels-shillong', priority: '0.9', changefreq: 'weekly', lastmod: TODAY },
-  { path: '/hotels-in-shillong', priority: '0.8', changefreq: 'weekly', lastmod: TODAY },
-  { path: '/homestays-in-shillong', priority: '0.8', changefreq: 'weekly', lastmod: TODAY },
-  { path: '/luxury-glamping-shillong', priority: '0.8', changefreq: 'weekly', lastmod: TODAY },
-  { path: '/destination-wedding-shillong', priority: '0.7', changefreq: 'monthly', lastmod: TODAY },
-  { path: '/restaurant-in-shillong', priority: '0.7', changefreq: 'weekly', lastmod: TODAY },
-  { path: '/things-to-do-in-meghalaya', priority: '0.9', changefreq: 'weekly', lastmod: TODAY },
-  { path: '/meghalaya-tour-packages', priority: '0.9', changefreq: 'weekly', lastmod: TODAY },
-  { path: '/group-bookings-meghalaya', priority: '0.9', changefreq: 'weekly', lastmod: TODAY },
-  { path: '/meghalaya-couple-tour-package', priority: '0.8', changefreq: 'weekly', lastmod: TODAY },
-  { path: '/shillong-tour-package', priority: '0.8', changefreq: 'weekly', lastmod: TODAY },
-  { path: '/meghalaya-photo-gallery', priority: '0.7', changefreq: 'weekly', lastmod: TODAY },
-  { path: '/best-time-to-visit-meghalaya', priority: '0.8', changefreq: 'monthly', lastmod: TODAY },
-  { path: '/hidden-places-in-meghalaya', priority: '0.7', changefreq: 'monthly', lastmod: TODAY },
-  { path: '/3-day-meghalaya-itinerary', priority: '0.8', changefreq: 'monthly', lastmod: TODAY },
-  { path: '/5-day-meghalaya-itinerary', priority: '0.8', changefreq: 'monthly', lastmod: TODAY },
-  { path: '/budget-trip-to-meghalaya', priority: '0.8', changefreq: 'monthly', lastmod: TODAY },
-  { path: '/meghalaya-waterfalls', priority: '0.8', changefreq: 'weekly', lastmod: TODAY },
-  { path: '/meghalaya-caves', priority: '0.8', changefreq: 'weekly', lastmod: TODAY },
-  { path: '/meghalaya-villages', priority: '0.8', changefreq: 'weekly', lastmod: TODAY },
-  { path: '/meghalaya-viewpoints', priority: '0.8', changefreq: 'weekly', lastmod: TODAY },
-  { path: '/privacy-policy', priority: '0.3', changefreq: 'yearly', lastmod: TODAY },
-  { path: '/terms-of-service', priority: '0.3', changefreq: 'yearly', lastmod: TODAY },
-  { path: '/pricing-cancellation-policy', priority: '0.4', changefreq: 'monthly', lastmod: TODAY },
-  { path: '/contact', priority: '0.6', changefreq: 'monthly', lastmod: TODAY },
-  { path: '/catering-shillong', priority: '0.7', changefreq: 'weekly', lastmod: TODAY },
-  { path: '/meghalaya-festivals', priority: '0.8', changefreq: 'monthly', lastmod: TODAY },
-  { path: '/partner-stays', priority: '0.6', changefreq: 'monthly', lastmod: TODAY },
-  { path: '/backpacking-india', priority: '0.7', changefreq: 'monthly', lastmod: TODAY },
-  { path: '/places-to-visit-in-meghalaya', priority: '0.8', changefreq: 'weekly', lastmod: TODAY },
-  { path: '/travel-guide/guwahati-to-shillong-transport', priority: '0.8', changefreq: 'monthly', lastmod: TODAY },
-  { path: '/travel-guide/how-to-reach-meghalaya', priority: '0.8', changefreq: 'monthly', lastmod: TODAY },
-  { path: '/travel-guide/meghalaya-for-international-tourists', priority: '0.7', changefreq: 'monthly', lastmod: TODAY },
+const STATIC_ROUTES: { path: string; priority: string; changefreq: string }[] = [
+  { path: '/', priority: '1.0', changefreq: 'daily' },
+  { path: '/about', priority: '0.7', changefreq: 'monthly' },
+  { path: '/gallery', priority: '0.7', changefreq: 'weekly' },
+  { path: '/guides', priority: '0.7', changefreq: 'weekly' },
+  { path: '/faq', priority: '0.6', changefreq: 'monthly' },
+  { path: '/safety-house-rules', priority: '0.6', changefreq: 'monthly' },
+  { path: '/tours', priority: '0.9', changefreq: 'daily' },
+  { path: '/expeditions', priority: '0.8', changefreq: 'weekly' },
+  { path: '/adventure-tours-northeast-india', priority: '0.8', changefreq: 'monthly' },
+  { path: '/meghalaya-adventure-tour', priority: '0.8', changefreq: 'monthly' },
+  { path: '/motorbike-expedition-northeast-india', priority: '0.8', changefreq: 'monthly' },
+  { path: '/4x4-expedition-meghalaya', priority: '0.8', changefreq: 'monthly' },
+  { path: '/merch', priority: '0.6', changefreq: 'monthly' },
+  { path: '/plan-trip-with-ai', priority: '0.8', changefreq: 'weekly' },
+  { path: '/experience-by-xtsy', priority: '0.8', changefreq: 'weekly' },
+  { path: '/xtsy-rentals', priority: '0.8', changefreq: 'weekly' },
+  { path: '/work-from-home', priority: '0.7', changefreq: 'monthly' },
+  { path: '/female-travellers', priority: '0.7', changefreq: 'monthly' },
+  { path: '/pet-friendly', priority: '0.7', changefreq: 'monthly' },
+  { path: '/tab-bistro', priority: '0.7', changefreq: 'weekly' },
+  { path: '/xtsy-vs-zostel', priority: '0.7', changefreq: 'monthly' },
+  { path: '/book', priority: '0.9', changefreq: 'daily' },
+  { path: '/best-hostel-in-shillong', priority: '0.8', changefreq: 'weekly' },
+  { path: '/budget-hostels-shillong', priority: '0.9', changefreq: 'weekly' },
+  { path: '/hotels-in-shillong', priority: '0.8', changefreq: 'weekly' },
+  { path: '/homestays-in-shillong', priority: '0.8', changefreq: 'weekly' },
+  { path: '/luxury-glamping-shillong', priority: '0.8', changefreq: 'weekly' },
+  { path: '/destination-wedding-shillong', priority: '0.7', changefreq: 'monthly' },
+  { path: '/restaurant-in-shillong', priority: '0.7', changefreq: 'weekly' },
+  { path: '/things-to-do-in-meghalaya', priority: '0.9', changefreq: 'weekly' },
+  { path: '/meghalaya-tour-packages', priority: '0.9', changefreq: 'weekly' },
+  { path: '/group-bookings-meghalaya', priority: '0.9', changefreq: 'weekly' },
+  { path: '/meghalaya-couple-tour-package', priority: '0.8', changefreq: 'weekly' },
+  { path: '/shillong-tour-package', priority: '0.8', changefreq: 'weekly' },
+  { path: '/meghalaya-photo-gallery', priority: '0.7', changefreq: 'weekly' },
+  { path: '/best-time-to-visit-meghalaya', priority: '0.8', changefreq: 'monthly' },
+  { path: '/hidden-places-in-meghalaya', priority: '0.7', changefreq: 'monthly' },
+  { path: '/3-day-meghalaya-itinerary', priority: '0.8', changefreq: 'monthly' },
+  { path: '/5-day-meghalaya-itinerary', priority: '0.8', changefreq: 'monthly' },
+  { path: '/budget-trip-to-meghalaya', priority: '0.8', changefreq: 'monthly' },
+  { path: '/meghalaya-waterfalls', priority: '0.8', changefreq: 'weekly' },
+  { path: '/meghalaya-caves', priority: '0.8', changefreq: 'weekly' },
+  { path: '/meghalaya-villages', priority: '0.8', changefreq: 'weekly' },
+  { path: '/meghalaya-viewpoints', priority: '0.8', changefreq: 'weekly' },
+  { path: '/privacy-policy', priority: '0.3', changefreq: 'yearly' },
+  { path: '/terms-of-service', priority: '0.3', changefreq: 'yearly' },
+  { path: '/pricing-cancellation-policy', priority: '0.4', changefreq: 'monthly' },
+  { path: '/contact', priority: '0.6', changefreq: 'monthly' },
+  { path: '/catering-shillong', priority: '0.7', changefreq: 'weekly' },
+  { path: '/meghalaya-festivals', priority: '0.8', changefreq: 'monthly' },
+  { path: '/partner-stays', priority: '0.6', changefreq: 'monthly' },
+  { path: '/backpacking-india', priority: '0.7', changefreq: 'monthly' },
+  { path: '/places-to-visit-in-meghalaya', priority: '0.8', changefreq: 'weekly' },
+  { path: '/travel-guide/guwahati-to-shillong-transport', priority: '0.8', changefreq: 'monthly' },
+  { path: '/travel-guide/how-to-reach-meghalaya', priority: '0.8', changefreq: 'monthly' },
+  { path: '/travel-guide/meghalaya-for-international-tourists', priority: '0.7', changefreq: 'monthly' },
 ];
 
-function xmlUrl(loc: string, lastmod: string, changefreq: string, priority: string): string {
-  return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
+function xmlUrl(loc: string, changefreq: string, priority: string): string {
+  return `  <url>\n    <loc>${loc}</loc>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
 }
 
 function wrapUrlset(urls: string[]): string {
@@ -148,11 +148,11 @@ async function main() {
 
   // 1. Static sitemap + every data-driven expedition detail route
   const expeditionRoutes = EXPEDITION_ROUTES.flatMap(route =>
-    route.types.map(type => ({ path: `/expeditions/${type}/${route.slug}`, priority: '0.8', changefreq: 'weekly', lastmod: TODAY }))
+    route.types.map(type => ({ path: `/expeditions/${type}/${route.slug}`, priority: '0.8', changefreq: 'weekly' }))
   );
   const allStaticRoutes = [...STATIC_ROUTES, ...expeditionRoutes];
   const staticUrls = allStaticRoutes.map(r =>
-    xmlUrl(`${BASE_URL}${r.path}`, r.lastmod, r.changefreq, r.priority)
+    xmlUrl(`${BASE_URL}${r.path}`, r.changefreq, r.priority)
   );
   fs.writeFileSync(path.join(outDir, 'sitemap-static.xml'), wrapUrlset(staticUrls));
 
@@ -178,7 +178,7 @@ async function main() {
         if (!dest) continue; // no canonical attraction → covered by the hub pages
         urlPath = destinationPath(dest.slug);
       }
-      urls.push(xmlUrl(`${BASE_URL}${urlPath}`, TODAY, cfg.changefreq, cfg.priority));
+      urls.push(xmlUrl(`${BASE_URL}${urlPath}`, cfg.changefreq, cfg.priority));
     }
 
     if (group === 'destinations') {
@@ -186,7 +186,7 @@ async function main() {
       for (const hubPath of buildDestinationSitemapPaths()) {
         const depth = hubPath.split('/').filter(Boolean).length;
         const priority = depth === 1 ? '0.9' : depth === 2 ? '0.8' : depth === 3 ? '0.7' : '0.7';
-        urls.push(xmlUrl(`${BASE_URL}${hubPath}`, TODAY, 'weekly', priority));
+        urls.push(xmlUrl(`${BASE_URL}${hubPath}`, 'weekly', priority));
       }
     }
 

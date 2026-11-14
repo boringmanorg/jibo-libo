@@ -8,7 +8,6 @@ import path from 'path';
 
 async function main() {
   const { ALL_SEO_PAGES } = await import('../src/data/seoPages');
-  const today = new Date().toISOString().split('T')[0];
   const SITE = 'https://xtsy.one';
 
   // Slugs already owned by curated branches — never re-emit here.
@@ -42,7 +41,6 @@ async function main() {
 
   const urls = unique.map(p => `  <url>
     <loc>${SITE}/${p.slug}</loc>
-    <lastmod>${today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>`).join('\n');
