@@ -1,5 +1,9 @@
 # Roadmap — Master SEO prompt (xtsy.one)
 
+## Owner-approved date-change policy — 14 November 2026
+- [x] Changed the shared guest policy and all three AI reference occurrences from 90 to 15 days. Existing 15-day pages, assistant answers, prices and other terms unchanged.
+- [ ] Verify policy tests and rendered safety page plus both AI reference files; publish not requested.
+
 ## Trip assistant guest-first stays — 14 November 2026
 - [x] Inventoried both policy windows, public pages, AI reference files, shared data, tests and 75 eligible generated guide entries; delivered the inventory without changing policies.
 - [x] Stay answers and itinerary introductions lead with guest room/location needs; matching New Shillong rooms are optional, central/distant/accessibility requirements do not trigger a property offer. Prices and local-only execution preserved; fixed-base itineraries clearly remain proposals, not reservations.
