@@ -9,9 +9,9 @@ export const Route = createFileRoute("/experience-by-xtsy")({
       path: "/experience-by-xtsy",
       ogType: "product",
       jsonLd: [experienceSchema()],
-      title: "Experience by XTSY: Romantic Couple Stay, New Shillong",
+      title: "Experience by XTSY | Glass Glamping for Two, New Shillong",
       description:
-        "Experience by XTSY, India's first stargaze glamp: a 270° panoramic glass suite in New Shillong Township. Photos, what's included and rates. Book direct.",
+        "Stay in a 270° panoramic glass suite for two in New Shillong Township, Meghalaya. View photos, amenities and rates; enquire on WhatsApp for availability.",
     }),
   component: ExperienceByXtsy,
 });
