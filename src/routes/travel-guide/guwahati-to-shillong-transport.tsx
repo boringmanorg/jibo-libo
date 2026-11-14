@@ -6,9 +6,10 @@ export const Route = createFileRoute("/travel-guide/guwahati-to-shillong-transpo
   head: () =>
     buildRouteHead({
       path: "/travel-guide/guwahati-to-shillong-transport",
-      title: "Guwahati to Shillong: Cab, Bus & Shared Taxi",
+      title: "Guwahati to Shillong: Shared Taxi, Cab & Bus Guide | XTSY",
       description:
-        "All ways to get from Guwahati to Shillong with 2026 fares, journey times, pickup points and booking tips for cabs, buses, shared sumos and helicopter.",
+        "Compare Guwahati–Shillong shared taxis, private cabs and buses: pickup points, indicative fares, journey times and onward travel to New Shillong.",
+      ogType: "article",
     }),
   component: GuwahatiToShillongTransport,
 });

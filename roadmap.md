@@ -1,5 +1,10 @@
 # Roadmap — Master SEO prompt (xtsy.one)
 
+## Failing SEO findings — 14 November 2026
+- [x] Fresh foundations scan: all nine HTTP, crawler, sitemap, page-basics and metadata checks pass.
+- [x] Verified the stale hostel-rating finding against live homepage schema and owner-approved brandFacts: 4.7 from 252 reviews, not the obsolete 237 total; retained approved facts.
+- [x] Transport guide: aligned search/social descriptions with the three transport options actually covered, removed the unsupported helicopter/current-fares preview claim, and added arrival-based comparison guidance without changing prices or URL. Preview verification pending; changes require publish.
+
 ## Production sitemap build failure — 14 November 2026
 - [x] Historical GSC coverage validation now respects intentional service exclusions and still fails for missing indexable pages. Removed generation-date URL lastmod logic; the exact sitemap publishing sequence exits successfully (four intentional exclusions, zero missing pages), 16 targeted tests pass, SEO checker reports zero errors, and preview build is OK. Production deployment not requested in this turn.
 

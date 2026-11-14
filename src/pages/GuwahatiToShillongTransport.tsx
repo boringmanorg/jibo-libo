@@ -49,8 +49,8 @@ export default function GuwahatiToShillongTransport() {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Guwahati to Shillong: Shared Taxi, Cab & Bus Guide 2026"
-        description="How to reach Shillong from Guwahati Airport (GAU) & ISBT — shared taxi rates from ₹400, private cabs, bus timings, travel time & pickup points. Budget traveler guide by XTSY."
+        title="Guwahati to Shillong: Shared Taxi, Cab & Bus Guide | XTSY"
+        description="Compare Guwahati–Shillong shared taxis, private cabs and buses: pickup points, indicative fares, journey times and onward travel to New Shillong."
         keywords="guwahati to shillong, shared taxi guwahati shillong, guwahati airport to shillong, guwahati shillong bus, how to reach shillong"
         canonicalUrl={CANONICAL}
         ogType="article"
@@ -66,7 +66,7 @@ export default function GuwahatiToShillongTransport() {
           How to Reach Shillong from Guwahati: Shared Taxis, Cabs & Bus Options
         </h1>
         <p className="text-lg text-muted-foreground mb-8">
-          A budget traveler's logistics guide — current 2026 rates, exact pickup points at Guwahati Airport (GAU) and ISBT, travel durations, and the smartest option depending on your arrival time and group size.
+          Compare shared taxis, private cabs and buses from Guwahati Airport (GAU), Paltan Bazaar and ISBT. The fares and timings below are indicative: confirm the current fare, departure and drop-off point with the operator before travelling.
         </p>
 
         <section className="mb-10">
@@ -74,6 +74,16 @@ export default function GuwahatiToShillongTransport() {
           <p className="text-foreground/90 leading-relaxed">
             Guwahati (GAU) to Shillong is <strong>100 km, roughly 3–3.5 hours</strong> on NH6. Best budget-friendly option: shared Sumo/Innova taxi from Paltan Bazaar (~₹400/seat). Fastest & most comfortable: private cab from the airport (₹2,800–₹4,200). Buses run from ISBT if you have 4–5 hours to spare.
           </p>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold mb-4">Which option fits your arrival?</h2>
+          <ul className="list-disc pl-6 space-y-2 text-foreground/90">
+            <li><strong>Travelling alone in daylight:</strong> a shared taxi may suit you if you can wait for it to fill. Confirm the pickup and where it drops you in Shillong.</li>
+            <li><strong>Arriving late or carrying luggage:</strong> request a private cab in advance and agree the destination and total fare before departure.</li>
+            <li><strong>Taking a bus:</strong> check the departure from ISBT and leave time for the onward journey from the Shillong drop-off point.</li>
+            <li><strong>Staying at XTSY:</strong> ask for Mawdiangdiang Road, New Shillong Township, rather than assuming a Police Bazaar drop-off reaches the hostel.</li>
+          </ul>
         </section>
 
         <section className="grid gap-4 sm:grid-cols-3 mb-12">
