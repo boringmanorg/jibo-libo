@@ -1,5 +1,10 @@
 # Roadmap — Master SEO prompt (xtsy.one)
 
+## Trip assistant guest-first stays — 14 November 2026
+- [ ] Inventory all 90-day and 15-day date-change policy occurrences without changing either version.
+- [ ] Recommend stay type and location from guest needs before mentioning XTSY; preserve prices and local-only execution.
+- [ ] Run answer-routing tests and verify recommendations through the trip assistant.
+
 ## Failing SEO findings — 14 November 2026
 - [x] Fresh foundations scan: all nine HTTP, crawler, sitemap, page-basics and metadata checks pass.
 - [x] Verified the stale hostel-rating finding against live homepage schema and owner-approved brandFacts: 4.7 from 252 reviews, not the obsolete 237 total; retained approved facts.
