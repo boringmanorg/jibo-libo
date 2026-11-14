@@ -27,6 +27,44 @@ describe('repository hygiene', () => {
   });
 });
 
+describe('.gitleaksignore stays in sync', () => {
+  // Fingerprints are "path:rule:line". A line number drifts the moment anything
+  // above it moves, and gitleaks then reports a known false positive as a NEW
+  // finding and fails the secrets check — with no local signal. That has now
+  // happened three times (TripChat.tsx 20->21, tourPageData.ts 24->25). This
+  // test turns a silent CI failure into a local one.
+  const RULES: Record<string, RegExp> = {
+    'generic-secret': /(secret|key|token|password)\s*[:=]\s*["']?[a-zA-Z0-9_-]{16,}["']?/i,
+    jwt: /eyJ[A-Za-z0-9_/+-]*\.eyJ[A-Za-z0-9_/+-]*\./,
+    'supabase-service-key': /eyJ[A-Za-z0-9_/+-]*\.eyJ[A-Za-z0-9_/+-]*\./,
+  };
+
+  it('every fingerprint still points at a line that matches its rule', () => {
+    const ignoreFile = join(ROOT, '.gitleaksignore');
+    if (!existsSync(ignoreFile)) return;
+    const stale: string[] = [];
+    for (const raw of readFileSync(ignoreFile, 'utf8').split('\n')) {
+      const entry = raw.trim();
+      if (!entry || entry.startsWith('#')) continue;
+      const at = entry.lastIndexOf(':');
+      const ruleAt = entry.lastIndexOf(':', at - 1);
+      const [path, rule, lineNo] = [entry.slice(0, ruleAt), entry.slice(ruleAt + 1, at), Number(entry.slice(at + 1))];
+      const full = join(ROOT, path);
+      if (!existsSync(full)) continue; // entry for a deleted file: inert, not stale
+      const re = RULES[rule];
+      if (!re) continue; // rule we do not model here
+      const line = readFileSync(full, 'utf8').split('\n')[lineNo - 1];
+      if (line === undefined || !re.test(line)) stale.push(`${entry} -> ${line === undefined ? '(no such line)' : line.trim().slice(0, 60)}`);
+    }
+    expect(
+      stale,
+      `these .gitleaksignore fingerprints no longer match their line, so the ` +
+        `secrets check will fail. Re-pin the line number, or better, rename the ` +
+        `symbol so the rule stops matching:\n  ${stale.join('\n  ')}`,
+    ).toEqual([]);
+  });
+});
+
 describe('database cutoff', () => {
   // The site runs without a database. Everything goes through offlineBackend;
   // importing the SDK directly bypasses that chokepoint, and wiring such a file

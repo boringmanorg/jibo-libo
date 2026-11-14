@@ -22,8 +22,12 @@ function resolveTour(slug: string) {
 
 /** The hero photo exactly as TourDetailV2 renders it, so the preload fetches the same file. */
 function heroPhoto(slug: string, tour: { id: string | number; title: string; location?: string }) {
-  const key = getSignaturePackageBySlug(slug) ? `sig-${slug}` : `tour-${tour.id}`;
-  const src = reviewedPhoto(key) || photoFor(tour.title, tour.location);
+  // Named photoRef, not *key*: gitleaks' generic-secret rule matches
+  // `key = <16 or more characters>`, and the resulting false positive had to be
+  // pinned by line number in .gitleaksignore — which broke the moment anything
+  // above it moved.
+  const photoRef = getSignaturePackageBySlug(slug) ? `sig-${slug}` : `tour-${tour.id}`;
+  const src = reviewedPhoto(photoRef) || photoFor(tour.title, tour.location);
   return { src, responsive: responsiveImage(src) };
 }
 
