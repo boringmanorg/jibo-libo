@@ -1,5 +1,11 @@
 # Roadmap — Master SEO prompt (xtsy.one)
 
+## Ahrefs audit — 14 November 2026
+- [ ] Verify the uploaded audit's affected URLs against current site content.
+- [ ] Fix confirmed sitemap, redirect-link, metadata and structured-data defects without changing owner-controlled policies or page URLs.
+- [ ] Check public template codes, run targeted regression tests and verify affected pages on desktop and phone.
+- [ ] Report remaining notices and any issues that require hosting changes or owner facts.
+
 Approved scope: **Part 0 + Part 7 quick wins (7a, 7b, 7c, 7d, 7f)** first, then continue part by part.
 
 ## Owner decisions (this session)
