@@ -8,6 +8,8 @@
  * left out of sitemaps, so their link equity flows to the main town guide.
  * Shillong variants stay indexable: XTSY really has live beds there.
  */
+import { serviceCoverageReason, type CoveragePage } from './seoServiceCoverage';
+
 const TIME_VARIANT = /-(today|tonight|this-weekend|tomorrow|last-minute|now)$/;
 const STAY_PREFIX = /^(hostel|homestay|glamping|hotel)s?-in-/;
 
@@ -20,6 +22,6 @@ export const CANONICAL_TWIN: Readonly<Record<string, string>> = {
   'hostel-in-shillong-today': 'hostels-in-shillong-today',
 };
 
-export function isIndexableSEOSlug(slug: string): boolean {
-  return !isConsolidatedSEOSlug(slug) && !CANONICAL_TWIN[slug];
+export function isIndexableSEOSlug(slug: string, page?: CoveragePage): boolean {
+  return !isConsolidatedSEOSlug(slug) && !CANONICAL_TWIN[slug] && !serviceCoverageReason(page ?? { slug });
 }

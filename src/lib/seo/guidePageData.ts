@@ -11,7 +11,8 @@ import type { RouteHeadInput } from '@/lib/seo-head';
 import { programmaticModel, schemaFor, isThinSEOPage, guideDirectory, CATEGORY_LABELS, townOf, goesBeyondShillong, SEO_CONTENT_UPDATED } from './programmaticSeo';
 import { getRelatedPages, getPagesByCategory } from '@/data/seoPages';
 import { RECOVERY_REDIRECTS } from '@/data/seoAffectedSlugs';
-import { CANONICAL_TWIN } from '@/data/seoIndexPolicy';
+import { CANONICAL_TWIN, isIndexableSEOSlug } from '@/data/seoIndexPolicy';
+import { excludedFoodListing, serviceCoverageReason } from '@/data/seoServiceCoverage';
 import { getWheelLinks } from '@/data/seoLinkingWheel';
 import { rankedQuestionsFor } from '@/data/rankedPageQuestions';
 
@@ -34,6 +35,7 @@ export type ProgrammaticPayload =
     };
 
 export function programmaticPayload(slug: string): ProgrammaticPayload {
+  if (excludedFoodListing(slug)) return { status: 'redirect', to: '/tab-bistro' };
   const model = programmaticModel(slug);
   if (!model) {
     const to = RECOVERY_REDIRECTS[slug];
@@ -67,9 +69,9 @@ export function programmaticPayload(slug: string): ProgrammaticPayload {
     town: townOf(page),
     beyond: goesBeyondShillong(page),
     updated: SEO_CONTENT_UPDATED,
-    related: getRelatedPages(page.slug).map((p) => ({ slug: p.slug, h1: p.h1 })),
-    sameCat: getPagesByCategory(page.category).filter((p) => p.slug !== page.slug).slice(0, 9).map((p) => ({ slug: p.slug, h1: p.h1 })),
-    wheel: getWheelLinks(page.slug).map((l) => ({ slug: l.slug, label: l.label })),
+    related: getRelatedPages(page.slug).filter((p) => isIndexableSEOSlug(p.slug, p)).map((p) => ({ slug: p.slug, h1: p.h1 })),
+    sameCat: getPagesByCategory(page.category).filter((p) => p.slug !== page.slug && isIndexableSEOSlug(p.slug, p)).slice(0, 9).map((p) => ({ slug: p.slug, h1: p.h1 })),
+    wheel: getWheelLinks(page.slug).filter((l) => !serviceCoverageReason({ slug: l.slug })).map((l) => ({ slug: l.slug, label: l.label })),
   };
 }
 

@@ -5,7 +5,7 @@
  */
 import fs from 'fs';
 import path from 'path';
-import { isConsolidatedSEOSlug } from '../src/data/seoIndexPolicy';
+import { isIndexableSEOSlug } from '../src/data/seoIndexPolicy';
 import { RECOVERY_REDIRECTS } from '../src/data/seoAffectedSlugs';
 import { STATIC_ROUTES } from '../src/utils/seoSlugRegistry';
 import { ALL_SEO_PAGES } from '../src/data/seoPages';
@@ -23,7 +23,7 @@ for (const f of fs.readdirSync(PUBLIC).filter((x) => /^sitemap.*\.xml$/.test(x))
     const isKnownStaticRoute = STATIC_ROUTE_SET.has(cleanSlug);
     // Like programmaticPayload, active guide content wins over a stale recovery alias.
     const isRecoveryRedirect = !isKnownStaticRoute && !ACTIVE_GUIDE_SET.has(cleanSlug) && Object.prototype.hasOwnProperty.call(RECOVERY_REDIRECTS, cleanSlug);
-    if (isConsolidatedSEOSlug(cleanSlug) || NOINDEX_STATIC_ROUTES.has(cleanSlug) || isRecoveryRedirect) {
+    if (!isIndexableSEOSlug(cleanSlug, ALL_SEO_PAGES.find((page) => page.slug === cleanSlug)) || NOINDEX_STATIC_ROUTES.has(cleanSlug) || isRecoveryRedirect) {
       removed++;
       return '';
     }

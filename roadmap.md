@@ -1,5 +1,10 @@
 # Roadmap — Master SEO prompt (xtsy.one)
 
+## Service SEO coverage — 14 November 2026
+- [x] Audited 538 programmatic guides: 91 outside owner service coverage are excluded from indexing/discovery; 69 previously advertised noindex/redirect URLs removed from sitemap branches. Page addresses preserved.
+- [x] Khasi/traditional-food listings redirect to TAB Bistro before metadata; cuisine promotion removed from dining registry. Rental page, schema and AI reference files now use Assam/Meghalaya scope; general tours/expeditions remain unrestricted.
+- [x] 67 targeted tests passed; SEO checker zero errors; eight browser routes verified. Retained indexable coverage: 12 Meghalaya group guides, 11 Meghalaya honeymoon guides, 20 local hostel guides, 66 local dining guides, six rental guides; changes require publishing and search recrawl. No new international offers invented.
+
 ## Photos and company corrections — 14 November 2026
 - [x] Shared photo selectors now cover all 43 destinations and every tour: 29 missing destination photos use truthfully labelled Meghalaya regional landscapes; eight empty tour cards use reviewed regional Pexels photos. Corrected car-versus-bike and Seven Sisters image selection. All 88 selected photo URLs returned actual images.
 - [x] Removed inactive entity GST references from public source and updated company facts, About, contact, guide copy, Organization schema and AI reference files: Coimbatore, incorporated 29 September 2026, franchise/SaaS scope and both core domains. Approved prices and tax calculations untouched.

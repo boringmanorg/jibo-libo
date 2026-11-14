@@ -1,5 +1,7 @@
 # Architecture rules
 
+- Apply the shared browser-safe service coverage policy to guide robots, directory links, related links and sitemap generation; preserve out-of-scope addresses with noindex and redirect excluded cuisine listings before metadata.
+
 - Retired tour offers must leave the shared catalogue and sitemap and redirect before metadata loading; this prevents stale offer schemas and indexed duplicate pages.
 
 - Resolve booking catalogue labels and calculate GST-inclusive quotes through the shared booking quote utilities; this keeps displayed, persisted and WhatsApp amounts consistent without bypassing server validation.

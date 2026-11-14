@@ -1142,6 +1142,8 @@ const RAW_SEO_PAGES: SEOPageData[] = dedupeBySlug(RAW_SEO_PAGES_WITH_DUPES);
 import { applySEOOverrides } from './seoPagesOverrides';
 import { BRAND_OPENER, whyXTSYSection } from './brandFacts';
 import { normalizeSEOPage } from './seoNormalize';
+import { excludedFoodListing, removeExcludedCuisine } from './seoServiceCoverage';
+import { isIndexableSEOSlug } from './seoIndexPolicy';
 
 // SERP-safe title clamp. Google truncates titles past ~60 chars, so any
 // over-length title is intelligently shortened: keep the brand suffix
@@ -1225,7 +1227,20 @@ const dedupeH1 = (pages: SEOPageData[]): SEOPageData[] => {
 export const ALL_SEO_PAGES: SEOPageData[] = dedupeH1(
   enforceBrandFacts(
     applySEOOverrides(filterHighQualityPages(RAW_SEO_PAGES))
-  ).map(normalizeSEOPage)
+  ).map((page) => {
+    if (page.category !== 'restaurants' && page.category !== 'food-dining') return normalizeSEOPage(page);
+    const clean = (text: string) => removeExcludedCuisine(text);
+    return normalizeSEOPage({
+      ...page,
+      metaDescription: clean(page.metaDescription) || 'TAB Bistro by XTSY offers multi-cuisine dining in New Shillong Township. View the menu and enquire about a table on WhatsApp.',
+      intro: clean(page.intro),
+      quickAnswer: page.quickAnswer ? clean(page.quickAnswer) : undefined,
+      keywords: page.keywords.filter((keyword) => clean(keyword)),
+      relatedSlugs: page.relatedSlugs.filter((slug) => !excludedFoodListing(slug)),
+      sections: page.sections.map((section) => ({ ...section, content: clean(section.content), listItems: section.listItems?.filter((item) => clean(item)) })).filter((section) => clean(section.heading)),
+      faqs: page.faqs.filter((faq) => clean(faq.question) && clean(faq.answer)).map((faq) => ({ ...faq, answer: clean(faq.answer) })),
+    });
+  })
 );
 export const RAW_SEO_PAGES_COUNT = RAW_SEO_PAGES.length;
 
@@ -1236,7 +1251,7 @@ export const findSEOPage = (slug: string): SEOPageData | undefined => {
 
 // Get all slugs for sitemap generation
 export const getAllSEOSlugs = (): string[] => {
-  return ALL_SEO_PAGES.map(p => p.slug);
+  return ALL_SEO_PAGES.filter(p => isIndexableSEOSlug(p.slug, p)).map(p => p.slug);
 };
 
 // Get pages by category

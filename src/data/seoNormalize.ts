@@ -109,13 +109,13 @@ const enrichmentFor = (cat: SEOPageCategory): Enrichment => {
     return {
       heading: (t) => `Renting for Your ${t}`,
       content: (t) =>
-        `XTSY Rentals supplies well-maintained Royal Enfields, scooters and self-drive cars for your ${t.toLowerCase()}. Every vehicle is serviced before handover and comes with helmets, documents and on-call road support across Northeast India.`,
+        `XTSY Rentals covers Assam and Meghalaya. For ${t.toLowerCase()}, share your dates, pickup point and preferred vehicle with the desk to confirm availability, documents, deposit terms and permitted routes before booking.`,
       items: () => [
         `Royal Enfield, scooter and self-drive car options`,
         `Serviced, road-ready vehicles with documents in order`,
         `Helmets and safety gear included`,
         `Flexible daily, weekly and trip-based rates`,
-        `On-call breakdown support across NE India`,
+        `Confirm road-support arrangements for your Assam or Meghalaya route`,
         `Reserve a vehicle on WhatsApp ${WA}`,
       ],
     };

@@ -29,6 +29,7 @@ import { RECOVERY_REDIRECTS } from '../src/data/seoAffectedSlugs';
 import { destinationPath } from '../src/data/neTaxonomy';
 import { getDestinationBySlug } from '../src/data/meghalayaDestinations';
 import { GONE_SLUGS } from '../src/data/seoGoneSlugs';
+import { isIndexableSEOSlug } from '../src/data/seoIndexPolicy';
 
 interface SlimEntry {
   t: string; // title
@@ -56,7 +57,7 @@ const STATIC_ROUTE_META: Record<string, RichEntry> = {
   'work-from-home': { t: 'Workation in Shillong — Co-Working Hostel | XTSY', d: 'Remote work from XTSY Shillong. High-speed WiFi, mountain views, co-working space.', h: 'Workation Hostel in Shillong', s: 'Hostel' },
   'xtsy-vs-zostel': { t: 'XTSY vs Zostel — Honest Hostel Comparison 2026', d: 'How does XTSY compare to Zostel, The Hosteller, goSTOPS? Independent side-by-side review.', h: 'XTSY vs Zostel — 2026 Comparison', s: 'Article' },
   'xtsy-rentals': { t: 'Bike & Car Rentals in Shillong | XTSY Rentals', d: 'Rent bikes, scooters & cars in Shillong. Royal Enfield, self-drive options. From ₹800/day.', h: 'Bike & Car Rentals in Shillong', s: 'AutoRental' },
-  'tab-bistro': { t: 'TAB Bistro — Best Restaurant in Shillong | XTSY', d: 'Multi-cuisine restaurant with Khasi specialties, continental dishes, mountain views.', h: 'TAB Bistro Restaurant', s: 'Restaurant' },
+  'tab-bistro': { t: 'TAB Bistro — Restaurant in New Shillong | XTSY', d: 'Multi-cuisine dining at TAB Bistro by XTSY in New Shillong Township. Explore the menu and enquire about a table on WhatsApp.', h: 'TAB Bistro Restaurant', s: 'Restaurant' },
   'book': { t: 'Book Your Stay — XTSY Hostel Shillong | Best Rates', d: 'Dorms from ₹450, private rooms from ₹2,500, Experience by XTSY from ₹8,500. Best price guaranteed.', h: 'Book Your Stay at XTSY Shillong' },
   'privacy-policy': { t: 'Privacy Policy | XTSY Travel', d: 'How XTSY protects your personal data. GDPR and India DPDP compliant privacy policy.', h: 'Privacy Policy' },
   'terms-of-service': { t: 'Terms of Service | XTSY Travel', d: 'Terms and conditions for booking at XTSY Travellers Hostel Shillong.', h: 'Terms of Service' },
@@ -71,7 +72,7 @@ const STATIC_ROUTE_META: Record<string, RichEntry> = {
   'homestays-in-shillong': { t: 'Homestays in Shillong 2026 | Local Experience | XTSY', d: 'Authentic Shillong homestays. Local families, home-cooked Khasi food. From ₹1,500/night.', h: 'Homestays in Shillong', s: 'LodgingBusiness' },
   'luxury-glamping-shillong': { t: 'Luxury Glamping in Shillong — Experience by XTSY | XTSY', d: 'India\'s first 270° panoramic glass suite. Luxury glamping with mountain views.', h: 'Luxury Glamping in Shillong', s: 'LodgingBusiness' },
   'destination-wedding-shillong': { t: 'Destination Wedding in Shillong | XTSY Events', d: 'Plan your dream wedding in Shillong. Mountain venues, local cuisine, unique experiences.', h: 'Destination Wedding in Shillong', s: 'EventVenue' },
-  'restaurant-in-shillong': { t: 'Best Restaurant in Shillong — TAB Bistro | XTSY', d: 'TAB Bistro at XTSY Shillong. Multi-cuisine restaurant with Khasi specialties.', h: 'Best Restaurant in Shillong', s: 'Restaurant' },
+  'restaurant-in-shillong': { t: 'Restaurant in Shillong — TAB Bistro | XTSY', d: 'TAB Bistro by XTSY serves multi-cuisine dining in New Shillong Township. View the menu and request a table.', h: 'Restaurant in Shillong', s: 'Restaurant' },
   'best-time-to-visit-meghalaya': { t: 'Best Time to Visit Meghalaya — Month-by-Month Guide 2026', d: 'When to visit: monsoon waterfalls, winter clarity, spring festivals. Month-by-month guide.', h: 'Best Time to Visit Meghalaya', s: 'Article' },
   'budget-trip-meghalaya': { t: 'Budget Trip to Meghalaya — Under ₹10,000 Guide | XTSY', d: 'Plan a budget Meghalaya trip under ₹10,000. Cheap stays, transport tips, free attractions.', h: 'Budget Trip to Meghalaya', s: 'Article' },
   'hidden-places-meghalaya': { t: 'Hidden Places in Meghalaya — Secret Spots 2026 | XTSY', d: 'Off-the-beaten-path waterfalls, villages, viewpoints locals love.', h: 'Hidden Places in Meghalaya', s: 'TouristAttraction' },
@@ -135,6 +136,7 @@ const DESTINATION_SLUGS_META: Record<string, RichEntry> = {
 export function generateSEOMap(): Record<string, RichEntry> {
   const map: Record<string, RichEntry> = {};
   for (const page of ALL_SEO_PAGES) {
+    if (!isIndexableSEOSlug(page.slug, page)) continue;
     const topFaqs: Array<[string, string]> = (page.faqs || [])
       .slice(0, 3)
       .map(f => [f.question, f.answer]);
