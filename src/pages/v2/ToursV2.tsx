@@ -82,8 +82,8 @@ export default function ToursV2() {
   return (
     <>
       <SEOHead
-        title="Northeast India Tour Packages 2026 — Meghalaya, Arunachal & More | XTSY"
-        description="Meghalaya, Arunachal, Assam, Nagaland and Sikkim tour packages from XTSY Voyage, plus Kerala, Himachal & Spiti, Tamil Nadu and temple circuits. Stays and transport outside New Shillong come from trusted travel partners."
+        title="Meghalaya, Northeast India & Beyond Tour Packages | XTSY"
+        description="Explore Meghalaya, Northeast India and beyond with XTSY Voyage. Compare itineraries, browse signature packages and enquire about your dates and group size."
         keywords="meghalaya tour packages, northeast india tour packages, shillong tour package, tawang tour, kaziranga tour, xtsy voyage"
         canonicalUrl="https://xtsy.one/tours"
       />

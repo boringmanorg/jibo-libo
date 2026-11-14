@@ -6,9 +6,9 @@ export const Route = createFileRoute("/tours/")({
   head: () =>
     buildRouteHead({
       path: "/tours",
-      title: "Northeast India Tour Packages from ₹7,999 | XTSY Travel",
+      title: "Meghalaya, Northeast India & Beyond Tour Packages | XTSY",
       description:
-        "30+ curated Meghalaya, Nagaland, Assam, Arunachal & Sikkim tours from ₹7,999. Living root bridges, Dawki, tribal festivals. Book direct and save 20-30% vs OTAs.",
+        "Explore Meghalaya, Northeast India and beyond with XTSY Voyage. Compare itineraries, browse signature packages and enquire about your dates and group size.",
       keywords:
         "Northeast India tours, Meghalaya tour packages, Nagaland tours, Assam safari, Arunachal Pradesh trips, Sikkim tours",
     }),
