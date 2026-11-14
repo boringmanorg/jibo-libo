@@ -7,7 +7,7 @@
  * the page component, so what's in the schema is also visible on the page.
  */
 import { findSEOPage, ALL_SEO_PAGES, type SEOPageData } from '@/data/seoPages';
-import { isConsolidatedSEOSlug, isIndexableSEOSlug } from '@/data/seoIndexPolicy';
+import { isIndexableSEOSlug } from '@/data/seoIndexPolicy';
 import { IMG, COVERS, first } from '@/data/v2Images';
 import { BISTRO_COVER } from '@/data/bistroCover';
 import { photoFor } from '@/data/v2TourImages';
@@ -240,7 +240,7 @@ export function programmaticModel(slug: string): ProgrammaticModel | null {
   if (!page) return null;
   return {
     page,
-    noindex: isConsolidatedSEOSlug(page.slug),
+    noindex: !isIndexableSEOSlug(page.slug, page),
     hero: heroFor(page),
     hub: CATEGORY_HUB[page.category] ?? '/things-to-do-in-meghalaya',
     quickAnswer: quickAnswerFor(page),
@@ -273,7 +273,7 @@ export function guideDirectory(): GuideGroup[] {
     pages: STATIC_PAGE_DIRECTORY.map((p) => ({ slug: p.path === '/' ? '' : p.path.slice(1), label: p.title, description: p.description })),
   });
   for (const page of ALL_SEO_PAGES) {
-    if (staticPaths.has(`/${page.slug}`) || !isIndexableSEOSlug(page.slug) || isThinSEOPage(page)) continue;
+    if (staticPaths.has(`/${page.slug}`) || !isIndexableSEOSlug(page.slug, page) || isThinSEOPage(page)) continue;
     const label = CATEGORY_LABELS[page.category] ?? 'More guides';
     if (!groups.has(label)) groups.set(label, { category: page.category, label, hub: CATEGORY_HUB[page.category], pages: [] });
     const group = groups.get(label);

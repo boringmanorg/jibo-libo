@@ -1,5 +1,10 @@
 # Roadmap — Master SEO prompt (xtsy.one)
 
+## Service SEO coverage — 14 November 2026
+- [ ] Audit and enforce service geography across guide metadata, discovery links and sitemaps without changing page addresses.
+- [ ] Remove Khasi/traditional-food listings and promotional food references; retain unrestricted general tours and expeditions.
+- [ ] Verify coverage rules with targeted tests and browser checks; summarise remaining coverage gaps.
+
 ## Photos and company corrections — 14 November 2026
 - [x] Shared photo selectors now cover all 43 destinations and every tour: 29 missing destination photos use truthfully labelled Meghalaya regional landscapes; eight empty tour cards use reviewed regional Pexels photos. Corrected car-versus-bike and Seven Sisters image selection. All 88 selected photo URLs returned actual images.
 - [x] Removed inactive entity GST references from public source and updated company facts, About, contact, guide copy, Organization schema and AI reference files: Coimbatore, incorporated 29 September 2026, franchise/SaaS scope and both core domains. Approved prices and tax calculations untouched.

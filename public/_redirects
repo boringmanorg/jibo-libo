@@ -14,3 +14,7 @@
 /best-restaurant-shillong /best-restaurants-shillong 301
 # Catering hub consolidation (route-level 301 also exists; this catches it at the edge).
 /tab-bistro/catering /catering-shillong 301
+
+# Owner-excluded cuisine listings: preserve saved addresses without advertising these cuisines.
+/khasi-food-guide /tab-bistro 301
+/khasi-food-restaurant-shillong /tab-bistro 301
