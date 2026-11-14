@@ -7,8 +7,8 @@
  * keeps the conversation state, builds a feasible plan with the geo planner
  * and answers common questions from XTSY's own facts.
  *
- * For stays, XTSY always comes first: its own hostel in New Shillong Township
- * for anything within day-trip range, and XTSY-booked partner stays further out.
+ * Stay advice starts with the guest's location and room needs; XTSY is offered
+ * only when its New Shillong location and available room types fit.
  */
 import { STARGAZING_NOTICE, STARGAZING_SHORT } from '@/data/stargazingPolicy';
 import { CLUSTERS, PLACES, PLACE_BY_ID, XTSY, type ClusterId, type Place } from './places';
@@ -135,22 +135,43 @@ function parseMonth(t: string): number | undefined {
 
 // ---------- fact answers ----------
 
-function stayAnswer(place?: Place): string {
-  const suite = roomPrice('xtsy-270');
-  const lines = [
-    `**1. ${XTSY.name}** — our own hostel on Mawdiangdiang Road, New Shillong Township (near IIM & NIFT Shillong). Dorm beds from ${inr(lowestDormPrice())}, women-only dorm ${inr(roomPrice('4-bed-female-only-dorm').now)}, King Double ${inr(roomPrice('king-double-room').now)} a night. TAB Bistro on site, 24/7 arrival support, pets welcome (cats and birds; dogs by breed and size).`,
-    `**2. Experience by XTSY** — India’s First Stargaze Glamp, a 270° glass suite for two at the same property: ${inr(suite.now || PANORAMA_STAY_ONLY)} a night, all inclusive (stay only); decoration +${inr(PANORAMA_DECORATION)}.`,
-  ];
-  if (place && !CLUSTERS[place.cluster].dayTripFromXtsy) {
-    const leg = travel(XTSY_POINT, pointOfPlace(place));
-    lines.unshift(`${place.name} is ~${fmtH(leg.hours)} (~${leg.km} km) from Shillong, so you’ll sleep near it: the XTSY desk books a trusted **${lowerFirst(CLUSTERS[place.cluster].stay.replace(' (booked by XTSY)', ''))}** for you. Spend your Shillong nights with us:`);
-  } else if (place) {
-    const leg = travel(XTSY_POINT, pointOfPlace(place));
-    lines.unshift(`${place.name} is an easy day trip from XTSY (~${fmtH(leg.hours)} each way), so you can stay with us and come back each evening:`);
-  } else {
-    lines.unshift('For Shillong and Meghalaya, here’s where we’d put you:');
+export function recommendStay(message: string, place?: Place, styles: TripStyle[] = [], travellers?: number) {
+  const t = clean(message);
+  const hasStyle = (style: TripStyle) => styles.includes(style) || STYLE_WORDS.some(([re, s]) => s === style && re.test(t));
+  const privateRoom = /private|privacy|quiet|own room|no dorm|not.{0,12}dorm/.test(t) || hasStyle('family');
+  const kind = privateRoom ? 'private' : hasStyle('solo-female') || /women.only|female.only/.test(t) ? 'women-dorm'
+    : hasStyle('romantic') ? 'couple' : hasStyle('backpacking') || hasStyle('budget') || /social|meet.{0,12}(people|travellers)/.test(t) ? 'dorm' : 'unspecified';
+  const central = /police baza+a?r|city cent(?:re|er)|central shillong|walk.{0,30}(shops|cafes|cafés|market)|near.{0,15}(laitumkhrah|police baza+a?r)/.test(t);
+  const riverside = /riverside|river.side|camping|camp\b/.test(t);
+  const pet = hasStyle('pets');
+  const accessibility = /wheelchair|accessible|mobility|step.free/.test(t);
+  const local = !place || place.cluster === 'shillong';
+  const offer = local && !central && !accessibility && kind !== 'unspecified' && !(kind === 'couple' && (travellers ?? parseTravellers(t) ?? 2) > 2);
+  return { kind, central, riverside, pet, accessibility, offer, local };
+}
+
+function stayAnswer(place: Place | undefined, message: string, state: ChatState): string {
+  const fit = recommendStay(message, place, state.styles, parseTravellers(clean(message)) ?? state.travellers);
+  const room = fit.kind === 'private' ? 'a private room rather than a shared dorm; confirm occupancy and bedding for your group'
+    : fit.kind === 'women-dorm' ? 'a women-only dorm with secure storage and arrival support'
+    : fit.kind === 'couple' ? 'a private room or glass glamping suite for two'
+    : fit.kind === 'dorm' ? 'a shared dorm with secure storage and communal spaces'
+    : 'a dorm for a social stay, or a private room for privacy';
+  const location = fit.central ? 'Police Bazar or your preferred central Shillong neighbourhood, so you can walk to city stops'
+    : !fit.local && place ? `near ${place.name}, to avoid returning to Shillong after each sightseeing day`
+    : 'New Shillong for a quieter base, or central Shillong if walkable city access matters more';
+  const lines = [`**Best fit for your needs:** ${room}. Look ${location}.`];
+  if (fit.riverside) lines.push('For a riverside night, compare camps or homestays near Shnongpdeng; confirm bathrooms, weather conditions and river activity availability before booking.');
+  if (fit.pet) lines.push('Confirm the stay’s pet acceptance, breed/size restrictions and any extra charges before reserving; do not assume every stay accepts your pet.');
+  if (fit.accessibility) lines.push('Ask the property to confirm step-free access, bathroom layout and room access before booking; I cannot verify accessibility here.');
+  if (fit.kind === 'unspecified') lines.push('What is your nightly budget, who is travelling, and would you prefer a dorm or a private room?');
+  if (fit.offer) {
+    const option = fit.kind === 'private' ? `King Double at ${inr(roomPrice('king-double-room').now)} a night; confirm occupancy with the desk`
+      : fit.kind === 'women-dorm' ? `women-only 4-bed dorm at ${inr(roomPrice('4-bed-female-only-dorm').now)} a night`
+      : fit.kind === 'couple' ? `Experience by XTSY, a 270° glass suite for two, at ${inr(roomPrice('xtsy-270').now || PANORAMA_STAY_ONLY)} a night (stay only); decoration +${inr(PANORAMA_DECORATION)}. ${STARGAZING_SHORT}`
+      : `dorm beds from ${inr(lowestDormPrice())} a night`;
+    lines.push(`**A matching option:** ${XTSY.name} in New Shillong Township — ${option}. TAB Bistro is on site. This is not a city-centre stay; confirm availability before booking.`);
   }
-  lines.push('XTSY’s own property is only in New Shillong Township; everywhere else in Northeast India, XTSY arranges stays, cabs and guides through trusted partners.');
   return lines.join('\n\n');
 }
 
@@ -307,8 +328,10 @@ export function respond(message: string, prev: ChatState): { reply: Reply; state
     const target = places.find((p) => p.id !== 'shillong' && p.cluster !== 'shillong') ?? places[0];
     return { reply: { text: dist, chips: target ? [`Plan a trip with ${target.name}`, `Where should I stay near ${target.name}?`] : ['How far is Dawki?', 'How far is Tawang?'], actions: [] }, state };
   }
-  if (/(where|best place|good place|recommend).{0,30}(stay|hostel|hotel|homestay|sleep|accommodation)|best hostel|best hotel|stay in shillong|hostel in shillong|hotel in shillong/.test(t) && !parseDays(t)) {
-    return { reply: { text: stayAnswer(places[0]), chips: ['Check availability', 'Plan my trip around XTSY', 'Pet policy'], actions: ['book'] }, state };
+  if (/(where|best place|good place|recommend).{0,60}(stay|hostel|hotel|homestay|sleep|accommodation)|best hostel|best hotel|stay in shillong|hostel in shillong|hotel in shillong/.test(t) && !/\b(plan|itinerary|tour)\b/.test(t)) {
+    const place = places[0] ?? PLACE_BY_ID[state.placeIds[0]];
+    const fit = recommendStay(message, place, state.styles, parseTravellers(t) ?? state.travellers);
+    return { reply: { text: stayAnswer(place, message, state), chips: ['I prefer a private room; recommend a stay', 'Recommend a social dorm stay', 'Recommend a stay near Police Bazar'], actions: fit.offer ? ['book'] : [] }, state };
   }
   if (/\b(price|prices|cost|rate|rates|tariff|how much|charges)\b/.test(t) && !parseDays(t) && !places.length) {
     return { reply: { text: priceAnswer(), chips: ['Check availability', 'Plan a 4-day trip'], actions: ['book'] }, state };
@@ -359,20 +382,20 @@ export function respond(message: string, prev: ChatState): { reply: Reply; state
   const plan = buildPlan({ days: state.days ?? 5, placeIds: state.placeIds, travellers: state.travellers ?? 2, styles: state.styles, month: state.month, camping: state.camping, keep: state.latest, avoid: state.avoid });
   state.hasPlan = true;
   state.days = plan.input.days;
-  return { reply: planReply(plan, state), state };
+  return { reply: planReply(plan, state, message), state };
 }
 
-function planReply(plan: Plan, state: ChatState): Reply {
+function planReply(plan: Plan, state: ChatState, message: string): Reply {
   const nightsOther = plan.days.filter((d) => !d.atXtsy && d.overnight !== '—').length;
   const lines: string[] = [];
   lines.push(`**Your ${plan.input.days}-day plan** for ${plan.input.travellers} ${plan.input.travellers === 1 ? 'traveller' : 'travellers'}${state.month !== undefined ? ` in ${MONTH_NAMES[state.month]}` : ''} · ~${fmtH(plan.driveHours)} on the road in total.`);
+  lines.push(stayAnswer(PLACE_BY_ID[plan.input.placeIds[0]], message, state));
   const stays: string[] = [];
   if (plan.nightsAtXtsy) stays.push(`${plan.nightsAtXtsy} ${plan.nightsAtXtsy === 1 ? 'night' : 'nights'} at **${XTSY.name}**, New Shillong (our own stay)`);
   if (nightsOther) stays.push(`${nightsOther} at partner stays the XTSY desk books`);
   if (stays.length) lines.push(`Stays: ${stays.join(' + ')}.`);
-  if (!plan.nightsAtXtsy) lines.push(`Tip: add 2 days at the start for Shillong and Cherrapunji with nights at ${XTSY.name} — Guwahati is on the way.`);
+  if (plan.nightsAtXtsy) lines.push('The day-by-day route below uses New Shillong as its base. If you prefer another overnight location, ask the desk to adjust transfers before confirming; these are proposed stays, not reservations.');
   if (state.askedStargazing) lines.push(`\u{1F30C} ${STARGAZING_SHORT}`);
-  if (state.styles.includes('romantic')) lines.push(`💫 Make one night special at **Experience by XTSY**, India’s First Stargaze Glamp: ${inr(PANORAMA_STAY_ONLY)} a night, all inclusive (decoration +${inr(PANORAMA_DECORATION)}).`);
   for (const d of plan.dropped) lines.push(`⚠️ I left out **${d.name}**: ${d.reason}. Add ${d.extraDays} ${d.extraDays === 1 ? 'day' : 'days'} to fit it in.`);
   if (plan.added.length) lines.push(`You had spare time, so I added: ${plan.added.join(', ')}. Say “remove …” to drop any.`);
   for (const p of plan.permits) lines.push(`🪪 ${p}`);
