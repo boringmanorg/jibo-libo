@@ -1,0 +1,88 @@
+{
+ "site": "http://localhost:4174",
+ "crawled": 642,
+ "ok": 642,
+ "sitemapUrls": 634,
+ "broken": 0,
+ "internalRedirects": 0,
+ "orphans": 0,
+ "depthHistogram": {
+  "0": 1,
+  "1": 63,
+  "2": 162,
+  "3": 416
+ },
+ "deepPages": [],
+ "unreachableFromHome": 0,
+ "legacyDesignPages": [
+  "/book",
+  "/install",
+  "/book?property=xtsy-experience"
+ ],
+ "h1Problems": [],
+ "duplicateTitles": [
+  {
+   "value": "meghalaya, northeast india & beyond tour packages | xtsy",
+   "urls": [
+    "/tours",
+    "/tours?group=northeast"
+   ]
+  }
+ ],
+ "duplicateDescriptions": [
+  {
+   "value": "explore meghalaya, northeast india and beyond with xtsy voyage. compare itineraries, browse signature packages and enquire about your dates and group size.",
+   "urls": [
+    "/tours",
+    "/tours?group=northeast"
+   ]
+  }
+ ],
+ "navLinks": [
+  "/best-hostel-in-shillong",
+  "/experience-by-xtsy",
+  "/tours",
+  "/tab-bistro",
+  "/work-from-home",
+  "/things-to-do-in-meghalaya",
+  "/merch"
+ ],
+ "menuLinks": [],
+ "footerLinks": [
+  "/book",
+  "/experience-by-xtsy",
+  "/xtsy-adventure-campsite-dawki",
+  "/pet-friendly",
+  "/female-travellers",
+  "/work-from-home",
+  "/best-hostel-in-shillong",
+  "/tours",
+  "/expeditions",
+  "/group-bookings-meghalaya",
+  "/xtsy-rentals",
+  "/plan-trip-with-ai",
+  "/destinations",
+  "/things-to-do-in-meghalaya",
+  "/meghalaya-waterfalls",
+  "/places-to-visit-in-meghalaya",
+  "/gallery",
+  "/tab-bistro",
+  "/catering-shillong",
+  "/merch",
+  "/destination-wedding-shillong",
+  "/xtsy-vs-zostel",
+  "/partner-stays",
+  "/meghalaya-festivals",
+  "/about",
+  "/faq",
+  "/safety-house-rules",
+  "/contact",
+  "/pricing-cancellation-policy",
+  "/privacy-policy",
+  "/terms-of-service",
+  "/install"
+ ],
+ "brokenList": [],
+ "redirectList": [],
+ "orphanList": []
+}
