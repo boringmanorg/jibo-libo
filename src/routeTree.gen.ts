@@ -62,6 +62,7 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as RefundCancellationPolicyRouteImport } from './routes/refund-cancellation-policy'
+import { Route as RentalsRouteImport } from './routes/rentals'
 import { Route as RestaurantInShillongRouteImport } from './routes/restaurant-in-shillong'
 import { Route as SafetyHouseRulesRouteImport } from './routes/safety-house-rules'
 import { Route as ShillongTourPackageRouteImport } from './routes/shillong-tour-package'
@@ -372,6 +373,11 @@ const RefundCancellationPolicyRoute =
     path: '/refund-cancellation-policy',
     getParentRoute: () => rootRouteImport,
   } as any)
+const RentalsRoute = RentalsRouteImport.update({
+  id: '/rentals',
+  path: '/rentals',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RestaurantInShillongRoute = RestaurantInShillongRouteImport.update({
   id: '/restaurant-in-shillong',
   path: '/restaurant-in-shillong',
@@ -614,6 +620,7 @@ export interface FileRoutesByFullPath {
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/profile': typeof ProfileRoute
   '/refund-cancellation-policy': typeof RefundCancellationPolicyRoute
+  '/rentals': typeof RentalsRoute
   '/restaurant-in-shillong': typeof RestaurantInShillongRoute
   '/safety-house-rules': typeof SafetyHouseRulesRoute
   '/shillong-tour-package': typeof ShillongTourPackageRoute
@@ -705,6 +712,7 @@ export interface FileRoutesByTo {
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/profile': typeof ProfileRoute
   '/refund-cancellation-policy': typeof RefundCancellationPolicyRoute
+  '/rentals': typeof RentalsRoute
   '/restaurant-in-shillong': typeof RestaurantInShillongRoute
   '/safety-house-rules': typeof SafetyHouseRulesRoute
   '/shillong-tour-package': typeof ShillongTourPackageRoute
@@ -797,6 +805,7 @@ export interface FileRoutesById {
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/profile': typeof ProfileRoute
   '/refund-cancellation-policy': typeof RefundCancellationPolicyRoute
+  '/rentals': typeof RentalsRoute
   '/restaurant-in-shillong': typeof RestaurantInShillongRoute
   '/safety-house-rules': typeof SafetyHouseRulesRoute
   '/shillong-tour-package': typeof ShillongTourPackageRoute
@@ -890,6 +899,7 @@ export interface FileRouteTypes {
     | '/privacy-policy'
     | '/profile'
     | '/refund-cancellation-policy'
+    | '/rentals'
     | '/restaurant-in-shillong'
     | '/safety-house-rules'
     | '/shillong-tour-package'
@@ -981,6 +991,7 @@ export interface FileRouteTypes {
     | '/privacy-policy'
     | '/profile'
     | '/refund-cancellation-policy'
+    | '/rentals'
     | '/restaurant-in-shillong'
     | '/safety-house-rules'
     | '/shillong-tour-package'
@@ -1072,6 +1083,7 @@ export interface FileRouteTypes {
     | '/privacy-policy'
     | '/profile'
     | '/refund-cancellation-policy'
+    | '/rentals'
     | '/restaurant-in-shillong'
     | '/safety-house-rules'
     | '/shillong-tour-package'
@@ -1164,6 +1176,7 @@ export interface RootRouteChildren {
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   ProfileRoute: typeof ProfileRoute
   RefundCancellationPolicyRoute: typeof RefundCancellationPolicyRoute
+  RentalsRoute: typeof RentalsRoute
   RestaurantInShillongRoute: typeof RestaurantInShillongRoute
   SafetyHouseRulesRoute: typeof SafetyHouseRulesRoute
   ShillongTourPackageRoute: typeof ShillongTourPackageRoute
@@ -1575,6 +1588,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RefundCancellationPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/rentals': {
+      id: '/rentals'
+      path: '/rentals'
+      fullPath: '/rentals'
+      preLoaderRoute: typeof RentalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/restaurant-in-shillong': {
       id: '/restaurant-in-shillong'
       path: '/restaurant-in-shillong'
@@ -1885,6 +1905,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   ProfileRoute: ProfileRoute,
   RefundCancellationPolicyRoute: RefundCancellationPolicyRoute,
+  RentalsRoute: RentalsRoute,
   RestaurantInShillongRoute: RestaurantInShillongRoute,
   SafetyHouseRulesRoute: SafetyHouseRulesRoute,
   ShillongTourPackageRoute: ShillongTourPackageRoute,

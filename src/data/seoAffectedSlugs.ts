@@ -277,6 +277,7 @@ export const RECOVERY_REDIRECTS: Readonly<Record<string, string>> = {
   'photography-tour-tripura': '/destinations/tripura',
   'winter-in-jowai': '/destinations/meghalaya/jowai',
   // Vehicle rentals → consolidated rental landing
+  'rentals': '/xtsy-rentals',
   'car-rental-shillong': '/xtsy-rentals',
   'car-rental-northeast-india': '/xtsy-rentals',
   'luxury-car-rental-shillong': '/xtsy-rentals',
