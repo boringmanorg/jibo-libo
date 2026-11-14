@@ -9,6 +9,7 @@ import { COVERS } from '@/data/v2Images';
 import { PageShell, PageHero, Section, H2, StatRow, SplitFeature, PAD, Btn, FaqList } from '@/components/v2/blocks';
 import { Photo, Eyebrow, XtsyMark, SpinningMark } from '@/components/v2/primitives';
 import { inr, lowestDormPrice } from '@/components/v2/pricing';
+import { BRAND } from '@/data/brandFacts';
 
 const ADDRESS = {
   '@type': 'PostalAddress',
@@ -65,7 +66,7 @@ export default function AboutV2() {
           <div className="xt-reveal flex flex-col gap-3 rounded-[32px] bg-xt-cream p-8 sm:p-12">
             <Eyebrow>The company</Eyebrow>
             <h2 className="xt-display m-0 text-[36px] leading-none sm:text-[48px]">XTSY<sup className="text-[18px]">™</sup> Ventures Private Limited</h2>
-            <p className="m-0 max-w-3xl text-[17px] leading-relaxed text-xt-mute">XTSY Ventures Private Limited is a DPIIT-recognised startup focused on travel tech and linguistic AI models, and on hostel and restaurant franchising. XTSY™ is a trademark of XTSY Ventures Private Limited.</p>
+            <p className="m-0 max-w-3xl text-[17px] leading-relaxed text-xt-mute">{BRAND.legalName} is {BRAND.companyDescription} Incorporated on {BRAND.incorporationLabel}. Its core business domains are www.xtsy.one and www.posbyxtsy.club. XTSY™ is a trademark of {BRAND.legalName}.</p>
           </div>
         </section>
 
