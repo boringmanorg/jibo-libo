@@ -39,5 +39,5 @@ export const reviewedAlt = (key: string): string | undefined => (PEXELS_PHOTOS[k
 /** Credit for a Pexels photo shown on the page, or null for XTSY's own photos. */
 export function photoCredit(key: string): { name: string; url: string; pexelsUrl: string } | null {
   const p = PEXELS_PHOTOS[key] ?? PEXELS_PHOTOS[SHARED_PHOTOS[key] ?? ''];
-  return p ? { name: p.photographer, url: p.photographerUrl, pexelsUrl: p.pexelsUrl } : null;
+  return p ? { name: p.photographer, url: `${p.photographerUrl.replace(/\/+$/, '')}/`, pexelsUrl: p.pexelsUrl } : null;
 }

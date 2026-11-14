@@ -10,7 +10,7 @@ import { RECOVERY_REDIRECTS } from '../src/data/seoAffectedSlugs';
 import { STATIC_ROUTES } from '../src/utils/seoSlugRegistry';
 
 const PUBLIC = path.resolve('public');
-const NOINDEX_STATIC_ROUTES = new Set(['book', 'book/select', 'book/campsite']);
+const NOINDEX_STATIC_ROUTES = new Set(['book', 'book/select', 'book/campsite', 'gallery', 'install']);
 const STATIC_ROUTE_SET = new Set(STATIC_ROUTES.map((route) => route.startsWith('/') ? route.slice(1) : route));
 let removed = 0;
 for (const f of fs.readdirSync(PUBLIC).filter((x) => /^sitemap.*\.xml$/.test(x))) {

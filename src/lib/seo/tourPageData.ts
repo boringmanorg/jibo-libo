@@ -9,6 +9,7 @@ import { getSignaturePackageBySlug, signaturePackageToTourPackage } from '@/data
 import { reviewedPhoto } from '@/data/tourPhotos';
 import { photoFor } from '@/data/v2TourImages';
 import { responsiveImage } from '@/data/cdnImages';
+import { describePage } from './metadataText';
 
 const toSlug = (title: string) => title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
@@ -82,14 +83,14 @@ export function tourHead(slug: string): RouteHeadInput {
       `${tour.title} | XTSY`,
       tour.title,
     ]),
-    description: String(tour.description).slice(0, 155),
+    description: describePage(String(tour.description), `Explore the ${tour.duration} itinerary and send your travel dates to the XTSY desk for a WhatsApp enquiry.`),
     keywords: `${tour.title}, ${tour.location} tour, ${tour.category} tour, ${tour.duration} ${tour.location} package, XTSY Travel`,
     image: tour.image,
     // Same file, srcset and sizes as the page's <Photo> (default sizes), or phones download it twice.
     ...(h.responsive
       ? { preloadImage: h.responsive.src, preloadImageSrcSet: h.responsive.srcSet, preloadImageSizes: '(max-width: 768px) 100vw, 50vw' }
       : { preloadImage: h.src }),
-    ogType: 'product',
+    ogType: 'website',
     jsonLd: [tourSchema, breadcrumb],
   };
 }

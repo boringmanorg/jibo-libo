@@ -23,6 +23,7 @@ import { Photo } from '@/components/v2/primitives';
 import { rankedQuestionsFor } from '@/data/rankedPageQuestions';
 import StayAndTourCTA from '@/components/seo/StayAndTourCTA';
 import { quickFactsFor, DESTINATION_GUIDE_UPDATED } from '@/data/destinationQuickFacts';
+import { schemaImage } from '@/lib/seo/metadataText';
 
 const SHILLONG_HOSTEL_LINK_SLUGS = new Set(['dawki-umngot-river', 'nohkalikai-falls', 'umiam-lake']);
 /** Older copy hard-codes the 2025 dorm rate; show the live one from the booking engine. */
@@ -101,15 +102,28 @@ export default function DestinationV2() {
     description: destination.shortDescription,
     url,
     touristType: [destination.category],
-    isAccessibleForFree: true,
     publicAccess: true,
     geo: { '@type': 'GeoCoordinates', latitude: geo.lat, longitude: geo.lng },
     hasMap: `https://www.google.com/maps/search/?api=1&query=${geo.lat},${geo.lng}`,
     address: { '@type': 'PostalAddress', addressLocality: destination.region, addressRegion: 'Meghalaya', addressCountry: 'IN' },
     containedInPlace: { '@type': 'Place', name: `${destination.region}, Meghalaya` },
-    image: images.map((img) => ({ '@type': 'ImageObject', url: img.src, name: img.alt })),
-    datePublished: '2024-01-15',
-    dateModified: quick ? DESTINATION_GUIDE_UPDATED : '2026-06-25',
+    image: realImages.flatMap((img) => {
+      const src = schemaImage(img.src);
+      return src ? [{ '@type': 'ImageObject', url: src, name: img.alt }] : [];
+    }),
+  };
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    '@id': `${url}#guide`,
+    headline: destination.name,
+    description: destination.shortDescription,
+    mainEntityOfPage: url,
+    about: { '@id': `${url}#attraction` },
+    author: { '@type': 'Organization', name: 'XTSY Voyage', url: 'https://xtsy.one' },
+    publisher: { '@id': 'https://xtsy.one/#organization' },
+    ...(quick ? { dateModified: DESTINATION_GUIDE_UPDATED } : {}),
+    image: realImages.flatMap((img) => { const src = schemaImage(img.src); return src ? [src] : []; }),
   };
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
@@ -192,6 +206,7 @@ export default function DestinationV2() {
         <meta property="og:image" content={images[0]?.src} />
         </>}
         <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
+        <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>

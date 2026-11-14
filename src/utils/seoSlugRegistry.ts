@@ -15,6 +15,7 @@ import { EXPEDITION_ROUTES } from '@/data/neTaxonomy';
 export const STATIC_ROUTES: ReadonlyArray<string> = [
   '/',
   '/about',
+  '/about/xtsy-facts',
   '/gallery',
   '/tours',
   '/experience-by-xtsy',
