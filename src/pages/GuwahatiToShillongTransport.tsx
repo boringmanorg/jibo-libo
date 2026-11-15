@@ -141,6 +141,17 @@ export default function GuwahatiToShillongTransport() {
         </section>
 
         <section className="mb-10">
+          <h2 className="text-2xl font-bold mb-4">Where to stay: New Shillong or central Shillong?</h2>
+          <p className="mb-3 text-foreground/90 leading-relaxed">
+            Central Shillong around Police Bazaar puts you close to markets and shared-taxi stands, but it is the busiest part of town — expect heavy traffic and street noise through the day and evening. New Shillong Township, about 20 minutes away, sits inside pine forest with a quiet, open ambience — better if you want restful nights and fresh air after the drive up from Guwahati.
+          </p>
+          <p className="text-foreground/90 leading-relaxed">
+            XTSY Travellers Hostel is in New Shillong, surrounded by pines near NIFT and IIM Shillong. See the rooms, dorms and what is included on our{" "}
+            <Link className="text-primary underline" to="/best-hostel-in-shillong">hostel in New Shillong guide</Link>.
+          </p>
+        </section>
+
+        <section className="mb-10">
           <h2 className="text-2xl font-bold mb-4">Continuing to Dawki, Cherrapunji or the villages?</h2>
           <p>Most travelers spend 1–2 nights in Shillong first, then head to <Link className="text-primary underline" to="/dawki-umngot-river-guide">Dawki</Link>, <Link className="text-primary underline" to="/cherrapunji-travel-guide">Cherrapunji</Link>, or <Link className="text-primary underline" to="/meghalaya-villages">Mawlynnong & Kongthong</Link>. Book onward transport at the hostel front desk — better rates than street cabs.</p>
         </section>
