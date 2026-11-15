@@ -106,6 +106,12 @@ export function Stays() {
           </Link>
         ))}
       </div>
+      <p className="m-0 text-[15px] text-xt-mute">
+        Not sure where to base yourself?{" "}
+        <Link to="/best-hostel-in-shillong" className="inline-flex min-h-[48px] items-center font-extrabold text-xt-crimson hover:underline">
+          Compare New Shillong vs central Shillong stays →
+        </Link>
+      </p>
     </section>
   );
 }
