@@ -2,7 +2,7 @@
  {
   "url": "/",
   "status": 200,
-  "words": 1774,
+  "words": 1787,
   "findings": [
    {
     "rule": "policy:check-in time",
@@ -14,10 +14,10 @@
    }
   ],
   "seo": {
-   "title": "Best Hostel in Shillong | XTSY Travellers Hostel, from ₹399",
-   "titleLen": 59,
-   "desc": "XTSY Travellers Hostel, New Shillong Township: dorms from ₹399, women-only dorm, King Double ₹2,399, glass suite ₹5,999 and TAB Bistro on site.",
-   "descLen": 143,
+   "title": "XTSY Travellers Hostel, New Shillong | Dorms & Stays",
+   "titleLen": 52,
+   "desc": "XTSY in New Shillong Township: mixed and women-only dorms, King Double rooms, Experience by XTSY glass suite and TAB Bistro on site.",
+   "descLen": 132,
    "canonical": "https://xtsy.one/",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -976,6 +976,7 @@
     "Organization",
     "PostalAddress",
     "ContactPoint",
+    "Article",
     "BreadcrumbList",
     "ListItem"
    ],
@@ -1605,7 +1606,8 @@
     "WebSite",
     "Organization",
     "PostalAddress",
-    "ContactPoint"
+    "ContactPoint",
+    "Article"
    ],
    "faqSchemaQuestions": 0,
    "questionHeadings": 2,
@@ -1646,6 +1648,7 @@
     "Organization",
     "PostalAddress",
     "ContactPoint",
+    "Article",
     "BreadcrumbList",
     "ListItem",
     "FAQPage",
@@ -2090,7 +2093,8 @@
     "WebSite",
     "Organization",
     "PostalAddress",
-    "ContactPoint"
+    "ContactPoint",
+    "Article"
    ],
    "faqSchemaQuestions": 0,
    "questionHeadings": 4,
@@ -2870,10 +2874,10 @@
    }
   ],
   "seo": {
-   "title": "Hostels in Shillong from ₹399: Women-Only Dorm, 4.7★ | XTSY",
-   "titleLen": 59,
-   "desc": "Stay among the pines of New Shillong Township at XTSY (4.7★, 252 Google reviews). Dorms from ₹399, a 4-bed women-only dorm, private rooms and TAB Bistro.",
-   "descLen": 153,
+   "title": "Hostel in New Shillong: Dorms & Private Rooms | XTSY",
+   "titleLen": 52,
+   "desc": "XTSY Travellers Hostel, New Shillong Township: dorms from ₹399, a 4-bed women-only dorm, King Double rooms and TAB Bistro. Enquire on WhatsApp.",
+   "descLen": 143,
    "canonical": "https://xtsy.one/best-hostel-in-shillong",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -3057,6 +3061,7 @@
     "Organization",
     "PostalAddress",
     "ContactPoint",
+    "Article",
     "BreadcrumbList",
     "ListItem",
     "FAQPage",
@@ -4828,6 +4833,7 @@
     "Organization",
     "PostalAddress",
     "ContactPoint",
+    "Article",
     "BreadcrumbList",
     "ListItem",
     "FAQPage",
@@ -5265,7 +5271,8 @@
     "WebSite",
     "Organization",
     "PostalAddress",
-    "ContactPoint"
+    "ContactPoint",
+    "Article"
    ],
    "faqSchemaQuestions": 0,
    "questionHeadings": 1,
@@ -7215,6 +7222,7 @@
     "Organization",
     "PostalAddress",
     "ContactPoint",
+    "CollectionPage",
     "FAQPage",
     "Question",
     "Answer"
@@ -11123,7 +11131,8 @@
     "WebSite",
     "Organization",
     "PostalAddress",
-    "ContactPoint"
+    "ContactPoint",
+    "CollectionPage"
    ],
    "faqSchemaQuestions": 0,
    "questionHeadings": 0,
@@ -11497,14 +11506,14 @@
    },
    {
     "rule": "seo:duplicate description",
-    "detail": "2 pages: experience by xtsy, india's first stargaze glamp: a 270° panoramic glass suite i"
+    "detail": "2 pages: stay in a 270° panoramic glass suite for two in new shillong township, meghalaya"
    }
   ],
   "seo": {
-   "title": "Experience by XTSY: Romantic Couple Stay, New Shillong",
-   "titleLen": 54,
-   "desc": "Experience by XTSY, India's first stargaze glamp: a 270° panoramic glass suite in New Shillong Township. Photos, what's included and rates. Book direct.",
-   "descLen": 152,
+   "title": "Experience by XTSY | Glass Glamping for Two, New Shillong",
+   "titleLen": 57,
+   "desc": "Stay in a 270° panoramic glass suite for two in New Shillong Township, Meghalaya. View photos, amenities and rates; enquire on WhatsApp for availability.",
+   "descLen": 153,
    "canonical": "https://xtsy.one/experience-by-xtsy",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -11723,6 +11732,7 @@
     "Organization",
     "PostalAddress",
     "ContactPoint",
+    "Article",
     "FAQPage",
     "Question",
     "Answer"
@@ -13263,10 +13273,10 @@
    }
   ],
   "seo": {
-   "title": "XTSY Page Directory — Stays, Tours & Meghalaya Guides",
-   "titleLen": 53,
-   "desc": "Find XTSY stays, TAB Bistro, services and travel guides by current page title or URL. Browse Shillong, Meghalaya and Northeast India by topic.",
-   "descLen": 142,
+   "title": "Shillong & Meghalaya Guides, Adventure Routes | XTSY",
+   "titleLen": 52,
+   "desc": "Browse Shillong and Meghalaya guides, Northeast itineraries and road or bike routes. Find destinations, stays, dining and transport guides grouped by topic.",
+   "descLen": 156,
    "canonical": "https://xtsy.one/guides",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -14648,6 +14658,7 @@
     "Organization",
     "PostalAddress",
     "ContactPoint",
+    "Article",
     "BreadcrumbList",
     "ListItem",
     "FAQPage",
@@ -18535,7 +18546,8 @@
     "WebSite",
     "Organization",
     "PostalAddress",
-    "ContactPoint"
+    "ContactPoint",
+    "Article"
    ],
    "faqSchemaQuestions": 0,
    "questionHeadings": 2,
@@ -18671,6 +18683,7 @@
     "Organization",
     "PostalAddress",
     "ContactPoint",
+    "Article",
     "BreadcrumbList",
     "ListItem",
     "FAQPage",
@@ -18716,6 +18729,7 @@
     "Organization",
     "PostalAddress",
     "ContactPoint",
+    "Article",
     "FAQPage",
     "Question",
     "Answer"
@@ -19543,6 +19557,7 @@
     "Organization",
     "PostalAddress",
     "ContactPoint",
+    "CollectionPage",
     "BreadcrumbList",
     "ListItem",
     "FAQPage",
@@ -19833,6 +19848,7 @@
     "Organization",
     "PostalAddress",
     "ContactPoint",
+    "CollectionPage",
     "BreadcrumbList",
     "ListItem",
     "FAQPage",
@@ -20215,7 +20231,8 @@
     "WebSite",
     "Organization",
     "PostalAddress",
-    "ContactPoint"
+    "ContactPoint",
+    "CollectionPage"
    ],
    "faqSchemaQuestions": 0,
    "questionHeadings": 3,
@@ -21774,7 +21791,8 @@
     "WebSite",
     "Organization",
     "PostalAddress",
-    "ContactPoint"
+    "ContactPoint",
+    "Article"
    ],
    "faqSchemaQuestions": 0,
    "questionHeadings": 2,
@@ -22508,7 +22526,8 @@
     "WebSite",
     "Organization",
     "PostalAddress",
-    "ContactPoint"
+    "ContactPoint",
+    "CollectionPage"
    ],
    "faqSchemaQuestions": 0,
    "questionHeadings": 1,
@@ -22758,6 +22777,7 @@
     "Organization",
     "PostalAddress",
     "ContactPoint",
+    "Article",
     "FAQPage",
     "Question",
     "Answer"
@@ -23136,6 +23156,7 @@
     "Organization",
     "PostalAddress",
     "ContactPoint",
+    "WebPage",
     "FAQPage",
     "Question",
     "Answer"
@@ -23182,7 +23203,8 @@
     "WebSite",
     "Organization",
     "PostalAddress",
-    "ContactPoint"
+    "ContactPoint",
+    "WebPage"
    ],
    "faqSchemaQuestions": 0,
    "questionHeadings": 0,
@@ -23720,7 +23742,8 @@
     "WebSite",
     "Organization",
     "PostalAddress",
-    "ContactPoint"
+    "ContactPoint",
+    "Article"
    ],
    "faqSchemaQuestions": 0,
    "questionHeadings": 2,
@@ -24376,6 +24399,7 @@
     "Organization",
     "PostalAddress",
     "ContactPoint",
+    "Article",
     "BreadcrumbList",
     "ListItem",
     "FAQPage",
@@ -25465,10 +25489,10 @@
    }
   ],
   "seo": {
-   "title": "Restaurant in New Shillong: Tandoor, Biryani & Indo-Chinese",
-   "titleLen": 59,
-   "desc": "TAB Bistro, New Shillong: tandoor, dum biryani & Indo-Chinese. Breakfast 8:45 AM–12 PM & dinner 5–11 PM daily (last order 10:30 PM); lunch by preorder.",
-   "descLen": 151,
+   "title": "TAB Bistro New Shillong: Tandoor, Biryani & Indo-Chinese",
+   "titleLen": 56,
+   "desc": "Browse TAB Bistro’s menu in New Shillong Township: tandoor, biryani and Indo-Chinese. Request a breakfast or dinner table; lunch by confirmed preorder only.",
+   "descLen": 156,
    "canonical": "https://xtsy.one/tab-bistro",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -25734,7 +25758,8 @@
     "WebSite",
     "Organization",
     "PostalAddress",
-    "ContactPoint"
+    "ContactPoint",
+    "WebPage"
    ],
    "faqSchemaQuestions": 0,
    "questionHeadings": 0,
@@ -26007,10 +26032,10 @@
    }
   ],
   "seo": {
-   "title": "Northeast India Tour Packages from ₹7,999 | XTSY Travel",
-   "titleLen": 55,
-   "desc": "30+ curated Meghalaya, Nagaland, Assam, Arunachal & Sikkim tours from ₹7,999. Living root bridges, Dawki, tribal festivals. Book direct and save 20-30% vs OTAs.",
-   "descLen": 160,
+   "title": "Meghalaya, Northeast India & Beyond Tour Packages | XTSY",
+   "titleLen": 56,
+   "desc": "Explore Meghalaya, Northeast India and beyond with XTSY Voyage. Compare itineraries, browse signature packages and enquire about your dates and group size.",
+   "descLen": 155,
    "canonical": "https://xtsy.one/tours",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -29356,7 +29381,7 @@
  {
   "url": "/travel-guide/guwahati-to-shillong-transport",
   "status": 200,
-  "words": 769,
+  "words": 969,
   "findings": [
    {
     "rule": "schema:address",
@@ -29364,10 +29389,10 @@
    }
   ],
   "seo": {
-   "title": "Guwahati to Shillong: Cab, Bus & Shared Taxi",
-   "titleLen": 44,
-   "desc": "All ways to get from Guwahati to Shillong with 2026 fares, journey times, pickup points and booking tips for cabs, buses, shared sumos and helicopter.",
-   "descLen": 150,
+   "title": "Guwahati to Shillong: Shared Taxi, Cab & Bus Guide | XTSY",
+   "titleLen": 57,
+   "desc": "Compare Guwahati–Shillong shared taxis, private cabs and buses: pickup points, indicative fares, journey times and onward travel to New Shillong.",
+   "descLen": 145,
    "canonical": "https://xtsy.one/travel-guide/guwahati-to-shillong-transport",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -29392,8 +29417,8 @@
     "ListItem"
    ],
    "faqSchemaQuestions": 3,
-   "questionHeadings": 4,
-   "firstParagraphWords": 32,
+   "questionHeadings": 6,
+   "firstParagraphWords": 35,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": false
@@ -30123,7 +30148,8 @@
     "WebSite",
     "Organization",
     "PostalAddress",
-    "ContactPoint"
+    "ContactPoint",
+    "Article"
    ],
    "faqSchemaQuestions": 0,
    "questionHeadings": 3,
@@ -30731,7 +30757,7 @@
  {
   "url": "/xtsy-270",
   "status": 200,
-  "words": 639,
+  "words": 632,
   "findings": [
    {
     "rule": "schema:address",
@@ -30739,14 +30765,14 @@
    },
    {
     "rule": "seo:duplicate description",
-    "detail": "2 pages: experience by xtsy, india's first stargaze glamp: a 270° panoramic glass suite i"
+    "detail": "2 pages: stay in a 270° panoramic glass suite for two in new shillong township, meghalaya"
    }
   ],
   "seo": {
-   "title": "Experience by XTSY: Romantic Couple Stay, New Shillong",
-   "titleLen": 54,
-   "desc": "Experience by XTSY, India's first stargaze glamp: a 270° panoramic glass suite in New Shillong Township. Photos, what's included and rates. Book direct.",
-   "descLen": 152,
+   "title": "Experience by XTSY | Glass Glamping for Two, New Shillong",
+   "titleLen": 57,
+   "desc": "Stay in a 270° panoramic glass suite for two in New Shillong Township, Meghalaya. View photos, amenities and rates; enquire on WhatsApp for availability.",
+   "descLen": 153,
    "canonical": "https://xtsy.one/experience-by-xtsy",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -30766,13 +30792,10 @@
     "Accommodation",
     "GeoCoordinates",
     "LocationFeatureSpecification",
-    "Offer",
-    "FAQPage",
-    "Question",
-    "Answer"
+    "Offer"
    ],
-   "faqSchemaQuestions": 5,
-   "questionHeadings": 6,
+   "faqSchemaQuestions": 0,
+   "questionHeadings": 4,
    "firstParagraphWords": 24,
    "mentionsBrand": true,
    "mentionsLocation": true,
@@ -30836,10 +30859,10 @@
    }
   ],
   "seo": {
-   "title": "Car & Bike Rentals in Assam & Meghalaya | XTSY",
-   "titleLen": 46,
-   "desc": "Explore XTSY car and bike rentals for Assam and Meghalaya, including Guwahati and Shillong. View vehicles, listed rates and enquire on WhatsApp.",
-   "descLen": 144,
+   "title": "Assam & Meghalaya Car, Bike & Urbania Rentals | XTSY",
+   "titleLen": 52,
+   "desc": "Browse self-drive cars, Royal Enfield bikes, a caravan and Force Urbania for Assam and Meghalaya. Compare daily rates and confirm availability on WhatsApp.",
+   "descLen": 155,
    "canonical": "https://xtsy.one/xtsy-rentals",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -30904,6 +30927,7 @@
     "Organization",
     "PostalAddress",
     "ContactPoint",
+    "Article",
     "FAQPage",
     "Question",
     "Answer"

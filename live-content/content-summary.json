@@ -22,8 +22,8 @@
    "11a": 48
   },
   "info:check-out time seen": {
-   "10a": 49,
    "10p": 1,
+   "10a": 49,
    "11a": 1
   }
  },
@@ -31,18 +31,18 @@
   "schema:address": {
    "pages": 639,
    "examples": [
-    "/about — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
-    "/experience-by-xtsy — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
-    "/female-travellers — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
     "/about/xtsy-facts — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
     "/about/xtsy-facts — XTSY: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
-    "/xtsy-vs-zostel — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
-    "/tours — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
-    "/ — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
+    "/female-travellers — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
     "/pet-friendly — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
+    "/experience-by-xtsy — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
+    "/safety-house-rules — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
+    "/ — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
+    "/work-from-home — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
     "/faq — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
+    "/tours — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
     "/xtsy-rentals — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
-    "/safety-house-rules — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}"
+    "/xtsy-adventure-campsite-dawki — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}"
    ]
   },
   "placeholder:coming soon": {
@@ -56,16 +56,16 @@
   "aeo:no FAQ or question headings": {
    "pages": 3,
    "examples": [
-    "/terms-of-service — ",
     "/privacy-policy — ",
-    "/expeditions — "
+    "/expeditions — ",
+    "/terms-of-service — "
    ]
   },
   "seo:duplicate description": {
    "pages": 2,
    "examples": [
-    "/experience-by-xtsy — 2 pages: experience by xtsy, india's first stargaze glamp: a 270° panoramic glass suite i",
-    "/xtsy-270 — 2 pages: experience by xtsy, india's first stargaze glamp: a 270° panoramic glass suite i"
+    "/experience-by-xtsy — 2 pages: stay in a 270° panoramic glass suite for two in new shillong township, meghalaya",
+    "/xtsy-270 — 2 pages: stay in a 270° panoramic glass suite for two in new shillong township, meghalaya"
    ]
   },
   "policy:pets": {
