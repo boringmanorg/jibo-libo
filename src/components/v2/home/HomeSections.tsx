@@ -4,6 +4,8 @@
  */
 import { useState } from 'react';
 import { Link } from '@/lib/router-compat';
+import { ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { featuredHostelReviews } from '@/data/featuredGoogleReviews';
 import { SIGNATURE_PACKAGES, formatPackagePrice } from '@/data/signaturePackages';
 import { IMG, COVERS, first } from '@/data/v2Images';
@@ -106,12 +108,15 @@ export function Stays() {
           </Link>
         ))}
       </div>
-      <p className="m-0 text-[15px] text-xt-mute">
-        Not sure where to base yourself?{" "}
-        <Link to="/best-hostel-in-shillong" className="inline-flex min-h-[48px] items-center font-extrabold text-xt-crimson hover:underline">
-          Compare New Shillong vs central Shillong stays →
-        </Link>
-      </p>
+      <div className="mt-2 flex flex-col items-start gap-4 border-t border-xt-line pt-6 sm:gap-5 sm:pt-8">
+        <p className="m-0 text-[15px] text-xt-mute">Not sure where to base yourself?</p>
+        <Button asChild size="lg" className="h-auto min-h-[56px] w-full justify-between gap-4 whitespace-normal bg-xt-crimson px-5 py-4 text-left text-[16px] font-extrabold leading-snug text-primary-foreground hover:bg-xt-crimson-dark hover:text-primary-foreground sm:w-auto sm:px-6">
+          <Link to="/best-hostel-in-shillong">
+            <span>Compare New Shillong vs central Shillong stays</span>
+            <ArrowRight aria-hidden="true" />
+          </Link>
+        </Button>
+      </div>
     </section>
   );
 }
