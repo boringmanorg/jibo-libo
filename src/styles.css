@@ -863,6 +863,7 @@ img.lazy-below-fold {
 @keyframes xtRise { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
 @keyframes xtMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @keyframes xtSpin { to { transform: rotate(360deg); } }
+@keyframes xtReviewPop { from { opacity: 0; transform: scale(.5); } 70% { transform: scale(1.06); } to { opacity: 1; transform: none; } }
 @keyframes xtReviewDrift { 0%,100% { transform: translate(0,0) rotate(var(--r,0deg)); } 50% { transform: translate(0,-10px) rotate(var(--r,0deg)); } }
 @keyframes xtFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
 @keyframes xtPop { from { opacity: 0; transform: translateY(10px) scale(.98); } to { opacity: 1; transform: none; } }
@@ -994,5 +995,7 @@ body.reduce-motion .xt-suite-motion :is(.tgh-tile, .tgh-tablet-track, .xt-love, 
 .xt-typing { animation: xtTyping 1s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) { .xt-typing { animation: none; } }
 
+.xt-review-pop { animation: xtReviewPop .6s cubic-bezier(.3,1.4,.5,1) both; }
 .xt-review-float { animation: xtReviewDrift 7s ease-in-out infinite; }
-@media (prefers-reduced-motion: reduce) { .xt-review-float { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .xt-review-pop { animation: xtReviewPop .6s cubic-bezier(.3,1.4,.5,1) both; }
+.xt-review-float { animation: none; } }

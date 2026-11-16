@@ -24,12 +24,24 @@ function allReviews(): R[] {
   return out;
 }
 
-// Desktop positions for floating cards around the headline (percent of section).
-const SPOTS = [
-  { l: 3, t: 8, r: -4 }, { l: 6, t: 58, r: 3 }, { l: 22, t: 76, r: -2 },
-  { l: 78, t: 6, r: 4 }, { l: 80, t: 50, r: -3 }, { l: 64, t: 78, r: 2 },
-  { l: 40, t: 84, r: -1 },
+// Desktop layout from the testimonial template: full review cards plus
+// smaller guest tiles of varied sizes scattered around the headline.
+const SPOTS: { l: number; t: number; r: number; tile?: number }[] = [
+  { l: 2, t: 6, r: -4 }, { l: 4, t: 56, r: 3 }, { l: 77, t: 5, r: 4 }, { l: 79, t: 52, r: -3 }, { l: 60, t: 80, r: 2 },
+  { l: 27, t: 6, r: 0, tile: 80 }, { l: 66, t: 30, r: 0, tile: 64 }, { l: 22, t: 42, r: 0, tile: 72 },
+  { l: 28, t: 82, r: 0, tile: 88 }, { l: 46, t: 86, r: 0, tile: 60 }, { l: 62, t: 4, r: 0, tile: 70 },
 ];
+const initials = (n: string) => n.split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0]).join('').toUpperCase();
+
+function Tile({ r, size, onOpen }: { r: R; size: number; onOpen: () => void }) {
+  return (
+    <button type="button" onClick={onOpen} aria-label={`Read review by ${r.name}`} style={{ width: size, height: size }}
+      className="flex flex-col items-center justify-center gap-0.5 rounded-2xl bg-xt-crimson text-white shadow-[0_18px_40px_-18px_rgba(0,0,0,.6)] transition-transform hover:scale-110">
+      <span className="xt-display text-[22px] leading-none">{initials(r.name)}</span>
+      <span className="text-[10px] tracking-[1px]">{'★'.repeat(r.rating)}</span>
+    </button>
+  );
+}
 
 const Stars = ({ n }: { n: number }) => (
   <span aria-label={`${n} out of 5 stars`} className="tracking-[2px] text-xt-crimson">{'★'.repeat(n)}<span className="text-xt-line">{'★'.repeat(5 - n)}</span></span>
@@ -51,7 +63,7 @@ export function Reviews() {
   const floating = useMemo(() => {
     const bistro = reviews.filter((r) => r.property === 'TAB Bistro by XTSY').slice(0, 2);
     const hostel = reviews.filter((r) => r.property !== 'TAB Bistro by XTSY').slice(0, SPOTS.length - bistro.length);
-    return [...hostel.slice(0, 4), ...bistro, ...hostel.slice(4)];
+    return [...hostel.slice(0, 4), ...bistro.slice(0, 1), ...bistro.slice(1), ...hostel.slice(4)];
   }, [reviews]);
   const [open, setOpen] = useState<R | null>(null);
   const [all, setAll] = useState(false);
@@ -63,8 +75,10 @@ export function Reviews() {
       <div className="relative overflow-hidden rounded-[32px] bg-xt-night px-5 py-16 text-white sm:px-10 lg:min-h-[640px] lg:py-24">
         <div className="pointer-events-none absolute inset-0 hidden lg:block">
           {floating.map((r, i) => (
-            <div key={r.name + i} className="pointer-events-auto absolute" style={{ left: `${SPOTS[i].l}%`, top: `${SPOTS[i].t}%` }}>
-              <Card r={r} onOpen={() => setOpen(r)} className="xt-review-float" style={{ ['--r' as string]: `${SPOTS[i].r}deg`, animationDelay: `${-i * 1.1}s` } as React.CSSProperties} />
+            <div key={r.name + i} className="xt-review-pop pointer-events-auto absolute" style={{ left: `${SPOTS[i].l}%`, top: `${SPOTS[i].t}%`, animationDelay: `${(i % 5) * 0.08}s` }}>
+              <div className="xt-review-float" style={{ ['--r' as string]: `${SPOTS[i].r}deg`, animationDelay: `${-i * 1.1}s`, animationDuration: `${6 + (i % 4)}s` } as React.CSSProperties}>
+                {SPOTS[i].tile ? <Tile r={r} size={SPOTS[i].tile!} onOpen={() => setOpen(r)} /> : <Card r={r} onOpen={() => setOpen(r)} />}
+              </div>
             </div>
           ))}
         </div>
@@ -79,7 +93,7 @@ export function Reviews() {
         </div>
 
         <div className="relative -mx-5 mt-10 flex snap-x gap-4 overflow-x-auto px-5 pb-2 lg:hidden">
-          {floating.map((r, i) => <Card key={r.name + i} r={r} onOpen={() => setOpen(r)} className="shrink-0 snap-start" />)}
+          {floating.slice(0, 5).map((r, i) => <Card key={r.name + i} r={r} onOpen={() => setOpen(r)} className="shrink-0 snap-start" />)}
         </div>
       </div>
 
