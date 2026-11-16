@@ -227,7 +227,7 @@ export function TiltedGridHero({
             <div key={copy} className="tgh-tablet-group flex shrink-0">
               {images.map((image, i) => (
                 <div key={`${image.src}-${i}`} className="tgh-tablet-photo shrink-0 overflow-hidden rounded-xl">
-                  <img src={image.src} alt="" draggable={false} loading="lazy" decoding="async" className="h-full w-auto max-w-none" />
+                  <img src={image.src} alt="" draggable={false} loading="lazy" decoding="async" className="h-full w-full object-cover" />
                 </div>
               ))}
             </div>

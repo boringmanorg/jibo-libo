@@ -913,7 +913,7 @@ img.lazy-below-fold {
   .tgh-curved-band { display: none; }
   .tgh-tablet-band { display: flex; -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
   .tgh-tablet-group { gap: 16px; padding-right: 16px; }
-  .tgh-tablet-photo { height: min(82cqh, 460px); width: auto; box-shadow: 0 20px 40px -20px color-mix(in oklab, var(--foreground) 60%, transparent); }
+  .tgh-tablet-photo { height: min(82cqh, 460px); width: calc(min(82cqh, 460px) * 4 / 3); box-shadow: 0 20px 40px -20px color-mix(in oklab, var(--foreground) 60%, transparent); }
   .tgh-tablet-track {
     animation: xtSuiteTabletSlide var(--tgh-tablet-duration) linear infinite;
   }
