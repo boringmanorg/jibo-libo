@@ -226,6 +226,7 @@ export function TiltedGridHero({
       <style>{css}</style>
 
       <div
+        key={`${columns}-${sweep}-${unit}`}
         aria-hidden
         className="pointer-events-none absolute inset-0 transition-opacity duration-500"
         style={{
