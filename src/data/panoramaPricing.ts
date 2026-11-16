@@ -9,6 +9,8 @@
  * rounding), so the subtotal / taxes / total the site sends always match the server's check.
  */
 export const PANORAMA_STAY_ONLY = 4999;
+/** Optional à la carte breakfast from TAB Bistro by XTSY, per person (₹560 for two). */
+export const PANORAMA_BREAKFAST_PER_PERSON = 280;
 
 /** The name guests see for the glass suite. */
 export const PANORAMA_DISPLAY_NAME = 'Experience by XTSY';

@@ -12,7 +12,7 @@ import { IMG } from '@/data/v2Images';
 import { PageShell, Btn, Section, H2, FeatureCards, PriceCards, FaqList, PAD } from '@/components/v2/blocks';
 import { Photo, waLink } from '@/components/v2/primitives';
 import { inr, roomPrice } from '@/components/v2/pricing';
-import { PANORAMA_DECORATION } from '@/data/panoramaPricing';
+import { PANORAMA_DECORATION, PANORAMA_BREAKFAST_PER_PERSON } from '@/data/panoramaPricing';
 import { TiltedGridHero } from '@/components/ui/tilted-grid-hero';
 
 // Smaller AVIF copies for the moving strip (~900 px instead of 1280 px WebP), so slow connections load it faster.
@@ -76,7 +76,7 @@ export default function ExperienceByXtsy() {
             </g>
           </svg>
           <div className={`${PAD} relative mx-auto flex max-w-[1400px] flex-col items-center gap-6 text-center`}>
-            <div className="xt-in xt-eyebrow text-[15px] sm:text-[18px]" style={{ color: '#E07A8B' }}>India’s First Stargaze <span className="relative inline-block">Glamp<img src="/img/emoji/glowing_star_3d.png" alt="" aria-hidden="true" width={40} height={40} className="xt-love pointer-events-none absolute -top-8 left-1/2 h-7 w-7 -translate-x-1/2 sm:-top-10 sm:h-9 sm:w-9" /></span> · Sleep under the stars</div>
+            <div className="xt-in xt-eyebrow text-[15px] sm:text-[18px]" style={{ color: '#E07A8B' }}>India’s Most Romantic Couple <span className="relative inline-block">En-suite<img src="/img/emoji/glowing_star_3d.png" alt="" aria-hidden="true" width={40} height={40} className="xt-love pointer-events-none absolute -top-8 left-1/2 h-7 w-7 -translate-x-1/2 sm:-top-10 sm:h-9 sm:w-9" /></span> · Sleep under the stars</div>
             <div className="relative w-full px-6 sm:px-12">
               {LOVE.map(([f,c,k]) => (
                 <img key={f} src={`/img/emoji/${f}.png`} alt="" aria-hidden="true" width={64} height={64} decoding="async" className={`xt-love pointer-events-none absolute select-none drop-shadow-[0_8px_18px_rgba(224,122,139,0.45)] ${c}`} style={{ animationDuration: `${4 + k * 1.1}s`, animationDelay: `${k * 0.7}s` }} />
@@ -90,7 +90,7 @@ export default function ExperienceByXtsy() {
             <div className="xt-in xt-d2 flex items-end gap-4">
               <span className="font-display text-[56px] leading-[0.9] text-xt-paper sm:text-[72px]">{inr(now)}</span>
               <span className="flex flex-col pb-1.5 text-left text-[15px] text-[#A3ABC2]">
-                <span>per night</span>
+                <span>per night, without breakfast</span>
                 {suite.was > now && <span>regular <s>{inr(suite.was)}</s></span>}
               </span>
             </div>
@@ -126,7 +126,7 @@ export default function ExperienceByXtsy() {
           <H2 eyebrow="Packages">Choose your night</H2>
           <PriceCards
             cards={[
-              { t: 'Stay only', price: inr(now), hot: true, text: `One night in the glass suite for two, all inclusive (taxes included, breakfast not included).${suite.was > now ? ` Regular ${inr(suite.was)}.` : ''}`, cta: <Btn to={wa} kind="outline" className="w-full">Reserve</Btn> },
+              { t: 'Stay only', price: inr(now), hot: true, text: `One night in the glass suite for two, taxes included, without breakfast. Add à la carte breakfast from TAB Bistro by XTSY at ${inr(PANORAMA_BREAKFAST_PER_PERSON)} per person (${inr(PANORAMA_BREAKFAST_PER_PERSON * 2)} for two).${suite.was > now ? ` Regular ${inr(suite.was)}.` : ''}`, cta: <Btn to={wa} kind="outline" className="w-full">Reserve</Btn> },
               { t: 'Decoration add-on', price: `+${inr(PANORAMA_DECORATION)}`, text: 'For anniversaries, proposals, honeymoons and birthdays. Book 48 hours ahead.', cta: <Btn to={waLink('Hi XTSY! I want to add the decoration package to my Experience by XTSY stay.', 'experience-by-xtsy')} kind="outline" className="w-full">Add to my stay</Btn> },
             ]}
           />
