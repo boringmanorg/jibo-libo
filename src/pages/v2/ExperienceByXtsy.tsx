@@ -1,5 +1,6 @@
 import { responsiveImage } from '@/data/cdnImages';
 import { Reviews as ReviewShowcase } from '@/components/v2/home/HomeReviews';
+import { suiteAirbnbReviews } from '@/data/suiteAirbnbReviews';
 /**
  * /xtsy-270 — Experience by XTSY, India's Most Romantic Couple En-suite (redesign).
  */
@@ -152,7 +153,7 @@ export default function ExperienceByXtsy() {
           </Section>
         )}
 
-        <ReviewShowcase match={/glass|stargaz|watching the stars|dome|cabin|glamp/i} badge="Glass suite reviews" title="Nights under the glass" description="Guests on the glass suite, the stars and the terrace, word for word from Google reviews of XTSY Travellers Hostel." />
+        <ReviewShowcase extra={suiteAirbnbReviews} match={/glass|stargaz|watching the stars|dome|cabin|glamp/i} badge="Glass suite reviews" title="Nights under the glass" description="Guests on the glass suite, the stars and the terrace, word for word from Airbnb and Google reviews." />
         <FaqList faqs={FAQS} />
       </PageShell>
       <B2BBookingForm isOpen={b2bOpen} onClose={() => setB2bOpen(false)} customTitle="Will it be yours? - Experience by XTSY" customDescription="India's Most Romantic Couple En-suite - Exclusive luxury experience" maxGuests={2} fixedGuests isCoupleFocused />
