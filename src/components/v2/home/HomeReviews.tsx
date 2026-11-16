@@ -66,7 +66,7 @@ export function Reviews({ extra = [], match, bistro, badge = 'Guest reviews', ti
     return [...extra, ...all.filter((r) => (bistro && r.property === 'TAB Bistro by XTSY') || match.test(r.comment))];
   }, [match, bistro, extra]);
   const floating = useMemo(() => {
-    const good = reviews.filter((r) => r.rating >= 4 && r.comment.length > 40);
+    const good = reviews.filter((r) => r.rating >= 4 && r.comment.length > 25);
     const b = good.filter((r) => r.property === 'TAB Bistro by XTSY');
     const h = good.filter((r) => r.property !== 'TAB Bistro by XTSY');
     const mixed = match ? (bistro ? [...b, ...h] : good) : [...h.slice(0, 5), ...b.slice(0, 2), ...h.slice(5)];
