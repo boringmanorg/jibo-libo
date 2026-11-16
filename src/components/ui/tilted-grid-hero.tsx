@@ -175,6 +175,9 @@ export function TiltedGridHero({
   // Waits until the page has loaded, so these never compete with the
   // first screen on a slow connection.
   React.useEffect(() => {
+    // On data-saver or 2G/3G connections, skip the bulk prefetch: photos load as tiles come into view.
+    const c = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
+    if (c?.saveData || /(^|-)(2g|3g)$/.test(c?.effectiveType ?? "")) return;
     const run = () => { for (const { src } of images) new Image().src = src; };
     if (document.readyState === "complete") { const t = setTimeout(run, 1500); return () => clearTimeout(t); }
     window.addEventListener("load", run, { once: true });
@@ -224,7 +227,7 @@ export function TiltedGridHero({
             <div key={copy} className="tgh-tablet-group flex shrink-0">
               {images.map((image, i) => (
                 <div key={`${image.src}-${i}`} className="tgh-tablet-photo shrink-0 overflow-hidden rounded-xl">
-                  <img src={image.src} alt="" draggable={false} decoding="async" className="h-full w-auto max-w-none" />
+                  <img src={image.src} alt="" draggable={false} loading="lazy" decoding="async" className="h-full w-auto max-w-none" />
                 </div>
               ))}
             </div>

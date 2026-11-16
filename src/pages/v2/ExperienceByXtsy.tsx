@@ -120,7 +120,7 @@ export default function ExperienceByXtsy() {
 
         <section className={`${PAD} grid gap-6 pb-20 sm:grid-cols-3`}>
           {IMG.suite.slice(1, 7).map((src, i) => (
-            <Photo key={src} src={src} alt={`Experience by XTSY photo ${i + 2}`} tone={(['pine', 'night', 'sand'] as const)[i % 3]} className="xt-reveal aspect-[421/320] rounded-3xl" />
+            <Photo afterLoad key={src} src={src} sizes="(max-width: 639px) 92vw, 33vw" alt={`Experience by XTSY photo ${i + 2}`} tone={(['pine', 'night', 'sand'] as const)[i % 3]} className="xt-reveal aspect-[421/320] rounded-3xl" />
           ))}
         </section>
 
