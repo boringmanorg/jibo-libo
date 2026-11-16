@@ -30,6 +30,13 @@ const STARS = [
   [40, 300, 1.2, 1], [150, 720, 1.5, 0], [690, 760, 1.3, 2], [1400, 320, 1.4, 0], [720, 420, 1, 2], [610, 620, 1.6, 1],
 ];
 
+const LOVE: [string, string, number][] = [
+  ['sparkles_3d', '-left-1 top-0 h-9 w-9 sm:left-0 sm:h-14 sm:w-14', 0],
+  ['shooting_star_3d', '-right-1 -top-2 h-9 w-9 sm:right-0 sm:h-14 sm:w-14', 1],
+  ['crescent_moon_3d', 'left-2 bottom-0 hidden h-12 w-12 sm:block', 2],
+  ['heart_with_ribbon_3d', '-right-1 bottom-0 h-9 w-9 sm:right-2 sm:h-14 sm:w-14', 1],
+];
+
 const FEATURES = [
   { t: '270° glass walls', d: 'Mountains, forest and sky on three sides.' },
   { t: 'Stargazing from bed', d: 'Open sky above the bed on clear nights.' },
@@ -69,10 +76,13 @@ export default function ExperienceByXtsy() {
             </g>
           </svg>
           <div className={`${PAD} relative mx-auto flex max-w-[1400px] flex-col items-center gap-6 text-center`}>
-            <div className="xt-in xt-eyebrow text-[15px] sm:text-[18px]" style={{ color: '#E07A8B' }}>India’s First Stargaze Glamp · Sleep under the stars</div>
+            <div className="xt-in xt-eyebrow text-[15px] sm:text-[18px]" style={{ color: '#E07A8B' }}>India’s First Stargaze <span className="relative inline-block">Glamp<img src="/img/emoji/glowing_star_3d.png" alt="" aria-hidden="true" width={40} height={40} className="xt-love pointer-events-none absolute -top-9 left-1/2 h-7 w-7 -translate-x-1/2 sm:-top-11 sm:h-9 sm:w-9" /></span> · Sleep under the stars</div>
             <div className="relative w-full px-6 sm:px-12">
-              {[['✨','left-0 top-0',0],['💫','right-0 top-2',1],['🌙','left-2 bottom-0 hidden sm:block',2],['💕','right-3 bottom-1',1],['⭐','left-1/2 -top-9 hidden md:block',2]].map(([e,c,k]) => (
-                <span key={e as string} aria-hidden="true" className={`xt-twinkle pointer-events-none absolute select-none text-[22px] sm:text-[30px] ${c}`} style={{ animationDuration: `${2.4 + (k as number) * 0.8}s`, animationDelay: `${(k as number) * 0.6}s` }}>{e}</span>
+              {LOVE.map(([f,c,k]) => (
+                <img key={f} src={`/img/emoji/${f}.png`} alt="" aria-hidden="true" width={64} height={64} decoding="async" className={`xt-love pointer-events-none absolute select-none drop-shadow-[0_8px_18px_rgba(224,122,139,0.45)] ${c}`} style={{ animationDuration: `${4 + k * 1.1}s`, animationDelay: `${k * 0.7}s` }} />
+              ))}
+              {[12, 30, 70, 88].map((x, i) => (
+                <img key={x} src="/img/emoji/two_hearts_3d.png" alt="" aria-hidden="true" width={28} height={28} decoding="async" className="xt-heart-rise pointer-events-none absolute bottom-0 h-5 w-5 sm:h-7 sm:w-7" style={{ left: `${x}%`, animationDelay: `${i * 1.6}s` }} />
               ))}
               <h1 className="xt-in xt-d1 xt-display m-0 text-balance break-words text-[34px] leading-[0.95] sm:text-[52px] lg:text-[64px]">Experience by XTSY: The Romantic Couple Stay in India is now at New Shillong, Meghalaya</h1>
             </div>
