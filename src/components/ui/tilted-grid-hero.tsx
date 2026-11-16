@@ -154,7 +154,6 @@ export function TiltedGridHero({
   // The image each tile shows, as a position in the run of images. It
   // only changes when the tile wraps, which is out of sight, so a resize
   // never swaps an image on screen either.
-  const [shown, setShown] = React.useState<Record<number, number>>({});
 
   React.useEffect(() => {
     const el = ref.current;
@@ -243,7 +242,7 @@ export function TiltedGridHero({
           // Tile `columns - 1` starts nearest the exit and tile 0 furthest
           // back, so this numbers tiles in the order they come on.
           const first = columns - 1 - t;
-          const img = images[(shown[t] ?? first) % Math.max(images.length, 1)];
+          const img = images[first % Math.max(images.length, 1)];
           return (
             <div
               key={t}
@@ -256,14 +255,6 @@ export function TiltedGridHero({
                 transformStyle: "preserve-3d",
                 // Tile t starts t tiles along the loop.
                 animation: `${orbit} ${duration}s linear ${-t * speed}s infinite`,
-              }}
-              onAnimationIteration={(e) => {
-                // elapsedTime counts whole loops, missed events included.
-                const lap = Math.round(e.elapsedTime / duration);
-                setShown((prev) => {
-                  const next = lap * columns + first;
-                  return prev[t] === next ? prev : { ...prev, [t]: next };
-                });
               }}
             >
               {Array.from({ length: SLICES }, (_, k) => (
