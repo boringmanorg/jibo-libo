@@ -181,7 +181,7 @@ export function TiltedGridHero({
     return () => window.removeEventListener("load", run);
   }, [images]);
 
-  const { columns, sweep, unit, limit } =
+  const { columns, sweep, unit } =
     layout ?? measure(1200, 560, tileHeight, aspectRatio, gap, bend);
 
   // Every length is a multiple of the tile's height, which follows the
