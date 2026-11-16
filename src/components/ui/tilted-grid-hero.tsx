@@ -140,9 +140,6 @@ export function TiltedGridHero({
   ...props
 }: React.ComponentProps<"div"> & TiltedGridHeroProps) {
   const ref = React.useRef<HTMLDivElement>(null);
-  const id = React.useId().replace(/[^a-zA-Z0-9]/g, "");
-  const orbit = `tgh-o-${id}`;
-  const tile = `tgh-t-${id}`;
   const bend = (Math.min(85, Math.max(5, curve)) * Math.PI) / 180;
 
   // Null until the observer has measured the hero. The band stays hidden
@@ -184,7 +181,7 @@ export function TiltedGridHero({
     return () => window.removeEventListener("load", run);
   }, [images]);
 
-  const { columns, sweep, unit, limit } =
+  const { columns, sweep, unit } =
     layout ?? measure(1200, 560, tileHeight, aspectRatio, gap, bend);
 
   // Every length is a multiple of the tile's height, which follows the
@@ -204,16 +201,6 @@ export function TiltedGridHero({
   // Beyond `limit` a tile is wholly off-screen, so it is hidden there. The
   // loop's ends, where it wraps, fall inside that stretch, and so do tiles
   // swinging round behind the camera.
-  const hide = +(((sweep - limit) / (2 * sweep || 1)) * 100).toFixed(4);
-  const css =
-    `@keyframes ${orbit}{` +
-    `from{transform:${turn(-sweep)}}to{transform:${turn(sweep)}}` +
-    `0%,${hide}%,${100 - hide}%,100%{visibility:hidden}` +
-    `${hide + 0.001}%,${100 - hide - 0.001}%{visibility:visible}}` +
-    // Pausing rather than removing the motion keeps the band whole: every
-    // tile is already placed by its negative delay, so it freezes as a
-    // finished still.
-    `@media(prefers-reduced-motion:reduce){.${tile}{animation-play-state:paused}}`;
 
   const share = aspectRatio / SLICES;
   const duration = columns * speed;
@@ -228,8 +215,6 @@ export function TiltedGridHero({
       {...props}
       style={{ containerType: "size", ...props.style }}
     >
-      <style>{css}</style>
-
       <div
         key={`${columns}-${sweep}-${unit}`}
         aria-hidden
@@ -252,16 +237,22 @@ export function TiltedGridHero({
           return (
             <div
               key={t}
-              className={cn(tile, "absolute")}
+              className="tgh-tile absolute"
               style={{
                 left: `calc(50% - ${u(aspectRatio / 2)})`,
                 top: `calc(${axis}% - ${u(0.5)})`,
                 width: u(aspectRatio),
                 height: u(1),
                 transformStyle: "preserve-3d",
+                // Keep a properly spaced still even when animations are disabled.
+                transform: turn(-sweep + (2 * sweep * t) / columns),
+                '--tgh-from': turn(-sweep),
+                '--tgh-to': turn(sweep),
+                '--tgh-duration': `${duration}s`,
+                '--tgh-delay': `${-t * speed}s`,
                 // Tile t starts t tiles along the loop.
-                animation: `${orbit} ${duration}s linear ${-t * speed}s infinite`,
-              }}
+                animation: `xtSuiteOrbit ${duration}s linear ${-t * speed}s infinite`,
+              } as React.CSSProperties}
             >
               {Array.from({ length: SLICES }, (_, k) => (
                 <div

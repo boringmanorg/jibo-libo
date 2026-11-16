@@ -67,7 +67,7 @@ export default function ExperienceByXtsy() {
     <>
       <SEOHead title="Experience by XTSY | Glass Glamping for Two, New Shillong" description="Stay in a 270° panoramic glass suite for two in New Shillong Township, Meghalaya. View photos, amenities and rates; enquire on WhatsApp for availability." keywords={(XTSY270_DATA as { seoKeywords?: string }).seoKeywords} canonicalUrl={XTSY270_DATA.canonicalUrl} ogType="product" />
       <PageShell bar={{ label: 'Book a stay', to: wa, note: `Experience by XTSY · ${inr(now)} a night, incl. taxes` }} cta={{ title: 'One suite. One night. Yours?', sub: 'Reserve on WhatsApp. Book 48 hours ahead for decoration and concierge.' }}>
-        <section className="relative overflow-hidden pt-14 sm:pt-20" style={{ background: '#1F2438', color: '#F4EFE8' }}>
+        <section className="xt-suite-motion relative overflow-hidden pt-14 sm:pt-20" style={{ background: '#1F2438', color: '#F4EFE8' }}>
           <svg viewBox="0 0 1440 820" preserveAspectRatio="xMidYMid slice" aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full">
             <g fill="#F4EFE8">
               {STARS.map(([x, y, r, k]) => (
