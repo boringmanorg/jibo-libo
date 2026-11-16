@@ -135,7 +135,7 @@ const _exclusiveTours: TourPackage[] = [
     description: "An adrenaline-fueled expedition through Meghalaya's most remote terrain. Trek through untamed forests, rappel down pristine waterfalls, and experience extreme wilderness camping.",
     duration: "3 Days",
     difficulty: "Challenging",
-    price: "₹13,999",
+    price: "₹7,200",
     image: wariChoraAuthenticImg,
     rating: 4.7,
     category: "adventure",
@@ -143,7 +143,7 @@ const _exclusiveTours: TourPackage[] = [
     highlights: ["Waterfall Rappelling & Canyoning", "Multi-Day Mountain Trek", "Wild River Crossing", "Extreme Wilderness Camping", "Night Trek Through Sacred Forests", "Rock Climbing Expeditions", "Summit Sunrise Experience"],
     bestSeason: "Oct-Mar",
     exclusive: true,
-    groupSize: "4-8 people"
+    groupSize: "Min 4 people · 40+ call for quote"
   },
   {
     id: 201,
@@ -151,7 +151,7 @@ const _exclusiveTours: TourPackage[] = [
     description: "Comprehensive winter field study of Northeast's unique ecosystems with conservation experts and naturalist guides.",
     duration: "7 Days",
     difficulty: "Moderate",
-    price: "₹33,999",
+    price: "₹16,800",
     image: meghalayaBiodiversityAuthenticImg,
     rating: 4.7,
     category: "educational",
@@ -159,7 +159,7 @@ const _exclusiveTours: TourPackage[] = [
     highlights: ["Expert Naturalist Expeditions", "Endemic Species Documentation", "Research Field Work", "Conservation Workshops", "Night Safari Adventures", "Botanical Garden Visits", "Scientific Photography"],
     bestSeason: "Oct-Mar",
     exclusive: true,
-    groupSize: "6-12 people"
+    groupSize: "Min 4 people · 40+ call for quote"
   },
   {
     id: 202,
@@ -183,7 +183,7 @@ const _exclusiveTours: TourPackage[] = [
     description: "Epic underground adventure through India's fifth longest cave system featuring limestone passages, underground rivers, cave boating, and a trek to the stunning Moopun Falls.",
     duration: "4 Days",
     difficulty: "Challenging",
-    price: "₹18,999",
+    price: "₹9,600",
     image: kremChympeCaveImg,
     rating: 4.7,
     category: "adventure",
@@ -191,7 +191,7 @@ const _exclusiveTours: TourPackage[] = [
     highlights: ["Krem Chympe Cave Exploration", "Underground River & Cave Boating", "Stalactite & Stalagmite Photography", "Moopun Falls Trek & Swimming", "Speleology Training", "Jaintia Hills Scenic Drive"],
     bestSeason: "Oct-Mar",
     exclusive: true,
-    groupSize: "4-6 people"
+    groupSize: "Min 4 people · 40+ call for quote"
   },
   {
     id: 205,
@@ -225,13 +225,14 @@ export const northeastTours: Record<string, TourPackage[]> = {
       description: "Experience the world's clearest river during perfect winter weather — boat rides reveal the riverbed 20 feet below like floating on glass.",
       duration: "3 Days",
       difficulty: "Easy",
-    price: "₹11,999",
+    price: "₹7,200",
       image: dawkiCrystalClearImg,
       rating: 4.7,
       category: "leisure",
       location: "Meghalaya",
       highlights: ["Transparent River Boating", "Indo-Bangladesh Border Views", "Winter Photography", "Local Khasi Cuisine", "Riverside Camping"],
-      bestSeason: "Oct-Mar"
+      bestSeason: "Oct-Mar",
+      groupSize: "Min 4 people · 40+ call for quote"
     },
     {
       id: 1,
