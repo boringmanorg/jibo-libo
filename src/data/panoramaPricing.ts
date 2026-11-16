@@ -11,6 +11,9 @@
 export const PANORAMA_STAY_ONLY = 4999;
 /** Optional à la carte breakfast from TAB Bistro by XTSY, per person (₹560 for two). */
 export const PANORAMA_BREAKFAST_PER_PERSON = 280;
+/** Breakfast follows TAB Bistro menu pricing: 5% GST is charged on top of ₹280. */
+export const PANORAMA_BREAKFAST_GST_PERCENT = 5;
+export const breakfastGst = (net: number) => Math.round((net * PANORAMA_BREAKFAST_GST_PERCENT) / 100);
 
 /** The name guests see for the glass suite. */
 export const PANORAMA_DISPLAY_NAME = 'Experience by XTSY';
@@ -72,9 +75,10 @@ export function quoteStay(lines: QuoteLine[], nights: number, decoration = false
     decorationNet,
     decorationGst,
     breakfastAmount,
+    breakfastGst: breakfastGst(breakfastAmount),
     subtotal: roomsInclusive - roomsGst + decorationNet + breakfastAmount,
-    taxes: roomsGst + decorationGst,
-    total: roomsInclusive + decorationNet + decorationGst + breakfastAmount,
+    taxes: roomsGst + decorationGst + breakfastGst(breakfastAmount),
+    total: roomsInclusive + decorationNet + decorationGst + breakfastAmount + breakfastGst(breakfastAmount),
   };
 }
 
