@@ -215,10 +215,26 @@ export function TiltedGridHero({
       {...props}
       style={{ containerType: "size", ...props.style }}
     >
+      <div aria-hidden className="tgh-tablet-band pointer-events-none absolute inset-0 flex items-center overflow-hidden">
+        <div
+          className="tgh-tablet-track flex w-max shrink-0"
+          style={{ '--tgh-tablet-duration': `${Math.max(1, images.length) * speed}s` } as React.CSSProperties}
+        >
+          {[0, 1].map((copy) => (
+            <div key={copy} className="tgh-tablet-group flex shrink-0">
+              {images.map((image, i) => (
+                <div key={`${image.src}-${i}`} className="tgh-tablet-photo shrink-0 overflow-hidden rounded-lg bg-muted">
+                  <img src={image.src} alt="" draggable={false} decoding="async" className="h-full w-full object-contain" />
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
       <div
         key={`${columns}-${sweep}-${unit}`}
         aria-hidden
-        className="pointer-events-none absolute inset-0 transition-opacity duration-500"
+        className="tgh-curved-band pointer-events-none absolute inset-0 transition-opacity duration-500"
         style={{
           opacity: layout ? 1 : 0,
           // A shared vanishing point on the row's centre line, so the ends
