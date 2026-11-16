@@ -893,13 +893,17 @@ img.lazy-below-fold {
 .xt-chip { transition: background-color .2s, color .2s, border-color .2s, transform .15s; }
 .xt-chip:active { transform: scale(.96); }
 .xt-shine { animation: xtShine 3.2s ease-in-out infinite; }
+.xt-love { animation: xtLove 4s ease-in-out infinite; }
+@keyframes xtLove { 0%,100% { transform: translateY(0) rotate(-6deg) scale(1); } 50% { transform: translateY(-8px) rotate(6deg) scale(1.08); } }
+.xt-heart-rise { opacity: 0; animation: xtHeartRise 6.4s ease-in infinite; }
+@keyframes xtHeartRise { 0% { opacity: 0; transform: translateY(0) scale(.6); } 15% { opacity: .9; } 100% { opacity: 0; transform: translateY(-140px) translateX(10px) scale(1.1); } }
 .xt-twinkle { transform-origin: center; animation: xtTwinkle 2.4s ease-in-out infinite; }
 .xt-ai-btn { transition: transform .25s, box-shadow .25s; box-shadow: 0 14px 30px -16px rgba(161,36,68,.7); }
 .xt-ai-btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 20px 36px -16px rgba(161,36,68,.9); }
 .xt-peek { animation: xtPeek 7s ease-in-out infinite; }
 .xt-blink { transform-box: fill-box; transform-origin: center; animation: xtBlink 4s infinite; }
 @media (prefers-reduced-motion: reduce) {
-  .xt-in, .xt-reveal, .xt-marquee, .xt-rail, .xt-spin, .xt-float, .xt-pop, .xt-live, .xt-shine, .xt-twinkle, .xt-peek, .xt-blink { animation: none; }
+  .xt-in, .xt-reveal, .xt-marquee, .xt-rail, .xt-spin, .xt-float, .xt-pop, .xt-live, .xt-shine, .xt-twinkle, .xt-love, .xt-heart-rise, .xt-peek, .xt-blink { animation: none; }
   .xt-lift, .xt-btn, .xt-chip, .xt-ai-btn { transition: none; }
 }
 /* Global heading/paragraph line-heights in styles/typography.css are unlayered and
