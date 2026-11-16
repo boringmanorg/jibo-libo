@@ -76,7 +76,7 @@ export function Reviews({ match, bistro, badge = 'Guest reviews', title = '4.7 o
 
   return (
     <section className="px-4 pb-20 sm:px-8 lg:px-14">
-      <div className={`relative overflow-hidden rounded-[32px] bg-xt-night px-5 py-16 text-white sm:px-10 ${floating.length > 4 ? 'lg:min-h-[820px]' : 'lg:min-h-[600px]'} lg:py-0 lg:flex lg:items-center lg:justify-center">
+      <div className={`relative overflow-hidden rounded-[32px] bg-xt-night px-5 py-16 text-white sm:px-10 ${floating.length > 4 ? 'lg:min-h-[820px]' : 'lg:min-h-[600px]'} lg:py-0 lg:flex lg:items-center lg:justify-center`}>
         <div className="pointer-events-none absolute inset-0 hidden lg:block">
           {floating.map((r, i) => (
             <div key={r.name + i} className="xt-review-pop pointer-events-auto absolute" style={{ [SPOTS[i].side]: `${SPOTS[i].x}%`, top: `${SPOTS[i].t}%`, animationDelay: `${(i % 5) * 0.08}s` }}>
