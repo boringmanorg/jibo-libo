@@ -119,7 +119,7 @@ export function Reviews({ match, bistro, badge = 'Guest reviews', title = '4.7 o
           <div className="flex flex-wrap gap-2">
             {!match && ([['all', 'All'], ['hostel', 'XTSY Travellers Hostel'], ['bistro', 'TAB Bistro by XTSY']] as const).map(([k, l]) => (
               <button key={k} type="button" onClick={() => setTab(k)} className={`min-h-12 rounded-full px-4 text-[14px] font-bold ${tab === k ? 'bg-xt-crimson text-white' : 'bg-xt-cream text-xt-ink'}`}>{l}</button>
-            )))}
+            ))}
           </div>
           <ul className="m-0 grid list-none gap-3 p-0 sm:grid-cols-2">
             {list.map((r, i) => (
