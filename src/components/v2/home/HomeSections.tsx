@@ -157,8 +157,8 @@ export function StateExplorer() {
       <SectionHead eyebrow="Destination explorer" title="Explore the Northeast by state" />
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-5">
         {STATES.map((s) => (
-          <Link key={s.n} to={s.to} className="xt-reveal xt-lift flex min-h-[180px] flex-col gap-2.5 rounded-3xl p-6 sm:min-h-[200px] sm:p-7" style={{ background: s.bg, color: s.fg }}>
-            <span className="font-display text-[32px] leading-none sm:text-[38px]">{s.n}</span>
+          <Link key={s.n} to={s.to} className="xt-reveal xt-lift flex min-h-[180px] min-w-0 flex-col gap-2.5 overflow-hidden rounded-3xl p-6 sm:min-h-[200px] sm:p-7" style={{ background: s.bg, color: s.fg }}>
+            <span className="font-display text-[clamp(24px,1.7vw,32px)] leading-[1.05] break-words">{s.n}</span>
             <span className="text-[15px] font-bold opacity-85">{s.blurb}</span>
             <span className="mt-auto text-[15px] font-extrabold">Explore →</span>
           </Link>
