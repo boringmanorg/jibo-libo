@@ -1,3 +1,4 @@
+import { responsiveImage } from '@/data/cdnImages';
 /**
  * /xtsy-270 — Experience by XTSY, India's First Stargaze Glamp (redesign).
  */
@@ -13,6 +14,15 @@ import { Photo, waLink } from '@/components/v2/primitives';
 import { inr, roomPrice } from '@/components/v2/pricing';
 import { PANORAMA_DECORATION } from '@/data/panoramaPricing';
 import { TiltedGridHero } from '@/components/ui/tilted-grid-hero';
+
+// Smaller AVIF copies for the moving strip (~900 px instead of 1280 px WebP), so slow connections load it faster.
+function stripSrc(src: string): string {
+  const r = responsiveImage(src);
+  if (!r) return src;
+  const set = r.srcSet.split(', ').map((e) => { const [u, w] = e.split(' '); return [parseInt(w), u] as const; });
+  const pick = set.find(([w]) => w >= 900) ?? set[set.length - 1];
+  return /^\/img\/(o|px)\/.+\.webp$/.test(pick[1]) ? pick[1].replace(/\.webp$/, '.avif') : pick[1];
+}
 
 const STARS = [
   [80, 60, 1.6, 0], [210, 140, 1.2, 1], [330, 40, 2, 2], [470, 110, 1.4, 1], [560, 30, 1.1, 0], [640, 170, 1.7, 2],
@@ -76,11 +86,11 @@ export default function ExperienceByXtsy() {
             <div className="rounded-2xl bg-xt-paper px-5 py-3 text-[15px] font-extrabold text-xt-ink">Booked direct only · 1 suite a night</div>
           </div>
           <TiltedGridHero
-            images={IMG.suite.map((src, i) => ({ src, alt: `Experience by XTSY glass suite photo ${i + 1}` }))}
+            images={IMG.suite.map((src, i) => ({ src: stripSrc(src), alt: `Experience by XTSY glass suite photo ${i + 1}` }))}
             className="relative mt-4 h-[360px] w-full sm:h-[520px]"
             tileHeight={58}
-            gap={14}
-            curve={60}
+            gap={8}
+            curve={22}
             axis={50}
             speed={4}
           />
