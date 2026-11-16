@@ -894,6 +894,29 @@ img.lazy-below-fold {
 .xt-chip:active { transform: scale(.96); }
 .xt-shine { animation: xtShine 3.2s ease-in-out infinite; }
 .xt-love { animation: xtLove 4s ease-in-out infinite; }
+/* Global, parameterised photo-strip motion survives preview style replacement.
+   Network speed must not remove the transforms that place the photo tiles. */
+@keyframes xtSuiteOrbit {
+  from { transform: var(--tgh-from); }
+  to { transform: var(--tgh-to); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  :is(.slow-connection, body.is-slow-connection) .xt-suite-motion .tgh-tile {
+    animation: xtSuiteOrbit var(--tgh-duration) linear var(--tgh-delay) infinite !important;
+  }
+  :is(.slow-connection, body.is-slow-connection) .xt-suite-motion .xt-love {
+    animation: xtLove 4s ease-in-out infinite !important;
+  }
+  :is(.slow-connection, body.is-slow-connection) .xt-suite-motion .xt-heart-rise {
+    animation: xtHeartRise 6.4s ease-in infinite !important;
+  }
+  :is(.slow-connection, body.is-slow-connection) .xt-suite-motion .xt-twinkle {
+    animation: xtTwinkle 2.4s ease-in-out infinite !important;
+  }
+}
+body.reduce-motion .xt-suite-motion :is(.tgh-tile, .xt-love, .xt-heart-rise, .xt-twinkle) {
+  animation: none !important;
+}
 @keyframes xtLove { 0%,100% { transform: translateY(0) rotate(-6deg) scale(1); } 50% { transform: translateY(-8px) rotate(6deg) scale(1.08); } }
 .xt-heart-rise { opacity: 0; animation: xtHeartRise 6.4s ease-in infinite; }
 @keyframes xtHeartRise { 0% { opacity: 0; transform: translateY(0) scale(.6); } 15% { opacity: .9; } 100% { opacity: 0; transform: translateY(-140px) translateX(10px) scale(1.1); } }
