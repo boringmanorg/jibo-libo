@@ -78,7 +78,8 @@ export default function ExperienceByXtsy() {
           <TiltedGridHero
             images={IMG.suite.map((src, i) => ({ src, alt: `Experience by XTSY glass suite photo ${i + 1}` }))}
             className="relative mt-4 h-[300px] w-full sm:h-[420px]"
-            tileHeight={62}
+            tileHeight={46}
+            curve={60}
             axis={50}
             speed={4}
           />
