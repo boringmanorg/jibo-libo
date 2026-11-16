@@ -21,7 +21,7 @@ import { useLocationConsent } from "@/hooks/useLocationConsent";
 import { useFormEngagement } from "@/hooks/useFormEngagement";
 import { useEnhancedAnalytics } from "@/hooks/useEnhancedAnalytics";
 import { XTSY270_DATA } from "@/data/rooms/xtsy270";
-import { PANORAMA_STAY_ONLY, currentRoomRate, quoteStay, displayRoomName, panoramaBreakfastTotal, PANORAMA_BREAKFAST_PER_PERSON } from '@/data/panoramaPricing';
+import { PANORAMA_STAY_ONLY, currentRoomRate, quoteStay, displayRoomName, panoramaBreakfastTotal, PANORAMA_BREAKFAST_PER_PERSON, breakfastGst } from '@/data/panoramaPricing';
 
 // All Indian states and union territories
 const INDIAN_STATES = [
@@ -370,7 +370,7 @@ const WhatsAppBookingForm = ({ isOpen, onClose }: WhatsAppBookingFormProps) => {
 
     // Build warm, branded WhatsApp message for XTSY Travellers Hostel
     const roomsText = selectedRooms.length > 0 
-      ? selectedRooms.map(room => `   • ${displayRoomName(room.roomTypeName)} × ${room.quantity}${isXtsy270Room(room.roomTypeName) ? ` — Stay only (₹${PANORAMA_STAY_ONLY.toLocaleString('en-IN')}/night, all inclusive)${panoramaDecoration ? '; Decoration +₹2,500 once (rose petals, scented candles, bouquet, cake)' : ''}${panoramaBreakfast ? `; Breakfast from TAB Bistro by XTSY +₹${getBreakfastAmount().toLocaleString('en-IN')} (₹280/person/morning)` : ''}` : ` (₹${room.price.toLocaleString('en-IN')}/night)`}`).join('\n')
+      ? selectedRooms.map(room => `   • ${displayRoomName(room.roomTypeName)} × ${room.quantity}${isXtsy270Room(room.roomTypeName) ? ` — Stay only (₹${PANORAMA_STAY_ONLY.toLocaleString('en-IN')}/night, all inclusive)${panoramaDecoration ? '; Decoration +₹2,500 once (rose petals, scented candles, bouquet, cake)' : ''}${panoramaBreakfast ? `; Breakfast from TAB Bistro by XTSY +₹${getBreakfastAmount().toLocaleString('en-IN')} + 5% GST ₹${breakfastGst(getBreakfastAmount()).toLocaleString('en-IN')} (₹280/person/morning + GST)` : ''}` : ` (₹${room.price.toLocaleString('en-IN')}/night)`}`).join('\n')
       : '   • To be decided';
 
     const addOnsText = [];
@@ -421,7 +421,7 @@ Looking forward to hearing from you. Thank you! 🌟`;
       checkIn: formData.checkIn,
       checkOut: formData.checkOut,
       guests: formData.guests,
-      specialRequests: [`Page: ${document.title || 'XTSY booking'} — ${window.location.origin}${window.location.pathname}`, formData.specialRequests, selectedRooms.some(room => isXtsy270Room(room.roomTypeName)) ? `Panorama: Stay only; Decoration: ${panoramaDecoration ? '₹2,500 one-time' : 'none'}; Breakfast: ${panoramaBreakfast ? `₹${getBreakfastAmount()} (TAB Bistro, ₹280/person/morning)` : 'none'}` : ''].filter(Boolean).join(' | ').slice(0, 2000),
+      specialRequests: [`Page: ${document.title || 'XTSY booking'} — ${window.location.origin}${window.location.pathname}`, formData.specialRequests, selectedRooms.some(room => isXtsy270Room(room.roomTypeName)) ? `Panorama: Stay only; Decoration: ${panoramaDecoration ? '₹2,500 one-time' : 'none'}; Breakfast: ${panoramaBreakfast ? `₹${getBreakfastAmount()} + ₹${breakfastGst(getBreakfastAmount())} GST (TAB Bistro, ₹280/person/morning + 5% GST)` : 'none'}` : ''].filter(Boolean).join(' | ').slice(0, 2000),
       selectedRooms,
       nights: nights || 1,
       totalAmount: getQuote().total,
@@ -765,7 +765,7 @@ Looking forward to hearing from you. Thank you! 🌟`;
                 {/* Selected Rooms Display */}
                 {selectedRooms.length > 0 && (
                   <div className="space-y-2 mt-4">
-                    {selectedRooms.some(room => isXtsy270Room(room.roomTypeName)) && <fieldset className="space-y-3 border border-primary/20 p-3"><legend className="font-semibold">Panorama package</legend><p className="text-sm">Stay only · ₹4,999/night, taxes included, without breakfast.</p><label className="flex items-center gap-2"><Checkbox checked={panoramaDecoration} onCheckedChange={checked => setPanoramaDecoration(checked === true)} /> Decoration +₹2,500 once — rose petals, scented candles, bouquet and cake</label><label className="flex min-h-12 items-center gap-2"><Checkbox checked={panoramaBreakfast} onCheckedChange={checked => setPanoramaBreakfast(checked === true)} /> Breakfast from TAB Bistro by XTSY +₹{PANORAMA_BREAKFAST_PER_PERSON} per person per morning (₹{PANORAMA_BREAKFAST_PER_PERSON * 2} for two)</label></fieldset>}
+                    {selectedRooms.some(room => isXtsy270Room(room.roomTypeName)) && <fieldset className="space-y-3 border border-primary/20 p-3"><legend className="font-semibold">Panorama package</legend><p className="text-sm">Stay only · ₹4,999/night, taxes included, without breakfast.</p><label className="flex items-center gap-2"><Checkbox checked={panoramaDecoration} onCheckedChange={checked => setPanoramaDecoration(checked === true)} /> Decoration +₹2,500 once — rose petals, scented candles, bouquet and cake</label><label className="flex min-h-12 items-center gap-2"><Checkbox checked={panoramaBreakfast} onCheckedChange={checked => setPanoramaBreakfast(checked === true)} /> Breakfast from TAB Bistro by XTSY +₹{PANORAMA_BREAKFAST_PER_PERSON} per person per morning + 5% GST (₹{PANORAMA_BREAKFAST_PER_PERSON * 2} + GST for two)</label></fieldset>}
                     <div className="flex items-center justify-between">
                       <Label className="text-sm font-medium text-muted-foreground">Selected Rooms:</Label>
                       <span className="text-xs text-muted-foreground">

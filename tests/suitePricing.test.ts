@@ -12,5 +12,6 @@ import { panoramaBreakfastTotal, quoteStay } from '@/data/panoramaPricing';
 describe('suite breakfast add-on', () => {
   it('two guests, one night = ₹560', () => expect(panoramaBreakfastTotal(2, 1)).toBe(560));
   it('one guest, one night = ₹280', () => expect(panoramaBreakfastTotal(1, 1)).toBe(280));
-  it('adds to the stay total', () => expect(quoteStay([{ nightlyRate: 4999, quantity: 1 }], 1, false, 560).total).toBe(5559));
+  it('adds breakfast plus 5% GST to the stay total', () => expect(quoteStay([{ nightlyRate: 4999, quantity: 1 }], 1, false, 560).total).toBe(5587));
+  it('breakfast GST for two for one morning is ₹28', () => expect(quoteStay([], 1, false, 560).breakfastGst).toBe(28));
 });
