@@ -31,12 +31,12 @@ export default function AboutV2() {
   const seo = getSEOConfig('about');
   const brands = [
     { t: 'XTSY Travellers Hostel', d: 'Dorms and private rooms in New Shillong Township.', to: '/book', bg: '#A12444', fg: '#FFFFFF', mark: '#F4EFE8' },
-    { t: 'Experience by XTSY', d: 'India’s First Stargaze Glamp.', to: '/experience-by-xtsy', bg: '#1F2438', fg: '#F4EFE8', mark: '#BD2E30' },
+    { t: 'Experience by XTSY', d: 'India’s Most Romantic Couple En-suite.', to: '/experience-by-xtsy', bg: '#1F2438', fg: '#F4EFE8', mark: '#BD2E30' },
     { t: 'TAB Bistro by XTSY', d: 'Forest dining — breakfast 8:45 AM–12 PM, dinner 5–11 PM.', to: '/tab-bistro', bg: '#2F4A3F', fg: '#EAF0EA', mark: '#F2B8C2' },
     { t: 'XTSY Voyage', d: 'Tours, rentals and travel films, with trusted partners.', to: '/tours', bg: '#FFFFFF', fg: '#1F2230', mark: '#A12444' },
   ];
   const tiers = [
-    { n: '1', t: 'Experience by XTSY', d: 'India’s First Stargaze Glamp, a 270° panoramic glass suite for couples.' },
+    { n: '1', t: 'Experience by XTSY', d: 'India’s Most Romantic Couple En-suite, a 270° panoramic glass suite for couples.' },
     { n: '2', t: 'Private rooms', d: 'King Double rooms with a view of the pines.' },
     { n: '3', t: 'Female-only dorm', d: 'A 4-bed women-only dorm with lockers and curtains.' },
     { n: '4', t: 'Mixed dorms', d: `6 and 8-bed dorms from ${inr(lowestDormPrice())} a night.` },

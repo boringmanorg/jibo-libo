@@ -10,7 +10,7 @@ export const XTSY270_DATA = {
   canonicalUrl: 'https://xtsy.one/experience-by-xtsy',
   name: "Experience by XTSY – India's Most Romantic Couple En-suite",
   shortName: 'Experience by XTSY',
-  seoTitle: 'Experience by XTSY – India\'s First Stargaze Glamp | Shillong, Meghalaya',
+  seoTitle: 'Experience by XTSY – India\'s Most Romantic Couple En-suite | Shillong, Meghalaya',
   seoDescription:
     'Sleep under stars. Wake to mountains. Experience by XTSY is a panoramic glasshouse retreat in Shillong. ₹4,999 per night, all inclusive (stay only); decoration optional.',
   seoKeywords:

@@ -8,7 +8,7 @@ import { SpinningMark } from '@/components/v2/primitives';
 import PageFaq from '@/components/seo/PageFaq';
 
 const ROWS = [
-  { f: 'Luxury stay on site', x: 'Experience by XTSY, India’s First Stargaze Glamp', z: 'Varies by property' },
+  { f: 'Luxury stay on site', x: 'Experience by XTSY, India’s Most Romantic Couple En-suite', z: 'Varies by property' },
   { f: 'Groups', x: 'Families, colleges and companies, 10–50+', z: 'Varies by property' },
   { f: 'Pet-friendly', x: 'Cats & birds welcome; dogs by breed and size', z: 'Check with the property' },
   { f: 'Custom itineraries', x: 'Built around your dates and pace', z: 'Mostly scheduled trips' },

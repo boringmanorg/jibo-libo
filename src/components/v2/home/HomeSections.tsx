@@ -186,7 +186,7 @@ export function PrimeRail() {
           <Eyebrow light>Premium experiences</Eyebrow>
           <h2 className="xt-display m-0 text-[56px] leading-[0.95] sm:text-[76px]">XTSY Prime</h2>
         </div>
-        <p className="m-0 max-w-[460px] text-[16px] leading-relaxed text-xt-fog">What sets us apart, from India’s First Stargaze Glamp to stays where pets are family.</p>
+        <p className="m-0 max-w-[460px] text-[16px] leading-relaxed text-xt-fog">What sets us apart, from India’s Most Romantic Couple En-suite to stays where pets are family.</p>
       </div>
       <div className={`${PAD} grid gap-5 sm:grid-cols-2 lg:grid-cols-3`}>
         {prime.map((p) => (
@@ -211,7 +211,7 @@ export function GlampFeature() {
     <section className={`relative grid items-center gap-12 overflow-hidden bg-xt-night pb-24 pt-4 text-xt-paper lg:grid-cols-2 lg:gap-16 ${PAD}`}>
       <Photo afterLoad src={IMG.suite[2] ?? first(IMG.suite)} alt="Experience by XTSY, the 270° panoramic glass suite" tone="slate" className="xt-reveal aspect-[632/520] rounded-[28px]" />
       <div className="xt-reveal flex flex-col gap-5">
-        <Eyebrow light>India’s First Stargaze Glamp</Eyebrow>
+        <Eyebrow light>India’s Most Romantic Couple En-suite</Eyebrow>
         <h2 className="xt-display m-0 text-[60px] leading-[0.92] sm:text-[84px]">Experience by XTSY</h2>
         <p className="m-0 text-[17px] leading-relaxed text-xt-fog sm:text-[18px]">A 270° panoramic glass suite in the pines of New Shillong. Sleep under the stars from your bed. One suite, one couple a night, booked direct only.</p>
         <ul className="m-0 grid list-none grid-cols-1 gap-x-6 gap-y-3 p-0 text-[16px] font-semibold sm:grid-cols-2">

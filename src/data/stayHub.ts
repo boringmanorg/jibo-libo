@@ -19,7 +19,7 @@ export const rooms = () => [
   { id: '6-bed-mixed-dorm', name: '6-bed mixed dorm', price: roomPrice('6-bed-mixed-dorm').now, note: 'Smaller dorm, same in-bunk comforts — a favourite with backpackers.' },
   { id: '4-bed-female-only-dorm', name: '4-bed women-only dorm', price: roomPrice('4-bed-female-only-dorm').now, note: 'Women-only, female staff on call, lockers — the safest budget bed.' },
   { id: 'king-double-room', name: 'King Double room', price: roomPrice('king-double-room').now, note: 'Private room for two with a view of the pines.' },
-  { id: 'xtsy-270', name: 'Experience by XTSY (glass suite)', price: PANORAMA_STAY_ONLY, note: `India’s First Stargaze Glamp. Stay only, all inclusive; decoration +${inr(PANORAMA_DECORATION)}.` },
+  { id: 'xtsy-270', name: 'Experience by XTSY (glass suite)', price: PANORAMA_STAY_ONLY, note: `India’s Most Romantic Couple En-suite. Stay only, all inclusive; decoration +${inr(PANORAMA_DECORATION)}.` },
 ].filter((r) => r.price > 0);
 
 export function stayHubCopy(v: StayHubVariant) {
