@@ -8,10 +8,11 @@ import { SIGNATURE_PACKAGES, formatPackagePrice } from '@/data/signaturePackages
 import { Link } from '@/lib/router-compat';
 import B2BBookingForm from '@/components/B2BBookingForm';
 import { IMG } from '@/data/v2Images';
-import { PageShell, PageHero, Btn, Section, H2, FeatureCards, PriceCards, FaqList, PAD } from '@/components/v2/blocks';
+import { PageShell, Btn, Section, H2, FeatureCards, PriceCards, FaqList, PAD } from '@/components/v2/blocks';
 import { Photo, waLink } from '@/components/v2/primitives';
 import { inr, roomPrice } from '@/components/v2/pricing';
 import { PANORAMA_DECORATION } from '@/data/panoramaPricing';
+import { TiltedGridHero } from '@/components/ui/tilted-grid-hero';
 
 const STARS = [
   [80, 60, 1.6, 0], [210, 140, 1.2, 1], [330, 40, 2, 2], [470, 110, 1.4, 1], [560, 30, 1.1, 0], [640, 170, 1.7, 2],
@@ -49,48 +50,40 @@ export default function ExperienceByXtsy() {
     <>
       <SEOHead title="Experience by XTSY | Glass Glamping for Two, New Shillong" description="Stay in a 270° panoramic glass suite for two in New Shillong Township, Meghalaya. View photos, amenities and rates; enquire on WhatsApp for availability." keywords={(XTSY270_DATA as { seoKeywords?: string }).seoKeywords} canonicalUrl={XTSY270_DATA.canonicalUrl} ogType="product" />
       <PageShell bar={{ label: 'Book a stay', to: wa, note: `Experience by XTSY · ${inr(now)} a night, incl. taxes` }} cta={{ title: 'One suite. One night. Yours?', sub: 'Reserve on WhatsApp. Book 48 hours ahead for decoration and concierge.' }}>
-        <PageHero
-          bg="#1F2438"
-          fg="#F4EFE8"
-          muted="#C9CFDD"
-          eyebrowColor="#E07A8B"
-          eyebrow="India’s First Stargaze Glamp · Sleep under the stars"
-          size="md"
-          title="Experience by XTSY: The Romantic Couple Stay in India is now at New Shillong, Meghalaya"
-          decoration={
-            <svg viewBox="0 0 1440 820" preserveAspectRatio="xMidYMid slice" aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full">
-              <g fill="#F4EFE8">
-                {STARS.map(([x, y, r, k]) => (
-                  <circle key={`${x}-${y}`} cx={x} cy={y} r={r} className="xt-twinkle" style={{ animationDuration: `${2.6 + k * 0.9}s`, animationDelay: `${k * 0.8}s`, opacity: 0.7 }} />
-                ))}
-              </g>
-            </svg>
-          }
-          text={
-            <>
-              <p className="m-0">A 270° panoramic glass suite in the pine forests of New Shillong, near IIM Shillong. One suite, one couple, one night at a time.</p>
-              <div className="mt-6 flex items-end gap-4">
-                <span className="font-display text-[64px] leading-[0.9] text-xt-paper sm:text-[72px]">{inr(now)}</span>
-                <span className="flex flex-col pb-1.5 text-[15px] text-[#A3ABC2]">
-                  <span>per night</span>
-                  {suite.was > now && <span>regular <s>{inr(suite.was)}</s></span>}
-                </span>
-              </div>
-            </>
-          }
-          actions={
-            <>
+        <section className="relative overflow-hidden pt-14 sm:pt-20" style={{ background: '#1F2438', color: '#F4EFE8' }}>
+          <svg viewBox="0 0 1440 820" preserveAspectRatio="xMidYMid slice" aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full">
+            <g fill="#F4EFE8">
+              {STARS.map(([x, y, r, k]) => (
+                <circle key={`${x}-${y}`} cx={x} cy={y} r={r} className="xt-twinkle" style={{ animationDuration: `${2.6 + k * 0.9}s`, animationDelay: `${k * 0.8}s`, opacity: 0.7 }} />
+              ))}
+            </g>
+          </svg>
+          <div className={`${PAD} relative mx-auto flex max-w-[1100px] flex-col items-center gap-6 text-center`}>
+            <div className="xt-in xt-eyebrow text-[15px] sm:text-[18px]" style={{ color: '#E07A8B' }}>India’s First Stargaze Glamp · Sleep under the stars</div>
+            <h1 className="xt-in xt-d1 xt-display m-0 text-balance text-[44px] leading-[0.9] sm:text-[68px] lg:text-[84px]">Experience by XTSY: The Romantic Couple Stay in India is now at New Shillong, Meghalaya</h1>
+            <p data-quick-answer className="xt-in xt-d2 m-0 max-w-[620px] text-[17px] leading-relaxed sm:text-[20px]" style={{ color: '#C9CFDD' }}>A 270° panoramic glass suite in the pine forests of New Shillong, near IIM Shillong. One suite, one couple, one night at a time.</p>
+            <div className="xt-in xt-d2 flex items-end gap-4">
+              <span className="font-display text-[56px] leading-[0.9] text-xt-paper sm:text-[72px]">{inr(now)}</span>
+              <span className="flex flex-col pb-1.5 text-left text-[15px] text-[#A3ABC2]">
+                <span>per night</span>
+                {suite.was > now && <span>regular <s>{inr(suite.was)}</s></span>}
+              </span>
+            </div>
+            <div className="xt-in xt-d3 flex flex-wrap justify-center gap-3">
               <Btn to="/book?property=xtsy-experience">Book / Enquire</Btn>
               <Btn to={wa} kind="outline-light">WhatsApp us</Btn>
-            </>
-          }
-          media={
-            <div className="relative flex justify-end">
-              <Photo src={IMG.suite[0]} alt="Experience by XTSY, the glass suite" eager tone="slate" sizes="(max-width: 640px) calc(100vw - 48px), 600px" className="aspect-[600/640] w-full max-w-[600px] rounded-[300px]" />
-              <div className="xt-float absolute bottom-12 left-2 rounded-2xl bg-xt-paper px-5 py-4 text-[15px] font-extrabold text-xt-ink sm:left-5">Booked direct only · 1 suite a night</div>
             </div>
-          }
-        />
+            <div className="rounded-2xl bg-xt-paper px-5 py-3 text-[15px] font-extrabold text-xt-ink">Booked direct only · 1 suite a night</div>
+          </div>
+          <TiltedGridHero
+            images={IMG.suite.map((src, i) => ({ src, alt: `Experience by XTSY glass suite photo ${i + 1}` }))}
+            className="relative mt-4 h-[300px] w-full sm:h-[420px]"
+            tileHeight={46}
+            curve={60}
+            axis={50}
+            speed={4}
+          />
+        </section>
 
         <Section>
           <H2>Everything inside the glass</H2>
