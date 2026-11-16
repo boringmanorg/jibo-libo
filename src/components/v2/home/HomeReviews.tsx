@@ -28,7 +28,7 @@ function allReviews(): R[] {
 // smaller guest tiles of varied sizes scattered around the headline.
 const SPOTS: { l: number; t: number; r: number; tile?: number }[] = [
   { l: 2, t: 6, r: -4 }, { l: 4, t: 56, r: 3 }, { l: 77, t: 5, r: 4 }, { l: 79, t: 52, r: -3 }, { l: 60, t: 80, r: 2 },
-  { l: 27, t: 6, r: 0, tile: 80 }, { l: 66, t: 30, r: 0, tile: 64 }, { l: 22, t: 42, r: 0, tile: 72 },
+  { l: 27, t: 6, r: 0, tile: 80 }, { l: 92, t: 38, r: 0, tile: 64 }, { l: 6, t: 38, r: 0, tile: 72 },
   { l: 28, t: 82, r: 0, tile: 88 }, { l: 46, t: 86, r: 0, tile: 60 }, { l: 62, t: 4, r: 0, tile: 70 },
 ];
 const initials = (n: string) => n.split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0]).join('').toUpperCase();
