@@ -41,8 +41,8 @@ function Card({ r, onOpen, className = '', style }: { r: R; onOpen: () => void; 
       className={`flex min-h-12 relative h-full w-[260px] sm:w-full flex-col gap-3 rounded-3xl border border-xt-line/60 bg-xt-paper p-5 pt-6 text-left text-xt-ink shadow-[0_18px_40px_-18px_rgba(0,0,0,.6)] transition-transform hover:-translate-y-1 hover:shadow-[0_28px_50px_-20px_rgba(0,0,0,.7)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-xt-crimson ${className}`}>
       <span aria-hidden className="xt-display absolute right-5 top-2 text-[56px] leading-none text-xt-crimson/20">&ldquo;</span>
       <Stars n={r.rating} />
-      <span className="line-clamp-5 flex-1 text-[15px] leading-relaxed">{r.comment}</span>
-      <span className="border-t border-xt-line/60 pt-3 text-[13px] font-bold text-xt-mute">{r.name} · {r.property === 'TAB Bistro by XTSY' ? 'TAB Bistro' : 'Hostel'}</span>
+      <span className="line-clamp-5 flex-1 whitespace-pre-line text-[15px] leading-relaxed">{r.comment}</span>
+      <span className="border-t border-xt-line/60 pt-3 text-[13px] font-bold text-xt-mute">{r.name} · {r.property === 'TAB Bistro by XTSY' ? 'TAB Bistro' : r.property === 'Experience by XTSY' ? `Glass suite · ${r.source}` : 'Hostel'}</span>
     </button>
   );
 }
@@ -55,16 +55,18 @@ export type ReviewShowcaseProps = {
   badge?: string;
   title?: string;
   description?: string;
+  /** Extra verbatim reviews shown first (e.g. Airbnb reviews for one listing). */
+  extra?: R[];
 };
 
-export function Reviews({ match, bistro, badge = 'Guest reviews', title = '4.7 on Google from 252 reviews', description = 'Real words from guests of XTSY Travellers Hostel and TAB Bistro by XTSY. 9.4 on Booking.com.' }: ReviewShowcaseProps = {}) {
+export function Reviews({ extra = [], match, bistro, badge = 'Guest reviews', title = '4.7 on Google from 252 reviews', description = 'Real words from guests of XTSY Travellers Hostel and TAB Bistro by XTSY. 9.4 on Booking.com.' }: ReviewShowcaseProps = {}) {
   const reviews = useMemo(() => {
     const all = allReviews();
-    if (!match) return all;
-    return all.filter((r) => (bistro && r.property === 'TAB Bistro by XTSY') || match.test(r.comment));
-  }, [match, bistro]);
+    if (!match) return [...extra, ...all];
+    return [...extra, ...all.filter((r) => (bistro && r.property === 'TAB Bistro by XTSY') || match.test(r.comment))];
+  }, [match, bistro, extra]);
   const floating = useMemo(() => {
-    const good = reviews.filter((r) => r.rating >= 4);
+    const good = reviews.filter((r) => r.rating >= 4 && r.comment.length > 40);
     const b = good.filter((r) => r.property === 'TAB Bistro by XTSY');
     const h = good.filter((r) => r.property !== 'TAB Bistro by XTSY');
     const mixed = match ? (bistro ? [...b, ...h] : good) : [...h.slice(0, 5), ...b.slice(0, 2), ...h.slice(5)];
@@ -102,7 +104,7 @@ export function Reviews({ match, bistro, badge = 'Guest reviews', title = '4.7 o
           {open && (<>
             <DialogTitle className="flex flex-col gap-1 text-[20px]">{open.name}<span className="text-[14px] font-semibold text-xt-mute">{open.property} · {open.source} · {open.date}</span></DialogTitle>
             <Stars n={open.rating} />
-            <DialogDescription className="text-[16px] leading-relaxed text-xt-ink">{open.comment}</DialogDescription>
+            <DialogDescription className="whitespace-pre-line text-[16px] leading-relaxed text-xt-ink">{open.comment}</DialogDescription>
             {open.ownerReply && <p className="m-0 rounded-2xl bg-xt-cream p-4 text-[14px] leading-relaxed"><b>Reply from XTSY:</b> {open.ownerReply}</p>}
           </>)}
         </DialogContent>
@@ -121,8 +123,8 @@ export function Reviews({ match, bistro, badge = 'Guest reviews', title = '4.7 o
             {list.map((r, i) => (
               <li key={r.name + i} className="flex flex-col gap-2 rounded-2xl bg-white p-4">
                 <Stars n={r.rating} />
-                <p className="m-0 text-[15px] leading-relaxed">{r.comment}</p>
-                <span className="text-[13px] font-bold text-xt-mute">{r.name} · {r.property} · {r.date}</span>
+                <p className="m-0 whitespace-pre-line text-[15px] leading-relaxed">{r.comment}</p>
+                <span className="text-[13px] font-bold text-xt-mute">{r.name} · {r.property} · {r.source} · {r.date}</span>
                 {r.ownerReply && <p className="m-0 rounded-xl bg-xt-cream p-3 text-[13px]"><b>Reply:</b> {r.ownerReply}</p>}
               </li>
             ))}
