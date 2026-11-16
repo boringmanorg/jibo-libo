@@ -26,10 +26,10 @@ function allReviews(): R[] {
 
 // Desktop layout from the testimonial template: review cards in two
 // staggered columns on each side of the centred headline.
-const SPOTS: { l: number; t: number; r: number }[] = [
-  { l: 1, t: 3, r: -3 }, { l: 84, t: 5, r: 3 }, { l: 13, t: 28, r: 2 }, { l: 72, t: 30, r: -2 },
-  { l: 1, t: 54, r: 3 }, { l: 84, t: 56, r: -3 }, { l: 13, t: 78, r: -2 }, { l: 72, t: 79, r: 2 },
-];
+const SPOTS: { side: 'left' | 'right'; x: number; t: number; r: number }[] = [
+  { side: 'left', x: 1, t: 3, r: -3 }, { side: 'right', x: 1, t: 5, r: 3 }, { side: 'left', x: 11, t: 28, r: 2 }, { side: 'right', x: 11, t: 30, r: -2 },
+  { side: 'left', x: 1, t: 54, r: 3 }, { side: 'right', x: 1, t: 56, r: -3 }, { side: 'left', x: 11, t: 78, r: -2 }, { side: 'right', x: 11, t: 79, r: 2 },
+]
 
 const Stars = ({ n }: { n: number }) => (
   <span aria-label={`${n} out of 5 stars`} className="tracking-[2px] text-xt-crimson">{'★'.repeat(n)}<span className="text-xt-line">{'★'.repeat(5 - n)}</span></span>
@@ -38,7 +38,7 @@ const Stars = ({ n }: { n: number }) => (
 function Card({ r, onOpen, className = '', style }: { r: R; onOpen: () => void; className?: string; style?: React.CSSProperties }) {
   return (
     <button type="button" onClick={onOpen} style={style}
-      className={`flex min-h-12 w-[min(250px,17vw)] min-w-[220px] flex-col gap-2 rounded-2xl bg-xt-paper p-4 text-left text-xt-ink shadow-[0_18px_40px_-18px_rgba(0,0,0,.6)] transition-transform hover:scale-[1.04] focus-visible:outline focus-visible:outline-2 focus-visible:outline-xt-crimson ${className}`}>
+      className={`flex min-h-12 w-[min(250px,17vw)] min-w-[210px] flex-col gap-2 rounded-2xl bg-xt-paper p-4 text-left text-xt-ink shadow-[0_18px_40px_-18px_rgba(0,0,0,.6)] transition-transform hover:scale-[1.04] focus-visible:outline focus-visible:outline-2 focus-visible:outline-xt-crimson ${className}`}>
       <Stars n={r.rating} />
       <span className="line-clamp-4 text-[14px] leading-snug">{r.comment}</span>
       <span className="text-[12px] font-bold text-xt-mute">{r.name} · {r.property === 'TAB Bistro by XTSY' ? 'TAB Bistro' : 'Hostel'}</span>
@@ -76,10 +76,10 @@ export function Reviews({ match, bistro, badge = 'Guest reviews', title = '4.7 o
 
   return (
     <section className="px-4 pb-20 sm:px-8 lg:px-14">
-      <div className="relative overflow-hidden rounded-[32px] bg-xt-night px-5 py-16 text-white sm:px-10 lg:min-h-[820px] lg:py-0 lg:flex lg:items-center lg:justify-center">
+      <div className={`relative overflow-hidden rounded-[32px] bg-xt-night px-5 py-16 text-white sm:px-10 ${floating.length > 4 ? 'lg:min-h-[820px]' : 'lg:min-h-[600px]'} lg:py-0 lg:flex lg:items-center lg:justify-center">
         <div className="pointer-events-none absolute inset-0 hidden lg:block">
           {floating.map((r, i) => (
-            <div key={r.name + i} className="xt-review-pop pointer-events-auto absolute" style={{ left: `${SPOTS[i].l}%`, top: `${SPOTS[i].t}%`, animationDelay: `${(i % 5) * 0.08}s` }}>
+            <div key={r.name + i} className="xt-review-pop pointer-events-auto absolute" style={{ [SPOTS[i].side]: `${SPOTS[i].x}%`, top: `${SPOTS[i].t}%`, animationDelay: `${(i % 5) * 0.08}s` }}>
               <div className="xt-review-float" style={{ ['--r' as string]: `${SPOTS[i].r}deg`, animationDelay: `${-i * 1.1}s`, animationDuration: `${6 + (i % 4)}s` } as React.CSSProperties}>
                 <Card r={r} onOpen={() => setOpen(r)} />
               </div>

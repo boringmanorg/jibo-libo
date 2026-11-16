@@ -152,7 +152,7 @@ export default function ExperienceByXtsy() {
           </Section>
         )}
 
-        <ReviewShowcase match={/glass|stargaz|stars\b|dome|cabin|270|suite|glamp|romantic|couple|honeymoon|terrace/i} badge="Glass suite reviews" title="Nights under the glass" description="Guests on the glass suite, the stars and the terrace, word for word from Google reviews of XTSY Travellers Hostel." />
+        <ReviewShowcase match={/glass|stargaz|watching the stars|dome|cabin|glamp/i} badge="Glass suite reviews" title="Nights under the glass" description="Guests on the glass suite, the stars and the terrace, word for word from Google reviews of XTSY Travellers Hostel." />
         <FaqList faqs={FAQS} />
       </PageShell>
       <B2BBookingForm isOpen={b2bOpen} onClose={() => setB2bOpen(false)} customTitle="Will it be yours? - Experience by XTSY" customDescription="India's Most Romantic Couple En-suite - Exclusive luxury experience" maxGuests={2} fixedGuests isCoupleFocused />
