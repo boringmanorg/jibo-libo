@@ -175,8 +175,13 @@ export function TiltedGridHero({
 
   // Fetch every image up front. A tile picks up its next one just before
   // it comes back into view, too late to start loading it then.
+  // Waits until the page has loaded, so these never compete with the
+  // first screen on a slow connection.
   React.useEffect(() => {
-    for (const { src } of images) new Image().src = src;
+    const run = () => { for (const { src } of images) new Image().src = src; };
+    if (document.readyState === "complete") { const t = setTimeout(run, 1500); return () => clearTimeout(t); }
+    window.addEventListener("load", run, { once: true });
+    return () => window.removeEventListener("load", run);
   }, [images]);
 
   const { columns, sweep, unit, limit } =
@@ -286,6 +291,7 @@ export function TiltedGridHero({
                       src={img.src}
                       alt={k === 0 ? (img.alt ?? "") : ""}
                       draggable={false}
+                      decoding="async"
                       className="absolute top-0 max-w-none object-cover"
                       style={{
                         left: u(-k * share),
