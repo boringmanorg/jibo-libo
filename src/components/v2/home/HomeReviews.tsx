@@ -66,9 +66,9 @@ export function Reviews({ match, bistro, badge = 'Guest reviews', title = '4.7 o
     const good = reviews.filter((r) => r.rating >= 4);
     const b = good.filter((r) => r.property === 'TAB Bistro by XTSY');
     const h = good.filter((r) => r.property !== 'TAB Bistro by XTSY');
-    const mixed = match ? good : [...h.slice(0, 5), ...b.slice(0, 2), ...h.slice(5)];
+    const mixed = match ? (bistro ? [...b, ...h] : good) : [...h.slice(0, 5), ...b.slice(0, 2), ...h.slice(5)];
     return mixed.slice(0, SPOTS.length);
-  }, [reviews, match]);
+  }, [reviews, match, bistro]);
   const [open, setOpen] = useState<R | null>(null);
   const [all, setAll] = useState(false);
   const [tab, setTab] = useState<'all' | 'hostel' | 'bistro'>('all');
