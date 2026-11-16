@@ -3,6 +3,7 @@
  * previous page (₹5,400 / ₹22,999 / ₹64,999).
  */
 import SEOHead from '@/components/SEOHead';
+import { Reviews as ReviewShowcase } from '@/components/v2/home/HomeReviews';
 import { COVERS } from '@/data/v2Images';
 import { PageShell, PageHero, Btn, Section, H2, PriceCards, StatRow, FaqList, PAD } from '@/components/v2/blocks';
 import { Photo, LiveDot, waLink } from '@/components/v2/primitives';
@@ -74,6 +75,7 @@ export default function WorkationV2() {
           ))}
         </section>
 
+        <ReviewShowcase match={/wi-?fi|work|laptop|internet|month|long stay|desk|calm|peaceful|quiet/i} badge="Workation reviews" title="Working from the pines" description="What guests say about Wi-Fi, quiet corners and long stays, word for word from Google reviews of XTSY Travellers Hostel." />
         <FaqList faqs={FAQS} />
       </PageShell>
     </>
