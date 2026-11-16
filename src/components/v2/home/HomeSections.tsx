@@ -6,7 +6,6 @@ import { useState } from 'react';
 import { Link } from '@/lib/router-compat';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { featuredHostelReviews } from '@/data/featuredGoogleReviews';
 import { SIGNATURE_PACKAGES, formatPackagePrice } from '@/data/signaturePackages';
 import { IMG, COVERS, first } from '@/data/v2Images';
 import { Eyebrow, LiveDot, Marquee, Photo, SectionHead, SpinningMark } from '../primitives';
@@ -332,25 +331,7 @@ export function ExpeditionsBanner() {
   );
 }
 
-export function Reviews() {
-  const picked = featuredHostelReviews.slice(0, 3);
-  return (
-    <section className={`${PAD} grid gap-5 pb-20 md:grid-cols-2 lg:grid-cols-4`}>
-      <div className="xt-reveal flex flex-col gap-3.5">
-        <Eyebrow>Guest reviews</Eyebrow>
-        <h2 className="xt-display m-0 text-[48px] leading-[0.95] sm:text-[60px]">4.7 on Google from 252 reviews</h2>
-        <span className="text-[15px] font-bold text-xt-mute">9.4 on Booking.com</span>
-      </div>
-      {picked.map((r) => (
-        <figure key={r.name} className="xt-reveal xt-lift m-0 flex flex-col gap-3.5 rounded-3xl bg-white p-7">
-          <div aria-label="5 out of 5 stars" className="text-[18px] tracking-[3px] text-xt-crimson">★★★★★</div>
-          <blockquote className="m-0 line-clamp-6 text-[16px] leading-normal">{r.comment}</blockquote>
-          <figcaption className="mt-auto text-[14px] font-bold text-xt-mute">{r.name} · Google</figcaption>
-        </figure>
-      ))}
-    </section>
-  );
-}
+export { Reviews } from './HomeReviews';
 
 export const HOME_FAQS: [string, string][] = [
   ['What is the best time to visit Shillong, Meghalaya?', 'October to May brings clear skies and pleasant weather. June to September is monsoon, when Cherrapunji’s waterfalls are at full force. XTSY is open all year.'],
