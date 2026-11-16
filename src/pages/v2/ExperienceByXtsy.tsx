@@ -68,9 +68,14 @@ export default function ExperienceByXtsy() {
               ))}
             </g>
           </svg>
-          <div className={`${PAD} relative mx-auto flex max-w-[1100px] flex-col items-center gap-6 text-center`}>
+          <div className={`${PAD} relative mx-auto flex max-w-[1400px] flex-col items-center gap-6 text-center`}>
             <div className="xt-in xt-eyebrow text-[15px] sm:text-[18px]" style={{ color: '#E07A8B' }}>India’s First Stargaze Glamp · Sleep under the stars</div>
-            <h1 className="xt-in xt-d1 xt-display m-0 text-balance text-[44px] leading-[0.9] sm:text-[68px] lg:text-[84px]">Experience by XTSY: The Romantic Couple Stay in India is now at New Shillong, Meghalaya</h1>
+            <div className="relative w-full px-6 sm:px-12">
+              {[['✨','left-0 top-0',0],['💫','right-0 top-2',1],['🌙','left-2 bottom-0 hidden sm:block',2],['💕','right-3 bottom-1',1],['⭐','left-1/2 -top-9 hidden md:block',2]].map(([e,c,k]) => (
+                <span key={e as string} aria-hidden="true" className={`xt-twinkle pointer-events-none absolute select-none text-[22px] sm:text-[30px] ${c}`} style={{ animationDuration: `${2.4 + (k as number) * 0.8}s`, animationDelay: `${(k as number) * 0.6}s` }}>{e}</span>
+              ))}
+              <h1 className="xt-in xt-d1 xt-display m-0 text-balance break-words text-[34px] leading-[0.95] sm:text-[52px] lg:text-[64px]">Experience by XTSY: The Romantic Couple Stay in India is now at New Shillong, Meghalaya</h1>
+            </div>
             <p data-quick-answer className="xt-in xt-d2 m-0 max-w-[620px] text-[17px] leading-relaxed sm:text-[20px]" style={{ color: '#C9CFDD' }}>A 270° panoramic glass suite in the pine forests of New Shillong, near IIM Shillong. One suite, one couple, one night at a time.</p>
             <div className="xt-in xt-d2 flex items-end gap-4">
               <span className="font-display text-[56px] leading-[0.9] text-xt-paper sm:text-[72px]">{inr(now)}</span>
@@ -87,7 +92,7 @@ export default function ExperienceByXtsy() {
           </div>
           <TiltedGridHero
             images={IMG.suite.map((src, i) => ({ src: stripSrc(src), alt: `Experience by XTSY glass suite photo ${i + 1}` }))}
-            className="relative mt-4 h-[360px] w-full sm:h-[520px]"
+            className="relative mt-4 h-[240px] w-full sm:h-[520px]"
             tileHeight={58}
             gap={8}
             curve={22}
