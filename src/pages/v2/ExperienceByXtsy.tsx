@@ -71,7 +71,7 @@ export default function ExperienceByXtsy() {
           <div className={`${PAD} relative mx-auto flex max-w-[1400px] flex-col items-center gap-6 text-center`}>
             <div className="xt-in xt-eyebrow text-[15px] sm:text-[18px]" style={{ color: '#E07A8B' }}>India’s First Stargaze Glamp · Sleep under the stars</div>
             <div className="relative w-full px-6 sm:px-12">
-              {[['✨','left-0 top-0',0],['💫','right-0 top-2',1],['🌙','left-2 bottom-0 hidden sm:block',2],['💕','right-3 bottom-1',1],['⭐','left-[18%] -top-5 hidden md:block',2]].map(([e,c,k]) => (
+              {[['✨','left-0 top-0',0],['💫','right-0 top-2',1],['🌙','left-2 bottom-0 hidden sm:block',2],['💕','right-3 bottom-1',1],['⭐','left-1/2 -top-9 hidden md:block',2]].map(([e,c,k]) => (
                 <span key={e as string} aria-hidden="true" className={`xt-twinkle pointer-events-none absolute select-none text-[22px] sm:text-[30px] ${c}`} style={{ animationDuration: `${2.4 + (k as number) * 0.8}s`, animationDelay: `${(k as number) * 0.6}s` }}>{e}</span>
               ))}
               <h1 className="xt-in xt-d1 xt-display m-0 text-balance break-words text-[34px] leading-[0.95] sm:text-[52px] lg:text-[64px]">Experience by XTSY: The Romantic Couple Stay in India is now at New Shillong, Meghalaya</h1>
