@@ -113,7 +113,7 @@ const HostelBookingShillong = memo(() => {
     { name: '6-Bed Mixed Dorm', price: '₹499', per: 'per bed / night', tag: 'Popular' },
     { name: 'Female-only Dorm', price: '₹599', per: 'per bed / night', tag: 'Solo-safe' },
     { name: 'Private Double Room', price: '₹2,399', per: 'per room / night', tag: 'Couples' },
-    { name: 'Experience by XTSY', price: '₹5,999', per: 'stay only / night', tag: 'Signature' },
+    { name: 'Experience by XTSY', price: '₹4,999', per: 'stay only / night', tag: 'Signature' },
   ];
 
   return (

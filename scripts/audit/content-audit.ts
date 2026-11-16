@@ -20,7 +20,7 @@ const PRICES: { key: string; re: RegExp; ok: number[] }[] = [
   { key: '6-bed mixed dorm', re: /6[- ]?bed(?![^.]{0,20}female)/i, ok: [499, 699] },
   { key: 'female dorm', re: /female|women/i, ok: [599, 679] },
   { key: 'king/private room', re: /\bking\b|double room|private room/i, ok: [2399, 3499] },
-  { key: 'Experience by XTSY', re: /270|panorama|glass (suite|room|ensuite|house)|experience by xtsy|stargaze/i, ok: [5999, 2500, 11999] },
+  { key: 'Experience by XTSY', re: /270|panorama|glass (suite|room|ensuite|house)|experience by xtsy|stargaze/i, ok: [4999, 2500, 9999] },
   { key: 'dorm "from" price', re: /(dorm|bed)s?\s*(beds?\s*)?(from|starting|start at|at just|for just|only)/i, ok: [399] },
 ];
 const RATING = { hostel: ['4.7', '252'], bistro: ['4.7', '142'] };

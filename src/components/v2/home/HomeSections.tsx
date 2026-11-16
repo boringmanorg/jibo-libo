@@ -83,7 +83,7 @@ export function Stays() {
     { title: 'Dorm beds', price: `from ${inr(lowestDormPrice())}`, text: '6 and 8-bed mixed dorms with curtains, lockers and charging points.', img: first(IMG.mixedDorm), to: '/book', tone: 'sand' as const },
     { title: 'Female Dorm', price: inr(roomPrice('4-bed-female-only-dorm').now), text: '4-bed women-only dorm with female staff on call.', img: first(IMG.femaleDorm), to: '/female-travellers', tone: 'crimson' as const },
     { title: 'King Double', price: inr(roomPrice('king-double-room').now), text: 'A private room for two, with a view of the pines.', img: first(IMG.king), to: '/book', tone: 'pine' as const },
-    { title: 'Experience by XTSY', price: `from ${inr(suite.now)}`, text: '₹5,999 a night, all inclusive (stay only). Decoration +₹2,500 per stay.', img: first(IMG.suite), to: '/experience-by-xtsy', tone: 'night' as const },
+    { title: 'Experience by XTSY', price: `from ${inr(suite.now)}`, text: '₹4,999 a night, all inclusive (stay only). Decoration +₹2,500 per stay.', img: first(IMG.suite), to: '/experience-by-xtsy', tone: 'night' as const },
   ];
   return (
     <section className={`${PAD} flex flex-col gap-8 py-12`}>
@@ -172,7 +172,7 @@ export function StateExplorer() {
 export function PrimeRail() {
   const suite = roomPrice('xtsy-270');
   const prime = [
-    { t: 'Experience by XTSY', cat: 'INDIA’S FIRST STARGAZE GLAMP', d: 'A 270° panoramic glass suite for couples, proposals and anniversaries.', price: inr(suite.now), note: `per night · was ${inr(suite.was)}`, img: IMG.suite[1] ?? first(IMG.suite), to: '/experience-by-xtsy', tone: 'night' as const },
+    { t: 'Experience by XTSY', cat: 'INDIA’S MOST ROMANTIC COUPLE EN-SUITE', d: 'A 270° panoramic glass suite for couples, proposals and anniversaries.', price: inr(suite.now), note: `per night · was ${inr(suite.was)}`, img: IMG.suite[1] ?? first(IMG.suite), to: '/experience-by-xtsy', tone: 'night' as const },
     { t: 'Pet Friendly Stays', cat: 'PET TRAVEL', d: 'Cats and birds most welcome; dogs depending on breed and size.', price: 'Ask the desk', note: 'about any extra charges', img: COVERS.pet, to: '/pet-friendly', tone: 'pine' as const },
     { t: 'Group Trips', cat: 'GROUPS OF 6–60', d: 'Whole-dorm stays, colleges, families and company offsites, with transport and TAB Bistro meals.', price: 'Per-person rates', note: 'quote in ~1 hour', img: COVERS.groups, to: '/group-bookings-meghalaya', tone: 'sand' as const },
     { t: 'Female Travellers', cat: 'WOMEN SAFETY', d: 'Women-only dorm, secure lockers and female staff on call.', price: inr(roomPrice('4-bed-female-only-dorm').now), note: 'per bed / night', img: COVERS.women, to: '/female-travellers', tone: 'crimson' as const },
@@ -186,7 +186,7 @@ export function PrimeRail() {
           <Eyebrow light>Premium experiences</Eyebrow>
           <h2 className="xt-display m-0 text-[56px] leading-[0.95] sm:text-[76px]">XTSY Prime</h2>
         </div>
-        <p className="m-0 max-w-[460px] text-[16px] leading-relaxed text-xt-fog">What sets us apart, from India’s First Stargaze Glamp to stays where pets are family.</p>
+        <p className="m-0 max-w-[460px] text-[16px] leading-relaxed text-xt-fog">What sets us apart, from India’s Most Romantic Couple En-suite to stays where pets are family.</p>
       </div>
       <div className={`${PAD} grid gap-5 sm:grid-cols-2 lg:grid-cols-3`}>
         {prime.map((p) => (
@@ -211,7 +211,7 @@ export function GlampFeature() {
     <section className={`relative grid items-center gap-12 overflow-hidden bg-xt-night pb-24 pt-4 text-xt-paper lg:grid-cols-2 lg:gap-16 ${PAD}`}>
       <Photo afterLoad src={IMG.suite[2] ?? first(IMG.suite)} alt="Experience by XTSY, the 270° panoramic glass suite" tone="slate" className="xt-reveal aspect-[632/520] rounded-[28px]" />
       <div className="xt-reveal flex flex-col gap-5">
-        <Eyebrow light>India’s First Stargaze Glamp</Eyebrow>
+        <Eyebrow light>India’s Most Romantic Couple En-suite</Eyebrow>
         <h2 className="xt-display m-0 text-[60px] leading-[0.92] sm:text-[84px]">Experience by XTSY</h2>
         <p className="m-0 text-[17px] leading-relaxed text-xt-fog sm:text-[18px]">A 270° panoramic glass suite in the pines of New Shillong. Sleep under the stars from your bed. One suite, one couple a night, booked direct only.</p>
         <ul className="m-0 grid list-none grid-cols-1 gap-x-6 gap-y-3 p-0 text-[16px] font-semibold sm:grid-cols-2">

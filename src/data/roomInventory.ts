@@ -31,7 +31,7 @@ interface SeasonalPrice {
 
 /** All-inclusive nightly rates (GST included), set by the owner on 5 Oct 2026. */
 const SEASONAL_PRICES: Record<string, SeasonalPrice> = {
-  'xtsy-270':              { april: 5999, may: 5999, originalApril: 11999, originalMay: 11999 },
+  'xtsy-270':              { april: 4999, may: 4999, originalApril: 9999, originalMay: 9999 },
   'king-double-room':      { april: 2399, may: 2399, originalApril: 3499,  originalMay: 3499 },
   '4-bed-female-only-dorm':{ april: 599,  may: 599,  originalApril: 679,   originalMay: 679 },
   '6-bed-mixed-dorm':      { april: 499, may: 499,  originalApril: 699,   originalMay: 699 },

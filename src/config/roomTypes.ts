@@ -160,7 +160,7 @@ export const ROOM_TYPES: Record<string, RoomTypeConfig> = {
     totalUnits: 1,
     propertyType: 'Experience by XTSY',
     isBookable: true,
-    basePrice: 5999,
+    basePrice: 4999,
     displayOrder: 1,
     tags: ['luxury_couple'],
     image: ROOM_IMAGES['xtsy-270'][0],

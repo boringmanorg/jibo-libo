@@ -28,7 +28,7 @@ const FACTS: Array<[string, string]> = [
 
 const BUSINESSES: Array<[string, string]> = [
   ['XTSY Travellers Hostel', 'Backpacker hostel in New Shillong Township, Shillong. Mixed dorms from ₹399/night, a women-only dorm, and private rooms including the Mountain Views by XTSY: Nestled in Pines room type.'],
-  ['Experience by XTSY', 'A 270° panoramic glass suite ("stargaze glamp") for two at the same New Shillong property. ₹5,999 per night for two guests, taxes included. Stargazing depends on day-to-day weather and sky visibility and is never guaranteed.'],
+  ['Experience by XTSY', 'A 270° panoramic glass suite ("India’s most romantic couple en-suite") for two at the same New Shillong property. ₹4,999 per night for two guests, taxes included. Stargazing depends on day-to-day weather and sky visibility and is never guaranteed.'],
   ['XTSY Voyage', 'Curated tours across Meghalaya and Northeast India, plus the YouTube channel @XTSY_Voyage.'],
   ['TAB Bistro by XTSY', 'Multi-cuisine restaurant at the hostel. Breakfast 8:45 AM–12 PM, dinner 5–11 PM (last order 10:30 PM); lunch by preorder only.'],
   ['XTSY Rentals', 'Bike and car rentals from the Shillong property.'],

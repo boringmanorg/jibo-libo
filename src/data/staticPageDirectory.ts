@@ -4,7 +4,7 @@ export const STATIC_PAGE_DIRECTORY = [
   {
     "path": "/",
     "title": "Best Hostel in Shillong | XTSY Travellers Hostel, from ₹399",
-    "description": "XTSY Travellers Hostel, New Shillong Township: dorms from ₹399, women-only dorm, King Double ₹2,399, glass suite ₹5,999 and TAB Bistro on site."
+    "description": "XTSY Travellers Hostel, New Shillong Township: dorms from ₹399, women-only dorm, King Double ₹2,399, glass suite ₹4,999 and TAB Bistro on site."
   },
   {
     "path": "/3-day-meghalaya-itinerary",
@@ -24,7 +24,7 @@ export const STATIC_PAGE_DIRECTORY = [
   {
     "path": "/about",
     "title": "About XTSY — India's Biggest Hostel in Northeast India",
-    "description": "The story of XTSY Travellers Hostel, New Shillong Township: Experience by XTSY, India's first stargaze glamp, and a NEITA 2025 nomination."
+    "description": "The story of XTSY Travellers Hostel, New Shillong Township: Experience by XTSY, India's Most Romantic Couple En-suite, and a NEITA 2025 nomination."
   },
   {
     "path": "/about/xtsy-facts",
@@ -124,7 +124,7 @@ export const STATIC_PAGE_DIRECTORY = [
   {
     "path": "/luxury-glamping-shillong",
     "title": "Luxury Glamping in Shillong & Meghalaya | XTSY",
-    "description": "Glamping near Shillong with proper beds, private washrooms and mountain views, including Experience by XTSY, India's first stargaze glamp, for couples."
+    "description": "Glamping near Shillong with proper beds, private washrooms and mountain views, including Experience by XTSY, India's Most Romantic Couple En-suite, for couples."
   },
   {
     "path": "/meghalaya-adventure-tour",
@@ -268,8 +268,8 @@ export const STATIC_PAGE_DIRECTORY = [
   },
   {
     "path": "/experience-by-xtsy",
-    "title": "Experience by XTSY — India's First Stargaze Glamp, Shillong",
-    "description": "Experience by XTSY, India's first stargaze glamp: a 270° panoramic glass suite in New Shillong Township. Photos, what's included and rates. Book direct."
+    "title": "Experience by XTSY — India's Most Romantic Couple En-suite, Shillong",
+    "description": "Experience by XTSY, India's Most Romantic Couple En-suite: a 270° panoramic glass suite in New Shillong Township. Photos, what's included and rates. Book direct."
   },
   {
     "path": "/xtsy-adventure-campsite-dawki",

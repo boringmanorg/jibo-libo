@@ -23,7 +23,7 @@ export const LAST_MINUTE_SEO_PAGES: SEOPageData[] = [
           '6-Bed Mixed Dorm — ₹499/night (18 beds)',
           '4-Bed Female Dorm — ₹599/night (4 beds)',
           'King Double Room — ₹2,399/night (3 rooms)',
-          'Experience by XTSY — ₹5,999/night (1 suite)',
+          'Experience by XTSY — ₹4,999/night (1 suite)',
         ],
       },
       {
@@ -70,7 +70,7 @@ export const LAST_MINUTE_SEO_PAGES: SEOPageData[] = [
         listItems: [
           'Dorm beds from ₹399/night',
           'Private rooms from ₹2,399/night',
-          'Luxury Experience by XTSY from ₹5,999/night',
+          'Luxury Experience by XTSY from ₹4,999/night',
           'All prices inclusive of taxes',
         ],
       },
@@ -129,7 +129,7 @@ export const LAST_MINUTE_SEO_PAGES: SEOPageData[] = [
     slug: 'hotels-in-shillong-available-now',
     category: 'hotels',
     title: `Hotels in Shillong Available Now (${today}) — Instant Booking`,
-    metaDescription: `Hotels and rooms in Shillong available right now. Private rooms from ₹2,399/night, luxury suites from ₹5,999. Real-time availability, instant confirmation.`,
+    metaDescription: `Hotels and rooms in Shillong available right now. Private rooms from ₹2,399/night, luxury suites from ₹4,999. Real-time availability, instant confirmation.`,
     h1: 'Hotels & Rooms in Shillong Available Now',
     intro: `Need a hotel room in Shillong right now? Check real-time availability below. XTSY offers private rooms and luxury suites with instant booking confirmation — no waiting for host approval.`,
     sections: [
@@ -138,7 +138,7 @@ export const LAST_MINUTE_SEO_PAGES: SEOPageData[] = [
         content: `Our private rooms offer hotel-grade comfort at hostel-friendly prices. Every room includes high-speed Wi-Fi, hot water, daily housekeeping, and mountain views.`,
         listItems: [
           'King Double Room — ₹2,399/night (fits 2 guests)',
-          'Experience by XTSY — ₹5,999/night (luxury experience)',
+          'Experience by XTSY — ₹4,999/night (luxury experience)',
         ],
       },
       {
@@ -176,7 +176,7 @@ export const LAST_MINUTE_SEO_PAGES: SEOPageData[] = [
           '6-Bed Mixed Dorm — From ₹499/night (recommended)',
           '4-Bed Female Dorm — From ₹599/night (women only)',
           'King Double Room — From ₹2,399/night (couples)',
-          'Experience by XTSY — From ₹5,999/night (luxury)',
+          'Experience by XTSY — From ₹4,999/night (luxury)',
         ],
       },
       {

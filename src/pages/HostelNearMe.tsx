@@ -298,7 +298,7 @@ const HostelNearMe = memo(() => {
               </Link>
               <Link to="/experience-by-xtsy" className="rounded-xl border p-5 hover:border-primary transition">
                 <div className="font-semibold mb-1">Experience by XTSY</div>
-                <div className="text-sm text-muted-foreground">India's first stargaze glamp — same address.</div>
+                <div className="text-sm text-muted-foreground">India's Most Romantic Couple En-suite — same address.</div>
               </Link>
               <Link to="/tours" className="rounded-xl border p-5 hover:border-primary transition">
                 <div className="font-semibold mb-1">Meghalaya Tours</div>

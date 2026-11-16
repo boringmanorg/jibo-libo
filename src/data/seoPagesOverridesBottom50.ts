@@ -132,7 +132,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
           "Mixed dorm beds from ₹399 a night",
           "Female-only dorm",
           "King Double private rooms",
-          "Experience by XTSY — India's first stargaze glamp (270° panoramic glass suite)",
+          "Experience by XTSY — India's Most Romantic Couple En-suite (270° panoramic glass suite)",
           "Pet friendly: cats and birds welcome; dogs depending on breed and size (ask the desk about any extra charges)"
         ]
       },
@@ -1116,7 +1116,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
           "Mixed dorm beds from ₹399 a night",
           "Female-only dorm",
           "King Double private rooms",
-          "Experience by XTSY — India's first stargaze glamp (270° panoramic glass suite)",
+          "Experience by XTSY — India's Most Romantic Couple En-suite (270° panoramic glass suite)",
           "Pet friendly: cats and birds welcome; dogs depending on breed and size (ask the desk about any extra charges)"
         ]
       },
@@ -1160,7 +1160,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
           "Mixed dorm beds from ₹399 a night",
           "Female-only dorm",
           "King Double private rooms",
-          "Experience by XTSY — India's first stargaze glamp (270° panoramic glass suite)",
+          "Experience by XTSY — India's Most Romantic Couple En-suite (270° panoramic glass suite)",
           "Pet friendly: cats and birds welcome; dogs depending on breed and size (ask the desk about any extra charges)"
         ]
       },
@@ -1249,7 +1249,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
           "Mixed dorm beds from ₹399 a night",
           "Female-only dorm",
           "King Double private rooms",
-          "Experience by XTSY — India's first stargaze glamp (270° panoramic glass suite)",
+          "Experience by XTSY — India's Most Romantic Couple En-suite (270° panoramic glass suite)",
           "Pet friendly: cats and birds welcome; dogs depending on breed and size (ask the desk about any extra charges)"
         ]
       },
@@ -1301,7 +1301,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
           "Mixed dorm beds from ₹399 a night",
           "Female-only dorm",
           "King Double private rooms",
-          "Experience by XTSY — India's first stargaze glamp (270° panoramic glass suite)",
+          "Experience by XTSY — India's Most Romantic Couple En-suite (270° panoramic glass suite)",
           "Pet friendly: cats and birds welcome; dogs depending on breed and size (ask the desk about any extra charges)"
         ]
       },
@@ -1364,7 +1364,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
           "Mixed dorm beds from ₹399 a night",
           "Female-only dorm",
           "King Double private rooms",
-          "Experience by XTSY — India's first stargaze glamp (270° panoramic glass suite)",
+          "Experience by XTSY — India's Most Romantic Couple En-suite (270° panoramic glass suite)",
           "Pet friendly: cats and birds welcome; dogs depending on breed and size (ask the desk about any extra charges)"
         ]
       },
@@ -1453,7 +1453,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
           "Mixed dorm beds from ₹399 a night",
           "Female-only dorm",
           "King Double private rooms",
-          "Experience by XTSY — India's first stargaze glamp (270° panoramic glass suite)",
+          "Experience by XTSY — India's Most Romantic Couple En-suite (270° panoramic glass suite)",
           "Pet friendly: cats and birds welcome; dogs depending on breed and size (ask the desk about any extra charges)"
         ]
       },
@@ -1516,7 +1516,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
           "Mixed dorm beds from ₹399 a night",
           "Female-only dorm",
           "King Double private rooms",
-          "Experience by XTSY — India's first stargaze glamp (270° panoramic glass suite)",
+          "Experience by XTSY — India's Most Romantic Couple En-suite (270° panoramic glass suite)",
           "Pet friendly: cats and birds welcome; dogs depending on breed and size (ask the desk about any extra charges)"
         ]
       },
@@ -1580,7 +1580,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
           "Mixed dorm beds from ₹399 a night",
           "Female-only dorm",
           "King Double private rooms",
-          "Experience by XTSY — India's first stargaze glamp (270° panoramic glass suite)",
+          "Experience by XTSY — India's Most Romantic Couple En-suite (270° panoramic glass suite)",
           "Pet friendly: cats and birds welcome; dogs depending on breed and size (ask the desk about any extra charges)"
         ]
       },
@@ -1655,7 +1655,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "heading": "Where XTSY's own stay is",
-        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's first stargaze glamp) and TAB Bistro are all on site."
+        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ],
     "quickAnswer": "XTSY's own property is only in New Shillong Township, Meghalaya. In Cherrapunji, XTSY arranges stays for today, transport and travel help through trusted travel partners — WhatsApp +91 88373 17070 with your dates for live options.",
@@ -1723,7 +1723,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "heading": "Where XTSY's own stay is",
-        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's first stargaze glamp) and TAB Bistro are all on site."
+        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ]
   },
@@ -1966,7 +1966,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "heading": "Where XTSY's own stay is",
-        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's first stargaze glamp) and TAB Bistro are all on site."
+        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ],
     "h1": "Hostel in Cherrapunji Tomorrow",
@@ -2040,7 +2040,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "heading": "Where XTSY's own stay is",
-        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's first stargaze glamp) and TAB Bistro are all on site."
+        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ],
     "h1": "Hostel in Cherrapunji Last Minute",
@@ -2095,7 +2095,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "heading": "Where XTSY's own stay is",
-        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's first stargaze glamp) and TAB Bistro are all on site."
+        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ],
     "h1": "Hostel in Cherrapunji Right Now",
@@ -2157,7 +2157,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "heading": "Where XTSY's own stay is",
-        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's first stargaze glamp) and TAB Bistro are all on site."
+        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ],
     "metaDescription": "Looking for a budget-friendly stay in Cherrapunji? XTSY arranges partner stays, transfers and sightseeing in Cherrapunji, Meghalaya. XTSY's own hostel is in New Shillong Township. WhatsApp +91 88373 17070.",
@@ -2234,7 +2234,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "heading": "Where XTSY's own stay is",
-        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's first stargaze glamp) and TAB Bistro are all on site."
+        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ],
     "intro": "Looking for a good hostel in Cherrapunji? XTSY does not run its own hostel in Cherrapunji — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Cherrapunji (Sohra) is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Sohra has small homestays and guesthouses rather than backpacker hostels, and mobile signal can be patchy, so confirm your stay before you set off.",
@@ -2319,7 +2319,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "heading": "Where XTSY's own stay is",
-        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's first stargaze glamp) and TAB Bistro are all on site."
+        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ]
   },
@@ -2361,7 +2361,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "heading": "Where XTSY's own stay is",
-        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's first stargaze glamp) and TAB Bistro are all on site."
+        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ],
     "h1": "Hostels and Stays near Cherrapunji Airport",
@@ -2453,7 +2453,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "heading": "Where XTSY's own stay is",
-        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's first stargaze glamp) and TAB Bistro are all on site."
+        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ]
   },
@@ -2487,7 +2487,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "heading": "Where XTSY's own stay is",
-        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's first stargaze glamp) and TAB Bistro are all on site."
+        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ],
     "title": "Hostel in Guwahati This Weekend — Book via XTSY Partners",
@@ -2562,7 +2562,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "heading": "Where XTSY's own stay is",
-        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's first stargaze glamp) and TAB Bistro are all on site."
+        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ],
     "h1": "Hostel in Guwahati Tomorrow",
@@ -2615,7 +2615,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "heading": "Where XTSY's own stay is",
-        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's first stargaze glamp) and TAB Bistro are all on site."
+        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ],
     "title": "Hostel in Guwahati Last Minute — Book via XTSY Partners",
@@ -2688,7 +2688,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "heading": "Where XTSY's own stay is",
-        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's first stargaze glamp) and TAB Bistro are all on site."
+        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ],
     "intro": "Need a stay in Guwahati right now? XTSY does not run its own hostel in Guwahati — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Guwahati is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Guwahati is the main gateway to the Northeast, with Lokpriya Gopinath Bordoloi International Airport and Guwahati railway station. Most travellers spend a night here before heading on to Meghalaya.",
@@ -2744,7 +2744,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "heading": "Where XTSY's own stay is",
-        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's first stargaze glamp) and TAB Bistro are all on site."
+        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ],
     "keywords": [
@@ -2819,7 +2819,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "heading": "Where XTSY's own stay is",
-        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's first stargaze glamp) and TAB Bistro are all on site."
+        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ],
     "h1": "Best Hostels and Stays in Guwahati",
@@ -2905,7 +2905,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "heading": "Where XTSY's own stay is",
-        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's first stargaze glamp) and TAB Bistro are all on site."
+        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ],
     "intro": "Arriving by air for Guwahati? XTSY does not run its own hostel in Guwahati — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Guwahati is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Guwahati is the main gateway to the Northeast, with Lokpriya Gopinath Bordoloi International Airport and Guwahati railway station. Most travellers spend a night here before heading on to Meghalaya. Lokpriya Gopinath Bordoloi International Airport serves Guwahati. Tell the XTSY desk your flight time and we will suggest a partner stay close to your route and arrange the pickup.",
@@ -2958,7 +2958,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "heading": "Where XTSY's own stay is",
-        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's first stargaze glamp) and TAB Bistro are all on site."
+        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ],
     "h1": "Hostel in Gangtok Today",
@@ -3035,7 +3035,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "heading": "Where XTSY's own stay is",
-        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's first stargaze glamp) and TAB Bistro are all on site."
+        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ],
     "h1": "Hostel in Gangtok This Weekend",
@@ -3092,7 +3092,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "heading": "Where XTSY's own stay is",
-        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's first stargaze glamp) and TAB Bistro are all on site."
+        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ],
     "intro": "Need a stay in Gangtok tomorrow? XTSY does not run its own hostel in Gangtok — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Gangtok is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Gangtok is reached by road from Bagdogra Airport or NJP railway station, or via Pakyong Airport. Some high-altitude areas such as Tsomgo Lake and Nathu La need permits arranged in advance.",
@@ -3160,7 +3160,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "heading": "Where XTSY's own stay is",
-        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's first stargaze glamp) and TAB Bistro are all on site."
+        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ],
     "intro": "Need a stay in Gangtok tonight? XTSY does not run its own hostel in Gangtok — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Gangtok is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Gangtok is reached by road from Bagdogra Airport or NJP railway station, or via Pakyong Airport. Some high-altitude areas such as Tsomgo Lake and Nathu La need permits arranged in advance.",
@@ -3235,7 +3235,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "heading": "Where XTSY's own stay is",
-        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's first stargaze glamp) and TAB Bistro are all on site."
+        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ]
   },
@@ -3269,7 +3269,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "heading": "Where XTSY's own stay is",
-        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's first stargaze glamp) and TAB Bistro are all on site."
+        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ],
     "intro": "Need a stay in Gangtok right now? XTSY does not run its own hostel in Gangtok — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Gangtok is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Gangtok is reached by road from Bagdogra Airport or NJP railway station, or via Pakyong Airport. Some high-altitude areas such as Tsomgo Lake and Nathu La need permits arranged in advance.",
@@ -3356,7 +3356,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "heading": "Where XTSY's own stay is",
-        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's first stargaze glamp) and TAB Bistro are all on site."
+        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ],
     "keywords": [
@@ -3415,7 +3415,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "heading": "Where XTSY's own stay is",
-        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's first stargaze glamp) and TAB Bistro are all on site."
+        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ],
     "metaDescription": "Looking for a good hostel in Gangtok? XTSY arranges partner stays, transfers and sightseeing in Gangtok, Sikkim. XTSY's own hostel is in New Shillong Township. WhatsApp +91 88373 17070.",
@@ -3462,7 +3462,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "heading": "Where XTSY's own stay is",
-        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's first stargaze glamp) and TAB Bistro are all on site."
+        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ],
     "faqs": [
@@ -3562,7 +3562,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "heading": "Where XTSY's own stay is",
-        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's first stargaze glamp) and TAB Bistro are all on site."
+        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ]
   },
@@ -3626,7 +3626,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "heading": "Where XTSY's own stay is",
-        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's first stargaze glamp) and TAB Bistro are all on site."
+        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ]
   },
@@ -3661,7 +3661,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       },
       {
         "heading": "Where XTSY's own stay is",
-        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's first stargaze glamp) and TAB Bistro are all on site."
+        "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ],
     "title": "Hostel in Kohima Tonight — Book via XTSY Partners",
