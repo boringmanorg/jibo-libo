@@ -37,6 +37,10 @@ export function currentRoomRate(roomId: string, basePrice: number): number {
   const fix = RATE_FIXES[roomId];
   return fix && Number(basePrice) === fix.from ? fix.to : Number(basePrice);
 }
+/** Optional suite breakfast: per person per morning, for up to two guests (₹560 for two). */
+export function panoramaBreakfastTotal(guests: number, nights: number): number {
+  return PANORAMA_BREAKFAST_PER_PERSON * Math.min(Math.max(guests, 1), 2) * Math.max(nights, 1);
+}
 export const PANORAMA_DECORATION = 2500;
 export const PANORAMA_DECORATION_GST = 450;
 
@@ -52,7 +56,7 @@ export interface QuoteLine { nightlyRate: number; quantity: number }
  * subtotal = room charges before GST (+ decoration), taxes = GST inside the rooms + decoration GST,
  * total = what the guest pays (all-inclusive rooms + decoration with its GST).
  */
-export function quoteStay(lines: QuoteLine[], nights: number, decoration = false) {
+export function quoteStay(lines: QuoteLine[], nights: number, decoration = false, breakfastAmount = 0) {
   let roomsInclusive = 0;
   let roomsGst = 0;
   for (const l of lines) {
@@ -67,9 +71,10 @@ export function quoteStay(lines: QuoteLine[], nights: number, decoration = false
     roomsGst,
     decorationNet,
     decorationGst,
-    subtotal: roomsInclusive - roomsGst + decorationNet,
+    breakfastAmount,
+    subtotal: roomsInclusive - roomsGst + decorationNet + breakfastAmount,
     taxes: roomsGst + decorationGst,
-    total: roomsInclusive + decorationNet + decorationGst,
+    total: roomsInclusive + decorationNet + decorationGst + breakfastAmount,
   };
 }
 
