@@ -38,10 +38,11 @@ const Stars = ({ n }: { n: number }) => (
 function Card({ r, onOpen, className = '', style }: { r: R; onOpen: () => void; className?: string; style?: React.CSSProperties }) {
   return (
     <button type="button" onClick={onOpen} style={style}
-      className={`flex min-h-12 w-[min(250px,17vw)] min-w-[210px] flex-col gap-2 rounded-2xl bg-xt-paper p-4 text-left text-xt-ink shadow-[0_18px_40px_-18px_rgba(0,0,0,.6)] transition-transform hover:scale-[1.04] focus-visible:outline focus-visible:outline-2 focus-visible:outline-xt-crimson ${className}`}>
+      className={`flex min-h-12 relative h-full w-[260px] sm:w-full flex-col gap-3 rounded-3xl border border-xt-line/60 bg-xt-paper p-5 pt-6 text-left text-xt-ink shadow-[0_18px_40px_-18px_rgba(0,0,0,.6)] transition-transform hover:-translate-y-1 hover:shadow-[0_28px_50px_-20px_rgba(0,0,0,.7)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-xt-crimson ${className}`}>
+      <span aria-hidden className="xt-display absolute right-5 top-2 text-[56px] leading-none text-xt-crimson/20">&ldquo;</span>
       <Stars n={r.rating} />
-      <span className="line-clamp-4 text-[14px] leading-snug">{r.comment}</span>
-      <span className="text-[12px] font-bold text-xt-mute">{r.name} · {r.property === 'TAB Bistro by XTSY' ? 'TAB Bistro' : 'Hostel'}</span>
+      <span className="line-clamp-5 flex-1 text-[15px] leading-relaxed">{r.comment}</span>
+      <span className="border-t border-xt-line/60 pt-3 text-[13px] font-bold text-xt-mute">{r.name} · {r.property === 'TAB Bistro by XTSY' ? 'TAB Bistro' : 'Hostel'}</span>
     </button>
   );
 }
@@ -76,28 +77,23 @@ export function Reviews({ match, bistro, badge = 'Guest reviews', title = '4.7 o
 
   return (
     <section className="px-4 pb-20 sm:px-8 lg:px-14">
-      <div className={`relative overflow-hidden rounded-[32px] bg-xt-night px-5 py-16 text-white sm:px-10 ${floating.length > 4 ? 'lg:min-h-[820px]' : 'lg:min-h-[600px]'} lg:py-0 lg:flex lg:items-center lg:justify-center`}>
-        <div className="pointer-events-none absolute inset-0 hidden lg:block">
-          {floating.map((r, i) => (
-            <div key={r.name + i} className="xt-review-pop pointer-events-auto absolute" style={{ [SPOTS[i].side]: `${SPOTS[i].x}%`, top: `${SPOTS[i].t}%`, animationDelay: `${(i % 5) * 0.08}s` }}>
-              <div className="xt-review-float" style={{ ['--r' as string]: `${SPOTS[i].r}deg`, animationDelay: `${-i * 1.1}s`, animationDuration: `${6 + (i % 4)}s` } as React.CSSProperties}>
-                <Card r={r} onOpen={() => setOpen(r)} />
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="relative mx-auto flex max-w-[520px] flex-col items-center gap-5 text-center">
-          <span className="rounded-full bg-white/10 px-4 py-1.5 text-[14px] font-bold">{badge}</span>
-          <h2 className="xt-display m-0 text-[48px] leading-[0.95] sm:text-[72px]">{title}</h2>
-          <p className="m-0 text-[16px] leading-relaxed text-xt-fog sm:text-[18px]">{description}</p>
-          <button type="button" onClick={() => setAll(true)} className="xt-btn flex h-14 items-center gap-2 rounded-full bg-xt-crimson px-7 text-[16px] font-extrabold text-white">
+      <div className="relative overflow-hidden rounded-[32px] bg-xt-night px-5 py-14 text-white sm:px-10 lg:px-14 lg:py-16">
+        <div aria-hidden className="pointer-events-none absolute -top-40 left-1/2 h-80 w-[70%] -translate-x-1/2 rounded-full bg-xt-crimson/25 blur-3xl" />
+        <div className="relative mx-auto flex max-w-[860px] flex-col items-center gap-4 text-center">
+          <span className="rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[13px] font-bold uppercase tracking-[0.18em]">{badge}</span>
+          <h2 className="xt-display m-0 text-[42px] leading-[0.95] sm:text-[64px] lg:text-[76px]">{title}</h2>
+          <p className="m-0 max-w-[620px] text-[16px] leading-relaxed text-xt-fog sm:text-[18px]">{description}</p>
+          <button type="button" onClick={() => setAll(true)} className="xt-btn mt-2 flex h-14 items-center gap-2 rounded-full bg-xt-crimson px-7 text-[16px] font-extrabold text-white">
             Read {reviews.length} {reviews.length === 1 ? 'review' : 'reviews'} <ArrowRight className="h-5 w-5" />
           </button>
         </div>
 
-        <div className="relative -mx-5 mt-10 flex snap-x gap-4 overflow-x-auto px-5 pb-2 lg:hidden">
-          {floating.map((r, i) => <Card key={r.name + i} r={r} onOpen={() => setOpen(r)} className="shrink-0 snap-start" />)}
+        <div className="relative -mx-5 mt-12 flex snap-x gap-4 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-4 lg:gap-5">
+          {floating.map((r, i) => (
+            <div key={r.name + i} className={`xt-review-pop shrink-0 snap-start ${i % 2 ? 'lg:translate-y-8' : ''}`} style={{ animationDelay: `${(i % 4) * 0.08}s` }}>
+              <Card r={r} onOpen={() => setOpen(r)} />
+            </div>
+          ))}
         </div>
       </div>
 
