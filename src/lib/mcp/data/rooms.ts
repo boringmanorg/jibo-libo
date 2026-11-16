@@ -28,8 +28,8 @@ export const MCP_ROOMS: McpRoom[] = [
     property: "Experience by XTSY",
     description:
       "India's pioneering 270° panoramic glass house offering unparalleled luxury and breathtaking mountain vistas.",
-    fromPriceInr: 5999,
-    originalPriceInr: 11999,
+    fromPriceInr: 4999,
+    originalPriceInr: 9999,
     perUnit: "per night",
     bookable: true,
     tag: "luxury_couple",

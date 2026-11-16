@@ -98,7 +98,7 @@ export const PROPERTIES: Record<string, Property> = {
     ],
     // Note: New local images (stargazing, aerial, milkyway, interior) used on /xtsy-270 page
     amenities: ['270° Mountain Views', 'Decoration Package Available', 'Luxury Ensuite', 'Air Conditioning', '4K QLED TV'],
-    priceRange: { min: 5999, max: 5999 },
+    priceRange: { min: 4999, max: 4999 },
     rating: 4.8,
     reviewCount: 86,
     category: 'luxury',

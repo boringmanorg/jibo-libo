@@ -762,7 +762,7 @@ Looking forward to hearing from you. Thank you! 🌟`;
                 {/* Selected Rooms Display */}
                 {selectedRooms.length > 0 && (
                   <div className="space-y-2 mt-4">
-                    {selectedRooms.some(room => isXtsy270Room(room.roomTypeName)) && <fieldset className="space-y-3 border border-primary/20 p-3"><legend className="font-semibold">Panorama package</legend><p className="text-sm">Stay only · ₹5,999/night, all inclusive (breakfast not included).</p><label className="flex items-center gap-2"><Checkbox checked={panoramaDecoration} onCheckedChange={checked => setPanoramaDecoration(checked === true)} /> Decoration +₹2,500 once — rose petals, scented candles, bouquet and cake</label></fieldset>}
+                    {selectedRooms.some(room => isXtsy270Room(room.roomTypeName)) && <fieldset className="space-y-3 border border-primary/20 p-3"><legend className="font-semibold">Panorama package</legend><p className="text-sm">Stay only · ₹4,999/night, all inclusive (breakfast not included).</p><label className="flex items-center gap-2"><Checkbox checked={panoramaDecoration} onCheckedChange={checked => setPanoramaDecoration(checked === true)} /> Decoration +₹2,500 once — rose petals, scented candles, bouquet and cake</label></fieldset>}
                     <div className="flex items-center justify-between">
                       <Label className="text-sm font-medium text-muted-foreground">Selected Rooms:</Label>
                       <span className="text-xs text-muted-foreground">

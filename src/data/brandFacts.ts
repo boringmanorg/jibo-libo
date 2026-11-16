@@ -47,7 +47,7 @@ export const OWN_PROPERTIES = [
   },
   {
     name: 'Experience by XTSY',
-    tagline: "India's First Stargaze Glamp",
+    tagline: "India's Most Romantic Couple En-suite",
     city: 'New Shillong Township, Shillong',
     description:
       'A first-of-its-kind 270° panoramic glass suite for anniversaries and slow luxury, built and operated in Shillong. Stargazing is not promoted or promised: the glass is UV-treated and views depend on day-to-day sky conditions.',
@@ -57,7 +57,7 @@ export const OWN_PROPERTIES = [
 export const AWARDS = [
   'Nominated: Best Budget-Friendly Accommodation, Northeast India Tourism Awards (NEITA 2025)',
   "Rated 4.7★ on Google from 252 reviews",
-  "Experience by XTSY — India's first stargaze glamp",
+  "Experience by XTSY — India's Most Romantic Couple En-suite",
 ] as const;
 
 export const PARTNERS = [
@@ -95,7 +95,7 @@ export const GROUP_VENTURES = [
 
 /** One-sentence brand opener prepended to every programmatic page intro. */
 export const BRAND_OPENER =
-  "Backed by XTSY — Northeast India's NEITA 2025-nominated hospitality brand, operating India's biggest backpacker hostel and the country's first 270° stargaze glamping ensuite, both in Shillong.";
+  "Backed by XTSY — Northeast India's NEITA 2025-nominated hospitality brand, operating India's biggest backpacker hostel and the country's most romantic couple en-suite, both in Shillong.";
 
 /** Property-scope disclaimer. Used wherever a non-Shillong stay is mentioned. */
 export const PARTNER_NETWORK_NOTE =
@@ -107,7 +107,7 @@ export const whyXTSYSection = (): SEOSection => ({
     "XTSY is a Northeast Indian independent hospitality brand — Shillong-born, traveller-built, and having hosted 10,786+ guests through owned properties, curated tours, weddings, catering and rentals.",
   listItems: [
     'NEITA 2025 nominee — Best Budget-Friendly Accommodation in Northeast India',
-    "Experience by XTSY — India's first stargaze glamp",
+    "Experience by XTSY — India's Most Romantic Couple En-suite",
     'Rated 4.7★ on Google from 252 reviews',
     'Pluxee India partner — corporate stays via employee-benefit vouchers accepted',
     `24/7 WhatsApp booking & on-trip support — ${BRAND.whatsappDisplay}`,

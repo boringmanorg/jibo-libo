@@ -49,7 +49,7 @@ export const PAGE_FAQS: Record<string, PageFaq[]> = {
   ],
   '/meghalaya-couple-tour-package': [
     { q: 'Is Meghalaya good for couples?', a: 'Yes. Quiet viewpoints, waterfalls, river boating at Dawki and cool weather make it a popular couples trip, especially from October to April.' },
-    { q: 'Is there a special stay for couples?', a: 'Experience by XTSY, a glass-roofed suite at XTSY in New Shillong Township, costs ₹5,999 a night (stay only). Decoration can be added for ₹2,500 + ₹450 GST.' },
+    { q: 'Is there a special stay for couples?', a: 'Experience by XTSY, a glass-roofed suite at XTSY in New Shillong Township, costs ₹4,999 a night (stay only). Decoration can be added for ₹2,500 + ₹450 GST.' },
     { q: 'Where does the trip start?', a: 'Pick-up and drop are in Guwahati, at the airport or railway station.' },
     { q: 'Can the itinerary be changed?', a: 'Yes. Dates, pace and stays can be adjusted; message the XTSY desk with what you have in mind.' },
     { q: 'What is included in the Meghalaya couple tour package?', a: 'The 6-day honeymoon package at \\u20b926,000 per person covers stays, private transport with a driver-guide, daily breakfast, and the couple-friendly circuit through Shillong, Sohra, Mawlynnong and Dawki. Flights and trains to Guwahati are not included.' },
@@ -100,7 +100,7 @@ export const PAGE_FAQS: Record<string, PageFaq[]> = {
   '/pricing-cancellation-policy': [
     { q: 'Can I cancel and get a refund?', a: 'No. There is no free cancellation: the booking amount is non-refundable, and no-shows are treated as cancellations.' },
     { q: 'Can I change my dates instead?', a: 'Yes, once per booking. The new dates must fall within 15 days of the original check-in, you must ask at least 48 hours before check-in, and any rate difference is paid at the time of change.' },
-    { q: 'Are prices all inclusive?', a: 'Room prices shown on xtsy.one are all inclusive: dorm beds from ₹399, King Double ₹2,399 and Experience by XTSY ₹5,999 (stay only).' },
+    { q: 'Are prices all inclusive?', a: 'Room prices shown on xtsy.one are all inclusive: dorm beds from ₹399, King Double ₹2,399 and Experience by XTSY ₹4,999 (stay only).' },
     { q: 'Who do I contact about a booking?', a: 'Email booking@xtsy.one for bookings, or admin@xtsy.one for policy questions.' },
   ],
 };

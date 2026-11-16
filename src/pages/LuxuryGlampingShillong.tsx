@@ -100,7 +100,7 @@ const LuxuryGlampingShillong = memo(() => {
           <div className="container mx-auto px-4 max-w-5xl">
             <div className="flex items-center gap-2 text-primary text-sm font-medium mb-4">
               <Sparkles className="h-4 w-4" />
-              <span>Experience by XTSY — India's First Stargaze Glamp</span>
+              <span>Experience by XTSY — India's Most Romantic Couple En-suite</span>
             </div>
             <h1 className="text-3xl md:text-5xl font-bold text-foreground leading-tight">
               Luxury Glamping in Shillong, Meghalaya

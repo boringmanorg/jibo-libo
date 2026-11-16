@@ -207,7 +207,7 @@ const hostelPages: SEOPageData[] = [
 
   hostel('couples-hostel-shillong', 'Couple-Friendly Hostel in Shillong | Private Rooms', 'Couple-friendly hostel in Shillong with private rooms from ₹2,399. Cozy rooms, scenic views, and romantic dining at TAB Bistro. Book at XTSY.', 'Couple-Friendly Hostel in Shillong', 'Traveling as a couple to Shillong? XTSY offers private rooms perfect for couples, combining hostel affordability with hotel-level privacy. Enjoy cozy rooms, forest views, and romantic dining at our in-house TAB Bistro.',
     [
-      { heading: 'Private Rooms for Couples', content: 'Our couple-friendly rooms offer:', listItems: ['King Double Room — ₹2,399/night', 'Experience by XTSY — ₹5,999/night (romantic getaway)', 'All rooms with attached bathroom & hot water', 'Forest/mountain views available'] },
+      { heading: 'Private Rooms for Couples', content: 'Our couple-friendly rooms offer:', listItems: ['King Double Room — ₹2,399/night', 'Experience by XTSY — ₹4,999/night (romantic getaway)', 'All rooms with attached bathroom & hot water', 'Forest/mountain views available'] },
       { heading: 'Romantic Experiences', content: 'Make your Shillong trip special with candlelight dinner at TAB Bistro, sunset views from Laitlum Canyons, private Dawki boating, and stargazing from Experience by XTSY.' },
     ],
     [
@@ -323,9 +323,9 @@ const hotelPages: SEOPageData[] = [
 
   hotel('places-to-stay-shillong', 'Best Places to Stay in Shillong 2026 — Complete Guide', 'Complete guide to places to stay in Shillong. Hostels, hotels, homestays, glamping compared. Prices, locations & booking links.', 'Best Places to Stay in Shillong — 2026 Guide', 'Planning your Shillong trip and confused about where to stay? This comprehensive guide covers every accommodation type in Shillong from budget dorm beds to luxury glamping experiences.',
     [
-      { heading: 'Accommodation Types in Shillong', content: 'Shillong offers diverse stay options:', listItems: ['Hostels & Dorms — ₹399-999/night (best for solo/backpackers)', 'Budget Hotels — ₹1,000-2,500/night', 'Mid-Range Hotels — ₹2,500-5,000/night', 'Homestays — ₹1,500-3,000/night', 'Luxury Hotels — ₹5,000-15,000/night', 'Glamping — ₹5,999+/night (Experience by XTSY)'] },
+      { heading: 'Accommodation Types in Shillong', content: 'Shillong offers diverse stay options:', listItems: ['Hostels & Dorms — ₹399-999/night (best for solo/backpackers)', 'Budget Hotels — ₹1,000-2,500/night', 'Mid-Range Hotels — ₹2,500-5,000/night', 'Homestays — ₹1,500-3,000/night', 'Luxury Hotels — ₹5,000-15,000/night', 'Glamping — ₹4,999+/night (Experience by XTSY)'] },
       { heading: 'Best Areas to Stay in Shillong', content: 'Top areas for tourists:', listItems: ['Police Bazaar — central, shopping & food hub', 'Laitumkhrah — quiet, local restaurants', 'New Shillong Township — spacious, near XTSY', 'Upper Shillong — scenic, forest surroundings'] },
-      { heading: 'Our Recommendation', content: 'For the best value and experience, XTSY Travellers Hostel in New Shillong Township offers dorms (₹399), private rooms (₹2,399), and Experience by XTSY (₹5,999) — catering to every budget and travel style.' },
+      { heading: 'Our Recommendation', content: 'For the best value and experience, XTSY Travellers Hostel in New Shillong Township offers dorms (₹399), private rooms (₹2,399), and Experience by XTSY (₹4,999) — catering to every budget and travel style.' },
     ],
     [
       { question: 'What is the best area to stay in Shillong?', answer: 'For tourists, Police Bazaar area offers the most convenience. For a peaceful experience with nature views, New Shillong Township (where XTSY is located) is ideal.' },

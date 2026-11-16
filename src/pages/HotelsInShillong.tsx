@@ -44,7 +44,7 @@ const HotelsInShillong = memo(() => {
         name: 'What are the best hotels in Shillong?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: `Shillong has hotels ranging from ₹1,500 to ₹8,000/night. For a unique experience, XTSY offers private rooms with hostel-community vibes plus Experience by XTSY, India's first stargaze glamp for luxury travellers from ${GLAMP_NIGHT}/night.`,
+          text: `Shillong has hotels ranging from ₹1,500 to ₹8,000/night. For a unique experience, XTSY offers private rooms with hostel-community vibes plus Experience by XTSY, India's Most Romantic Couple En-suite for luxury travellers from ${GLAMP_NIGHT}/night.`,
         },
       },
       {

@@ -15,7 +15,7 @@ const HOSTEL_INFO = {
     },
     {
       name: "Experience by XTSY (XTSY 270°)",
-      tagline: "India's First 270° Stargaze Glamping Ensuite",
+      tagline: "India's Most Romantic Couple En-suite",
       about:
         "A first-of-its-kind panoramic glass suite designed for stargazing, anniversaries and slow luxury — built and operated in Shillong.",
     },
@@ -23,7 +23,7 @@ const HOSTEL_INFO = {
   awards: [
     "Nominated: Best Budget-Friendly Accommodation, Northeast India Tourism Awards (NEITA 2025)",
     "Rated 4.7★ on Google from 252 reviews",
-    "India's first 270° stargaze glamping ensuite (Experience by XTSY)",
+    "India's Most Romantic Couple En-suite (Experience by XTSY)",
   ],
 };
 

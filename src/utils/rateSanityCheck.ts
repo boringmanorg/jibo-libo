@@ -11,7 +11,7 @@ import { ROOM_INVENTORY } from '@/data/roomInventory';
 
 // Canonical published rates for Shillong (incl. GST where applicable)
 export const SHILLONG_CANONICAL_RATES: Record<string, number> = {
-  'xtsy-270': 5999,
+  'xtsy-270': 4999,
   'king-double-room': 2399,
   '4-bed-female-only-dorm': 599,
   '6-bed-mixed-dorm': 499,

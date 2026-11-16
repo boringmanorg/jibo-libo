@@ -1,6 +1,6 @@
 import { responsiveImage } from '@/data/cdnImages';
 /**
- * /xtsy-270 — Experience by XTSY, India's First Stargaze Glamp (redesign).
+ * /xtsy-270 — Experience by XTSY, India's Most Romantic Couple En-suite (redesign).
  */
 import { useState } from 'react';
 import SEOHead from '@/components/SEOHead';
@@ -59,7 +59,7 @@ export default function ExperienceByXtsy() {
   const [b2bOpen, setB2bOpen] = useState(false);
   const suite = roomPrice('xtsy-270');
   const now = suite.now || XTSY270_DATA.price;
-  const wa = waLink(`Hi XTSY! I'd like to book Experience by XTSY, India's first stargaze glamp. My dates are: `, 'experience-by-xtsy');
+  const wa = waLink(`Hi XTSY! I'd like to book Experience by XTSY, India's Most Romantic Couple En-suite. My dates are: `, 'experience-by-xtsy');
   const couples = SIGNATURE_PACKAGES.filter((p) => /honeymoon/i.test(p.slug));
 
 
@@ -153,7 +153,7 @@ export default function ExperienceByXtsy() {
 
         <FaqList faqs={FAQS} />
       </PageShell>
-      <B2BBookingForm isOpen={b2bOpen} onClose={() => setB2bOpen(false)} customTitle="Will it be yours? - Experience by XTSY" customDescription="India's First Stargaze Glamp - Exclusive luxury experience" maxGuests={2} fixedGuests isCoupleFocused />
+      <B2BBookingForm isOpen={b2bOpen} onClose={() => setB2bOpen(false)} customTitle="Will it be yours? - Experience by XTSY" customDescription="India's Most Romantic Couple En-suite - Exclusive luxury experience" maxGuests={2} fixedGuests isCoupleFocused />
     </>
   );
 }

@@ -8,7 +8,7 @@
  * quoteStay() mirrors the database function public.create_whatsapp_enquiry exactly (same
  * rounding), so the subtotal / taxes / total the site sends always match the server's check.
  */
-export const PANORAMA_STAY_ONLY = 5999;
+export const PANORAMA_STAY_ONLY = 4999;
 
 /** The name guests see for the glass suite. */
 export const PANORAMA_DISPLAY_NAME = 'Experience by XTSY';
@@ -29,7 +29,7 @@ export function displayRoomName(name: string): string {
  */
 const RATE_FIXES: Record<string, { from: number; to: number }> = {
   '3746fd14-8fa7-4b27-b285-38855b447964': { from: 2200, to: 2399 }, // King Double Room
-  '3b10c81d-ad5f-441f-9b56-5ab9a7a00544': { from: 5399, to: 5999 }, // Experience by XTSY
+  '3b10c81d-ad5f-441f-9b56-5ab9a7a00544': { from: 5399, to: 4999 }, // Experience by XTSY
 };
 export function currentRoomRate(roomId: string, basePrice: number): number {
   const fix = RATE_FIXES[roomId];
