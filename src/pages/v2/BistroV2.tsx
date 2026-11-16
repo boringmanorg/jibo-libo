@@ -2,6 +2,7 @@
  * /tab-bistro — TAB Bistro by XTSY (redesign) with the full official menu.
  */
 import { useState } from 'react';
+import { Reviews as ReviewShowcase } from '@/components/v2/home/HomeReviews';
 import { Helmet } from '@/lib/seo/helmet';
 import SEOHead from '@/components/SEOHead';
 import { Link } from '@/lib/router-compat';
@@ -175,22 +176,7 @@ export default function BistroV2() {
           </div>
         </section>
 
-        {topReviews.length > 0 && (
-          <Section className="pt-0">
-            {/* No average shown: `stats` is the curated best-of Google set (all 5-star by
-                selection), so "5.0 from 6 diners" would misstate TAB Bistro's real rating. */}
-            <H2 eyebrow="Diners say">What diners say</H2>
-            <div className="grid gap-5 md:grid-cols-3">
-              {topReviews.map((r) => (
-                <figure key={r.key} className="xt-reveal m-0 flex flex-col gap-3 rounded-3xl bg-white p-7">
-                  <div aria-label={`${r.rating} out of 5 stars`} className="text-[18px] tracking-[3px] text-xt-crimson">{'★'.repeat(Math.round(r.rating))}</div>
-                  <blockquote className="m-0 line-clamp-6 text-[16px] leading-normal">{r.comment}</blockquote>
-                  <figcaption className="mt-auto text-[14px] font-bold text-xt-mute">{r.name} · {r.tag ? `${r.tag} · ${r.date}` : r.date}</figcaption>
-                </figure>
-              ))}
-            </div>
-          </Section>
-        )}
+        <ReviewShowcase bistro match={/food|tandoori|chicken|momo|dinner|breakfast|bistro|meal|tasty|delicious|cafe|restaurant|cook|chef/i} badge="Diners say" title="What diners say about TAB Bistro" description="Food reviews from TAB Bistro by XTSY and XTSY Travellers Hostel guests on Google, word for word." />
 
         <section className={`${PAD} grid gap-6 md:grid-cols-2`}>
           <div className="xt-reveal flex flex-col gap-3.5 rounded-3xl bg-white p-8 sm:p-10">

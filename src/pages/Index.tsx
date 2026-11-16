@@ -52,6 +52,7 @@ const Index = memo(() => {
           <Trending />
           <PrimeRail />
           <Stays />
+          <Reviews />
           <CampsiteBanner />
           <StateExplorer />
           <GlampFeature />
@@ -59,7 +60,6 @@ const Index = memo(() => {
           <ToursRow />
           <TonightDeals />
           <ExpeditionsBanner />
-          <Reviews />
           <RankedPageQuestions path="/" />
           <SeoLinks />
           <CtaBand />

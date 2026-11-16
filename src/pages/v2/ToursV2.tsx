@@ -1,4 +1,5 @@
 import { WaAnchor } from '@/components/WaAnchor';
+import { Reviews as ReviewShowcase } from '@/components/v2/home/HomeReviews';
 /**
  * /tours — XTSY Voyage tour packages (redesign). Signature packages (fixed
  * prices) first, then every tour in the catalogue with filters.
@@ -147,6 +148,7 @@ export default function ToursV2() {
           </div>
           <p className="m-0 text-[14px] text-xt-mute">XTSY’s own property is only in New Shillong Township. On tours, stays, vehicles and local guides outside New Shillong are arranged through trusted travel partners, with XTSY as your single point of contact.</p>
         </Section>
+        <ReviewShowcase match={/tour|trip|sightseeing|driver|itinerar|\bcab\b|taxi|travel desk|guide/i} badge="Traveller reviews" title="Trips planned by XTSY" description="Guests on tours, cabs and trip help from the XTSY desk, word for word from Google reviews." />
       </PageShell>
     </>
   );
