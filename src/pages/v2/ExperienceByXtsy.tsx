@@ -76,7 +76,7 @@ export default function ExperienceByXtsy() {
             </g>
           </svg>
           <div className={`${PAD} relative mx-auto flex max-w-[1400px] flex-col items-center gap-6 text-center`}>
-            <div className="xt-in xt-eyebrow text-[15px] sm:text-[18px]" style={{ color: '#E07A8B' }}>India’s First Stargaze <span className="relative inline-block">Glamp<img src="/img/emoji/glowing_star_3d.png" alt="" aria-hidden="true" width={40} height={40} className="xt-love pointer-events-none absolute -top-9 left-1/2 h-7 w-7 -translate-x-1/2 sm:-top-11 sm:h-9 sm:w-9" /></span> · Sleep under the stars</div>
+            <div className="xt-in xt-eyebrow text-[15px] sm:text-[18px]" style={{ color: '#E07A8B' }}>India’s First Stargaze <span className="relative inline-block">Glamp<img src="/img/emoji/glowing_star_3d.png" alt="" aria-hidden="true" width={40} height={40} className="xt-love pointer-events-none absolute -top-8 left-1/2 h-7 w-7 -translate-x-1/2 sm:-top-10 sm:h-9 sm:w-9" /></span> · Sleep under the stars</div>
             <div className="relative w-full px-6 sm:px-12">
               {LOVE.map(([f,c,k]) => (
                 <img key={f} src={`/img/emoji/${f}.png`} alt="" aria-hidden="true" width={64} height={64} decoding="async" className={`xt-love pointer-events-none absolute select-none drop-shadow-[0_8px_18px_rgba(224,122,139,0.45)] ${c}`} style={{ animationDuration: `${4 + k * 1.1}s`, animationDelay: `${k * 0.7}s` }} />
