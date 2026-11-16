@@ -900,7 +900,26 @@ img.lazy-below-fold {
   from { transform: var(--tgh-from); }
   to { transform: var(--tgh-to); }
 }
+/* Tablet photos move as one flat row: projection cannot distort their gaps
+   or enlarge the outer photos beyond the band's vertical bounds. */
+.tgh-tablet-band { display: none; }
+@keyframes xtSuiteTabletSlide {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (min-width: 640px) and (max-width: 1100px) {
+  .tgh-curved-band { display: none; }
+  .tgh-tablet-band { display: flex; }
+  .tgh-tablet-group { gap: 16px; padding-right: 16px; }
+  .tgh-tablet-photo { width: min(44cqw, 440px); aspect-ratio: 4 / 3; }
+  .tgh-tablet-track {
+    animation: xtSuiteTabletSlide var(--tgh-tablet-duration) linear infinite;
+  }
+}
 @media (prefers-reduced-motion: no-preference) {
+  :is(.slow-connection, body.is-slow-connection) .xt-suite-motion .tgh-tablet-track {
+    animation: xtSuiteTabletSlide var(--tgh-tablet-duration) linear infinite !important;
+  }
   :is(.slow-connection, body.is-slow-connection) .xt-suite-motion .tgh-tile {
     animation: xtSuiteOrbit var(--tgh-duration) linear var(--tgh-delay) infinite !important;
   }
@@ -914,7 +933,7 @@ img.lazy-below-fold {
     animation: xtTwinkle 2.4s ease-in-out infinite !important;
   }
 }
-body.reduce-motion .xt-suite-motion :is(.tgh-tile, .xt-love, .xt-heart-rise, .xt-twinkle) {
+body.reduce-motion .xt-suite-motion :is(.tgh-tile, .tgh-tablet-track, .xt-love, .xt-heart-rise, .xt-twinkle) {
   animation: none !important;
 }
 @keyframes xtLove { 0%,100% { transform: translateY(0) rotate(-6deg) scale(1); } 50% { transform: translateY(-8px) rotate(6deg) scale(1.08); } }
@@ -926,6 +945,7 @@ body.reduce-motion .xt-suite-motion :is(.tgh-tile, .xt-love, .xt-heart-rise, .xt
 .xt-peek { animation: xtPeek 7s ease-in-out infinite; }
 .xt-blink { transform-box: fill-box; transform-origin: center; animation: xtBlink 4s infinite; }
 @media (prefers-reduced-motion: reduce) {
+  .tgh-tablet-track, .tgh-tile { animation: none !important; }
   .xt-in, .xt-reveal, .xt-marquee, .xt-rail, .xt-spin, .xt-float, .xt-pop, .xt-live, .xt-shine, .xt-twinkle, .xt-love, .xt-heart-rise, .xt-peek, .xt-blink { animation: none; }
   .xt-lift, .xt-btn, .xt-chip, .xt-ai-btn { transition: none; }
 }
