@@ -21,7 +21,7 @@ import { useLocationConsent } from "@/hooks/useLocationConsent";
 import { useFormEngagement } from "@/hooks/useFormEngagement";
 import { useEnhancedAnalytics } from "@/hooks/useEnhancedAnalytics";
 import { XTSY270_DATA } from "@/data/rooms/xtsy270";
-import { PANORAMA_STAY_ONLY, currentRoomRate, quoteStay, displayRoomName } from '@/data/panoramaPricing';
+import { PANORAMA_STAY_ONLY, currentRoomRate, quoteStay, displayRoomName, panoramaBreakfastTotal, PANORAMA_BREAKFAST_PER_PERSON } from '@/data/panoramaPricing';
 
 // All Indian states and union territories
 const INDIAN_STATES = [
