@@ -2,8 +2,12 @@
  {
   "url": "/",
   "status": 200,
-  "words": 1787,
+  "words": 2057,
   "findings": [
+   {
+    "rule": "rating:review count",
+    "detail": "140 (expected 142) — \"s from guests of XTSY Travellers Hostel and TAB Bistro by XTSY. 9.4 on Booking.com. Read 140 reviews “ ★★★★★ We stayed in the gl\""
+   },
    {
     "rule": "policy:check-in time",
     "detail": " Check-out strictly 10 AM Check-in Check-out Guests 1 guest 2 guests 3 guests 4"
@@ -62,7 +66,7 @@
  {
   "url": "/10-day-meghalaya-itinerary",
   "status": 200,
-  "words": 2156,
+  "words": 2155,
   "findings": [
    {
     "rule": "schema:address",
@@ -101,7 +105,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 6,
-   "firstParagraphWords": 44,
+   "firstParagraphWords": 43,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -116,7 +120,7 @@
  {
   "url": "/2-day-arunachal-pradesh-itinerary",
   "status": 200,
-  "words": 1538,
+  "words": 1539,
   "findings": [
    {
     "rule": "schema:address",
@@ -165,7 +169,7 @@
  {
   "url": "/2-day-arunachal-pradesh-trip",
   "status": 200,
-  "words": 1546,
+  "words": 1547,
   "findings": [
    {
     "rule": "schema:address",
@@ -214,7 +218,7 @@
  {
   "url": "/2-day-assam-itinerary",
   "status": 200,
-  "words": 1514,
+  "words": 1515,
   "findings": [
    {
     "rule": "schema:address",
@@ -263,7 +267,7 @@
  {
   "url": "/2-day-assam-trip",
   "status": 200,
-  "words": 1522,
+  "words": 1523,
   "findings": [
    {
     "rule": "schema:address",
@@ -361,7 +365,7 @@
  {
   "url": "/2-day-meghalaya-trip",
   "status": 200,
-  "words": 1522,
+  "words": 1523,
   "findings": [
    {
     "rule": "schema:address",
@@ -410,7 +414,7 @@
  {
   "url": "/2-day-mizoram-itinerary",
   "status": 200,
-  "words": 1536,
+  "words": 1537,
   "findings": [
    {
     "rule": "schema:address",
@@ -459,7 +463,7 @@
  {
   "url": "/2-day-mizoram-trip",
   "status": 200,
-  "words": 1544,
+  "words": 1545,
   "findings": [
    {
     "rule": "schema:address",
@@ -557,7 +561,7 @@
  {
   "url": "/2-day-nagaland-trip",
   "status": 200,
-  "words": 1525,
+  "words": 1526,
   "findings": [
    {
     "rule": "schema:address",
@@ -606,7 +610,7 @@
  {
   "url": "/2-day-shillong-itinerary",
   "status": 200,
-  "words": 1219,
+  "words": 1218,
   "findings": [
    {
     "rule": "schema:address",
@@ -645,7 +649,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 3,
-   "firstParagraphWords": 50,
+   "firstParagraphWords": 49,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -655,7 +659,7 @@
  {
   "url": "/2-day-sikkim-itinerary",
   "status": 200,
-  "words": 1549,
+  "words": 1550,
   "findings": [
    {
     "rule": "schema:address",
@@ -704,7 +708,7 @@
  {
   "url": "/2-day-sikkim-trip",
   "status": 200,
-  "words": 1557,
+  "words": 1558,
   "findings": [
    {
     "rule": "schema:address",
@@ -753,7 +757,7 @@
  {
   "url": "/3-day-arunachal-pradesh-itinerary",
   "status": 200,
-  "words": 1538,
+  "words": 1539,
   "findings": [
    {
     "rule": "schema:address",
@@ -802,7 +806,7 @@
  {
   "url": "/3-day-arunachal-pradesh-trip",
   "status": 200,
-  "words": 1546,
+  "words": 1547,
   "findings": [
    {
     "rule": "schema:address",
@@ -851,7 +855,7 @@
  {
   "url": "/3-day-assam-itinerary",
   "status": 200,
-  "words": 1514,
+  "words": 1515,
   "findings": [
    {
     "rule": "schema:address",
@@ -900,7 +904,7 @@
  {
   "url": "/3-day-assam-trip",
   "status": 200,
-  "words": 1522,
+  "words": 1523,
   "findings": [
    {
     "rule": "schema:address",
@@ -992,7 +996,7 @@
  {
   "url": "/3-day-meghalaya-trip",
   "status": 200,
-  "words": 1522,
+  "words": 1523,
   "findings": [
    {
     "rule": "schema:address",
@@ -1090,7 +1094,7 @@
  {
   "url": "/3-day-mizoram-trip",
   "status": 200,
-  "words": 1544,
+  "words": 1545,
   "findings": [
    {
     "rule": "schema:address",
@@ -1188,7 +1192,7 @@
  {
   "url": "/3-day-nagaland-trip",
   "status": 200,
-  "words": 1525,
+  "words": 1526,
   "findings": [
    {
     "rule": "schema:address",
@@ -1237,7 +1241,7 @@
  {
   "url": "/3-day-sikkim-itinerary",
   "status": 200,
-  "words": 1549,
+  "words": 1550,
   "findings": [
    {
     "rule": "schema:address",
@@ -1286,7 +1290,7 @@
  {
   "url": "/3-day-sikkim-trip",
   "status": 200,
-  "words": 1557,
+  "words": 1558,
   "findings": [
    {
     "rule": "schema:address",
@@ -1335,7 +1339,7 @@
  {
   "url": "/4-day-arunachal-pradesh-itinerary",
   "status": 200,
-  "words": 1538,
+  "words": 1539,
   "findings": [
    {
     "rule": "schema:address",
@@ -1384,7 +1388,7 @@
  {
   "url": "/4-day-assam-itinerary",
   "status": 200,
-  "words": 1514,
+  "words": 1515,
   "findings": [
    {
     "rule": "schema:address",
@@ -1433,7 +1437,7 @@
  {
   "url": "/4-day-assam-trip",
   "status": 200,
-  "words": 1522,
+  "words": 1523,
   "findings": [
    {
     "rule": "schema:address",
@@ -1482,7 +1486,7 @@
  {
   "url": "/4-day-meghalaya-itinerary",
   "status": 200,
-  "words": 1208,
+  "words": 1207,
   "findings": [
    {
     "rule": "schema:address",
@@ -1521,7 +1525,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 4,
-   "firstParagraphWords": 46,
+   "firstParagraphWords": 45,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -1531,7 +1535,7 @@
  {
   "url": "/4-day-meghalaya-trip",
   "status": 200,
-  "words": 1522,
+  "words": 1523,
   "findings": [
    {
     "rule": "schema:address",
@@ -1667,7 +1671,7 @@
  {
   "url": "/6-day-meghalaya-itinerary",
   "status": 200,
-  "words": 1215,
+  "words": 1214,
   "findings": [
    {
     "rule": "schema:address",
@@ -1706,7 +1710,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 4,
-   "firstParagraphWords": 46,
+   "firstParagraphWords": 45,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -1765,7 +1769,7 @@
  {
   "url": "/8-day-meghalaya-itinerary",
   "status": 200,
-  "words": 1216,
+  "words": 1215,
   "findings": [
    {
     "rule": "schema:address",
@@ -1804,7 +1808,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 4,
-   "firstParagraphWords": 46,
+   "firstParagraphWords": 45,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -1814,7 +1818,7 @@
  {
   "url": "/about",
   "status": 200,
-  "words": 789,
+  "words": 792,
   "findings": [
    {
     "rule": "schema:address",
@@ -1824,8 +1828,8 @@
   "seo": {
    "title": "About XTSY — India's Biggest Hostel in Northeast India",
    "titleLen": 54,
-   "desc": "The story of XTSY Travellers Hostel, New Shillong Township: Experience by XTSY, India's first stargaze glamp, and a NEITA 2025 nomination.",
-   "descLen": 138,
+   "desc": "The story of XTSY Travellers Hostel, New Shillong Township: Experience by XTSY, India's Most Romantic Couple En-suite, and a NEITA 2025 nomination.",
+   "descLen": 147,
    "canonical": "https://xtsy.one/about",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -1858,7 +1862,7 @@
  {
   "url": "/about/xtsy-facts",
   "status": 200,
-  "words": 886,
+  "words": 889,
   "findings": [
    {
     "rule": "schema:address",
@@ -2157,7 +2161,7 @@
  {
   "url": "/arunachal-pradesh-tour-packages",
   "status": 200,
-  "words": 1425,
+  "words": 1426,
   "findings": [
    {
     "rule": "schema:address",
@@ -2206,7 +2210,7 @@
  {
   "url": "/assam-tour-packages",
   "status": 200,
-  "words": 1404,
+  "words": 1405,
   "findings": [
    {
     "rule": "schema:address",
@@ -2303,7 +2307,7 @@
  {
   "url": "/backpacking-northeast-india",
   "status": 200,
-  "words": 1379,
+  "words": 1378,
   "findings": [
    {
     "rule": "schema:address",
@@ -2342,7 +2346,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 6,
-   "firstParagraphWords": 54,
+   "firstParagraphWords": 53,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -2401,7 +2405,7 @@
  {
   "url": "/best-chinese-restaurant-shillong",
   "status": 200,
-  "words": 1074,
+  "words": 1073,
   "findings": [
    {
     "rule": "schema:address",
@@ -2440,7 +2444,7 @@
    ],
    "faqSchemaQuestions": 4,
    "questionHeadings": 3,
-   "firstParagraphWords": 53,
+   "firstParagraphWords": 52,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -2846,7 +2850,7 @@
  {
   "url": "/best-hostel-in-shillong",
   "status": 200,
-  "words": 1648,
+  "words": 1649,
   "findings": [
    {
     "rule": "price:king/private room",
@@ -2985,7 +2989,7 @@
  {
   "url": "/best-restaurants-shillong",
   "status": 200,
-  "words": 953,
+  "words": 952,
   "findings": [
    {
     "rule": "schema:address",
@@ -3024,7 +3028,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 2,
-   "firstParagraphWords": 38,
+   "firstParagraphWords": 37,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -3080,7 +3084,7 @@
  {
   "url": "/best-veg-restaurants-shillong",
   "status": 200,
-  "words": 1020,
+  "words": 1019,
   "findings": [
    {
     "rule": "schema:address",
@@ -3119,7 +3123,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 2,
-   "firstParagraphWords": 52,
+   "firstParagraphWords": 51,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -4109,7 +4113,7 @@
  {
   "url": "/birdwatching-meghalaya",
   "status": 200,
-  "words": 1018,
+  "words": 1017,
   "findings": [
    {
     "rule": "schema:address",
@@ -4148,7 +4152,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 1,
-   "firstParagraphWords": 47,
+   "firstParagraphWords": 46,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -4315,7 +4319,7 @@
   "seo": {
    "title": "Hostel Booking Shillong — Book Dorms & Rooms Online | XTSY",
    "titleLen": 58,
-   "desc": "Book XTSY in New Shillong Township: dorms from ₹399, King Double ₹2,399, Experience by XTSY ₹5,999. Check-in 11 AM, check-out 10 AM.",
+   "desc": "Book XTSY in New Shillong Township: dorms from ₹399, King Double ₹2,399, Experience by XTSY ₹4,999. Check-in 11 AM, check-out 10 AM.",
    "descLen": 132,
    "canonical": "https://xtsy.one/book",
    "robots": "noindex, follow",
@@ -4540,7 +4544,7 @@
  {
   "url": "/budget-hostels-shillong",
   "status": 200,
-  "words": 1235,
+  "words": 1236,
   "findings": [
    {
     "rule": "schema:address",
@@ -4757,7 +4761,7 @@
  {
   "url": "/budget-trip-meghalaya",
   "status": 200,
-  "words": 1347,
+  "words": 1346,
   "findings": [
    {
     "rule": "schema:address",
@@ -4796,7 +4800,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 6,
-   "firstParagraphWords": 55,
+   "firstParagraphWords": 54,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -4852,7 +4856,7 @@
  {
   "url": "/bulk-food-order-shillong",
   "status": 200,
-  "words": 969,
+  "words": 968,
   "findings": [
    {
     "rule": "schema:address",
@@ -4891,7 +4895,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 3,
-   "firstParagraphWords": 31,
+   "firstParagraphWords": 30,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -4950,7 +4954,7 @@
  {
   "url": "/cafe-shillong",
   "status": 200,
-  "words": 1052,
+  "words": 1051,
   "findings": [
    {
     "rule": "schema:address",
@@ -4989,7 +4993,7 @@
    ],
    "faqSchemaQuestions": 4,
    "questionHeadings": 2,
-   "firstParagraphWords": 46,
+   "firstParagraphWords": 45,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -4999,7 +5003,7 @@
  {
   "url": "/cafes-in-shillong",
   "status": 200,
-  "words": 1213,
+  "words": 1212,
   "findings": [
    {
     "rule": "schema:address",
@@ -5038,7 +5042,7 @@
    ],
    "faqSchemaQuestions": 4,
    "questionHeadings": 2,
-   "firstParagraphWords": 26,
+   "firstParagraphWords": 25,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -5048,7 +5052,7 @@
  {
   "url": "/camping-in-shnongpdeng",
   "status": 200,
-  "words": 1058,
+  "words": 1057,
   "findings": [
    {
     "rule": "schema:address",
@@ -5088,7 +5092,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 1,
-   "firstParagraphWords": 69,
+   "firstParagraphWords": 68,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -5098,7 +5102,7 @@
  {
   "url": "/car-booking-shillong",
   "status": 200,
-  "words": 899,
+  "words": 898,
   "findings": [
    {
     "rule": "schema:address",
@@ -5137,7 +5141,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 3,
-   "firstParagraphWords": 46,
+   "firstParagraphWords": 45,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -5147,7 +5151,7 @@
  {
   "url": "/car-rental-guwahati",
   "status": 200,
-  "words": 1081,
+  "words": 1080,
   "findings": [
    {
     "rule": "schema:address",
@@ -5186,7 +5190,7 @@
    ],
    "faqSchemaQuestions": 4,
    "questionHeadings": 2,
-   "firstParagraphWords": 69,
+   "firstParagraphWords": 68,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -5286,7 +5290,7 @@
  {
   "url": "/cherrapunji-guide",
   "status": 200,
-  "words": 1304,
+  "words": 1303,
   "findings": [
    {
     "rule": "schema:address",
@@ -5326,7 +5330,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 4,
-   "firstParagraphWords": 69,
+   "firstParagraphWords": 68,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -5385,7 +5389,7 @@
  {
   "url": "/cherrapunji-travel-guide",
   "status": 200,
-  "words": 1689,
+  "words": 1688,
   "findings": [
    {
     "rule": "schema:address",
@@ -5424,7 +5428,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 5,
-   "firstParagraphWords": 62,
+   "firstParagraphWords": 61,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -5630,7 +5634,7 @@
  {
   "url": "/corporate-catering-shillong",
   "status": 200,
-  "words": 977,
+  "words": 976,
   "findings": [
    {
     "rule": "schema:address",
@@ -5669,7 +5673,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 3,
-   "firstParagraphWords": 50,
+   "firstParagraphWords": 49,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -6561,7 +6565,7 @@
  {
   "url": "/corporate-retreat-shillong",
   "status": 200,
-  "words": 944,
+  "words": 943,
   "findings": [
    {
     "rule": "schema:address",
@@ -6600,7 +6604,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 2,
-   "firstParagraphWords": 50,
+   "firstParagraphWords": 49,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -6858,7 +6862,7 @@
  {
   "url": "/dawki-river-boating",
   "status": 200,
-  "words": 1349,
+  "words": 1348,
   "findings": [
    {
     "rule": "schema:address",
@@ -6898,7 +6902,7 @@
    ],
    "faqSchemaQuestions": 2,
    "questionHeadings": 5,
-   "firstParagraphWords": 63,
+   "firstParagraphWords": 62,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -6908,7 +6912,7 @@
  {
   "url": "/dawki-river-travel-guide",
   "status": 200,
-  "words": 1356,
+  "words": 1355,
   "findings": [
    {
     "rule": "schema:address",
@@ -6947,7 +6951,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 4,
-   "firstParagraphWords": 69,
+   "firstParagraphWords": 68,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -6957,7 +6961,7 @@
  {
   "url": "/dawki-to-mawlynnong-guide",
   "status": 200,
-  "words": 1354,
+  "words": 1353,
   "findings": [
    {
     "rule": "schema:address",
@@ -6996,7 +7000,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 5,
-   "firstParagraphWords": 66,
+   "firstParagraphWords": 65,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -7055,7 +7059,7 @@
  {
   "url": "/dawki-umngot-river-guide",
   "status": 200,
-  "words": 1560,
+  "words": 1559,
   "findings": [
    {
     "rule": "schema:address",
@@ -7094,7 +7098,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 5,
-   "firstParagraphWords": 67,
+   "firstParagraphWords": 66,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -10952,7 +10956,7 @@
  {
   "url": "/elephant-falls-guide",
   "status": 200,
-  "words": 1237,
+  "words": 1236,
   "findings": [
    {
     "rule": "schema:address",
@@ -10992,7 +10996,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 3,
-   "firstParagraphWords": 69,
+   "firstParagraphWords": 68,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -11002,7 +11006,7 @@
  {
   "url": "/elephant-falls-shillong",
   "status": 200,
-  "words": 1407,
+  "words": 1406,
   "findings": [
    {
     "rule": "schema:address",
@@ -11042,7 +11046,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 3,
-   "firstParagraphWords": 62,
+   "firstParagraphWords": 61,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -11498,7 +11502,7 @@
  {
   "url": "/experience-by-xtsy",
   "status": 200,
-  "words": 632,
+  "words": 1214,
   "findings": [
    {
     "rule": "schema:address",
@@ -11520,7 +11524,7 @@
     "Experience by XTSY: The Romantic Couple Stay in India is now at New Shillong, Meghalaya"
    ],
    "ogImage": true,
-   "imgs": 9,
+   "imgs": 73,
    "imgsNoAlt": 0
   },
   "aeo": {
@@ -11547,7 +11551,7 @@
  {
   "url": "/family-restaurant-shillong",
   "status": 200,
-  "words": 1013,
+  "words": 1012,
   "findings": [
    {
     "rule": "schema:address",
@@ -11586,7 +11590,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 2,
-   "firstParagraphWords": 52,
+   "firstParagraphWords": 51,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -11645,7 +11649,7 @@
  {
   "url": "/faq",
   "status": 200,
-  "words": 1498,
+  "words": 1500,
   "findings": [
    {
     "rule": "schema:address",
@@ -11798,7 +11802,7 @@
  {
   "url": "/fishing-in-dawki",
   "status": 200,
-  "words": 1031,
+  "words": 1030,
   "findings": [
    {
     "rule": "schema:address",
@@ -11838,7 +11842,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 2,
-   "firstParagraphWords": 66,
+   "firstParagraphWords": 65,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -12352,7 +12356,7 @@
  {
   "url": "/good-restaurants-in-shillong",
   "status": 200,
-  "words": 1030,
+  "words": 1029,
   "findings": [
    {
     "rule": "schema:address",
@@ -12391,7 +12395,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 3,
-   "firstParagraphWords": 53,
+   "firstParagraphWords": 52,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -13265,7 +13269,7 @@
  {
   "url": "/guides",
   "status": 200,
-  "words": 5512,
+  "words": 5513,
   "findings": [
    {
     "rule": "schema:address",
@@ -13994,7 +13998,7 @@
  {
   "url": "/guwahati-to-meghalaya-road-trip",
   "status": 200,
-  "words": 1324,
+  "words": 1323,
   "findings": [
    {
     "rule": "schema:address",
@@ -14033,7 +14037,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 4,
-   "firstParagraphWords": 68,
+   "firstParagraphWords": 67,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -14239,7 +14243,7 @@
  {
   "url": "/guwahati-to-shillong-transport",
   "status": 200,
-  "words": 1052,
+  "words": 1056,
   "findings": [
    {
     "rule": "schema:address",
@@ -14278,7 +14282,7 @@
    ],
    "faqSchemaQuestions": 4,
    "questionHeadings": 1,
-   "firstParagraphWords": 66,
+   "firstParagraphWords": 70,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -15936,7 +15940,7 @@
  {
   "url": "/hostel-in-shillong-last-minute",
   "status": 200,
-  "words": 1221,
+  "words": 1222,
   "findings": [
    {
     "rule": "schema:address",
@@ -16004,7 +16008,7 @@
  {
   "url": "/hostel-in-shillong-now",
   "status": 200,
-  "words": 1219,
+  "words": 1220,
   "findings": [
    {
     "rule": "schema:address",
@@ -16072,7 +16076,7 @@
  {
   "url": "/hostel-in-shillong-this-weekend",
   "status": 200,
-  "words": 1223,
+  "words": 1224,
   "findings": [
    {
     "rule": "schema:address",
@@ -16140,7 +16144,7 @@
  {
   "url": "/hostel-in-shillong-tomorrow",
   "status": 200,
-  "words": 1213,
+  "words": 1214,
   "findings": [
    {
     "rule": "schema:address",
@@ -16208,7 +16212,7 @@
  {
   "url": "/hostel-in-shillong-tonight",
   "status": 200,
-  "words": 1213,
+  "words": 1214,
   "findings": [
    {
     "rule": "schema:address",
@@ -16327,7 +16331,7 @@
  {
   "url": "/hostel-near-me",
   "status": 200,
-  "words": 1502,
+  "words": 1503,
   "findings": [
    {
     "rule": "rating:review count",
@@ -16436,7 +16440,7 @@
  {
   "url": "/hostel-near-police-bazar-shillong",
   "status": 200,
-  "words": 1235,
+  "words": 1236,
   "findings": [
    {
     "rule": "schema:address",
@@ -16504,7 +16508,7 @@
  {
   "url": "/hostel-near-shillong-airport",
   "status": 200,
-  "words": 1242,
+  "words": 1243,
   "findings": [
    {
     "rule": "schema:address",
@@ -16572,7 +16576,7 @@
  {
   "url": "/hostels-in-shillong-today",
   "status": 200,
-  "words": 1201,
+  "words": 1202,
   "findings": [
    {
     "rule": "schema:address",
@@ -16853,7 +16857,7 @@
  {
   "url": "/hotels-in-shillong",
   "status": 200,
-  "words": 617,
+  "words": 618,
   "findings": [
    {
     "rule": "schema:address",
@@ -16910,7 +16914,7 @@
   "seo": {
    "title": "Hotels in Shillong Available Now (1 January 1970)",
    "titleLen": 49,
-   "desc": "Hotels and rooms in Shillong available right now. Private rooms from ₹2,399/night, luxury suites from ₹5,999. Real-time availability, instant confirmation.",
+   "desc": "Hotels and rooms in Shillong available right now. Private rooms from ₹2,399/night, luxury suites from ₹4,999. Real-time availability, instant confirmation.",
    "descLen": 155,
    "canonical": "https://xtsy.one/hotels-in-shillong-available-now",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
@@ -16960,7 +16964,7 @@
  {
   "url": "/how-to-reach-cherrapunji",
   "status": 200,
-  "words": 1322,
+  "words": 1321,
   "findings": [
    {
     "rule": "schema:address",
@@ -16999,7 +17003,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 4,
-   "firstParagraphWords": 67,
+   "firstParagraphWords": 66,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -17009,7 +17013,7 @@
  {
   "url": "/how-to-reach-dawki",
   "status": 200,
-  "words": 1328,
+  "words": 1327,
   "findings": [
    {
     "rule": "schema:address",
@@ -17048,7 +17052,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 4,
-   "firstParagraphWords": 68,
+   "firstParagraphWords": 67,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -17058,7 +17062,7 @@
  {
   "url": "/how-to-reach-meghalaya-from-bangalore",
   "status": 200,
-  "words": 1244,
+  "words": 1243,
   "findings": [
    {
     "rule": "schema:address",
@@ -17097,7 +17101,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 3,
-   "firstParagraphWords": 47,
+   "firstParagraphWords": 46,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -17107,7 +17111,7 @@
  {
   "url": "/how-to-reach-meghalaya-from-delhi",
   "status": 200,
-  "words": 1272,
+  "words": 1271,
   "findings": [
    {
     "rule": "schema:address",
@@ -17146,7 +17150,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 3,
-   "firstParagraphWords": 46,
+   "firstParagraphWords": 45,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -17156,7 +17160,7 @@
  {
   "url": "/how-to-reach-meghalaya-from-kolkata",
   "status": 200,
-  "words": 1247,
+  "words": 1246,
   "findings": [
    {
     "rule": "schema:address",
@@ -17195,7 +17199,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 3,
-   "firstParagraphWords": 48,
+   "firstParagraphWords": 47,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -17205,7 +17209,7 @@
  {
   "url": "/how-to-reach-meghalaya-from-mumbai",
   "status": 200,
-  "words": 1280,
+  "words": 1279,
   "findings": [
    {
     "rule": "schema:address",
@@ -17244,7 +17248,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 3,
-   "firstParagraphWords": 45,
+   "firstParagraphWords": 44,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -17254,7 +17258,7 @@
  {
   "url": "/how-to-reach-shillong",
   "status": 200,
-  "words": 1342,
+  "words": 1341,
   "findings": [
    {
     "rule": "schema:address",
@@ -17293,7 +17297,7 @@
    ],
    "faqSchemaQuestions": 4,
    "questionHeadings": 3,
-   "firstParagraphWords": 50,
+   "firstParagraphWords": 49,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -17501,7 +17505,7 @@
  {
   "url": "/kayaking-in-meghalaya",
   "status": 200,
-  "words": 1001,
+  "words": 1000,
   "findings": [
    {
     "rule": "schema:address",
@@ -17540,7 +17544,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 2,
-   "firstParagraphWords": 49,
+   "firstParagraphWords": 48,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -17550,7 +17554,7 @@
  {
   "url": "/kongthong-whistling-village",
   "status": 200,
-  "words": 1380,
+  "words": 1379,
   "findings": [
    {
     "rule": "schema:address",
@@ -17589,7 +17593,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 8,
-   "firstParagraphWords": 55,
+   "firstParagraphWords": 54,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -17599,7 +17603,7 @@
  {
   "url": "/krang-suri-falls-guide",
   "status": 200,
-  "words": 1255,
+  "words": 1254,
   "findings": [
    {
     "rule": "schema:address",
@@ -17639,7 +17643,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 3,
-   "firstParagraphWords": 70,
+   "firstParagraphWords": 69,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -17649,7 +17653,7 @@
  {
   "url": "/krang-suri-falls-meghalaya",
   "status": 200,
-  "words": 1400,
+  "words": 1399,
   "findings": [
    {
     "rule": "schema:address",
@@ -17689,7 +17693,7 @@
    ],
    "faqSchemaQuestions": 2,
    "questionHeadings": 4,
-   "firstParagraphWords": 66,
+   "firstParagraphWords": 65,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -17699,7 +17703,7 @@
  {
   "url": "/laitlum-canyons-guide",
   "status": 200,
-  "words": 1243,
+  "words": 1242,
   "findings": [
    {
     "rule": "schema:address",
@@ -17739,7 +17743,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 3,
-   "firstParagraphWords": 61,
+   "firstParagraphWords": 60,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -17749,7 +17753,7 @@
  {
   "url": "/laitlum-canyons-shillong",
   "status": 200,
-  "words": 1348,
+  "words": 1347,
   "findings": [
    {
     "rule": "schema:address",
@@ -17789,7 +17793,7 @@
    ],
    "faqSchemaQuestions": 2,
    "questionHeadings": 4,
-   "firstParagraphWords": 64,
+   "firstParagraphWords": 63,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -17848,7 +17852,7 @@
  {
   "url": "/living-root-bridge-trek",
   "status": 200,
-  "words": 1313,
+  "words": 1312,
   "findings": [
    {
     "rule": "schema:address",
@@ -17888,7 +17892,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 4,
-   "firstParagraphWords": 67,
+   "firstParagraphWords": 66,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -18056,7 +18060,7 @@
  {
   "url": "/luxury-glamping-shillong",
   "status": 200,
-  "words": 580,
+  "words": 581,
   "findings": [
    {
     "rule": "schema:address",
@@ -18066,8 +18070,8 @@
   "seo": {
    "title": "Luxury Glamping in Shillong & Meghalaya | XTSY",
    "titleLen": 46,
-   "desc": "Glamping near Shillong with proper beds, private washrooms and mountain views, including Experience by XTSY, India's first stargaze glamp, for couples.",
-   "descLen": 151,
+   "desc": "Glamping near Shillong with proper beds, private washrooms and mountain views, including Experience by XTSY, India's Most Romantic Couple En-suite, for couples.",
+   "descLen": 160,
    "canonical": "https://xtsy.one/luxury-glamping-shillong",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
@@ -18102,7 +18106,7 @@
  {
   "url": "/luxury-resorts-for-couples-shillong",
   "status": 200,
-  "words": 1041,
+  "words": 1042,
   "findings": [
    {
     "rule": "schema:address",
@@ -18222,7 +18226,7 @@
  {
   "url": "/manipur-tour-packages",
   "status": 200,
-  "words": 1432,
+  "words": 1433,
   "findings": [
    {
     "rule": "schema:address",
@@ -18271,7 +18275,7 @@
  {
   "url": "/mawlynnong-cleanest-village",
   "status": 200,
-  "words": 1408,
+  "words": 1407,
   "findings": [
    {
     "rule": "schema:address",
@@ -18311,7 +18315,7 @@
    ],
    "faqSchemaQuestions": 2,
    "questionHeadings": 6,
-   "firstParagraphWords": 69,
+   "firstParagraphWords": 68,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -18321,7 +18325,7 @@
  {
   "url": "/mawlynnong-guide",
   "status": 200,
-  "words": 1282,
+  "words": 1281,
   "findings": [
    {
     "rule": "schema:address",
@@ -18361,7 +18365,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 4,
-   "firstParagraphWords": 58,
+   "firstParagraphWords": 57,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -18371,7 +18375,7 @@
  {
   "url": "/mawphlang-sacred-forest",
   "status": 200,
-  "words": 1382,
+  "words": 1381,
   "findings": [
    {
     "rule": "schema:address",
@@ -18411,7 +18415,7 @@
    ],
    "faqSchemaQuestions": 2,
    "questionHeadings": 4,
-   "firstParagraphWords": 64,
+   "firstParagraphWords": 63,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -18421,7 +18425,7 @@
  {
   "url": "/mawsmai-cave-cherrapunji",
   "status": 200,
-  "words": 1321,
+  "words": 1320,
   "findings": [
    {
     "rule": "schema:address",
@@ -18461,7 +18465,7 @@
    ],
    "faqSchemaQuestions": 2,
    "questionHeadings": 5,
-   "firstParagraphWords": 65,
+   "firstParagraphWords": 64,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -18471,7 +18475,7 @@
  {
   "url": "/meghalaya-adventure-package",
   "status": 200,
-  "words": 1136,
+  "words": 1135,
   "findings": [
    {
     "rule": "schema:address",
@@ -18510,7 +18514,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 1,
-   "firstParagraphWords": 52,
+   "firstParagraphWords": 51,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -18561,7 +18565,7 @@
  {
   "url": "/meghalaya-backpacking-guide",
   "status": 200,
-  "words": 1413,
+  "words": 1412,
   "findings": [
    {
     "rule": "schema:address",
@@ -18600,7 +18604,7 @@
    ],
    "faqSchemaQuestions": 2,
    "questionHeadings": 3,
-   "firstParagraphWords": 47,
+   "firstParagraphWords": 46,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -18656,7 +18660,7 @@
  {
   "url": "/meghalaya-couple-tour-package",
   "status": 200,
-  "words": 660,
+  "words": 664,
   "findings": [
    {
     "rule": "schema:address",
@@ -18746,7 +18750,7 @@
  {
   "url": "/meghalaya-honeymoon-package",
   "status": 200,
-  "words": 1181,
+  "words": 1180,
   "findings": [
    {
     "rule": "schema:address",
@@ -18785,7 +18789,7 @@
    ],
    "faqSchemaQuestions": 4,
    "questionHeadings": 1,
-   "firstParagraphWords": 54,
+   "firstParagraphWords": 53,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -18795,7 +18799,7 @@
  {
   "url": "/meghalaya-in-april",
   "status": 200,
-  "words": 1283,
+  "words": 1282,
   "findings": [
    {
     "rule": "schema:address",
@@ -18834,7 +18838,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 4,
-   "firstParagraphWords": 47,
+   "firstParagraphWords": 46,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -18844,7 +18848,7 @@
  {
   "url": "/meghalaya-in-august",
   "status": 200,
-  "words": 1279,
+  "words": 1278,
   "findings": [
    {
     "rule": "schema:address",
@@ -18883,7 +18887,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 4,
-   "firstParagraphWords": 47,
+   "firstParagraphWords": 46,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -18893,7 +18897,7 @@
  {
   "url": "/meghalaya-in-december",
   "status": 200,
-  "words": 1280,
+  "words": 1279,
   "findings": [
    {
     "rule": "schema:address",
@@ -18932,7 +18936,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 4,
-   "firstParagraphWords": 47,
+   "firstParagraphWords": 46,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -18942,7 +18946,7 @@
  {
   "url": "/meghalaya-in-february",
   "status": 200,
-  "words": 1285,
+  "words": 1284,
   "findings": [
    {
     "rule": "schema:address",
@@ -18981,7 +18985,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 4,
-   "firstParagraphWords": 47,
+   "firstParagraphWords": 46,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -18991,7 +18995,7 @@
  {
   "url": "/meghalaya-in-january",
   "status": 200,
-  "words": 1287,
+  "words": 1286,
   "findings": [
    {
     "rule": "schema:address",
@@ -19030,7 +19034,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 4,
-   "firstParagraphWords": 47,
+   "firstParagraphWords": 46,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -19040,7 +19044,7 @@
  {
   "url": "/meghalaya-in-july",
   "status": 200,
-  "words": 1282,
+  "words": 1281,
   "findings": [
    {
     "rule": "schema:address",
@@ -19079,7 +19083,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 4,
-   "firstParagraphWords": 47,
+   "firstParagraphWords": 46,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -19089,7 +19093,7 @@
  {
   "url": "/meghalaya-in-june",
   "status": 200,
-  "words": 1283,
+  "words": 1282,
   "findings": [
    {
     "rule": "schema:address",
@@ -19128,7 +19132,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 4,
-   "firstParagraphWords": 47,
+   "firstParagraphWords": 46,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -19138,7 +19142,7 @@
  {
   "url": "/meghalaya-in-march",
   "status": 200,
-  "words": 1282,
+  "words": 1281,
   "findings": [
    {
     "rule": "schema:address",
@@ -19177,7 +19181,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 4,
-   "firstParagraphWords": 47,
+   "firstParagraphWords": 46,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -19187,7 +19191,7 @@
  {
   "url": "/meghalaya-in-may",
   "status": 200,
-  "words": 1282,
+  "words": 1281,
   "findings": [
    {
     "rule": "schema:address",
@@ -19226,7 +19230,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 4,
-   "firstParagraphWords": 47,
+   "firstParagraphWords": 46,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -19236,7 +19240,7 @@
  {
   "url": "/meghalaya-in-november",
   "status": 200,
-  "words": 1277,
+  "words": 1276,
   "findings": [
    {
     "rule": "schema:address",
@@ -19275,7 +19279,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 4,
-   "firstParagraphWords": 47,
+   "firstParagraphWords": 46,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -19285,7 +19289,7 @@
  {
   "url": "/meghalaya-in-october",
   "status": 200,
-  "words": 1282,
+  "words": 1281,
   "findings": [
    {
     "rule": "schema:address",
@@ -19324,7 +19328,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 4,
-   "firstParagraphWords": 47,
+   "firstParagraphWords": 46,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -19334,7 +19338,7 @@
  {
   "url": "/meghalaya-in-september",
   "status": 200,
-  "words": 1280,
+  "words": 1279,
   "findings": [
    {
     "rule": "schema:address",
@@ -19373,7 +19377,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 4,
-   "firstParagraphWords": 47,
+   "firstParagraphWords": 46,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -19383,7 +19387,7 @@
  {
   "url": "/meghalaya-itinerary",
   "status": 200,
-  "words": 1599,
+  "words": 1598,
   "findings": [
    {
     "rule": "schema:address",
@@ -19422,7 +19426,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 3,
-   "firstParagraphWords": 53,
+   "firstParagraphWords": 52,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -19432,7 +19436,7 @@
  {
   "url": "/meghalaya-itinerary-planning",
   "status": 200,
-  "words": 1404,
+  "words": 1403,
   "findings": [
    {
     "rule": "schema:address",
@@ -19471,7 +19475,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 3,
-   "firstParagraphWords": 52,
+   "firstParagraphWords": 51,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -19481,7 +19485,7 @@
  {
   "url": "/meghalaya-monsoon-travel-guide",
   "status": 200,
-  "words": 1328,
+  "words": 1327,
   "findings": [
    {
     "rule": "schema:address",
@@ -19520,7 +19524,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 4,
-   "firstParagraphWords": 48,
+   "firstParagraphWords": 47,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -19576,7 +19580,7 @@
  {
   "url": "/meghalaya-photography-tour",
   "status": 200,
-  "words": 1116,
+  "words": 1115,
   "findings": [
    {
     "rule": "schema:address",
@@ -19615,7 +19619,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 2,
-   "firstParagraphWords": 51,
+   "firstParagraphWords": 50,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -19625,7 +19629,7 @@
  {
   "url": "/meghalaya-road-trip-guide",
   "status": 200,
-  "words": 1402,
+  "words": 1401,
   "findings": [
    {
     "rule": "schema:address",
@@ -19664,7 +19668,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 3,
-   "firstParagraphWords": 54,
+   "firstParagraphWords": 53,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -19674,7 +19678,7 @@
  {
   "url": "/meghalaya-tour-package-3-days",
   "status": 200,
-  "words": 1139,
+  "words": 1138,
   "findings": [
    {
     "rule": "schema:address",
@@ -19713,7 +19717,7 @@
    ],
    "faqSchemaQuestions": 4,
    "questionHeadings": 2,
-   "firstParagraphWords": 49,
+   "firstParagraphWords": 48,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -19723,7 +19727,7 @@
  {
   "url": "/meghalaya-tour-package-5-days",
   "status": 200,
-  "words": 1162,
+  "words": 1161,
   "findings": [
    {
     "rule": "schema:address",
@@ -19762,7 +19766,7 @@
    ],
    "faqSchemaQuestions": 4,
    "questionHeadings": 1,
-   "firstParagraphWords": 51,
+   "firstParagraphWords": 50,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -19772,7 +19776,7 @@
  {
   "url": "/meghalaya-tour-package-7-days",
   "status": 200,
-  "words": 1203,
+  "words": 1202,
   "findings": [
    {
     "rule": "schema:address",
@@ -19811,7 +19815,7 @@
    ],
    "faqSchemaQuestions": 4,
    "questionHeadings": 1,
-   "firstParagraphWords": 53,
+   "firstParagraphWords": 52,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -19916,7 +19920,7 @@
  {
   "url": "/meghalaya-travel-guide",
   "status": 200,
-  "words": 2295,
+  "words": 2294,
   "findings": [
    {
     "rule": "schema:address",
@@ -19955,7 +19959,7 @@
    ],
    "faqSchemaQuestions": 5,
    "questionHeadings": 6,
-   "firstParagraphWords": 40,
+   "firstParagraphWords": 39,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -19965,7 +19969,7 @@
  {
   "url": "/meghalaya-trip-cost",
   "status": 200,
-  "words": 1315,
+  "words": 1314,
   "findings": [
    {
     "rule": "schema:address",
@@ -20004,7 +20008,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 3,
-   "firstParagraphWords": 49,
+   "firstParagraphWords": 48,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -20014,7 +20018,7 @@
  {
   "url": "/meghalaya-trip-today",
   "status": 200,
-  "words": 1428,
+  "words": 1427,
   "findings": [
    {
     "rule": "schema:address",
@@ -20053,7 +20057,7 @@
    ],
    "faqSchemaQuestions": 4,
    "questionHeadings": 3,
-   "firstParagraphWords": 48,
+   "firstParagraphWords": 47,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -20246,7 +20250,7 @@
  {
   "url": "/mizoram-tour-packages",
   "status": 200,
-  "words": 1426,
+  "words": 1427,
   "findings": [
    {
     "rule": "schema:address",
@@ -21855,7 +21859,7 @@
  {
   "url": "/nagaland-tour-packages",
   "status": 200,
-  "words": 1407,
+  "words": 1408,
   "findings": [
    {
     "rule": "schema:address",
@@ -21904,7 +21908,7 @@
  {
   "url": "/nohkalikai-falls-guide",
   "status": 200,
-  "words": 1272,
+  "words": 1271,
   "findings": [
    {
     "rule": "schema:address",
@@ -21944,7 +21948,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 3,
-   "firstParagraphWords": 69,
+   "firstParagraphWords": 68,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -21954,7 +21958,7 @@
  {
   "url": "/nohkalikai-falls-meghalaya",
   "status": 200,
-  "words": 1571,
+  "words": 1570,
   "findings": [
    {
     "rule": "schema:address",
@@ -21994,7 +21998,7 @@
    ],
    "faqSchemaQuestions": 2,
    "questionHeadings": 4,
-   "firstParagraphWords": 64,
+   "firstParagraphWords": 63,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -22004,7 +22008,7 @@
  {
   "url": "/nongjrong-tour-package",
   "status": 200,
-  "words": 1088,
+  "words": 1100,
   "findings": [
    {
     "rule": "schema:address",
@@ -22043,7 +22047,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 1,
-   "firstParagraphWords": 43,
+   "firstParagraphWords": 55,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -22102,7 +22106,7 @@
  {
   "url": "/north-east-trip-guide",
   "status": 200,
-  "words": 1369,
+  "words": 1368,
   "findings": [
    {
     "rule": "schema:address",
@@ -22141,7 +22145,7 @@
    ],
    "faqSchemaQuestions": 4,
    "questionHeadings": 3,
-   "firstParagraphWords": 52,
+   "firstParagraphWords": 51,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -22200,7 +22204,7 @@
  {
   "url": "/offbeat-meghalaya",
   "status": 200,
-  "words": 1326,
+  "words": 1325,
   "findings": [
    {
     "rule": "schema:address",
@@ -22239,7 +22243,7 @@
    ],
    "faqSchemaQuestions": 4,
    "questionHeadings": 4,
-   "firstParagraphWords": 49,
+   "firstParagraphWords": 48,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -22298,7 +22302,7 @@
  {
   "url": "/outdoor-venue-shillong",
   "status": 200,
-  "words": 899,
+  "words": 898,
   "findings": [
    {
     "rule": "schema:address",
@@ -22337,7 +22341,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 1,
-   "firstParagraphWords": 46,
+   "firstParagraphWords": 45,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -22843,7 +22847,7 @@
  {
   "url": "/places-to-eat-in-shillong",
   "status": 200,
-  "words": 1036,
+  "words": 1035,
   "findings": [
    {
     "rule": "schema:address",
@@ -22882,7 +22886,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 2,
-   "firstParagraphWords": 32,
+   "firstParagraphWords": 31,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -22938,7 +22942,7 @@
  {
   "url": "/places-to-visit-meghalaya",
   "status": 200,
-  "words": 1834,
+  "words": 1833,
   "findings": [
    {
     "rule": "schema:address",
@@ -22977,7 +22981,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 3,
-   "firstParagraphWords": 36,
+   "firstParagraphWords": 35,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -22987,7 +22991,7 @@
  {
   "url": "/plan-trip-with-ai",
   "status": 200,
-  "words": 949,
+  "words": 950,
   "findings": [
    {
     "rule": "schema:address",
@@ -23031,7 +23035,7 @@
  {
   "url": "/pre-wedding-shoot-meghalaya",
   "status": 200,
-  "words": 950,
+  "words": 949,
   "findings": [
    {
     "rule": "schema:address",
@@ -23070,7 +23074,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 4,
-   "firstParagraphWords": 45,
+   "firstParagraphWords": 44,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -23218,7 +23222,7 @@
  {
   "url": "/pure-veg-restaurant-shillong",
   "status": 200,
-  "words": 1070,
+  "words": 1069,
   "findings": [
    {
     "rule": "schema:address",
@@ -23257,7 +23261,7 @@
    ],
    "faqSchemaQuestions": 4,
    "questionHeadings": 2,
-   "firstParagraphWords": 55,
+   "firstParagraphWords": 54,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -23267,7 +23271,7 @@
  {
   "url": "/rainbow-falls-guide",
   "status": 200,
-  "words": 1267,
+  "words": 1266,
   "findings": [
    {
     "rule": "schema:address",
@@ -23307,7 +23311,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 3,
-   "firstParagraphWords": 65,
+   "firstParagraphWords": 64,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -23774,7 +23778,7 @@
  {
   "url": "/scooty-rental-shillong",
   "status": 200,
-  "words": 962,
+  "words": 961,
   "findings": [
    {
     "rule": "schema:address",
@@ -23813,7 +23817,7 @@
    ],
    "faqSchemaQuestions": 4,
    "questionHeadings": 1,
-   "firstParagraphWords": 53,
+   "firstParagraphWords": 52,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -23823,7 +23827,7 @@
  {
   "url": "/self-drive-car-guwahati",
   "status": 200,
-  "words": 1114,
+  "words": 1105,
   "findings": [
    {
     "rule": "schema:address",
@@ -23862,7 +23866,7 @@
    ],
    "faqSchemaQuestions": 4,
    "questionHeadings": 2,
-   "firstParagraphWords": 64,
+   "firstParagraphWords": 55,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -23872,7 +23876,7 @@
  {
   "url": "/shillong-cherry-blossom-festival",
   "status": 200,
-  "words": 1419,
+  "words": 1418,
   "findings": [
    {
     "rule": "schema:address",
@@ -23911,7 +23915,7 @@
    ],
    "faqSchemaQuestions": 6,
    "questionHeadings": 3,
-   "firstParagraphWords": 48,
+   "firstParagraphWords": 47,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -23990,7 +23994,7 @@
  {
   "url": "/shillong-guide",
   "status": 200,
-  "words": 1268,
+  "words": 1267,
   "findings": [
    {
     "rule": "schema:address",
@@ -24029,7 +24033,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 5,
-   "firstParagraphWords": 49,
+   "firstParagraphWords": 48,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -24099,7 +24103,7 @@
  {
   "url": "/shillong-peak-viewpoint",
   "status": 200,
-  "words": 1418,
+  "words": 1417,
   "findings": [
    {
     "rule": "schema:address",
@@ -24139,7 +24143,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 3,
-   "firstParagraphWords": 67,
+   "firstParagraphWords": 66,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -24225,7 +24229,7 @@
  {
   "url": "/shillong-to-cherrapunji-road-trip",
   "status": 200,
-  "words": 1315,
+  "words": 1331,
   "findings": [
    {
     "rule": "schema:address",
@@ -24264,7 +24268,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 3,
-   "firstParagraphWords": 54,
+   "firstParagraphWords": 70,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -24274,7 +24278,7 @@
  {
   "url": "/shillong-to-dawki-trip",
   "status": 200,
-  "words": 1325,
+  "words": 1324,
   "findings": [
    {
     "rule": "schema:address",
@@ -24313,7 +24317,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 3,
-   "firstParagraphWords": 67,
+   "firstParagraphWords": 66,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -24323,7 +24327,7 @@
  {
   "url": "/shillong-to-nongjrong",
   "status": 200,
-  "words": 1254,
+  "words": 1253,
   "findings": [
    {
     "rule": "schema:address",
@@ -24362,7 +24366,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 4,
-   "firstParagraphWords": 49,
+   "firstParagraphWords": 48,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -24418,7 +24422,7 @@
  {
   "url": "/shillong-tour-package-2-days",
   "status": 200,
-  "words": 1087,
+  "words": 1086,
   "findings": [
    {
     "rule": "schema:address",
@@ -24457,7 +24461,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 1,
-   "firstParagraphWords": 51,
+   "firstParagraphWords": 50,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -24467,7 +24471,7 @@
  {
   "url": "/shillong-travel-guide",
   "status": 200,
-  "words": 1612,
+  "words": 1611,
   "findings": [
    {
     "rule": "schema:address",
@@ -24506,7 +24510,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 3,
-   "firstParagraphWords": 48,
+   "firstParagraphWords": 47,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -24516,7 +24520,7 @@
  {
   "url": "/shillong-vacation-planner",
   "status": 200,
-  "words": 1317,
+  "words": 1316,
   "findings": [
    {
     "rule": "schema:address",
@@ -24555,7 +24559,7 @@
    ],
    "faqSchemaQuestions": 4,
    "questionHeadings": 4,
-   "firstParagraphWords": 49,
+   "firstParagraphWords": 48,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -24565,7 +24569,7 @@
  {
   "url": "/shillong-weekend-trip",
   "status": 200,
-  "words": 1241,
+  "words": 1240,
   "findings": [
    {
     "rule": "schema:address",
@@ -24604,7 +24608,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 3,
-   "firstParagraphWords": 49,
+   "firstParagraphWords": 48,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -24614,7 +24618,7 @@
  {
   "url": "/shnongpdeng-camping",
   "status": 200,
-  "words": 1290,
+  "words": 1289,
   "findings": [
    {
     "rule": "schema:address",
@@ -24654,7 +24658,7 @@
    ],
    "faqSchemaQuestions": 2,
    "questionHeadings": 4,
-   "firstParagraphWords": 61,
+   "firstParagraphWords": 60,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -24664,7 +24668,7 @@
  {
   "url": "/shnongpdeng-camping-guide",
   "status": 200,
-  "words": 1340,
+  "words": 1339,
   "findings": [
    {
     "rule": "schema:address",
@@ -24703,7 +24707,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 3,
-   "firstParagraphWords": 70,
+   "firstParagraphWords": 69,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -24713,7 +24717,7 @@
  {
   "url": "/sikkim-tour-packages",
   "status": 200,
-  "words": 1439,
+  "words": 1440,
   "findings": [
    {
     "rule": "schema:address",
@@ -24813,7 +24817,7 @@
  {
   "url": "/solo-trip-meghalaya",
   "status": 200,
-  "words": 1370,
+  "words": 1369,
   "findings": [
    {
     "rule": "schema:address",
@@ -24852,7 +24856,7 @@
    ],
    "faqSchemaQuestions": 4,
    "questionHeadings": 4,
-   "firstParagraphWords": 38,
+   "firstParagraphWords": 37,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -25225,7 +25229,7 @@
   "seo": {
    "title": "Best Stays in Shillong 2026 — Budget to Luxury | XTSY",
    "titleLen": 53,
-   "desc": "Find the best stays in Shillong. Hostels from ₹399, private rooms from ₹2,399, luxury glasshouse ₹5,999. All at XTSY Travellers Hostel.",
+   "desc": "Find the best stays in Shillong. Hostels from ₹399, private rooms from ₹2,399, luxury glasshouse ₹4,999. All at XTSY Travellers Hostel.",
    "descLen": 135,
    "canonical": "https://xtsy.one/stays-in-shillong",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
@@ -25428,7 +25432,7 @@
  {
   "url": "/suv-rental-shillong",
   "status": 200,
-  "words": 937,
+  "words": 936,
   "findings": [
    {
     "rule": "schema:address",
@@ -25467,7 +25471,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 2,
-   "firstParagraphWords": 49,
+   "firstParagraphWords": 48,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -25477,8 +25481,12 @@
  {
   "url": "/tab-bistro",
   "status": 200,
-  "words": 1257,
+  "words": 1544,
   "findings": [
+   {
+    "rule": "rating:review count",
+    "detail": "26 (expected 142) — \"from TAB Bistro by XTSY and XTSY Travellers Hostel guests on Google, word for word. Read 26 reviews “ ★★★★★ The food was really \""
+   },
    {
     "rule": "placeholder:coming soon",
     "detail": "on. Book a table View the menu WhatsApp us Rooftop terrace · café coming soon North Indian Indo-Chinese Thai Contin"
@@ -25630,7 +25638,7 @@
  {
   "url": "/tandoor-restaurant-shillong",
   "status": 200,
-  "words": 1037,
+  "words": 1036,
   "findings": [
    {
     "rule": "schema:address",
@@ -25669,7 +25677,7 @@
    ],
    "faqSchemaQuestions": 4,
    "questionHeadings": 2,
-   "firstParagraphWords": 48,
+   "firstParagraphWords": 47,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -25877,7 +25885,7 @@
  {
   "url": "/top-restaurants-in-shillong",
   "status": 200,
-  "words": 961,
+  "words": 960,
   "findings": [
    {
     "rule": "schema:address",
@@ -25916,7 +25924,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 3,
-   "firstParagraphWords": 26,
+   "firstParagraphWords": 25,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -25926,7 +25934,7 @@
  {
   "url": "/tour-operators-meghalaya",
   "status": 200,
-  "words": 1122,
+  "words": 1121,
   "findings": [
    {
     "rule": "schema:address",
@@ -25965,7 +25973,7 @@
    ],
    "faqSchemaQuestions": 4,
    "questionHeadings": 2,
-   "firstParagraphWords": 50,
+   "firstParagraphWords": 49,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -25975,7 +25983,7 @@
  {
   "url": "/tour-operators-shillong",
   "status": 200,
-  "words": 1088,
+  "words": 1087,
   "findings": [
    {
     "rule": "schema:address",
@@ -26014,7 +26022,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 1,
-   "firstParagraphWords": 48,
+   "firstParagraphWords": 47,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -26024,7 +26032,7 @@
  {
   "url": "/tours",
   "status": 200,
-  "words": 2981,
+  "words": 3266,
   "findings": [
    {
     "rule": "schema:address",
@@ -26066,7 +26074,7 @@
  {
   "url": "/tours/4n-5d-shillong-meghalaya-tour",
   "status": 200,
-  "words": 856,
+  "words": 889,
   "findings": [
    {
     "rule": "schema:address",
@@ -26111,7 +26119,7 @@
  {
   "url": "/tours/5d-meghalaya-trip-package",
   "status": 200,
-  "words": 738,
+  "words": 789,
   "findings": [
    {
     "rule": "schema:address",
@@ -26146,7 +26154,7 @@
    ],
    "faqSchemaQuestions": 0,
    "questionHeadings": 6,
-   "firstParagraphWords": 44,
+   "firstParagraphWords": 51,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": false
@@ -26156,7 +26164,7 @@
  {
   "url": "/tours/5n-6d-meghalaya-holiday-package",
   "status": 200,
-  "words": 794,
+  "words": 845,
   "findings": [
    {
     "rule": "schema:address",
@@ -26191,7 +26199,7 @@
    ],
    "faqSchemaQuestions": 0,
    "questionHeadings": 6,
-   "firstParagraphWords": 51,
+   "firstParagraphWords": 58,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": false
@@ -26201,7 +26209,7 @@
  {
   "url": "/tours/5n-6d-tawang-tour",
   "status": 200,
-  "words": 995,
+  "words": 1029,
   "findings": [
    {
     "rule": "schema:address",
@@ -26246,7 +26254,7 @@
  {
   "url": "/tours/6d-meghalaya-honeymoon-package",
   "status": 200,
-  "words": 787,
+  "words": 820,
   "findings": [
    {
     "rule": "schema:address",
@@ -26291,7 +26299,7 @@
  {
   "url": "/tours/6d-shillong-meghalaya-tour",
   "status": 200,
-  "words": 803,
+  "words": 854,
   "findings": [
    {
     "rule": "schema:address",
@@ -26326,7 +26334,7 @@
    ],
    "faqSchemaQuestions": 0,
    "questionHeadings": 6,
-   "firstParagraphWords": 49,
+   "firstParagraphWords": 56,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": false
@@ -26336,7 +26344,7 @@
  {
   "url": "/tours/6n-7d-arunachal-pradesh-tour",
   "status": 200,
-  "words": 920,
+  "words": 954,
   "findings": [
    {
     "rule": "schema:address",
@@ -26381,7 +26389,7 @@
  {
   "url": "/tours/6n-7d-meghalaya-tour",
   "status": 200,
-  "words": 882,
+  "words": 915,
   "findings": [
    {
     "rule": "schema:address",
@@ -26426,7 +26434,7 @@
  {
   "url": "/tours/7n-8d-tawang-tour",
   "status": 200,
-  "words": 1037,
+  "words": 1071,
   "findings": [
    {
     "rule": "schema:address",
@@ -26471,7 +26479,7 @@
  {
   "url": "/tours/7n-guwahati-shillong-kaziranga-tour",
   "status": 200,
-  "words": 851,
+  "words": 884,
   "findings": [
    {
     "rule": "schema:address",
@@ -26516,7 +26524,7 @@
  {
   "url": "/tours/alleppey-houseboat-kumarakom-backwaters",
   "status": 200,
-  "words": 825,
+  "words": 860,
   "findings": [
    {
     "rule": "schema:address",
@@ -26560,7 +26568,7 @@
  {
   "url": "/tours/arunachal-bike-expedition-solo-friendly",
   "status": 200,
-  "words": 755,
+  "words": 787,
   "findings": [
    {
     "rule": "schema:address",
@@ -26604,7 +26612,7 @@
  {
   "url": "/tours/arunachal-winter-cultural-festival",
   "status": 200,
-  "words": 945,
+  "words": 979,
   "findings": [
    {
     "rule": "schema:address",
@@ -26649,7 +26657,7 @@
  {
   "url": "/tours/assam-wildlife-tea-heritage",
   "status": 200,
-  "words": 877,
+  "words": 910,
   "findings": [
    {
     "rule": "schema:address",
@@ -26694,7 +26702,7 @@
  {
   "url": "/tours/bali-wellness-culture-retreat",
   "status": 200,
-  "words": 927,
+  "words": 960,
   "findings": [
    {
     "rule": "schema:address",
@@ -26739,7 +26747,7 @@
  {
   "url": "/tours/bhutan-mindful-kingdom-journey",
   "status": 200,
-  "words": 882,
+  "words": 917,
   "findings": [
    {
     "rule": "schema:address",
@@ -26784,7 +26792,7 @@
  {
   "url": "/tours/bumla-pass-bike-expedition",
   "status": 200,
-  "words": 1147,
+  "words": 1181,
   "findings": [
    {
     "rule": "schema:address",
@@ -26829,7 +26837,7 @@
  {
   "url": "/tours/char-dham-winter-pilgrimage-prep",
   "status": 200,
-  "words": 900,
+  "words": 934,
   "findings": [
    {
     "rule": "schema:address",
@@ -26874,7 +26882,7 @@
  {
   "url": "/tours/classic-kerala-kochi-munnar-thekkady-alleppey",
   "status": 200,
-  "words": 982,
+  "words": 1015,
   "findings": [
    {
     "rule": "schema:address",
@@ -26918,7 +26926,7 @@
  {
   "url": "/tours/dawki-crystal-waters-winter-escape",
   "status": 200,
-  "words": 758,
+  "words": 836,
   "findings": [
    {
     "rule": "schema:address",
@@ -26953,7 +26961,7 @@
    ],
    "faqSchemaQuestions": 0,
    "questionHeadings": 6,
-   "firstParagraphWords": 47,
+   "firstParagraphWords": 59,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": false
@@ -26963,7 +26971,7 @@
  {
   "url": "/tours/dharamshala-mcleod-ganj-winter",
   "status": 200,
-  "words": 817,
+  "words": 851,
   "findings": [
    {
     "rule": "schema:address",
@@ -27008,7 +27016,7 @@
  {
   "url": "/tours/double-decker-root-bridge-cherrapunji",
   "status": 200,
-  "words": 841,
+  "words": 921,
   "findings": [
    {
     "rule": "schema:address",
@@ -27043,7 +27051,7 @@
    ],
    "faqSchemaQuestions": 0,
    "questionHeadings": 6,
-   "firstParagraphWords": 47,
+   "firstParagraphWords": 59,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": false
@@ -27053,7 +27061,7 @@
  {
   "url": "/tours/dravidian-architecture-masterclass",
   "status": 200,
-  "words": 996,
+  "words": 1035,
   "findings": [
    {
     "rule": "schema:address",
@@ -27098,7 +27106,7 @@
  {
   "url": "/tours/georgia-wine-mountains-trail",
   "status": 200,
-  "words": 914,
+  "words": 949,
   "findings": [
    {
     "rule": "schema:address",
@@ -27143,7 +27151,7 @@
  {
   "url": "/tours/grand-tamil-nadu-temple-circuit-premium-heritage",
   "status": 200,
-  "words": 1015,
+  "words": 1055,
   "findings": [
    {
     "rule": "schema:address",
@@ -27188,7 +27196,7 @@
  {
   "url": "/tours/great-living-chola-temples-navagraha-circuit",
   "status": 200,
-  "words": 887,
+  "words": 927,
   "findings": [
    {
     "rule": "schema:address",
@@ -27232,7 +27240,7 @@
  {
   "url": "/tours/himachal-yoga-retreat-program",
   "status": 200,
-  "words": 898,
+  "words": 932,
   "findings": [
    {
     "rule": "schema:address",
@@ -27277,7 +27285,7 @@
  {
   "url": "/tours/kerala-temple-trail-guruvayur-to-padmanabhaswamy",
   "status": 200,
-  "words": 885,
+  "words": 920,
   "findings": [
    {
     "rule": "schema:address",
@@ -27321,7 +27329,7 @@
  {
   "url": "/tours/kerala-winter-backwaters-paradise",
   "status": 200,
-  "words": 813,
+  "words": 848,
   "findings": [
    {
     "rule": "schema:address",
@@ -27366,7 +27374,7 @@
  {
   "url": "/tours/khaddum-expedition-krem-chympe",
   "status": 200,
-  "words": 803,
+  "words": 869,
   "findings": [
    {
     "rule": "schema:address",
@@ -27374,8 +27382,8 @@
    }
   ],
   "seo": {
-   "title": "Khaddum Expedition — Krem Chympe — 4 Days | XTSY",
-   "titleLen": 48,
+   "title": "Khaddum Expedition — Krem Chympe — 4 Days from ₹9,600 | XTSY",
+   "titleLen": 60,
    "desc": "Epic underground adventure through India's fifth longest cave system featuring limestone passages, underground rivers, cave boating, and a trek to the",
    "descLen": 150,
    "canonical": "https://xtsy.one/tours/khaddum-expedition-krem-chympe",
@@ -27401,7 +27409,7 @@
    ],
    "faqSchemaQuestions": 0,
    "questionHeadings": 6,
-   "firstParagraphWords": 52,
+   "firstParagraphWords": 58,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": false
@@ -27411,7 +27419,7 @@
  {
   "url": "/tours/kodaikanal-madurai-hills-and-temples",
   "status": 200,
-  "words": 917,
+  "words": 954,
   "findings": [
    {
     "rule": "schema:address",
@@ -27455,7 +27463,7 @@
  {
   "url": "/tours/kodaikanal-winter-hill-retreat",
   "status": 200,
-  "words": 746,
+  "words": 785,
   "findings": [
    {
     "rule": "schema:address",
@@ -27500,7 +27508,7 @@
  {
   "url": "/tours/kohima-wwii-heritage-tribal-culture",
   "status": 200,
-  "words": 865,
+  "words": 901,
   "findings": [
    {
     "rule": "schema:address",
@@ -27545,7 +27553,7 @@
  {
   "url": "/tours/krang-suri-waterfall-budget-getaway",
   "status": 200,
-  "words": 706,
+  "words": 784,
   "findings": [
    {
     "rule": "schema:address",
@@ -27580,7 +27588,7 @@
    ],
    "faqSchemaQuestions": 0,
    "questionHeadings": 6,
-   "firstParagraphWords": 46,
+   "firstParagraphWords": 58,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": false
@@ -27590,7 +27598,7 @@
  {
   "url": "/tours/kullu-valley-winter-adventure",
   "status": 200,
-  "words": 773,
+  "words": 807,
   "findings": [
    {
     "rule": "schema:address",
@@ -27635,7 +27643,7 @@
  {
   "url": "/tours/madurai-rameswaram-kanyakumari-temple-trail",
   "status": 200,
-  "words": 919,
+  "words": 960,
   "findings": [
    {
     "rule": "schema:address",
@@ -27679,7 +27687,7 @@
  {
   "url": "/tours/mahabalipuram-pondicherry-chennai-heritage-coast",
   "status": 200,
-  "words": 890,
+  "words": 931,
   "findings": [
    {
     "rule": "schema:address",
@@ -27723,7 +27731,7 @@
  {
   "url": "/tours/manipur-loktak-lake-winter-discovery",
   "status": 200,
-  "words": 786,
+  "words": 819,
   "findings": [
    {
     "rule": "schema:address",
@@ -27768,7 +27776,7 @@
  {
   "url": "/tours/meghalaya-biodiversity-research-expedition",
   "status": 200,
-  "words": 1009,
+  "words": 1074,
   "findings": [
    {
     "rule": "schema:address",
@@ -27803,7 +27811,7 @@
    ],
    "faqSchemaQuestions": 0,
    "questionHeadings": 6,
-   "firstParagraphWords": 51,
+   "firstParagraphWords": 57,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": false
@@ -27813,7 +27821,7 @@
  {
   "url": "/tours/meghalaya-waterfalls-budget-circuit",
   "status": 200,
-  "words": 728,
+  "words": 806,
   "findings": [
    {
     "rule": "schema:address",
@@ -27848,7 +27856,7 @@
    ],
    "faqSchemaQuestions": 0,
    "questionHeadings": 6,
-   "firstParagraphWords": 46,
+   "firstParagraphWords": 58,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": false
@@ -27858,7 +27866,7 @@
  {
   "url": "/tours/morocco-culture-desert-caravan",
   "status": 200,
-  "words": 987,
+  "words": 1022,
   "findings": [
    {
     "rule": "schema:address",
@@ -27903,7 +27911,7 @@
  {
   "url": "/tours/munnar-tea-hills-eravikulam",
   "status": 200,
-  "words": 845,
+  "words": 880,
   "findings": [
    {
     "rule": "schema:address",
@@ -27947,7 +27955,7 @@
  {
   "url": "/tours/nagaland-dzukou-valley-kohima-heritage",
   "status": 200,
-  "words": 900,
+  "words": 936,
   "findings": [
    {
     "rule": "schema:address",
@@ -27992,7 +28000,7 @@
  {
   "url": "/tours/nainital-winter-lake-serenity",
   "status": 200,
-  "words": 779,
+  "words": 812,
   "findings": [
    {
     "rule": "schema:address",
@@ -28037,7 +28045,7 @@
  {
   "url": "/tours/ne-india-solo-bike-circuit-meghalaya",
   "status": 200,
-  "words": 662,
+  "words": 697,
   "findings": [
    {
     "rule": "schema:address",
@@ -28081,7 +28089,7 @@
  {
   "url": "/tours/nepal-himalayan-culture-trek-lite",
   "status": 200,
-  "words": 858,
+  "words": 893,
   "findings": [
    {
     "rule": "schema:address",
@@ -28126,7 +28134,7 @@
  {
   "url": "/tours/north-sikkim-winter-expedition",
   "status": 200,
-  "words": 917,
+  "words": 950,
   "findings": [
    {
     "rule": "schema:address",
@@ -28171,7 +28179,7 @@
  {
   "url": "/tours/northeast-ecological-immersion",
   "status": 200,
-  "words": 1013,
+  "words": 1048,
   "findings": [
    {
     "rule": "schema:address",
@@ -28216,7 +28224,7 @@
  {
   "url": "/tours/ooty-coonoor-nilgiri-mountain-railway",
   "status": 200,
-  "words": 842,
+  "words": 879,
   "findings": [
    {
     "rule": "schema:address",
@@ -28260,7 +28268,7 @@
  {
   "url": "/tours/pancha-bhoota-sthalam-the-five-elements-temples",
   "status": 200,
-  "words": 931,
+  "words": 971,
   "findings": [
    {
     "rule": "schema:address",
@@ -28304,7 +28312,7 @@
  {
   "url": "/tours/pelling-kanchenjunga-winter-views",
   "status": 200,
-  "words": 769,
+  "words": 800,
   "findings": [
    {
     "rule": "schema:address",
@@ -28349,7 +28357,7 @@
  {
   "url": "/tours/phe-phe-moopun-waterfalls-adventure",
   "status": 200,
-  "words": 787,
+  "words": 867,
   "findings": [
    {
     "rule": "schema:address",
@@ -28384,7 +28392,7 @@
    ],
    "faqSchemaQuestions": 0,
    "questionHeadings": 6,
-   "firstParagraphWords": 42,
+   "firstParagraphWords": 54,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": false
@@ -28394,7 +28402,7 @@
  {
   "url": "/tours/sacred-temples-of-south-india-9-day-spiritual-journey",
   "status": 200,
-  "words": 925,
+  "words": 965,
   "findings": [
    {
     "rule": "schema:address",
@@ -28439,7 +28447,7 @@
  {
   "url": "/tours/shillong-winter-cultural-sojourn",
   "status": 200,
-  "words": 751,
+  "words": 830,
   "findings": [
    {
     "rule": "schema:address",
@@ -28447,7 +28455,7 @@
    }
   ],
   "seo": {
-   "title": "Shillong Winter Cultural Sojourn — 2 Days from ₹7,999 | XTSY",
+   "title": "Shillong Winter Cultural Sojourn — 2 Days from ₹4,800 | XTSY",
    "titleLen": 60,
    "desc": "Immerse in the Scotland of East during crisp winter months — explore colonial heritage, vibrant markets, and traditional Khasi culture.",
    "descLen": 135,
@@ -28474,7 +28482,7 @@
    ],
    "faqSchemaQuestions": 0,
    "questionHeadings": 6,
-   "firstParagraphWords": 45,
+   "firstParagraphWords": 57,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": false
@@ -28484,7 +28492,7 @@
  {
   "url": "/tours/shimla-manali-solang-classic",
   "status": 200,
-  "words": 869,
+  "words": 903,
   "findings": [
    {
     "rule": "schema:address",
@@ -28528,7 +28536,7 @@
  {
   "url": "/tours/sikkim-peaceful-winter-retreat",
   "status": 200,
-  "words": 763,
+  "words": 794,
   "findings": [
    {
     "rule": "schema:address",
@@ -28573,7 +28581,7 @@
  {
   "url": "/tours/solo-female-traveller-ne-cultural-trail",
   "status": 200,
-  "words": 662,
+  "words": 693,
   "findings": [
    {
     "rule": "schema:address",
@@ -28617,7 +28625,7 @@
  {
   "url": "/tours/spiti-valley-circuit-via-kinnaur",
   "status": 200,
-  "words": 1048,
+  "words": 1081,
   "findings": [
    {
     "rule": "schema:address",
@@ -28661,7 +28669,7 @@
  {
   "url": "/tours/sri-lanka-heritage-wildlife-loop",
   "status": 200,
-  "words": 983,
+  "words": 1018,
   "findings": [
    {
     "rule": "schema:address",
@@ -28706,7 +28714,7 @@
  {
   "url": "/tours/tawang-monastery-exploration",
   "status": 200,
-  "words": 1071,
+  "words": 1106,
   "findings": [
    {
     "rule": "schema:address",
@@ -28751,7 +28759,7 @@
  {
   "url": "/tours/thailand-nature-culture-escape",
   "status": 200,
-  "words": 915,
+  "words": 950,
   "findings": [
    {
     "rule": "schema:address",
@@ -28796,7 +28804,7 @@
  {
   "url": "/tours/thekkady-wildlife-spice-winter",
   "status": 200,
-  "words": 739,
+  "words": 774,
   "findings": [
    {
     "rule": "schema:address",
@@ -28841,7 +28849,7 @@
  {
   "url": "/tours/tri-nation-himalayan-motorbike-expedition",
   "status": 200,
-  "words": 654,
+  "words": 689,
   "findings": [
    {
     "rule": "schema:address",
@@ -28885,7 +28893,7 @@
  {
   "url": "/tours/tripura-heritage-craft-trail",
   "status": 200,
-  "words": 781,
+  "words": 816,
   "findings": [
    {
     "rule": "schema:address",
@@ -28930,7 +28938,7 @@
  {
   "url": "/tours/turkey-history-landscape-route",
   "status": 200,
-  "words": 978,
+  "words": 1013,
   "findings": [
    {
     "rule": "schema:address",
@@ -28975,7 +28983,7 @@
  {
   "url": "/tours/varkala-cliffs-kovalam-trivandrum",
   "status": 200,
-  "words": 897,
+  "words": 932,
   "findings": [
    {
     "rule": "schema:address",
@@ -29019,7 +29027,7 @@
  {
   "url": "/tours/vietnam-discovery-trail",
   "status": 200,
-  "words": 969,
+  "words": 1004,
   "findings": [
    {
     "rule": "schema:address",
@@ -29064,7 +29072,7 @@
  {
   "url": "/tours/wari-chora-hidden-gem-of-meghalaya",
   "status": 200,
-  "words": 839,
+  "words": 903,
   "findings": [
    {
     "rule": "schema:address",
@@ -29099,7 +29107,7 @@
    ],
    "faqSchemaQuestions": 0,
    "questionHeadings": 6,
-   "firstParagraphWords": 49,
+   "firstParagraphWords": 55,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": false
@@ -29109,7 +29117,7 @@
  {
   "url": "/tours/wilderness-survival-camp-winter",
   "status": 200,
-  "words": 903,
+  "words": 940,
   "findings": [
    {
     "rule": "schema:address",
@@ -29154,7 +29162,7 @@
  {
   "url": "/tours/winter-spiti-snow-expedition",
   "status": 200,
-  "words": 913,
+  "words": 947,
   "findings": [
    {
     "rule": "schema:address",
@@ -29198,7 +29206,7 @@
  {
   "url": "/tours/xtsy-270-adventure-couple-circuit",
   "status": 200,
-  "words": 1477,
+  "words": 1513,
   "findings": [
    {
     "rule": "schema:address",
@@ -29243,7 +29251,7 @@
  {
   "url": "/tours/xtsy-270-romantic-meghalaya-escape",
   "status": 200,
-  "words": 1310,
+  "words": 1343,
   "findings": [
    {
     "rule": "schema:address",
@@ -29288,7 +29296,7 @@
  {
   "url": "/tours/xtsy-solo-traveller-pass-meghalaya",
   "status": 200,
-  "words": 652,
+  "words": 687,
   "findings": [
    {
     "rule": "schema:address",
@@ -29332,7 +29340,7 @@
  {
   "url": "/travel-agency-shillong",
   "status": 200,
-  "words": 1138,
+  "words": 1137,
   "findings": [
    {
     "rule": "schema:address",
@@ -29371,7 +29379,7 @@
    ],
    "faqSchemaQuestions": 4,
    "questionHeadings": 2,
-   "firstParagraphWords": 50,
+   "firstParagraphWords": 49,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -29520,7 +29528,7 @@
  {
   "url": "/trekking-in-meghalaya",
   "status": 200,
-  "words": 1548,
+  "words": 1547,
   "findings": [
    {
     "rule": "schema:address",
@@ -29559,7 +29567,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 3,
-   "firstParagraphWords": 49,
+   "firstParagraphWords": 48,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -29569,7 +29577,7 @@
  {
   "url": "/tripura-tour-packages",
   "status": 200,
-  "words": 1420,
+  "words": 1421,
   "findings": [
    {
     "rule": "schema:address",
@@ -29618,7 +29626,7 @@
  {
   "url": "/umiam-lake-shillong",
   "status": 200,
-  "words": 1260,
+  "words": 1259,
   "findings": [
    {
     "rule": "schema:address",
@@ -29658,7 +29666,7 @@
    ],
    "faqSchemaQuestions": 2,
    "questionHeadings": 4,
-   "firstParagraphWords": 64,
+   "firstParagraphWords": 63,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -29875,7 +29883,7 @@
  {
   "url": "/wedding-catering-shillong",
   "status": 200,
-  "words": 977,
+  "words": 976,
   "findings": [
    {
     "rule": "schema:address",
@@ -29914,7 +29922,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 2,
-   "firstParagraphWords": 34,
+   "firstParagraphWords": 33,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -29924,7 +29932,7 @@
  {
   "url": "/weekend-meghalaya-trip",
   "status": 200,
-  "words": 1197,
+  "words": 1196,
   "findings": [
    {
     "rule": "schema:address",
@@ -29963,7 +29971,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 4,
-   "firstParagraphWords": 46,
+   "firstParagraphWords": 45,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -29973,7 +29981,7 @@
  {
   "url": "/wei-sawdong-falls-guide",
   "status": 200,
-  "words": 1272,
+  "words": 1271,
   "findings": [
    {
     "rule": "schema:address",
@@ -30013,7 +30021,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 3,
-   "firstParagraphWords": 68,
+   "firstParagraphWords": 67,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -30023,7 +30031,7 @@
  {
   "url": "/wei-sawdong-falls-meghalaya",
   "status": 200,
-  "words": 1364,
+  "words": 1363,
   "findings": [
    {
     "rule": "schema:address",
@@ -30063,7 +30071,7 @@
    ],
    "faqSchemaQuestions": 2,
    "questionHeadings": 4,
-   "firstParagraphWords": 68,
+   "firstParagraphWords": 67,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true
@@ -30122,8 +30130,12 @@
  {
   "url": "/work-from-home",
   "status": 200,
-  "words": 550,
+  "words": 859,
   "findings": [
+   {
+    "rule": "rating:review count",
+    "detail": "14 (expected 252) — \"orners and long stays, word for word from Google reviews of XTSY Travellers Hostel. Read 14 reviews “ ★★★★★ My fourth visit to X\""
+   },
    {
     "rule": "schema:address",
     "detail": "XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}"
@@ -30757,7 +30769,7 @@
  {
   "url": "/xtsy-270",
   "status": 200,
-  "words": 632,
+  "words": 1214,
   "findings": [
    {
     "rule": "schema:address",
@@ -30779,7 +30791,7 @@
     "Experience by XTSY: The Romantic Couple Stay in India is now at New Shillong, Meghalaya"
    ],
    "ogImage": true,
-   "imgs": 9,
+   "imgs": 73,
    "imgsNoAlt": 0
   },
   "aeo": {
@@ -30896,7 +30908,7 @@
  {
   "url": "/xtsy-vs-zostel",
   "status": 200,
-  "words": 657,
+  "words": 658,
   "findings": [
    {
     "rule": "policy:pets",
@@ -30995,7 +31007,7 @@
  {
   "url": "/zip-lining-meghalaya",
   "status": 200,
-  "words": 984,
+  "words": 983,
   "findings": [
    {
     "rule": "schema:address",
@@ -31034,7 +31046,7 @@
    ],
    "faqSchemaQuestions": 3,
    "questionHeadings": 1,
-   "firstParagraphWords": 46,
+   "firstParagraphWords": 45,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": true

@@ -10,11 +10,11 @@
   },
   "/llms.txt": {
    "status": 200,
-   "bytes": 7593
+   "bytes": 7730
   },
   "/llms-full.txt": {
    "status": 200,
-   "bytes": 11585
+   "bytes": 11869
   }
  },
  "info": {
@@ -31,41 +31,44 @@
   "schema:address": {
    "pages": 639,
    "examples": [
+    "/xtsy-vs-zostel — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
     "/ — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
-    "/faq — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
-    "/experience-by-xtsy — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
     "/about/xtsy-facts — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
     "/about/xtsy-facts — XTSY: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
-    "/tours — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
-    "/work-from-home — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
-    "/xtsy-rentals — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
-    "/pet-friendly — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
+    "/safety-house-rules — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
+    "/about — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
     "/female-travellers — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
-    "/xtsy-adventure-campsite-dawki — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
-    "/xtsy-vs-zostel — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}"
+    "/xtsy-rentals — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
+    "/faq — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
+    "/privacy-policy — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
+    "/work-from-home — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
+    "/pricing-cancellation-policy — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}"
+   ]
+  },
+  "rating:review count": {
+   "pages": 5,
+   "examples": [
+    "/ — 140 (expected 142) — \"s from guests of XTSY Travellers Hostel and TAB Bistro by XTSY. 9.4 on Booking.com. Read 140 reviews “ ★★★★★ We stayed in the gl\"",
+    "/work-from-home — 14 (expected 252) — \"orners and long stays, word for word from Google reviews of XTSY Travellers Hostel. Read 14 reviews “ ★★★★★ My fourth visit to X\"",
+    "/tab-bistro — 26 (expected 142) — \"from TAB Bistro by XTSY and XTSY Travellers Hostel guests on Google, word for word. Read 26 reviews “ ★★★★★ The food was really \"",
+    "/hostel-near-me — 252 (expected 142) — \"University — a quiet, green base with TAB Bistro on site. Dorm beds from ₹399 , 4.7★ from 252 Google reviews. Get Directions Che\"",
+    "/best-hostel-in-shillong — 481 (expected 252) — \"y, groups of up to 6, no pets Guest rating 4.7★ from 252 Google reviews 7.3/10 on ixigo (481 reviews); 8.0/10 on Hostelworld (24)\""
    ]
   },
   "aeo:no FAQ or question headings": {
    "pages": 3,
    "examples": [
-    "/terms-of-service — ",
     "/privacy-policy — ",
+    "/terms-of-service — ",
     "/expeditions — "
    ]
   },
   "placeholder:coming soon": {
    "pages": 3,
    "examples": [
-    "/merch — lso ask Is XTSY merchandise available to buy now? The collection is coming soon. The page offers a Notify me enquiry r",
     "/tab-bistro — on. Book a table View the menu WhatsApp us Rooftop terrace · café coming soon North Indian Indo-Chinese Thai Contin",
+    "/merch — lso ask Is XTSY merchandise available to buy now? The collection is coming soon. The page offers a Notify me enquiry r",
     "/restaurant-in-shillong —  Dining A rooftop terrace with panoramic views — the rooftop café is coming soon. Traveller's Feast Multi-cuisine din"
-   ]
-  },
-  "seo:duplicate description": {
-   "pages": 2,
-   "examples": [
-    "/experience-by-xtsy — 2 pages: stay in a 270° panoramic glass suite for two in new shillong township, meghalaya",
-    "/xtsy-270 — 2 pages: stay in a 270° panoramic glass suite for two in new shillong township, meghalaya"
    ]
   },
   "policy:pets": {
@@ -75,11 +78,11 @@
     "/best-hostel-in-shillong — nd birds welcome, dogs by breed and size 18+ only, groups of up to 6, no pets Guest rating 4.7★ from 252 Google reviews"
    ]
   },
-  "rating:review count": {
+  "seo:duplicate description": {
    "pages": 2,
    "examples": [
-    "/hostel-near-me — 252 (expected 142) — \"University — a quiet, green base with TAB Bistro on site. Dorm beds from ₹399 , 4.7★ from 252 Google reviews. Get Directions Che\"",
-    "/best-hostel-in-shillong — 481 (expected 252) — \"y, groups of up to 6, no pets Guest rating 4.7★ from 252 Google reviews 7.3/10 on ixigo (481 reviews); 8.0/10 on Hostelworld (24)\""
+    "/experience-by-xtsy — 2 pages: stay in a 270° panoramic glass suite for two in new shillong township, meghalaya",
+    "/xtsy-270 — 2 pages: stay in a 270° panoramic glass suite for two in new shillong township, meghalaya"
    ]
   },
   "policy:cancellation/refund claim": {
