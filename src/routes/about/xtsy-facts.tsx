@@ -32,7 +32,7 @@ const organizationSchema = {
     BRAND.coreDomains[1],
     'https://www.youtube.com/@XTSY_Voyage',
     'https://www.instagram.com/xtsy.one',
-    'https://maps.app.goo.gl/UnP9PfbSJdafMFMM6',
+    'https://maps.google.com/maps?cid=8608608996389917352',
   ],
   subOrganization: [
     { '@type': 'LodgingBusiness', name: 'XTSY Travellers Hostel', url: 'https://xtsy.one/best-hostel-in-shillong' },

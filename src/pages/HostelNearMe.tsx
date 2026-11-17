@@ -46,7 +46,7 @@ const HostelNearMe = memo(() => {
       addressCountry: 'IN',
     },
     geo: { '@type': 'GeoCoordinates', latitude: 25.6025457, longitude: 91.9448902 },
-    hasMap: 'https://maps.app.goo.gl/UnP9PfbSJdafMFMM6',
+    hasMap: 'https://maps.google.com/maps?cid=8608608996389917352',
     areaServed: [
       { '@type': 'City', name: 'Shillong' },
       { '@type': 'AdministrativeArea', name: 'East Khasi Hills' },
@@ -176,7 +176,7 @@ const HostelNearMe = memo(() => {
             <div className="flex flex-wrap items-center justify-center gap-3">
               <Button size="lg" asChild>
                 <a
-                  href="https://maps.app.goo.gl/UnP9PfbSJdafMFMM6"
+                  href="https://maps.google.com/maps?cid=8608608996389917352"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
