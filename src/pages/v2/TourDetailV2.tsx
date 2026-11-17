@@ -289,6 +289,7 @@ export default function TourDetailV2() {
             </div>
           </aside>
         </section>
+        <RelatedTours current={tour} currentSlug={slug ?? ''} />
       </PageShell>
       <TourBookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} tourPackage={tour} />
     </>
@@ -356,3 +357,27 @@ function WhereYouStay({ slug }: { slug: string }) {
   );
 }
 
+
+/** Three related tours, same region first, so every tour page links to others (crawl inlinks). */
+function RelatedTours({ current, currentSlug }: { current: TourPackage; currentSlug: string }) {
+  const all = getAllTours().filter((t) => toSlug(t.title) !== currentSlug && toSlug(t.title) !== 'meghalaya-group-trip-6n-7d');
+  const score = (t: TourPackage) => (t.location === current.location ? 2 : 0) + (t.category === current.category ? 1 : 0);
+  const picks = [...all].sort((a, b) => score(b) - score(a)).slice(0, 3);
+  if (!picks.length) return null;
+  return (
+    <section aria-labelledby="related-tours" className={`${PAD} pb-12`}>
+      <h2 id="related-tours" className="xt-display m-0 text-[32px] leading-none">Related tours</h2>
+      <ul className="m-0 mt-5 grid list-none gap-4 p-0 sm:grid-cols-3">
+        {picks.map((t) => (
+          <li key={t.id}>
+            <Link to={`/tours/${toSlug(t.title)}`} className="flex min-h-12 flex-col gap-1 rounded-2xl border border-xt-line bg-white p-5 text-xt-ink no-underline hover:border-xt-crimson">
+              <span className="text-[16px] font-extrabold">{t.title}</span>
+              <span className="text-[14px] text-xt-mute">{t.location} · {t.duration}</span>
+            </Link>
+          </li>
+        ))}
+        </ul>
+      <Link to="/tours" className="mt-4 inline-flex min-h-12 items-center text-[15px] font-bold text-xt-crimson">See all tours →</Link>
+    </section>
+  );
+}

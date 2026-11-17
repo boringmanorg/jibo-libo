@@ -1,6 +1,6 @@
 
 /** Owner-confirmed Google Maps pin for the gate of XTSY Travellers Hostel. */
-export const XTSY_MAPS_URL = 'https://maps.app.goo.gl/UnP9PfbSJdafMFMM6';
+export const XTSY_MAPS_URL = 'https://maps.google.com/maps?cid=8608608996389917352';
 /**
  * Sitewide JSON-LD entities, scoped per route.
  * WebSite + Organization stay in __root; Hostel is homepage-only and

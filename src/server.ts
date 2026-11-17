@@ -3,7 +3,7 @@ import "./lib/error-capture";
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { GONE_SLUGS } from "./data/seoGoneSlugs";
 import { renderErrorPage } from "./lib/error-page";
-import { withPageCache } from "./lib/pageCache";
+import { withPageCache, cacheKey } from "./lib/pageCache";
 import { serverOnlySecurityHeaders } from "./utils/productionSecurityHeaders";
 
 type ServerEntry = {
@@ -138,6 +138,27 @@ export function canonicalHostRedirect(request: Request): Response | null {
   });
 }
 
+/**
+ * Public HTML (same rules as the page cache: no booking/admin/api, no cookies) may be kept by the
+ * CDN for an hour; browsers always revalidate. The build id is not in the URL, so a publish can
+ * take up to an hour to show at the edge (stale-while-revalidate refreshes in the background).
+ */
+function withEdgeCacheHeaders(request: Request, response: Response): Response {
+  let key: string | null = null;
+  try { key = cacheKey(request); } catch { key = null; }
+  if (!key || response.status !== 200) return response;
+  if (!(response.headers.get("content-type") ?? "").includes("text/html") || response.headers.has("set-cookie")) return response;
+  const value = "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400";
+  try {
+    response.headers.set("cache-control", value);
+    return response;
+  } catch {
+    const out = new Response(response.body, response);
+    out.headers.set("cache-control", value);
+    return out;
+  }
+}
+
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     const hostRedirect = canonicalHostRedirect(request);
@@ -149,7 +170,7 @@ export default {
       const response = await withPageCache(request, ctx, async () =>
         normalizeCatastrophicSsrResponse(await handler.fetch(request.clone(), env, ctx)),
       );
-      return withFrameProtection(withGoneStatus(request, response));
+      return withEdgeCacheHeaders(request, withFrameProtection(withGoneStatus(request, response)));
     } catch (error) {
       console.error(error);
       return new Response(renderErrorPage(), {

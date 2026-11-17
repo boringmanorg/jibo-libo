@@ -47,7 +47,7 @@ const PROFILES: Array<[string, string]> = [
   ['POS by XTSY', BRAND.coreDomains[1]],
   ['YouTube', 'https://www.youtube.com/@XTSY_Voyage'],
   ['Instagram', 'https://www.instagram.com/xtsy.one'],
-  ['Google Maps (property)', 'https://maps.app.goo.gl/UnP9PfbSJdafMFMM6'],
+  ['Google Maps (property)', 'https://maps.google.com/maps?cid=8608608996389917352'],
 ];
 
 const FactTable = ({ rows }: { rows: Array<[string, string]> }) => (

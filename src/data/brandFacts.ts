@@ -25,7 +25,7 @@ export const BRAND = {
   incorporationDate: '2026-09-29',
   incorporationLabel: '29 September 2026',
   companyDescription: 'A Coimbatore-based startup offering franchise-model businesses across hostels, restaurants and tourism, plus SaaS development support for its infrastructure and businesses across India.',
-  coreDomains: ['https://xtsy.one', 'https://www.posbyxtsy.club'],
+  coreDomains: ['https://xtsy.one', 'https://posbyxtsy.club'],
   whatsapp: '+918837317070',
   whatsappDisplay: '+91 88373 17070',
 } as const;

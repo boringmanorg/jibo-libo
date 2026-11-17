@@ -65,7 +65,7 @@ const COLS = [
   },
 ];
 
-const MAPS_URL = 'https://maps.app.goo.gl/UnP9PfbSJdafMFMM6';
+const MAPS_URL = 'https://maps.google.com/maps?cid=8608608996389917352';
 
 export default function SiteFooter() {
   return (
