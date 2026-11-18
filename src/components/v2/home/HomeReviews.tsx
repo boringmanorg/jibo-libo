@@ -6,26 +6,26 @@
 import { useMemo, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
-import { featuredHostelReviews, featuredBistroReviews } from '@/data/featuredGoogleReviews';
-import { googleReviews } from '@/data/googleReviews';
+import { featuredBistroReviews } from '@/data/featuredGoogleReviews';
+import { hostelGoogleReviewSnapshot } from '@/data/hostelGoogleReviewSnapshot';
 import { bistroGoogleReviews } from '@/data/bistroGoogleReviews';
 import { hostelOtaReviews } from '@/data/hostelOtaReviews';
 import { GOOGLE_RATING, BISTRO_GOOGLE_RATING } from '@/data/brandFacts';
 import { PlatformScores } from '@/components/reviews/PlatformScores';
 import { Button } from '@/components/ui/button';
 
-type R = { name: string; rating: number; ratingScale?: number; comment: string; date: string; property: string; source: string; ownerReply?: string };
+type R = { reviewId?: string; name: string; rating: number; ratingScale?: number; comment: string; date: string; property: string; source: string; ownerReply?: string };
 
 function allReviews(): R[] {
   const seen = new Set<string>();
   const out: R[] = [];
   const add = (r: Omit<R, 'source'> & { source?: string }) => {
-    const key = `${r.property}|${r.source ?? 'Google'}|${r.name}|${r.comment.replace(/\s+/g, ' ').slice(0, 40)}`.toLowerCase();
-    if (seen.has(key) || !r.comment.trim()) return;
+    const key = r.reviewId ?? `${r.property}|${r.source ?? 'Google'}|${r.name}|${r.comment.replace(/\s+/g, ' ').slice(0, 40)}`.toLowerCase();
+    if (seen.has(key)) return;
     seen.add(key);
     out.push({ ...r, property: r.property || 'XTSY Travellers Hostel', source: r.source ?? 'Google' });
   };
-  [...bistroGoogleReviews, ...hostelOtaReviews, ...featuredHostelReviews, ...featuredBistroReviews, ...googleReviews].forEach(add);
+  [...hostelGoogleReviewSnapshot.reviews, ...bistroGoogleReviews, ...hostelOtaReviews, ...featuredBistroReviews].forEach(add);
   return out;
 }
 
@@ -86,7 +86,7 @@ export function Reviews({ extra = [], match, bistro, hostel, badge = 'Guest revi
   const rating = bistro ? BISTRO_GOOGLE_RATING : GOOGLE_RATING;
 
   return (
-    <section className="px-4 pb-20 sm:px-8 lg:px-14">
+    <section className="mx-auto w-full max-w-[1600px] px-4 pb-20 sm:px-8 lg:px-14">
       <div className="relative overflow-hidden rounded-[32px] bg-xt-night px-5 py-14 text-white sm:px-10 lg:px-14 lg:py-16">
         <div aria-hidden className="pointer-events-none absolute -top-40 left-1/2 h-80 w-[70%] -translate-x-1/2 rounded-full bg-xt-crimson/25 blur-3xl" />
         <div className="relative mx-auto flex max-w-[860px] flex-col items-center gap-4 text-center">
@@ -95,7 +95,7 @@ export function Reviews({ extra = [], match, bistro, hostel, badge = 'Guest revi
           <p className="m-0 max-w-[620px] text-[16px] leading-relaxed text-xt-fog sm:text-[18px]">{description}</p>
           {bistro ? <p className="m-0 font-bold text-xt-paper">{rating.value} on Google from {rating.count} reviews · TAB Bistro by XTSY</p> : !extra.length && <PlatformScores />}
           <Button type="button" onClick={() => setAll(true)} className="xt-btn mt-2 flex h-14 items-center gap-2 rounded-full bg-xt-crimson px-7 text-[16px] font-extrabold text-xt-paper hover:bg-xt-crimson/90">
-            Read {reviews.length} {reviews.length === 1 ? 'review' : 'reviews'} <ArrowRight className="h-5 w-5" />
+            Read guest reviews <ArrowRight className="h-5 w-5" />
           </Button>
         </div>
 
@@ -122,7 +122,7 @@ export function Reviews({ extra = [], match, bistro, hostel, badge = 'Guest revi
       <Dialog open={all} onOpenChange={setAll}>
         <DialogContent className="max-h-[88vh] max-w-3xl overflow-y-auto rounded-3xl bg-xt-paper text-xt-ink">
           <DialogTitle className="text-[22px]">{badge}</DialogTitle>
-          <DialogDescription className="text-xt-mute">{reviews.length} saved written reviews. {bistro ? 'TAB Bistro by XTSY' : 'XTSY Travellers Hostel'} is rated {rating.value}★ from {rating.count} Google reviews. Platform totals include reviews not available here.</DialogDescription>
+          <DialogDescription className="text-xt-mute">{bistro ? 'Google reviews from TAB Bistro by XTSY, alongside matching hostel food reviews.' : `The complete saved hostel Google feed contains ${hostelGoogleReviewSnapshot.total} reviews, including ${hostelGoogleReviewSnapshot.reviews.filter((r) => r.comment.trim()).length} written reviews and ${hostelGoogleReviewSnapshot.reviews.filter((r) => !r.comment.trim()).length} rating-only reviews. Bistro and other platforms are separate.`}</DialogDescription>
           <div className="flex flex-wrap gap-2">
             {(!match || bistro) && ([['all', 'All'], ['hostel', 'XTSY Travellers Hostel'], ['bistro', 'TAB Bistro by XTSY']] as const).map(([k, l]) => (
               <Button key={k} type="button" aria-pressed={tab === k} onClick={() => setTab(k)} className={`min-h-12 h-auto whitespace-normal rounded-full px-4 text-[14px] font-bold ${tab === k ? 'bg-xt-crimson text-xt-paper' : 'bg-xt-cream text-xt-ink'}`}>{l}</Button>
@@ -136,7 +136,7 @@ export function Reviews({ extra = [], match, bistro, hostel, badge = 'Guest revi
             {list.map((r, i) => (
               <li key={r.name + i} className="flex flex-col gap-2 rounded-2xl bg-white p-4">
                 <Stars n={r.rating} scale={r.ratingScale} />
-                <p className="m-0 whitespace-pre-line text-[15px] leading-relaxed">{r.comment}</p>
+                {r.comment.trim() ? <p className="m-0 whitespace-pre-line text-[15px] leading-relaxed">{r.comment}</p> : <p className="m-0 text-[15px] text-xt-mute">Rating only — no written comment.</p>}
                 <span className="text-[13px] font-bold text-xt-mute">{r.name} · {r.property} · {r.source} · {r.date}</span>
                 {r.ownerReply && <p className="m-0 rounded-xl bg-xt-cream p-3 text-[13px]"><b>Reply:</b> {r.ownerReply}</p>}
               </li>

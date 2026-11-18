@@ -1,6 +1,7 @@
 # Architecture rules
 
 - Keep platform review snapshots in browser-safe data, preserve each original rating scale and listing identity, and label historical/unconfirmed scores; shared review displays must not imply current OTA availability or blend selected-review averages.
+- Use the complete ID-deduplicated Google hostel snapshot in shared review lists, including rating-only entries; legacy excerpts must not duplicate the same listing feed.
 
 - Apply the shared browser-safe service coverage policy to guide robots, directory links, related links and sitemap generation; preserve out-of-scope addresses with noindex and redirect excluded cuisine listings before metadata.
 

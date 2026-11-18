@@ -1,5 +1,10 @@
 # Roadmap — Master SEO prompt (xtsy.one)
 
+## Review completeness and alignment — 18 November 2026
+- [x] Centre the shared review showcase and platform scores across phone, tablet and desktop.
+- [x] Retrieved all six Google hostel pages: 253 unique entries, 203 written reviews, 50 rating-only reviews and 236 replies. Owner-approved 252 headline unchanged; Bistro and OTA feeds remain separate.
+- [x] Nine tests pass; phone/tablet/desktop show 253 hostel Google entries and 50 rating-only entries with no horizontal overflow. Build OK. Phone emitted an existing third-party Contentsquare duplicate-tag warning; tracking untouched. Saved without publishing.
+
 ## Platform review display — 18 November 2026
 - [x] Show TAB Bistro's verified 4.7/34 Google rating and all 23 saved written Bistro reviews, alongside matching hostel food comments.
 - [x] Add seven source-labelled hostel platform entries to shared review sections and stay hubs; Booking.com historical/unlisted, Goibibo owner-reported, Agoda verified 8.4/32 and Airbnb verified 5.0/3.
