@@ -10,7 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 
 // The directory arrives from the route loader (server function); no guide data is bundled.
-const route = getRouteApi('/(guides)/guides');
+const route = getRouteApi('/(guides)/guides/');
 import { PageShell, PageHero, Breadcrumbs, PAD } from '@/components/v2/blocks';
 import { IMG, COVERS, first } from '@/data/v2Images';
 import { PEXELS_MEGHALAYA as PX } from '@/data/meghalayaPhotos';

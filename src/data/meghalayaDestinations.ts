@@ -151,8 +151,8 @@ export const meghalayaDestinations: MeghalayaDestination[] = [
     planningLinks: [
       { to: '/', label: 'XTSY Shillong stays and travel desk', context: 'Start with your base and onward travel plans.' },
       { to: '/meghalaya-travel-guide', label: 'Meghalaya travel guide', context: 'Fit a Umiam Lake visit into your wider trip.' },
-      { to: '/meghalaya-viewpoints', label: 'Viewpoints in Meghalaya', context: 'Browse more scenic stops for your itinerary.' },
-      { to: '/things-to-do-in-meghalaya', label: 'Things to do in Meghalaya', context: 'Compare lake outings with treks, caves and other activities.' },
+      { to: '/guides/meghalaya-viewpoints', label: 'Viewpoints in Meghalaya', context: 'Browse more scenic stops for your itinerary.' },
+      { to: '/guides/things-to-do-in-meghalaya', label: 'Things to do in Meghalaya', context: 'Compare lake outings with treks, caves and other activities.' },
       { to: '/destinations/meghalaya/shillong', label: 'Places to visit in Shillong', context: 'Plan the rest of your Shillong sightseeing.' },
       { to: '/destinations/meghalaya/cherrapunji', label: 'Cherrapunji destination guide', context: 'Explore options for the next part of your Meghalaya trip.' },
       { to: '/destinations/meghalaya/dawki', label: 'Dawki destination guide', context: 'Compare a river outing with your lake visit.' },

@@ -22,7 +22,7 @@ export default function HostelSafetyV2() {
           <div className="xt-eyebrow text-[15px]">Stay with respect</div>
           <h1 className="xt-display m-0 text-[52px] leading-none sm:text-[80px]">XTSY Travellers Hostel<br />Safety & house rules</h1>
           <p className="max-w-xl text-[17px] leading-relaxed">A shared home for travellers in New Shillong Township. Rest well, respect your roommates, and reach out whenever you need help.</p>
-          <div className="flex flex-wrap gap-3"><Btn to="/book">Book a stay</Btn><Btn to="/faq" kind="light">Hostel FAQs</Btn></div>
+          <div className="flex flex-wrap gap-3"><Btn to="/book">Book a stay</Btn><Btn to="/about/faq" kind="light">Hostel FAQs</Btn></div>
         </div>
       </section>
       <section className={`${PAD} py-14`}>
@@ -54,13 +54,13 @@ export default function HostelSafetyV2() {
             <li>Declare pets before arrival; pets are permitted only in suitable pet-friendly rooms with the desk’s approval.</li>
             <li>Rule violations can result in eviction without refund, and charges for damage, under the Terms of Service.</li>
           </ul>
-          <div className="mt-6"><Btn to="/terms-of-service" kind="outline">Read the full terms</Btn></div>
+          <div className="mt-6"><Btn to="/about/terms-of-service" kind="outline">Read the full terms</Btn></div>
         </div>
         <div>
           <h2 className="mb-5 text-[26px] font-extrabold">Before you arrive</h2>
           <p className="text-[16px] leading-relaxed text-xt-mute">{PROPERTY_ADDRESS}. We are near NIFT Shillong, IIM Shillong and NEIGRIHMS, not in Police Bazaar. Share the hostel’s map pin with your driver.</p>
           <p className="text-[16px] leading-relaxed text-xt-mute">A WhatsApp enquiry is pending until the host confirms it. Advance payments are non-refundable. One date modification may be requested within {HOSTEL_POLICIES.modificationDays} days of the original check-in, with at least {HOSTEL_POLICIES.modificationNoticeHours} hours’ notice, subject to availability and any rate difference.</p>
-          <div className="mt-6 flex flex-wrap gap-3"><Btn to={waLink('Namaste XTSY! I have a question about hostel safety and house rules (https://xtsy.one/safety-house-rules).')}><MessageCircle className="h-5 w-5" />{BRAND.whatsappDisplay}</Btn><Btn to="/pricing-cancellation-policy" kind="outline">Booking policy</Btn></div>
+          <div className="mt-6 flex flex-wrap gap-3"><Btn to={waLink('Namaste XTSY! I have a question about hostel safety and house rules (https://xtsy.one/about/safety-house-rules).')}><MessageCircle className="h-5 w-5" />{BRAND.whatsappDisplay}</Btn><Btn to="/about/pricing-cancellation-policy" kind="outline">Booking policy</Btn></div>
         </div>
       </section>
     </PageShell>

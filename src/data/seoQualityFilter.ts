@@ -112,9 +112,9 @@ export const ALWAYS_KEEP_SLUGS: ReadonlySet<string> = new Set([
  * in `RECOVERY_REDIRECTS`. Never re-add these as live pages.
  */
 export const MERGED_REDIRECT_SLUGS: ReadonlySet<string> = new Set<string>([
-  'cheap-hostel-shillong',        // legacy slug → /budget-hostels-shillong
-  'cheap-hostels-shillong',       // legacy plural route → /budget-hostels-shillong
-  'cheap-hostel-in-shillong',     // legacy slug → /budget-hostels-shillong
+  'cheap-hostel-shillong',        // legacy slug → /stays/budget-hostels-shillong
+  'cheap-hostels-shillong',       // legacy plural route → /stays/budget-hostels-shillong
+  'cheap-hostel-in-shillong',     // legacy slug → /stays/budget-hostels-shillong
   'backpacker-hostel-shillong',   // → /stays/best-hostel-in-shillong
   'youth-hostel-shillong',        // → /stays/best-hostel-in-shillong
   'hostels-in-shillong',          // → /stays/best-hostel-in-shillong

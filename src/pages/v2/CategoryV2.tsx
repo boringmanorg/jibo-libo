@@ -12,7 +12,7 @@ import {
 } from '@/data/meghalayaDestinations';
 
 /**
- * /meghalaya-waterfalls, -caves, -villages, -viewpoints — category guides (redesign).
+ * /guides/meghalaya-waterfalls, -caves, -villages, -viewpoints — category guides (redesign).
  */
 const CategoryV2 = () => {
   const { pathname } = useLocation();
@@ -58,7 +58,7 @@ const CategoryV2 = () => {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://xtsy.one/' },
-      { '@type': 'ListItem', position: 2, name: 'Things to Do in Meghalaya', item: 'https://xtsy.one/things-to-do-in-meghalaya' },
+      { '@type': 'ListItem', position: 2, name: 'Things to Do in Meghalaya', item: 'https://xtsy.one/guides/things-to-do-in-meghalaya' },
       { '@type': 'ListItem', position: 3, name: `Meghalaya ${category.name}`, item: canonical },
     ],
   };
@@ -88,15 +88,15 @@ const CategoryV2 = () => {
 
   const hero = ogImage && !ogImage.endsWith('placeholder.svg') ? ogImage : '';
   const related = [
-    { to: '/meghalaya-waterfalls', label: 'Waterfalls in Meghalaya' },
-    { to: '/meghalaya-viewpoints', label: 'Viewpoints in Meghalaya' },
-    { to: '/things-to-do-in-meghalaya', label: 'Things to Do in Meghalaya' },
+    { to: '/guides/meghalaya-waterfalls', label: 'Waterfalls in Meghalaya' },
+    { to: '/guides/meghalaya-viewpoints', label: 'Viewpoints in Meghalaya' },
+    { to: '/guides/things-to-do-in-meghalaya', label: 'Things to Do in Meghalaya' },
     { to: '/tours/meghalaya-tour-packages', label: 'Meghalaya Tour Packages' },
-    { to: '/best-time-to-visit-meghalaya', label: 'Best Time to Visit' },
+    { to: '/guides/best-time-to-visit-meghalaya', label: 'Best Time to Visit' },
     { to: '/meghalaya-travel-guide', label: 'Meghalaya Travel Guide' },
     { to: '/stays/best-hostel-in-shillong', label: 'Best Hostel in Shillong' },
     { to: '/tours', label: 'Northeast India Tours' },
-    { to: '/meghalaya-photo-gallery', label: 'Photo Gallery' },
+    { to: '/guides/meghalaya-photo-gallery', label: 'Photo Gallery' },
   ];
 
   return (
@@ -115,7 +115,7 @@ const CategoryV2 = () => {
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
       <PageShell cta={{ title: `Chase ${lcName} from the pines.`, sub: 'Stay at XTSY in New Shillong and our travel desk will line up the day with a local driver.', bookTo: '/tours/meghalaya-tour-packages', bookLabel: 'View tour packages' }}>
-        <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: 'Things to do', to: '/things-to-do-in-meghalaya' }, { label: `Meghalaya ${category.name}` }]} />
+        <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: 'Things to do', to: '/guides/things-to-do-in-meghalaya' }, { label: `Meghalaya ${category.name}` }]} />
         <PageHero
           bg="#2F4A3F"
           fg="#EAF0EA"

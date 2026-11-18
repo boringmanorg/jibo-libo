@@ -3,10 +3,10 @@ import PlanTripV2 from "@/pages/v2/PlanTripV2";
 import { planTripSchema } from "@/pages/v2/planTripData";
 import { buildRouteHead } from "@/lib/seo-head";
 
-export const Route = createFileRoute("/(tours)/plan-trip-with-ai")({
+export const Route = createFileRoute("/(tours)/tours/plan-trip-with-ai")({
   head: () =>
     buildRouteHead({
-      path: "/plan-trip-with-ai",
+      path: "/tours/plan-trip-with-ai",
       jsonLd: planTripSchema(),
       title: "Plan a Meghalaya & Northeast India Trip with AI | XTSY",
       description:

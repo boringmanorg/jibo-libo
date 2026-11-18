@@ -17,11 +17,11 @@ const HostelBookingShillong = memo(() => {
   const hostelSchema = {
     '@context': 'https://schema.org',
     '@type': 'Hostel',
-    '@id': 'https://xtsy.one/hostel-booking#hostel',
+    '@id': 'https://xtsy.one/stays/hostel-booking#hostel',
     name: 'XTSY Travellers Hostel — Online Hostel Booking, Shillong',
     description:
       'Send a direct hostel booking enquiry in Shillong, Meghalaya. Choose dates and a room, then confirm availability with the XTSY desk on WhatsApp. Dorm beds from ₹399.',
-    url: 'https://xtsy.one/hostel-booking',
+    url: 'https://xtsy.one/stays/hostel-booking',
     telephone: '+918837317070',
     email: 'booking@xtsy.one',
     priceRange: '₹399 - ₹9,999',
@@ -66,7 +66,7 @@ const HostelBookingShillong = memo(() => {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://xtsy.one/' },
-      { '@type': 'ListItem', position: 2, name: 'Hostel Booking', item: 'https://xtsy.one/hostel-booking' },
+      { '@type': 'ListItem', position: 2, name: 'Hostel Booking', item: 'https://xtsy.one/stays/hostel-booking' },
     ],
   };
 

@@ -1,5 +1,5 @@
 /**
- * /xtsy-vs-zostel — comparison page (redesign). Only XTSY-side facts are
+ * /stays/xtsy-vs-zostel — comparison page (redesign). Only XTSY-side facts are
  * stated; Zostel details that could not be verified are left generic.
  */
 import SEOHead from '@/components/SEOHead';
@@ -23,7 +23,7 @@ export default function ZostelV2() {
       <SEOHead
         title="XTSY vs Zostel — Northeast India Hostels & Trips Compared | XTSY"
         description="How XTSY compares with Zostel for Northeast India: one team in New Shillong Township, custom trips with trusted partners, groups, pets and Experience by XTSY."
-        canonicalUrl="https://xtsy.one/xtsy-vs-zostel"
+        canonicalUrl="https://xtsy.one/stays/xtsy-vs-zostel"
       />
       <PageShell cta={{ title: 'Book your Northeast trip with XTSY.', sub: 'Custom itineraries, groups of 2 to 50+, and Experience by XTSY for the night that matters.' }}>
         <section className={`${PAD} relative flex flex-col gap-5 overflow-hidden py-16 lg:py-20`}>
@@ -70,7 +70,7 @@ export default function ZostelV2() {
             </div>
           ))}
         </section>
-      <PageFaq path="/xtsy-vs-zostel" />
+      <PageFaq path="/stays/xtsy-vs-zostel" />
       </PageShell>
     </>
   );

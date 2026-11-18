@@ -91,7 +91,7 @@ export const RANKED_PAGE_QUESTIONS: Record<string, RankedQuestion[]> = {
     { q: 'Can I stay overnight in Kongthong?', a: 'The guide describes basic, community-run homestay options. Confirm availability and facilities locally or ask the XTSY desk to arrange a partner stay; XTSY does not own a property there.' },
     { q: 'What should I plan before visiting Kongthong?', a: 'Allow time for the road journey from Shillong and village exploration. Arrange transport and confirm accommodation if staying overnight, and respect residents’ privacy when photographing or recording.' },
   ],
-  '/merch': [
+  '/about/merch': [
     { q: 'Is XTSY merchandise available to buy now?', a: 'The collection is coming soon. The page offers a Notify me enquiry rather than immediate checkout, with prices to be announced at launch.' },
     { q: 'What is in the XTSY merchandise collection?', a: 'The collection includes travel bags, bottles, clothing and accessories, plus laptop sleeves, notebooks and other work-from-anywhere items.' },
     { q: 'Where is merchandise pickup planned?', a: 'The page lists pickup at XTSY Travellers Hostel or TAB Bistro by XTSY on Mawdiangdiang Road, New Shillong Township. Confirm ordering and pickup availability when the item launches.' },

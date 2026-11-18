@@ -23,7 +23,8 @@ for (const f of fs.readdirSync(PUBLIC).filter((x) => /^sitemap.*\.xml$/.test(x))
     const cleanSlug = slug.endsWith('/') ? slug.slice(0, -1) : slug;
     const isKnownStaticRoute = STATIC_ROUTE_SET.has(cleanSlug);
     // Owner-approved moved pages were indexable at their old address; keep their new address listed.
-    if (Object.values(MOVED_PAGES).includes('/' + cleanSlug)) return m;
+    const movedFrom = Object.keys(MOVED_PAGES).find((old) => MOVED_PAGES[old] === '/' + cleanSlug)?.slice(1);
+    if (movedFrom && isIndexableSEOSlug(movedFrom, ALL_SEO_PAGES.find((page) => page.slug === movedFrom))) return m;
     // Like programmaticPayload, active guide content wins over a stale recovery alias.
     const isRecoveryRedirect = !isKnownStaticRoute && !ACTIVE_GUIDE_SET.has(cleanSlug) && Object.prototype.hasOwnProperty.call(RECOVERY_REDIRECTS, cleanSlug);
     if (!isIndexableSEOSlug(cleanSlug, ALL_SEO_PAGES.find((page) => page.slug === cleanSlug)) || NOINDEX_STATIC_ROUTES.has(cleanSlug) || isRecoveryRedirect || ('/' + cleanSlug) in MOVED_PAGES) {

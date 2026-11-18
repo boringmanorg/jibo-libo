@@ -2,10 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import ThingsToDoInMeghalaya from "@/pages/destinations/ThingsToDoInMeghalaya";
 import { buildRouteHead } from "@/lib/seo-head";
 
-export const Route = createFileRoute("/(guides)/things-to-do-in-meghalaya")({
+export const Route = createFileRoute("/(guides)/guides/things-to-do-in-meghalaya")({
   head: () =>
     buildRouteHead({
-      path: "/things-to-do-in-meghalaya",
+      path: "/guides/things-to-do-in-meghalaya",
       title: "Things to Do in Meghalaya: 20 Ideas | XTSY",
       description:
         "Explore adventure activities in Meghalaya: root bridge treks, caving, Umngot kayaking and nearby outings from Shillong, with routes and seasonal tips.",

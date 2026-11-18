@@ -2,10 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import CategoryPage from "@/pages/v2/CategoryV2";
 import { buildRouteHead } from "@/lib/seo-head";
 
-export const Route = createFileRoute("/(guides)/meghalaya-viewpoints")({
+export const Route = createFileRoute("/(guides)/guides/meghalaya-viewpoints")({
   head: () =>
     buildRouteHead({
-      path: "/meghalaya-viewpoints",
+      path: "/guides/meghalaya-viewpoints",
       title: "Best Viewpoints in Meghalaya | XTSY Travel",
       description:
         "The best Meghalaya viewpoints for sunrise, valleys and canyons, including Laitlum, Mawdok and Nohkalikai, with timings, entry fees and how to reach each.",

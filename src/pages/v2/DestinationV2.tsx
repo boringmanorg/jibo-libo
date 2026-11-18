@@ -85,10 +85,10 @@ export default function DestinationV2() {
   };
   const categoryLink =
     destination.category === 'waterfall'
-      ? { to: '/meghalaya-waterfalls', label: 'Waterfalls in Meghalaya' }
+      ? { to: '/guides/meghalaya-waterfalls', label: 'Waterfalls in Meghalaya' }
       : destination.category === 'viewpoint' || destination.category === 'peak'
-      ? { to: '/meghalaya-viewpoints', label: 'Viewpoints in Meghalaya' }
-      : { to: '/things-to-do-in-meghalaya', label: 'Things to Do in Meghalaya' };
+      ? { to: '/guides/meghalaya-viewpoints', label: 'Viewpoints in Meghalaya' }
+      : { to: '/guides/things-to-do-in-meghalaya', label: 'Things to Do in Meghalaya' };
 
   const citySlug = getCitySlugForDestination(destination);
   const city = getCityBySlug('meghalaya', citySlug);
@@ -211,7 +211,7 @@ export default function DestinationV2() {
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
       <PageShell cta={{ title: 'Explore from the pines.', sub: `Stay at XTSY and our travel desk will line up a ${destination.region} day with a local driver.`, bookTo: '/book', bookLabel: 'Book a stay' }}>
-        <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: 'Things to do', to: '/things-to-do-in-meghalaya' }, { label: destination.name }]} />
+        <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: 'Things to do', to: '/guides/things-to-do-in-meghalaya' }, { label: destination.name }]} />
         <section className="relative mt-4 overflow-hidden bg-xt-pine text-[#EAF0EA]">
           <div className={`${PAD} relative grid items-end gap-8 py-14 lg:grid-cols-12 lg:py-20`}>
             <div className="relative flex flex-col gap-4 lg:col-span-7">
@@ -365,15 +365,15 @@ export default function DestinationV2() {
             <div className="flex flex-wrap gap-2">
               {[
                 categoryLink,
-                { to: '/things-to-do-in-meghalaya', label: 'Things to Do in Meghalaya' },
+                { to: '/guides/things-to-do-in-meghalaya', label: 'Things to Do in Meghalaya' },
                 { to: '/tours/meghalaya-tour-packages', label: 'Meghalaya Tour Packages' },
                 { to: '/tours/shillong-tour-package', label: 'Shillong Tour Package' },
-                { to: '/best-time-to-visit-meghalaya', label: 'Best Time to Visit' },
+                { to: '/guides/best-time-to-visit-meghalaya', label: 'Best Time to Visit' },
                 { to: '/meghalaya-travel-guide', label: 'Meghalaya Travel Guide' },
                 { to: '/stays/best-hostel-in-shillong', label: 'Hostels in Shillong', hot: true },
                 { to: '/book', label: 'Book XTSY in Shillong', hot: true },
                 { to: '/tours', label: 'Northeast India Tours' },
-                { to: '/meghalaya-photo-gallery', label: 'Photo Gallery' },
+                { to: '/guides/meghalaya-photo-gallery', label: 'Photo Gallery' },
               ].filter((l, i, arr) => arr.findIndex((x) => x.to === l.to) === i).map((l) => (
                 <Link key={l.to} to={l.to} className={`rounded-full border-[1.5px] px-4 py-2 text-[14px] ${'hot' in l && l.hot ? 'border-xt-crimson bg-xt-crimson/5 font-extrabold text-xt-crimson hover:text-xt-crimson' : 'border-xt-stone font-bold text-xt-ink hover:text-xt-crimson'}`}>{l.label}</Link>
               ))}

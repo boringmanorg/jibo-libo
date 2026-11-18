@@ -240,7 +240,7 @@ function buildSearchIndex(): SearchEntry[] {
     {
       id: 'adventure-meghalaya-activities', title: 'Adventure Activities in Meghalaya',
       description: 'Treks, caves, rivers and outdoor trips from Shillong', category: 'experiences', icon: '🏞️',
-      url: '/things-to-do-in-meghalaya', location: 'Meghalaya',
+      url: '/guides/things-to-do-in-meghalaya', location: 'Meghalaya',
       keywords: ['adventure activities in meghalaya', 'adventure activities in shillong', 'things to do near shillong'],
     },
     {
@@ -383,10 +383,10 @@ function buildSearchIndex(): SearchEntry[] {
   // 6. Pages
   const pageEntries: Omit<SearchEntry, 'id'>[] = [
     { title: 'About XTSY', description: 'Our story, mission & team', category: 'pages', icon: '📖', url: '/about', keywords: ['about', 'story', 'team', 'mission', 'founder'] },
-    { title: 'FAQs', description: 'Frequently asked questions', category: 'pages', icon: '❓', url: '/faq', keywords: ['faq', 'help', 'question', 'how to', 'support'] },
-    { title: 'XTSY vs Zostel', description: 'Honest comparison guide', category: 'pages', icon: '⚔️', url: '/xtsy-vs-zostel', keywords: ['zostel', 'compare', 'vs', 'alternative', 'better hostel'] },
-    { title: 'Pricing & Cancellation', description: 'Transparent pricing and refund policies', category: 'pages', icon: '📋', url: '/pricing-cancellation-policy', keywords: ['pricing', 'cancellation', 'refund', 'policy'] },
-    { title: 'Privacy Policy', description: 'Your data privacy rights', category: 'pages', icon: '🔒', url: '/privacy-policy', keywords: ['privacy', 'data', 'gdpr', 'policy'] },
+    { title: 'FAQs', description: 'Frequently asked questions', category: 'pages', icon: '❓', url: '/about/faq', keywords: ['faq', 'help', 'question', 'how to', 'support'] },
+    { title: 'XTSY vs Zostel', description: 'Honest comparison guide', category: 'pages', icon: '⚔️', url: '/stays/xtsy-vs-zostel', keywords: ['zostel', 'compare', 'vs', 'alternative', 'better hostel'] },
+    { title: 'Pricing & Cancellation', description: 'Transparent pricing and refund policies', category: 'pages', icon: '📋', url: '/about/pricing-cancellation-policy', keywords: ['pricing', 'cancellation', 'refund', 'policy'] },
+    { title: 'Privacy Policy', description: 'Your data privacy rights', category: 'pages', icon: '🔒', url: '/about/privacy-policy', keywords: ['privacy', 'data', 'gdpr', 'policy'] },
     { title: 'Travel & Tours', description: '30+ curated tour packages across India', category: 'pages', icon: '✈️', url: '/tours', keywords: ['travel', 'tours', 'packages', 'trip', 'itinerary', 'adventure'] },
     { title: 'Blog — Discover Meghalaya', description: 'Travel guides and destination stories', category: 'pages', icon: '📝', url: '/guides', keywords: ['blog', 'meghalaya guide', 'travel blog', 'things to do shillong'] },
     { title: 'Offers & Deals', description: 'Latest offers on stays and tours', category: 'pages', icon: '🎁', url: '/book', keywords: ['offers', 'deals', 'discount', 'coupon', 'promo'] },

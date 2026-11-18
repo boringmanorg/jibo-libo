@@ -15,7 +15,7 @@ import { blockAnalytics } from './audit/no-analytics';
 
 const BASE = process.env.BASE_URL || 'http://localhost:4174';
 const OUT = process.env.OUT_DIR || 'shots/bp';
-const ROUTES = (process.env.BP_ROUTES || '/,/stays/best-hostel-in-shillong,/cheap-hostels-shillong,/xtsy-270,/tours,/tours/tawang-monastery-exploration,/expeditions,/destinations/meghalaya/cherrapunji/nohkalikai-falls,/shillong-dormitory,/plan-trip-with-ai,/tab-bistro,/faq,/book,').split(',');
+const ROUTES = (process.env.BP_ROUTES || '/,/stays/best-hostel-in-shillong,/cheap-hostels-shillong,/xtsy-270,/tours,/tours/tawang-monastery-exploration,/expeditions,/destinations/meghalaya/cherrapunji/nohkalikai-falls,/shillong-dormitory,/tours/plan-trip-with-ai,/tab-bistro,/about/faq,/book,').split(',');
 const VIEWPORTS = [
   { name: 'phone-s', width: 360, height: 740, touch: true },
   { name: 'phone', width: 390, height: 844, touch: true },

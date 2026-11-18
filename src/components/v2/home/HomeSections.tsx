@@ -244,7 +244,7 @@ export function BistroFeature() {
         </div>
         <div className="flex flex-wrap gap-3">
           <Link to="/tab-bistro" className="xt-btn flex h-[52px] items-center rounded-full bg-xt-ink px-6 text-[15px] font-extrabold text-xt-paper hover:text-xt-paper">View the menu</Link>
-          <Link to="/catering-shillong" className="xt-btn flex h-[52px] items-center rounded-full border-[1.5px] border-xt-ink px-6 text-[15px] font-extrabold text-xt-ink hover:text-xt-ink">Catering &amp; events</Link>
+          <Link to="/tab-bistro/catering" className="xt-btn flex h-[52px] items-center rounded-full border-[1.5px] border-xt-ink px-6 text-[15px] font-extrabold text-xt-ink hover:text-xt-ink">Catering &amp; events</Link>
         </div>
       </div>
       <div className="xt-reveal relative">
@@ -358,17 +358,17 @@ export function HomeFaq() {
             {open === i && <p className="m-0 px-6 pb-5 text-[16px] leading-relaxed text-xt-mute">{a}</p>}
           </div>
         ))}
-        <Link to="/faq" className="mt-2 text-[15px] font-extrabold text-xt-crimson">All FAQs →</Link>
+        <Link to="/about/faq" className="mt-2 text-[15px] font-extrabold text-xt-crimson">All FAQs →</Link>
       </div>
     </section>
   );
 }
 
 const SEO_COLS = [
-  { t: 'Stays in Shillong', links: [['Best hostel in Shillong', '/stays/best-hostel-in-shillong'], ['Budget-friendly hostels in Shillong', '/budget-hostels-shillong'], ['Hotels in Shillong', '/stays/hotels-in-shillong'], ['Homestays in Shillong', '/stays/homestays-in-shillong'], ['Hostel near me', '/stays/hostel-near-me'], ['Luxury glamping in Shillong', '/stays/luxury-glamping-shillong']] },
-  { t: 'Top guides', links: [['Best time to visit Meghalaya', '/best-time-to-visit-meghalaya'], ['Meghalaya waterfalls', '/meghalaya-waterfalls'], ['Meghalaya caves', '/meghalaya-caves'], ['Meghalaya viewpoints', '/meghalaya-viewpoints'], ['Things to do in Meghalaya', '/things-to-do-in-meghalaya'], ['Hidden places in Meghalaya', '/hidden-places-in-meghalaya']] },
+  { t: 'Stays in Shillong', links: [['Best hostel in Shillong', '/stays/best-hostel-in-shillong'], ['Budget-friendly hostels in Shillong', '/stays/budget-hostels-shillong'], ['Hotels in Shillong', '/stays/hotels-in-shillong'], ['Homestays in Shillong', '/stays/homestays-in-shillong'], ['Hostel near me', '/stays/hostel-near-me'], ['Luxury glamping in Shillong', '/stays/luxury-glamping-shillong']] },
+  { t: 'Top guides', links: [['Best time to visit Meghalaya', '/guides/best-time-to-visit-meghalaya'], ['Meghalaya waterfalls', '/guides/meghalaya-waterfalls'], ['Meghalaya caves', '/guides/meghalaya-caves'], ['Meghalaya viewpoints', '/guides/meghalaya-viewpoints'], ['Things to do in Meghalaya', '/guides/things-to-do-in-meghalaya'], ['Hidden places in Meghalaya', '/guides/hidden-places-in-meghalaya']] },
   { t: 'Plan the trip', links: [['How to reach Meghalaya', '/travel-guide/how-to-reach-meghalaya'], ['Guwahati to Shillong transport', '/travel-guide/guwahati-to-shillong-transport'], ['Meghalaya for international tourists', '/travel-guide/meghalaya-for-international-tourists'], ['3-day Meghalaya itinerary', '/tours/3-day-meghalaya-itinerary'], ['5-day Meghalaya itinerary', '/tours/5-day-meghalaya-itinerary'], ['Budget trip to Meghalaya', '/tours/budget-trip-to-meghalaya']] },
-  { t: 'Eat & more', links: [['Restaurant in Shillong', '/tab-bistro'], ['TAB Bistro menu', '/tab-bistro'], ['Catering in Shillong', '/catering-shillong'], ['Destination wedding in Shillong', '/tours/destination-wedding-shillong'], ['Group bookings', '/stays/group-bookings-meghalaya'], ['Backpacking India', '/backpacking-india']] },
+  { t: 'Eat & more', links: [['Restaurant in Shillong', '/tab-bistro'], ['TAB Bistro menu', '/tab-bistro'], ['Catering in Shillong', '/tab-bistro/catering'], ['Destination wedding in Shillong', '/tours/destination-wedding-shillong'], ['Group bookings', '/stays/group-bookings-meghalaya'], ['Backpacking India', '/tours/backpacking-india']] },
 ] as const;
 
 export function SeoLinks() {

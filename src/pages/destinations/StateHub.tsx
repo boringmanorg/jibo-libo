@@ -196,7 +196,7 @@ const StateHub = () => {
                 Check seasons, road access and permits before departure.
               </p>
               <div className="flex flex-wrap gap-5 text-sm">
-                <Link to="/things-to-do-in-meghalaya" className="text-primary underline">Meghalaya activities</Link>
+                <Link to="/guides/things-to-do-in-meghalaya" className="text-primary underline">Meghalaya activities</Link>
                 <Link to="/tours/meghalaya-tour-packages" className="text-primary underline">Meghalaya adventure tours</Link>
                 <Link to="/expeditions" className="text-primary underline">Northeast motorbike and 4x4 routes</Link>
               </div>

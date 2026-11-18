@@ -1,4 +1,4 @@
-/** /faq content and FAQPage JSON-LD — kept out of the page component so the route head
+/** /about/faq content and FAQPage JSON-LD — kept out of the page component so the route head
  *  (bundled into every page) doesn't pull the whole FAQ page into the main chunk. */
 import { inr, lowestDormPrice, roomPrice } from '@/components/v2/pricing';
 import { PROPERTY_ADDRESS } from '@/data/brandFacts';
@@ -65,7 +65,7 @@ export function faqSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    '@id': 'https://xtsy.one/faq#faq',
+    '@id': 'https://xtsy.one/about/faq#faq',
     about: { '@id': 'https://xtsy.one/#hostel' },
     mainEntity: buildTopics().flatMap((t) => t.q.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } }))),
   };

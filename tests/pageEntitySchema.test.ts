@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { articleSchema, collectionSchema, infoPageSchema } from '@/lib/seo/pageEntitySchema';
 
 describe('page entity schema', () => {
-  const common = { path: '/meghalaya-festivals', description: 'desc' };
+  const common = { path: '/guides/meghalaya-festivals', description: 'desc' };
 
   it('builds a valid Article with author, publisher and dates', () => {
     const a = articleSchema({ ...common, headline: 'Meghalaya festivals' }) as Record<string, any>;
@@ -12,11 +12,11 @@ describe('page entity schema', () => {
     expect(a.publisher).toHaveProperty('@id');
     expect(a.datePublished).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     expect(a.dateModified).toMatch(/^\d{4}-\d{2}-\d{2}$/);
-    expect(a.url).toBe('https://xtsy.one/meghalaya-festivals');
+    expect(a.url).toBe('https://xtsy.one/guides/meghalaya-festivals');
   });
 
   it('normalises the url and never double-slashes', () => {
-    for (const p of ['/merch', '/merch/', '/']) {
+    for (const p of ['/about/merch', '/about/merch/', '/']) {
       const url = (collectionSchema({ path: p, name: 'n', description: 'd' }) as any).url as string;
       expect(url.startsWith('https://xtsy.one')).toBe(true);
       expect(url.slice('https://'.length)).not.toContain('//');
@@ -24,7 +24,7 @@ describe('page entity schema', () => {
   });
 
   it('emits an ItemList only when a collection actually has items', () => {
-    const empty = collectionSchema({ path: '/merch', name: 'n', description: 'd' }) as any;
+    const empty = collectionSchema({ path: '/about/merch', name: 'n', description: 'd' }) as any;
     expect(empty.mainEntity).toBeUndefined();
     const full = collectionSchema({
       path: '/destinations', name: 'n', description: 'd',
@@ -38,7 +38,7 @@ describe('page entity schema', () => {
   // A privacy policy is not editorial. Calling it an Article would be a lie
   // told to a machine, which is the one audience that cannot discount it.
   it('keeps policy pages as WebPage, never Article', () => {
-    const w = infoPageSchema({ path: '/privacy-policy', name: 'Privacy', description: 'd' }) as any;
+    const w = infoPageSchema({ path: '/about/privacy-policy', name: 'Privacy', description: 'd' }) as any;
     expect(w['@type']).toBe('WebPage');
     expect(JSON.stringify(w)).not.toContain('Article');
   });

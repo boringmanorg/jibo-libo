@@ -164,7 +164,7 @@ export const TermsOfService: React.FC = () => {
               
               <p className="mt-4">
                 For detailed pricing, GST information, and complete cancellation terms, please see our{' '}
-                <a href="/pricing-cancellation-policy" className="text-primary hover:underline font-medium">
+                <a href="/about/pricing-cancellation-policy" className="text-primary hover:underline font-medium">
                   Pricing & Cancellation Policies
                 </a> page.
               </p>

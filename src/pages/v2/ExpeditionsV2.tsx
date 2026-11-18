@@ -64,7 +64,7 @@ export function ExpeditionsIndexV2() {
       ))}
       <section className={`${PAD} flex flex-col gap-3 pb-16 text-[15px] leading-relaxed text-xt-mute`}>
         <p className="m-0">For a 4x4 expedition in Meghalaya, start with the <Link to="/expeditions/4x4/meghalaya-loop" className="font-bold text-xt-crimson">Shillong–Dawki–Mawlynnong–Cherrapunji loop</Link>. Riders can compare the same circuit in the <Link to="/expeditions/motorbike/meghalaya-loop" className="font-bold text-xt-crimson">motorbike guide</Link>.</p>
-        <p className="m-0">Looking beyond the road? Explore <Link to="/tours/meghalaya-tour-packages" className="font-bold text-xt-crimson">Meghalaya guided trips</Link> or compare <Link to="/things-to-do-in-meghalaya" className="font-bold text-xt-crimson">treks, caves and river activities</Link>.</p>
+        <p className="m-0">Looking beyond the road? Explore <Link to="/tours/meghalaya-tour-packages" className="font-bold text-xt-crimson">Meghalaya guided trips</Link> or compare <Link to="/guides/things-to-do-in-meghalaya" className="font-bold text-xt-crimson">treks, caves and river activities</Link>.</p>
         <p className="m-0 text-[13px]">{PARTNER_NOTE}</p>
       </section>
     </PageShell>

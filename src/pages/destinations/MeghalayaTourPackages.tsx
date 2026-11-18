@@ -50,7 +50,7 @@ const MeghalayaTourPackages = () => {
         <div className="container mx-auto px-4 max-w-5xl py-12">
           <Breadcrumbs items={[
             { label: 'Home', href: '/' },
-            { label: 'Things to Do', href: '/things-to-do-in-meghalaya' },
+            { label: 'Things to Do', href: '/guides/things-to-do-in-meghalaya' },
             { label: 'Tour Packages' },
           ]} />
           <h1 className="mt-6 text-3xl md:text-4xl font-bold text-foreground">
@@ -136,10 +136,10 @@ const MeghalayaTourPackages = () => {
           <nav className="mt-12 border-t border-border pt-8">
             <h2 className="text-lg font-semibold text-foreground mb-4">Related Pages</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              <Link to="/things-to-do-in-meghalaya" className="text-sm text-primary hover:underline">Things to Do in Meghalaya</Link>
+              <Link to="/guides/things-to-do-in-meghalaya" className="text-sm text-primary hover:underline">Things to Do in Meghalaya</Link>
               <Link to="/tours/meghalaya-couple-tour-package" className="text-sm text-primary hover:underline">Couple Tour Package</Link>
               <Link to="/tours/shillong-tour-package" className="text-sm text-primary hover:underline">Shillong Tour Package</Link>
-              <Link to="/best-time-to-visit-meghalaya" className="text-sm text-primary hover:underline">Best Time to Visit</Link>
+              <Link to="/guides/best-time-to-visit-meghalaya" className="text-sm text-primary hover:underline">Best Time to Visit</Link>
               <Link to="/tours/budget-trip-to-meghalaya" className="text-sm text-primary hover:underline">Budget Trip Guide</Link>
               <Link to="/expeditions/4x4/meghalaya-loop" className="text-sm text-primary hover:underline">Meghalaya 4x4 Expedition</Link>
             </div>

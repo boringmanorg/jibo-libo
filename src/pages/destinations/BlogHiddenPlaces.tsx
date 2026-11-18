@@ -16,12 +16,12 @@ const BlogHiddenPlaces = () => (
     <Helmet>
       <title>Hidden Places in Meghalaya — 8 Secret Destinations You Must Visit</title>
       <meta name="description" content="Discover Meghalaya's best-kept secrets — hidden waterfalls, offbeat viewpoints, and unexplored villages that most tourists miss. Curated by XTSY." />
-      <link rel="canonical" href="https://xtsy.one/hidden-places-in-meghalaya" />
+      <link rel="canonical" href="https://xtsy.one/guides/hidden-places-in-meghalaya" />
     </Helmet>
     <Header />
     <main className="pt-20">
       <div className="container mx-auto px-4 max-w-5xl py-12">
-        <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Things to Do', href: '/things-to-do-in-meghalaya' }, { label: 'Hidden Places' }]} />
+        <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Things to Do', href: '/guides/things-to-do-in-meghalaya' }, { label: 'Hidden Places' }]} />
         <h1 className="mt-6 text-3xl md:text-4xl font-bold text-foreground">Hidden Places in Meghalaya: 8 Secret Destinations</h1>
         <p className="mt-4 text-muted-foreground leading-relaxed max-w-3xl">
           Beyond Dawki and Cherrapunji lies a Meghalaya that most travelers never see. These offbeat destinations offer untouched beauty, fewer crowds, and experiences that feel genuinely exclusive.
@@ -35,8 +35,8 @@ const BlogHiddenPlaces = () => (
         </section>
         <nav className="mt-8 border-t border-border pt-8">
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-            <Link to="/things-to-do-in-meghalaya" className="text-sm text-primary hover:underline">All Places to Visit</Link>
-            <Link to="/best-time-to-visit-meghalaya" className="text-sm text-primary hover:underline">Best Time to Visit</Link>
+            <Link to="/guides/things-to-do-in-meghalaya" className="text-sm text-primary hover:underline">All Places to Visit</Link>
+            <Link to="/guides/best-time-to-visit-meghalaya" className="text-sm text-primary hover:underline">Best Time to Visit</Link>
             <Link to="/tours/budget-trip-to-meghalaya" className="text-sm text-primary hover:underline">Budget Trip Guide</Link>
           </div>
         </nav>
@@ -48,7 +48,7 @@ const BlogHiddenPlaces = () => (
         />
       </div>
     </main>
-    <PageFaq path="/hidden-places-in-meghalaya" />
+    <PageFaq path="/guides/hidden-places-in-meghalaya" />
     <Footer />
   </div>
 );

@@ -1,5 +1,5 @@
 /**
- * /contact — Contact (redesign). Keeps every business detail the payment
+ * /about/contact — Contact (redesign). Keeps every business detail the payment
  * guest desk needs: address, phone, emails and support hours.
  */
 import { useState, type FormEvent } from 'react';
@@ -43,12 +43,12 @@ export default function ContactV2() {
       <Helmet>
         <title>Contact Us — XTSY | Support, Bookings & Enquiries</title>
         <meta name="description" content="Contact XTSY for bookings, support, partnerships and tour enquiries. Call or WhatsApp +91 8837317070, or email booking@xtsy.one. XTSY Travellers Hostel, New Shillong Township, Meghalaya." />
-        <link rel="canonical" href="https://xtsy.one/contact" />
+        <link rel="canonical" href="https://xtsy.one/about/contact" />
         <script type="application/ld+json">{JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'ContactPage',
           name: 'Contact XTSY',
-          url: 'https://xtsy.one/contact',
+          url: 'https://xtsy.one/about/contact',
           mainEntity: {
             '@type': 'Organization',
             name: 'XTSY',
@@ -113,9 +113,9 @@ export default function ContactV2() {
               <div><dt className="font-extrabold">Bookings & partnerships</dt><dd className="m-0"><a href={`mailto:${EMAIL}`} className="text-xt-crimson">{EMAIL}</a></dd></div>
               <div><dt className="font-extrabold">Admin, billing, invoices & policies</dt><dd className="m-0"><a href={`mailto:${SUPPORT}`} className="text-xt-crimson">{SUPPORT}</a></dd></div>
               <div><dt className="font-extrabold">Policies</dt><dd className="m-0 flex flex-wrap gap-x-4 gap-y-1 font-bold">
-                <Link to="/terms-of-service" className="inline-block py-1 text-xt-crimson">Terms of Service</Link>
-                <Link to="/privacy-policy" className="inline-block py-1 text-xt-crimson">Privacy Policy</Link>
-                <Link to="/pricing-cancellation-policy" className="inline-block py-1 text-xt-crimson">Pricing & Cancellation</Link>
+                <Link to="/about/terms-of-service" className="inline-block py-1 text-xt-crimson">Terms of Service</Link>
+                <Link to="/about/privacy-policy" className="inline-block py-1 text-xt-crimson">Privacy Policy</Link>
+                <Link to="/about/pricing-cancellation-policy" className="inline-block py-1 text-xt-crimson">Pricing & Cancellation</Link>
               </dd></div>
             </dl>
           </div>

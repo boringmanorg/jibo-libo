@@ -6,7 +6,7 @@ set -uo pipefail
 BASE="${BASE_URL:-https://xtsy.one}"
 OUT="${OUT_DIR:-probe}"
 mkdir -p "$OUT"
-URLS="${PROBE_URLS:-/ /stays/best-hostel-in-shillong /xtsy-270 /tours /tours/5n-6d-tawang-tour /living-root-bridges-meghalaya /faq /book /guides /destinations/meghalaya/shillong}"
+URLS="${PROBE_URLS:-/ /stays/best-hostel-in-shillong /xtsy-270 /tours /tours/5n-6d-tawang-tour /living-root-bridges-meghalaya /about/faq /book /guides /destinations/meghalaya/shillong}"
 ASSETS="$(curl -s "$BASE/" | grep -oE '/assets/[^"]+\.(css|js)' | head -2) /img/o/xtsy-property-images-8-portrait-828.webp /fonts/manrope-latin.woff2"
 : > "$OUT/probe.tsv"
 echo -e "url\ttry\tstatus\tttfb_s\ttotal_s\tbytes\tcache-control\tcf-cache-status\tage\tserver\tx-xtsy-cache\tlink" >> "$OUT/probe.tsv"

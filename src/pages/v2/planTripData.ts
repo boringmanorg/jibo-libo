@@ -15,13 +15,13 @@ export function planTripFaqs() {
   ];
 }
 
-/** JSON-LD rendered server-side by the /plan-trip-with-ai route head. */
+/** JSON-LD rendered server-side by the /tours/plan-trip-with-ai route head. */
 export function planTripSchema() {
   const app = {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
     name: 'XTSY trip assistant — Plan a trip with AI',
-    url: 'https://xtsy.one/plan-trip-with-ai',
+    url: 'https://xtsy.one/tours/plan-trip-with-ai',
     applicationCategory: 'TravelApplication',
     operatingSystem: 'Web',
     provider: { '@id': 'https://xtsy.one/#organization' },

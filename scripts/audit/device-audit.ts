@@ -19,7 +19,7 @@ const BASE = (process.env.SITE_URL || 'https://xtsy.one').replace(/\/$/, '');
 const OUT = process.env.OUT_DIR || 'device-audit';
 const ROUTES = (process.env.ROUTES || [
   '/', '/stays/best-hostel-in-shillong', '/stays/experience-by-xtsy', '/shillong-dormitory', '/book', '/tab-bistro', '/tours',
-  '/tours/5n-6d-tawang-tour', '/destinations/meghalaya', '/contact', '/faq', '', '/stays/female-travellers', '/stays/hotels-in-shillong',
+  '/tours/5n-6d-tawang-tour', '/destinations/meghalaya', '/about/contact', '/about/faq', '', '/stays/female-travellers', '/stays/hotels-in-shillong',
 ].join(',')).split(',').map((r) => r.trim()).filter(Boolean);
 
 type Device = { id: string; engine: 'webkit' | 'chromium'; group: string; opts: BrowserContextOptions };

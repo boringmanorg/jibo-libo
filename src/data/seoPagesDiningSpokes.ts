@@ -155,7 +155,7 @@ export const DINING_SPOKE_PAGES: SEOPageData[] = [
     ['wedding-catering-services-shillong', 'corporate-event-catering-shillong', 'party-catering-shillong', 'tab-bistro-by-xtsy-restaurant', 'best-restaurants-shillong'],
     ['catering services in shillong', 'catering in shillong', 'caterers in shillong', 'event catering shillong', 'bulk food order shillong', 'order party food near me'],
     'TAB Bistro by XTSY provides full catering services in Shillong — weddings, corporate events, parties and bulk orders — with multi-cuisine menus and dishes cooked to order. Get a quote on WhatsApp at +91 88373 17070.',
-    '/catering-shillong',
+    '/tab-bistro/catering',
   ),
 
   // ── 6. WEDDING CATERING ───────────────────────────────────────────────────
@@ -177,7 +177,7 @@ export const DINING_SPOKE_PAGES: SEOPageData[] = [
     ['catering-services-in-shillong', 'corporate-event-catering-shillong', 'party-catering-shillong', 'destination-wedding-shillong', 'tab-bistro-by-xtsy-restaurant'],
     ['wedding catering services shillong', 'wedding catering shillong', 'destination wedding catering', 'wedding caterers in shillong', 'wedding food catering meghalaya'],
     'TAB Bistro by XTSY provides wedding and destination-wedding catering across Shillong and Meghalaya, with multi-day multi-cuisine menus, dishes cooked to order and full service staff. Get a quote at +91 88373 17070.',
-    '/catering-shillong',
+    '/tab-bistro/catering',
   ),
 
   // ── 7. PARTY CATERING ─────────────────────────────────────────────────────
@@ -199,7 +199,7 @@ export const DINING_SPOKE_PAGES: SEOPageData[] = [
     ['catering-services-in-shillong', 'wedding-catering-services-shillong', 'corporate-event-catering-shillong', 'tab-bistro-by-xtsy-restaurant', 'best-chinese-restaurant-in-shillong'],
     ['party catering shillong', 'bulk food order shillong', 'order party food near me', 'birthday party catering shillong', 'bulk order food near me'],
     'TAB Bistro by XTSY offers party catering and bulk food orders in Shillong — birthdays, get-togethers and celebrations — with multi-cuisine menus and dishes cooked to order. Order on WhatsApp at +91 88373 17070.',
-    '/catering-shillong',
+    '/tab-bistro/catering',
   ),
 
   // ── 8. CORPORATE CATERING ─────────────────────────────────────────────────
@@ -221,6 +221,6 @@ export const DINING_SPOKE_PAGES: SEOPageData[] = [
     ['catering-services-in-shillong', 'wedding-catering-services-shillong', 'party-catering-shillong', 'tab-bistro-by-xtsy-restaurant', 'best-restaurants-shillong'],
     ['corporate catering shillong', 'corporate event catering shillong', 'office lunch catering shillong', 'conference catering shillong', 'event catering shillong'],
     'TAB Bistro by XTSY provides corporate and event catering in Shillong — office lunches, conferences and retreats — with hygienic multi-cuisine menus and on-time delivery. Get a quote at +91 88373 17070.',
-    '/catering-shillong',
+    '/tab-bistro/catering',
   ),
 ];

@@ -14,7 +14,7 @@ import {
   Bed, Check, Compass, Sun, Wallet, Shield,
 } from 'lucide-react';
 
-const CANONICAL = 'https://xtsy.one/backpacking-india';
+const CANONICAL = 'https://xtsy.one/tours/backpacking-india';
 
 const itinerary = [
   {
@@ -360,13 +360,13 @@ const BackpackingIndia = memo(() => {
             <h2 className="text-2xl font-bold font-playfair text-foreground mb-3">Plan the Meghalaya Leg</h2>
             <p className="text-sm text-muted-foreground">
               <Link to="/stays/best-hostel-in-shillong" className="underline hover:text-primary">Best hostel in Shillong</Link>
-              {' · '}<Link to="/hostel-booking" className="underline hover:text-primary">Hostel booking</Link>
+              {' · '}<Link to="/stays/hostel-booking" className="underline hover:text-primary">Hostel booking</Link>
               {' · '}<Link to="/stays/hostel-near-me" className="underline hover:text-primary">Hostel near me</Link>
               {' · '}<Link to="/tours/budget-trip-to-meghalaya" className="underline hover:text-primary">Budget trip to Meghalaya</Link>
-              {' · '}<Link to="/best-time-to-visit-meghalaya" className="underline hover:text-primary">Best time to visit Meghalaya</Link>
+              {' · '}<Link to="/guides/best-time-to-visit-meghalaya" className="underline hover:text-primary">Best time to visit Meghalaya</Link>
               {' · '}<Link to="/tours/5-day-meghalaya-itinerary" className="underline hover:text-primary">5-day Meghalaya itinerary</Link>
               {' · '}<Link to="/travel-guide/guwahati-to-shillong-transport" className="underline hover:text-primary">Guwahati to Shillong transport</Link>
-              {' · '}<Link to="/places-to-visit-in-meghalaya" className="underline hover:text-primary">Places to visit in Meghalaya</Link>
+              {' · '}<Link to="/guides/places-to-visit-in-meghalaya" className="underline hover:text-primary">Places to visit in Meghalaya</Link>
             </p>
           </div>
         </section>

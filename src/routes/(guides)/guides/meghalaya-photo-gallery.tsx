@@ -3,11 +3,11 @@ import { collectionSchema } from "@/lib/seo/pageEntitySchema";
 import MeghalayaPhotoGallery from "@/pages/destinations/MeghalayaPhotoGallery";
 import { buildRouteHead } from "@/lib/seo-head";
 
-export const Route = createFileRoute("/(guides)/meghalaya-photo-gallery")({
+export const Route = createFileRoute("/(guides)/guides/meghalaya-photo-gallery")({
   head: () =>
     buildRouteHead({
-      path: "/meghalaya-photo-gallery",
-      jsonLd: [collectionSchema({ path: "/meghalaya-photo-gallery", name: "Meghalaya Photo Gallery: Real Trip Photos | XTSY", description: "Unfiltered photos from Meghalaya trips run by XTSY: living root bridges, Nohkalikai, Umngot river, Mawlynnong and life inside our Shillong hostel." })],
+      path: "/guides/meghalaya-photo-gallery",
+      jsonLd: [collectionSchema({ path: "/guides/meghalaya-photo-gallery", name: "Meghalaya Photo Gallery: Real Trip Photos | XTSY", description: "Unfiltered photos from Meghalaya trips run by XTSY: living root bridges, Nohkalikai, Umngot river, Mawlynnong and life inside our Shillong hostel." })],
       title: "Meghalaya Photo Gallery: Real Trip Photos | XTSY",
       description:
         "Unfiltered photos from Meghalaya trips run by XTSY: living root bridges, Nohkalikai, Umngot river, Mawlynnong and life inside our Shillong hostel.",

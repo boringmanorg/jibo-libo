@@ -346,7 +346,7 @@ export const PricingCancellationPolicy: React.FC = () => {
         </div>
       </main>
       
-      <PageFaq path="/pricing-cancellation-policy" />
+      <PageFaq path="/about/pricing-cancellation-policy" />
       <Footer />
     </div>
   );

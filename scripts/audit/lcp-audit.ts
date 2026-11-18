@@ -21,7 +21,7 @@ const ROUTES = (process.env.LCP_ROUTES || [
   '/', '/stays/best-hostel-in-shillong', '/stays/experience-by-xtsy', '/tab-bistro', '/tours', '/tours/5n-6d-tawang-tour',
   '/destinations/meghalaya', '/destinations/meghalaya/shillong', '/destinations/meghalaya/cherrapunji/nohkalikai-falls',
   '/living-root-bridges-meghalaya', '/cheap-hostels-shillong', '/travel-guide/how-to-reach-meghalaya',
-  '/stays/female-travellers', '/stays/campsite-dawki', '/guides', '/faq', '/book',
+  '/stays/female-travellers', '/stays/campsite-dawki', '/guides', '/about/faq', '/book',
 ].join(',')).split(',');
 const PSI = process.env.PSI === '1';
 const PSI_URLS = (process.env.PSI_URLS || '/,/stays/best-hostel-in-shillong,/xtsy-270,/tours/5n-6d-tawang-tour').split(',');

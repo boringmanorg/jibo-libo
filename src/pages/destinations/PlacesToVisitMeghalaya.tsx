@@ -8,7 +8,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import PlanTripLinks from '@/components/PlanTripLinks';
 import { meghalayaDestinations, type MeghalayaDestination } from '@/data/meghalayaDestinations';
 
-const CANONICAL = 'https://xtsy.one/places-to-visit-in-meghalaya';
+const CANONICAL = 'https://xtsy.one/guides/places-to-visit-in-meghalaya';
 
 const CATEGORY_GROUPS: {
   category: MeghalayaDestination['category'];
@@ -85,7 +85,7 @@ const PlacesToVisitMeghalaya = () => {
       <Header />
       <main className="pt-20">
         <div className="container mx-auto px-4 max-w-5xl py-12">
-          <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Things to Do', href: '/things-to-do-in-meghalaya' }, { label: 'Places to Visit' }]} />
+          <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Things to Do', href: '/guides/things-to-do-in-meghalaya' }, { label: 'Places to Visit' }]} />
 
           <h1 className="mt-6 text-3xl md:text-4xl font-bold text-foreground">
             Places to Visit in Meghalaya — Top Tourist Places
@@ -156,12 +156,12 @@ const PlacesToVisitMeghalaya = () => {
 
           <nav className="mt-10 border-t border-border pt-8">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              <Link to="/best-time-to-visit-meghalaya" className="text-sm text-primary hover:underline">Best Time to Visit Meghalaya</Link>
-              <Link to="/things-to-do-in-meghalaya" className="text-sm text-primary hover:underline">Things to Do in Meghalaya</Link>
+              <Link to="/guides/best-time-to-visit-meghalaya" className="text-sm text-primary hover:underline">Best Time to Visit Meghalaya</Link>
+              <Link to="/guides/things-to-do-in-meghalaya" className="text-sm text-primary hover:underline">Things to Do in Meghalaya</Link>
               <Link to="/tours/3-day-meghalaya-itinerary" className="text-sm text-primary hover:underline">3-Day Itinerary</Link>
               <Link to="/tours/5-day-meghalaya-itinerary" className="text-sm text-primary hover:underline">5-Day Itinerary</Link>
               <Link to="/tours/meghalaya-tour-packages" className="text-sm text-primary hover:underline">Meghalaya Tour Packages</Link>
-              <Link to="/hidden-places-in-meghalaya" className="text-sm text-primary hover:underline">Hidden Places</Link>
+              <Link to="/guides/hidden-places-in-meghalaya" className="text-sm text-primary hover:underline">Hidden Places</Link>
             </div>
           </nav>
         </div>

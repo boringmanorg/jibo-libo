@@ -44,8 +44,8 @@ const CATEGORY_HUB: Record<string, string> = {
   workation: '/stays/workation', rentals: '/tours/xtsy-rentals', tours: '/tours', 'group-tours': '/stays/group-bookings-meghalaya',
   corporate: '/stays/group-bookings-meghalaya', 'themed-trips': '/tours', 'road-bike-trips': '/expeditions',
   restaurants: '/tab-bistro', 'food-dining': '/tab-bistro', weddings: '/tours/destination-wedding-shillong',
-  destinations: '/things-to-do-in-meghalaya', attractions: '/things-to-do-in-meghalaya', 'travel-guides': '/things-to-do-in-meghalaya',
-  itineraries: '/things-to-do-in-meghalaya', seasonal: '/best-time-to-visit-meghalaya', activities: '/things-to-do-in-meghalaya',
+  destinations: '/guides/things-to-do-in-meghalaya', attractions: '/guides/things-to-do-in-meghalaya', 'travel-guides': '/guides/things-to-do-in-meghalaya',
+  itineraries: '/guides/things-to-do-in-meghalaya', seasonal: '/guides/best-time-to-visit-meghalaya', activities: '/guides/things-to-do-in-meghalaya',
 };
 
 const STAY_CATS = new Set(['hostels', 'accommodation', 'hotels', 'homestays', 'glamping', 'hospitals', 'workation', 'competitor-capture']);
@@ -206,7 +206,7 @@ function mainEntity(page: SEOPageData, url: string, hero: Hero): Record<string, 
 export function schemaFor(page: SEOPageData): Record<string, unknown>[] {
   const url = `${SITE}/${page.slug}`;
   const hero = heroFor(page);
-  const hub = CATEGORY_HUB[page.category] ?? '/things-to-do-in-meghalaya';
+  const hub = CATEGORY_HUB[page.category] ?? '/guides/things-to-do-in-meghalaya';
   const graph: Record<string, unknown>[] = [
     {
       '@type': 'WebPage',
@@ -255,7 +255,7 @@ export function programmaticModel(slug: string): ProgrammaticModel | null {
     page,
     noindex: !isIndexableSEOSlug(page.slug, page),
     hero: heroFor(page),
-    hub: CATEGORY_HUB[page.category] ?? '/things-to-do-in-meghalaya',
+    hub: CATEGORY_HUB[page.category] ?? '/guides/things-to-do-in-meghalaya',
     quickAnswer: quickAnswerFor(page),
     facts: factsFor(page),
   };

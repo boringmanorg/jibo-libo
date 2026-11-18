@@ -20,7 +20,7 @@ async function main() {
   await ctx.route('**/__l5e/**', async (r) => { try { const u = new URL(r.request().url()); await r.fulfill({ response: await r.fetch({ url: `https://xtsy.one${u.pathname}` }) }); } catch { await r.continue(); } });
   const page = await ctx.newPage();
   page.on('pageerror', (e) => log.push(`pageerror: ${e.message}`));
-  await page.goto(`${BASE}/plan-trip-with-ai`, { waitUntil: 'networkidle', timeout: 90000 });
+  await page.goto(`${BASE}/tours/plan-trip-with-ai`, { waitUntil: 'networkidle', timeout: 90000 });
   const input = page.locator('#trip-chat-input-embedded');
   const say = async (text: string, shot: string) => {
     await input.fill(text);

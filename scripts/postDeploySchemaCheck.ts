@@ -56,16 +56,16 @@ export const TOP_SEO_ROUTES = [
   '/tours/meghalaya-tour-packages',
   '/tours/meghalaya-couple-tour-package',
   '/tours/shillong-tour-package',
-  '/things-to-do-in-meghalaya',
-  '/best-time-to-visit-meghalaya',
+  '/guides/things-to-do-in-meghalaya',
+  '/guides/best-time-to-visit-meghalaya',
   '/tours/3-day-meghalaya-itinerary',
   '/tours/5-day-meghalaya-itinerary',
   '/tours/budget-trip-to-meghalaya',
-  '/hidden-places-in-meghalaya',
+  '/guides/hidden-places-in-meghalaya',
   '/tours',
   '',
   '/about',
-  '/faq',
+  '/about/faq',
 ];
 
 // Routes that MUST have a FAQPage block (they show FAQs on the page; FAQ markup without
@@ -73,9 +73,9 @@ export const TOP_SEO_ROUTES = [
 const FAQ_REQUIRED = new Set<string>([
   '/stays/best-hostel-in-shillong',
   '/stays/hotels-in-shillong',
-  '/faq',
-  '/things-to-do-in-meghalaya',
-  '/best-time-to-visit-meghalaya',
+  '/about/faq',
+  '/guides/things-to-do-in-meghalaya',
+  '/guides/best-time-to-visit-meghalaya',
   '/tours/shillong-tour-package',
 ]);
 

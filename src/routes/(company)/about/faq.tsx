@@ -4,10 +4,10 @@ import { faqSchema } from "@/pages/v2/faqData";
 import { buildRouteHead } from "@/lib/seo-head";
 import { COVERS } from "@/data/v2Images";
 
-export const Route = createFileRoute("/(company)/faq")({
+export const Route = createFileRoute("/(company)/about/faq")({
   head: () =>
     buildRouteHead({
-      path: "/faq",
+      path: "/about/faq",
       title: "Hostel FAQs — Shillong Rates, Safety & Booking | XTSY",
       description:
         "Shillong dorms ₹399/₹499/₹599, GST included. XTSY FAQs on solo-women safety, New Shillong Township, check-in and WhatsApp enquiries.",

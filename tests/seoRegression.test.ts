@@ -166,17 +166,17 @@ describe('SEO regression: budget hostel canonical migration', () => {
   it('uses the budget wording and canonical route for the hostel hub', async () => {
     const { stayHubCopy } = await import('../src/data/stayHub');
     const copy = stayHubCopy('budget');
-    expect(copy.path).toBe('/budget-hostels-shillong');
+    expect(copy.path).toBe('/stays/budget-hostels-shillong');
     expect(copy.h1.toLowerCase()).toContain('budget');
     expect(copy.keywords.toLowerCase()).not.toContain('cheap');
   });
 
   it('redirects legacy hostel slugs to the canonical budget hub', async () => {
     const { RECOVERY_REDIRECTS } = await import('../src/data/seoAffectedSlugs');
-    expect(RECOVERY_REDIRECTS['cheap-hostel-shillong']).toBe('/budget-hostels-shillong');
-    expect(RECOVERY_REDIRECTS['cheap-hostel-in-shillong']).toBe('/budget-hostels-shillong');
-    expect(RECOVERY_REDIRECTS['cheap-hostels-shillong']).toBe('/budget-hostels-shillong');
-    expect(RECOVERY_REDIRECTS['budget-hostel-shillong']).toBe('/budget-hostels-shillong');
+    expect(RECOVERY_REDIRECTS['cheap-hostel-shillong']).toBe('/stays/budget-hostels-shillong');
+    expect(RECOVERY_REDIRECTS['cheap-hostel-in-shillong']).toBe('/stays/budget-hostels-shillong');
+    expect(RECOVERY_REDIRECTS['cheap-hostels-shillong']).toBe('/stays/budget-hostels-shillong');
+    expect(RECOVERY_REDIRECTS['budget-hostel-shillong']).toBe('/stays/budget-hostels-shillong');
     expect(RECOVERY_REDIRECTS['remote-work-stay-shillong']).toBe('/stays/workation');
   });
 
@@ -211,7 +211,7 @@ describe('SEO regression: budget hostel canonical migration', () => {
     expect(slugs).not.toContain('best-hostel-in-gangtok');
     expect(slugs).not.toContain('hostel-near-gangtok-airport');
     const { RECOVERY_REDIRECTS } = await import('../src/data/seoAffectedSlugs');
-    expect(RECOVERY_REDIRECTS['cheap-hostel-in-shillong']).toBe('/budget-hostels-shillong');
+    expect(RECOVERY_REDIRECTS['cheap-hostel-in-shillong']).toBe('/stays/budget-hostels-shillong');
     expect(RECOVERY_REDIRECTS['cheap-hotel-in-gangtok']).toBe('/destinations');
     expect(RECOVERY_REDIRECTS['cheap-hostel-in-gangtok']).toBe('/destinations');
     expect(RECOVERY_REDIRECTS['hostel-in-gangtok-tonight']).toBe('/destinations');
@@ -249,7 +249,7 @@ describe('SEO regression: budget hostel canonical migration', () => {
 
   it('registers public static pages and data-driven expedition routes for sitemap generation', async () => {
     const { STATIC_ROUTES } = await import('../src/utils/seoSlugRegistry');
-    for (const route of ['/contact', '/guides', '/catering-shillong', '/meghalaya-festivals', '/stays/partner-stays', '/backpacking-india', '/places-to-visit-in-meghalaya', '/travel-guide/guwahati-to-shillong-transport', '/travel-guide/how-to-reach-meghalaya', '/travel-guide/meghalaya-for-international-tourists', '/budget-hostels-shillong']) {
+    for (const route of ['/about/contact', '/guides', '/tab-bistro/catering', '/guides/meghalaya-festivals', '/stays/partner-stays', '/tours/backpacking-india', '/guides/places-to-visit-in-meghalaya', '/travel-guide/guwahati-to-shillong-transport', '/travel-guide/how-to-reach-meghalaya', '/travel-guide/meghalaya-for-international-tourists', '/stays/budget-hostels-shillong']) {
       expect(STATIC_ROUTES).toContain(route);
     }
     expect(STATIC_ROUTES).toContain('/expeditions/motorbike/guwahati-to-shillong');
@@ -258,7 +258,7 @@ describe('SEO regression: budget hostel canonical migration', () => {
 
   it('publishes only the canonical budget hub in static sitemap data', () => {
     const sitemap = fs.readFileSync(path.join(ROOT, 'public/sitemap-static.xml'), 'utf-8');
-    expect(sitemap).toContain('https://xtsy.one/budget-hostels-shillong');
+    expect(sitemap).toContain('https://xtsy.one/stays/budget-hostels-shillong');
     expect(sitemap).not.toContain('https://xtsy.one/cheap-hostels-shillong');
   });
 
@@ -270,9 +270,9 @@ describe('SEO regression: budget hostel canonical migration', () => {
 
   it('redirects legacy barbeque dining URLs to catering, not the regular bistro menu', async () => {
     const { RECOVERY_REDIRECTS } = await import('../src/data/seoAffectedSlugs');
-    expect(RECOVERY_REDIRECTS['barbeque-restaurant-shillong']).toBe('/catering-shillong');
-    expect(RECOVERY_REDIRECTS['barbecue-restaurant-in-police-bazar-shillong']).toBe('/catering-shillong');
-    expect(RECOVERY_REDIRECTS['barbecue-restaurant-in-laitumkhrah']).toBe('/catering-shillong');
+    expect(RECOVERY_REDIRECTS['barbeque-restaurant-shillong']).toBe('/tab-bistro/catering');
+    expect(RECOVERY_REDIRECTS['barbecue-restaurant-in-police-bazar-shillong']).toBe('/tab-bistro/catering');
+    expect(RECOVERY_REDIRECTS['barbecue-restaurant-in-laitumkhrah']).toBe('/tab-bistro/catering');
   });
 
   it('does not ship the shared rooftop café coming-soon claim', () => {

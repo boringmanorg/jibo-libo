@@ -24,11 +24,11 @@ const QUICK_LINKS: { label: string; to: string; keywords: string }[] = [
   { label: "Meghalaya Tour Packages", to: "/tours/meghalaya-tour-packages", keywords: "tour package trip holiday meghalaya" },
   { label: "Couple Tour Package", to: "/tours/meghalaya-couple-tour-package", keywords: "couple honeymoon romantic tour package" },
   { label: "Shillong Tour Package", to: "/tours/shillong-tour-package", keywords: "shillong tour package trip" },
-  { label: "Things to Do in Meghalaya", to: "/things-to-do-in-meghalaya", keywords: "things to do places visit attractions meghalaya" },
-  { label: "Best Time to Visit", to: "/best-time-to-visit-meghalaya", keywords: "best time season weather visit meghalaya" },
+  { label: "Things to Do in Meghalaya", to: "/guides/things-to-do-in-meghalaya", keywords: "things to do places visit attractions meghalaya" },
+  { label: "Best Time to Visit", to: "/guides/best-time-to-visit-meghalaya", keywords: "best time season weather visit meghalaya" },
   { label: "3-Day Itinerary", to: "/tours/3-day-meghalaya-itinerary", keywords: "itinerary 3 day plan trip meghalaya" },
   { label: "TAB Bistro by XTSY", to: "/tab-bistro", keywords: "restaurant food cafe dining tab bistro eat shillong" },
-  { label: "Catering & Bulk Orders", to: "/catering-shillong", keywords: "catering bulk order corporate event food" },
+  { label: "Catering & Bulk Orders", to: "/tab-bistro/catering", keywords: "catering bulk order corporate event food" },
   { label: "Browse All Tours", to: "/tours", keywords: "tours trips travel packages" },
 ];
 
@@ -198,9 +198,9 @@ const NotFound = ({ statusCode }: NotFoundProps) => {
           <ul className="m-0 flex list-none flex-wrap justify-center gap-x-5 gap-y-2 p-0 text-[15px] font-bold">
             <li><Link to="/stays/best-hostel-in-shillong" className="text-xt-crimson">Best hostel in Shillong</Link></li>
             <li><Link to="/tours/meghalaya-tour-packages" className="text-xt-crimson">Meghalaya tours</Link></li>
-            <li><Link to="/things-to-do-in-meghalaya" className="text-xt-crimson">Things to do</Link></li>
+            <li><Link to="/guides/things-to-do-in-meghalaya" className="text-xt-crimson">Things to do</Link></li>
             <li><Link to="/tab-bistro" className="text-xt-crimson">TAB Bistro</Link></li>
-            <li><Link to="/contact" className="text-xt-crimson">Contact</Link></li>
+            <li><Link to="/about/contact" className="text-xt-crimson">Contact</Link></li>
           </ul>
         </nav>
       </main>

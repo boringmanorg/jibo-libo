@@ -97,7 +97,7 @@ const SafeShell = ({ variant = 'error', title, message, onRetry, compact = false
             <ul className="flex flex-wrap gap-x-4 gap-y-2 justify-center">
               <li><Link to="/stays/best-hostel-in-shillong" className="text-primary hover:underline">Best Hostel Shillong</Link></li>
               <li><Link to="/tours/meghalaya-tour-packages" className="text-primary hover:underline">Meghalaya Tours</Link></li>
-              <li><Link to="/things-to-do-in-meghalaya" className="text-primary hover:underline">Things to Do</Link></li>
+              <li><Link to="/guides/things-to-do-in-meghalaya" className="text-primary hover:underline">Things to Do</Link></li>
             </ul>
           </nav>
         </div>

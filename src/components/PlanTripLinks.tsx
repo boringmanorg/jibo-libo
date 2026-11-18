@@ -92,7 +92,7 @@ const PlanTripLinks = ({ slugs, bookingAnchor, heading, source }: PlanTripLinksP
             <CalendarCheck className="h-4 w-4" /> Book Hostel Online
           </Link>
           <Link
-            to="/places-to-visit-in-meghalaya"
+            to="/guides/places-to-visit-in-meghalaya"
             className="inline-flex items-center justify-center rounded-lg border border-border px-6 py-3 font-medium text-foreground transition-colors hover:bg-muted"
           >
             All Places to Visit

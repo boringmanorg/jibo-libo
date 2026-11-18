@@ -2,10 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import CategoryPage from "@/pages/v2/CategoryV2";
 import { buildRouteHead } from "@/lib/seo-head";
 
-export const Route = createFileRoute("/(guides)/meghalaya-caves")({
+export const Route = createFileRoute("/(guides)/guides/meghalaya-caves")({
   head: () =>
     buildRouteHead({
-      path: "/meghalaya-caves",
+      path: "/guides/meghalaya-caves",
       title: "Meghalaya Caves: Mawsmai, Arwah & Siju Guide | XTSY",
       description:
         "Guide to caving in Meghalaya: Mawsmai, Arwah, Liat Prah and Siju, with difficulty, entry fees, timings, safety notes and guided caving trips from Shillong.",

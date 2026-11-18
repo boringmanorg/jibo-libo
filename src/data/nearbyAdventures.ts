@@ -8,11 +8,11 @@ export interface NearbyAdventure {
 export const NEARBY_ADVENTURES: Record<string, NearbyAdventure[]> = {
   shillong: [
     { label: 'Laitlum Canyons', detail: 'Canyon viewpoints and walking routes outside Shillong.', href: '/destinations/meghalaya/shillong' },
-    { label: 'Mawphlang Sacred Forest', detail: 'Guided forest walks from a Shillong base.', href: '/things-to-do-in-meghalaya' },
+    { label: 'Mawphlang Sacred Forest', detail: 'Guided forest walks from a Shillong base.', href: '/guides/things-to-do-in-meghalaya' },
     { label: 'Meghalaya loop', detail: 'Continue by motorbike or 4x4 to Dawki, Mawlynnong and Cherrapunji.', href: '/expeditions/motorbike/meghalaya-loop' },
   ],
   cherrapunji: [
-    { label: 'Nongriat root bridge trek', detail: 'A full-day descent and return through the Khasi Hills.', href: '/things-to-do-in-meghalaya' },
+    { label: 'Nongriat root bridge trek', detail: 'A full-day descent and return through the Khasi Hills.', href: '/guides/things-to-do-in-meghalaya' },
     { label: 'Caves and waterfalls near Sohra', detail: 'Explore the Mawsmai cave area and waterfall viewpoints.', href: '/destinations/meghalaya/cherrapunji' },
   ],
   dawki: [
@@ -25,19 +25,19 @@ export const NEARBY_ADVENTURES: Record<string, NearbyAdventure[]> = {
   ],
   jowai: [
     { label: 'Krang Suri Falls', detail: 'A Jaintia Hills waterfall outing from Jowai.', href: '/destinations/meghalaya/jowai' },
-    { label: 'Meghalaya activity guide', detail: 'Compare waterfall walks, caving and river adventures.', href: '/things-to-do-in-meghalaya' },
+    { label: 'Meghalaya activity guide', detail: 'Compare waterfall walks, caving and river adventures.', href: '/guides/things-to-do-in-meghalaya' },
   ],
   mawsynram: [
     { label: 'Mawjymbuin Cave', detail: 'A cave visit in the Mawsynram area.', href: '/destinations/meghalaya/mawsynram' },
-    { label: 'Meghalaya caves', detail: 'Find more cave routes across the state.', href: '/meghalaya-caves' },
+    { label: 'Meghalaya caves', detail: 'Find more cave routes across the state.', href: '/guides/meghalaya-caves' },
   ],
   nongstoin: [
     { label: 'Nongkhnum River Island', detail: 'River landscapes and a longer outing from Nongstoin.', href: '/destinations/meghalaya/nongstoin' },
-    { label: 'Meghalaya activities', detail: 'Compare trails and natural sites before setting out.', href: '/things-to-do-in-meghalaya' },
+    { label: 'Meghalaya activities', detail: 'Compare trails and natural sites before setting out.', href: '/guides/things-to-do-in-meghalaya' },
   ],
   tura: [
     { label: 'Tura Peak and Garo Hills', detail: 'Forest and hill walks with Tura as your base.', href: '/destinations/meghalaya/tura' },
-    { label: 'Meghalaya activity guide', detail: 'Plan other nature-focused stops across the state.', href: '/things-to-do-in-meghalaya' },
+    { label: 'Meghalaya activity guide', detail: 'Plan other nature-focused stops across the state.', href: '/guides/things-to-do-in-meghalaya' },
   ],
   guwahati: [
     { label: 'Brahmaputra river outings', detail: 'Explore river experiences from the Assam gateway.', href: '/destinations/assam' },

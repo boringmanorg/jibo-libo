@@ -121,7 +121,7 @@ const HostelNearMe = memo(() => {
     },
     {
       q: 'Are there other hostels near me in Shillong worth comparing?',
-      a: 'Shillong has ~6 verified hostels. XTSY is the largest (India\'s biggest hostel in the northeast), rated 4.7★ from 252 Google reviews and sits in quiet New Shillong Township. Compare on /xtsy-vs-zostel or /best-hostel-in-shillong.',
+      a: 'Shillong has ~6 verified hostels. XTSY is the largest (India\'s biggest hostel in the northeast), rated 4.7★ from 252 Google reviews and sits in quiet New Shillong Township. Compare on /stays/xtsy-vs-zostel or /best-hostel-in-shillong.',
     },
     {
       q: 'Can I walk-in without booking online?',
@@ -284,7 +284,7 @@ const HostelNearMe = memo(() => {
                 <div className="font-semibold mb-1">Best Hostel in Shillong</div>
                 <div className="text-sm text-muted-foreground">Full comparison of every verified hostel.</div>
               </Link>
-              <Link to="/hostel-booking" className="rounded-xl border p-5 hover:border-primary transition">
+              <Link to="/stays/hostel-booking" className="rounded-xl border p-5 hover:border-primary transition">
                 <div className="font-semibold mb-1">Book a Hostel Online</div>
                 <div className="text-sm text-muted-foreground">Instant confirmation, direct rates.</div>
               </Link>

@@ -1,7 +1,7 @@
 /**
  * "Plan a trip with AI" — the XTSY trip assistant chat.
  *
- * Used embedded (home page, /plan-trip-with-ai) and as a site-wide pop-up
+ * Used embedded (home page, /tours/plan-trip-with-ai) and as a site-wide pop-up
  * (ChatLauncher). The conversation is kept in sessionStorage so it survives
  * navigation, and every action button works: send the plan to the XTSY desk
  * (saved as a tour enquiry), WhatsApp it, book the XTSY nights, copy it, or
@@ -302,7 +302,7 @@ export default function TripChat({ variant = 'embedded', className, onClose, ini
         </button>
       </form>
       <p className="m-0 px-5 pb-3 text-[12px] text-[#8D94AA]">
-        Drive times are estimates; the XTSY desk confirms every plan before you pay. XTSY’s own stay is in New Shillong Township — elsewhere we book trusted partners. <Link to="/plan-trip-with-ai" className="font-bold text-xt-fog underline">How it works</Link>
+        Drive times are estimates; the XTSY desk confirms every plan before you pay. XTSY’s own stay is in New Shillong Township — elsewhere we book trusted partners. <Link to="/tours/plan-trip-with-ai" className="font-bold text-xt-fog underline">How it works</Link>
       </p>
     </section>
   );

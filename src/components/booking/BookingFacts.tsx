@@ -74,8 +74,8 @@ export default function BookingFacts() {
           <p className="mt-2 text-sm">
             Email <a className="underline" href="mailto:booking@xtsy.one">booking@xtsy.one</a> for bookings, or{' '}
             <a className="underline" href="mailto:admin@xtsy.one">admin@xtsy.one</a> for policies. You can also read the{' '}
-            <a className="underline" href="/faq">FAQs</a> and the{' '}
-            <a className="underline" href="/pricing-cancellation-policy">pricing and cancellation policy</a>.
+            <a className="underline" href="/about/faq">FAQs</a> and the{' '}
+            <a className="underline" href="/about/pricing-cancellation-policy">pricing and cancellation policy</a>.
           </p>
         </div>
       </div>

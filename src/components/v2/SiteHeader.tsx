@@ -19,8 +19,8 @@ export const MAIN_NAV = [
   { to: '/tours', label: 'Tours' },
   { to: '/tab-bistro', label: 'TAB Bistro' },
   { to: '/stays/workation', label: 'Workation' },
-  { to: '/things-to-do-in-meghalaya', label: 'Guides' },
-  { to: '/merch', label: 'Merch' },
+  { to: '/guides/things-to-do-in-meghalaya', label: 'Guides' },
+  { to: '/about/merch', label: 'Merch' },
 ];
 
 const MENU_GROUPS = [
@@ -42,27 +42,27 @@ const MENU_GROUPS = [
       { to: '/expeditions', label: 'Expeditions' },
       { to: '/stays/group-bookings-meghalaya', label: 'Group bookings' },
       { to: '/tours/xtsy-rentals', label: 'Bike & car rentals' },
-      { to: '/plan-trip-with-ai', label: 'Plan a trip with AI' },
+      { to: '/tours/plan-trip-with-ai', label: 'Plan a trip with AI' },
     ],
   },
   {
     title: 'Explore',
     links: [
       { to: '/destinations', label: 'Destinations' },
-      { to: '/things-to-do-in-meghalaya', label: 'Travel guides' },
-      { to: '/meghalaya-waterfalls', label: 'Meghalaya waterfalls' },
+      { to: '/guides/things-to-do-in-meghalaya', label: 'Travel guides' },
+      { to: '/guides/meghalaya-waterfalls', label: 'Meghalaya waterfalls' },
     ],
   },
   {
     title: 'XTSY',
     links: [
       { to: '/tab-bistro', label: 'TAB Bistro' },
-      { to: '/catering-shillong', label: 'Catering' },
+      { to: '/tab-bistro/catering', label: 'Catering' },
       { to: '/tours/destination-wedding-shillong', label: 'Destination weddings' },
-      { to: '/merch', label: 'XTSY merch' },
+      { to: '/about/merch', label: 'XTSY merch' },
       { to: '/about', label: 'About us' },
-      { to: '/faq', label: 'FAQs' },
-      { to: '/contact', label: 'Contact' },
+      { to: '/about/faq', label: 'FAQs' },
+      { to: '/about/contact', label: 'Contact' },
     ],
   },
 ];

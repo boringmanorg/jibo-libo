@@ -107,7 +107,7 @@ function buildBreadcrumbSchema(page: SEOPageData): string {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
-      { '@type': 'ListItem', position: 2, name: label, item: `${SITE_URL}/things-to-do-in-meghalaya` },
+      { '@type': 'ListItem', position: 2, name: label, item: `${SITE_URL}/guides/things-to-do-in-meghalaya` },
       { '@type': 'ListItem', position: 3, name: page.h1 },
     ],
   });
@@ -141,7 +141,7 @@ function generatePageHTML(page: SEOPageData, templateHTML: string): string {
 
   const bodyContent = `
     <div id="seo-prerender" style="max-width:800px;margin:0 auto;padding:20px;">
-      <nav aria-label="breadcrumb"><a href="/">Home</a> &gt; <a href="/things-to-do-in-meghalaya">${escapeHtml(page.category)}</a> &gt; ${escapeHtml(page.h1)}</nav>
+      <nav aria-label="breadcrumb"><a href="/">Home</a> &gt; <a href="/guides/things-to-do-in-meghalaya">${escapeHtml(page.category)}</a> &gt; ${escapeHtml(page.h1)}</nav>
       <h1>${escapeHtml(page.h1)}</h1>
       <p>${escapeHtml(page.intro)}</p>
       ${sectionsHTML}

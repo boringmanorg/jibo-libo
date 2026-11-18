@@ -19,7 +19,7 @@ import crypto from 'crypto';
 import fs from 'fs';
 
 const SITE = process.env.GSC_SITE_URL || 'sc-domain:xtsy.one';
-const PRIORITY = ['/', '/stays/best-hostel-in-shillong', '/cheap-hostels-shillong', '/stays/experience-by-xtsy', '/plan-trip-with-ai', '/tours', '/tours/meghalaya-tour-packages', '/things-to-do-in-meghalaya', '/tab-bistro', '/stays/pet-friendly', '/stays/female-travellers', '/stays/workation', '/hostels-in-shillong-today', '/shillong-dormitory'];
+const PRIORITY = ['/', '/stays/best-hostel-in-shillong', '/cheap-hostels-shillong', '/stays/experience-by-xtsy', '/tours/plan-trip-with-ai', '/tours', '/tours/meghalaya-tour-packages', '/guides/things-to-do-in-meghalaya', '/tab-bistro', '/stays/pet-friendly', '/stays/female-travellers', '/stays/workation', '/hostels-in-shillong-today', '/shillong-dormitory'];
 
 const b64url = (b: Buffer | string) => Buffer.from(b).toString('base64').replace(/=+$/, '').replace(/\+/g, '-').replace(/\//g, '_');
 

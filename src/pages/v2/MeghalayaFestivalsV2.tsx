@@ -1,5 +1,5 @@
 /**
- * /meghalaya-festivals — when and where Meghalaya's main festivals happen, plus nearby
+ * /guides/meghalaya-festivals — when and where Meghalaya's main festivals happen, plus nearby
  * Northeast festivals. Dates follow each community's calendar, so the page gives the usual month
  * and tells readers to confirm the year's dates locally. Drive times come from routing.ts.
  */
@@ -82,8 +82,8 @@ function FestivalCard({ f }: { f: Festival }) {
 export default function MeghalayaFestivalsV2() {
   return (
     <PageShell
-      bar={{ label: 'Plan my trip', to: '/plan-trip-with-ai', note: 'Festivals across the Northeast' }}
-      cta={{ title: 'Plan your trip around a festival.', sub: 'Tell a travel expert which festival you want to see; XTSY arranges the stay, transport and timing.', bookTo: '/plan-trip-with-ai', bookLabel: 'Build a trip with AI' }}
+      bar={{ label: 'Plan my trip', to: '/tours/plan-trip-with-ai', note: 'Festivals across the Northeast' }}
+      cta={{ title: 'Plan your trip around a festival.', sub: 'Tell a travel expert which festival you want to see; XTSY arranges the stay, transport and timing.', bookTo: '/tours/plan-trip-with-ai', bookLabel: 'Build a trip with AI' }}
     >
       <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: 'Guides', to: '/guides' }, { label: 'Meghalaya festivals' }]} />
       <section className={`${PAD} flex flex-col gap-5 py-12`}>
@@ -111,11 +111,11 @@ export default function MeghalayaFestivalsV2() {
           <li>Many festivals are religious ceremonies first. Dress modestly, follow the organisers' instructions and ask before photographing people.</li>
           <li>Stays near festival grounds fill up early; book as soon as dates are announced.</li>
           <li>Roads around festival venues get crowded. Leave early and carry cash.</li>
-          <li>The <Link to="/best-time-to-visit-meghalaya" className="font-bold text-xt-crimson underline underline-offset-4">best time to visit guide</Link> covers the weather month by month; confirm festival dates before planning your trip.</li>
+          <li>The <Link to="/guides/best-time-to-visit-meghalaya" className="font-bold text-xt-crimson underline underline-offset-4">best time to visit guide</Link> covers the weather month by month; confirm festival dates before planning your trip.</li>
         </ul>
       </section>
 
-      <PageFaq path="/meghalaya-festivals" />
+      <PageFaq path="/guides/meghalaya-festivals" />
     </PageShell>
   );
 }

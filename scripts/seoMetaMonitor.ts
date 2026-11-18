@@ -27,10 +27,10 @@ import path from 'path';
 const TOP_SEO_ROUTES = [
   '/', '/stays/best-hostel-in-shillong', '/stays/hotels-in-shillong', '/stays/homestays-in-shillong',
   '/stays/luxury-glamping-shillong', '/tab-bistro', '/tours/meghalaya-tour-packages',
-  '/tours/meghalaya-couple-tour-package', '/tours/shillong-tour-package', '/things-to-do-in-meghalaya',
-  '/best-time-to-visit-meghalaya', '/tours/3-day-meghalaya-itinerary', '/tours/5-day-meghalaya-itinerary',
-  '/tours/budget-trip-to-meghalaya', '/hidden-places-in-meghalaya', '/tours', '',
-  '/about', '/faq', '/tab-bistro', '/tab-bistro/catering',
+  '/tours/meghalaya-couple-tour-package', '/tours/shillong-tour-package', '/guides/things-to-do-in-meghalaya',
+  '/guides/best-time-to-visit-meghalaya', '/tours/3-day-meghalaya-itinerary', '/tours/5-day-meghalaya-itinerary',
+  '/tours/budget-trip-to-meghalaya', '/guides/hidden-places-in-meghalaya', '/tours', '',
+  '/about', '/about/faq', '/tab-bistro', '/tab-bistro/catering',
 ];
 
 const args = process.argv.slice(2);

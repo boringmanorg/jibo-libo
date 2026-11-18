@@ -17,9 +17,9 @@ const AXE = fs.readFileSync(process.env.AXE_PATH || 'node_modules/axe-core/axe.m
 const ROUTES = (process.env.UI_ROUTES || [
   '/', '/stays/best-hostel-in-shillong', '/stays/experience-by-xtsy', '/book', '/book/campsite', '/tours', '/tours/5n-6d-tawang-tour', '/tours/bhutan-mindful-kingdom-journey',
   '/expeditions', '/destinations', '/destinations/meghalaya', '/destinations/meghalaya/shillong', '/destinations/meghalaya/cherrapunji/nohkalikai-falls',
-  '/shillong-dormitory', '/meghalaya-waterfalls', '/plan-trip-with-ai', '/tab-bistro', '', '/about', '/contact', '/faq', '/stays/pet-friendly',
-  '/stays/female-travellers', '/stays/workation', '/stays/group-bookings-meghalaya', '/merch', '/tours/meghalaya-tour-packages', '/things-to-do-in-meghalaya',
-  '/stays/hotels-in-shillong', '/travel-guide/how-to-reach-meghalaya', '/pricing-cancellation-policy', '/guides', '/this-page-does-not-exist',
+  '/shillong-dormitory', '/guides/meghalaya-waterfalls', '/tours/plan-trip-with-ai', '/tab-bistro', '', '/about', '/about/contact', '/about/faq', '/stays/pet-friendly',
+  '/stays/female-travellers', '/stays/workation', '/stays/group-bookings-meghalaya', '/about/merch', '/tours/meghalaya-tour-packages', '/guides/things-to-do-in-meghalaya',
+  '/stays/hotels-in-shillong', '/travel-guide/how-to-reach-meghalaya', '/about/pricing-cancellation-policy', '/guides', '/this-page-does-not-exist',
 ].join(',')).split(',');
 const VPS = [{ name: 'phone', width: 390, height: 844, mobile: true }, { name: 'desktop', width: 1440, height: 900, mobile: false }];
 

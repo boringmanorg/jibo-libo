@@ -1,6 +1,6 @@
 import { WaAnchor } from '@/components/WaAnchor';
 /**
- * /stays/best-hostel-in-shillong and /budget-hostels-shillong — the Shillong stay hubs.
+ * /stays/best-hostel-in-shillong and /stays/budget-hostels-shillong — the Shillong stay hubs.
  * JSON-LD is rendered by the route head (server-side); this page shows the same
  * facts, prices (static owner-approved catalogue) and FAQs.
  */
@@ -85,7 +85,7 @@ export default function StayHubV2({ variant }: { variant: StayHubVariant }) {
             </Link>
           ))}
         </div>
-        <p className="m-0 text-[13px] text-xt-mute">Prices come from our booking engine and can change with dates; check-in 11 AM, check-out strictly 10 AM.{variant === 'hostels' && <> <Link to="/faq" className="inline-flex min-h-12 items-center font-bold text-xt-crimson underline underline-offset-4">Hostel FAQs: booking, facilities and arrival</Link>.</>}</p>
+        <p className="m-0 text-[13px] text-xt-mute">Prices come from our booking engine and can change with dates; check-in 11 AM, check-out strictly 10 AM.{variant === 'hostels' && <> <Link to="/about/faq" className="inline-flex min-h-12 items-center font-bold text-xt-crimson underline underline-offset-4">Hostel FAQs: booking, facilities and arrival</Link>.</>}</p>
       </section>
 
       <section className={`${PAD} grid gap-8 pb-14 lg:grid-cols-2`}>
@@ -120,7 +120,7 @@ export default function StayHubV2({ variant }: { variant: StayHubVariant }) {
           <h2 className="xt-display m-0 text-[36px] leading-none sm:text-[48px]">How to choose a hostel in Shillong</h2>
           <ol className="m-0 flex list-decimal flex-col gap-2 pl-5 text-[15px] leading-relaxed text-xt-mute">
             <li><strong className="text-xt-ink">Location for your trip:</strong> central Shillong for nightlife on foot; New Shillong for quiet, space and quicker waterfall starts.</li>
-            <li><strong className="text-xt-ink">Safety:</strong> look for a women-only dorm, lockers and 24/7 arrival support.{variant === 'hostels' && <> Read <Link to="/safety-house-rules" className="inline-flex min-h-12 items-center font-bold text-xt-crimson underline underline-offset-4">XTSY hostel safety and house rules</Link> before your stay.</>}</li>
+            <li><strong className="text-xt-ink">Safety:</strong> look for a women-only dorm, lockers and 24/7 arrival support.{variant === 'hostels' && <> Read <Link to="/about/safety-house-rules" className="inline-flex min-h-12 items-center font-bold text-xt-crimson underline underline-offset-4">XTSY hostel safety and house rules</Link> before your stay.</>}</li>
             <li><strong className="text-xt-ink">Food:</strong> an on-site kitchen or restaurant saves money and late-night hunting.</li>
             <li><strong className="text-xt-ink">Price you actually pay:</strong> compare the direct rate — OTAs add their commission.</li>
             <li><strong className="text-xt-ink">Trip help:</strong> a travel desk that knows real drive times saves whole days.</li>
@@ -138,7 +138,7 @@ export default function StayHubV2({ variant }: { variant: StayHubVariant }) {
         <div className="flex flex-wrap gap-2">
           <button type="button" onClick={() => openTripChat('Plan 5 days in Meghalaya staying at XTSY')} className="xt-btn h-12 rounded-full bg-xt-crimson px-6 text-[15px] font-extrabold text-white">✦ Plan a trip with AI</button>
           <Link to="/tours" className="xt-btn flex h-12 items-center rounded-full border-[1.5px] border-xt-paper px-6 text-[15px] font-extrabold text-xt-paper hover:text-xt-paper">Tour packages</Link>
-          <Link to={variant === 'budget' ? '/stays/best-hostel-in-shillong' : '/budget-hostels-shillong'} className="xt-btn flex h-12 items-center rounded-full border-[1.5px] border-xt-paper/50 px-6 text-[15px] font-extrabold text-xt-paper hover:text-xt-paper">{variant === 'budget' ? 'Hostels in Shillong guide' : 'Best budget-friendly beds in Shillong'}</Link>
+          <Link to={variant === 'budget' ? '/stays/best-hostel-in-shillong' : '/stays/budget-hostels-shillong'} className="xt-btn flex h-12 items-center rounded-full border-[1.5px] border-xt-paper/50 px-6 text-[15px] font-extrabold text-xt-paper hover:text-xt-paper">{variant === 'budget' ? 'Hostels in Shillong guide' : 'Best budget-friendly beds in Shillong'}</Link>
           <Link to="/stays/female-travellers" className="xt-btn flex h-12 items-center rounded-full border-[1.5px] border-xt-paper/50 px-6 text-[15px] font-extrabold text-xt-paper hover:text-xt-paper">Women-safe stays</Link>
         </div>
       </section>

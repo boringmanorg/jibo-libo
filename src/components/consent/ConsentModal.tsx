@@ -75,7 +75,7 @@ export function ConsentModal() {
         <div className="flex flex-col gap-2 md:flex-row md:items-center md:gap-6">
           <p className="m-0 flex-1 text-[13px] leading-snug sm:text-[14px]">
             We use necessary cookies to run the site. With your permission, we also use cookies for analytics, ads and personalisation.{' '}
-            <a href="/privacy-policy" className="font-bold text-xt-crimson underline">Privacy Policy</a>
+            <a href="/about/privacy-policy" className="font-bold text-xt-crimson underline">Privacy Policy</a>
             {' · '}
             <Button
               type="button"

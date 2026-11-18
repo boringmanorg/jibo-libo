@@ -1,5 +1,5 @@
 /**
- * /faq — FAQs with topic tabs (redesign). All answers are also emitted as
+ * /about/faq — FAQs with topic tabs (redesign). All answers are also emitted as
  * FAQPage structured data (rendered server-side by the route head).
  */
 import { useState } from 'react';
@@ -24,7 +24,7 @@ export default function FaqV2() {
             <div className="xt-eyebrow text-[15px]">Your stay, answered</div>
             <h1 className="xt-display m-0 text-[52px] leading-none sm:text-[80px]">XTSY Travellers Hostel FAQs</h1>
             <p className="max-w-xl text-[17px] leading-relaxed">Dorms from ₹399, GST included. New Shillong Township. Check-in 11 AM · check-out strictly 10 AM.</p>
-            <div className="flex flex-wrap gap-3"><Btn to="/book">Choose your stay</Btn><Btn to="/safety-house-rules" kind="light">Safety & house rules</Btn></div>
+            <div className="flex flex-wrap gap-3"><Btn to="/book">Choose your stay</Btn><Btn to="/about/safety-house-rules" kind="light">Safety & house rules</Btn></div>
           </div>
         </section>
         <section className={`${PAD} grid gap-8 py-14 lg:grid-cols-12 lg:gap-10`}>

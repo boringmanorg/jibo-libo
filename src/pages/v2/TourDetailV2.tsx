@@ -131,7 +131,7 @@ export default function TourDetailV2() {
         keywords={`${tour.title}, ${tour.location} tour, ${tour.category} tour, ${tour.duration} Meghalaya package, XTSY Travel`}
         canonicalUrl={tourUrl}
       />
-      <PageShell bar={onRequest ? { label: 'Get a quote', to: enquire, note: 'Price on request' } : { label: 'Book this tour', onClick: () => setIsBookingOpen(true), note: `${displayPrice} per person` }} cta={{ title: 'Want it your way?', sub: 'Every itinerary can change. Tell a travel expert your dates and pace on WhatsApp.', bookTo: '/plan-trip-with-ai', bookLabel: 'Build a trip with AI' }}>
+      <PageShell bar={onRequest ? { label: 'Get a quote', to: enquire, note: 'Price on request' } : { label: 'Book this tour', onClick: () => setIsBookingOpen(true), note: `${displayPrice} per person` }} cta={{ title: 'Want it your way?', sub: 'Every itinerary can change. Tell a travel expert your dates and pace on WhatsApp.', bookTo: '/tours/plan-trip-with-ai', bookLabel: 'Build a trip with AI' }}>
         <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: 'Tours', to: '/tours' }, { label: tour.title }]} />
 
         <section className={`${PAD} grid items-end gap-8 py-10 lg:grid-cols-12 lg:py-14`}>

@@ -14,6 +14,7 @@ import { ALL_SEO_PAGES } from '../src/data/seoPages';
 import { isIndexableSEOSlug } from '../src/data/seoIndexPolicy';
 import { checkSitemapCoverage } from './sitemapCoverage';
 import { STATIC_ROUTES } from '../src/utils/seoSlugRegistry';
+import { MOVED_PAGES } from '../src/data/movedPages';
 import {
   RECOVERY_FILTERED_OUT,
   RECOVERY_LIVE_PAGES,
@@ -67,6 +68,8 @@ for (const f of branchFiles) {
 
 const priorityUrls: string[] = [];
 const includedSlugs = new Set<string>(STATIC_ROUTES.map((route) => route.replace(/^\//, '')));
+// A moved page is covered by its new address (src/data/movedPages.ts).
+for (const old of Object.keys(MOVED_PAGES)) includedSlugs.add(old.slice(1));
 const seenUrls = new Set<string>();
 let skippedOwned = 0;
 let skippedDupe = 0;

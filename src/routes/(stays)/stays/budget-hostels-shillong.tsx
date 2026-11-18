@@ -8,7 +8,7 @@ import { responsive } from "@/components/v2/primitives";
 const copy = stayHubCopy("budget");
 const hero = responsive(COVERS.home);
 
-export const Route = createFileRoute("/(stays)/budget-hostels-shillong")({
+export const Route = createFileRoute("/(stays)/stays/budget-hostels-shillong")({
   head: () =>
     buildRouteHead({
       path: copy.path,

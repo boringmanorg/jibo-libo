@@ -10,10 +10,10 @@ import { buildRouteHead } from "@/lib/seo-head";
  * src/server.ts (withGoneStatus) — the router forces 200 on any matched
  * route, so it cannot be set from here.
  */
-export const Route = createFileRoute("/(company)/refund-cancellation-policy")({
+export const Route = createFileRoute("/(company)/about/refund-cancellation-policy")({
   head: () =>
     buildRouteHead({
-      path: "/refund-cancellation-policy",
+      path: "/about/refund-cancellation-policy",
       title: "Page removed | XTSY",
       description:
         "This page has been permanently removed. Explore XTSY Travellers Hostel stays in New Shillong, Meghalaya tours by XTSY Voyage, and TAB Bistro dining.",

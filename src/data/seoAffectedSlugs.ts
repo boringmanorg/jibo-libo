@@ -169,7 +169,7 @@ const INTENT_STAY_DESTINATIONS: Record<string, string> = {
 };
 const intentStayTarget = (stay: string, city: string): string => {
   if (city !== 'shillong') return INTENT_STAY_DESTINATIONS[city] ?? '/destinations';
-  if (stay === 'hostel' || stay === 'budget-stay') return '/budget-hostels-shillong';
+  if (stay === 'hostel' || stay === 'budget-stay') return '/stays/budget-hostels-shillong';
   if (stay === 'hotel') return '/stays/hotels-in-shillong';
   if (stay === 'homestay' || stay === 'guesthouse') return '/stays/homestays-in-shillong';
   return '/stays/luxury-glamping-shillong';
@@ -199,10 +199,10 @@ export const RECOVERY_REDIRECTS: Readonly<Record<string, string>> = {
   // seoPagesDiningExpansion.ts for why each one was withdrawn. They are dropped
   // from the registry, so without a target here they would render a real 404.
   // Historical misspelling discovered in the live dining sitemap crawl.
-  'barbeque-restaurant-shillong': '/catering-shillong',
+  'barbeque-restaurant-shillong': '/tab-bistro/catering',
   'cheap-restaurants-in-shillong': '/tab-bistro',
-  'bulk-food-supply-shillong': '/catering-shillong',
-  'office-lunch-catering-shillong': '/catering-shillong',
+  'bulk-food-supply-shillong': '/tab-bistro/catering',
+  'office-lunch-catering-shillong': '/tab-bistro/catering',
   'best-restaurant-in-police-bazar-shillong': '/tab-bistro',
   'best-restaurants-in-laitumkhrah': '/tab-bistro',
   'restaurants-near-police-bazar': '/tab-bistro',
@@ -229,7 +229,7 @@ export const RECOVERY_REDIRECTS: Readonly<Record<string, string>> = {
   'veg-restaurant-in-police-bazar-shillong': '/tab-bistro',
   'cafe-in-laitumkhrah-shillong': '/tab-bistro',
   'cafe-in-police-bazar-shillong': '/tab-bistro',
-  'barbecue-restaurant-in-police-bazar-shillong': '/catering-shillong',
+  'barbecue-restaurant-in-police-bazar-shillong': '/tab-bistro/catering',
   'north-indian-restaurant-in-police-bazar-shillong': '/tab-bistro',
   'family-restaurant-in-police-bazar-shillong': '/tab-bistro',
   'multi-cuisine-restaurant-in-laitumkhrah': '/tab-bistro',
@@ -240,7 +240,7 @@ export const RECOVERY_REDIRECTS: Readonly<Record<string, string>> = {
   'momos-in-laitumkhrah': '/tab-bistro',
   'veg-restaurant-in-laitumkhrah': '/tab-bistro',
   'north-indian-restaurant-in-laitumkhrah': '/tab-bistro',
-  'barbecue-restaurant-in-laitumkhrah': '/catering-shillong',
+  'barbecue-restaurant-in-laitumkhrah': '/tab-bistro/catering',
   'biryani-in-police-bazar-shillong': '/tab-bistro',
   'family-restaurant-in-laitumkhrah': '/tab-bistro',
   'live-music-restaurant-shillong': '/tab-bistro',
@@ -258,7 +258,7 @@ export const RECOVERY_REDIRECTS: Readonly<Record<string, string>> = {
   'rooftop-cafe-shillong': '/tab-bistro',
   'pure-vegetarian-restaurant-shillong': '/tab-bistro',
   // Real routes that Google sees but render as homepage / 404 due to typo
-  // 'faq' — REMOVED from this map: /faq is a live route (FaqV2) and is
+  // 'faq' — REMOVED from this map: /about/faq is a live route (FaqV2) and is
   // listed in sitemap-static.xml. Redirecting it to /about would 301 away a
   // canonical, indexed page. Do not re-add.
   // Workation intent alias → canonical work-from-home page
@@ -290,10 +290,10 @@ export const RECOVERY_REDIRECTS: Readonly<Record<string, string>> = {
   'hostels-in-shillong': '/stays/best-hostel-in-shillong',
   'youth-hostel-shillong': '/stays/best-hostel-in-shillong',
   'backpacker-hostel-shillong': '/stays/best-hostel-in-shillong',
-  'cheap-hostel-shillong': '/budget-hostels-shillong',
-  'budget-hostel-shillong': '/budget-hostels-shillong',
-  'cheap-hostels-shillong': '/budget-hostels-shillong',
-  'cheap-hostel-in-shillong': '/budget-hostels-shillong',
+  'cheap-hostel-shillong': '/stays/budget-hostels-shillong',
+  'budget-hostel-shillong': '/stays/budget-hostels-shillong',
+  'cheap-hostels-shillong': '/stays/budget-hostels-shillong',
+  'cheap-hostel-in-shillong': '/stays/budget-hostels-shillong',
   // Stays → consolidated hostel pillar
   'oyo-rooms-shillong-alternative': '/stays/best-hostel-in-shillong',
   'guest-house-neigrihms-shillong': '/stays/best-hostel-in-shillong',
@@ -306,14 +306,14 @@ export const RECOVERY_REDIRECTS: Readonly<Record<string, string>> = {
   'meghalaya-monsoon-travel-guide': '/tours/meghalaya-tour-packages',
   'meghalaya-road-trip-guide': '/tours/meghalaya-tour-packages',
   // Activities → things-to-do pillar
-  'camping-in-meghalaya': '/things-to-do-in-meghalaya',
-  'caves-in-meghalaya': '/meghalaya-caves',
-  'kayaking-meghalaya': '/things-to-do-in-meghalaya',
-  'shnongpdeng-camping-guide': '/things-to-do-in-meghalaya',
+  'camping-in-meghalaya': '/guides/things-to-do-in-meghalaya',
+  'caves-in-meghalaya': '/guides/meghalaya-caves',
+  'kayaking-meghalaya': '/guides/things-to-do-in-meghalaya',
+  'shnongpdeng-camping-guide': '/guides/things-to-do-in-meghalaya',
   // Travel guides — consolidate the misspelled variant onto the canonical
   // correctly-spelled Cherrapunji guide (de-duplication / anti-cannibalisation).
   'cherrapunjee-travel-guide': '/cherrapunji-travel-guide',
-  'dawki-river-travel-guide': '/things-to-do-in-meghalaya',
+  'dawki-river-travel-guide': '/guides/things-to-do-in-meghalaya',
   // Retired guide slugs still linked from older content (found by the site crawl) → closest live page.
   'dawki-umngot-river': '/dawki-umngot-river-guide',
   'umiam-lake': '/umiam-lake-shillong',
@@ -331,7 +331,7 @@ export const RECOVERY_REDIRECTS: Readonly<Record<string, string>> = {
   'trekking-trails-meghalaya': '/trekking-in-meghalaya',
   'adventure-activities-meghalaya': '/meghalaya-adventure-package',
   'meghalaya-caves-guide': '/mawsmai-cave-cherrapunji',
-  'best-waterfalls-meghalaya': '/meghalaya-waterfalls',
+  'best-waterfalls-meghalaya': '/guides/meghalaya-waterfalls',
   'waterfalls-near-shillong': '/waterfalls-in-meghalaya',
   'seven-sisters-falls-meghalaya': '/waterfalls-in-meghalaya',
   'police-bazaar-shillong': '/shillong-travel-guide',

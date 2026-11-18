@@ -32,12 +32,12 @@ const MeghalayaPhotoGallery = () => {
       <Helmet>
         <title>Meghalaya Photo Gallery — Stunning Images of Northeast India</title>
         <meta name="description" content="Browse stunning photos of Meghalaya — living root bridges, crystal rivers, dramatic waterfalls, and misty viewpoints. Real images from XTSY travel experiences." />
-        <link rel="canonical" href="https://xtsy.one/meghalaya-photo-gallery" />
+        <link rel="canonical" href="https://xtsy.one/guides/meghalaya-photo-gallery" />
       </Helmet>
       <Header />
       <main className="pt-20">
         <div className="container mx-auto px-4 max-w-6xl py-12">
-          <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Things to Do', href: '/things-to-do-in-meghalaya' }, { label: 'Photo Gallery' }]} />
+          <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Things to Do', href: '/guides/things-to-do-in-meghalaya' }, { label: 'Photo Gallery' }]} />
           <h1 className="mt-6 text-3xl md:text-4xl font-bold text-foreground">Meghalaya Photo Gallery</h1>
           <p className="mt-4 text-muted-foreground max-w-3xl">
             Explore Meghalaya through stunning photography — waterfalls, rivers, canyons, and villages captured across the state's most beautiful destinations.
@@ -82,13 +82,13 @@ const MeghalayaPhotoGallery = () => {
           </section>
           <nav className="mt-8 border-t border-border pt-8">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              <Link to="/things-to-do-in-meghalaya" className="text-sm text-primary hover:underline">All Places to Visit</Link>
+              <Link to="/guides/things-to-do-in-meghalaya" className="text-sm text-primary hover:underline">All Places to Visit</Link>
               <Link to="/tours/meghalaya-tour-packages" className="text-sm text-primary hover:underline">Tour Packages</Link>
             </div>
           </nav>
         </div>
       </main>
-      <PageFaq path="/meghalaya-photo-gallery" />
+      <PageFaq path="/guides/meghalaya-photo-gallery" />
       <Footer />
     </div>
   );

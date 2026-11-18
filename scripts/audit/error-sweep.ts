@@ -33,11 +33,11 @@ const LIMIT = Number(process.env.LIMIT || 0);
 
 /** App routes that are not (or not necessarily) in the sitemaps. */
 const APP_ROUTES = [
-  '/', '/book', '/book/select', '/book/campsite', '/auth', '/profile', '/plan-trip-with-ai', '',
-  '/franchise', '/franchise', '/franchise/login', '/unsubscribe', '/terms', '/terms-of-service',
-  '/privacy-policy', '/pricing-cancellation-policy', '/safety-house-rules', '/contact', '/faq', '/guides',
+  '/', '/book', '/book/select', '/book/campsite', '/auth', '/profile', '/tours/plan-trip-with-ai', '',
+  '/franchise', '/franchise', '/franchise/login', '/about/unsubscribe', '/terms', '/about/terms-of-service',
+  '/about/privacy-policy', '/about/pricing-cancellation-policy', '/about/safety-house-rules', '/about/contact', '/about/faq', '/guides',
   '/tours', '/tours?group=northeast', '/destinations', '/expeditions', '/tab-bistro', '/tab-bistro/catering',
-  '', '/merch', '/tours/xtsy-rentals', '/stays/experience-by-xtsy', '/stays/workation', '/stays/female-travellers', '/stays/pet-friendly',
+  '', '/about/merch', '/tours/xtsy-rentals', '/stays/experience-by-xtsy', '/stays/workation', '/stays/female-travellers', '/stays/pet-friendly',
   '/cheap-hostel-shillong', '/cheap-hostel-in-shillong', '/cheap-hostels-shillong',
   '/travel-guide/guwahati-to-shillong-transport', '/travel-guide/how-to-reach-meghalaya',
   '/travel-guide/meghalaya-for-international-tourists',

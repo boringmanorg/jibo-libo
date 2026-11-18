@@ -72,7 +72,7 @@ const ThingsToDoInMeghalaya = () => {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://xtsy.one/' },
-      { '@type': 'ListItem', position: 2, name: 'Things to Do in Meghalaya', item: 'https://xtsy.one/things-to-do-in-meghalaya' },
+      { '@type': 'ListItem', position: 2, name: 'Things to Do in Meghalaya', item: 'https://xtsy.one/guides/things-to-do-in-meghalaya' },
     ],
   };
 
@@ -82,11 +82,11 @@ const ThingsToDoInMeghalaya = () => {
         <title>Things to Do in Meghalaya: 50 Most Beautiful Places to Visit (2026)</title>
         <meta name="description" content="Discover 50+ best things to do in Meghalaya — living root bridges, crystal-clear rivers, ancient caves, dramatic waterfalls. Complete travel guide with photos, tips & booking." />
         <meta name="keywords" content="things to do in Meghalaya, places to visit in Meghalaya, Meghalaya travel guide, Meghalaya tour package, best places Meghalaya 2026" />
-        <link rel="canonical" href="https://xtsy.one/things-to-do-in-meghalaya" />
+        <link rel="canonical" href="https://xtsy.one/guides/things-to-do-in-meghalaya" />
         <meta property="og:title" content="Things to Do in Meghalaya: 50 Most Beautiful Places to Visit" />
         <meta property="og:description" content="Complete guide to the best places in Meghalaya — living root bridges, crystal rivers, ancient caves, and dramatic waterfalls." />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://xtsy.one/things-to-do-in-meghalaya" />
+        <meta property="og:url" content="https://xtsy.one/guides/things-to-do-in-meghalaya" />
         <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
         <script type="application/ld+json">{JSON.stringify(faqData)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbData)}</script>
@@ -161,7 +161,7 @@ const ThingsToDoInMeghalaya = () => {
                 View Tour Packages
               </Link>
               <Link
-                to="/meghalaya-photo-gallery"
+                to="/guides/meghalaya-photo-gallery"
                 className="px-5 py-2.5 border border-border text-foreground rounded-lg text-sm font-medium hover:bg-muted transition-colors"
               >
                 Photo Gallery
@@ -313,12 +313,12 @@ const ThingsToDoInMeghalaya = () => {
               <Link to="/tours/meghalaya-tour-packages" className="text-sm text-primary hover:underline">Meghalaya Tour Packages</Link>
               <Link to="/tours/meghalaya-couple-tour-package" className="text-sm text-primary hover:underline">Couple Tour Package</Link>
               <Link to="/tours/shillong-tour-package" className="text-sm text-primary hover:underline">Shillong Tour Package</Link>
-              <Link to="/best-time-to-visit-meghalaya" className="text-sm text-primary hover:underline">Best Time to Visit</Link>
-              <Link to="/hidden-places-in-meghalaya" className="text-sm text-primary hover:underline">Hidden Places</Link>
+              <Link to="/guides/best-time-to-visit-meghalaya" className="text-sm text-primary hover:underline">Best Time to Visit</Link>
+              <Link to="/guides/hidden-places-in-meghalaya" className="text-sm text-primary hover:underline">Hidden Places</Link>
               <Link to="/tours/budget-trip-to-meghalaya" className="text-sm text-primary hover:underline">Budget Trip Guide</Link>
-              <Link to="/meghalaya-waterfalls" className="text-sm text-primary hover:underline">Meghalaya Waterfalls</Link>
-              <Link to="/meghalaya-caves" className="text-sm text-primary hover:underline">Meghalaya Caves</Link>
-              <Link to="/meghalaya-photo-gallery" className="text-sm text-primary hover:underline">Photo Gallery</Link>
+              <Link to="/guides/meghalaya-waterfalls" className="text-sm text-primary hover:underline">Meghalaya Waterfalls</Link>
+              <Link to="/guides/meghalaya-caves" className="text-sm text-primary hover:underline">Meghalaya Caves</Link>
+              <Link to="/guides/meghalaya-photo-gallery" className="text-sm text-primary hover:underline">Photo Gallery</Link>
             </div>
           </nav>
           <PlanTripLinks

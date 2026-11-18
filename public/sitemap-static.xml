@@ -31,7 +31,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/xtsy-vs-zostel</loc>
+    <loc>https://xtsy.one/stays/xtsy-vs-zostel</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -41,12 +41,12 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/faq</loc>
+    <loc>https://xtsy.one/about/faq</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/safety-house-rules</loc>
+    <loc>https://xtsy.one/about/safety-house-rules</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -71,37 +71,37 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/privacy-policy</loc>
+    <loc>https://xtsy.one/about/privacy-policy</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/terms-of-service</loc>
+    <loc>https://xtsy.one/about/terms-of-service</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/pricing-cancellation-policy</loc>
+    <loc>https://xtsy.one/about/pricing-cancellation-policy</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/meghalaya-waterfalls</loc>
+    <loc>https://xtsy.one/guides/meghalaya-waterfalls</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/meghalaya-caves</loc>
+    <loc>https://xtsy.one/guides/meghalaya-caves</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/meghalaya-villages</loc>
+    <loc>https://xtsy.one/guides/meghalaya-villages</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/meghalaya-viewpoints</loc>
+    <loc>https://xtsy.one/guides/meghalaya-viewpoints</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -136,12 +136,12 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/merch</loc>
+    <loc>https://xtsy.one/about/merch</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/plan-trip-with-ai</loc>
+    <loc>https://xtsy.one/tours/plan-trip-with-ai</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -161,12 +161,12 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/best-time-to-visit-meghalaya</loc>
+    <loc>https://xtsy.one/guides/best-time-to-visit-meghalaya</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/hidden-places-in-meghalaya</loc>
+    <loc>https://xtsy.one/guides/hidden-places-in-meghalaya</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -186,7 +186,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/meghalaya-photo-gallery</loc>
+    <loc>https://xtsy.one/guides/meghalaya-photo-gallery</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -196,7 +196,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/budget-hostels-shillong</loc>
+    <loc>https://xtsy.one/stays/budget-hostels-shillong</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -221,7 +221,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/contact</loc>
+    <loc>https://xtsy.one/about/contact</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -236,17 +236,17 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/backpacking-india</loc>
+    <loc>https://xtsy.one/tours/backpacking-india</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/places-to-visit-in-meghalaya</loc>
+    <loc>https://xtsy.one/guides/places-to-visit-in-meghalaya</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/catering-shillong</loc>
+    <loc>https://xtsy.one/tab-bistro/catering</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

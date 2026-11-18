@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import GuidesDirectoryV2 from "@/pages/v2/GuidesDirectoryV2";
 import { buildRouteHead } from "@/lib/seo-head";
 
-export const Route = createFileRoute("/(guides)/guides")({
+export const Route = createFileRoute("/(guides)/guides/")({
   // The directory data is imported on demand (server-side on first load), out of the main bundle.
   loader: async () => (await import("@/lib/seo/guidePageData")).guidesPayload(),
   head: ({ loaderData }) => {

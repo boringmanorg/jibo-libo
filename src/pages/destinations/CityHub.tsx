@@ -70,7 +70,7 @@ const CityHub = () => {
                 ))}
               </ul>
               <p className="mt-5 text-sm text-muted-foreground">
-                <Link to="/things-to-do-in-meghalaya" className="text-primary underline">Explore Meghalaya activities</Link>{' '}
+                <Link to="/guides/things-to-do-in-meghalaya" className="text-primary underline">Explore Meghalaya activities</Link>{' '}
                 or <Link to="/tours/meghalaya-tour-packages" className="text-primary underline">compare guided tours</Link>.
               </p>
             </section>

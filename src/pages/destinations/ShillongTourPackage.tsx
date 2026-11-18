@@ -73,7 +73,7 @@ const ShillongTourPackage = () => {
 
           <nav className="mt-8 border-t border-border pt-8">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              <Link to="/things-to-do-in-meghalaya" className="text-sm text-primary hover:underline">Things to Do in Meghalaya</Link>
+              <Link to="/guides/things-to-do-in-meghalaya" className="text-sm text-primary hover:underline">Things to Do in Meghalaya</Link>
               <Link to="/tours/meghalaya-tour-packages" className="text-sm text-primary hover:underline">All Tour Packages</Link>
               <Link to="/tours/meghalaya-couple-tour-package" className="text-sm text-primary hover:underline">Couple Package</Link>
             </div>

@@ -15,7 +15,7 @@ export default defineConfig({
     // so visitors skip the server render wait. Never list personalised/private pages.
     pages: [
       "/", "/stays/experience-by-xtsy", "/tours", "/stays/workation", "/tours/destination-wedding-shillong",
-      "/stays/best-hostel-in-shillong", "/tours/xtsy-rentals", "/tours/meghalaya-tour-packages", "/guides", "/faq",
+      "/stays/best-hostel-in-shillong", "/tours/xtsy-rentals", "/tours/meghalaya-tour-packages", "/guides", "/about/faq",
     ].map((path) => ({ path, prerender: { outputPath: path === "/" ? "/index.html" : `${path}/index.html` } })),
     prerender: { enabled: true, autoStaticPathsDiscovery: false },
   },

@@ -10,7 +10,7 @@ const BlogItinerary3Day = () => (
     <Header />
     <main className="pt-20">
       <div className="container mx-auto px-4 max-w-4xl py-12">
-        <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Things to Do', href: '/things-to-do-in-meghalaya' }, { label: '3-Day Itinerary' }]} />
+        <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Things to Do', href: '/guides/things-to-do-in-meghalaya' }, { label: '3-Day Itinerary' }]} />
         <h1 className="mt-6 text-3xl md:text-4xl font-bold text-foreground">3-Day Meghalaya Itinerary — Perfect Weekend Trip</h1>
         <p className="mt-4 text-muted-foreground">A compact but complete weekend itinerary covering Shillong's best viewpoints, waterfalls, and cultural sites.</p>
 
@@ -44,7 +44,7 @@ const BlogItinerary3Day = () => (
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             <Link to="/tours/5-day-meghalaya-itinerary" className="text-sm text-primary hover:underline">5-Day Itinerary</Link>
             <Link to="/tours/budget-trip-to-meghalaya" className="text-sm text-primary hover:underline">Budget Trip</Link>
-            <Link to="/things-to-do-in-meghalaya" className="text-sm text-primary hover:underline">All Places to Visit</Link>
+            <Link to="/guides/things-to-do-in-meghalaya" className="text-sm text-primary hover:underline">All Places to Visit</Link>
           </div>
         </nav>
         <PlanTripLinks

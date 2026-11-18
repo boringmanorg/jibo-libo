@@ -34,7 +34,7 @@ export const adventureGuides = {
       ['Can Nongriat and Dawki be visited on the same day?', 'Keep them on separate days. The Nongriat walk needs an early start and a demanding return climb; adding a long road transfer makes the schedule unnecessarily tiring.'],
       ['Are river activities included in a Meghalaya tour?', 'Only when your written quote lists them. Check operator availability, equipment, supervision and weather-dependent cancellation terms before paying.'],
     ],
-    links: [['Meghalaya packages', '/tours/meghalaya-tour-packages'], ['Adventure activities', '/things-to-do-in-meghalaya'], ['Dawki campsite', '/stays/campsite-dawki']],
+    links: [['Meghalaya packages', '/tours/meghalaya-tour-packages'], ['Adventure activities', '/guides/things-to-do-in-meghalaya'], ['Dawki campsite', '/stays/campsite-dawki']],
   },
   'motorbike-expedition-northeast-india': {
     title: 'Motorbike expedition in Northeast India', image: IMG.bumla,

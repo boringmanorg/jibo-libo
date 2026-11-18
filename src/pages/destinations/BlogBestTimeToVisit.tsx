@@ -12,12 +12,12 @@ const BlogBestTimeToVisit = () => (
     <Helmet>
       <title>Best Time to Visit Meghalaya 2026 — Month-by-Month Guide</title>
       <meta name="description" content="When is the best time to visit Meghalaya? Month-by-month weather guide for Shillong, Cherrapunji, Dawki. Best season for waterfalls, trekking, and river activities." />
-      <link rel="canonical" href="https://xtsy.one/best-time-to-visit-meghalaya" />
+      <link rel="canonical" href="https://xtsy.one/guides/best-time-to-visit-meghalaya" />
     </Helmet>
     <Header />
     <main className="pt-20">
       <div className="container mx-auto px-4 max-w-4xl py-12">
-        <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Things to Do', href: '/things-to-do-in-meghalaya' }, { label: 'Best Time to Visit' }]} />
+        <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Things to Do', href: '/guides/things-to-do-in-meghalaya' }, { label: 'Best Time to Visit' }]} />
         <h1 className="mt-6 text-3xl md:text-4xl font-bold text-foreground">Best Time to Visit Meghalaya — Complete Month-by-Month Guide</h1>
         <p className="mt-4 text-muted-foreground leading-relaxed">
           Meghalaya's weather varies dramatically by season. The right timing can transform your trip — from crystal-clear rivers in winter to thundering waterfalls during monsoon. Here's everything you need to know to plan the perfect Meghalaya trip.
@@ -58,20 +58,20 @@ const BlogBestTimeToVisit = () => (
 
         <nav className="mt-8 border-t border-border pt-8">
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-            <Link to="/places-to-visit-in-meghalaya" className="text-sm text-primary hover:underline">Places to Visit in Meghalaya</Link>
-            <Link to="/things-to-do-in-meghalaya" className="text-sm text-primary hover:underline">Things to Do in Meghalaya</Link>
-            <Link to="/hidden-places-in-meghalaya" className="text-sm text-primary hover:underline">Hidden Places</Link>
+            <Link to="/guides/places-to-visit-in-meghalaya" className="text-sm text-primary hover:underline">Places to Visit in Meghalaya</Link>
+            <Link to="/guides/things-to-do-in-meghalaya" className="text-sm text-primary hover:underline">Things to Do in Meghalaya</Link>
+            <Link to="/guides/hidden-places-in-meghalaya" className="text-sm text-primary hover:underline">Hidden Places</Link>
             <Link to="/tours/budget-trip-to-meghalaya" className="text-sm text-primary hover:underline">Budget Trip Guide</Link>
             <Link to="/tours/3-day-meghalaya-itinerary" className="text-sm text-primary hover:underline">3-Day Itinerary</Link>
             <Link to="/tours/5-day-meghalaya-itinerary" className="text-sm text-primary hover:underline">5-Day Itinerary</Link>
-            <Link to="/meghalaya-festivals" className="text-sm text-primary hover:underline">Meghalaya Festivals</Link>
+            <Link to="/guides/meghalaya-festivals" className="text-sm text-primary hover:underline">Meghalaya Festivals</Link>
             <Link to="/travel-guide/how-to-reach-meghalaya" className="text-sm text-primary hover:underline">How to Reach Meghalaya</Link>
             <Link to="/travel-guide/meghalaya-for-international-tourists" className="text-sm text-primary hover:underline">Guide for International Tourists</Link>
           </div>
         </nav>
       </div>
     </main>
-    <PageFaq path="/best-time-to-visit-meghalaya" />
+    <PageFaq path="/guides/best-time-to-visit-meghalaya" />
     <Footer />
   </div>
 );

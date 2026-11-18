@@ -1,7 +1,7 @@
 /**
  * Content + JSON-LD for the two Shillong stay hubs:
  *   /stays/best-hostel-in-shillong  → "hostels in Shillong" (guide / comparison intent)
- *   /budget-hostels-shillong   → "budget hostel in Shillong" (budget intent)
+ *   /stays/budget-hostels-shillong   → "budget hostel in Shillong" (budget intent)
  * The homepage owns "best hostel in Shillong" (brand + head term), so these
  * pages support it instead of competing with it.
  * All prices come from the live booking inventory.
@@ -26,7 +26,7 @@ export function stayHubCopy(v: StayHubVariant) {
   const dorm = inr(lowestDormPrice());
   const budget = v === 'budget';
   return {
-    path: budget ? '/budget-hostels-shillong' : '/stays/best-hostel-in-shillong',
+    path: budget ? '/stays/budget-hostels-shillong' : '/stays/best-hostel-in-shillong',
     // GSC 1-28 Oct: /stays/best-hostel-in-shillong drew 893 impressions and 5 clicks
     // at position 5.2 — it ranks, it just gives no reason to click. Lead with
     // the rating, which is the strongest trust signal available in a result.

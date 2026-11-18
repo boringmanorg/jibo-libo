@@ -1,6 +1,6 @@
 import { WaAnchor } from '@/components/WaAnchor';
 /**
- * /merch — XTSY travel & work-from-anywhere merch (coming soon; "Notify me").
+ * /about/merch — XTSY travel & work-from-anywhere merch (coming soon; "Notify me").
  * No prices yet: each piece lets the guest ask to be told when it drops.
  */
 import { useState } from 'react';
@@ -60,7 +60,7 @@ export default function MerchV2() {
         title="XTSY Merch — Travel Gear & Work-from-Anywhere Kit | XTSY"
         description="Travel gear and work-from-anywhere kit designed at XTSY Travellers Hostel in New Shillong Township. Tap Notify me and we’ll message you the day each piece drops."
         keywords="xtsy merch, travel merchandise, backpacker gear india, digital nomad kit, xtsy backpack"
-        canonicalUrl="https://xtsy.one/merch"
+        canonicalUrl="https://xtsy.one/about/merch"
       />
       <PageShell cta={{ title: 'Stay a while.', sub: 'The best way to get the kit early: stay with us in New Shillong and pick it up at the desk.', bookTo: '/book', bookLabel: 'Book a stay' }}>
         <section className={`${PAD} grid items-center gap-10 py-12 lg:grid-cols-2 lg:gap-14 lg:py-16`}>

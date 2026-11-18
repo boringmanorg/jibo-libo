@@ -3,11 +3,11 @@ import { articleSchema } from "@/lib/seo/pageEntitySchema";
 import BlogBestTimeToVisit from "@/pages/destinations/BlogBestTimeToVisit";
 import { buildRouteHead } from "@/lib/seo-head";
 
-export const Route = createFileRoute("/(guides)/best-time-to-visit-meghalaya")({
+export const Route = createFileRoute("/(guides)/guides/best-time-to-visit-meghalaya")({
   head: () =>
     buildRouteHead({
-      path: "/best-time-to-visit-meghalaya",
-      jsonLd: [articleSchema({ path: "/best-time-to-visit-meghalaya", headline: "Best Time to Visit Meghalaya (Month by Month) | XTSY", description: "Month-by-month weather, rainfall and crowd guide for Meghalaya, with the best windows for waterfalls, root bridges, Dawki boating and hostel rates." })],
+      path: "/guides/best-time-to-visit-meghalaya",
+      jsonLd: [articleSchema({ path: "/guides/best-time-to-visit-meghalaya", headline: "Best Time to Visit Meghalaya (Month by Month) | XTSY", description: "Month-by-month weather, rainfall and crowd guide for Meghalaya, with the best windows for waterfalls, root bridges, Dawki boating and hostel rates." })],
       title: "Best Time to Visit Meghalaya (Month by Month) | XTSY",
       description:
         "Month-by-month weather, rainfall and crowd guide for Meghalaya, with the best windows for waterfalls, root bridges, Dawki boating and hostel rates.",

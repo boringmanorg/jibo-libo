@@ -19,7 +19,7 @@ export const PAGE_FAQS: Record<string, PageFaq[]> = {
     { q: 'Should I hire a car or use shared taxis?', a: 'A private car costs more but saves hours every day, because shared taxis run on their own schedules and rarely reach viewpoints. For a five-day loop with fixed stops, a private vehicle or a package is usually better value than piecing together shared transport.' },
     { q: 'Can I do this itinerary solo?', a: 'Yes. Stay in dorms and use shared taxis on main routes, or request a private vehicle for remote stops. Confirm transport availability and costs before travelling.' },
   ],
-  '/best-time-to-visit-meghalaya': [
+  '/guides/best-time-to-visit-meghalaya': [
     { q: 'What is the best month to visit Meghalaya?', a: 'October to April is the most comfortable time: clearer skies, cooler days and good road conditions. November to April is also when the Umngot River at Dawki is clearest.' },
     { q: 'Is the monsoon a good time to go?', a: 'June to September brings the fullest waterfalls and the greenest hills, but heavy rain, mist and occasional landslides. Keep a buffer day and carry rain gear.' },
     { q: 'When is Dawki river clearest?', a: 'Usually from November to April, when there is little rain upstream. In the monsoon the water turns muddy and boating can be suspended.' },
@@ -36,7 +36,7 @@ export const PAGE_FAQS: Record<string, PageFaq[]> = {
     { q: 'Is it cheaper to book the hostel direct?', a: 'Yes. Booking sites add their commission to the price you see; booking on xtsy.one gives you the base rate.' },
     { q: 'Is there a budget group trip?', a: TOUR_OPTIONS },
   ],
-  '/hidden-places-in-meghalaya': [
+  '/guides/hidden-places-in-meghalaya': [
     { q: 'How do I reach offbeat places in Meghalaya?', a: 'Most hidden spots have little or no public transport. Hire a cab or a scooter for the day, start early, and ask locally about road and trail conditions.' },
     { q: 'Do I need a guide?', a: 'For village treks, caves and sacred forests a local guide is strongly recommended. They know the trails and the customs, and many places expect visitors to come with one.' },
     { q: 'Is there mobile network at remote spots?', a: 'Often not. Download offline maps, carry cash, and tell your stay where you are heading.' },
@@ -74,7 +74,7 @@ export const PAGE_FAQS: Record<string, PageFaq[]> = {
     { q: 'Can the Shillong package be customised?', a: 'Yes. Dates, stays and the pace can be changed, and the package can be extended into Sohra, Dawki or the Jaintia Hills. Message the XTSY desk with your dates and group size.' },
     { q: 'Is this package suitable for solo travellers?', a: 'It can be run for one person as a private trip, which costs more per head. Ask the desk for a quote for your dates before making arrangements.' },
   ],
-  '/meghalaya-photo-gallery': [
+  '/guides/meghalaya-photo-gallery': [
     { q: 'Where are these photos from?', a: 'From featured places across Meghalaya: Shillong, Sohra (Cherrapunjee), Dawki, Mawlynnong and the Khasi and Jaintia Hills. Each place is listed under "Where these photos were taken".' },
     { q: 'When is the best light for photography?', a: 'October to December gives the clearest skies. In the monsoon, shoot waterfalls early before mist rolls in.' },
     { q: 'Can I visit these places on a tour?', a: TOUR_OPTIONS },
@@ -84,20 +84,20 @@ export const PAGE_FAQS: Record<string, PageFaq[]> = {
     { q: 'Does XTSY arrange trips outside Meghalaya?', a: 'Yes. XTSY\'s own stay is in New Shillong Township; elsewhere in the Northeast, stays, transport and guides come from trusted travel partners, with XTSY as your single contact.' },
     { q: 'Do I need permits?', a: 'Indian citizens need an Inner Line Permit for Arunachal Pradesh, Nagaland, Mizoram and Manipur. Meghalaya, Assam and Sikkim\'s main areas do not need one, though some border areas in Sikkim do.' },
   ],
-  '/xtsy-vs-zostel': [
+  '/stays/xtsy-vs-zostel': [
     { q: 'Where is each hostel in Shillong?', a: 'XTSY Travellers Hostel is in New Shillong Township, near IIM and NIFT, about 30 minutes by road from Police Bazaar. Zostel Shillong is in the Golf Club area, about 2 km from the city centre.' },
     { q: 'Which is cheaper?', a: 'XTSY publishes all-inclusive dorm prices from ₹399 a night. Zostel does not publish its Shillong dorm prices on its own website, so check its listing for your dates.' },
     { q: 'Which has a women-only dorm?', a: 'XTSY has a 4-bed women-only dorm at ₹599 a night.' },
     { q: 'Which is better for groups and pets?', a: 'XTSY takes groups of 6 to 60 and welcomes cats and birds (dogs depending on breed and size). Zostel Shillong lists an 18+ rule, groups of up to 6 and no pets.' },
     { q: 'Does XTSY arrange trips for groups?', a: 'Yes. XTSY offers private itineraries for your group. Check each package for its minimum group size and ask the desk to confirm availability for your dates.' },
   ],
-  '/meghalaya-festivals': [
+  '/guides/meghalaya-festivals': [
     { q: 'What is the most famous festival in Meghalaya?', a: 'Wangala, the Garo 100 Drums Festival near Tura, and Shad Suk Mynsiem, the Khasi spring dance in Shillong, are the best known. Behdienkhlam in Jowai is the biggest Pnar festival.' },
     { q: 'Which festival can I see from Shillong?', a: 'Shad Suk Mynsiem (usually April) is held in Shillong, the Nongkrem Dance (usually October or November) is at Smit nearby, and the Cherry Blossom Festival (usually November) takes place across the city.' },
     { q: 'Are festival dates the same every year?', a: 'No. Most follow traditional or agricultural calendars, so confirm the dates for your year before booking. The Hornbill Festival in Nagaland is the exception: it runs 1–10 December every year.' },
     { q: 'Can XTSY plan a festival trip?', a: 'Yes. XTSY arranges stays, transport and timing from New Shillong, and works with trusted partners for festivals elsewhere in the Northeast.' },
   ],
-  '/pricing-cancellation-policy': [
+  '/about/pricing-cancellation-policy': [
     { q: 'Can I cancel and get a refund?', a: 'No. There is no free cancellation: the booking amount is non-refundable, and no-shows are treated as cancellations.' },
     { q: 'Can I change my dates instead?', a: 'Yes, once per booking. The new dates must fall within 15 days of the original check-in, you must ask at least 48 hours before check-in, and any rate difference is paid at the time of change.' },
     { q: 'Are prices all inclusive?', a: 'Room prices shown on xtsy.one are all inclusive: dorm beds from ₹399, King Double ₹2,399 and Experience by XTSY ₹4,999 (stay only).' },

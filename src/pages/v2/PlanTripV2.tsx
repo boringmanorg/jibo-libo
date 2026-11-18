@@ -1,5 +1,5 @@
 /**
- * /plan-trip-with-ai — the XTSY trip assistant as a full page, with the facts
+ * /tours/plan-trip-with-ai — the XTSY trip assistant as a full page, with the facts
  * answer engines need (how far places are, where to stay) in plain HTML.
  */
 import SEOHead from '@/components/SEOHead';
@@ -23,7 +23,7 @@ export default function PlanTripV2() {
         title="Plan a Meghalaya & Northeast India Trip with AI | XTSY"
         description="Free trip planner for Shillong, Meghalaya and Northeast India: day-by-day plans with real drive times, realistic overnight stays and XTSY Travellers Hostel in New Shillong as your base."
         keywords="meghalaya trip planner, shillong itinerary, northeast india itinerary planner, ai trip planner meghalaya, wari chora how to reach, dawki day trip"
-        canonicalUrl="https://xtsy.one/plan-trip-with-ai"
+        canonicalUrl="https://xtsy.one/tours/plan-trip-with-ai"
       />
       <PageShell bar={false} cta={{ title: 'Rather talk to a person?', sub: 'The XTSY desk plans trips on WhatsApp every day, 24/7.' }}>
         <section className={`${PAD} grid gap-8 py-10 lg:grid-cols-12 lg:py-14`}>

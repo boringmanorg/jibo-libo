@@ -187,7 +187,7 @@ const buildBreadcrumbSchema = (page: SEOPageData, categoryLabel: string) => ({
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://xtsy.one/' },
-    { '@type': 'ListItem', position: 2, name: categoryLabel, item: 'https://xtsy.one/things-to-do-in-meghalaya' },
+    { '@type': 'ListItem', position: 2, name: categoryLabel, item: 'https://xtsy.one/guides/things-to-do-in-meghalaya' },
     { '@type': 'ListItem', position: 3, name: page.h1 },
   ],
 });
@@ -354,7 +354,7 @@ const ProgrammaticSEOPage = () => {
         <div className="absolute bottom-0 left-0 right-0 container mx-auto px-4 max-w-4xl pb-6">
           <Breadcrumbs items={[
             { label: 'Home', href: '/' },
-            { label: categoryLabel, href: '/things-to-do-in-meghalaya' },
+            { label: categoryLabel, href: '/guides/things-to-do-in-meghalaya' },
             { label: page.h1 },
           ]} />
           <h1 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-bold text-foreground leading-tight drop-shadow-xs">

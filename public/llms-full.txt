@@ -32,20 +32,20 @@
 - [Tour Packages](https://xtsy.one/tours): 30+ curated tours across Meghalaya, Assam, Nagaland, Arunachal & Sikkim.
 - [Kerala, Himachal & Spiti, Tamil Nadu and temple circuits](https://xtsy.one/tours?group=kerala): Private trips beyond the Northeast (Munnar, Alleppey, Spiti Valley, Kodaikanal, Ooty, Madurai–Rameswaram–Kanyakumari, Chola temples), priced on request and run with trusted travel partners.
 - [Meghalaya Tour Packages](https://xtsy.one/meghalaya-tour-packages): Living root bridges, Dawki, Cherrapunji, caving and more.
-- [Things to Do in Meghalaya](https://xtsy.one/things-to-do-in-meghalaya): Top activities and experiences.
+- [Things to Do in Meghalaya](https://xtsy.one/guides/things-to-do-in-meghalaya): Top activities and experiences.
 - [Bike Rental Shillong](https://xtsy.one/bike-rental-shillong): Royal Enfield and scooter rentals.
 - [Car Rental Shillong](https://xtsy.one/car-rental-shillong): Self-drive and chauffeur car rentals.
 
 ## Plan a trip
-- [Plan a trip with AI](https://xtsy.one/plan-trip-with-ai): Free trip planner for Shillong, Meghalaya and Northeast India with realistic drive times and XTSY as the Shillong base.
+- [Plan a trip with AI](https://xtsy.one/tours/plan-trip-with-ai): Free trip planner for Shillong, Meghalaya and Northeast India with realistic drive times and XTSY as the Shillong base.
 - [Tour packages for Northeast India](https://xtsy.one/tours?group=northeast): Kaziranga, Tawang, Kohima, Sikkim and more, arranged with trusted partners.
 
 ## Destinations & Guides
 - [Meghalaya Travel Guide](https://xtsy.one/meghalaya-travel-guide): Complete trip-planning guide.
-- [Places to Visit in Meghalaya](https://xtsy.one/things-to-do-in-meghalaya): Top destinations and activities to explore.
-- [Waterfalls in Meghalaya](https://xtsy.one/meghalaya-waterfalls): Guide to the state's best waterfalls.
-- [Viewpoints in Meghalaya](https://xtsy.one/meghalaya-viewpoints): Best scenic viewpoints and canyons.
-- [Best Time to Visit Meghalaya](https://xtsy.one/best-time-to-visit-meghalaya): Season-by-season guide.
+- [Places to Visit in Meghalaya](https://xtsy.one/guides/things-to-do-in-meghalaya): Top destinations and activities to explore.
+- [Waterfalls in Meghalaya](https://xtsy.one/guides/meghalaya-waterfalls): Guide to the state's best waterfalls.
+- [Viewpoints in Meghalaya](https://xtsy.one/guides/meghalaya-viewpoints): Best scenic viewpoints and canyons.
+- [Best Time to Visit Meghalaya](https://xtsy.one/guides/best-time-to-visit-meghalaya): Season-by-season guide.
 - [Elephant Falls](https://xtsy.one/destinations/meghalaya/shillong/elephant-falls): Three-tier waterfall near Shillong.
 - [Krang Suri Falls](https://xtsy.one/destinations/meghalaya/jowai/krang-suri-falls): Turquoise-blue waterfall in Jaintia Hills.
 - [Laitlum Canyons](https://xtsy.one/destinations/meghalaya/shillong/laitlum-canyons): Dramatic canyon viewpoint.
@@ -67,8 +67,8 @@
 - [llms-full.txt](https://xtsy.one/llms-full.txt): Full facts, room details and FAQs in one file.
 
 ## Optional
-- [Privacy Policy](https://xtsy.one/privacy-policy): Data and privacy practices.
-- [Terms of Service](https://xtsy.one/terms-of-service): Booking terms and conditions.
+- [Privacy Policy](https://xtsy.one/about/privacy-policy): Data and privacy practices.
+- [Terms of Service](https://xtsy.one/about/terms-of-service): Booking terms and conditions.
 
 ## Rooms
 - 8-bed mixed dorm: ₹399 per night. Best-value bunk with curtain, locker, reading light and charging point.

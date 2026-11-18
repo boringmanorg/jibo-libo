@@ -233,7 +233,7 @@ function bookingFlowUser() {
 function travelPageExplorer() {
   group('Travel Explorer Journey', function () {
     // Load travel page directly
-    let response = http.get(`${BASE_URL}/travel`, {
+    let response = http.get(`${BASE_URL}/tours/travel`, {
       headers: pageHeaders,
       tags: { type: 'page', name: 'travel' },
     });
