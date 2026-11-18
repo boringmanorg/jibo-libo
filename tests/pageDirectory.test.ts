@@ -11,9 +11,9 @@ describe('page directory resolution', () => {
     expect(unresolved.map((p) => p.slug)).toEqual([]);
   });
   it('gives a static title precedence when its URL also exists in the guide catalogue', () => {
-    const collisions = pages.filter((p) => p.slug === 'best-hostel-in-shillong');
+    const collisions = pages.filter((p) => p.slug === 'stays/best-hostel-in-shillong' || p.slug === 'best-hostel-in-shillong');
     expect(collisions).toHaveLength(1);
-    expect(collisions[0]?.label).toBe(STATIC_PAGE_DIRECTORY.find((p) => p.path === '/best-hostel-in-shillong')?.title);
+    expect(collisions[0]?.label).toBe(STATIC_PAGE_DIRECTORY.find((p) => p.path === '/stays/best-hostel-in-shillong')?.title);
   });
   it('does not list retired account or excluded pages as public content', () => {
     expect(pages.filter((p) => ['auth', 'profile', 'unsubscribe', 'install', 'gallery', 'book'].includes(p.slug))).toEqual([]);

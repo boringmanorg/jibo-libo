@@ -9,7 +9,7 @@ export type PageFaq = { q: string; a: string };
 const TOUR_OPTIONS = 'XTSY offers private Meghalaya itineraries with pick-up in Guwahati. Share your dates and group size with the desk for availability and a quote; no shared departure is guaranteed.';
 
 export const PAGE_FAQS: Record<string, PageFaq[]> = {
-  '/5-day-meghalaya-itinerary': [
+  '/tours/5-day-meghalaya-itinerary': [
     { q: 'Is 5 days enough for Meghalaya?', a: 'Five days covers the classic circuit: Shillong, Sohra (Cherrapunjee), Dawki and Mawlynnong, plus one root-bridge trek. Add a day or two for the Jaintia Hills or a slower pace.' },
     { q: 'Where should I base myself?', a: 'Shillong works as a base for most day trips. From XTSY Travellers Hostel in New Shillong Township, Sohra is about 2 hours by road and Dawki about 2.5 hours. For the Double Decker root-bridge trek, spend a night near Tyrna or Sohra so you can start early.' },
     { q: 'How do I get from Guwahati to Shillong?', a: 'By road it takes about 3 hours from Guwahati city and about 3¼ hours from Guwahati airport. Shared taxis run all day, or the XTSY desk can arrange a cab.' },
@@ -30,7 +30,7 @@ export const PAGE_FAQS: Record<string, PageFaq[]> = {
     { q: 'Which months are cheapest to travel in Meghalaya?', a: 'June to September, the monsoon, is the low season, and stays and cabs are at their cheapest. At XTSY, dorm beds start at \\u20b9399 a night all year, with a women-only dorm at \\u20b9599 and the King Double at \\u20b92,399.' },
     { q: 'How many days do you need for Meghalaya?', a: 'Five days covers Shillong, Sohra and Dawki comfortably. Seven days adds the Double Decker root-bridge trek and the Jaintia Hills without rushing.' },
   ],
-  '/budget-trip-to-meghalaya': [
+  '/tours/budget-trip-to-meghalaya': [
     { q: 'What is the best-value place to stay in Shillong?', a: 'At XTSY Travellers Hostel, an 8-bed dorm bed costs ₹399 a night and a 6-bed dorm ₹499, all inclusive. A 4-bed women-only dorm is ₹599.' },
     { q: 'How can I save on transport?', a: 'Use shared taxis between Guwahati and Shillong and for the main routes, travel in a group to split a cab for day trips, and plan Sohra and Dawki on separate days to avoid long return drives.' },
     { q: 'Is it cheaper to book the hostel direct?', a: 'Yes. Booking sites add their commission to the price you see; booking on xtsy.one gives you the base rate.' },
@@ -47,7 +47,7 @@ export const PAGE_FAQS: Record<string, PageFaq[]> = {
     { q: 'Is it safe to visit remote spots in Meghalaya?', a: 'Generally yes, but go early, tell someone your plan, and come back before dark; the roads have no lighting and mist falls quickly. Several trails, including Wei Sawdong, involve steep ladders and slippery rock in the monsoon. Hire a local guide where the village offers one.' },
     { q: 'What should I carry for a day of offbeat exploring?', a: 'Shoes with grip, a rain layer in any season, cash in small notes, water and snacks, and a power bank. Network coverage drops outside the towns, so download offline maps before you leave Shillong.' },
   ],
-  '/meghalaya-couple-tour-package': [
+  '/tours/meghalaya-couple-tour-package': [
     { q: 'Is Meghalaya good for couples?', a: 'Yes. Quiet viewpoints, waterfalls, river boating at Dawki and cool weather make it a popular couples trip, especially from October to April.' },
     { q: 'Is there a special stay for couples?', a: 'Experience by XTSY, a glass-roofed suite at XTSY in New Shillong Township, costs ₹4,999 a night (stay only). Decoration can be added for ₹2,500 + ₹450 GST.' },
     { q: 'Where does the trip start?', a: 'Pick-up and drop are in Guwahati, at the airport or railway station.' },
@@ -58,13 +58,13 @@ export const PAGE_FAQS: Record<string, PageFaq[]> = {
     { q: 'How many days do couples need in Meghalaya?', a: 'Five to six days is comfortable: two nights in or near Shillong, one or two near Sohra, and a night by the river at Dawki or Shnongpdeng, with time left for slow mornings.' },
     { q: 'Can you arrange a surprise or celebration?', a: 'Yes. Tell the XTSY desk before you arrive and the Experience by XTSY decoration add-on can be arranged for an anniversary, proposal or birthday, at \\u20b92,500 plus \\u20b9450 GST, once per stay.' },
   ],
-  '/meghalaya-tour-packages': [
+  '/tours/meghalaya-tour-packages': [
     { q: 'How many days do I need for Meghalaya?', a: 'Five to seven days covers Shillong, Sohra, Dawki, Mawlynnong and a root-bridge trek. Shorter trips work if you focus on Shillong and Sohra.' },
     { q: 'Can I join a group if I am travelling alone?', a: TOUR_OPTIONS },
     { q: 'Where do the tours start?', a: 'XTSY tours pick up and drop in Guwahati, at the airport or railway station.' },
     { q: 'Are the tour prices fixed?', a: 'Each package lists a fixed per-person price on its page. Tour bookings are non-refundable once confirmed.' },
   ],
-  '/shillong-tour-package': [
+  '/tours/shillong-tour-package': [
     { q: 'What can I see in 3 days around Shillong?', a: 'Umiam Lake, Shillong Peak, Elephant Falls, Laitlum Canyons and Ward\'s Lake, with a day trip to Sohra (Cherrapunjee) for waterfalls and caves.' },
     { q: 'How far is XTSY from Police Bazaar?', a: 'About 30 minutes by road. XTSY is in New Shillong Township, near IIM and NIFT Shillong.' },
     { q: 'Can I extend the trip?', a: 'Yes. Add Dawki and Mawlynnong for a fourth day, or ask the desk about a longer private Meghalaya itinerary for your dates.' },

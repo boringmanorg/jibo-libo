@@ -7,17 +7,17 @@ export const STATIC_PAGE_DIRECTORY = [
     "description": "XTSY Travellers Hostel, New Shillong Township: dorms from ₹399, women-only dorm, King Double ₹2,399, glass suite ₹4,999 and TAB Bistro on site."
   },
   {
-    "path": "/3-day-meghalaya-itinerary",
+    "path": "/tours/3-day-meghalaya-itinerary",
     "title": "3 Day Meghalaya Itinerary from Shillong | XTSY",
     "description": "A tested 3 day Meghalaya itinerary: Shillong, Cherrapunji waterfalls and Dawki's Umngot river, with travel times, costs and hostel stays from Rs 399."
   },
   {
-    "path": "/4x4-expedition-meghalaya",
+    "path": "/tours/4x4-expedition-meghalaya",
     "title": "4x4 Expedition Meghalaya | Shillong–Dawki Circuit | XTSY",
     "description": "Explore a 3–4 day Meghalaya 4x4 circuit through Shillong, Dawki, Mawlynnong and Sohra, with realistic road, permit and season advice."
   },
   {
-    "path": "/5-day-meghalaya-itinerary",
+    "path": "/tours/5-day-meghalaya-itinerary",
     "title": "5 Day Meghalaya Itinerary: Route, Cost, Stays | XTSY",
     "description": "Five day Meghalaya plan covering Shillong, Cherrapunji, Mawlynnong, Dawki and the living root bridges, with day-by-day distances, budgets and where to stay."
   },
@@ -32,7 +32,7 @@ export const STATIC_PAGE_DIRECTORY = [
     "description": "XTSY Ventures Private Limited: Coimbatore startup incorporated 29 September 2026, hospitality franchises, tourism and SaaS development for Indian businesses."
   },
   {
-    "path": "/adventure-tours-northeast-india",
+    "path": "/tours/adventure-tours-northeast-india",
     "title": "Adventure Tours in Northeast India | Routes & Permits | XTSY",
     "description": "Compare Meghalaya, Tawang and Kohima adventure routes from Guwahati: seasons, permits, driving days and practical planning from XTSY."
   },
@@ -42,7 +42,7 @@ export const STATIC_PAGE_DIRECTORY = [
     "description": "Backpacking India guide with regional routes, daily budgets, transport tips and hostel picks, plus how to add Meghalaya and Northeast India to your trip."
   },
   {
-    "path": "/best-hostel-in-shillong",
+    "path": "/stays/best-hostel-in-shillong",
     "title": "Hostels in Shillong from ₹399: Women-Only Dorm, 4.7★ | XTSY",
     "description": "Stay among the pines of New Shillong Township at XTSY (4.7★, 252 Google reviews). Dorms from ₹399, a 4-bed women-only dorm, private rooms and TAB Bistro."
   },
@@ -57,7 +57,7 @@ export const STATIC_PAGE_DIRECTORY = [
     "description": "XTSY dorm beds from ₹399, women-only dorm, lockers, Wi-Fi and TAB Bistro on site in New Shillong Township. Book direct, no OTA mark-up."
   },
   {
-    "path": "/budget-trip-to-meghalaya",
+    "path": "/tours/budget-trip-to-meghalaya",
     "title": "Budget Trip to Meghalaya: Costs & Plan | XTSY",
     "description": "What a Meghalaya trip really costs: transport, permits, food, entry fees and dorm beds from Rs 399, with a sample low-budget route from Guwahati."
   },
@@ -72,7 +72,7 @@ export const STATIC_PAGE_DIRECTORY = [
     "description": "Reach XTSY Travellers Hostel Shillong on +91 8837317070, message us on WhatsApp, or find directions to New Shillong Township for check-in and group enquiries."
   },
   {
-    "path": "/destination-wedding-shillong",
+    "path": "/tours/destination-wedding-shillong",
     "title": "Destination Wedding Venue in Shillong | XTSY",
     "description": "Host an intimate destination wedding in Shillong with XTSY: mountain-view venues, group accommodation, TAB Bistro catering and full event coordination."
   },
@@ -92,12 +92,12 @@ export const STATIC_PAGE_DIRECTORY = [
     "description": "Shillong dorms ₹399/₹499/₹599, GST included. XTSY FAQs on solo-women safety, New Shillong Township, check-in and WhatsApp enquiries."
   },
   {
-    "path": "/female-travellers",
+    "path": "/stays/female-travellers",
     "title": "Solo Female Travellers in Shillong: Safe Stay | XTSY",
     "description": "Safety guidance for solo female travellers in Meghalaya, plus female-only dorms, 24x7 staffed reception and CCTV-covered common areas at XTSY Shillong."
   },
   {
-    "path": "/group-bookings-meghalaya",
+    "path": "/stays/group-bookings-meghalaya",
     "title": "Group Bookings in Meghalaya: Stays & Tours | XTSY",
     "description": "Group booking rates for Meghalaya trips: whole-dorm buyouts, college and corporate groups, transport, guides and TAB Bistro meals arranged from Shillong."
   },
@@ -107,27 +107,27 @@ export const STATIC_PAGE_DIRECTORY = [
     "description": "Lesser-known Meghalaya spots beyond Cherrapunji and Dawki: quiet waterfalls, canyons, village trails and viewpoints, with how to reach each from Shillong."
   },
   {
-    "path": "/homestays-in-shillong",
+    "path": "/stays/homestays-in-shillong",
     "title": "Homestays in Shillong: Options & Prices | XTSY",
     "description": "Compare homestays in Shillong with hostel and hotel stays on price, privacy and location, plus what a Rs 399 dorm bed at XTSY includes for solo travellers."
   },
   {
-    "path": "/hostel-near-me",
+    "path": "/stays/hostel-near-me",
     "title": "Hostel Near Me in Shillong — XTSY, New Shillong Township",
     "description": "Hostel near you in Shillong? XTSY is on Mawdiangdiang Road, New Shillong Township, near NIFT and IIM: dorms from ₹399, 4.7★ from 252 Google reviews."
   },
   {
-    "path": "/hotels-in-shillong",
+    "path": "/stays/hotels-in-shillong",
     "title": "Hotels in Shillong: Areas, Prices & Alternatives | XTSY",
     "description": "Where to stay in Shillong by area and budget, honest hotel price ranges, and when a hostel dorm or private room at XTSY works out better value."
   },
   {
-    "path": "/luxury-glamping-shillong",
+    "path": "/stays/luxury-glamping-shillong",
     "title": "Luxury Glamping in Shillong & Meghalaya | XTSY",
     "description": "Glamping near Shillong with proper beds, private washrooms and mountain views, including Experience by XTSY, India's Most Romantic Couple En-suite, for couples."
   },
   {
-    "path": "/meghalaya-adventure-tour",
+    "path": "/tours/meghalaya-adventure-tour",
     "title": "Meghalaya Adventure Tour | Trek, River & Waterfalls | XTSY",
     "description": "Plan a Shillong-based Meghalaya adventure tour with Nongriat trekking, Sohra waterfalls, Dawki river activities, season advice and a 4-day outline."
   },
@@ -137,7 +137,7 @@ export const STATIC_PAGE_DIRECTORY = [
     "description": "Guide to caving in Meghalaya: Mawsmai, Arwah, Liat Prah and Siju, with difficulty, entry fees, timings, safety notes and guided caving trips from Shillong."
   },
   {
-    "path": "/meghalaya-couple-tour-package",
+    "path": "/tours/meghalaya-couple-tour-package",
     "title": "Meghalaya Couple Tour Package | XTSY Travel",
     "description": "Romantic Meghalaya packages for couples: root bridges, Dawki boating, private cabs and a stay at Experience by XTSY, with transparent per-couple pricing."
   },
@@ -152,7 +152,7 @@ export const STATIC_PAGE_DIRECTORY = [
     "description": "Unfiltered photos from Meghalaya trips run by XTSY: living root bridges, Nohkalikai, Umngot river, Mawlynnong and life inside our Shillong hostel."
   },
   {
-    "path": "/meghalaya-tour-packages",
+    "path": "/tours/meghalaya-tour-packages",
     "title": "Meghalaya Tour Packages 2026 — Starting ₹7,999 | XTSY",
     "description": "Meghalaya tour packages from ₹7,999: Shillong, Cherrapunji, Dawki and the living root bridges, with stays, meals and transport included. Book direct."
   },
@@ -177,17 +177,17 @@ export const STATIC_PAGE_DIRECTORY = [
     "description": "Travel gear and work-from-anywhere kit designed at XTSY Travellers Hostel, New Shillong Township. Tap Notify me to hear the day each piece drops."
   },
   {
-    "path": "/motorbike-expedition-northeast-india",
+    "path": "/tours/motorbike-expedition-northeast-india",
     "title": "Northeast India Motorbike Expedition — Routes | XTSY",
     "description": "Compare Meghalaya, Tawang and Kohima motorbike expeditions with practical advice on road conditions, permits, altitude, seasons and riding gear."
   },
   {
-    "path": "/partner-stays",
+    "path": "/stays/partner-stays",
     "title": "Become an XTSY Partner Stay in Meghalaya | XTSY",
     "description": "Run a homestay or guest house in Sohra, Tyrna, Dawki or elsewhere in the Northeast? Host XTSY guests and group trips. See what we look for and apply."
   },
   {
-    "path": "/pet-friendly",
+    "path": "/stays/pet-friendly",
     "title": "Pet Friendly Stay in Shillong, Meghalaya | XTSY",
     "description": "Travelling with a pet in Meghalaya? See XTSY's pet policy, which room types allow pets, nearby vets, and walking routes around New Shillong Township."
   },
@@ -212,7 +212,7 @@ export const STATIC_PAGE_DIRECTORY = [
     "description": "How XTSY collects, uses and protects your personal data for hostel bookings, tours and dining. GDPR and India DPDP compliant privacy policy."
   },
   {
-    "path": "/restaurant-in-shillong",
+    "path": "/tab-bistro",
     "title": "Restaurant in Shillong: TAB Bistro by XTSY",
     "description": "TAB Bistro by XTSY serves Khasi-inspired plates, cafe classics and late breakfasts in New Shillong Township. See the menu, timings and how to reserve a table."
   },
@@ -222,7 +222,7 @@ export const STATIC_PAGE_DIRECTORY = [
     "description": "XTSY dorm rules, women-only stays, 11 AM check-in, strict 10 AM check-out and quiet hours 10 PM–7 AM in New Shillong Township."
   },
   {
-    "path": "/shillong-tour-package",
+    "path": "/tours/shillong-tour-package",
     "title": "Shillong Tour Package with Stay & Cab | XTSY",
     "description": "Shillong tour packages including hostel or private stay, cab, guide and key sightseeing, priced per person with no hidden extras. Book direct with XTSY."
   },
@@ -262,22 +262,22 @@ export const STATIC_PAGE_DIRECTORY = [
     "description": "For foreign visitors: Indian e-Visa rules, which Northeast states need permits, SIM cards, money, safety and Guwahati airport to Shillong transfers."
   },
   {
-    "path": "/work-from-home",
+    "path": "/stays/workation",
     "title": "Work From Meghalaya: Wifi, Desks & Long Stays | XTSY",
     "description": "Remote work from Shillong at XTSY: wifi speeds, dedicated desks, power backup, quiet hours and discounted weekly and monthly long-stay rates."
   },
   {
-    "path": "/experience-by-xtsy",
+    "path": "/stays/experience-by-xtsy",
     "title": "Experience by XTSY — India's Most Romantic Couple En-suite, Shillong",
     "description": "Experience by XTSY, India's Most Romantic Couple En-suite: a 270° panoramic glass suite in New Shillong Township. Photos, what's included and rates. Book direct."
   },
   {
-    "path": "/xtsy-adventure-campsite-dawki",
+    "path": "/stays/campsite-dawki",
     "title": "Dawki Campsite by the Umngot River | XTSY",
     "description": "Camp beside the Umngot river at XTSY's Dawki adventure campsite: riverside tents, kayaking, bonfires and meals, with rates and how to reach from Shillong."
   },
   {
-    "path": "/xtsy-rentals",
+    "path": "/tours/xtsy-rentals",
     "title": "Car & Bike Rentals in Assam & Meghalaya | XTSY",
     "description": "Explore XTSY car and bike rentals for Assam and Meghalaya, including Guwahati and Shillong. View vehicles, listed rates and enquire on WhatsApp."
   },

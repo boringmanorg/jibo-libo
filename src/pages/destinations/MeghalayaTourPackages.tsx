@@ -137,16 +137,16 @@ const MeghalayaTourPackages = () => {
             <h2 className="text-lg font-semibold text-foreground mb-4">Related Pages</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               <Link to="/things-to-do-in-meghalaya" className="text-sm text-primary hover:underline">Things to Do in Meghalaya</Link>
-              <Link to="/meghalaya-couple-tour-package" className="text-sm text-primary hover:underline">Couple Tour Package</Link>
-              <Link to="/shillong-tour-package" className="text-sm text-primary hover:underline">Shillong Tour Package</Link>
+              <Link to="/tours/meghalaya-couple-tour-package" className="text-sm text-primary hover:underline">Couple Tour Package</Link>
+              <Link to="/tours/shillong-tour-package" className="text-sm text-primary hover:underline">Shillong Tour Package</Link>
               <Link to="/best-time-to-visit-meghalaya" className="text-sm text-primary hover:underline">Best Time to Visit</Link>
-              <Link to="/budget-trip-to-meghalaya" className="text-sm text-primary hover:underline">Budget Trip Guide</Link>
+              <Link to="/tours/budget-trip-to-meghalaya" className="text-sm text-primary hover:underline">Budget Trip Guide</Link>
               <Link to="/expeditions/4x4/meghalaya-loop" className="text-sm text-primary hover:underline">Meghalaya 4x4 Expedition</Link>
             </div>
           </nav>
         </div>
       </main>
-      <PageFaq path="/meghalaya-tour-packages" />
+      <PageFaq path="/tours/meghalaya-tour-packages" />
       <Footer />
     </div>
   );

@@ -1,14 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
-import DestinationWeddingShillong from "@/pages/v2/WeddingsV2";
-import { buildRouteHead } from "@/lib/seo-head";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
+// Moved under /tours (owner approval, 18 Nov 2026); old address permanently redirects.
 export const Route = createFileRoute("/(tours)/destination-wedding-shillong")({
-  head: () =>
-    buildRouteHead({
-      path: "/destination-wedding-shillong",
-      title: "Destination Wedding Venue in Shillong | XTSY",
-      description:
-        "Host an intimate destination wedding in Shillong with XTSY: mountain-view venues, group accommodation, TAB Bistro catering and full event coordination.",
-    }),
-  component: DestinationWeddingShillong,
+  beforeLoad: () => {
+    throw redirect({ to: "/tours/destination-wedding-shillong", statusCode: 301 });
+  },
 });

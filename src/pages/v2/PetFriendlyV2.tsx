@@ -1,5 +1,5 @@
 /**
- * /pet-friendly — Pet-friendly stays (redesign).
+ * /stays/pet-friendly — Pet-friendly stays (redesign).
  * Policy (from XTSY): cats and birds most welcome; dogs depending on breed and
  * size; guests contact the XTSY desk for any additional charges.
  */

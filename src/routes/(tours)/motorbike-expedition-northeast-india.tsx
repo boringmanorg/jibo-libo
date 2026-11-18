@@ -1,10 +1,8 @@
-import { createFileRoute } from '@tanstack/react-router';
-import AdventureLanding from '@/pages/expeditions/AdventureLanding';
-import { buildRouteHead } from '@/lib/seo-head';
-import { articleSchema } from '@/lib/seo/pageEntitySchema';
-import { IMG } from '@/data/v2Images';
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/(tours)/motorbike-expedition-northeast-india')({
-  head: () => buildRouteHead({ jsonLd: [articleSchema({ path: '/motorbike-expedition-northeast-india', headline: 'Northeast India Motorbike Expedition — Routes | XTSY', description: 'Compare Meghalaya, Tawang and Kohima motorbike expeditions with practical advice on road conditions, permits, altitude, seasons and riding gear.' })], path: '/motorbike-expedition-northeast-india', title: 'Northeast India Motorbike Expedition — Routes | XTSY', description: 'Compare Meghalaya, Tawang and Kohima motorbike expeditions with practical advice on road conditions, permits, altitude, seasons and riding gear.', image: new URL(IMG.bumla, 'https://xtsy.one').href, ogType: 'article' }),
-  component: () => <AdventureLanding guide="motorbike-expedition-northeast-india" />,
+// Moved under /tours (owner approval, 18 Nov 2026); old address permanently redirects.
+export const Route = createFileRoute("/(tours)/motorbike-expedition-northeast-india")({
+  beforeLoad: () => {
+    throw redirect({ to: "/tours/motorbike-expedition-northeast-india", statusCode: 301 });
+  },
 });

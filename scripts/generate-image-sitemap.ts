@@ -51,7 +51,7 @@ const dawkiImages: ImageEntry[] = Object.entries(CDN_IMAGE_MAP)
 
 const PAGES: PageEntry[] = [
   { path: '/', images: uniqueImages(roomImages) },
-  { path: '/xtsy-adventure-campsite-dawki', images: uniqueImages(dawkiImages) },
+  { path: '/stays/campsite-dawki', images: uniqueImages(dawkiImages) },
 ];
 
 function generate(): string {

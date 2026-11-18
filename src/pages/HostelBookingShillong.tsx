@@ -293,9 +293,9 @@ const HostelBookingShillong = memo(() => {
               </Button>
             </div>
             <p className="mt-6 text-xs text-muted-foreground">
-              Related: <Link to="/best-hostel-in-shillong" className="underline hover:text-primary">Best Hostel in Shillong</Link>
-              {' · '}<Link to="/hotels-in-shillong" className="underline hover:text-primary">Hotels in Shillong</Link>
-              {' · '}<Link to="/homestays-in-shillong" className="underline hover:text-primary">Homestays in Shillong</Link>
+              Related: <Link to="/stays/best-hostel-in-shillong" className="underline hover:text-primary">Best Hostel in Shillong</Link>
+              {' · '}<Link to="/stays/hotels-in-shillong" className="underline hover:text-primary">Hotels in Shillong</Link>
+              {' · '}<Link to="/stays/homestays-in-shillong" className="underline hover:text-primary">Homestays in Shillong</Link>
             </p>
           </div>
         </section>

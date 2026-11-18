@@ -1,5 +1,5 @@
 /**
- * /xtsy-adventure-campsite-dawki — Dawki riverside camping (redesign).
+ * /stays/campsite-dawki — Dawki riverside camping (redesign).
  * The camp is run by a trusted partner; XTSY books it and handles transfers.
  */
 import { Helmet } from '@/lib/seo/helmet';

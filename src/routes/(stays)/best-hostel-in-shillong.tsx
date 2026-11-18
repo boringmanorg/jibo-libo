@@ -1,29 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
-import StayHubV2 from "@/pages/v2/StayHubV2";
-import { buildRouteHead } from "@/lib/seo-head";
-import { stayHubCopy, stayHubSchema } from "@/data/stayHub";
-import { COVERS } from "@/data/v2Images";
-import { responsive } from "@/components/v2/primitives";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
-const copy = stayHubCopy("hostels");
-const hero = responsive(COVERS.home);
-
+// Moved under /stays (owner approval, 18 Nov 2026); old address permanently redirects.
 export const Route = createFileRoute("/(stays)/best-hostel-in-shillong")({
-  head: () =>
-    buildRouteHead({
-      path: copy.path,
-      title: copy.title,
-      description: copy.description,
-      keywords: copy.keywords,
-      image: `https://xtsy.one${hero?.src ?? COVERS.home}`,
-      preloadImage: hero?.src ?? COVERS.home,
-      preloadImageSrcSet: hero?.srcSet,
-      preloadImageSizes: "(max-width: 1024px) 100vw, 40vw",
-      jsonLd: stayHubSchema("hostels"),
-    }),
-  component: BestHostelHub,
+  beforeLoad: () => {
+    throw redirect({ to: "/stays/best-hostel-in-shillong", statusCode: 301 });
+  },
 });
-
-function BestHostelHub() {
-  return <StayHubV2 variant="hostels" />;
-}

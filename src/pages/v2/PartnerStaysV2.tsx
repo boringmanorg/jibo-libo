@@ -1,6 +1,6 @@
 import { localEnquiryRef } from '@/lib/localEnquiry';
 /**
- * /partner-stays — for homestays and guest houses that want to host XTSY guests outside New
+ * /stays/partner-stays — for homestays and guest houses that want to host XTSY guests outside New
  * Shillong. Applications go through the shared create_enquiry function with room type
  * 'partner-stay-application' so they land in the desk's one pending queue (AGENTS.md). Terms
  * such as rates and commission are agreed one to one, so none are published here.

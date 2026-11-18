@@ -6,7 +6,7 @@ import { inr, lowestDormPrice } from '@/components/v2/pricing';
 /**
  * ShillongHostelLinkBlock — a keyword-rich internal link block that funnels
  * high-traffic destination pages (Dawki, Nohkalikai, Umiam Lake) to the
- * commercial /best-hostel-in-shillong page with the exact anchor
+ * commercial /stays/best-hostel-in-shillong page with the exact anchor
  * "book a hostel in Shillong".
  */
 const ShillongHostelLinkBlock = ({
@@ -34,7 +34,7 @@ const ShillongHostelLinkBlock = ({
           </p>
         </div>
         <Link
-          to="/best-hostel-in-shillong"
+          to="/stays/best-hostel-in-shillong"
           onClick={() => trackEvent('booking', 'shillong_hostel_link_click', source)}
           className="inline-flex flex-shrink-0 items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground transition-colors hover:bg-primary/90"
         >

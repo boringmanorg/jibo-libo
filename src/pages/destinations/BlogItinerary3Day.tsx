@@ -38,12 +38,12 @@ const BlogItinerary3Day = () => (
 
         <section className="mt-10 bg-primary/10 rounded-2xl p-8 text-center">
           <h2 className="text-xl font-bold text-foreground">Want this trip planned for you?</h2>
-          <Link to="/shillong-tour-package" className="mt-4 inline-block px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium">View Shillong Package</Link>
+          <Link to="/tours/shillong-tour-package" className="mt-4 inline-block px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium">View Shillong Package</Link>
         </section>
         <nav className="mt-8 border-t border-border pt-8">
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-            <Link to="/5-day-meghalaya-itinerary" className="text-sm text-primary hover:underline">5-Day Itinerary</Link>
-            <Link to="/budget-trip-to-meghalaya" className="text-sm text-primary hover:underline">Budget Trip</Link>
+            <Link to="/tours/5-day-meghalaya-itinerary" className="text-sm text-primary hover:underline">5-Day Itinerary</Link>
+            <Link to="/tours/budget-trip-to-meghalaya" className="text-sm text-primary hover:underline">Budget Trip</Link>
             <Link to="/things-to-do-in-meghalaya" className="text-sm text-primary hover:underline">All Places to Visit</Link>
           </div>
         </nav>

@@ -14,8 +14,8 @@ export default defineConfig({
     // Top public pages are identical for every visitor; build them once at publish
     // so visitors skip the server render wait. Never list personalised/private pages.
     pages: [
-      "/", "/experience-by-xtsy", "/tours", "/work-from-home", "/destination-wedding-shillong",
-      "/best-hostel-in-shillong", "/xtsy-rentals", "/meghalaya-tour-packages", "/guides", "/faq",
+      "/", "/stays/experience-by-xtsy", "/tours", "/stays/workation", "/tours/destination-wedding-shillong",
+      "/stays/best-hostel-in-shillong", "/tours/xtsy-rentals", "/tours/meghalaya-tour-packages", "/guides", "/faq",
     ].map((path) => ({ path, prerender: { outputPath: path === "/" ? "/index.html" : `${path}/index.html` } })),
     prerender: { enabled: true, autoStaticPathsDiscovery: false },
   },

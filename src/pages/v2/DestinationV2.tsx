@@ -46,7 +46,7 @@ function BookingCTA({ destination, placement }: { destination: MeghalayaDestinat
       </div>
       <div className="flex shrink-0 flex-col gap-2.5 sm:flex-row">
         <Link to="/book" onClick={() => handleClick('availability_check')} className="xt-btn flex h-12 items-center justify-center rounded-full bg-xt-crimson px-6 text-[15px] font-extrabold text-white hover:text-white">Book a bed at XTSY</Link>
-        <Link to="/best-hostel-in-shillong" onClick={() => handleClick('book_now')} className="xt-btn flex h-12 items-center justify-center rounded-full border-[1.5px] border-xt-paper px-6 text-[15px] font-extrabold text-xt-paper hover:text-xt-paper">Compare hostel rooms</Link>
+        <Link to="/stays/best-hostel-in-shillong" onClick={() => handleClick('book_now')} className="xt-btn flex h-12 items-center justify-center rounded-full border-[1.5px] border-xt-paper px-6 text-[15px] font-extrabold text-xt-paper hover:text-xt-paper">Compare hostel rooms</Link>
       </div>
     </section>
   );
@@ -316,7 +316,7 @@ export default function DestinationV2() {
               <div className="flex flex-col gap-3 rounded-[24px] bg-xt-slate p-7 text-xt-paper">
                 <h3 className="m-0 text-[20px] font-extrabold">See it on a tour</h3>
                 <p className="m-0 text-[15px] leading-relaxed text-xt-fog">{destination.name} features on our Meghalaya packages, planned by the team that lives here.</p>
-                <Link to="/meghalaya-tour-packages" className="xt-btn flex h-12 items-center justify-center rounded-full bg-xt-crimson text-[15px] font-extrabold text-white hover:text-white">Browse tours</Link>
+                <Link to="/tours/meghalaya-tour-packages" className="xt-btn flex h-12 items-center justify-center rounded-full bg-xt-crimson text-[15px] font-extrabold text-white hover:text-white">Browse tours</Link>
               </div>
               <div className="flex flex-col gap-3 rounded-[24px] bg-white p-7">
                 <h3 className="m-0 text-[20px] font-extrabold">Stay nearby</h3>
@@ -366,11 +366,11 @@ export default function DestinationV2() {
               {[
                 categoryLink,
                 { to: '/things-to-do-in-meghalaya', label: 'Things to Do in Meghalaya' },
-                { to: '/meghalaya-tour-packages', label: 'Meghalaya Tour Packages' },
-                { to: '/shillong-tour-package', label: 'Shillong Tour Package' },
+                { to: '/tours/meghalaya-tour-packages', label: 'Meghalaya Tour Packages' },
+                { to: '/tours/shillong-tour-package', label: 'Shillong Tour Package' },
                 { to: '/best-time-to-visit-meghalaya', label: 'Best Time to Visit' },
                 { to: '/meghalaya-travel-guide', label: 'Meghalaya Travel Guide' },
-                { to: '/best-hostel-in-shillong', label: 'Hostels in Shillong', hot: true },
+                { to: '/stays/best-hostel-in-shillong', label: 'Hostels in Shillong', hot: true },
                 { to: '/book', label: 'Book XTSY in Shillong', hot: true },
                 { to: '/tours', label: 'Northeast India Tours' },
                 { to: '/meghalaya-photo-gallery', label: 'Photo Gallery' },

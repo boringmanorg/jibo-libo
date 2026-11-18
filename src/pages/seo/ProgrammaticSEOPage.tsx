@@ -534,7 +534,7 @@ const ProgrammaticSEOPage = () => {
                 See group tour packages, corporate offsites, whole-dorm stays and group catering — all in one place — and get a per-person quote within an hour.
               </p>
               <Link
-                to="/group-bookings-meghalaya"
+                to="/stays/group-bookings-meghalaya"
                 className="mt-4 inline-flex items-center rounded-lg bg-primary px-5 py-3 text-sm font-medium text-primary-foreground hover:opacity-90"
               >
                 Explore Meghalaya Group Bookings →

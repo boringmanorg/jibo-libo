@@ -72,7 +72,7 @@ const LuxuryGlampingShillong = memo(() => {
   const handleWhatsApp = () => window.open('https://wa.me/918837317070?text=Hi%2C%20I%20want%20to%20book%20the%20270%20Glass%20Suite', '_blank');
   const visibleFaqData = {
     ...faqData,
-    mainEntity: (rankedQuestionsFor('/luxury-glamping-shillong') ?? []).map(({ q, a }) => ({
+    mainEntity: (rankedQuestionsFor('/stays/luxury-glamping-shillong') ?? []).map(({ q, a }) => ({
       '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a },
     })),
   };
@@ -112,7 +112,7 @@ const LuxuryGlampingShillong = memo(() => {
               <Button onClick={handleWhatsApp} className="gap-2">
                 <MessageCircle className="h-4 w-4" /> Book Experience by XTSY
               </Button>
-              <Link to="/experience-by-xtsy">
+              <Link to="/stays/experience-by-xtsy">
                 <Button variant="outline">View Full Details</Button>
               </Link>
             </div>
@@ -180,7 +180,7 @@ const LuxuryGlampingShillong = memo(() => {
             </div>
           </section>
 
-          <RankedPageQuestions path="/luxury-glamping-shillong" />
+          <RankedPageQuestions path="/stays/luxury-glamping-shillong" />
 
           {/* CTA */}
           <section className="bg-primary/10 rounded-2xl p-8 text-center">
@@ -196,12 +196,12 @@ const LuxuryGlampingShillong = memo(() => {
           <nav className="border-t border-border pt-8">
             <h2 className="text-lg font-semibold text-foreground mb-4">Related Pages</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              <Link to="/best-hostel-in-shillong" className="text-sm text-primary hover:underline">Best Hostel in Shillong</Link>
-              <Link to="/hotels-in-shillong" className="text-sm text-primary hover:underline">Hotels in Shillong</Link>
-              <Link to="/homestays-in-shillong" className="text-sm text-primary hover:underline">Homestays in Shillong</Link>
-              <Link to="/destination-wedding-shillong" className="text-sm text-primary hover:underline">Destination Wedding</Link>
-              <Link to="/meghalaya-couple-tour-package" className="text-sm text-primary hover:underline">Couple Tour Package</Link>
-              <Link to="/experience-by-xtsy" className="text-sm text-primary hover:underline">270° Suite Full Details</Link>
+              <Link to="/stays/best-hostel-in-shillong" className="text-sm text-primary hover:underline">Best Hostel in Shillong</Link>
+              <Link to="/stays/hotels-in-shillong" className="text-sm text-primary hover:underline">Hotels in Shillong</Link>
+              <Link to="/stays/homestays-in-shillong" className="text-sm text-primary hover:underline">Homestays in Shillong</Link>
+              <Link to="/tours/destination-wedding-shillong" className="text-sm text-primary hover:underline">Destination Wedding</Link>
+              <Link to="/tours/meghalaya-couple-tour-package" className="text-sm text-primary hover:underline">Couple Tour Package</Link>
+              <Link to="/stays/experience-by-xtsy" className="text-sm text-primary hover:underline">270° Suite Full Details</Link>
             </div>
           </nav>
         </div>

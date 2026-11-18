@@ -1,16 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { collectionSchema } from "@/lib/seo/pageEntitySchema";
-import PartnerStays from "@/pages/v2/PartnerStaysV2";
-import { buildRouteHead } from "@/lib/seo-head";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
+// Moved under /stays (owner approval, 18 Nov 2026); old address permanently redirects.
 export const Route = createFileRoute("/(stays)/partner-stays")({
-  head: () =>
-    buildRouteHead({
-      path: "/partner-stays",
-      jsonLd: [collectionSchema({ path: "/partner-stays", name: "Become an XTSY Partner Stay in Meghalaya | XTSY", description: "Run a homestay or guest house in Sohra, Tyrna, Dawki or elsewhere in the Northeast? Host XTSY guests and group trips. See what we look for and apply." })],
-      title: "Become an XTSY Partner Stay in Meghalaya | XTSY",
-      description:
-        "Run a homestay or guest house in Sohra, Tyrna, Dawki or elsewhere in the Northeast? Host XTSY guests and group trips. See what we look for and apply.",
-    }),
-  component: PartnerStays,
+  beforeLoad: () => {
+    throw redirect({ to: "/stays/partner-stays", statusCode: 301 });
+  },
 });

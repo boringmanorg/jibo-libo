@@ -169,7 +169,7 @@ export default function HowToReachMeghalaya() {
           </p>
           <div className="flex flex-wrap gap-3">
             <Button asChild><Link to="/book">Check availability</Link></Button>
-            <Button asChild variant="outline"><Link to="/best-hostel-in-shillong">See dorms &amp; rooms</Link></Button>
+            <Button asChild variant="outline"><Link to="/stays/best-hostel-in-shillong">See dorms &amp; rooms</Link></Button>
           </div>
         </section>
 
@@ -190,8 +190,8 @@ export default function HowToReachMeghalaya() {
           <ul className="grid gap-2 sm:grid-cols-2 text-primary">
             <li><Link className="underline" to="/best-time-to-visit-meghalaya">Best time to visit Meghalaya</Link></li>
             <li><Link className="underline" to="/travel-guide/meghalaya-for-international-tourists">Meghalaya guide for international tourists</Link></li>
-            <li><Link className="underline" to="/3-day-meghalaya-itinerary">3-day Meghalaya itinerary</Link></li>
-            <li><Link className="underline" to="/budget-trip-to-meghalaya">Budget trip to Meghalaya</Link></li>
+            <li><Link className="underline" to="/tours/3-day-meghalaya-itinerary">3-day Meghalaya itinerary</Link></li>
+            <li><Link className="underline" to="/tours/budget-trip-to-meghalaya">Budget trip to Meghalaya</Link></li>
           </ul>
         </section>
       </main>

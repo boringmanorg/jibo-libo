@@ -1,16 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { articleSchema } from "@/lib/seo/pageEntitySchema";
-import WorkationV2 from "@/pages/v2/WorkationV2";
-import { buildRouteHead } from "@/lib/seo-head";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
+// Moved under /stays (owner approval, 18 Nov 2026); old address permanently redirects.
 export const Route = createFileRoute("/(stays)/work-from-home")({
-  head: () =>
-    buildRouteHead({
-      path: "/work-from-home",
-      jsonLd: [articleSchema({ path: "/work-from-home", headline: "Work From Meghalaya: Wifi, Desks & Long Stays | XTSY", description: "Remote work from Shillong at XTSY: wifi speeds, dedicated desks, power backup, quiet hours and discounted weekly and monthly long-stay rates." })],
-      title: "Work From Meghalaya: Wifi, Desks & Long Stays | XTSY",
-      description:
-        "Remote work from Shillong at XTSY: wifi speeds, dedicated desks, power backup, quiet hours and discounted weekly and monthly long-stay rates.",
-    }),
-  component: WorkationV2,
+  beforeLoad: () => {
+    throw redirect({ to: "/stays/workation", statusCode: 301 });
+  },
 });

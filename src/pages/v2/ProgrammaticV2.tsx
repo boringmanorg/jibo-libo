@@ -146,7 +146,7 @@ export default function ProgrammaticV2() {
                 <span className="text-[20px] font-extrabold">XTSY Travellers Hostel</span>
                 <span className="text-[14px] leading-relaxed text-xt-fog">New Shillong Township, near IIM & NIFT Shillong. Dorms from {inr(lowestDormPrice())}, women-only dorm, King Double {inr(roomPrice('king-double-room').now)}, Experience by XTSY glass suite. TAB Bistro on site.</span>
                 <Link to="/book" className="xt-btn flex h-12 items-center justify-center rounded-full bg-xt-crimson text-[15px] font-extrabold text-white hover:text-white">Check availability</Link>
-                <Link to="/best-hostel-in-shillong" className="text-center text-[13px] font-bold text-xt-fog underline">Why guests pick XTSY</Link>
+                <Link to="/stays/best-hostel-in-shillong" className="text-center text-[13px] font-bold text-xt-fog underline">Why guests pick XTSY</Link>
               </div>
               <div className="flex flex-col gap-2 rounded-[24px] bg-white p-6">
                 <span className="text-[16px] font-extrabold">Plan it in a minute</span>
@@ -186,7 +186,7 @@ export default function ProgrammaticV2() {
               </div>
             ))}
           {(page.category === 'group-tours' || page.category === 'corporate') && (
-            <Link to="/group-bookings-meghalaya" className="self-start rounded-full bg-xt-crimson px-6 py-3 text-[15px] font-extrabold text-white hover:text-white">Meghalaya group bookings →</Link>
+            <Link to="/stays/group-bookings-meghalaya" className="self-start rounded-full bg-xt-crimson px-6 py-3 text-[15px] font-extrabold text-white hover:text-white">Meghalaya group bookings →</Link>
           )}
         </nav>
       </article>

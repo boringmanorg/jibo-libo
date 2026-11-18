@@ -17,6 +17,7 @@ import { PANORAMA_STAY_ONLY } from '@/data/panoramaPricing';
 import { CLUSTERS, PLACES, type Place } from '@/lib/travel/places';
 import { fromXtsy } from '@/lib/travel/routing';
 import { STATIC_PAGE_DIRECTORY } from '@/data/staticPageDirectory';
+import { MOVED_PAGES } from '@/data/movedPages';
 import { schemaImage } from './metadataText';
 import { RENTAL_VEHICLE_PHOTO } from '@/data/relevantTravelPhotos';
 
@@ -38,11 +39,11 @@ export const CATEGORY_LABELS: Record<string, string> = {
 
 /** Category hub each programmatic page belongs to (breadcrumb level 2). */
 const CATEGORY_HUB: Record<string, string> = {
-  hostels: '/best-hostel-in-shillong', accommodation: '/best-hostel-in-shillong', hotels: '/hotels-in-shillong',
-  homestays: '/homestays-in-shillong', glamping: '/luxury-glamping-shillong', hospitals: '/best-hostel-in-shillong',
-  workation: '/work-from-home', rentals: '/xtsy-rentals', tours: '/tours', 'group-tours': '/group-bookings-meghalaya',
-  corporate: '/group-bookings-meghalaya', 'themed-trips': '/tours', 'road-bike-trips': '/expeditions',
-  restaurants: '/tab-bistro', 'food-dining': '/tab-bistro', weddings: '/destination-wedding-shillong',
+  hostels: '/stays/best-hostel-in-shillong', accommodation: '/stays/best-hostel-in-shillong', hotels: '/stays/hotels-in-shillong',
+  homestays: '/stays/homestays-in-shillong', glamping: '/stays/luxury-glamping-shillong', hospitals: '/stays/best-hostel-in-shillong',
+  workation: '/stays/workation', rentals: '/tours/xtsy-rentals', tours: '/tours', 'group-tours': '/stays/group-bookings-meghalaya',
+  corporate: '/stays/group-bookings-meghalaya', 'themed-trips': '/tours', 'road-bike-trips': '/expeditions',
+  restaurants: '/tab-bistro', 'food-dining': '/tab-bistro', weddings: '/tours/destination-wedding-shillong',
   destinations: '/things-to-do-in-meghalaya', attractions: '/things-to-do-in-meghalaya', 'travel-guides': '/things-to-do-in-meghalaya',
   itineraries: '/things-to-do-in-meghalaya', seasonal: '/best-time-to-visit-meghalaya', activities: '/things-to-do-in-meghalaya',
 };
@@ -177,7 +178,7 @@ function mainEntity(page: SEOPageData, url: string, hero: Hero): Record<string, 
       makesOffer: [
         { '@type': 'Offer', name: 'Dorm bed', price: String(lowestDormPrice()), priceCurrency: 'INR', url: `${SITE}/book` },
         { '@type': 'Offer', name: 'King Double Room', price: String(roomPrice('king-double-room').now), priceCurrency: 'INR', url: `${SITE}/book` },
-        { '@type': 'Offer', name: 'Experience by XTSY (glass suite)', price: String(PANORAMA_STAY_ONLY), priceCurrency: 'INR', url: `${SITE}/experience-by-xtsy` },
+        { '@type': 'Offer', name: 'Experience by XTSY (glass suite)', price: String(PANORAMA_STAY_ONLY), priceCurrency: 'INR', url: `${SITE}/stays/experience-by-xtsy` },
       ],
     };
   }
@@ -285,7 +286,7 @@ export function guideDirectory(): GuideGroup[] {
     pages: STATIC_PAGE_DIRECTORY.map((p) => ({ slug: p.path === '/' ? '' : p.path.slice(1), label: p.title, description: p.description })),
   });
   for (const page of ALL_SEO_PAGES) {
-    if (staticPaths.has(`/${page.slug}`) || !isIndexableSEOSlug(page.slug, page) || isThinSEOPage(page)) continue;
+    if (staticPaths.has(`/${page.slug}`) || MOVED_PAGES[`/${page.slug}`] || !isIndexableSEOSlug(page.slug, page) || isThinSEOPage(page)) continue;
     const label = CATEGORY_LABELS[page.category] ?? 'More guides';
     if (!groups.has(label)) groups.set(label, { category: page.category, label, hub: CATEGORY_HUB[page.category], pages: [] });
     const group = groups.get(label);

@@ -20,7 +20,7 @@ const MeghalayaCoupleTourPackage = () => (
       <div className="container mx-auto px-4 max-w-5xl py-12">
         <Breadcrumbs items={[
           { label: 'Home', href: '/' },
-          { label: 'Tour Packages', href: '/meghalaya-tour-packages' },
+          { label: 'Tour Packages', href: '/tours/meghalaya-tour-packages' },
           { label: 'Couple Package' },
         ]} />
         <div className="flex items-center gap-3 mt-6">
@@ -67,13 +67,13 @@ const MeghalayaCoupleTourPackage = () => (
         <nav className="mt-12 border-t border-border pt-8">
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             <Link to="/things-to-do-in-meghalaya" className="text-sm text-primary hover:underline">Things to Do in Meghalaya</Link>
-            <Link to="/meghalaya-tour-packages" className="text-sm text-primary hover:underline">All Tour Packages</Link>
-            <Link to="/shillong-tour-package" className="text-sm text-primary hover:underline">Shillong Tour</Link>
+            <Link to="/tours/meghalaya-tour-packages" className="text-sm text-primary hover:underline">All Tour Packages</Link>
+            <Link to="/tours/shillong-tour-package" className="text-sm text-primary hover:underline">Shillong Tour</Link>
           </div>
         </nav>
       </div>
     </main>
-    <PageFaq path="/meghalaya-couple-tour-package" />
+    <PageFaq path="/tours/meghalaya-couple-tour-package" />
     <Footer />
   </div>
 );

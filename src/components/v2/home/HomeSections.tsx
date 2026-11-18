@@ -82,9 +82,9 @@ export function Stays() {
   const suite = roomPrice('xtsy-270');
   const stays = [
     { title: 'Dorm beds', price: `from ${inr(lowestDormPrice())}`, text: '6 and 8-bed mixed dorms with curtains, lockers and charging points.', img: first(IMG.mixedDorm), to: '/book', tone: 'sand' as const },
-    { title: 'Female Dorm', price: inr(roomPrice('4-bed-female-only-dorm').now), text: '4-bed women-only dorm with female staff on call.', img: first(IMG.femaleDorm), to: '/female-travellers', tone: 'crimson' as const },
+    { title: 'Female Dorm', price: inr(roomPrice('4-bed-female-only-dorm').now), text: '4-bed women-only dorm with female staff on call.', img: first(IMG.femaleDorm), to: '/stays/female-travellers', tone: 'crimson' as const },
     { title: 'King Double', price: inr(roomPrice('king-double-room').now), text: 'A private room for two, with a view of the pines.', img: first(IMG.king), to: '/book', tone: 'pine' as const },
-    { title: 'Experience by XTSY', price: `from ${inr(suite.now)}`, text: '₹4,999 a night, all inclusive (stay only). Decoration +₹2,500 per stay.', img: first(IMG.suite), to: '/experience-by-xtsy', tone: 'night' as const },
+    { title: 'Experience by XTSY', price: `from ${inr(suite.now)}`, text: '₹4,999 a night, all inclusive (stay only). Decoration +₹2,500 per stay.', img: first(IMG.suite), to: '/stays/experience-by-xtsy', tone: 'night' as const },
   ];
   return (
     <section className={`${PAD} flex flex-col gap-8 py-12`}>
@@ -112,7 +112,7 @@ export function Stays() {
       <div className="mt-2 flex flex-col items-start gap-4 border-t border-xt-line pt-6 sm:gap-5 sm:pt-8">
         <p className="m-0 text-[15px] text-xt-mute">Not sure where to base yourself?</p>
         <Button asChild size="lg" className="h-auto min-h-[56px] w-full justify-between gap-4 whitespace-normal bg-xt-crimson px-5 py-4 text-left text-[16px] font-extrabold leading-snug text-primary-foreground hover:bg-xt-crimson-dark hover:text-primary-foreground sm:w-auto sm:px-6">
-          <Link to="/best-hostel-in-shillong">
+          <Link to="/stays/best-hostel-in-shillong">
             <span>Compare New Shillong vs central Shillong stays</span>
             <ArrowRight aria-hidden="true" />
           </Link>
@@ -125,7 +125,7 @@ export function Stays() {
 export function CampsiteBanner() {
   return (
     <section className={`${PAD} pb-20 pt-10`}>
-      <Link to="/xtsy-adventure-campsite-dawki" className="xt-reveal xt-lift grid overflow-hidden rounded-[32px] bg-xt-pine text-[#EAF0EA] hover:text-[#EAF0EA] lg:grid-cols-2">
+      <Link to="/stays/campsite-dawki" className="xt-reveal xt-lift grid overflow-hidden rounded-[32px] bg-xt-pine text-[#EAF0EA] hover:text-[#EAF0EA] lg:grid-cols-2">
         <Photo afterLoad src={first(IMG.campsite)} alt="Tents beside the Umngot river at the Dawki partner campsite" tone="slate" className="aspect-[664/440] lg:aspect-auto lg:min-h-[440px]" />
         <div className="flex flex-col justify-center gap-4 p-7 sm:p-[52px]">
           <span className="xt-eyebrow text-[15px] text-[#F2B8C2]! sm:text-[18px]">New · Dawki riverside camping, via a trusted partner</span>
@@ -173,12 +173,12 @@ export function StateExplorer() {
 export function PrimeRail() {
   const suite = roomPrice('xtsy-270');
   const prime = [
-    { t: 'Experience by XTSY', cat: 'INDIA’S MOST ROMANTIC COUPLE EN-SUITE', d: 'A 270° panoramic glass suite for couples, proposals and anniversaries.', price: inr(suite.now), note: `per night · was ${inr(suite.was)}`, img: IMG.suite[1] ?? first(IMG.suite), to: '/experience-by-xtsy', tone: 'night' as const },
-    { t: 'Pet Friendly Stays', cat: 'PET TRAVEL', d: 'Cats and birds most welcome; dogs depending on breed and size.', price: 'Ask the desk', note: 'about any extra charges', img: COVERS.pet, to: '/pet-friendly', tone: 'pine' as const },
-    { t: 'Group Trips', cat: 'GROUPS OF 6–60', d: 'Whole-dorm stays, colleges, families and company offsites, with transport and TAB Bistro meals.', price: 'Per-person rates', note: 'quote in ~1 hour', img: COVERS.groups, to: '/group-bookings-meghalaya', tone: 'sand' as const },
-    { t: 'Female Travellers', cat: 'WOMEN SAFETY', d: 'Women-only dorm, secure lockers and female staff on call.', price: inr(roomPrice('4-bed-female-only-dorm').now), note: 'per bed / night', img: COVERS.women, to: '/female-travellers', tone: 'crimson' as const },
-    { t: 'Work From Home', cat: 'DIGITAL NOMAD', d: 'Fibre Wi-Fi, a desk with a view and TAB Bistro downstairs.', price: 'Weekly plans', note: 'ask the desk', img: COVERS.workation, to: '/work-from-home', tone: 'slate' as const },
-    { t: 'XTSY Rentals', cat: 'VEHICLE RENTAL', d: 'Cars and Royal Enfields, booked through trusted rental partners.', price: '₹1,300', note: 'per day onwards', img: IMG.bumla, to: '/xtsy-rentals', tone: 'crimson' as const },
+    { t: 'Experience by XTSY', cat: 'INDIA’S MOST ROMANTIC COUPLE EN-SUITE', d: 'A 270° panoramic glass suite for couples, proposals and anniversaries.', price: inr(suite.now), note: `per night · was ${inr(suite.was)}`, img: IMG.suite[1] ?? first(IMG.suite), to: '/stays/experience-by-xtsy', tone: 'night' as const },
+    { t: 'Pet Friendly Stays', cat: 'PET TRAVEL', d: 'Cats and birds most welcome; dogs depending on breed and size.', price: 'Ask the desk', note: 'about any extra charges', img: COVERS.pet, to: '/stays/pet-friendly', tone: 'pine' as const },
+    { t: 'Group Trips', cat: 'GROUPS OF 6–60', d: 'Whole-dorm stays, colleges, families and company offsites, with transport and TAB Bistro meals.', price: 'Per-person rates', note: 'quote in ~1 hour', img: COVERS.groups, to: '/stays/group-bookings-meghalaya', tone: 'sand' as const },
+    { t: 'Female Travellers', cat: 'WOMEN SAFETY', d: 'Women-only dorm, secure lockers and female staff on call.', price: inr(roomPrice('4-bed-female-only-dorm').now), note: 'per bed / night', img: COVERS.women, to: '/stays/female-travellers', tone: 'crimson' as const },
+    { t: 'Work From Home', cat: 'DIGITAL NOMAD', d: 'Fibre Wi-Fi, a desk with a view and TAB Bistro downstairs.', price: 'Weekly plans', note: 'ask the desk', img: COVERS.workation, to: '/stays/workation', tone: 'slate' as const },
+    { t: 'XTSY Rentals', cat: 'VEHICLE RENTAL', d: 'Cars and Royal Enfields, booked through trusted rental partners.', price: '₹1,300', note: 'per day onwards', img: IMG.bumla, to: '/tours/xtsy-rentals', tone: 'crimson' as const },
   ];
   return (
     <section className="flex flex-col gap-9 overflow-hidden bg-xt-ink py-20 text-xt-paper lg:py-[88px]">
@@ -223,7 +223,7 @@ export function GlampFeature() {
             <span className="font-display text-[52px] leading-none">{inr(suite.now)}<span className="text-[20px] text-xt-fog">/night</span></span>
             {suite.was > suite.now && <span className="text-[14px] text-[#A3ABC2]"><s>{inr(suite.was)}</s> regular rate</span>}
           </div>
-          <Link to="/experience-by-xtsy" className="xt-btn flex h-14 items-center rounded-full bg-xt-crimson px-7 text-[16px] font-extrabold text-white hover:text-white">Explore the glamp</Link>
+          <Link to="/stays/experience-by-xtsy" className="xt-btn flex h-14 items-center rounded-full bg-xt-crimson px-7 text-[16px] font-extrabold text-white hover:text-white">Explore the glamp</Link>
         </div>
       </div>
     </section>
@@ -365,10 +365,10 @@ export function HomeFaq() {
 }
 
 const SEO_COLS = [
-  { t: 'Stays in Shillong', links: [['Best hostel in Shillong', '/best-hostel-in-shillong'], ['Budget-friendly hostels in Shillong', '/budget-hostels-shillong'], ['Hotels in Shillong', '/hotels-in-shillong'], ['Homestays in Shillong', '/homestays-in-shillong'], ['Hostel near me', '/hostel-near-me'], ['Luxury glamping in Shillong', '/luxury-glamping-shillong']] },
+  { t: 'Stays in Shillong', links: [['Best hostel in Shillong', '/stays/best-hostel-in-shillong'], ['Budget-friendly hostels in Shillong', '/budget-hostels-shillong'], ['Hotels in Shillong', '/stays/hotels-in-shillong'], ['Homestays in Shillong', '/stays/homestays-in-shillong'], ['Hostel near me', '/stays/hostel-near-me'], ['Luxury glamping in Shillong', '/stays/luxury-glamping-shillong']] },
   { t: 'Top guides', links: [['Best time to visit Meghalaya', '/best-time-to-visit-meghalaya'], ['Meghalaya waterfalls', '/meghalaya-waterfalls'], ['Meghalaya caves', '/meghalaya-caves'], ['Meghalaya viewpoints', '/meghalaya-viewpoints'], ['Things to do in Meghalaya', '/things-to-do-in-meghalaya'], ['Hidden places in Meghalaya', '/hidden-places-in-meghalaya']] },
-  { t: 'Plan the trip', links: [['How to reach Meghalaya', '/travel-guide/how-to-reach-meghalaya'], ['Guwahati to Shillong transport', '/travel-guide/guwahati-to-shillong-transport'], ['Meghalaya for international tourists', '/travel-guide/meghalaya-for-international-tourists'], ['3-day Meghalaya itinerary', '/3-day-meghalaya-itinerary'], ['5-day Meghalaya itinerary', '/5-day-meghalaya-itinerary'], ['Budget trip to Meghalaya', '/budget-trip-to-meghalaya']] },
-  { t: 'Eat & more', links: [['Restaurant in Shillong', '/restaurant-in-shillong'], ['TAB Bistro menu', '/tab-bistro'], ['Catering in Shillong', '/catering-shillong'], ['Destination wedding in Shillong', '/destination-wedding-shillong'], ['Group bookings', '/group-bookings-meghalaya'], ['Backpacking India', '/backpacking-india']] },
+  { t: 'Plan the trip', links: [['How to reach Meghalaya', '/travel-guide/how-to-reach-meghalaya'], ['Guwahati to Shillong transport', '/travel-guide/guwahati-to-shillong-transport'], ['Meghalaya for international tourists', '/travel-guide/meghalaya-for-international-tourists'], ['3-day Meghalaya itinerary', '/tours/3-day-meghalaya-itinerary'], ['5-day Meghalaya itinerary', '/tours/5-day-meghalaya-itinerary'], ['Budget trip to Meghalaya', '/tours/budget-trip-to-meghalaya']] },
+  { t: 'Eat & more', links: [['Restaurant in Shillong', '/tab-bistro'], ['TAB Bistro menu', '/tab-bistro'], ['Catering in Shillong', '/catering-shillong'], ['Destination wedding in Shillong', '/tours/destination-wedding-shillong'], ['Group bookings', '/stays/group-bookings-meghalaya'], ['Backpacking India', '/backpacking-india']] },
 ] as const;
 
 export function SeoLinks() {

@@ -155,7 +155,7 @@ const ThingsToDoInMeghalaya = () => {
           cta={
             <div className="mt-5 flex flex-wrap gap-3 justify-center">
               <Link
-                to="/meghalaya-tour-packages"
+                to="/tours/meghalaya-tour-packages"
                 className="px-5 py-2.5 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors"
               >
                 View Tour Packages
@@ -297,7 +297,7 @@ const ThingsToDoInMeghalaya = () => {
             <h2 className="text-2xl font-bold text-foreground">Ready to Explore Meghalaya?</h2>
             <p className="mt-2 text-muted-foreground">Book curated Meghalaya tour packages with XTSY — stays, tours, and experiences combined.</p>
             <div className="mt-6 flex flex-wrap gap-4 justify-center">
-              <Link to="/meghalaya-tour-packages" className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors">
+              <Link to="/tours/meghalaya-tour-packages" className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors">
                 View Tour Packages
               </Link>
               <Link to="/tours" className="px-6 py-3 border border-border text-foreground rounded-lg font-medium hover:bg-muted transition-colors">
@@ -310,12 +310,12 @@ const ThingsToDoInMeghalaya = () => {
           <nav className="border-t border-border pt-8">
             <h2 className="text-lg font-semibold text-foreground mb-4">Explore More</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              <Link to="/meghalaya-tour-packages" className="text-sm text-primary hover:underline">Meghalaya Tour Packages</Link>
-              <Link to="/meghalaya-couple-tour-package" className="text-sm text-primary hover:underline">Couple Tour Package</Link>
-              <Link to="/shillong-tour-package" className="text-sm text-primary hover:underline">Shillong Tour Package</Link>
+              <Link to="/tours/meghalaya-tour-packages" className="text-sm text-primary hover:underline">Meghalaya Tour Packages</Link>
+              <Link to="/tours/meghalaya-couple-tour-package" className="text-sm text-primary hover:underline">Couple Tour Package</Link>
+              <Link to="/tours/shillong-tour-package" className="text-sm text-primary hover:underline">Shillong Tour Package</Link>
               <Link to="/best-time-to-visit-meghalaya" className="text-sm text-primary hover:underline">Best Time to Visit</Link>
               <Link to="/hidden-places-in-meghalaya" className="text-sm text-primary hover:underline">Hidden Places</Link>
-              <Link to="/budget-trip-to-meghalaya" className="text-sm text-primary hover:underline">Budget Trip Guide</Link>
+              <Link to="/tours/budget-trip-to-meghalaya" className="text-sm text-primary hover:underline">Budget Trip Guide</Link>
               <Link to="/meghalaya-waterfalls" className="text-sm text-primary hover:underline">Meghalaya Waterfalls</Link>
               <Link to="/meghalaya-caves" className="text-sm text-primary hover:underline">Meghalaya Caves</Link>
               <Link to="/meghalaya-photo-gallery" className="text-sm text-primary hover:underline">Photo Gallery</Link>

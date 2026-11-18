@@ -189,8 +189,8 @@ const HomestaysInShillong = memo(() => {
             <h2 className="text-2xl font-bold text-foreground">Find Your Perfect Homestay</h2>
             <p className="mt-2 text-muted-foreground">From Khasi family homes to community hostels — experience authentic Shillong.</p>
             <div className="mt-6 flex flex-wrap gap-4 justify-center">
-              <Link to="/best-hostel-in-shillong"><Button className="gap-2">Community Hostel</Button></Link>
-              <Link to="/luxury-glamping-shillong"><Button variant="outline">Luxury Glamping</Button></Link>
+              <Link to="/stays/best-hostel-in-shillong"><Button className="gap-2">Community Hostel</Button></Link>
+              <Link to="/stays/luxury-glamping-shillong"><Button variant="outline">Luxury Glamping</Button></Link>
               <Link to="/book"><Button variant="outline">Book Now</Button></Link>
             </div>
           </section>
@@ -198,12 +198,12 @@ const HomestaysInShillong = memo(() => {
           <nav className="border-t border-border pt-8">
             <h2 className="text-lg font-semibold text-foreground mb-4">Related Pages</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              <Link to="/hotels-in-shillong" className="text-sm text-primary hover:underline">Hotels in Shillong</Link>
-              <Link to="/best-hostel-in-shillong" className="text-sm text-primary hover:underline">Best Hostel in Shillong</Link>
-              <Link to="/luxury-glamping-shillong" className="text-sm text-primary hover:underline">Luxury Glamping</Link>
-              <Link to="/destination-wedding-shillong" className="text-sm text-primary hover:underline">Destination Wedding</Link>
-              <Link to="/restaurant-in-shillong" className="text-sm text-primary hover:underline">Restaurant in Shillong</Link>
-              <Link to="/meghalaya-tour-packages" className="text-sm text-primary hover:underline">Tour Packages</Link>
+              <Link to="/stays/hotels-in-shillong" className="text-sm text-primary hover:underline">Hotels in Shillong</Link>
+              <Link to="/stays/best-hostel-in-shillong" className="text-sm text-primary hover:underline">Best Hostel in Shillong</Link>
+              <Link to="/stays/luxury-glamping-shillong" className="text-sm text-primary hover:underline">Luxury Glamping</Link>
+              <Link to="/tours/destination-wedding-shillong" className="text-sm text-primary hover:underline">Destination Wedding</Link>
+              <Link to="/tab-bistro" className="text-sm text-primary hover:underline">Restaurant in Shillong</Link>
+              <Link to="/tours/meghalaya-tour-packages" className="text-sm text-primary hover:underline">Tour Packages</Link>
             </div>
           </nav>
         </div>

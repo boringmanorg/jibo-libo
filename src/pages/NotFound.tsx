@@ -17,16 +17,16 @@ interface NotFoundProps {
 
 /** Curated, always-live links the on-page search can match against. */
 const QUICK_LINKS: { label: string; to: string; keywords: string }[] = [
-  { label: "Best Hostel in Shillong", to: "/best-hostel-in-shillong", keywords: "hostel stay backpacker budget dorm shillong" },
-  { label: "Hotels in Shillong", to: "/hotels-in-shillong", keywords: "hotel stay rooms shillong" },
-  { label: "Homestays in Shillong", to: "/homestays-in-shillong", keywords: "homestay stay shillong" },
-  { label: "Luxury Glamping", to: "/luxury-glamping-shillong", keywords: "glamping luxury camp tent shillong" },
-  { label: "Meghalaya Tour Packages", to: "/meghalaya-tour-packages", keywords: "tour package trip holiday meghalaya" },
-  { label: "Couple Tour Package", to: "/meghalaya-couple-tour-package", keywords: "couple honeymoon romantic tour package" },
-  { label: "Shillong Tour Package", to: "/shillong-tour-package", keywords: "shillong tour package trip" },
+  { label: "Best Hostel in Shillong", to: "/stays/best-hostel-in-shillong", keywords: "hostel stay backpacker budget dorm shillong" },
+  { label: "Hotels in Shillong", to: "/stays/hotels-in-shillong", keywords: "hotel stay rooms shillong" },
+  { label: "Homestays in Shillong", to: "/stays/homestays-in-shillong", keywords: "homestay stay shillong" },
+  { label: "Luxury Glamping", to: "/stays/luxury-glamping-shillong", keywords: "glamping luxury camp tent shillong" },
+  { label: "Meghalaya Tour Packages", to: "/tours/meghalaya-tour-packages", keywords: "tour package trip holiday meghalaya" },
+  { label: "Couple Tour Package", to: "/tours/meghalaya-couple-tour-package", keywords: "couple honeymoon romantic tour package" },
+  { label: "Shillong Tour Package", to: "/tours/shillong-tour-package", keywords: "shillong tour package trip" },
   { label: "Things to Do in Meghalaya", to: "/things-to-do-in-meghalaya", keywords: "things to do places visit attractions meghalaya" },
   { label: "Best Time to Visit", to: "/best-time-to-visit-meghalaya", keywords: "best time season weather visit meghalaya" },
-  { label: "3-Day Itinerary", to: "/3-day-meghalaya-itinerary", keywords: "itinerary 3 day plan trip meghalaya" },
+  { label: "3-Day Itinerary", to: "/tours/3-day-meghalaya-itinerary", keywords: "itinerary 3 day plan trip meghalaya" },
   { label: "TAB Bistro by XTSY", to: "/tab-bistro", keywords: "restaurant food cafe dining tab bistro eat shillong" },
   { label: "Catering & Bulk Orders", to: "/catering-shillong", keywords: "catering bulk order corporate event food" },
   { label: "Browse All Tours", to: "/tours", keywords: "tours trips travel packages" },
@@ -196,8 +196,8 @@ const NotFound = ({ statusCode }: NotFoundProps) => {
 
         <nav aria-label="Popular pages" className="px-4 pb-16 text-center sm:px-8 lg:px-16">
           <ul className="m-0 flex list-none flex-wrap justify-center gap-x-5 gap-y-2 p-0 text-[15px] font-bold">
-            <li><Link to="/best-hostel-in-shillong" className="text-xt-crimson">Best hostel in Shillong</Link></li>
-            <li><Link to="/meghalaya-tour-packages" className="text-xt-crimson">Meghalaya tours</Link></li>
+            <li><Link to="/stays/best-hostel-in-shillong" className="text-xt-crimson">Best hostel in Shillong</Link></li>
+            <li><Link to="/tours/meghalaya-tour-packages" className="text-xt-crimson">Meghalaya tours</Link></li>
             <li><Link to="/things-to-do-in-meghalaya" className="text-xt-crimson">Things to do</Link></li>
             <li><Link to="/tab-bistro" className="text-xt-crimson">TAB Bistro</Link></li>
             <li><Link to="/contact" className="text-xt-crimson">Contact</Link></li>

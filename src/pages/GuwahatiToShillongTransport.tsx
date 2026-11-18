@@ -71,7 +71,7 @@ export default function GuwahatiToShillongTransport() {
         <section className={sectionClass}>
           <h2 className="mb-4 text-2xl font-bold sm:text-3xl">3. New Shillong or central Shillong?</h2>
           <p className={paragraphClass}>Central Shillong around Police Bazaar suits travellers who prioritise markets, city activity and access to transport stands. It also brings busy roads and street noise. New Shillong Township offers a pine-forest setting and quieter ambience; choose it if that setting fits your stay, while planning transport for city visits. Neither area is automatically the best choice for every guest.</p>
-          <p className={`mt-4 ${paragraphClass}`}>XTSY's guest property is at {PROPERTY_ADDRESS}. It is not in Police Bazaar. Choose accommodation around the room type, location and transport access you need first. Our <Link to="/best-hostel-in-shillong" className={textLinkClass}>New Shillong versus central Shillong stay guide</Link> helps you compare. The <Link to="/meghalaya-travel-guide" className={textLinkClass}>Meghalaya travel guide</Link> gives the wider trip context.</p>
+          <p className={`mt-4 ${paragraphClass}`}>XTSY's guest property is at {PROPERTY_ADDRESS}. It is not in Police Bazaar. Choose accommodation around the room type, location and transport access you need first. Our <Link to="/stays/best-hostel-in-shillong" className={textLinkClass}>New Shillong versus central Shillong stay guide</Link> helps you compare. The <Link to="/meghalaya-travel-guide" className={textLinkClass}>Meghalaya travel guide</Link> gives the wider trip context.</p>
           <SourceLink id="shillong" />
         </section>
 
@@ -106,7 +106,7 @@ export default function GuwahatiToShillongTransport() {
             <li>Payment terms, cancellation terms and what happens if arrival is delayed.</li>
             <li>Driver contact arrangements and reconfirmation before departure.</li>
           </ol>
-          <p className={`mt-5 ${paragraphClass}`}>For self-drive travel, check the rental agreement, permitted area, documents, insurance conditions and breakdown support. Our <Link to="/xtsy-rentals" className={textLinkClass}>Assam and Meghalaya rental catalogue</Link> is a starting point for an enquiry, not a substitute for confirming those terms with the desk.</p>
+          <p className={`mt-5 ${paragraphClass}`}>For self-drive travel, check the rental agreement, permitted area, documents, insurance conditions and breakdown support. Our <Link to="/tours/xtsy-rentals" className={textLinkClass}>Assam and Meghalaya rental catalogue</Link> is a starting point for an enquiry, not a substitute for confirming those terms with the desk.</p>
         </section>
 
         <RankedPageQuestions path={TRANSPORT_REFERENCE.path} />

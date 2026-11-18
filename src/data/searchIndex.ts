@@ -72,7 +72,7 @@ function buildSearchIndex(): SearchEntry[] {
       category: 'stays',
       icon: room.kind === 'dorm' ? '🛏️' : room.category === 'luxury' ? '✨' : '👫',
       image: room.image,
-      url: room.id === 'xtsy-270' ? '/experience-by-xtsy' : '/search?location=shillong',
+      url: room.id === 'xtsy-270' ? '/stays/experience-by-xtsy' : '/search?location=shillong',
       price: `₹${room.discountedPrice}`,
       location: 'Shillong, Meghalaya',
       keywords: [
@@ -102,7 +102,7 @@ function buildSearchIndex(): SearchEntry[] {
       category: 'stays',
       icon: prop.category === 'luxury' ? '💎' : '🏠',
       image: prop.heroImage,
-      url: prop.slug === 'xtsy-luxury' ? '/experience-by-xtsy' : '/properties',
+      url: prop.slug === 'xtsy-luxury' ? '/stays/experience-by-xtsy' : '/properties',
       price: `₹${prop.priceRange.min}–₹${prop.priceRange.max}`,
       location: 'Shillong, Meghalaya',
       keywords: [
@@ -123,7 +123,7 @@ function buildSearchIndex(): SearchEntry[] {
     description: 'India\'s first 270° panoramic glass house for stargazing experiences',
     category: 'experiences',
     icon: '🌌',
-    url: '/experience-by-xtsy',
+    url: '/stays/experience-by-xtsy',
     location: 'Shillong',
     keywords: [
       'glass house stay', 'stargazing hotel', 'glass cabin india', 'romantic stay shillong',
@@ -140,7 +140,7 @@ function buildSearchIndex(): SearchEntry[] {
     description: 'Travel with your furry companion at XTSY',
     category: 'experiences',
     icon: '🐾',
-    url: '/pet-friendly',
+    url: '/stays/pet-friendly',
     keywords: ['pet friendly hotel', 'dog friendly hostel', 'travel with pets', 'pet stay shillong', 'animal friendly'],
     synonyms: ['pet'],
   });
@@ -151,7 +151,7 @@ function buildSearchIndex(): SearchEntry[] {
     description: 'Curated safe stays and dorms for women solo travellers',
     category: 'experiences',
     icon: '👩‍💼',
-    url: '/female-travellers',
+    url: '/stays/female-travellers',
     keywords: ['female solo travel', 'women hostel', 'girls dorm', 'safe stay women', 'women only dorm shillong'],
     synonyms: ['female'],
   });
@@ -162,7 +162,7 @@ function buildSearchIndex(): SearchEntry[] {
     description: 'Remote work-friendly hostel with high-speed WiFi',
     category: 'experiences',
     icon: '💻',
-    url: '/work-from-home',
+    url: '/stays/workation',
     keywords: ['workation', 'digital nomad hostel', 'coworking shillong', 'remote work hotel', 'wifi hostel'],
     synonyms: ['work'],
   });
@@ -173,7 +173,7 @@ function buildSearchIndex(): SearchEntry[] {
     description: 'Explore Meghalaya on two wheels or four',
     category: 'experiences',
     icon: '🏍️',
-    url: '/xtsy-rentals',
+    url: '/tours/xtsy-rentals',
     keywords: ['bike rental shillong', 'car rental meghalaya', 'scooty rent', 'royal enfield shillong', 'self drive'],
   });
 
@@ -184,7 +184,7 @@ function buildSearchIndex(): SearchEntry[] {
     description: 'Riverside camping on Umngot · ₹800 only camping · ₹1000 with breakfast',
     category: 'experiences',
     icon: '⛺',
-    url: '/xtsy-adventure-campsite-dawki',
+    url: '/stays/campsite-dawki',
     price: '₹800',
     location: 'Dawki, Meghalaya',
     keywords: [
@@ -234,7 +234,7 @@ function buildSearchIndex(): SearchEntry[] {
     {
       id: 'adventure-meghalaya-tours', title: 'Meghalaya Adventure Tours',
       description: 'Compare guided trips, treks and river outings in Meghalaya', category: 'tours', icon: '🥾',
-      url: '/meghalaya-tour-packages', location: 'Meghalaya',
+      url: '/tours/meghalaya-tour-packages', location: 'Meghalaya',
       keywords: ['meghalaya adventure tour', 'adventure tours in northeast india', 'meghalaya trekking tour'],
     },
     {

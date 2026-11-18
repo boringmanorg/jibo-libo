@@ -123,9 +123,9 @@ export default function TripChat({ variant = 'embedded', className, onClose, ini
 
   const chipAction = (chip: string) => {
     if (/^check availability$/i.test(chip)) return navigate('/book');
-    if (/pet-friendly stays page/i.test(chip)) return navigate('/pet-friendly');
-    if (/group bookings page/i.test(chip)) return navigate('/group-bookings-meghalaya');
-    if (/workation plans/i.test(chip)) return navigate('/work-from-home');
+    if (/pet-friendly stays page/i.test(chip)) return navigate('/stays/pet-friendly');
+    if (/group bookings page/i.test(chip)) return navigate('/stays/group-bookings-meghalaya');
+    if (/workation plans/i.test(chip)) return navigate('/stays/workation');
     if (/see the menu/i.test(chip)) return navigate('/tab-bistro');
     if (/talk to the desk on whatsapp/i.test(chip)) return void window.open(waLink('Hi XTSY! I have a question about my trip.'), '_blank', 'noopener');
     ask(chip);

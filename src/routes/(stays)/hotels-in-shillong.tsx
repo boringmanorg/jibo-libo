@@ -1,14 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
-import HotelsInShillong from "@/pages/HotelsInShillong";
-import { buildRouteHead } from "@/lib/seo-head";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
+// Moved under /stays (owner approval, 18 Nov 2026); old address permanently redirects.
 export const Route = createFileRoute("/(stays)/hotels-in-shillong")({
-  head: () =>
-    buildRouteHead({
-      path: "/hotels-in-shillong",
-      title: "Hotels in Shillong: Areas, Prices & Alternatives | XTSY",
-      description:
-        "Where to stay in Shillong by area and budget, honest hotel price ranges, and when a hostel dorm or private room at XTSY works out better value.",
-    }),
-  component: HotelsInShillong,
+  beforeLoad: () => {
+    throw redirect({ to: "/stays/hotels-in-shillong", statusCode: 301 });
+  },
 });

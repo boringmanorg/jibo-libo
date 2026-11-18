@@ -6,6 +6,6 @@ import { createFileRoute, redirect } from "@tanstack/react-router";
  */
 export const Route = createFileRoute("/(stays)/xtsy-270")({
   beforeLoad: () => {
-    throw redirect({ to: "/experience-by-xtsy", statusCode: 301 });
+    throw redirect({ to: "/stays/experience-by-xtsy", statusCode: 301 });
   },
 });

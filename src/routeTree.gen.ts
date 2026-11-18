@@ -89,9 +89,33 @@ import { Route as restaurantTabBistroCateringRouteImport } from './routes/(resta
 import { Route as staysBookIndexRouteImport } from './routes/(stays)/book/index'
 import { Route as staysBookCampsiteRouteImport } from './routes/(stays)/book/campsite'
 import { Route as staysBookSelectRouteImport } from './routes/(stays)/book/select'
+import { Route as staysStaysBestHostelInShillongRouteImport } from './routes/(stays)/stays/best-hostel-in-shillong'
+import { Route as staysStaysCampsiteDawkiRouteImport } from './routes/(stays)/stays/campsite-dawki'
+import { Route as staysStaysExperienceByXtsyRouteImport } from './routes/(stays)/stays/experience-by-xtsy'
+import { Route as staysStaysFemaleTravellersRouteImport } from './routes/(stays)/stays/female-travellers'
+import { Route as staysStaysGroupBookingsMeghalayaRouteImport } from './routes/(stays)/stays/group-bookings-meghalaya'
+import { Route as staysStaysHomestaysInShillongRouteImport } from './routes/(stays)/stays/homestays-in-shillong'
+import { Route as staysStaysHostelNearMeRouteImport } from './routes/(stays)/stays/hostel-near-me'
+import { Route as staysStaysHotelsInShillongRouteImport } from './routes/(stays)/stays/hotels-in-shillong'
+import { Route as staysStaysLuxuryGlampingShillongRouteImport } from './routes/(stays)/stays/luxury-glamping-shillong'
+import { Route as staysStaysPartnerStaysRouteImport } from './routes/(stays)/stays/partner-stays'
+import { Route as staysStaysPetFriendlyRouteImport } from './routes/(stays)/stays/pet-friendly'
+import { Route as staysStaysWorkationRouteImport } from './routes/(stays)/stays/workation'
 import { Route as toursExpeditionsIndexRouteImport } from './routes/(tours)/expeditions/index'
 import { Route as toursToursIndexRouteImport } from './routes/(tours)/tours/index'
 import { Route as toursToursSlugRouteImport } from './routes/(tours)/tours/$slug'
+import { Route as toursTours3DayMeghalayaItineraryRouteImport } from './routes/(tours)/tours/3-day-meghalaya-itinerary'
+import { Route as toursTours4x4ExpeditionMeghalayaRouteImport } from './routes/(tours)/tours/4x4-expedition-meghalaya'
+import { Route as toursTours5DayMeghalayaItineraryRouteImport } from './routes/(tours)/tours/5-day-meghalaya-itinerary'
+import { Route as toursToursAdventureToursNortheastIndiaRouteImport } from './routes/(tours)/tours/adventure-tours-northeast-india'
+import { Route as toursToursBudgetTripToMeghalayaRouteImport } from './routes/(tours)/tours/budget-trip-to-meghalaya'
+import { Route as toursToursDestinationWeddingShillongRouteImport } from './routes/(tours)/tours/destination-wedding-shillong'
+import { Route as toursToursMeghalayaAdventureTourRouteImport } from './routes/(tours)/tours/meghalaya-adventure-tour'
+import { Route as toursToursMeghalayaCoupleTourPackageRouteImport } from './routes/(tours)/tours/meghalaya-couple-tour-package'
+import { Route as toursToursMeghalayaTourPackagesRouteImport } from './routes/(tours)/tours/meghalaya-tour-packages'
+import { Route as toursToursMotorbikeExpeditionNortheastIndiaRouteImport } from './routes/(tours)/tours/motorbike-expedition-northeast-india'
+import { Route as toursToursShillongTourPackageRouteImport } from './routes/(tours)/tours/shillong-tour-package'
+import { Route as toursToursXtsyRentalsRouteImport } from './routes/(tours)/tours/xtsy-rentals'
 import { Route as guidesDestinationsStateIndexRouteImport } from './routes/(guides)/destinations/$state/index'
 import { Route as toursExpeditionsTypeRouteRouteImport } from './routes/(tours)/expeditions/$type/$route'
 import { Route as ApiPublicHooksBistroGoogleSyncRouteImport } from './routes/api/public/hooks/bistro-google-sync'
@@ -535,6 +559,73 @@ const staysBookSelectRoute = staysBookSelectRouteImport.update({
   path: '/book/select',
   getParentRoute: () => rootRouteImport,
 } as any)
+const staysStaysBestHostelInShillongRoute =
+  staysStaysBestHostelInShillongRouteImport.update({
+    id: '/(stays)/stays/best-hostel-in-shillong',
+    path: '/stays/best-hostel-in-shillong',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const staysStaysCampsiteDawkiRoute = staysStaysCampsiteDawkiRouteImport.update({
+  id: '/(stays)/stays/campsite-dawki',
+  path: '/stays/campsite-dawki',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const staysStaysExperienceByXtsyRoute =
+  staysStaysExperienceByXtsyRouteImport.update({
+    id: '/(stays)/stays/experience-by-xtsy',
+    path: '/stays/experience-by-xtsy',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const staysStaysFemaleTravellersRoute =
+  staysStaysFemaleTravellersRouteImport.update({
+    id: '/(stays)/stays/female-travellers',
+    path: '/stays/female-travellers',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const staysStaysGroupBookingsMeghalayaRoute =
+  staysStaysGroupBookingsMeghalayaRouteImport.update({
+    id: '/(stays)/stays/group-bookings-meghalaya',
+    path: '/stays/group-bookings-meghalaya',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const staysStaysHomestaysInShillongRoute =
+  staysStaysHomestaysInShillongRouteImport.update({
+    id: '/(stays)/stays/homestays-in-shillong',
+    path: '/stays/homestays-in-shillong',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const staysStaysHostelNearMeRoute = staysStaysHostelNearMeRouteImport.update({
+  id: '/(stays)/stays/hostel-near-me',
+  path: '/stays/hostel-near-me',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const staysStaysHotelsInShillongRoute =
+  staysStaysHotelsInShillongRouteImport.update({
+    id: '/(stays)/stays/hotels-in-shillong',
+    path: '/stays/hotels-in-shillong',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const staysStaysLuxuryGlampingShillongRoute =
+  staysStaysLuxuryGlampingShillongRouteImport.update({
+    id: '/(stays)/stays/luxury-glamping-shillong',
+    path: '/stays/luxury-glamping-shillong',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const staysStaysPartnerStaysRoute = staysStaysPartnerStaysRouteImport.update({
+  id: '/(stays)/stays/partner-stays',
+  path: '/stays/partner-stays',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const staysStaysPetFriendlyRoute = staysStaysPetFriendlyRouteImport.update({
+  id: '/(stays)/stays/pet-friendly',
+  path: '/stays/pet-friendly',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const staysStaysWorkationRoute = staysStaysWorkationRouteImport.update({
+  id: '/(stays)/stays/workation',
+  path: '/stays/workation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const toursExpeditionsIndexRoute = toursExpeditionsIndexRouteImport.update({
   id: '/(tours)/expeditions/',
   path: '/expeditions/',
@@ -548,6 +639,77 @@ const toursToursIndexRoute = toursToursIndexRouteImport.update({
 const toursToursSlugRoute = toursToursSlugRouteImport.update({
   id: '/(tours)/tours/$slug',
   path: '/tours/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const toursTours3DayMeghalayaItineraryRoute =
+  toursTours3DayMeghalayaItineraryRouteImport.update({
+    id: '/(tours)/tours/3-day-meghalaya-itinerary',
+    path: '/tours/3-day-meghalaya-itinerary',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const toursTours4x4ExpeditionMeghalayaRoute =
+  toursTours4x4ExpeditionMeghalayaRouteImport.update({
+    id: '/(tours)/tours/4x4-expedition-meghalaya',
+    path: '/tours/4x4-expedition-meghalaya',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const toursTours5DayMeghalayaItineraryRoute =
+  toursTours5DayMeghalayaItineraryRouteImport.update({
+    id: '/(tours)/tours/5-day-meghalaya-itinerary',
+    path: '/tours/5-day-meghalaya-itinerary',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const toursToursAdventureToursNortheastIndiaRoute =
+  toursToursAdventureToursNortheastIndiaRouteImport.update({
+    id: '/(tours)/tours/adventure-tours-northeast-india',
+    path: '/tours/adventure-tours-northeast-india',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const toursToursBudgetTripToMeghalayaRoute =
+  toursToursBudgetTripToMeghalayaRouteImport.update({
+    id: '/(tours)/tours/budget-trip-to-meghalaya',
+    path: '/tours/budget-trip-to-meghalaya',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const toursToursDestinationWeddingShillongRoute =
+  toursToursDestinationWeddingShillongRouteImport.update({
+    id: '/(tours)/tours/destination-wedding-shillong',
+    path: '/tours/destination-wedding-shillong',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const toursToursMeghalayaAdventureTourRoute =
+  toursToursMeghalayaAdventureTourRouteImport.update({
+    id: '/(tours)/tours/meghalaya-adventure-tour',
+    path: '/tours/meghalaya-adventure-tour',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const toursToursMeghalayaCoupleTourPackageRoute =
+  toursToursMeghalayaCoupleTourPackageRouteImport.update({
+    id: '/(tours)/tours/meghalaya-couple-tour-package',
+    path: '/tours/meghalaya-couple-tour-package',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const toursToursMeghalayaTourPackagesRoute =
+  toursToursMeghalayaTourPackagesRouteImport.update({
+    id: '/(tours)/tours/meghalaya-tour-packages',
+    path: '/tours/meghalaya-tour-packages',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const toursToursMotorbikeExpeditionNortheastIndiaRoute =
+  toursToursMotorbikeExpeditionNortheastIndiaRouteImport.update({
+    id: '/(tours)/tours/motorbike-expedition-northeast-india',
+    path: '/tours/motorbike-expedition-northeast-india',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const toursToursShillongTourPackageRoute =
+  toursToursShillongTourPackageRouteImport.update({
+    id: '/(tours)/tours/shillong-tour-package',
+    path: '/tours/shillong-tour-package',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const toursToursXtsyRentalsRoute = toursToursXtsyRentalsRouteImport.update({
+  id: '/(tours)/tours/xtsy-rentals',
+  path: '/tours/xtsy-rentals',
   getParentRoute: () => rootRouteImport,
 } as any)
 const guidesDestinationsStateIndexRoute =
@@ -657,7 +819,31 @@ export interface FileRoutesByFullPath {
   '/tab-bistro/catering': typeof restaurantTabBistroCateringRoute
   '/book/campsite': typeof staysBookCampsiteRoute
   '/book/select': typeof staysBookSelectRoute
+  '/stays/best-hostel-in-shillong': typeof staysStaysBestHostelInShillongRoute
+  '/stays/campsite-dawki': typeof staysStaysCampsiteDawkiRoute
+  '/stays/experience-by-xtsy': typeof staysStaysExperienceByXtsyRoute
+  '/stays/female-travellers': typeof staysStaysFemaleTravellersRoute
+  '/stays/group-bookings-meghalaya': typeof staysStaysGroupBookingsMeghalayaRoute
+  '/stays/homestays-in-shillong': typeof staysStaysHomestaysInShillongRoute
+  '/stays/hostel-near-me': typeof staysStaysHostelNearMeRoute
+  '/stays/hotels-in-shillong': typeof staysStaysHotelsInShillongRoute
+  '/stays/luxury-glamping-shillong': typeof staysStaysLuxuryGlampingShillongRoute
+  '/stays/partner-stays': typeof staysStaysPartnerStaysRoute
+  '/stays/pet-friendly': typeof staysStaysPetFriendlyRoute
+  '/stays/workation': typeof staysStaysWorkationRoute
   '/tours/$slug': typeof toursToursSlugRoute
+  '/tours/3-day-meghalaya-itinerary': typeof toursTours3DayMeghalayaItineraryRoute
+  '/tours/4x4-expedition-meghalaya': typeof toursTours4x4ExpeditionMeghalayaRoute
+  '/tours/5-day-meghalaya-itinerary': typeof toursTours5DayMeghalayaItineraryRoute
+  '/tours/adventure-tours-northeast-india': typeof toursToursAdventureToursNortheastIndiaRoute
+  '/tours/budget-trip-to-meghalaya': typeof toursToursBudgetTripToMeghalayaRoute
+  '/tours/destination-wedding-shillong': typeof toursToursDestinationWeddingShillongRoute
+  '/tours/meghalaya-adventure-tour': typeof toursToursMeghalayaAdventureTourRoute
+  '/tours/meghalaya-couple-tour-package': typeof toursToursMeghalayaCoupleTourPackageRoute
+  '/tours/meghalaya-tour-packages': typeof toursToursMeghalayaTourPackagesRoute
+  '/tours/motorbike-expedition-northeast-india': typeof toursToursMotorbikeExpeditionNortheastIndiaRoute
+  '/tours/shillong-tour-package': typeof toursToursShillongTourPackageRoute
+  '/tours/xtsy-rentals': typeof toursToursXtsyRentalsRoute
   '/franchise/': typeof adminFranchiseIndexRoute
   '/about/': typeof companyAboutIndexRoute
   '/destinations/': typeof guidesDestinationsIndexRoute
@@ -747,7 +933,31 @@ export interface FileRoutesByTo {
   '/tab-bistro/catering': typeof restaurantTabBistroCateringRoute
   '/book/campsite': typeof staysBookCampsiteRoute
   '/book/select': typeof staysBookSelectRoute
+  '/stays/best-hostel-in-shillong': typeof staysStaysBestHostelInShillongRoute
+  '/stays/campsite-dawki': typeof staysStaysCampsiteDawkiRoute
+  '/stays/experience-by-xtsy': typeof staysStaysExperienceByXtsyRoute
+  '/stays/female-travellers': typeof staysStaysFemaleTravellersRoute
+  '/stays/group-bookings-meghalaya': typeof staysStaysGroupBookingsMeghalayaRoute
+  '/stays/homestays-in-shillong': typeof staysStaysHomestaysInShillongRoute
+  '/stays/hostel-near-me': typeof staysStaysHostelNearMeRoute
+  '/stays/hotels-in-shillong': typeof staysStaysHotelsInShillongRoute
+  '/stays/luxury-glamping-shillong': typeof staysStaysLuxuryGlampingShillongRoute
+  '/stays/partner-stays': typeof staysStaysPartnerStaysRoute
+  '/stays/pet-friendly': typeof staysStaysPetFriendlyRoute
+  '/stays/workation': typeof staysStaysWorkationRoute
   '/tours/$slug': typeof toursToursSlugRoute
+  '/tours/3-day-meghalaya-itinerary': typeof toursTours3DayMeghalayaItineraryRoute
+  '/tours/4x4-expedition-meghalaya': typeof toursTours4x4ExpeditionMeghalayaRoute
+  '/tours/5-day-meghalaya-itinerary': typeof toursTours5DayMeghalayaItineraryRoute
+  '/tours/adventure-tours-northeast-india': typeof toursToursAdventureToursNortheastIndiaRoute
+  '/tours/budget-trip-to-meghalaya': typeof toursToursBudgetTripToMeghalayaRoute
+  '/tours/destination-wedding-shillong': typeof toursToursDestinationWeddingShillongRoute
+  '/tours/meghalaya-adventure-tour': typeof toursToursMeghalayaAdventureTourRoute
+  '/tours/meghalaya-couple-tour-package': typeof toursToursMeghalayaCoupleTourPackageRoute
+  '/tours/meghalaya-tour-packages': typeof toursToursMeghalayaTourPackagesRoute
+  '/tours/motorbike-expedition-northeast-india': typeof toursToursMotorbikeExpeditionNortheastIndiaRoute
+  '/tours/shillong-tour-package': typeof toursToursShillongTourPackageRoute
+  '/tours/xtsy-rentals': typeof toursToursXtsyRentalsRoute
   '/franchise': typeof adminFranchiseIndexRoute
   '/about': typeof companyAboutIndexRoute
   '/destinations': typeof guidesDestinationsIndexRoute
@@ -838,7 +1048,31 @@ export interface FileRoutesById {
   '/(restaurant)/tab-bistro/catering': typeof restaurantTabBistroCateringRoute
   '/(stays)/book/campsite': typeof staysBookCampsiteRoute
   '/(stays)/book/select': typeof staysBookSelectRoute
+  '/(stays)/stays/best-hostel-in-shillong': typeof staysStaysBestHostelInShillongRoute
+  '/(stays)/stays/campsite-dawki': typeof staysStaysCampsiteDawkiRoute
+  '/(stays)/stays/experience-by-xtsy': typeof staysStaysExperienceByXtsyRoute
+  '/(stays)/stays/female-travellers': typeof staysStaysFemaleTravellersRoute
+  '/(stays)/stays/group-bookings-meghalaya': typeof staysStaysGroupBookingsMeghalayaRoute
+  '/(stays)/stays/homestays-in-shillong': typeof staysStaysHomestaysInShillongRoute
+  '/(stays)/stays/hostel-near-me': typeof staysStaysHostelNearMeRoute
+  '/(stays)/stays/hotels-in-shillong': typeof staysStaysHotelsInShillongRoute
+  '/(stays)/stays/luxury-glamping-shillong': typeof staysStaysLuxuryGlampingShillongRoute
+  '/(stays)/stays/partner-stays': typeof staysStaysPartnerStaysRoute
+  '/(stays)/stays/pet-friendly': typeof staysStaysPetFriendlyRoute
+  '/(stays)/stays/workation': typeof staysStaysWorkationRoute
   '/(tours)/tours/$slug': typeof toursToursSlugRoute
+  '/(tours)/tours/3-day-meghalaya-itinerary': typeof toursTours3DayMeghalayaItineraryRoute
+  '/(tours)/tours/4x4-expedition-meghalaya': typeof toursTours4x4ExpeditionMeghalayaRoute
+  '/(tours)/tours/5-day-meghalaya-itinerary': typeof toursTours5DayMeghalayaItineraryRoute
+  '/(tours)/tours/adventure-tours-northeast-india': typeof toursToursAdventureToursNortheastIndiaRoute
+  '/(tours)/tours/budget-trip-to-meghalaya': typeof toursToursBudgetTripToMeghalayaRoute
+  '/(tours)/tours/destination-wedding-shillong': typeof toursToursDestinationWeddingShillongRoute
+  '/(tours)/tours/meghalaya-adventure-tour': typeof toursToursMeghalayaAdventureTourRoute
+  '/(tours)/tours/meghalaya-couple-tour-package': typeof toursToursMeghalayaCoupleTourPackageRoute
+  '/(tours)/tours/meghalaya-tour-packages': typeof toursToursMeghalayaTourPackagesRoute
+  '/(tours)/tours/motorbike-expedition-northeast-india': typeof toursToursMotorbikeExpeditionNortheastIndiaRoute
+  '/(tours)/tours/shillong-tour-package': typeof toursToursShillongTourPackageRoute
+  '/(tours)/tours/xtsy-rentals': typeof toursToursXtsyRentalsRoute
   '/(admin)/franchise/': typeof adminFranchiseIndexRoute
   '/(company)/about/': typeof companyAboutIndexRoute
   '/(guides)/destinations/': typeof guidesDestinationsIndexRoute
@@ -930,7 +1164,31 @@ export interface FileRouteTypes {
     | '/tab-bistro/catering'
     | '/book/campsite'
     | '/book/select'
+    | '/stays/best-hostel-in-shillong'
+    | '/stays/campsite-dawki'
+    | '/stays/experience-by-xtsy'
+    | '/stays/female-travellers'
+    | '/stays/group-bookings-meghalaya'
+    | '/stays/homestays-in-shillong'
+    | '/stays/hostel-near-me'
+    | '/stays/hotels-in-shillong'
+    | '/stays/luxury-glamping-shillong'
+    | '/stays/partner-stays'
+    | '/stays/pet-friendly'
+    | '/stays/workation'
     | '/tours/$slug'
+    | '/tours/3-day-meghalaya-itinerary'
+    | '/tours/4x4-expedition-meghalaya'
+    | '/tours/5-day-meghalaya-itinerary'
+    | '/tours/adventure-tours-northeast-india'
+    | '/tours/budget-trip-to-meghalaya'
+    | '/tours/destination-wedding-shillong'
+    | '/tours/meghalaya-adventure-tour'
+    | '/tours/meghalaya-couple-tour-package'
+    | '/tours/meghalaya-tour-packages'
+    | '/tours/motorbike-expedition-northeast-india'
+    | '/tours/shillong-tour-package'
+    | '/tours/xtsy-rentals'
     | '/franchise/'
     | '/about/'
     | '/destinations/'
@@ -1020,7 +1278,31 @@ export interface FileRouteTypes {
     | '/tab-bistro/catering'
     | '/book/campsite'
     | '/book/select'
+    | '/stays/best-hostel-in-shillong'
+    | '/stays/campsite-dawki'
+    | '/stays/experience-by-xtsy'
+    | '/stays/female-travellers'
+    | '/stays/group-bookings-meghalaya'
+    | '/stays/homestays-in-shillong'
+    | '/stays/hostel-near-me'
+    | '/stays/hotels-in-shillong'
+    | '/stays/luxury-glamping-shillong'
+    | '/stays/partner-stays'
+    | '/stays/pet-friendly'
+    | '/stays/workation'
     | '/tours/$slug'
+    | '/tours/3-day-meghalaya-itinerary'
+    | '/tours/4x4-expedition-meghalaya'
+    | '/tours/5-day-meghalaya-itinerary'
+    | '/tours/adventure-tours-northeast-india'
+    | '/tours/budget-trip-to-meghalaya'
+    | '/tours/destination-wedding-shillong'
+    | '/tours/meghalaya-adventure-tour'
+    | '/tours/meghalaya-couple-tour-package'
+    | '/tours/meghalaya-tour-packages'
+    | '/tours/motorbike-expedition-northeast-india'
+    | '/tours/shillong-tour-package'
+    | '/tours/xtsy-rentals'
     | '/franchise'
     | '/about'
     | '/destinations'
@@ -1110,7 +1392,31 @@ export interface FileRouteTypes {
     | '/(restaurant)/tab-bistro/catering'
     | '/(stays)/book/campsite'
     | '/(stays)/book/select'
+    | '/(stays)/stays/best-hostel-in-shillong'
+    | '/(stays)/stays/campsite-dawki'
+    | '/(stays)/stays/experience-by-xtsy'
+    | '/(stays)/stays/female-travellers'
+    | '/(stays)/stays/group-bookings-meghalaya'
+    | '/(stays)/stays/homestays-in-shillong'
+    | '/(stays)/stays/hostel-near-me'
+    | '/(stays)/stays/hotels-in-shillong'
+    | '/(stays)/stays/luxury-glamping-shillong'
+    | '/(stays)/stays/partner-stays'
+    | '/(stays)/stays/pet-friendly'
+    | '/(stays)/stays/workation'
     | '/(tours)/tours/$slug'
+    | '/(tours)/tours/3-day-meghalaya-itinerary'
+    | '/(tours)/tours/4x4-expedition-meghalaya'
+    | '/(tours)/tours/5-day-meghalaya-itinerary'
+    | '/(tours)/tours/adventure-tours-northeast-india'
+    | '/(tours)/tours/budget-trip-to-meghalaya'
+    | '/(tours)/tours/destination-wedding-shillong'
+    | '/(tours)/tours/meghalaya-adventure-tour'
+    | '/(tours)/tours/meghalaya-couple-tour-package'
+    | '/(tours)/tours/meghalaya-tour-packages'
+    | '/(tours)/tours/motorbike-expedition-northeast-india'
+    | '/(tours)/tours/shillong-tour-package'
+    | '/(tours)/tours/xtsy-rentals'
     | '/(admin)/franchise/'
     | '/(company)/about/'
     | '/(guides)/destinations/'
@@ -1201,7 +1507,31 @@ export interface RootRouteChildren {
   restaurantTabBistroCateringRoute: typeof restaurantTabBistroCateringRoute
   staysBookCampsiteRoute: typeof staysBookCampsiteRoute
   staysBookSelectRoute: typeof staysBookSelectRoute
+  staysStaysBestHostelInShillongRoute: typeof staysStaysBestHostelInShillongRoute
+  staysStaysCampsiteDawkiRoute: typeof staysStaysCampsiteDawkiRoute
+  staysStaysExperienceByXtsyRoute: typeof staysStaysExperienceByXtsyRoute
+  staysStaysFemaleTravellersRoute: typeof staysStaysFemaleTravellersRoute
+  staysStaysGroupBookingsMeghalayaRoute: typeof staysStaysGroupBookingsMeghalayaRoute
+  staysStaysHomestaysInShillongRoute: typeof staysStaysHomestaysInShillongRoute
+  staysStaysHostelNearMeRoute: typeof staysStaysHostelNearMeRoute
+  staysStaysHotelsInShillongRoute: typeof staysStaysHotelsInShillongRoute
+  staysStaysLuxuryGlampingShillongRoute: typeof staysStaysLuxuryGlampingShillongRoute
+  staysStaysPartnerStaysRoute: typeof staysStaysPartnerStaysRoute
+  staysStaysPetFriendlyRoute: typeof staysStaysPetFriendlyRoute
+  staysStaysWorkationRoute: typeof staysStaysWorkationRoute
   toursToursSlugRoute: typeof toursToursSlugRoute
+  toursTours3DayMeghalayaItineraryRoute: typeof toursTours3DayMeghalayaItineraryRoute
+  toursTours4x4ExpeditionMeghalayaRoute: typeof toursTours4x4ExpeditionMeghalayaRoute
+  toursTours5DayMeghalayaItineraryRoute: typeof toursTours5DayMeghalayaItineraryRoute
+  toursToursAdventureToursNortheastIndiaRoute: typeof toursToursAdventureToursNortheastIndiaRoute
+  toursToursBudgetTripToMeghalayaRoute: typeof toursToursBudgetTripToMeghalayaRoute
+  toursToursDestinationWeddingShillongRoute: typeof toursToursDestinationWeddingShillongRoute
+  toursToursMeghalayaAdventureTourRoute: typeof toursToursMeghalayaAdventureTourRoute
+  toursToursMeghalayaCoupleTourPackageRoute: typeof toursToursMeghalayaCoupleTourPackageRoute
+  toursToursMeghalayaTourPackagesRoute: typeof toursToursMeghalayaTourPackagesRoute
+  toursToursMotorbikeExpeditionNortheastIndiaRoute: typeof toursToursMotorbikeExpeditionNortheastIndiaRoute
+  toursToursShillongTourPackageRoute: typeof toursToursShillongTourPackageRoute
+  toursToursXtsyRentalsRoute: typeof toursToursXtsyRentalsRoute
   adminFranchiseIndexRoute: typeof adminFranchiseIndexRoute
   companyAboutIndexRoute: typeof companyAboutIndexRoute
   guidesDestinationsIndexRoute: typeof guidesDestinationsIndexRoute
@@ -1778,6 +2108,90 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof staysBookSelectRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/(stays)/stays/best-hostel-in-shillong': {
+      id: '/(stays)/stays/best-hostel-in-shillong'
+      path: '/stays/best-hostel-in-shillong'
+      fullPath: '/stays/best-hostel-in-shillong'
+      preLoaderRoute: typeof staysStaysBestHostelInShillongRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(stays)/stays/campsite-dawki': {
+      id: '/(stays)/stays/campsite-dawki'
+      path: '/stays/campsite-dawki'
+      fullPath: '/stays/campsite-dawki'
+      preLoaderRoute: typeof staysStaysCampsiteDawkiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(stays)/stays/experience-by-xtsy': {
+      id: '/(stays)/stays/experience-by-xtsy'
+      path: '/stays/experience-by-xtsy'
+      fullPath: '/stays/experience-by-xtsy'
+      preLoaderRoute: typeof staysStaysExperienceByXtsyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(stays)/stays/female-travellers': {
+      id: '/(stays)/stays/female-travellers'
+      path: '/stays/female-travellers'
+      fullPath: '/stays/female-travellers'
+      preLoaderRoute: typeof staysStaysFemaleTravellersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(stays)/stays/group-bookings-meghalaya': {
+      id: '/(stays)/stays/group-bookings-meghalaya'
+      path: '/stays/group-bookings-meghalaya'
+      fullPath: '/stays/group-bookings-meghalaya'
+      preLoaderRoute: typeof staysStaysGroupBookingsMeghalayaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(stays)/stays/homestays-in-shillong': {
+      id: '/(stays)/stays/homestays-in-shillong'
+      path: '/stays/homestays-in-shillong'
+      fullPath: '/stays/homestays-in-shillong'
+      preLoaderRoute: typeof staysStaysHomestaysInShillongRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(stays)/stays/hostel-near-me': {
+      id: '/(stays)/stays/hostel-near-me'
+      path: '/stays/hostel-near-me'
+      fullPath: '/stays/hostel-near-me'
+      preLoaderRoute: typeof staysStaysHostelNearMeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(stays)/stays/hotels-in-shillong': {
+      id: '/(stays)/stays/hotels-in-shillong'
+      path: '/stays/hotels-in-shillong'
+      fullPath: '/stays/hotels-in-shillong'
+      preLoaderRoute: typeof staysStaysHotelsInShillongRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(stays)/stays/luxury-glamping-shillong': {
+      id: '/(stays)/stays/luxury-glamping-shillong'
+      path: '/stays/luxury-glamping-shillong'
+      fullPath: '/stays/luxury-glamping-shillong'
+      preLoaderRoute: typeof staysStaysLuxuryGlampingShillongRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(stays)/stays/partner-stays': {
+      id: '/(stays)/stays/partner-stays'
+      path: '/stays/partner-stays'
+      fullPath: '/stays/partner-stays'
+      preLoaderRoute: typeof staysStaysPartnerStaysRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(stays)/stays/pet-friendly': {
+      id: '/(stays)/stays/pet-friendly'
+      path: '/stays/pet-friendly'
+      fullPath: '/stays/pet-friendly'
+      preLoaderRoute: typeof staysStaysPetFriendlyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(stays)/stays/workation': {
+      id: '/(stays)/stays/workation'
+      path: '/stays/workation'
+      fullPath: '/stays/workation'
+      preLoaderRoute: typeof staysStaysWorkationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/(tours)/expeditions/': {
       id: '/(tours)/expeditions/'
       path: '/expeditions'
@@ -1797,6 +2211,90 @@ declare module '@tanstack/react-router' {
       path: '/tours/$slug'
       fullPath: '/tours/$slug'
       preLoaderRoute: typeof toursToursSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(tours)/tours/3-day-meghalaya-itinerary': {
+      id: '/(tours)/tours/3-day-meghalaya-itinerary'
+      path: '/tours/3-day-meghalaya-itinerary'
+      fullPath: '/tours/3-day-meghalaya-itinerary'
+      preLoaderRoute: typeof toursTours3DayMeghalayaItineraryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(tours)/tours/4x4-expedition-meghalaya': {
+      id: '/(tours)/tours/4x4-expedition-meghalaya'
+      path: '/tours/4x4-expedition-meghalaya'
+      fullPath: '/tours/4x4-expedition-meghalaya'
+      preLoaderRoute: typeof toursTours4x4ExpeditionMeghalayaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(tours)/tours/5-day-meghalaya-itinerary': {
+      id: '/(tours)/tours/5-day-meghalaya-itinerary'
+      path: '/tours/5-day-meghalaya-itinerary'
+      fullPath: '/tours/5-day-meghalaya-itinerary'
+      preLoaderRoute: typeof toursTours5DayMeghalayaItineraryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(tours)/tours/adventure-tours-northeast-india': {
+      id: '/(tours)/tours/adventure-tours-northeast-india'
+      path: '/tours/adventure-tours-northeast-india'
+      fullPath: '/tours/adventure-tours-northeast-india'
+      preLoaderRoute: typeof toursToursAdventureToursNortheastIndiaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(tours)/tours/budget-trip-to-meghalaya': {
+      id: '/(tours)/tours/budget-trip-to-meghalaya'
+      path: '/tours/budget-trip-to-meghalaya'
+      fullPath: '/tours/budget-trip-to-meghalaya'
+      preLoaderRoute: typeof toursToursBudgetTripToMeghalayaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(tours)/tours/destination-wedding-shillong': {
+      id: '/(tours)/tours/destination-wedding-shillong'
+      path: '/tours/destination-wedding-shillong'
+      fullPath: '/tours/destination-wedding-shillong'
+      preLoaderRoute: typeof toursToursDestinationWeddingShillongRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(tours)/tours/meghalaya-adventure-tour': {
+      id: '/(tours)/tours/meghalaya-adventure-tour'
+      path: '/tours/meghalaya-adventure-tour'
+      fullPath: '/tours/meghalaya-adventure-tour'
+      preLoaderRoute: typeof toursToursMeghalayaAdventureTourRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(tours)/tours/meghalaya-couple-tour-package': {
+      id: '/(tours)/tours/meghalaya-couple-tour-package'
+      path: '/tours/meghalaya-couple-tour-package'
+      fullPath: '/tours/meghalaya-couple-tour-package'
+      preLoaderRoute: typeof toursToursMeghalayaCoupleTourPackageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(tours)/tours/meghalaya-tour-packages': {
+      id: '/(tours)/tours/meghalaya-tour-packages'
+      path: '/tours/meghalaya-tour-packages'
+      fullPath: '/tours/meghalaya-tour-packages'
+      preLoaderRoute: typeof toursToursMeghalayaTourPackagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(tours)/tours/motorbike-expedition-northeast-india': {
+      id: '/(tours)/tours/motorbike-expedition-northeast-india'
+      path: '/tours/motorbike-expedition-northeast-india'
+      fullPath: '/tours/motorbike-expedition-northeast-india'
+      preLoaderRoute: typeof toursToursMotorbikeExpeditionNortheastIndiaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(tours)/tours/shillong-tour-package': {
+      id: '/(tours)/tours/shillong-tour-package'
+      path: '/tours/shillong-tour-package'
+      fullPath: '/tours/shillong-tour-package'
+      preLoaderRoute: typeof toursToursShillongTourPackageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(tours)/tours/xtsy-rentals': {
+      id: '/(tours)/tours/xtsy-rentals'
+      path: '/tours/xtsy-rentals'
+      fullPath: '/tours/xtsy-rentals'
+      preLoaderRoute: typeof toursToursXtsyRentalsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/(guides)/destinations/$state/': {
@@ -1918,7 +2416,35 @@ const rootRouteChildren: RootRouteChildren = {
   restaurantTabBistroCateringRoute: restaurantTabBistroCateringRoute,
   staysBookCampsiteRoute: staysBookCampsiteRoute,
   staysBookSelectRoute: staysBookSelectRoute,
+  staysStaysBestHostelInShillongRoute: staysStaysBestHostelInShillongRoute,
+  staysStaysCampsiteDawkiRoute: staysStaysCampsiteDawkiRoute,
+  staysStaysExperienceByXtsyRoute: staysStaysExperienceByXtsyRoute,
+  staysStaysFemaleTravellersRoute: staysStaysFemaleTravellersRoute,
+  staysStaysGroupBookingsMeghalayaRoute: staysStaysGroupBookingsMeghalayaRoute,
+  staysStaysHomestaysInShillongRoute: staysStaysHomestaysInShillongRoute,
+  staysStaysHostelNearMeRoute: staysStaysHostelNearMeRoute,
+  staysStaysHotelsInShillongRoute: staysStaysHotelsInShillongRoute,
+  staysStaysLuxuryGlampingShillongRoute: staysStaysLuxuryGlampingShillongRoute,
+  staysStaysPartnerStaysRoute: staysStaysPartnerStaysRoute,
+  staysStaysPetFriendlyRoute: staysStaysPetFriendlyRoute,
+  staysStaysWorkationRoute: staysStaysWorkationRoute,
   toursToursSlugRoute: toursToursSlugRoute,
+  toursTours3DayMeghalayaItineraryRoute: toursTours3DayMeghalayaItineraryRoute,
+  toursTours4x4ExpeditionMeghalayaRoute: toursTours4x4ExpeditionMeghalayaRoute,
+  toursTours5DayMeghalayaItineraryRoute: toursTours5DayMeghalayaItineraryRoute,
+  toursToursAdventureToursNortheastIndiaRoute:
+    toursToursAdventureToursNortheastIndiaRoute,
+  toursToursBudgetTripToMeghalayaRoute: toursToursBudgetTripToMeghalayaRoute,
+  toursToursDestinationWeddingShillongRoute:
+    toursToursDestinationWeddingShillongRoute,
+  toursToursMeghalayaAdventureTourRoute: toursToursMeghalayaAdventureTourRoute,
+  toursToursMeghalayaCoupleTourPackageRoute:
+    toursToursMeghalayaCoupleTourPackageRoute,
+  toursToursMeghalayaTourPackagesRoute: toursToursMeghalayaTourPackagesRoute,
+  toursToursMotorbikeExpeditionNortheastIndiaRoute:
+    toursToursMotorbikeExpeditionNortheastIndiaRoute,
+  toursToursShillongTourPackageRoute: toursToursShillongTourPackageRoute,
+  toursToursXtsyRentalsRoute: toursToursXtsyRentalsRoute,
   adminFranchiseIndexRoute: adminFranchiseIndexRoute,
   companyAboutIndexRoute: companyAboutIndexRoute,
   guidesDestinationsIndexRoute: guidesDestinationsIndexRoute,

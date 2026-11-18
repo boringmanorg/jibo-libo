@@ -46,7 +46,7 @@ const BlogBestTimeToVisit = () => (
         <section className="mt-12 bg-primary/10 rounded-2xl p-8 text-center">
           <h2 className="text-2xl font-bold text-foreground">Plan Your Meghalaya Trip</h2>
           <p className="mt-2 text-muted-foreground">Book a curated tour package with XTSY — we'll handle the logistics.</p>
-          <Link to="/meghalaya-tour-packages" className="mt-4 inline-block px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90">View Packages</Link>
+          <Link to="/tours/meghalaya-tour-packages" className="mt-4 inline-block px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90">View Packages</Link>
         </section>
 
         <PlanTripLinks
@@ -61,9 +61,9 @@ const BlogBestTimeToVisit = () => (
             <Link to="/places-to-visit-in-meghalaya" className="text-sm text-primary hover:underline">Places to Visit in Meghalaya</Link>
             <Link to="/things-to-do-in-meghalaya" className="text-sm text-primary hover:underline">Things to Do in Meghalaya</Link>
             <Link to="/hidden-places-in-meghalaya" className="text-sm text-primary hover:underline">Hidden Places</Link>
-            <Link to="/budget-trip-to-meghalaya" className="text-sm text-primary hover:underline">Budget Trip Guide</Link>
-            <Link to="/3-day-meghalaya-itinerary" className="text-sm text-primary hover:underline">3-Day Itinerary</Link>
-            <Link to="/5-day-meghalaya-itinerary" className="text-sm text-primary hover:underline">5-Day Itinerary</Link>
+            <Link to="/tours/budget-trip-to-meghalaya" className="text-sm text-primary hover:underline">Budget Trip Guide</Link>
+            <Link to="/tours/3-day-meghalaya-itinerary" className="text-sm text-primary hover:underline">3-Day Itinerary</Link>
+            <Link to="/tours/5-day-meghalaya-itinerary" className="text-sm text-primary hover:underline">5-Day Itinerary</Link>
             <Link to="/meghalaya-festivals" className="text-sm text-primary hover:underline">Meghalaya Festivals</Link>
             <Link to="/travel-guide/how-to-reach-meghalaya" className="text-sm text-primary hover:underline">How to Reach Meghalaya</Link>
             <Link to="/travel-guide/meghalaya-for-international-tourists" className="text-sm text-primary hover:underline">Guide for International Tourists</Link>

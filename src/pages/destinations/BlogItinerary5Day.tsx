@@ -46,12 +46,12 @@ const BlogItinerary5Day = () => (
 
         <section className="mt-10 bg-primary/10 rounded-2xl p-8 text-center">
           <h2 className="text-xl font-bold text-foreground">Book the 5-Day Meghalaya Package</h2>
-          <Link to="/meghalaya-tour-packages" className="mt-4 inline-block px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium">View Packages</Link>
+          <Link to="/tours/meghalaya-tour-packages" className="mt-4 inline-block px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium">View Packages</Link>
         </section>
         <nav className="mt-8 border-t border-border pt-8">
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-            <Link to="/3-day-meghalaya-itinerary" className="text-sm text-primary hover:underline">3-Day Itinerary</Link>
-            <Link to="/budget-trip-to-meghalaya" className="text-sm text-primary hover:underline">Budget Trip</Link>
+            <Link to="/tours/3-day-meghalaya-itinerary" className="text-sm text-primary hover:underline">3-Day Itinerary</Link>
+            <Link to="/tours/budget-trip-to-meghalaya" className="text-sm text-primary hover:underline">Budget Trip</Link>
             <Link to="/things-to-do-in-meghalaya" className="text-sm text-primary hover:underline">All Places to Visit</Link>
           </div>
         </nav>
@@ -63,7 +63,7 @@ const BlogItinerary5Day = () => (
         />
       </div>
     </main>
-    <PageFaq path="/5-day-meghalaya-itinerary" />
+    <PageFaq path="/tours/5-day-meghalaya-itinerary" />
     <Footer />
   </div>
 );

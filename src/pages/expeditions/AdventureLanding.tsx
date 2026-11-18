@@ -18,7 +18,7 @@ export const adventureGuides = {
       ['Where should a Northeast adventure trip start?', 'Guwahati is a practical arrival point for onward travel to Shillong. Check flight times against the onward road transfer, and avoid planning a demanding activity on arrival day.'],
       ['Can we combine Meghalaya and Tawang in one short trip?', 'Not comfortably in four or five days. Choose one circuit or allow substantially more time for long transfers, permits and altitude adjustment.'],
     ],
-    links: [['Meghalaya adventure tour', '/meghalaya-adventure-tour'], ['Motorbike expedition guide', '/motorbike-expedition-northeast-india'], ['4x4 Meghalaya circuit', '/4x4-expedition-meghalaya']],
+    links: [['Meghalaya adventure tour', '/tours/meghalaya-adventure-tour'], ['Motorbike expedition guide', '/tours/motorbike-expedition-northeast-india'], ['4x4 Meghalaya circuit', '/tours/4x4-expedition-meghalaya']],
   },
   'meghalaya-adventure-tour': {
     title: 'Meghalaya adventure tour', image: IMG.rootBridge,
@@ -34,7 +34,7 @@ export const adventureGuides = {
       ['Can Nongriat and Dawki be visited on the same day?', 'Keep them on separate days. The Nongriat walk needs an early start and a demanding return climb; adding a long road transfer makes the schedule unnecessarily tiring.'],
       ['Are river activities included in a Meghalaya tour?', 'Only when your written quote lists them. Check operator availability, equipment, supervision and weather-dependent cancellation terms before paying.'],
     ],
-    links: [['Meghalaya packages', '/meghalaya-tour-packages'], ['Adventure activities', '/things-to-do-in-meghalaya'], ['Dawki campsite', '/xtsy-adventure-campsite-dawki']],
+    links: [['Meghalaya packages', '/tours/meghalaya-tour-packages'], ['Adventure activities', '/things-to-do-in-meghalaya'], ['Dawki campsite', '/stays/campsite-dawki']],
   },
   'motorbike-expedition-northeast-india': {
     title: 'Motorbike expedition in Northeast India', image: IMG.bumla,
@@ -66,7 +66,7 @@ export const adventureGuides = {
       ['Do the main Meghalaya roads require a 4x4?', 'Most of this circuit is on paved roads. High clearance can help on damaged approaches, but local conditions and careful driving matter more than having four-wheel drive.'],
       ['Can a 4x4 reach the double-decker root bridge?', 'No. The Nongriat bridge is reached on foot by a stepped trail. Plan secure parking, a full walking day and suitable fitness rather than an off-road vehicle approach.'],
     ],
-    links: [['Full 4x4 route details', '/expeditions/4x4/meghalaya-loop'], ['Meghalaya adventure tour', '/meghalaya-adventure-tour'], ['Explore Dawki', '/destinations/meghalaya/dawki']],
+    links: [['Full 4x4 route details', '/expeditions/4x4/meghalaya-loop'], ['Meghalaya adventure tour', '/tours/meghalaya-adventure-tour'], ['Explore Dawki', '/destinations/meghalaya/dawki']],
   },
 } as const;
 

@@ -30,7 +30,7 @@ function RouteCard({ r, type }: { r: ExpeditionRouteStub; type: ExpeditionType }
 
 export function ExpeditionsIndexV2() {
   return (
-    <PageShell bar={{ label: 'Get a quote', to: waLink('Hi XTSY! I want to plan an expedition. Route: … Dates: … Riders: …'), note: 'Motorbike & 4x4 expeditions' }} cta={{ title: 'Ride the Northeast with backup.', sub: 'Tell us your route, dates and whether you ride or drive. We’ll sort vehicle, permits and stays.', bookTo: '/xtsy-rentals', bookLabel: 'Rent a bike or car' }}>
+    <PageShell bar={{ label: 'Get a quote', to: waLink('Hi XTSY! I want to plan an expedition. Route: … Dates: … Riders: …'), note: 'Motorbike & 4x4 expeditions' }} cta={{ title: 'Ride the Northeast with backup.', sub: 'Tell us your route, dates and whether you ride or drive. We’ll sort vehicle, permits and stays.', bookTo: '/tours/xtsy-rentals', bookLabel: 'Rent a bike or car' }}>
       <PageHero
         bg="#1F2230"
         fg="#F5EFE6"
@@ -45,10 +45,10 @@ export function ExpeditionsIndexV2() {
       <section className={`${PAD} pt-14`}>
         <nav aria-label="Adventure planning guides" className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {[
-            { to: '/adventure-tours-northeast-india', t: 'Adventure tours in Northeast India' },
-            { to: '/meghalaya-adventure-tour', t: 'Meghalaya adventure tour' },
-            { to: '/motorbike-expedition-northeast-india', t: 'Motorbike expedition planning' },
-            { to: '/4x4-expedition-meghalaya', t: 'Meghalaya 4x4 expedition' },
+            { to: '/tours/adventure-tours-northeast-india', t: 'Adventure tours in Northeast India' },
+            { to: '/tours/meghalaya-adventure-tour', t: 'Meghalaya adventure tour' },
+            { to: '/tours/motorbike-expedition-northeast-india', t: 'Motorbike expedition planning' },
+            { to: '/tours/4x4-expedition-meghalaya', t: 'Meghalaya 4x4 expedition' },
           ].map((g) => (
             <Link key={g.to} to={g.to} className="xt-lift flex items-center justify-between gap-3 rounded-2xl bg-white px-5 py-4 text-[15px] font-extrabold text-xt-ink hover:text-xt-crimson">{g.t}<span aria-hidden="true">→</span></Link>
           ))}
@@ -64,7 +64,7 @@ export function ExpeditionsIndexV2() {
       ))}
       <section className={`${PAD} flex flex-col gap-3 pb-16 text-[15px] leading-relaxed text-xt-mute`}>
         <p className="m-0">For a 4x4 expedition in Meghalaya, start with the <Link to="/expeditions/4x4/meghalaya-loop" className="font-bold text-xt-crimson">Shillong–Dawki–Mawlynnong–Cherrapunji loop</Link>. Riders can compare the same circuit in the <Link to="/expeditions/motorbike/meghalaya-loop" className="font-bold text-xt-crimson">motorbike guide</Link>.</p>
-        <p className="m-0">Looking beyond the road? Explore <Link to="/meghalaya-tour-packages" className="font-bold text-xt-crimson">Meghalaya guided trips</Link> or compare <Link to="/things-to-do-in-meghalaya" className="font-bold text-xt-crimson">treks, caves and river activities</Link>.</p>
+        <p className="m-0">Looking beyond the road? Explore <Link to="/tours/meghalaya-tour-packages" className="font-bold text-xt-crimson">Meghalaya guided trips</Link> or compare <Link to="/things-to-do-in-meghalaya" className="font-bold text-xt-crimson">treks, caves and river activities</Link>.</p>
         <p className="m-0 text-[13px]">{PARTNER_NOTE}</p>
       </section>
     </PageShell>

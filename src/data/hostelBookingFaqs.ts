@@ -1,6 +1,6 @@
 /**
  * Shared deal-intent FAQ set reused across every hostel booking page
- * (/hostel-booking, /hostel-near-me, /best-hostel-in-shillong, /backpacking-india).
+ * (/hostel-booking, /stays/hostel-near-me, /stays/best-hostel-in-shillong, /backpacking-india).
  * Kept in one place so the on-page copy and the FAQPage JSON-LD never drift apart.
  */
 export interface HostelFaq {

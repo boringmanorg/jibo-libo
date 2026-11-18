@@ -1,5 +1,5 @@
 /**
- * /work-from-home — Workation (redesign). Plan prices are the same as the
+ * /stays/workation — Workation (redesign). Plan prices are the same as the
  * previous page (₹5,400 / ₹22,999 / ₹64,999).
  */
 import SEOHead from '@/components/SEOHead';

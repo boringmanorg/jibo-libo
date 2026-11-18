@@ -1,16 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { articleSchema } from "@/lib/seo/pageEntitySchema";
-import BlogItinerary3Day from "@/pages/destinations/BlogItinerary3Day";
-import { buildRouteHead } from "@/lib/seo-head";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
+// Moved under /tours (owner approval, 18 Nov 2026); old address permanently redirects.
 export const Route = createFileRoute("/(tours)/3-day-meghalaya-itinerary")({
-  head: () =>
-    buildRouteHead({
-      path: "/3-day-meghalaya-itinerary",
-      jsonLd: [articleSchema({ path: "/3-day-meghalaya-itinerary", headline: "3 Day Meghalaya Itinerary from Shillong | XTSY", description: "A tested 3 day Meghalaya itinerary: Shillong, Cherrapunji waterfalls and Dawki's Umngot river, with travel times, costs and hostel stays from Rs 399." })],
-      title: "3 Day Meghalaya Itinerary from Shillong | XTSY",
-      description:
-        "A tested 3 day Meghalaya itinerary: Shillong, Cherrapunji waterfalls and Dawki's Umngot river, with travel times, costs and hostel stays from Rs 399.",
-    }),
-  component: BlogItinerary3Day,
+  beforeLoad: () => {
+    throw redirect({ to: "/tours/3-day-meghalaya-itinerary", statusCode: 301 });
+  },
 });

@@ -1,5 +1,5 @@
 /**
- * /female-travellers — Women safe stays (redesign).
+ * /stays/female-travellers — Women safe stays (redesign).
  */
 import SEOHead from '@/components/SEOHead';
 import { googleReviews } from '@/data/googleReviews';

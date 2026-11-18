@@ -31,17 +31,17 @@ export interface StateContent {
 const XTSY_STAYS: StayLink[] = [
   {
     label: 'XTSY Travellers Hostel, Shillong',
-    href: '/best-hostel-in-shillong',
+    href: '/stays/best-hostel-in-shillong',
     note: 'Mixed dorms from ₹399 per bed/night plus private rooms, in New Shillong Township.',
   },
   {
     label: 'XTSY 270 — glamping & private stays',
-    href: '/experience-by-xtsy',
+    href: '/stays/experience-by-xtsy',
     note: 'Valley-view glamping and premium rooms for couples and small groups.',
   },
   {
     label: 'Meghalaya tour packages by XTSY Travel',
-    href: '/meghalaya-tour-packages',
+    href: '/tours/meghalaya-tour-packages',
     note: 'Guided multi-day itineraries with transport, stays and local guides.',
   },
   {
@@ -54,7 +54,7 @@ const XTSY_STAYS: StayLink[] = [
 const REGIONAL_STAYS: StayLink[] = [
   {
     label: 'Base yourself at XTSY Travellers Hostel, Shillong',
-    href: '/best-hostel-in-shillong',
+    href: '/stays/best-hostel-in-shillong',
     note: 'Most Northeast circuits route through Guwahati and Shillong — a budget-friendly, central base between legs.',
   },
   {

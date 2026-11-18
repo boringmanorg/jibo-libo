@@ -21,7 +21,7 @@ interface StayEatExploreProps {
 
 const StayEatExplore = ({
   context,
-  tourLink = '/meghalaya-tour-packages',
+  tourLink = '/tours/meghalaya-tour-packages',
   tourLabel = 'Meghalaya Tour Packages',
 }: StayEatExploreProps) => {
   const place = context ? ` ${context}` : '';
@@ -31,7 +31,7 @@ const StayEatExplore = ({
       icon: BedDouble,
       title: 'Where to Stay',
       desc: `Book a bed, private room, or glamping stay at XTSY — one of the best-rated hostels in Shillong, your base for exploring${place || ' Meghalaya'}.`,
-      to: '/best-hostel-in-shillong',
+      to: '/stays/best-hostel-in-shillong',
       cta: 'View Hostel & Book',
     },
     {

@@ -65,7 +65,7 @@ const utilityRe = /^\/(admin|franchise|auth|admin-login|profile|install|unsubscr
 const classifyStatic = (u: string): string => {
   if (u === '/') return 'homepage';
   if (utilityRe.test(u)) return 'utility';
-  if (/^\/(book|hostel-booking|book-hostel-shillong|best-hostel-in-shillong|hostel-near-me|xtsy-270|hotels-in-shillong|homestays-in-shillong|luxury-glamping-shillong|xtsy-adventure-campsite-dawki)/.test(u))
+  if (/^\/(stays|book|hostel-booking|book-hostel-shillong|best-hostel-in-shillong|hostel-near-me|xtsy-270|hotels-in-shillong|homestays-in-shillong|luxury-glamping-shillong|xtsy-adventure-campsite-dawki)/.test(u))
     return 'property/booking page';
   if (/^\/(tab-bistro|restaurant-in-shillong|catering-shillong)/.test(u)) return 'property/booking page';
   if (/^\/tours/.test(u)) return 'tour/booking page';

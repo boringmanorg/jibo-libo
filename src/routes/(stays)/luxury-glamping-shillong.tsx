@@ -1,14 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
-import LuxuryGlampingShillong from "@/pages/LuxuryGlampingShillong";
-import { buildRouteHead } from "@/lib/seo-head";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
+// Moved under /stays (owner approval, 18 Nov 2026); old address permanently redirects.
 export const Route = createFileRoute("/(stays)/luxury-glamping-shillong")({
-  head: () =>
-    buildRouteHead({
-      path: "/luxury-glamping-shillong",
-      title: "Luxury Glamping in Shillong & Meghalaya | XTSY",
-      description:
-        "Glamping near Shillong with proper beds, private washrooms and mountain views, including Experience by XTSY, India's Most Romantic Couple En-suite, for couples.",
-    }),
-  component: LuxuryGlampingShillong,
+  beforeLoad: () => {
+    throw redirect({ to: "/stays/luxury-glamping-shillong", statusCode: 301 });
+  },
 });

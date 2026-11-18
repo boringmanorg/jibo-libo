@@ -48,19 +48,19 @@ const TIMEOUT_MS = 15000;
 // Top SEO routes (kept short — used by post-deploy + Lighthouse CI)
 export const TOP_SEO_ROUTES = [
   '/',
-  '/best-hostel-in-shillong',
-  '/hotels-in-shillong',
-  '/homestays-in-shillong',
-  '/luxury-glamping-shillong',
-  '/restaurant-in-shillong',
-  '/meghalaya-tour-packages',
-  '/meghalaya-couple-tour-package',
-  '/shillong-tour-package',
+  '/stays/best-hostel-in-shillong',
+  '/stays/hotels-in-shillong',
+  '/stays/homestays-in-shillong',
+  '/stays/luxury-glamping-shillong',
+  '/tab-bistro',
+  '/tours/meghalaya-tour-packages',
+  '/tours/meghalaya-couple-tour-package',
+  '/tours/shillong-tour-package',
   '/things-to-do-in-meghalaya',
   '/best-time-to-visit-meghalaya',
-  '/3-day-meghalaya-itinerary',
-  '/5-day-meghalaya-itinerary',
-  '/budget-trip-to-meghalaya',
+  '/tours/3-day-meghalaya-itinerary',
+  '/tours/5-day-meghalaya-itinerary',
+  '/tours/budget-trip-to-meghalaya',
   '/hidden-places-in-meghalaya',
   '/tours',
   '',
@@ -71,12 +71,12 @@ export const TOP_SEO_ROUTES = [
 // Routes that MUST have a FAQPage block (they show FAQs on the page; FAQ markup without
 // visible questions breaks Google's guidelines, so pages without FAQs are not listed).
 const FAQ_REQUIRED = new Set<string>([
-  '/best-hostel-in-shillong',
-  '/hotels-in-shillong',
+  '/stays/best-hostel-in-shillong',
+  '/stays/hotels-in-shillong',
   '/faq',
   '/things-to-do-in-meghalaya',
   '/best-time-to-visit-meghalaya',
-  '/shillong-tour-package',
+  '/tours/shillong-tour-package',
 ]);
 
 function discoverRoutes(): string[] {

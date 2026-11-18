@@ -17,7 +17,7 @@ export const NEARBY_ADVENTURES: Record<string, NearbyAdventure[]> = {
   ],
   dawki: [
     { label: 'Umngot River at Dawki', detail: 'Boating and river scenery around Dawki and Shnongpdeng.', href: '/destinations/meghalaya/dawki' },
-    { label: 'XTSY Adventure Campsite', detail: 'Riverside camping near the Umngot.', href: '/xtsy-adventure-campsite-dawki' },
+    { label: 'XTSY Adventure Campsite', detail: 'Riverside camping near the Umngot.', href: '/stays/campsite-dawki' },
   ],
   mawlynnong: [
     { label: 'Riwai living root bridge', detail: 'A short walk from Mawlynnong through the village area.', href: '/destinations/meghalaya/mawlynnong' },

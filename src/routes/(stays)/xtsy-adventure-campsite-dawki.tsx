@@ -1,14 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
-import XTSYAdventureCampsiteDawki from "@/pages/v2/CampsiteV2";
-import { buildRouteHead } from "@/lib/seo-head";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
+// Moved under /stays (owner approval, 18 Nov 2026); old address permanently redirects.
 export const Route = createFileRoute("/(stays)/xtsy-adventure-campsite-dawki")({
-  head: () =>
-    buildRouteHead({
-      path: "/xtsy-adventure-campsite-dawki",
-      title: "Dawki Campsite by the Umngot River | XTSY",
-      description:
-        "Camp beside the Umngot river at XTSY's Dawki adventure campsite: riverside tents, kayaking, bonfires and meals, with rates and how to reach from Shillong.",
-    }),
-  component: XTSYAdventureCampsiteDawki,
+  beforeLoad: () => {
+    throw redirect({ to: "/stays/campsite-dawki", statusCode: 301 });
+  },
 });

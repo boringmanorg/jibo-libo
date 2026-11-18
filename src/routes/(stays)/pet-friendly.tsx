@@ -1,16 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { articleSchema } from "@/lib/seo/pageEntitySchema";
-import PetFriendlyV2 from "@/pages/v2/PetFriendlyV2";
-import { buildRouteHead } from "@/lib/seo-head";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
+// Moved under /stays (owner approval, 18 Nov 2026); old address permanently redirects.
 export const Route = createFileRoute("/(stays)/pet-friendly")({
-  head: () =>
-    buildRouteHead({
-      path: "/pet-friendly",
-      jsonLd: [articleSchema({ path: "/pet-friendly", headline: "Pet Friendly Stay in Shillong, Meghalaya | XTSY", description: "Travelling with a pet in Meghalaya? See XTSY's pet policy, which room types allow pets, nearby vets, and walking routes around New Shillong Township." })],
-      title: "Pet Friendly Stay in Shillong, Meghalaya | XTSY",
-      description:
-        "Travelling with a pet in Meghalaya? See XTSY's pet policy, which room types allow pets, nearby vets, and walking routes around New Shillong Township.",
-    }),
-  component: PetFriendlyV2,
+  beforeLoad: () => {
+    throw redirect({ to: "/stays/pet-friendly", statusCode: 301 });
+  },
 });

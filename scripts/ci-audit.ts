@@ -19,7 +19,7 @@ import { blockAnalytics } from './audit/no-analytics';
 const BASE = process.env.BASE_URL || 'http://localhost:8080';
 const OUT = path.join(process.env.OUT_DIR || 'shots', 'audit');
 const ORIGIN = 'https://xtsy.one';
-const PERF_ROUTES = (process.env.PERF_ROUTES || '/,/xtsy-270,/tours,/pet-friendly,/places-to-visit/nohkalikai-falls,/book').split(',');
+const PERF_ROUTES = (process.env.PERF_ROUTES || '/,/xtsy-270,/tours,/stays/pet-friendly,/places-to-visit/nohkalikai-falls,/book').split(',');
 
 async function imageAudit(page: Page) {
   const entries = Object.entries(CDN_IMAGE_MAP);

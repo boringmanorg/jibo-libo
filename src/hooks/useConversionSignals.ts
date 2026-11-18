@@ -55,7 +55,7 @@ export const useConversionSignals = () => {
     signals.current.pagesViewed++;
 
     // Destination interest detection
-    const destinationPages = ['/properties', '/tours', '/female-travellers', '/pet-friendly'];
+    const destinationPages = ['/properties', '/tours', '/stays/female-travellers', '/stays/pet-friendly'];
     const destination = destinationPages.find(p => location.pathname.startsWith(p));
     if (destination) {
       routeGTMEvent({

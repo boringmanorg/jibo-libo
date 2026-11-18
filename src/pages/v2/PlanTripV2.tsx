@@ -52,7 +52,7 @@ export default function PlanTripV2() {
               </div>
             ))}
           </div>
-          <p className="m-0 text-[13px] text-xt-mute">Estimates for planning; hill roads and weather change times. See <Link to="/tours" className="font-bold text-xt-crimson">tour packages</Link> or <Link to="/best-hostel-in-shillong" className="font-bold text-xt-crimson">where to stay in Shillong</Link>.</p>
+          <p className="m-0 text-[13px] text-xt-mute">Estimates for planning; hill roads and weather change times. See <Link to="/tours" className="font-bold text-xt-crimson">tour packages</Link> or <Link to="/stays/best-hostel-in-shillong" className="font-bold text-xt-crimson">where to stay in Shillong</Link>.</p>
         </section>
 
         {/* schema={false}: planTripSchema() in planTripData.ts already emits the FAQPage.

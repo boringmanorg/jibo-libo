@@ -1,14 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
-import HomestaysInShillong from "@/pages/HomestaysInShillong";
-import { buildRouteHead } from "@/lib/seo-head";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
+// Moved under /stays (owner approval, 18 Nov 2026); old address permanently redirects.
 export const Route = createFileRoute("/(stays)/homestays-in-shillong")({
-  head: () =>
-    buildRouteHead({
-      path: "/homestays-in-shillong",
-      title: "Homestays in Shillong: Options & Prices | XTSY",
-      description:
-        "Compare homestays in Shillong with hostel and hotel stays on price, privacy and location, plus what a Rs 399 dorm bed at XTSY includes for solo travellers.",
-    }),
-  component: HomestaysInShillong,
+  beforeLoad: () => {
+    throw redirect({ to: "/stays/homestays-in-shillong", statusCode: 301 });
+  },
 });

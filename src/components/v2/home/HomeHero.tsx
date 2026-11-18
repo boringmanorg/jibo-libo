@@ -119,7 +119,7 @@ export default function HomeHero() {
             <Button type="submit" className="h-12">Check availability</Button>
             {error && <p role="alert" className="text-sm text-destructive sm:col-span-2 lg:col-span-4">{error}</p>}
           </form>
-          <p className="mt-3 text-sm text-xt-mute">More than 20 guests? <Link to="/group-bookings-meghalaya" className="font-bold text-primary underline">Group bookings</Link></p>
+          <p className="mt-3 text-sm text-xt-mute">More than 20 guests? <Link to="/stays/group-bookings-meghalaya" className="font-bold text-primary underline">Group bookings</Link></p>
         </div>
       </section>
       <section id="planner" className="grid scroll-mt-28 gap-6 bg-xt-sand px-5 py-12 sm:px-8 lg:grid-cols-12 lg:px-14 lg:py-16">
@@ -127,7 +127,7 @@ export default function HomeHero() {
           <p className="xt-eyebrow m-0 text-[15px]">Your trip, planned in seconds</p>
           <h2 className="xt-display m-0 text-[48px] leading-[0.92] text-xt-ink sm:text-[64px]">Plan a trip with AI</h2>
           <p className="m-0 text-[16px] leading-relaxed text-xt-mute">Tell the XTSY trip assistant where you want to go in Meghalaya or anywhere in Northeast India. It plans day by day with real drive times, keeps far-off places like Wari Chora or Tawang realistic, and books your Shillong nights at XTSY.</p>
-          <Link to="/pet-friendly" className="xt-lift relative mt-2 flex flex-col gap-2 overflow-hidden rounded-[22px] bg-xt-cream py-5 pl-[22px] pr-[140px] text-xt-ink hover:text-xt-ink">
+          <Link to="/stays/pet-friendly" className="xt-lift relative mt-2 flex flex-col gap-2 overflow-hidden rounded-[22px] bg-xt-cream py-5 pl-[22px] pr-[140px] text-xt-ink hover:text-xt-ink">
             <span className="xt-eyebrow text-[13px]">India’s first pet-friendly travellers hostel</span>
             <span className="xt-display text-[28px] leading-none">Cats &amp; birds most welcome</span>
             <span className="text-[14px] leading-normal text-xt-mute">Dogs too, depending on breed and size. Please contact the XTSY desk about any additional charges.</span>

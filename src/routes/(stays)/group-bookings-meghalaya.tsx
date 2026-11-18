@@ -1,14 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
-import GroupBookingsMeghalaya from "@/pages/v2/GroupsV2";
-import { buildRouteHead } from "@/lib/seo-head";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
+// Moved under /stays (owner approval, 18 Nov 2026); old address permanently redirects.
 export const Route = createFileRoute("/(stays)/group-bookings-meghalaya")({
-  head: () =>
-    buildRouteHead({
-      path: "/group-bookings-meghalaya",
-      title: "Group Bookings in Meghalaya: Stays & Tours | XTSY",
-      description:
-        "Group booking rates for Meghalaya trips: whole-dorm buyouts, college and corporate groups, transport, guides and TAB Bistro meals arranged from Shillong.",
-    }),
-  component: GroupBookingsMeghalaya,
+  beforeLoad: () => {
+    throw redirect({ to: "/stays/group-bookings-meghalaya", statusCode: 301 });
+  },
 });

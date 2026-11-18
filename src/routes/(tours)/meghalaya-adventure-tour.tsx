@@ -1,10 +1,8 @@
-import { createFileRoute } from '@tanstack/react-router';
-import AdventureLanding from '@/pages/expeditions/AdventureLanding';
-import { buildRouteHead } from '@/lib/seo-head';
-import { articleSchema } from '@/lib/seo/pageEntitySchema';
-import { IMG } from '@/data/v2Images';
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/(tours)/meghalaya-adventure-tour')({
-  head: () => buildRouteHead({ jsonLd: [articleSchema({ path: '/meghalaya-adventure-tour', headline: 'Meghalaya Adventure Tour | Trek, River & Waterfalls | XTSY', description: 'Plan a Shillong-based Meghalaya adventure tour with Nongriat trekking, Sohra waterfalls, Dawki river activities, season advice and a 4-day outline.' })], path: '/meghalaya-adventure-tour', title: 'Meghalaya Adventure Tour | Trek, River & Waterfalls | XTSY', description: 'Plan a Shillong-based Meghalaya adventure tour with Nongriat trekking, Sohra waterfalls, Dawki river activities, season advice and a 4-day outline.', image: new URL(IMG.rootBridge, 'https://xtsy.one').href, ogType: 'article' }),
-  component: () => <AdventureLanding guide="meghalaya-adventure-tour" />,
+// Moved under /tours (owner approval, 18 Nov 2026); old address permanently redirects.
+export const Route = createFileRoute("/(tours)/meghalaya-adventure-tour")({
+  beforeLoad: () => {
+    throw redirect({ to: "/tours/meghalaya-adventure-tour", statusCode: 301 });
+  },
 });

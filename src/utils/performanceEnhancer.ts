@@ -53,7 +53,7 @@ export const enableCompression = () => {
 
 // Route prefetching for critical pages
 export const prefetchRoutes = () => {
-  const criticalRoutes = ['/tours', '/experience-by-xtsy'];
+  const criticalRoutes = ['/tours', '/stays/experience-by-xtsy'];
   
   criticalRoutes.forEach(route => {
     const link = document.createElement('link');

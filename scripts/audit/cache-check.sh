@@ -5,7 +5,7 @@ BASE="${BASE_URL:-http://localhost:4174}"
 fail=0
 hdr() { curl -s -D - -o /dev/null "$BASE$1" | tr -d '\r' | grep -i "^$2:" | head -1 | cut -d' ' -f2-; }
 body() { curl -s "$BASE$1" | sha1sum | cut -c1-12; }
-for p in / /best-hostel-in-shillong /tours/5n-6d-tawang-tour /living-root-bridges-meghalaya /guides; do
+for p in / /stays/best-hostel-in-shillong /tours/5n-6d-tawang-tour /living-root-bridges-meghalaya /guides; do
   a=$(hdr "$p" x-xtsy-cache); b=$(hdr "$p" x-xtsy-cache); h1=$(body "$p"); h2=$(body "$p")
   echo "$p first=$a second=$b body=$h1/$h2"
   [ "$b" = "HIT" ] || { echo "::error::$p second request was not a cache HIT ($b)"; fail=1; }

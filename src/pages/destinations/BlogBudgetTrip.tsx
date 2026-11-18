@@ -61,8 +61,8 @@ const BlogBudgetTrip = () => (
         </section>
         <nav className="mt-8 border-t border-border pt-8">
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-            <Link to="/3-day-meghalaya-itinerary" className="text-sm text-primary hover:underline">3-Day Itinerary</Link>
-            <Link to="/5-day-meghalaya-itinerary" className="text-sm text-primary hover:underline">5-Day Itinerary</Link>
+            <Link to="/tours/3-day-meghalaya-itinerary" className="text-sm text-primary hover:underline">3-Day Itinerary</Link>
+            <Link to="/tours/5-day-meghalaya-itinerary" className="text-sm text-primary hover:underline">5-Day Itinerary</Link>
             <Link to="/things-to-do-in-meghalaya" className="text-sm text-primary hover:underline">All Places to Visit</Link>
           </div>
         </nav>
@@ -74,7 +74,7 @@ const BlogBudgetTrip = () => (
         />
       </div>
     </main>
-    <PageFaq path="/budget-trip-to-meghalaya" />
+    <PageFaq path="/tours/budget-trip-to-meghalaya" />
     <Footer />
   </div>
 );

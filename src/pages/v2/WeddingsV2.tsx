@@ -1,5 +1,5 @@
 /**
- * /destination-wedding-shillong — intimate weddings at XTSY (redesign).
+ * /tours/destination-wedding-shillong — intimate weddings at XTSY (redesign).
  */
 import { Helmet } from '@/lib/seo/helmet';
 import SEOHead from '@/components/SEOHead';

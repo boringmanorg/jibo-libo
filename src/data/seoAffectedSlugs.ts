@@ -27,7 +27,7 @@ export const RECOVERY_FILTERED_OUT: ReadonlyArray<string> = [
   'guwahati-to-meghalaya-road-trip',
   'guwahati-to-shillong-transport',
   'hospital-accommodation-shillong',
-  // 'hostels-in-shillong' — MERGED → 301 to /best-hostel-in-shillong (see RECOVERY_REDIRECTS)
+  // 'hostels-in-shillong' — MERGED → 301 to /stays/best-hostel-in-shillong (see RECOVERY_REDIRECTS)
   'hotel-near-police-bazar',
   'hotels-in-shillong-available-now',
   'how-to-reach-cherrapunji',
@@ -119,7 +119,7 @@ export const RECOVERY_LIVE_PAGES: ReadonlyArray<string> = [
   'travel-agency-shillong',
   'unique-luxury-stay-india',
   'weekend-meghalaya-trip',
-  // 'youth-hostel-shillong' — MERGED → 301 to /best-hostel-in-shillong (see RECOVERY_REDIRECTS)
+  // 'youth-hostel-shillong' — MERGED → 301 to /stays/best-hostel-in-shillong (see RECOVERY_REDIRECTS)
   'zion-backpackers-vs-xtsy',
   'zostel-vs-xtsy-shillong',
 ];
@@ -170,9 +170,9 @@ const INTENT_STAY_DESTINATIONS: Record<string, string> = {
 const intentStayTarget = (stay: string, city: string): string => {
   if (city !== 'shillong') return INTENT_STAY_DESTINATIONS[city] ?? '/destinations';
   if (stay === 'hostel' || stay === 'budget-stay') return '/budget-hostels-shillong';
-  if (stay === 'hotel') return '/hotels-in-shillong';
-  if (stay === 'homestay' || stay === 'guesthouse') return '/homestays-in-shillong';
-  return '/luxury-glamping-shillong';
+  if (stay === 'hotel') return '/stays/hotels-in-shillong';
+  if (stay === 'homestay' || stay === 'guesthouse') return '/stays/homestays-in-shillong';
+  return '/stays/luxury-glamping-shillong';
 };
 const LEGACY_CHEAP_INTENT_REDIRECTS: Record<string, string> = Object.fromEntries(
   INTENT_STAY_TYPES.flatMap((stay) =>
@@ -262,49 +262,49 @@ export const RECOVERY_REDIRECTS: Readonly<Record<string, string>> = {
   // listed in sitemap-static.xml. Redirecting it to /about would 301 away a
   // canonical, indexed page. Do not re-add.
   // Workation intent alias → canonical work-from-home page
-  'remote-work-stay-shillong': '/work-from-home',
+  'remote-work-stay-shillong': '/stays/workation',
   'monthly-stay-mizoram': '/destinations/mizoram',
-  'remote-work-stay-meghalaya': '/work-from-home',
+  'remote-work-stay-meghalaya': '/stays/workation',
   'remote-work-stay-nongjrong': '/destinations/meghalaya/shillong/nongjrong-sunrise-viewpoint',
   'remote-work-stay-dawki': '/destinations/meghalaya/dawki',
   'remote-work-stay-mawlynnong': '/destinations/meghalaya/mawlynnong',
   'remote-work-stay-ziro': '/destinations/arunachal-pradesh/ziro',
   'bike-tour-package-nagaland': '/expeditions/motorbike/guwahati-to-kohima',
-  'school-tour-mizoram': '/group-bookings-meghalaya',
-  'self-drive-itinerary-shillong': '/xtsy-rentals',
+  'school-tour-mizoram': '/stays/group-bookings-meghalaya',
+  'self-drive-itinerary-shillong': '/tours/xtsy-rentals',
   'family-tour-tawang': '/destinations/arunachal-pradesh/tawang',
-  'leadership-retreat-assam': '/group-bookings-meghalaya',
+  'leadership-retreat-assam': '/stays/group-bookings-meghalaya',
   'photography-tour-tripura': '/destinations/tripura',
   'winter-in-jowai': '/destinations/meghalaya/jowai',
   // Vehicle rentals → consolidated rental landing
-  'rentals': '/xtsy-rentals',
-  'car-rental-shillong': '/xtsy-rentals',
-  'car-rental-northeast-india': '/xtsy-rentals',
-  'luxury-car-rental-shillong': '/xtsy-rentals',
-  'premium-suv-rental-shillong': '/xtsy-rentals',
-  'self-drive-car-shillong': '/xtsy-rentals',
-  'tempo-traveller-shillong': '/xtsy-rentals',
+  'rentals': '/tours/xtsy-rentals',
+  'car-rental-shillong': '/tours/xtsy-rentals',
+  'car-rental-northeast-india': '/tours/xtsy-rentals',
+  'luxury-car-rental-shillong': '/tours/xtsy-rentals',
+  'premium-suv-rental-shillong': '/tours/xtsy-rentals',
+  'self-drive-car-shillong': '/tours/xtsy-rentals',
+  'tempo-traveller-shillong': '/tours/xtsy-rentals',
   // Phase 1 hostel-cluster MERGE → 301 the consolidated variants so they
   // never render a real 404 (they were dropped from the registry via
   // MERGED_REDIRECT_SLUGS but previously had no redirect target).
-  'hostels-in-shillong': '/best-hostel-in-shillong',
-  'youth-hostel-shillong': '/best-hostel-in-shillong',
-  'backpacker-hostel-shillong': '/best-hostel-in-shillong',
+  'hostels-in-shillong': '/stays/best-hostel-in-shillong',
+  'youth-hostel-shillong': '/stays/best-hostel-in-shillong',
+  'backpacker-hostel-shillong': '/stays/best-hostel-in-shillong',
   'cheap-hostel-shillong': '/budget-hostels-shillong',
   'budget-hostel-shillong': '/budget-hostels-shillong',
   'cheap-hostels-shillong': '/budget-hostels-shillong',
   'cheap-hostel-in-shillong': '/budget-hostels-shillong',
   // Stays → consolidated hostel pillar
-  'oyo-rooms-shillong-alternative': '/best-hostel-in-shillong',
-  'guest-house-neigrihms-shillong': '/best-hostel-in-shillong',
-  'homestay-neigrihms-shillong': '/best-hostel-in-shillong',
-  'hotel-near-neigrihms-shillong': '/best-hostel-in-shillong',
-  'lodge-neigrihms-shillong': '/best-hostel-in-shillong',
+  'oyo-rooms-shillong-alternative': '/stays/best-hostel-in-shillong',
+  'guest-house-neigrihms-shillong': '/stays/best-hostel-in-shillong',
+  'homestay-neigrihms-shillong': '/stays/best-hostel-in-shillong',
+  'hotel-near-neigrihms-shillong': '/stays/best-hostel-in-shillong',
+  'lodge-neigrihms-shillong': '/stays/best-hostel-in-shillong',
   // Itineraries / planning → tour-packages pillar
-  'meghalaya-itinerary-planning': '/meghalaya-tour-packages',
-  'meghalaya-trip-cost': '/meghalaya-tour-packages',
-  'meghalaya-monsoon-travel-guide': '/meghalaya-tour-packages',
-  'meghalaya-road-trip-guide': '/meghalaya-tour-packages',
+  'meghalaya-itinerary-planning': '/tours/meghalaya-tour-packages',
+  'meghalaya-trip-cost': '/tours/meghalaya-tour-packages',
+  'meghalaya-monsoon-travel-guide': '/tours/meghalaya-tour-packages',
+  'meghalaya-road-trip-guide': '/tours/meghalaya-tour-packages',
   // Activities → things-to-do pillar
   'camping-in-meghalaya': '/things-to-do-in-meghalaya',
   'caves-in-meghalaya': '/meghalaya-caves',
@@ -322,7 +322,7 @@ export const RECOVERY_REDIRECTS: Readonly<Record<string, string>> = {
   'things-to-do-in-dawki': '/dawki-guide',
   'dawki-suspension-bridge-meghalaya': '/dawki-guide',
   'shillong-to-dawki-road-trip': '/shillong-to-dawki-trip',
-  'meghalaya-3-day-itinerary': '/3-day-meghalaya-itinerary',
+  'meghalaya-3-day-itinerary': '/tours/3-day-meghalaya-itinerary',
   'shnongpdeng-camping-meghalaya': '/camping-in-shnongpdeng',
   'things-to-do-in-cherrapunjee': '/cherrapunji-travel-guide',
   'shillong-to-cherrapunjee-road-trip': '/shillong-to-cherrapunji-road-trip',
@@ -340,7 +340,7 @@ export const RECOVERY_REDIRECTS: Readonly<Record<string, string>> = {
   'best-cafes-shillong': '/cafes-in-shillong',  // Generated legacy intent slugs are retired to accurate canonical city/property pages.
   ...LEGACY_CHEAP_INTENT_REDIRECTS,
   ...LEGACY_GANGTOK_INTENT_REDIRECTS,
-  'cheap-car-rental-shillong': '/xtsy-rentals',
-  'budget-car-rental-shillong': '/xtsy-rentals',
+  'cheap-car-rental-shillong': '/tours/xtsy-rentals',
+  'budget-car-rental-shillong': '/tours/xtsy-rentals',
 
 };

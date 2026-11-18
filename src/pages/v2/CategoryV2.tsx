@@ -91,10 +91,10 @@ const CategoryV2 = () => {
     { to: '/meghalaya-waterfalls', label: 'Waterfalls in Meghalaya' },
     { to: '/meghalaya-viewpoints', label: 'Viewpoints in Meghalaya' },
     { to: '/things-to-do-in-meghalaya', label: 'Things to Do in Meghalaya' },
-    { to: '/meghalaya-tour-packages', label: 'Meghalaya Tour Packages' },
+    { to: '/tours/meghalaya-tour-packages', label: 'Meghalaya Tour Packages' },
     { to: '/best-time-to-visit-meghalaya', label: 'Best Time to Visit' },
     { to: '/meghalaya-travel-guide', label: 'Meghalaya Travel Guide' },
-    { to: '/best-hostel-in-shillong', label: 'Best Hostel in Shillong' },
+    { to: '/stays/best-hostel-in-shillong', label: 'Best Hostel in Shillong' },
     { to: '/tours', label: 'Northeast India Tours' },
     { to: '/meghalaya-photo-gallery', label: 'Photo Gallery' },
   ];
@@ -114,7 +114,7 @@ const CategoryV2 = () => {
         <script type="application/ld+json">{JSON.stringify(itemListSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
-      <PageShell cta={{ title: `Chase ${lcName} from the pines.`, sub: 'Stay at XTSY in New Shillong and our travel desk will line up the day with a local driver.', bookTo: '/meghalaya-tour-packages', bookLabel: 'View tour packages' }}>
+      <PageShell cta={{ title: `Chase ${lcName} from the pines.`, sub: 'Stay at XTSY in New Shillong and our travel desk will line up the day with a local driver.', bookTo: '/tours/meghalaya-tour-packages', bookLabel: 'View tour packages' }}>
         <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: 'Things to do', to: '/things-to-do-in-meghalaya' }, { label: `Meghalaya ${category.name}` }]} />
         <PageHero
           bg="#2F4A3F"
@@ -125,14 +125,14 @@ const CategoryV2 = () => {
           eyebrow={`Meghalaya guide · ${destinations.length} ${lcName}`}
           title={<>Best {category.name} in Meghalaya</>}
           text={category.description}
-          actions={<><Btn to="#list">See all {destinations.length}</Btn><Btn to="/meghalaya-tour-packages" kind="outline-light">Tour packages</Btn></>}
+          actions={<><Btn to="#list">See all {destinations.length}</Btn><Btn to="/tours/meghalaya-tour-packages" kind="outline-light">Tour packages</Btn></>}
           media={<Photo src={hero} alt={destinations[0]?.name ?? category.name} eager tone="pine" className="aspect-[628/480] rounded-[32px]" />}
         />
 
         <section className={`${PAD} py-10`}>
           <p className="m-0 max-w-[860px] text-[17px] leading-relaxed text-xt-mute">
             Meghalaya — the wettest place on Earth — is home to some of India's most spectacular {lcName}. Below are {destinations.length} of the best {lcName} to add to your itinerary, each with a complete travel guide covering how to reach, the best time to visit, entry details and insider tips. Most are an easy day trip from Shillong, where{' '}
-            <Link to="/best-hostel-in-shillong" className="font-bold text-xt-crimson">XTSY Travellers Hostel</Link> in New Shillong Township makes a comfortable, well-connected base.
+            <Link to="/stays/best-hostel-in-shillong" className="font-bold text-xt-crimson">XTSY Travellers Hostel</Link> in New Shillong Township makes a comfortable, well-connected base.
           </p>
         </section>
 

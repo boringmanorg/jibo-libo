@@ -1,16 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
-import HostelNearMe from "@/pages/HostelNearMe";
-import { buildRouteHead } from "@/lib/seo-head";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
+// Moved under /stays (owner approval, 18 Nov 2026); old address permanently redirects.
 export const Route = createFileRoute("/(stays)/hostel-near-me")({
-  head: () =>
-    buildRouteHead({
-      path: "/hostel-near-me",
-      title: "Hostel Near Me in Shillong — XTSY, New Shillong Township",
-      description:
-        "Hostel near you in Shillong? XTSY is on Mawdiangdiang Road, New Shillong Township, near NIFT and IIM: dorms from ₹399, 4.7★ from 252 Google reviews.",
-      keywords:
-        "hostel near me, hostel near me shillong, hostel near police bazar, closest hostel shillong",
-    }),
-  component: HostelNearMe,
+  beforeLoad: () => {
+    throw redirect({ to: "/stays/hostel-near-me", statusCode: 301 });
+  },
 });

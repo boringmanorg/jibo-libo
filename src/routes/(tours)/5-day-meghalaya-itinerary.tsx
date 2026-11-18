@@ -1,16 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { articleSchema } from "@/lib/seo/pageEntitySchema";
-import BlogItinerary5Day from "@/pages/destinations/BlogItinerary5Day";
-import { buildRouteHead } from "@/lib/seo-head";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
+// Moved under /tours (owner approval, 18 Nov 2026); old address permanently redirects.
 export const Route = createFileRoute("/(tours)/5-day-meghalaya-itinerary")({
-  head: () =>
-    buildRouteHead({
-      path: "/5-day-meghalaya-itinerary",
-      jsonLd: [articleSchema({ path: "/5-day-meghalaya-itinerary", headline: "5 Day Meghalaya Itinerary: Route, Cost, Stays | XTSY", description: "Five day Meghalaya plan covering Shillong, Cherrapunji, Mawlynnong, Dawki and the living root bridges, with day-by-day distances, budgets and where to stay." })],
-      title: "5 Day Meghalaya Itinerary: Route, Cost, Stays | XTSY",
-      description:
-        "Five day Meghalaya plan covering Shillong, Cherrapunji, Mawlynnong, Dawki and the living root bridges, with day-by-day distances, budgets and where to stay.",
-    }),
-  component: BlogItinerary5Day,
+  beforeLoad: () => {
+    throw redirect({ to: "/tours/5-day-meghalaya-itinerary", statusCode: 301 });
+  },
 });

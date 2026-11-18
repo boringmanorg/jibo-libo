@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 
 /**
- * /hostel-near-me — geo-intent landing page.
+ * /stays/hostel-near-me — geo-intent landing page.
  * Distinct positioning from /hostel-booking: this page answers the
  * "hostels near me / near Police Bazar / near Guwahati airport" query
  * with unique location, distance, and transit copy.
@@ -280,7 +280,7 @@ const HostelNearMe = memo(() => {
           <div className="container mx-auto max-w-5xl">
             <h2 className="text-3xl font-bold mb-6">Explore your options</h2>
             <div className="grid gap-4 md:grid-cols-3">
-              <Link to="/best-hostel-in-shillong" className="rounded-xl border p-5 hover:border-primary transition">
+              <Link to="/stays/best-hostel-in-shillong" className="rounded-xl border p-5 hover:border-primary transition">
                 <div className="font-semibold mb-1">Best Hostel in Shillong</div>
                 <div className="text-sm text-muted-foreground">Full comparison of every verified hostel.</div>
               </Link>
@@ -288,15 +288,15 @@ const HostelNearMe = memo(() => {
                 <div className="font-semibold mb-1">Book a Hostel Online</div>
                 <div className="text-sm text-muted-foreground">Instant confirmation, direct rates.</div>
               </Link>
-              <Link to="/hotels-in-shillong" className="rounded-xl border p-5 hover:border-primary transition">
+              <Link to="/stays/hotels-in-shillong" className="rounded-xl border p-5 hover:border-primary transition">
                 <div className="font-semibold mb-1">Hotels in Shillong</div>
                 <div className="text-sm text-muted-foreground">Prefer a private room? Compare rates.</div>
               </Link>
-              <Link to="/female-travellers" className="rounded-xl border p-5 hover:border-primary transition">
+              <Link to="/stays/female-travellers" className="rounded-xl border p-5 hover:border-primary transition">
                 <div className="font-semibold mb-1">Female Travellers</div>
                 <div className="text-sm text-muted-foreground">Female-only dorm + safety guide.</div>
               </Link>
-              <Link to="/experience-by-xtsy" className="rounded-xl border p-5 hover:border-primary transition">
+              <Link to="/stays/experience-by-xtsy" className="rounded-xl border p-5 hover:border-primary transition">
                 <div className="font-semibold mb-1">Experience by XTSY</div>
                 <div className="text-sm text-muted-foreground">India's Most Romantic Couple En-suite — same address.</div>
               </Link>

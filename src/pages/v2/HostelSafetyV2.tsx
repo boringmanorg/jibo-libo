@@ -41,7 +41,7 @@ export default function HostelSafetyV2() {
           <h2 className="xt-display m-0 text-[44px] leading-none">Travelling solo as a woman?</h2>
           <p className="m-0 text-[17px] leading-relaxed text-xt-mute">Our 4-bed women-only dorm is {inr(roomPrice('4-bed-female-only-dorm').now)} per bed per night, GST included. Secure dorm access, personal lockers, CCTV in common areas and female staff support help make it a comfortable base.</p>
           <p className="m-0 text-[16px] leading-relaxed text-xt-mute">Ask the desk for local guidance or trusted transport. No accommodation can guarantee complete safety; report discomfort or suspicious behaviour immediately.</p>
-          <div><Btn to="/female-travellers" kind="outline">Women-only stays</Btn></div>
+          <div><Btn to="/stays/female-travellers" kind="outline">Women-only stays</Btn></div>
         </div>
       </section>
       <section className={`${PAD} grid gap-10 py-14 lg:grid-cols-2`}>

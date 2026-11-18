@@ -1,18 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { collectionSchema } from "@/lib/seo/pageEntitySchema";
-import MeghalayaTourPackages from "@/pages/destinations/MeghalayaTourPackages";
-import { buildRouteHead } from "@/lib/seo-head";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
+// Moved under /tours (owner approval, 18 Nov 2026); old address permanently redirects.
 export const Route = createFileRoute("/(tours)/meghalaya-tour-packages")({
-  head: () =>
-    buildRouteHead({
-      path: "/meghalaya-tour-packages",
-      jsonLd: [collectionSchema({ path: "/meghalaya-tour-packages", name: "Meghalaya Tour Package: Saturday Group 4D/3N ₹9,000 | XTSY", description: "Meghalaya group tour, 4D/3N for ₹9,000 per person, 1st and 3rd Saturday: Guwahati pickup, Shillong hostel stay, Cherrapunji and Jowai, transport and breakfast." })],
-      title: "Meghalaya Tour Package: Saturday Group 4D/3N ₹9,000 | XTSY",
-      description:
-        "Meghalaya group tour, 4D/3N for ₹9,000 per person, 1st and 3rd Saturday: Guwahati pickup, Shillong hostel stay, Cherrapunji and Jowai, transport and breakfast.",
-      keywords:
-        "Meghalaya tour package, Meghalaya adventure tour, adventure tours in Northeast India, Shillong tour, Cherrapunji tour, Jowai tour, Guwahati to Shillong tour",
-    }),
-  component: MeghalayaTourPackages,
+  beforeLoad: () => {
+    throw redirect({ to: "/tours/meghalaya-tour-packages", statusCode: 301 });
+  },
 });

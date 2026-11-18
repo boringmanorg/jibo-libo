@@ -21,12 +21,12 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/experience-by-xtsy</loc>
+    <loc>https://xtsy.one/stays/experience-by-xtsy</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/pet-friendly</loc>
+    <loc>https://xtsy.one/stays/pet-friendly</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -36,7 +36,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/female-travellers</loc>
+    <loc>https://xtsy.one/stays/female-travellers</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -51,12 +51,12 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/work-from-home</loc>
+    <loc>https://xtsy.one/stays/workation</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/xtsy-rentals</loc>
+    <loc>https://xtsy.one/tours/xtsy-rentals</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -66,7 +66,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/xtsy-adventure-campsite-dawki</loc>
+    <loc>https://xtsy.one/stays/campsite-dawki</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -106,27 +106,32 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://xtsy.one/tours/meghalaya-tour-packages</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://xtsy.one/expeditions</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/adventure-tours-northeast-india</loc>
+    <loc>https://xtsy.one/tours/adventure-tours-northeast-india</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/meghalaya-adventure-tour</loc>
+    <loc>https://xtsy.one/tours/meghalaya-adventure-tour</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/motorbike-expedition-northeast-india</loc>
+    <loc>https://xtsy.one/tours/motorbike-expedition-northeast-india</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/4x4-expedition-meghalaya</loc>
+    <loc>https://xtsy.one/tours/4x4-expedition-meghalaya</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -141,17 +146,17 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/group-bookings-meghalaya</loc>
+    <loc>https://xtsy.one/stays/group-bookings-meghalaya</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/meghalaya-couple-tour-package</loc>
+    <loc>https://xtsy.one/tours/meghalaya-couple-tour-package</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/shillong-tour-package</loc>
+    <loc>https://xtsy.one/tours/shillong-tour-package</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -166,12 +171,17 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/5-day-meghalaya-itinerary</loc>
+    <loc>https://xtsy.one/tours/3-day-meghalaya-itinerary</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/budget-trip-to-meghalaya</loc>
+    <loc>https://xtsy.one/tours/5-day-meghalaya-itinerary</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://xtsy.one/tours/budget-trip-to-meghalaya</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -181,32 +191,32 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://xtsy.one/stays/best-hostel-in-shillong</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://xtsy.one/budget-hostels-shillong</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/hotels-in-shillong</loc>
+    <loc>https://xtsy.one/stays/hotels-in-shillong</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/homestays-in-shillong</loc>
+    <loc>https://xtsy.one/stays/homestays-in-shillong</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/luxury-glamping-shillong</loc>
+    <loc>https://xtsy.one/stays/luxury-glamping-shillong</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/destination-wedding-shillong</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://xtsy.one/restaurant-in-shillong</loc>
+    <loc>https://xtsy.one/tours/destination-wedding-shillong</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -221,7 +231,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/partner-stays</loc>
+    <loc>https://xtsy.one/stays/partner-stays</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -246,7 +256,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xtsy.one/hostel-near-me</loc>
+    <loc>https://xtsy.one/stays/hostel-near-me</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

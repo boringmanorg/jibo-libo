@@ -25,11 +25,11 @@ import path from 'path';
 // Curated top SEO routes (kept in sync with scripts/postDeploySchemaCheck.ts).
 // Inlined rather than imported so this script has no module side-effects.
 const TOP_SEO_ROUTES = [
-  '/', '/best-hostel-in-shillong', '/hotels-in-shillong', '/homestays-in-shillong',
-  '/luxury-glamping-shillong', '/restaurant-in-shillong', '/meghalaya-tour-packages',
-  '/meghalaya-couple-tour-package', '/shillong-tour-package', '/things-to-do-in-meghalaya',
-  '/best-time-to-visit-meghalaya', '/3-day-meghalaya-itinerary', '/5-day-meghalaya-itinerary',
-  '/budget-trip-to-meghalaya', '/hidden-places-in-meghalaya', '/tours', '',
+  '/', '/stays/best-hostel-in-shillong', '/stays/hotels-in-shillong', '/stays/homestays-in-shillong',
+  '/stays/luxury-glamping-shillong', '/tab-bistro', '/tours/meghalaya-tour-packages',
+  '/tours/meghalaya-couple-tour-package', '/tours/shillong-tour-package', '/things-to-do-in-meghalaya',
+  '/best-time-to-visit-meghalaya', '/tours/3-day-meghalaya-itinerary', '/tours/5-day-meghalaya-itinerary',
+  '/tours/budget-trip-to-meghalaya', '/hidden-places-in-meghalaya', '/tours', '',
   '/about', '/faq', '/tab-bistro', '/tab-bistro/catering',
 ];
 

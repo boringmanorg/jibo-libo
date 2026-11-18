@@ -37,7 +37,7 @@ const APP_ROUTES = [
   '/franchise', '/franchise', '/franchise/login', '/unsubscribe', '/terms', '/terms-of-service',
   '/privacy-policy', '/pricing-cancellation-policy', '/safety-house-rules', '/contact', '/faq', '/guides',
   '/tours', '/tours?group=northeast', '/destinations', '/expeditions', '/tab-bistro', '/tab-bistro/catering',
-  '', '/merch', '/xtsy-rentals', '/experience-by-xtsy', '/work-from-home', '/female-travellers', '/pet-friendly',
+  '', '/merch', '/tours/xtsy-rentals', '/stays/experience-by-xtsy', '/stays/workation', '/stays/female-travellers', '/stays/pet-friendly',
   '/cheap-hostel-shillong', '/cheap-hostel-in-shillong', '/cheap-hostels-shillong',
   '/travel-guide/guwahati-to-shillong-transport', '/travel-guide/how-to-reach-meghalaya',
   '/travel-guide/meghalaya-for-international-tourists',

@@ -6,7 +6,7 @@ import xtsyMilkyway2 from '@/assets/xtsy-270-milkyway2.jpeg';
 import xtsyInterior from '@/assets/xtsy-270-interior.jpeg';
 
 export const XTSY270_DATA = {
-  path: '/experience-by-xtsy',
+  path: '/stays/experience-by-xtsy',
   canonicalUrl: 'https://xtsy.one/experience-by-xtsy',
   name: "Experience by XTSY – India's Most Romantic Couple En-suite",
   shortName: 'Experience by XTSY',

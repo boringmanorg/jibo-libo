@@ -1,14 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
-import TabBistro from "@/pages/TabBistro";
-import { buildRouteHead } from "@/lib/seo-head";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
+// Merged into /tab-bistro (owner approval, 18 Nov 2026); old address permanently redirects.
 export const Route = createFileRoute("/(restaurant)/restaurant-in-shillong")({
-  head: () =>
-    buildRouteHead({
-      path: "/restaurant-in-shillong",
-      title: "Restaurant in Shillong: TAB Bistro by XTSY",
-      description:
-        "TAB Bistro by XTSY in New Shillong Township: explore the menu, breakfast and dinner hours, lunch preorders and WhatsApp table requests.",
-    }),
-  component: TabBistro,
+  beforeLoad: () => {
+    throw redirect({ to: "/tab-bistro", statusCode: 301 });
+  },
 });

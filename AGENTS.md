@@ -42,4 +42,4 @@
 - Prerender only visitor-identical public pages listed explicitly in vite.config.ts with auto-discovery off; the router keeps trailingSlash "preserve" because the prerenderer requests "/page/" and would otherwise loop on redirects.
 - Route head()/loader helpers must not import the programmatic guide library; route options are bundled into the main script on every page.
 
-- Group route files in pathless folders `(stays)`, `(tours)`, `(restaurant)`, `(guides)`, `(company)`, `(admin)`; group folders never change public URLs, so new pages go in the matching group.
+- Group route files in pathless folders `(stays)`, `(tours)`, `(restaurant)`, `(guides)`, `(company)`, `(admin)`; moved pages live under real `/stays/*` and `/tours/*` folders, and every moved old address is a 301 stub listed in `src/data/movedPages.ts`, which sitemaps and the guide directory exclude.

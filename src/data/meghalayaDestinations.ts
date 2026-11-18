@@ -158,7 +158,7 @@ export const meghalayaDestinations: MeghalayaDestination[] = [
       { to: '/destinations/meghalaya/dawki', label: 'Dawki destination guide', context: 'Compare a river outing with your lake visit.' },
       { to: '/destinations/meghalaya/shillong/elephant-falls', label: 'Elephant Falls travel guide', context: 'Read about the waterfall mentioned in the sightseeing tips above.' },
       { to: '/destinations/meghalaya/shillong/shillong-peak', label: 'Shillong Peak travel guide', context: 'Check the viewpoint before planning your sightseeing circuit.' },
-      { to: '/3-day-meghalaya-itinerary', label: '3-day Meghalaya itinerary', context: 'See how to organise a short trip from a Shillong base.' },
+      { to: '/tours/3-day-meghalaya-itinerary', label: '3-day Meghalaya itinerary', context: 'See how to organise a short trip from a Shillong base.' },
     ],
     featured: true,
     deepDive: [

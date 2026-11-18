@@ -177,7 +177,7 @@ describe('SEO regression: budget hostel canonical migration', () => {
     expect(RECOVERY_REDIRECTS['cheap-hostel-in-shillong']).toBe('/budget-hostels-shillong');
     expect(RECOVERY_REDIRECTS['cheap-hostels-shillong']).toBe('/budget-hostels-shillong');
     expect(RECOVERY_REDIRECTS['budget-hostel-shillong']).toBe('/budget-hostels-shillong');
-    expect(RECOVERY_REDIRECTS['remote-work-stay-shillong']).toBe('/work-from-home');
+    expect(RECOVERY_REDIRECTS['remote-work-stay-shillong']).toBe('/stays/workation');
   });
 
   it('does not publish a singular budget-hostel duplicate page', async () => {
@@ -192,8 +192,8 @@ describe('SEO regression: budget hostel canonical migration', () => {
     expect(RECOVERY_REDIRECTS['remote-work-stay-nongjrong']).toBe('/destinations/meghalaya/shillong/nongjrong-sunrise-viewpoint');
     expect(RECOVERY_REDIRECTS['remote-work-stay-dawki']).toBe('/destinations/meghalaya/dawki');
     expect(RECOVERY_REDIRECTS['bike-tour-package-nagaland']).toBe('/expeditions/motorbike/guwahati-to-kohima');
-    expect(RECOVERY_REDIRECTS['school-tour-mizoram']).toBe('/group-bookings-meghalaya');
-    expect(RECOVERY_REDIRECTS['self-drive-itinerary-shillong']).toBe('/xtsy-rentals');
+    expect(RECOVERY_REDIRECTS['school-tour-mizoram']).toBe('/stays/group-bookings-meghalaya');
+    expect(RECOVERY_REDIRECTS['self-drive-itinerary-shillong']).toBe('/tours/xtsy-rentals');
     expect(RECOVERY_REDIRECTS['family-tour-tawang']).toBe('/destinations/arunachal-pradesh/tawang');
     expect(RECOVERY_REDIRECTS['photography-tour-tripura']).toBe('/destinations/tripura');
   });
@@ -216,8 +216,8 @@ describe('SEO regression: budget hostel canonical migration', () => {
     expect(RECOVERY_REDIRECTS['cheap-hostel-in-gangtok']).toBe('/destinations');
     expect(RECOVERY_REDIRECTS['hostel-in-gangtok-tonight']).toBe('/destinations');
     expect(RECOVERY_REDIRECTS['best-hostel-in-gangtok']).toBe('/destinations');
-    expect(RECOVERY_REDIRECTS['cheap-car-rental-shillong']).toBe('/xtsy-rentals');
-    expect(RECOVERY_REDIRECTS['budget-car-rental-shillong']).toBe('/xtsy-rentals');
+    expect(RECOVERY_REDIRECTS['cheap-car-rental-shillong']).toBe('/tours/xtsy-rentals');
+    expect(RECOVERY_REDIRECTS['budget-car-rental-shillong']).toBe('/tours/xtsy-rentals');
   });
 
 
@@ -249,7 +249,7 @@ describe('SEO regression: budget hostel canonical migration', () => {
 
   it('registers public static pages and data-driven expedition routes for sitemap generation', async () => {
     const { STATIC_ROUTES } = await import('../src/utils/seoSlugRegistry');
-    for (const route of ['/contact', '/guides', '/catering-shillong', '/meghalaya-festivals', '/partner-stays', '/backpacking-india', '/places-to-visit-in-meghalaya', '/travel-guide/guwahati-to-shillong-transport', '/travel-guide/how-to-reach-meghalaya', '/travel-guide/meghalaya-for-international-tourists', '/budget-hostels-shillong']) {
+    for (const route of ['/contact', '/guides', '/catering-shillong', '/meghalaya-festivals', '/stays/partner-stays', '/backpacking-india', '/places-to-visit-in-meghalaya', '/travel-guide/guwahati-to-shillong-transport', '/travel-guide/how-to-reach-meghalaya', '/travel-guide/meghalaya-for-international-tourists', '/budget-hostels-shillong']) {
       expect(STATIC_ROUTES).toContain(route);
     }
     expect(STATIC_ROUTES).toContain('/expeditions/motorbike/guwahati-to-shillong');

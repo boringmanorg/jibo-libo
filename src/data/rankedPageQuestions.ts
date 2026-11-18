@@ -23,8 +23,8 @@ export const RANKED_PAGE_QUESTIONS: Record<string, RankedQuestion[]> = {
     { q: 'Are XTSY stays in other towns owned by XTSY?', a: partnerQuestion.a },
     { q: 'Can I eat at XTSY?', a: `TAB Bistro by XTSY is on site. ${BISTRO_HOURS_SENTENCE}` },
   ],
-  '/experience-by-xtsy': suiteQuestions,
-  '/work-from-home': [
+  '/stays/experience-by-xtsy': suiteQuestions,
+  '/stays/workation': [
     { q: 'What is included in XTSY’s Shillong workation plans?', a: 'The page lists weekly, monthly and quarterly plans with a stay, Wi-Fi, workspace access and breakfast. Laundry and other inclusions vary by plan, so confirm the selected plan with the desk.' },
     { q: 'Where is the workation stay?', a: 'The XTSY workation stay is at XTSY Travellers Hostel in New Shillong Township, with TAB Bistro on site for meals and coffee.' },
     { q: 'Can I combine remote work with Meghalaya day trips?', a: 'Yes. The desk can help plan time off around Shillong, Sohra, Dawki and Mawlynnong. Keep sightseeing separate from working hours and confirm transport for your dates.' },
@@ -39,7 +39,7 @@ export const RANKED_PAGE_QUESTIONS: Record<string, RankedQuestion[]> = {
     partnerQuestion,
     enquiryQuestion,
   ],
-  '/luxury-glamping-shillong': suiteQuestions,
+  '/stays/luxury-glamping-shillong': suiteQuestions,
   '/3-day-mizoram-itinerary': [
     { q: 'Can I adapt the three-day Mizoram itinerary?', a: 'Yes. Treat it as a starting plan and confirm the stops, travel time and accommodation for your arrival and departure dates with the desk.' },
     partnerQuestion,
@@ -55,7 +55,7 @@ export const RANKED_PAGE_QUESTIONS: Record<string, RankedQuestion[]> = {
     partnerQuestion,
     enquiryQuestion,
   ],
-  '/best-hostel-in-shillong': [
+  '/stays/best-hostel-in-shillong': [
     { q: 'Which dorm options does XTSY offer in Shillong?', a: 'XTSY offers 8-bed and 6-bed mixed dorms and a 4-bed women-only dorm. Private options include the King Double room and Experience by XTSY. Confirm availability for your dates with the desk.' },
     { q: 'Is XTSY in Police Bazaar?', a: 'No. XTSY is on Mawdiangdiang Road in New Shillong Township, near NIFT Shillong and IIM Shillong. Plan a cab journey if you want to visit Police Bazaar.' },
     { q: 'How do I enquire about a hostel bed?', a: 'Choose your room and dates on the XTSY booking page, enter your guest details and send the WhatsApp enquiry. Availability and the booking are confirmed by the desk, not by submitting the enquiry alone.' },
@@ -66,7 +66,7 @@ export const RANKED_PAGE_QUESTIONS: Record<string, RankedQuestion[]> = {
     { q: 'Should I allow extra time for Nongriat?', a: 'Yes. The trail starts at Tyrna and includes thousands of steps. The itinerary keeps time for the walk and recovery instead of combining a demanding trek and a long onward drive in one afternoon.' },
     { q: 'Why does the ten-day plan include a buffer?', a: 'Rain, visibility and road conditions can change sightseeing plans. A local or buffer day and a return to Shillong before departure reduce the risk of rushing a long transfer.' },
   ],
-  '/destination-wedding-shillong': [
+  '/tours/destination-wedding-shillong': [
     { q: 'Where is XTSY’s Shillong wedding venue?', a: 'The venue is at XTSY in New Shillong Township, with mountain-view spaces, TAB Bistro catering, guest accommodation and event coordination.' },
     { q: 'Can wedding guests stay at XTSY?', a: 'Dorms, private rooms and Experience by XTSY provide on-site stay options. Share the guest list and dates so the desk can confirm the available accommodation mix.' },
     { q: 'What details are needed for a wedding quote?', a: 'Share your dates, guest count, event schedule, catering preferences, accommodation needs and décor requirements. Larger or multi-day celebrations are quoted around the plan rather than given an automatic fixed price.' },

@@ -78,12 +78,12 @@ const MeghalayaPhotoGallery = () => {
 
           <section className="mt-12 bg-primary/10 rounded-2xl p-8 text-center">
             <h2 className="text-2xl font-bold text-foreground">Experience These Places Yourself</h2>
-            <Link to="/meghalaya-tour-packages" className="mt-4 inline-block px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium">View Tour Packages</Link>
+            <Link to="/tours/meghalaya-tour-packages" className="mt-4 inline-block px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium">View Tour Packages</Link>
           </section>
           <nav className="mt-8 border-t border-border pt-8">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               <Link to="/things-to-do-in-meghalaya" className="text-sm text-primary hover:underline">All Places to Visit</Link>
-              <Link to="/meghalaya-tour-packages" className="text-sm text-primary hover:underline">Tour Packages</Link>
+              <Link to="/tours/meghalaya-tour-packages" className="text-sm text-primary hover:underline">Tour Packages</Link>
             </div>
           </nav>
         </div>

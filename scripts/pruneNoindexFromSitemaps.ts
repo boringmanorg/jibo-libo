@@ -9,6 +9,7 @@ import { isIndexableSEOSlug } from '../src/data/seoIndexPolicy';
 import { RECOVERY_REDIRECTS } from '../src/data/seoAffectedSlugs';
 import { STATIC_ROUTES } from '../src/utils/seoSlugRegistry';
 import { ALL_SEO_PAGES } from '../src/data/seoPages';
+import { MOVED_PAGES } from '../src/data/movedPages';
 
 const PUBLIC = path.resolve('public');
 const NOINDEX_STATIC_ROUTES = new Set(['book', 'book/select', 'book/campsite', 'gallery', 'install']);
@@ -21,9 +22,11 @@ for (const f of fs.readdirSync(PUBLIC).filter((x) => /^sitemap.*\.xml$/.test(x))
   const out = xml.replace(/\s*<url>\s*<loc>https:\/\/xtsy\.one\/([^<]*)<\/loc>[\s\S]*?<\/url>/g, (m, slug: string) => {
     const cleanSlug = slug.endsWith('/') ? slug.slice(0, -1) : slug;
     const isKnownStaticRoute = STATIC_ROUTE_SET.has(cleanSlug);
+    // Owner-approved moved pages were indexable at their old address; keep their new address listed.
+    if (Object.values(MOVED_PAGES).includes('/' + cleanSlug)) return m;
     // Like programmaticPayload, active guide content wins over a stale recovery alias.
     const isRecoveryRedirect = !isKnownStaticRoute && !ACTIVE_GUIDE_SET.has(cleanSlug) && Object.prototype.hasOwnProperty.call(RECOVERY_REDIRECTS, cleanSlug);
-    if (!isIndexableSEOSlug(cleanSlug, ALL_SEO_PAGES.find((page) => page.slug === cleanSlug)) || NOINDEX_STATIC_ROUTES.has(cleanSlug) || isRecoveryRedirect) {
+    if (!isIndexableSEOSlug(cleanSlug, ALL_SEO_PAGES.find((page) => page.slug === cleanSlug)) || NOINDEX_STATIC_ROUTES.has(cleanSlug) || isRecoveryRedirect || ('/' + cleanSlug) in MOVED_PAGES) {
       removed++;
       return '';
     }

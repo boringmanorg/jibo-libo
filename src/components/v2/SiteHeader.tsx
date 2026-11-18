@@ -14,11 +14,11 @@ import { inr, lowestDormPrice } from './pricing';
 const IntelligentSearchOverlay = lazy(() => import('@/components/IntelligentSearchOverlay'));
 
 export const MAIN_NAV = [
-  { to: '/best-hostel-in-shillong', label: 'Stays' },
-  { to: '/experience-by-xtsy', label: 'Experience by XTSY' },
+  { to: '/stays/best-hostel-in-shillong', label: 'Stays' },
+  { to: '/stays/experience-by-xtsy', label: 'Experience by XTSY' },
   { to: '/tours', label: 'Tours' },
   { to: '/tab-bistro', label: 'TAB Bistro' },
-  { to: '/work-from-home', label: 'Workation' },
+  { to: '/stays/workation', label: 'Workation' },
   { to: '/things-to-do-in-meghalaya', label: 'Guides' },
   { to: '/merch', label: 'Merch' },
 ];
@@ -28,11 +28,11 @@ const MENU_GROUPS = [
     title: 'Stay',
     links: [
       { to: '/book', label: 'Book a room' },
-      { to: '/experience-by-xtsy', label: 'Experience by XTSY' },
-      { to: '/xtsy-adventure-campsite-dawki', label: 'Dawki camping (partner)' },
-      { to: '/pet-friendly', label: 'Pet-friendly stays' },
-      { to: '/female-travellers', label: 'Women safe stays' },
-      { to: '/work-from-home', label: 'Workation' },
+      { to: '/stays/experience-by-xtsy', label: 'Experience by XTSY' },
+      { to: '/stays/campsite-dawki', label: 'Dawki camping (partner)' },
+      { to: '/stays/pet-friendly', label: 'Pet-friendly stays' },
+      { to: '/stays/female-travellers', label: 'Women safe stays' },
+      { to: '/stays/workation', label: 'Workation' },
     ],
   },
   {
@@ -40,8 +40,8 @@ const MENU_GROUPS = [
     links: [
       { to: '/tours', label: 'Tour packages' },
       { to: '/expeditions', label: 'Expeditions' },
-      { to: '/group-bookings-meghalaya', label: 'Group bookings' },
-      { to: '/xtsy-rentals', label: 'Bike & car rentals' },
+      { to: '/stays/group-bookings-meghalaya', label: 'Group bookings' },
+      { to: '/tours/xtsy-rentals', label: 'Bike & car rentals' },
       { to: '/plan-trip-with-ai', label: 'Plan a trip with AI' },
     ],
   },
@@ -58,7 +58,7 @@ const MENU_GROUPS = [
     links: [
       { to: '/tab-bistro', label: 'TAB Bistro' },
       { to: '/catering-shillong', label: 'Catering' },
-      { to: '/destination-wedding-shillong', label: 'Destination weddings' },
+      { to: '/tours/destination-wedding-shillong', label: 'Destination weddings' },
       { to: '/merch', label: 'XTSY merch' },
       { to: '/about', label: 'About us' },
       { to: '/faq', label: 'FAQs' },
