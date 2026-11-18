@@ -1,5 +1,10 @@
 # Roadmap — Master SEO prompt (xtsy.one)
 
+## Company, dining, database and tour-rate checks — 18 November 2026
+- [x] Identified eight failing unit checks: stale canonical company-domain expectation, restaurant/SEO registry timeouts, generated database-helper existence checks, and obsolete seven-day tour-rate expectation.
+- [x] Match checks to the approved canonical domains and ₹16,800 seven-day rate; keep generated backend files untouched while enforcing no application wiring.
+- [x] All 284 unit checks pass (two environment-dependent checks skipped); company, both restaurant pages and seven-day tour return HTTP 200 with no browser errors or guest database requests. Removed the inaccurate Khasi-inspired claim from the restaurant route description and extended the dining guard to cover it. Approved prices, URLs, database state and consent tracking unchanged; build OK, not published.
+
 ## Sourced transport reference and outreach shortlist — 18 November 2026
 - [x] Expanded the existing Guwahati–Shillong guide into a 1,566-word sourced Meghalaya arrival and road-planning reference; URL and XTSY catalogue prices unchanged. Unverified operator timetable/fare claims replaced by quote checks.
 - [x] Delivered a 14-prospect public-source report plus four unresolved possibilities, with contacts, evidence, tailored angles and eligibility/fee uncertainty; no outreach sent. Final v2 report/CSV in Files, grouped with XTSY guest growth.

@@ -8,7 +8,7 @@ export const Route = createFileRoute("/restaurant-in-shillong")({
       path: "/restaurant-in-shillong",
       title: "Restaurant in Shillong: TAB Bistro by XTSY",
       description:
-        "TAB Bistro by XTSY serves Khasi-inspired plates, cafe classics and late breakfasts in New Shillong Township. See the menu, timings and how to reserve a table.",
+        "TAB Bistro by XTSY in New Shillong Township: explore the menu, breakfast and dinner hours, lunch preorders and WhatsApp table requests.",
     }),
   component: TabBistro,
 });

@@ -16,7 +16,7 @@ describe('Owner company corrections, 14 November 2026', () => {
     expect(Object.keys(BRAND)).not.toContain('gstin');
   });
   it('includes both core domains and franchise/SaaS business scope', () => {
-    expect(BRAND.coreDomains).toEqual(['https://xtsy.one', 'https://www.posbyxtsy.club']);
+    expect(BRAND.coreDomains).toEqual(['https://xtsy.one', 'https://posbyxtsy.club']);
     const section = aboutXTSYGroupSection();
     expect(section.content).toContain('franchise');
     expect(section.content).toContain('SaaS');

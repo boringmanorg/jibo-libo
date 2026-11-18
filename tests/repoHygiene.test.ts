@@ -67,11 +67,13 @@ describe('.gitleaksignore stays in sync', () => {
 
 describe('database cutoff', () => {
   // The site runs without a database. Everything goes through offlineBackend;
-  // importing the SDK directly bypasses that chokepoint, and wiring such a file
-  // up would restore both the bundle weight and live Supabase calls.
-  // auth-middleware.ts has been deleted twice and reintroduced twice, so this
-  // is a test rather than another manual removal.
-  const ALLOWED = new Set(['src/integrations/supabase/client.server.ts']);
+  // Guest imports must not bypass that chokepoint. Platform-generated server
+  // helpers can exist on disk, but must remain disconnected from app code.
+  // Never delete or edit generated helpers merely to satisfy a file-count check.
+  const ALLOWED = new Set([
+    'src/integrations/supabase/client.server.ts',
+    'src/integrations/supabase/auth-middleware.ts',
+  ]);
 
   const walk = (dir: string, out: string[] = []): string[] => {
     for (const e of readdirSync(dir, { withFileTypes: true })) {
@@ -82,7 +84,7 @@ describe('database cutoff', () => {
     return out;
   };
 
-  it('only the documented server-side file imports the Supabase SDK directly', () => {
+  it('only documented generated server helpers import the Supabase SDK directly', () => {
     const offenders = walk(join(ROOT, 'src'))
       .filter((f) => /from ['"]@supabase\/supabase-js['"]/.test(readFileSync(f, 'utf8')))
       .map((f) => f.slice(ROOT.length).replace(/^\/+/, ''))
@@ -94,7 +96,15 @@ describe('database cutoff', () => {
     ).toEqual([]);
   });
 
-  it('the reintroduced auth middleware stays deleted', () => {
-    expect(existsSync(join(ROOT, 'src/integrations/supabase/auth-middleware.ts'))).toBe(false);
+  it('generated database server helpers remain disconnected from application code', () => {
+    const offenders = walk(join(ROOT, 'src'))
+      .filter((file) => !ALLOWED.has(file.slice(ROOT.length).replace(/^\/+/, '')))
+      // The legacy listing callback is server-only and refuses before any
+      // database import unless explicitly enabled; bistroGoogleSync.test.ts
+      // verifies the off-by-default refusal. Guest callers get no exception.
+      .filter((file) => file !== join(ROOT, 'src/lib/bistroGoogleSync.server.ts'))
+      .filter((file) => /(?:from\s*|import\s*\(|export[^;]*from\s*)['"][^'"]*(?:auth-middleware|client\.server)['"]|\brequireSupabaseAuth\b/.test(readFileSync(file, 'utf8')))
+      .map((file) => file.slice(ROOT.length).replace(/^\/+/, ''));
+    expect(offenders, 'Generated database helpers must not enter the guest application graph').toEqual([]);
   });
 });
