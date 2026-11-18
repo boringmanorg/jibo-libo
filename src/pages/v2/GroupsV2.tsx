@@ -27,7 +27,7 @@ const STEPS = [
 
 const FAQS = [
   { q: 'What is the minimum group size for a Meghalaya group tour?', a: 'XTSY runs group tours and group bookings for 6 to 60 travellers. Smaller crews of 4–5 can also be quoted — just share your dates and headcount on WhatsApp.' },
-  { q: 'Do you offer group discounts and per-person rates?', a: 'Yes. Group tour packages, whole-dorm stays and corporate offsites are priced per person, with the rate improving as group size grows. Direct booking saves 20–30% versus OTAs.' },
+  { q: 'Do you offer group discounts and per-person rates?', a: 'Yes. Group tour packages, whole-dorm stays and corporate offsites are priced per person, with the rate improving as group size grows. Booking direct includes desk coordination on WhatsApp and a GST invoice.' },
   { q: 'Can you handle corporate offsites and company billing?', a: 'Corporate offsites can include conference space, AV and F&B. Share your company billing requirements with the desk before confirming.' },
   { q: 'Can a whole group stay together at XTSY Travellers Hostel?', a: 'Yes — you can buy out an entire dormitory or book a block of rooms at XTSY Travellers Hostel in New Shillong Township so your group stays together, with common areas reserved for your crew.' },
   { q: 'Do you arrange group catering for trips and events?', a: 'TAB Bistro by XTSY provides set menus, buffets and on-site catering for groups, with veg, non-veg and Jain options for offsites, college trips and celebrations.' },
@@ -68,7 +68,7 @@ export default function GroupsV2() {
         <PageHero
           eyebrow="Groups of 6–60 · Friends · Colleges · Corporates"
           title="One team for the whole group."
-          text="Custom group tour packages, corporate offsites, whole-dorm stays at XTSY Travellers Hostel and group catering by TAB Bistro. Quote within ~1 hour · per-person group rates · direct booking saves 20–30% vs OTAs."
+          text="Custom group tour packages, corporate offsites, whole-dorm stays at XTSY Travellers Hostel and group catering by TAB Bistro. Quote within ~1 hour · per-person group rates · direct desk coordination."
           actions={<><Btn to={GROUP_WA}>Get a group quote</Btn><Btn to="/book" kind="outline">Book a group stay</Btn></>}
           media={<Photo src={COVERS.groups} alt="The games room at XTSY Travellers Hostel, New Shillong Township" eager tone="sand" className="aspect-[628/520] rounded-[32px]" />}
         />

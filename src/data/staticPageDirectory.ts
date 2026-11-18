@@ -244,7 +244,7 @@ export const STATIC_PAGE_DIRECTORY = [
   {
     "path": "/tours",
     "title": "Northeast India Tour Packages from ₹7,999 | XTSY Travel",
-    "description": "30+ curated Meghalaya, Nagaland, Assam, Arunachal & Sikkim tours from ₹7,999. Living root bridges, Dawki, tribal festivals. Book direct and save 20-30% vs OTAs."
+    "description": "30+ curated Meghalaya, Nagaland, Assam, Arunachal & Sikkim tours from ₹7,999. Living root bridges, Dawki, tribal festivals. Private itineraries quoted by the XTSY desk."
   },
   {
     "path": "/travel-guide/guwahati-to-shillong-transport",

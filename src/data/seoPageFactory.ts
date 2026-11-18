@@ -250,7 +250,7 @@ export function buildRoutePage(slug: string): SEOPageData {
     ctaText: 'Book Stay on Arrival',
     ctaLink: '/book',
     keywords: [`${fromLabel} to ${toLabel}`, `how to reach ${toLabel}`, `${toLabel} travel`, 'northeast india travel'],
-    quickAnswer: `Fastest route: Fly to Guwahati (GAU), then drive 3–4 hrs to ${toLabel}. Total time ~5–8 hrs. Book your ${toLabel} stay at XTSY for guaranteed 24/7 check-in.`,
+    quickAnswer: `Fastest route: Fly to Guwahati (GAU), then drive 3–4 hrs to ${toLabel}. Total time ~5–8 hrs. Book your ${toLabel} stay at XTSY and share your arrival time with the desk.`,
   });
 }
 

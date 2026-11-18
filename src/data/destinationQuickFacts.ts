@@ -25,7 +25,18 @@ type Facts = { km?: string; time?: string; entryFee?: string; timings?: string; 
 
 /** Only values already stated in the guide copy. Anything absent is left out of the table. */
 const KNOWN: Record<string, Facts> = {
-  'elephant-falls': { km: '12 km', time: 'about 30 minutes by road' },
+  'elephant-falls': { km: '12 km', time: 'about 30 minutes by road', timings: 'Daytime visits; check gate hours locally' },
+  'krang-suri-falls': { difficulty: 'Easy to moderate steps to the pool' },
+};
+
+/** Safety and access notes cross-checked with Meghalaya Tourism and traveller reports (Nov 2026). */
+const ADVISORY: Record<string, string> = {
+  'shillong-peak': 'Inside an Air Force area: carry government photo ID. Foreign nationals may be refused entry; check before going.',
+  'mawphlang-sacred-forest': 'Entry is with a local village guide. Do not take anything from the forest, not even a leaf or stone.',
+  'double-decker-living-root-bridge': 'About 3,500 steps each way from Tyrna. Start early, or stay overnight in a Nongriat homestay instead of a rushed day trip.',
+  'dawki-umngot-river': 'Water is usually clear only in the dry months (about November–March). In monsoon it turns murky and boating may stop.',
+  'krang-suri-falls': 'Life jackets are required to swim in the pool. Avoid swimming after heavy rain.',
+  'wei-sawdong-falls': 'Steep, slippery trail with makeshift ladders. Wear grippy shoes and skip it during heavy rain.',
 };
 
 export const QUICK_FACT_SLUGS = new Set([
@@ -38,7 +49,7 @@ export const QUICK_FACT_SLUGS = new Set([
 const firstClause = (s: string) => s.split(/(?<=[.;])\s/)[0].replace(/[.;]$/, '');
 
 export function quickFactsFor(d: MeghalayaDestination) {
-  if (!QUICK_FACT_SLUGS.has(d.slug)) return null;
+  if (!QUICK_FACT_SLUGS.has(d.slug) && !ADVISORY[d.slug]) return null;
   const k = KNOWN[d.slug] ?? {};
   const season = firstClause(d.bestTimeToVisit);
   const base = d.shortDescription.replace(/\s*—\s*/g, ', ').replace(/\.$/, '');
@@ -58,6 +69,7 @@ export function quickFactsFor(d: MeghalayaDestination) {
   rows.push(['Best season', season]);
   if (k.difficulty) rows.push(['Trek difficulty', k.difficulty]);
   if (k.parking) rows.push(['Parking', k.parking]);
+  if (ADVISORY[d.slug]) rows.push(['Before you go', ADVISORY[d.slug]]);
 
   return { inShort, rows };
 }

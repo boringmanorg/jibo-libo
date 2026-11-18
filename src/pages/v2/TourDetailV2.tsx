@@ -284,7 +284,7 @@ export default function TourDetailV2() {
                 </>
               )}
               <ul className="m-0 flex list-none flex-col gap-1.5 border-t border-[#383D52] p-0 pt-4 text-[13px] text-xt-fog">
-                {(onRequest ? ['Private trip on your dates', 'Itinerary can be adjusted', 'Booking amount non-refundable once confirmed'] : ['Instant confirmation', 'One date change allowed · booking amount non-refundable', 'Best price guarantee']).map((s) => <li key={s}>✓ {s}</li>)}
+                {(onRequest ? ['Private trip on your dates', 'Itinerary can be adjusted', 'Booking amount non-refundable once confirmed'] : ['Confirmation from the desk on WhatsApp', 'One date change allowed · booking amount non-refundable', 'GST invoice']).map((s) => <li key={s}>✓ {s}</li>)}
               </ul>
             </div>
           </aside>

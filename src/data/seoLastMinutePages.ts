@@ -17,7 +17,7 @@ export const LAST_MINUTE_SEO_PAGES: SEOPageData[] = [
     sections: [
       {
         heading: 'Available Right Now',
-        content: `We confirm availability for tonight on WhatsApp, usually within minutes. Don't miss out — beds fill up fast, especially on weekends and during festivals. Book directly for the best rates, guaranteed.`,
+        content: `We confirm availability for tonight on WhatsApp, usually within minutes. Don't miss out — beds fill up fast, especially on weekends and during festivals. Book directly with the desk.`,
         listItems: [
           '8-Bed Mixed Dorm — ₹399/night (24 beds)',
           '6-Bed Mixed Dorm — ₹499/night (18 beds)',
@@ -30,7 +30,7 @@ export const LAST_MINUTE_SEO_PAGES: SEOPageData[] = [
         heading: 'Why Book Direct with XTSY?',
         content: `Booking directly through xtsy.one guarantees you the lowest price, instant confirmation via WhatsApp, and no hidden fees. Unlike OTAs, we don't charge commission — savings we pass directly to you.`,
         listItems: [
-          'Lowest price guarantee — beat any OTA rate',
+          'Direct desk support on WhatsApp',
           'Instant WhatsApp confirmation',
           'Booking amount is non-refundable; one date change allowed (subject to availability)',
           'Real-time availability — no overbooking risk',

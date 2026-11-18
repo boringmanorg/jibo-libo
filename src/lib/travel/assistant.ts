@@ -245,7 +245,7 @@ const FACTS: [RegExp, () => string, string[]][] = [
 ];
 
 function priceAnswer(): string {
-  return `Current direct rates at XTSY (per night, all inclusive):\n\n• Dorm beds from **${inr(lowestDormPrice())}**\n• Women-only 4-bed dorm **${inr(roomPrice('4-bed-female-only-dorm').now)}**\n• King Double **${inr(roomPrice('king-double-room').now)}**\n• Experience by XTSY: **${inr(PANORAMA_STAY_ONLY)}** (stay only); decoration +${inr(PANORAMA_DECORATION)}\n\nBooking direct saves 20–30% vs OTAs. Tour prices depend on the plan — build one and the desk will quote it.`;
+  return `Current direct rates at XTSY (per night, all inclusive):\n\n• Dorm beds from **${inr(lowestDormPrice())}**\n• Women-only 4-bed dorm **${inr(roomPrice('4-bed-female-only-dorm').now)}**\n• King Double **${inr(roomPrice('king-double-room').now)}**\n• Experience by XTSY: **${inr(PANORAMA_STAY_ONLY)}** (stay only); decoration +${inr(PANORAMA_DECORATION)}\n\nBooking direct gets you WhatsApp desk support, itinerary help and a GST invoice. Tour prices depend on the plan — build one and the desk will quote it.`;
 }
 
 function distanceAnswer(places: Place[], t: string): string | null {

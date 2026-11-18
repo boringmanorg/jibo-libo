@@ -90,7 +90,7 @@ export default function SiteHeader() {
   return (
     <div className="xt sticky top-0 z-50">
       <div className="flex h-9 items-center justify-center gap-3 overflow-hidden bg-xt-slate px-4 text-[12px] font-semibold text-xt-paper sm:h-10 sm:text-[14px]">
-        <span className="hidden whitespace-nowrap sm:inline">Book direct and save 20–30% vs OTAs</span>
+        <span className="hidden whitespace-nowrap sm:inline">Book direct with the XTSY desk</span>
         <span aria-hidden="true" className="hidden opacity-50 sm:inline">·</span>
         <Link to="/book" className="flex h-full items-center whitespace-nowrap text-xt-paper underline-offset-2 hover:underline">Dorm beds from {inr(lowestDormPrice())}/night</Link>
         <span aria-hidden="true" className="hidden opacity-50 lg:inline">·</span>
