@@ -248,8 +248,8 @@ export const STATIC_PAGE_DIRECTORY = [
   },
   {
     "path": "/travel-guide/guwahati-to-shillong-transport",
-    "title": "Guwahati to Shillong: Cab, Bus & Shared Taxi",
-    "description": "All ways to get from Guwahati to Shillong with 2026 fares, journey times, pickup points and booking tips for cabs, buses, shared sumos and helicopter."
+    "title": "Guwahati to Shillong & Meghalaya Road Planning Guide | XTSY",
+    "description": "Plan Guwahati–Shillong arrivals, compare taxis and buses, choose your stay area and organise Meghalaya road trips with official sources and safety checks."
   },
   {
     "path": "/travel-guide/how-to-reach-meghalaya",

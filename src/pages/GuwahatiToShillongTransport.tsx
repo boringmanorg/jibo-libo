@@ -1,174 +1,128 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import SEOHead from "@/components/SEOHead";
-import { Link } from "@/lib/router-compat";
-import { Card } from "@/components/ui/card";
-import { Bus, Car, Users, Plane, ArrowRight } from "lucide-react";
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import { Link } from '@/lib/router-compat';
+import { Button } from '@/components/ui/button';
+import { ArrowRight, Bus, Car, Users, ShieldCheck, ExternalLink } from 'lucide-react';
 import RankedPageQuestions from '@/components/seo/RankedPageQuestions';
-import { rankedQuestionsFor } from '@/data/rankedPageQuestions';
+import { TRANSPORT_REFERENCE, TRANSPORT_SOURCES } from '@/data/meghalayaTransportReference';
+import { IMG } from '@/data/v2Images';
+import { responsiveImage } from '@/data/cdnImages';
+import { BRAND, PROPERTY_ADDRESS } from '@/data/brandFacts';
 
-const CANONICAL = "https://xtsy.one/travel-guide/guwahati-to-shillong-transport";
-
-const faqs = [
-  { q: "How much does a shared taxi from Guwahati to Shillong cost?", a: "Shared Sumo/Innova taxis from Paltan Bazaar and Guwahati Airport (GAU) charge ₹400–₹600 per seat. Full cab hire ranges from ₹2,800 to ₹4,200 one-way depending on vehicle." },
-  { q: "How long does the drive from Guwahati to Shillong take?", a: "The 100 km route on NH6 takes about 3 to 3.5 hours in normal traffic, and up to 4.5 hours during monsoon or on weekends." },
-  { q: "Are there buses from Guwahati to Shillong?", a: "Yes. Meghalaya Transport Corporation (MTC) and private operators run AC and non-AC buses from Guwahati ISBT to Shillong Police Bazaar. Fares are ₹250–₹550. Buses take 4–5 hours." },
-  { q: "Where do shared taxis drop passengers in Shillong?", a: "Most shared taxis drop at Police Bazaar or Khyndailad. Pre-book a private cab from there to XTSY on Mawdiangdiang Road, New Shillong Township, or book an XTSY transfer from Guwahati." },
-  { q: "Is it safe to travel from Guwahati Airport to Shillong at night?", a: "Roads are safe but poorly lit after 8 PM. We recommend arriving before dusk. If your flight lands late, pre-book an XTSY airport transfer instead of a shared taxi." },
-  { q: "Can I book an airport pickup with XTSY?", a: "Yes — XTSY guests can pre-book a private cab from Guwahati Airport (GAU) to the hostel at fixed rates. Message us on WhatsApp after booking your room." },
+const choices = [
+  { title: 'Shared taxi', icon: Users, fit: 'Flexible solo arrivals', check: 'Agree the pickup, waiting time, seat fare, luggage allowance and final stop. Do not assume a shared vehicle departs immediately or includes a hotel transfer.' },
+  { title: 'Private cab', icon: Car, fit: 'Door-to-door planning', check: 'Ask for a written total covering the precise destination, vehicle, passenger capacity, luggage, tolls, parking, stops and any waiting charge.' },
+  { title: 'Bus', icon: Bus, fit: 'Timetable-based travel', check: 'Confirm the operating day, boarding terminal, ticket availability and Shillong drop-off. Include both terminal transfers when comparing the journey.' },
 ];
+const sectionClass = 'border-b border-border py-9 sm:py-12';
+const paragraphClass = 'text-base leading-8 text-foreground/90';
+const textLinkClass = 'text-primary underline underline-offset-4';
+
+function SourceLink({ id }: { id: typeof TRANSPORT_SOURCES[number]['id'] }) {
+  const source = TRANSPORT_SOURCES.find(item => item.id === id);
+  if (!source) return null;
+  return <a href={source.url} className="mt-3 inline-flex min-h-12 items-center gap-2 text-sm text-primary underline underline-offset-4">{source.title}<ExternalLink className="h-4 w-4 shrink-0" aria-hidden /></a>;
+}
 
 export default function GuwahatiToShillongTransport() {
-  const structuredData = [
-    {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      headline: "How to Reach Shillong from Guwahati: Shared Taxis, Cabs & Buses (2026)",
-      description: "Complete transport guide from Guwahati Airport & ISBT to Shillong — shared taxi rates, cab fares, bus timings, travel duration, and pickup points.",
-      author: { "@type": "Organization", name: "XTSY Travel" },
-      publisher: { "@type": "Organization", name: "XTSY", logo: { "@type": "ImageObject", url: "https://xtsy.one/xtsy-logo.png" } },
-      datePublished: "2026-07-21",
-      dateModified: "2026-07-21",
-      mainEntityOfPage: CANONICAL,
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: (rankedQuestionsFor('/travel-guide/guwahati-to-shillong-transport') ?? faqs).map(f => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://xtsy.one/" },
-        { "@type": "ListItem", position: 2, name: "Travel Guide", item: "https://xtsy.one/travel-guide/guwahati-to-shillong-transport" },
-      ],
-    },
-  ];
-
+  const image = responsiveImage(IMG.umiam);
   return (
-    <div className="min-h-screen bg-background">
-      <SEOHead
-        title="Guwahati to Shillong: Shared Taxi, Cab & Bus Guide | XTSY"
-        description="Compare Guwahati–Shillong shared taxis, private cabs and buses: pickup points, indicative fares, journey times and onward travel to New Shillong."
-        keywords="guwahati to shillong, shared taxi guwahati shillong, guwahati airport to shillong, guwahati shillong bus, how to reach shillong"
-        canonicalUrl={CANONICAL}
-        ogType="article"
-        structuredData={structuredData}
-      />
+    <div className="min-h-screen bg-background text-foreground">
       <Header />
-      <main className="container mx-auto max-w-4xl px-4 py-10 sm:py-16">
-        <nav className="text-sm text-muted-foreground mb-4">
-          <Link to="/" className="hover:text-foreground">Home</Link> / Travel Guide / Guwahati → Shillong Transport
+      <main className="mx-auto max-w-5xl px-4 pb-16 pt-8 sm:px-8 sm:pt-12">
+        <nav aria-label="Breadcrumb" className="mb-6 text-sm text-muted-foreground"><Link to="/" className={textLinkClass}>Home</Link> / Travel guide</nav>
+        <header>
+          <p className="mb-3 text-sm font-semibold uppercase text-primary">Arrival & road-trip reference</p>
+          <h1 className="max-w-4xl text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">Guwahati to Shillong & Meghalaya road planning</h1>
+          <p className="mt-5 max-w-3xl text-lg leading-8 text-muted-foreground">Choose an arrival transfer, build a realistic onward route and know what to check before you travel. Practical planning, with official sources—not a live road report.</p>
+          <p className="mt-4 text-sm text-muted-foreground">Prepared by {BRAND.brand} · Sources reviewed <time dateTime={TRANSPORT_REFERENCE.reviewedIso}>{TRANSPORT_REFERENCE.reviewed}</time></p>
+          <figure className="my-7">
+            <img src={image?.src ?? IMG.umiam} srcSet={image?.srcSet} sizes="(max-width: 1024px) 100vw, 960px" alt="Umiam Lake in Meghalaya" width={image?.w ?? 1280} height={image?.h ?? 853} decoding="async" fetchPriority="high" className="aspect-[16/9] w-full rounded-lg object-cover sm:aspect-[21/9]" />
+            <figcaption className="mt-2 text-sm text-muted-foreground">Umiam Lake · An optional stop when your arrival time and onward plans allow.</figcaption>
+          </figure>
+        </header>
+
+        <section className="border-y border-border py-7" aria-labelledby="quick-answer">
+          <h2 id="quick-answer" className="mb-3 text-2xl font-bold">In short</h2>
+          <p className={paragraphClass}>Meghalaya Tourism identifies Guwahati Airport and Guwahati Railway Station as gateways for Shillong, with onward travel by taxi, shared cab or bus. Its airport-to-Shillong estimate is about three hours, but the pickup and final address matter: a city-centre stop is not the same as reaching New Shillong Township. Confirm the full journey, not just the intercity leg.</p>
+          <SourceLink id="arrival" />
+        </section>
+        <nav aria-label="On this page" className="flex flex-wrap gap-x-6 gap-y-1 border-b border-border py-4">
+          {[['arrival', 'Arrival options'], ['routes', 'Onward routes'], ['weather', 'Rain & safety'], ['checklist', 'Transfer checklist'], ['sources', 'Sources & scope']].map(([id, label]) => <a key={id} href={`#${id}`} className="inline-flex min-h-12 items-center text-sm font-semibold text-primary underline underline-offset-4">{label}</a>)}
         </nav>
 
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
-          How to Reach Shillong from Guwahati: Shared Taxis, Cabs & Bus Options
-        </h1>
-        <p className="text-lg text-muted-foreground mb-8">
-          Compare shared taxis, private cabs and buses from Guwahati Airport (GAU), Paltan Bazaar and ISBT. The fares and timings below are indicative: confirm the current fare, departure and drop-off point with the operator before travelling.
-        </p>
-
-        <section className="mb-10">
-          <h2 className="text-2xl font-bold mb-4">Quick answer</h2>
-          <p className="text-foreground/90 leading-relaxed">
-            Guwahati (GAU) to Shillong is <strong>100 km, roughly 3–3.5 hours</strong> on NH6. Best budget-friendly option: shared Sumo/Innova taxi from Paltan Bazaar (~₹400/seat). Fastest & most comfortable: private cab from the airport (₹2,800–₹4,200). Buses run from ISBT if you have 4–5 hours to spare.
-          </p>
-        </section>
-
-        <section className="mb-10">
-          <h2 className="text-2xl font-bold mb-4">Which option fits your arrival?</h2>
-          <ul className="list-disc pl-6 space-y-2 text-foreground/90">
-            <li><strong>Travelling alone in daylight:</strong> a shared taxi may suit you if you can wait for it to fill. Confirm the pickup and where it drops you in Shillong.</li>
-            <li><strong>Arriving late or carrying luggage:</strong> request a private cab in advance and agree the destination and total fare before departure.</li>
-            <li><strong>Taking a bus:</strong> check the departure from ISBT and leave time for the onward journey from the Shillong drop-off point.</li>
-            <li><strong>Staying at XTSY:</strong> ask for Mawdiangdiang Road, New Shillong Township, rather than assuming a Police Bazaar drop-off reaches the hostel.</li>
-          </ul>
-        </section>
-
-        <section className="grid gap-4 sm:grid-cols-3 mb-12">
-          <Card className="p-5">
-            <Users className="w-6 h-6 text-primary mb-2" />
-            <h3 className="font-semibold mb-1">Shared Taxi</h3>
-            <p className="text-sm text-muted-foreground">₹400–₹600 / seat • 3–3.5 hr • Sumo / Innova</p>
-          </Card>
-          <Card className="p-5">
-            <Car className="w-6 h-6 text-primary mb-2" />
-            <h3 className="font-semibold mb-1">Private Cab</h3>
-            <p className="text-sm text-muted-foreground">₹2,800–₹4,200 • 3 hr • Sedan / SUV</p>
-          </Card>
-          <Card className="p-5">
-            <Bus className="w-6 h-6 text-primary mb-2" />
-            <h3 className="font-semibold mb-1">Bus (MTC / Private)</h3>
-            <p className="text-sm text-muted-foreground">₹250–₹550 • 4–5 hr • AC / non-AC</p>
-          </Card>
-        </section>
-
-        <section className="mb-10">
-          <h2 className="text-2xl font-bold mb-4">1. Shared taxis (best budget-friendly & most popular)</h2>
-          <p className="mb-3">Sumo, Innova and Xylo shared taxis are the backbone of Guwahati–Shillong transport. They leave when full (7–10 passengers), no fixed timetable.</p>
-          <ul className="list-disc pl-6 space-y-2 text-foreground/90">
-            <li><strong>Paltan Bazaar (Guwahati Railway Station):</strong> The busiest pickup. Departures every 20–30 minutes, 6 AM – 6 PM. Fare ₹400–₹450/seat.</li>
-            <li><strong>Guwahati Airport (GAU):</strong> Pre-paid counter outside arrivals. ₹500–₹600/seat because of the airport surcharge. Last shared taxi ~5 PM.</li>
-            <li><strong>ISBT Guwahati:</strong> Fewer options, mostly non-AC Sumos, ₹350–₹400/seat.</li>
-          </ul>
-        </section>
-
-        <section className="mb-10">
-          <h2 className="text-2xl font-bold mb-4">2. Private cabs & airport transfers</h2>
-          <p className="mb-3">Best choice if you land late, travel with luggage, or are a group of 3+.</p>
-          <ul className="list-disc pl-6 space-y-2 text-foreground/90">
-            <li>Sedan (Dzire, Etios): ₹2,800–₹3,200 one-way</li>
-            <li>SUV (Innova, Ertiga): ₹3,600–₹4,200 one-way</li>
-            <li>Tempo Traveller (10–12 pax): ₹6,500–₹7,500 one-way</li>
-          </ul>
-          <p className="mt-3 text-sm text-muted-foreground">XTSY guests can pre-book a fixed-rate GAU → hostel transfer at check-in — no surge, no negotiation.</p>
-        </section>
-
-        <section className="mb-10">
-          <h2 className="text-2xl font-bold mb-4">3. Buses from Guwahati ISBT</h2>
-          <p className="mb-3">MTC (Meghalaya Transport Corporation) and private operators like Blue Hill and Network run daily buses.</p>
-          <ul className="list-disc pl-6 space-y-2 text-foreground/90">
-            <li>MTC AC bus: 7 AM, 2 PM — ₹450–₹550</li>
-            <li>Non-AC deluxe: hourly 6 AM – 4 PM — ₹250–₹300</li>
-            <li>Drop point: Shillong Police Bazaar / MTC bus stand</li>
-          </ul>
-        </section>
-
-        <section className="mb-10">
-          <h2 className="text-2xl font-bold mb-4">4. From Shillong drop-off to XTSY</h2>
-          <p>From Police Bazaar, take a cab to XTSY on Mawdiangdiang Road, New Shillong Township (near NIFT and IIM Shillong). If you booked an XTSY airport transfer, the driver takes you door-to-door.</p>
-        </section>
-
-        <section className="mb-10">
-          <h2 className="text-2xl font-bold mb-4">Where to stay: New Shillong or central Shillong?</h2>
-          <p className="mb-3 text-foreground/90 leading-relaxed">
-            Central Shillong around Police Bazaar puts you close to markets and shared-taxi stands, but it is the busiest part of town — expect heavy traffic and street noise through the day and evening. New Shillong Township, about 20 minutes away, sits inside pine forest with a quiet, open ambience — better if you want restful nights and fresh air after the drive up from Guwahati.
-          </p>
-          <p className="text-foreground/90 leading-relaxed">
-            XTSY Travellers Hostel is in New Shillong, surrounded by pines near NIFT and IIM Shillong. See the rooms, dorms and what is included on our{" "}
-            <Link className="text-primary underline" to="/best-hostel-in-shillong">hostel in New Shillong guide</Link>.
-          </p>
-        </section>
-
-        <section className="mb-10">
-          <h2 className="text-2xl font-bold mb-4">Continuing to Dawki, Cherrapunji or the villages?</h2>
-          <p>Most travelers spend 1–2 nights in Shillong first, then head to <Link className="text-primary underline" to="/dawki-umngot-river-guide">Dawki</Link>, <Link className="text-primary underline" to="/cherrapunji-travel-guide">Cherrapunji</Link>, or <Link className="text-primary underline" to="/meghalaya-villages">Mawlynnong & Kongthong</Link>. Book onward transport at the hostel front desk — better rates than street cabs.</p>
-        </section>
-
-        <RankedPageQuestions path="/travel-guide/guwahati-to-shillong-transport" />
-
-        <section className="rounded-xl bg-gradient-to-br from-primary/10 to-rose-500/10 p-6 sm:p-8 border border-primary/20">
-          <div className="flex items-start gap-3 mb-3">
-            <Plane className="w-6 h-6 text-primary shrink-0 mt-1" />
-            <div>
-              <h2 className="text-2xl font-bold mb-1">Book your Shillong stay with airport transfer</h2>
-              <p className="text-muted-foreground">Dorms from ₹399/night. Add a pre-booked GAU pickup at checkout — fixed price, no haggling.</p>
-            </div>
+        <section id="arrival" className={`${sectionClass} scroll-mt-24`}>
+          <h2 className="mb-4 text-2xl font-bold sm:text-3xl">1. Start with your actual arrival point</h2>
+          <p className={paragraphClass}>If you land at Guwahati Airport, compare an airport pickup with travelling to a city boarding point first. The extra transfer can change the convenience of a lower-priced shared seat. If you arrive by train, confirm where the operator meets you rather than treating “Guwahati pickup” as a precise address. For a bus journey, confirm the terminal printed on your ticket before arranging a connecting vehicle.</p>
+          <p className={`mt-4 ${paragraphClass}`}>Shillong Airport at Umroi is another gateway, but Meghalaya Tourism describes its flights as limited. Check your airline's current schedule and plan the airport-to-accommodation leg separately. Do not assume an intercity road transfer, airport transfer and sightseeing vehicle are interchangeable bookings. For a broader arrival overview, see <Link to="/travel-guide/how-to-reach-meghalaya" className={textLinkClass}>how to reach Meghalaya</Link>.</p>
+          <SourceLink id="arrival" />
+          <div className="mt-6 grid gap-4 sm:grid-cols-3">
+            {choices.map(({ title, icon: Icon, fit, check }) => <article key={title} className="rounded-lg border border-border p-5"><Icon className="mb-3 h-6 w-6 text-primary" aria-hidden /><h3 className="text-xl font-semibold">{title}</h3><p className="mt-2 text-sm font-medium text-primary">{fit}</p><p className="mt-3 text-sm leading-7 text-muted-foreground">{check}</p></article>)}
           </div>
-          <Link to="/book" className="inline-flex items-center gap-2 mt-2 bg-primary text-primary-foreground px-5 py-3 rounded-lg font-semibold hover:opacity-90">
-            Book Hostel Online <ArrowRight className="w-4 h-4" />
-          </Link>
+          <p className={`mt-5 ${paragraphClass}`}>This reference does not publish a current fare table or fixed departure schedule: those were not established by the official sources checked. Request a dated quote from the operator. Compare the total, including terminal transfers and the final accommodation drop-off, before choosing.</p>
+        </section>
+
+        <section className={sectionClass}>
+          <h2 className="mb-4 text-2xl font-bold sm:text-3xl">2. Separate road distance from journey time</h2>
+          <p className={paragraphClass}>“Guwahati to Shillong” can mean different start and end points. Airport arrivals, railway-station pickups, Police Bazaar drop-offs and New Shillong accommodation will not produce identical distances. Use the exact addresses when asking for a route estimate. Do not turn a general tourism estimate into a promise that you can catch a tight onward flight.</p>
+          <p className={`mt-4 ${paragraphClass}`}>The official tourism material uses an older highway label, while other route descriptions use NH6. Rather than relying on a road number alone, ask the driver to confirm the Guwahati–Shillong corridor and current navigation for your destination. Add time for traffic, luggage collection, breaks and weather. Plan your return transfer before allocating your last day to distant sightseeing.</p>
+        </section>
+
+        <section className={sectionClass}>
+          <h2 className="mb-4 text-2xl font-bold sm:text-3xl">3. New Shillong or central Shillong?</h2>
+          <p className={paragraphClass}>Central Shillong around Police Bazaar suits travellers who prioritise markets, city activity and access to transport stands. It also brings busy roads and street noise. New Shillong Township offers a pine-forest setting and quieter ambience; choose it if that setting fits your stay, while planning transport for city visits. Neither area is automatically the best choice for every guest.</p>
+          <p className={`mt-4 ${paragraphClass}`}>XTSY's guest property is at {PROPERTY_ADDRESS}. It is not in Police Bazaar. Choose accommodation around the room type, location and transport access you need first. Our <Link to="/best-hostel-in-shillong" className={textLinkClass}>New Shillong versus central Shillong stay guide</Link> helps you compare. The <Link to="/meghalaya-travel-guide" className={textLinkClass}>Meghalaya travel guide</Link> gives the wider trip context.</p>
+          <SourceLink id="shillong" />
+        </section>
+
+        <section id="routes" className={`${sectionClass} scroll-mt-24`}>
+          <h2 className="mb-4 text-2xl font-bold sm:text-3xl">4. Build an onward route, not a list of stops</h2>
+          <p className={paragraphClass}>Start with the nights available between arrival and departure. Group nearby interests, then check the route with your driver or guide. A Shillong base can work for some outings, but repeated return drives may not suit a trip with long walks or distant stops. Consider an overnight closer to the next day's activities instead of treating every destination as a short excursion.</p>
+          <ul className="mt-5 space-y-5 pl-5 list-disc">
+            <li className={paragraphClass}><strong>Arrival-day scenery:</strong> consider <Link to="/destinations/meghalaya/shillong/umiam-lake" className={textLinkClass}>Umiam Lake</Link> only if daylight, luggage and your transfer arrangement allow a stop. Agree waiting and parking terms first.</li>
+            <li className={paragraphClass}><strong>Sohra / Cherrapunji:</strong> use the <Link to="/cherrapunji-travel-guide" className={textLinkClass}>Cherrapunji guide</Link> to choose waterfall, cave or walking interests. A demanding walk deserves its own time, not a rushed addition before a long drive.</li>
+            <li className={paragraphClass}><strong>Dawki / Shnongpdeng:</strong> use the <Link to="/dawki-umngot-river-guide" className={textLinkClass}>Dawki and Umngot guide</Link> as a starting point, then confirm local activity access and conditions. Photos do not guarantee clear water or activity availability.</li>
+          </ul>
+          <p className={`mt-5 ${paragraphClass}`}>For a longer framework, the <Link to="/10-day-meghalaya-itinerary" className={textLinkClass}>ten-day Meghalaya itinerary</Link> is a proposal to adapt—not a reservation or proof that each activity is open on your dates. Confirm walking ability, luggage arrangements and overnight locations before committing.</p>
+        </section>
+
+        <section id="weather" className={`${sectionClass} scroll-mt-24`}>
+          <h2 className="mb-4 flex items-start gap-3 text-2xl font-bold sm:text-3xl"><ShieldCheck className="mt-1 h-7 w-7 shrink-0 text-primary" aria-hidden />5. Rain, visibility and route checks</h2>
+          <p className={paragraphClass}>Meghalaya Tourism describes June to September as the heavy-rain monsoon season. That seasonal pattern is not a forecast for your travel day. Rain and mist can affect visibility and outdoor plans beyond those months too. Keep flexibility in your itinerary and distinguish a weather warning from a confirmed road closure: one does not automatically establish the other.</p>
+          <SourceLink id="season" />
+          <p className={`mt-4 ${paragraphClass}`}>Before departure, check IMD's current warnings for the relevant districts and their issue time, then check local official notices and ask the operator about the exact road being used. We do not provide live road clearance, landslide alerts or a live forecast here. Do not proceed through a closure or use an unfamiliar diversion merely because an old travel article suggests it.</p>
+          <SourceLink id="weather" />
+          <p className={`mt-4 ${paragraphClass}`}>As practical precautions, favour daylight where possible, carry a charged phone and an offline copy of your accommodation address, and leave room for delays. Avoid pressuring a driver to make up lost time. If conditions disrupt the route, recheck the plan with the operator rather than making a safety decision from this static guide.</p>
+        </section>
+
+        <section id="checklist" className={`${sectionClass} scroll-mt-24`}>
+          <h2 className="mb-4 text-2xl font-bold sm:text-3xl">6. A checklist for your transfer quote</h2>
+          <p className={paragraphClass}>Send the same details to each operator so you compare like with like. A useful request includes:</p>
+          <ol className="mt-4 list-decimal space-y-3 pl-6 text-base leading-7">
+            <li>Arrival date, flight or train details, and the exact meeting point.</li>
+            <li>Passenger count, luggage quantity and any access or child-seat requirements.</li>
+            <li>The complete destination address and whether it is a direct drop-off.</li>
+            <li>Vehicle category and a total with tolls, parking, waiting and stops itemised.</li>
+            <li>Payment terms, cancellation terms and what happens if arrival is delayed.</li>
+            <li>Driver contact arrangements and reconfirmation before departure.</li>
+          </ol>
+          <p className={`mt-5 ${paragraphClass}`}>For self-drive travel, check the rental agreement, permitted area, documents, insurance conditions and breakdown support. Our <Link to="/xtsy-rentals" className={textLinkClass}>Assam and Meghalaya rental catalogue</Link> is a starting point for an enquiry, not a substitute for confirming those terms with the desk.</p>
+        </section>
+
+        <RankedPageQuestions path={TRANSPORT_REFERENCE.path} />
+
+        <section id="sources" className={`${sectionClass} scroll-mt-24`}>
+          <h2 className="mb-4 text-2xl font-bold sm:text-3xl">Sources, scope & corrections</h2>
+          <p className={paragraphClass}>Sources below were read on {TRANSPORT_REFERENCE.reviewed}. Official tourism pages support gateway and seasonal facts; route grouping and the transfer checklist are XTSY planning suggestions. No live operator timetable, road-status feed or current fare sheet was verified. A review date records when the sources were checked, not a guarantee that conditions remain unchanged.</p>
+          <ul className="mt-5 divide-y divide-border">
+            {TRANSPORT_SOURCES.map(source => <li key={source.id} className="py-4"><a href={source.url} className="inline-flex min-h-12 items-center gap-2 font-semibold text-primary underline underline-offset-4">{source.title}<ExternalLink aria-hidden className="h-4 w-4 shrink-0" /></a><p className="text-sm leading-7 text-muted-foreground">{source.scope}</p></li>)}
+          </ul>
+          <p className={`mt-4 ${paragraphClass}`}>To cite this reference, use this page's permanent address and include the source-review date. For a correction, share the relevant passage and a dated official source with the XTSY desk at {BRAND.whatsappDisplay}. {BRAND.legalName} is based in {BRAND.hqCity}; the guest property is in New Shillong Township. This is an independently prepared guide, not an official transport bulletin.</p>
+        </section>
+        <section className="pt-9">
+          <h2 className="text-2xl font-bold">Choose the stay after the route</h2>
+          <p className="my-4 max-w-3xl text-base leading-8 text-muted-foreground">If New Shillong and the available room types fit your needs, share your dates with the desk. An enquiry does not confirm availability or a transfer; confirm those details before travelling.</p>
+          <Button asChild className="min-h-12 h-auto whitespace-normal px-6 py-3"><Link to="/book">Enquire about a New Shillong stay<ArrowRight aria-hidden /></Link></Button>
         </section>
       </main>
       <Footer />

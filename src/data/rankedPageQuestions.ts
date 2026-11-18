@@ -4,6 +4,7 @@
  */
 import { BISTRO_HOURS_SENTENCE, BISTRO_LUNCH_DETAILS } from './tabBistroHours';
 import { PANORAMA_STAY_ONLY } from './panoramaPricing';
+import { TRANSPORT_QUESTIONS } from './meghalayaTransportReference';
 
 export type RankedQuestion = { q: string; a: string };
 const suitePrice = `₹${PANORAMA_STAY_ONLY.toLocaleString('en-IN')}`;
@@ -59,11 +60,7 @@ export const RANKED_PAGE_QUESTIONS: Record<string, RankedQuestion[]> = {
     { q: 'Is XTSY in Police Bazaar?', a: 'No. XTSY is on Mawdiangdiang Road in New Shillong Township, near NIFT Shillong and IIM Shillong. Plan a cab journey if you want to visit Police Bazaar.' },
     { q: 'How do I enquire about a hostel bed?', a: 'Choose your room and dates on the XTSY booking page, enter your guest details and send the WhatsApp enquiry. Availability and the booking are confirmed by the desk, not by submitting the enquiry alone.' },
   ],
-  '/travel-guide/guwahati-to-shillong-transport': [
-    { q: 'Which transport options connect Guwahati and Shillong?', a: 'The guide covers shared taxis, private cabs and buses. Choose a private cab for a direct transfer, or check shared-taxi and bus pickup points and departure availability before travelling.' },
-    { q: 'How much time should I allow to drive from Guwahati to Shillong?', a: 'Allow about 3–3.5 hours in normal traffic, and longer during rain or busy periods. Keep extra time for an onward flight or train rather than treating this as a guaranteed journey time.' },
-    { q: 'Will a shared taxi take me directly to XTSY?', a: 'Most shared taxis drop at Police Bazaar or Khyndailad. Arrange the onward transfer to Mawdiangdiang Road, New Shillong Township, or request a direct private transfer with the XTSY desk.' },
-  ],
+  '/travel-guide/guwahati-to-shillong-transport': TRANSPORT_QUESTIONS,
   '/10-day-meghalaya-itinerary': [
     { q: 'What does the ten-day Meghalaya route cover?', a: 'The plan begins with Shillong and Sohra, continues to the Nongriat root-bridge trail and the Umngot River, then explores the Jaintia Hills before returning to Shillong.' },
     { q: 'Should I allow extra time for Nongriat?', a: 'Yes. The trail starts at Tyrna and includes thousands of steps. The itinerary keeps time for the walk and recovery instead of combining a demanding trek and a long onward drive in one afternoon.' },

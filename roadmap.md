@@ -1,5 +1,10 @@
 # Roadmap — Master SEO prompt (xtsy.one)
 
+## Sourced transport reference and outreach shortlist — 18 November 2026
+- [x] Expanded the existing Guwahati–Shillong guide into a 1,566-word sourced Meghalaya arrival and road-planning reference; URL and XTSY catalogue prices unchanged. Unverified operator timetable/fare claims replaced by quote checks.
+- [x] Delivered a 14-prospect public-source report plus four unresolved possibilities, with contacts, evidence, tailored angles and eligibility/fee uncertainty; no outreach sent. Final v2 report/CSV in Files, grouped with XTSY guest growth.
+- [x] Seven tests passed; guide HTTP 200, ten internal links HTTP 200 without redirects, completed navigation to booking, four official sources, phone/desktop image and layout checked with no horizontal overflow or page errors; build OK. Saved without publishing.
+
 ## Review completeness and alignment — 18 November 2026
 - [x] Centre the shared review showcase and platform scores across phone, tablet and desktop.
 - [x] Retrieved all six Google hostel pages: 253 unique entries, 203 written reviews, 50 rating-only reviews and 236 replies. Owner-approved 252 headline unchanged; Bistro and OTA feeds remain separate.

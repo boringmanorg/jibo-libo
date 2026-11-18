@@ -1,5 +1,7 @@
 # Architecture rules
 
+- Keep the transport reference's sources, review date and FAQ answers in one browser-safe module shared by visible content and route-owned schema; do not present static guidance as live road, fare or timetable data.
+
 - Read hosted-guest displays from the static brandFacts guest total; a single owner-updated value prevents counters and editorial references from drifting.
 - Derive the homepage tour count from both /tours card catalogues via tourCatalogueStats, not overlapping category filters, so domestic and international cards are counted once per displayed card.
 
