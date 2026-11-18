@@ -29,7 +29,7 @@ const SITE = 'https://xtsy.one';
 const SPA_WHITELIST = new Set([
   '', '/', '/book', '/booking', '/admin', '/admin-login',
   '/franchise', '/franchise-login', '/404', '/profile',
-  '/sign-in', '/sign-up', '/auth', '/install',
+  '/sign-in', '/sign-up', '/auth', '',
 ]);
 
 const strict = process.argv.includes('--strict');

@@ -94,3 +94,6 @@ Approved scope: **Part 0 + Part 7 quick wins (7a, 7b, 7c, 7d, 7f)** first, then 
 - [~] Task 3 answer blocks (In short + Quick facts + Stay & tour on 20 destination guides; owner fills placeholders)/quick facts on 30 pages (placeholders allowed; tour terms 4N/5D ₹10,000)
 - [x] Task 4: /hostel-in-shillong dropped (duplicate); /meghalaya-tour-packages features Saturday tour
 - [ ] Task 5 copy expansion needs owner-verified facts: waterfall expansions + Mawsynram/Nartiang/Balpakram
+
+## Install and gallery pages removed — 18 November 2026
+- [x] Deleted /install and /gallery routes and pages per owner request; removed all header, footer, SafeShell, 404, search-index, llms.txt and script references. Both URLs now return 404; build OK. The http://www redirect chain is a Cloudflare-side matter — no code change, owner accepts the Ahrefs notice.

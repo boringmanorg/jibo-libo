@@ -36,7 +36,6 @@ const CATEGORY_CONFIG: Record<string, { priority: string; changefreq: string }> 
 const STATIC_ROUTES: { path: string; priority: string; changefreq: string }[] = [
   { path: '/', priority: '1.0', changefreq: 'daily' },
   { path: '/about', priority: '0.7', changefreq: 'monthly' },
-  { path: '/gallery', priority: '0.7', changefreq: 'weekly' },
   { path: '/guides', priority: '0.7', changefreq: 'weekly' },
   { path: '/faq', priority: '0.6', changefreq: 'monthly' },
   { path: '/safety-house-rules', priority: '0.6', changefreq: 'monthly' },

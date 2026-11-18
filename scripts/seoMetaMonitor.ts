@@ -29,7 +29,7 @@ const TOP_SEO_ROUTES = [
   '/luxury-glamping-shillong', '/restaurant-in-shillong', '/meghalaya-tour-packages',
   '/meghalaya-couple-tour-package', '/shillong-tour-package', '/things-to-do-in-meghalaya',
   '/best-time-to-visit-meghalaya', '/3-day-meghalaya-itinerary', '/5-day-meghalaya-itinerary',
-  '/budget-trip-to-meghalaya', '/hidden-places-in-meghalaya', '/tours', '/gallery',
+  '/budget-trip-to-meghalaya', '/hidden-places-in-meghalaya', '/tours', '',
   '/about', '/faq', '/tab-bistro', '/tab-bistro/catering',
 ];
 

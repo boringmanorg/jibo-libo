@@ -84,7 +84,6 @@ const MeghalayaPhotoGallery = () => {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               <Link to="/things-to-do-in-meghalaya" className="text-sm text-primary hover:underline">All Places to Visit</Link>
               <Link to="/meghalaya-tour-packages" className="text-sm text-primary hover:underline">Tour Packages</Link>
-              <Link to="/gallery" className="text-sm text-primary hover:underline">XTSY Gallery</Link>
             </div>
           </nav>
         </div>

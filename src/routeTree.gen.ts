@@ -32,7 +32,6 @@ import { Route as DestinationWeddingShillongRouteImport } from './routes/destina
 import { Route as ExperienceByXtsyRouteImport } from './routes/experience-by-xtsy'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as FemaleTravellersRouteImport } from './routes/female-travellers'
-import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as GroupBookingsMeghalayaRouteImport } from './routes/group-bookings-meghalaya'
 import { Route as GuidesRouteImport } from './routes/guides'
 import { Route as HiddenPlacesInMeghalayaRouteImport } from './routes/hidden-places-in-meghalaya'
@@ -40,7 +39,6 @@ import { Route as HomestaysInShillongRouteImport } from './routes/homestays-in-s
 import { Route as HostelBookingRouteImport } from './routes/hostel-booking'
 import { Route as HostelNearMeRouteImport } from './routes/hostel-near-me'
 import { Route as HotelsInShillongRouteImport } from './routes/hotels-in-shillong'
-import { Route as InstallRouteImport } from './routes/install'
 import { Route as LuxuryGlampingShillongRouteImport } from './routes/luxury-glamping-shillong'
 import { Route as MeghalayaAdventureTourRouteImport } from './routes/meghalaya-adventure-tour'
 import { Route as MeghalayaCavesRouteImport } from './routes/meghalaya-caves'
@@ -218,11 +216,6 @@ const FemaleTravellersRoute = FemaleTravellersRouteImport.update({
   path: '/female-travellers',
   getParentRoute: () => rootRouteImport,
 } as any)
-const GalleryRoute = GalleryRouteImport.update({
-  id: '/gallery',
-  path: '/gallery',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const GroupBookingsMeghalayaRoute = GroupBookingsMeghalayaRouteImport.update({
   id: '/group-bookings-meghalaya',
   path: '/group-bookings-meghalaya',
@@ -256,11 +249,6 @@ const HostelNearMeRoute = HostelNearMeRouteImport.update({
 const HotelsInShillongRoute = HotelsInShillongRouteImport.update({
   id: '/hotels-in-shillong',
   path: '/hotels-in-shillong',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const InstallRoute = InstallRouteImport.update({
-  id: '/install',
-  path: '/install',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LuxuryGlampingShillongRoute = LuxuryGlampingShillongRouteImport.update({
@@ -590,7 +578,6 @@ export interface FileRoutesByFullPath {
   '/experience-by-xtsy': typeof ExperienceByXtsyRoute
   '/faq': typeof FaqRoute
   '/female-travellers': typeof FemaleTravellersRoute
-  '/gallery': typeof GalleryRoute
   '/group-bookings-meghalaya': typeof GroupBookingsMeghalayaRoute
   '/guides': typeof GuidesRoute
   '/hidden-places-in-meghalaya': typeof HiddenPlacesInMeghalayaRoute
@@ -598,7 +585,6 @@ export interface FileRoutesByFullPath {
   '/hostel-booking': typeof HostelBookingRoute
   '/hostel-near-me': typeof HostelNearMeRoute
   '/hotels-in-shillong': typeof HotelsInShillongRoute
-  '/install': typeof InstallRoute
   '/luxury-glamping-shillong': typeof LuxuryGlampingShillongRoute
   '/meghalaya-adventure-tour': typeof MeghalayaAdventureTourRoute
   '/meghalaya-caves': typeof MeghalayaCavesRoute
@@ -682,7 +668,6 @@ export interface FileRoutesByTo {
   '/experience-by-xtsy': typeof ExperienceByXtsyRoute
   '/faq': typeof FaqRoute
   '/female-travellers': typeof FemaleTravellersRoute
-  '/gallery': typeof GalleryRoute
   '/group-bookings-meghalaya': typeof GroupBookingsMeghalayaRoute
   '/guides': typeof GuidesRoute
   '/hidden-places-in-meghalaya': typeof HiddenPlacesInMeghalayaRoute
@@ -690,7 +675,6 @@ export interface FileRoutesByTo {
   '/hostel-booking': typeof HostelBookingRoute
   '/hostel-near-me': typeof HostelNearMeRoute
   '/hotels-in-shillong': typeof HotelsInShillongRoute
-  '/install': typeof InstallRoute
   '/luxury-glamping-shillong': typeof LuxuryGlampingShillongRoute
   '/meghalaya-adventure-tour': typeof MeghalayaAdventureTourRoute
   '/meghalaya-caves': typeof MeghalayaCavesRoute
@@ -775,7 +759,6 @@ export interface FileRoutesById {
   '/experience-by-xtsy': typeof ExperienceByXtsyRoute
   '/faq': typeof FaqRoute
   '/female-travellers': typeof FemaleTravellersRoute
-  '/gallery': typeof GalleryRoute
   '/group-bookings-meghalaya': typeof GroupBookingsMeghalayaRoute
   '/guides': typeof GuidesRoute
   '/hidden-places-in-meghalaya': typeof HiddenPlacesInMeghalayaRoute
@@ -783,7 +766,6 @@ export interface FileRoutesById {
   '/hostel-booking': typeof HostelBookingRoute
   '/hostel-near-me': typeof HostelNearMeRoute
   '/hotels-in-shillong': typeof HotelsInShillongRoute
-  '/install': typeof InstallRoute
   '/luxury-glamping-shillong': typeof LuxuryGlampingShillongRoute
   '/meghalaya-adventure-tour': typeof MeghalayaAdventureTourRoute
   '/meghalaya-caves': typeof MeghalayaCavesRoute
@@ -869,7 +851,6 @@ export interface FileRouteTypes {
     | '/experience-by-xtsy'
     | '/faq'
     | '/female-travellers'
-    | '/gallery'
     | '/group-bookings-meghalaya'
     | '/guides'
     | '/hidden-places-in-meghalaya'
@@ -877,7 +858,6 @@ export interface FileRouteTypes {
     | '/hostel-booking'
     | '/hostel-near-me'
     | '/hotels-in-shillong'
-    | '/install'
     | '/luxury-glamping-shillong'
     | '/meghalaya-adventure-tour'
     | '/meghalaya-caves'
@@ -961,7 +941,6 @@ export interface FileRouteTypes {
     | '/experience-by-xtsy'
     | '/faq'
     | '/female-travellers'
-    | '/gallery'
     | '/group-bookings-meghalaya'
     | '/guides'
     | '/hidden-places-in-meghalaya'
@@ -969,7 +948,6 @@ export interface FileRouteTypes {
     | '/hostel-booking'
     | '/hostel-near-me'
     | '/hotels-in-shillong'
-    | '/install'
     | '/luxury-glamping-shillong'
     | '/meghalaya-adventure-tour'
     | '/meghalaya-caves'
@@ -1053,7 +1031,6 @@ export interface FileRouteTypes {
     | '/experience-by-xtsy'
     | '/faq'
     | '/female-travellers'
-    | '/gallery'
     | '/group-bookings-meghalaya'
     | '/guides'
     | '/hidden-places-in-meghalaya'
@@ -1061,7 +1038,6 @@ export interface FileRouteTypes {
     | '/hostel-booking'
     | '/hostel-near-me'
     | '/hotels-in-shillong'
-    | '/install'
     | '/luxury-glamping-shillong'
     | '/meghalaya-adventure-tour'
     | '/meghalaya-caves'
@@ -1146,7 +1122,6 @@ export interface RootRouteChildren {
   ExperienceByXtsyRoute: typeof ExperienceByXtsyRoute
   FaqRoute: typeof FaqRoute
   FemaleTravellersRoute: typeof FemaleTravellersRoute
-  GalleryRoute: typeof GalleryRoute
   GroupBookingsMeghalayaRoute: typeof GroupBookingsMeghalayaRoute
   GuidesRoute: typeof GuidesRoute
   HiddenPlacesInMeghalayaRoute: typeof HiddenPlacesInMeghalayaRoute
@@ -1154,7 +1129,6 @@ export interface RootRouteChildren {
   HostelBookingRoute: typeof HostelBookingRoute
   HostelNearMeRoute: typeof HostelNearMeRoute
   HotelsInShillongRoute: typeof HotelsInShillongRoute
-  InstallRoute: typeof InstallRoute
   LuxuryGlampingShillongRoute: typeof LuxuryGlampingShillongRoute
   MeghalayaAdventureTourRoute: typeof MeghalayaAdventureTourRoute
   MeghalayaCavesRoute: typeof MeghalayaCavesRoute
@@ -1378,13 +1352,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FemaleTravellersRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/gallery': {
-      id: '/gallery'
-      path: '/gallery'
-      fullPath: '/gallery'
-      preLoaderRoute: typeof GalleryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/group-bookings-meghalaya': {
       id: '/group-bookings-meghalaya'
       path: '/group-bookings-meghalaya'
@@ -1432,13 +1399,6 @@ declare module '@tanstack/react-router' {
       path: '/hotels-in-shillong'
       fullPath: '/hotels-in-shillong'
       preLoaderRoute: typeof HotelsInShillongRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/install': {
-      id: '/install'
-      path: '/install'
-      fullPath: '/install'
-      preLoaderRoute: typeof InstallRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/luxury-glamping-shillong': {
@@ -1874,7 +1834,6 @@ const rootRouteChildren: RootRouteChildren = {
   ExperienceByXtsyRoute: ExperienceByXtsyRoute,
   FaqRoute: FaqRoute,
   FemaleTravellersRoute: FemaleTravellersRoute,
-  GalleryRoute: GalleryRoute,
   GroupBookingsMeghalayaRoute: GroupBookingsMeghalayaRoute,
   GuidesRoute: GuidesRoute,
   HiddenPlacesInMeghalayaRoute: HiddenPlacesInMeghalayaRoute,
@@ -1882,7 +1841,6 @@ const rootRouteChildren: RootRouteChildren = {
   HostelBookingRoute: HostelBookingRoute,
   HostelNearMeRoute: HostelNearMeRoute,
   HotelsInShillongRoute: HotelsInShillongRoute,
-  InstallRoute: InstallRoute,
   LuxuryGlampingShillongRoute: LuxuryGlampingShillongRoute,
   MeghalayaAdventureTourRoute: MeghalayaAdventureTourRoute,
   MeghalayaCavesRoute: MeghalayaCavesRoute,

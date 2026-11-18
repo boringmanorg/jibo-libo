@@ -261,7 +261,7 @@ function travelPageExplorer() {
     
     // Maybe visit gallery
     if (Math.random() > 0.6) {
-      response = http.get(`${BASE_URL}/gallery`, {
+      response = http.get(`${BASE_URL}`, {
         headers: pageHeaders,
         tags: { type: 'page', name: 'gallery' },
       });

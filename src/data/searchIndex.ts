@@ -382,7 +382,6 @@ function buildSearchIndex(): SearchEntry[] {
 
   // 6. Pages
   const pageEntries: Omit<SearchEntry, 'id'>[] = [
-    { title: 'Gallery', description: 'Photos & videos of XTSY properties', category: 'pages', icon: '📸', url: '/gallery', keywords: ['gallery', 'photos', 'images', 'pictures', 'videos'] },
     { title: 'About XTSY', description: 'Our story, mission & team', category: 'pages', icon: '📖', url: '/about', keywords: ['about', 'story', 'team', 'mission', 'founder'] },
     { title: 'FAQs', description: 'Frequently asked questions', category: 'pages', icon: '❓', url: '/faq', keywords: ['faq', 'help', 'question', 'how to', 'support'] },
     { title: 'XTSY vs Zostel', description: 'Honest comparison guide', category: 'pages', icon: '⚔️', url: '/xtsy-vs-zostel', keywords: ['zostel', 'compare', 'vs', 'alternative', 'better hostel'] },

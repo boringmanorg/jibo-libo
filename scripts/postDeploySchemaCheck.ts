@@ -63,7 +63,7 @@ export const TOP_SEO_ROUTES = [
   '/budget-trip-to-meghalaya',
   '/hidden-places-in-meghalaya',
   '/tours',
-  '/gallery',
+  '',
   '/about',
   '/faq',
 ];

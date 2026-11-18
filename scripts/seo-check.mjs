@@ -7,7 +7,7 @@
  *   - any raw <a href="https://wa.me …> in src/ (use the openWhatsApp() button helper)
  *   - duplicate <title> or meta description across ALL_SEO_PAGES
  *   - H1 identical to title on any SEO page
- *   - noindex routes (/install, /gallery) or redirected URLs present in sitemaps
+ *   - noindex or redirected URLs present in sitemaps
  *
  * Run: bun scripts/seo-check.mjs
  */
@@ -59,7 +59,7 @@ for (const p of ALL_SEO_PAGES) {
 }
 
 // ── 3. Sitemaps must not list noindex or redirected URLs ────────────────────
-const NOINDEX_ROUTES = ['/install', '/gallery'];
+const NOINDEX_ROUTES = [];
 const redirects = fs.readFileSync('public/_redirects', 'utf8')
   .split('\n')
   .map((l) => l.trim())

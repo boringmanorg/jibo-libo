@@ -11,7 +11,7 @@ import { blockAnalytics } from './audit/no-analytics';
 const BASE = process.env.BASE_URL || 'http://localhost:8080';
 const OUT = process.env.OUT_DIR || 'shots';
 const ROUTES = (process.env.ROUTES ||
-  '/,/plan-trip-with-ai,/pet-friendly,/about,/work-from-home,/group-bookings-meghalaya,/gallery'
+  '/,/plan-trip-with-ai,/pet-friendly,/about,/work-from-home,/group-bookings-meghalaya,'
 ).split(',');
 
 const VIEWPORTS = [

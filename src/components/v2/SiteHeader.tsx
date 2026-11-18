@@ -51,7 +51,6 @@ const MENU_GROUPS = [
       { to: '/destinations', label: 'Destinations' },
       { to: '/things-to-do-in-meghalaya', label: 'Travel guides' },
       { to: '/meghalaya-waterfalls', label: 'Meghalaya waterfalls' },
-      { to: '/gallery', label: 'Gallery' },
     ],
   },
   {
@@ -184,7 +183,6 @@ export default function SiteHeader() {
           </div>
           <div className="flex flex-wrap items-center gap-3 border-t border-white/10 px-4 py-8 sm:px-8 lg:px-14">
             <WaAnchor href={waLink()} className="flex h-12 items-center rounded-full bg-xt-crimson px-6 font-bold text-white hover:text-white">WhatsApp {WHATSAPP_DISPLAY}</WaAnchor>
-            <Link to="/install" className="flex h-12 items-center rounded-full border-[1.5px] border-xt-paper/40 px-6 font-bold text-xt-paper">Install the app</Link>
           </div>
         </div>
       )}

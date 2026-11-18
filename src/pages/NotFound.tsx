@@ -30,7 +30,6 @@ const QUICK_LINKS: { label: string; to: string; keywords: string }[] = [
   { label: "TAB Bistro by XTSY", to: "/tab-bistro", keywords: "restaurant food cafe dining tab bistro eat shillong" },
   { label: "Catering & Bulk Orders", to: "/catering-shillong", keywords: "catering bulk order corporate event food" },
   { label: "Browse All Tours", to: "/tours", keywords: "tours trips travel packages" },
-  { label: "Gallery", to: "/gallery", keywords: "gallery photos images" },
 ];
 
 /**

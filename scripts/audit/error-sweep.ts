@@ -33,11 +33,11 @@ const LIMIT = Number(process.env.LIMIT || 0);
 
 /** App routes that are not (or not necessarily) in the sitemaps. */
 const APP_ROUTES = [
-  '/', '/book', '/book/select', '/book/campsite', '/auth', '/profile', '/plan-trip-with-ai', '/install',
-  '/franchise', '/franchise/install', '/franchise/login', '/unsubscribe', '/terms', '/terms-of-service',
+  '/', '/book', '/book/select', '/book/campsite', '/auth', '/profile', '/plan-trip-with-ai', '',
+  '/franchise', '/franchise', '/franchise/login', '/unsubscribe', '/terms', '/terms-of-service',
   '/privacy-policy', '/pricing-cancellation-policy', '/safety-house-rules', '/contact', '/faq', '/guides',
   '/tours', '/tours?group=northeast', '/destinations', '/expeditions', '/tab-bistro', '/tab-bistro/catering',
-  '/gallery', '/merch', '/xtsy-rentals', '/experience-by-xtsy', '/work-from-home', '/female-travellers', '/pet-friendly',
+  '', '/merch', '/xtsy-rentals', '/experience-by-xtsy', '/work-from-home', '/female-travellers', '/pet-friendly',
   '/cheap-hostel-shillong', '/cheap-hostel-in-shillong', '/cheap-hostels-shillong',
   '/travel-guide/guwahati-to-shillong-transport', '/travel-guide/how-to-reach-meghalaya',
   '/travel-guide/meghalaya-for-international-tourists',

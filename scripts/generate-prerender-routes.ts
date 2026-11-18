@@ -7,7 +7,6 @@
 export const STATIC_ROUTES = [
   '/',
   '/about',
-  '/gallery',
   '/faq',
   '/tours',
   '/travel',

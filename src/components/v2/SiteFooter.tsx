@@ -35,7 +35,6 @@ const COLS = [
       { to: '/things-to-do-in-meghalaya', label: 'Travel guides' },
       { to: '/meghalaya-waterfalls', label: 'Meghalaya waterfalls' },
       { to: '/places-to-visit-in-meghalaya', label: 'Places to visit' },
-      { to: '/gallery', label: 'Gallery' },
     ],
   },
   {
@@ -60,7 +59,6 @@ const COLS = [
       { to: '/pricing-cancellation-policy', label: 'Cancellation policy' },
       { to: '/privacy-policy', label: 'Privacy policy' },
       { to: '/terms-of-service', label: 'Terms of service' },
-      { to: '/install', label: 'Install the app' },
     ],
   },
 ];

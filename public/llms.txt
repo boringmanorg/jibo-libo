@@ -68,6 +68,5 @@
 - [llms-full.txt](https://xtsy.one/llms-full.txt): Full facts, room details and FAQs in one file.
 
 ## Optional
-- [Gallery](https://xtsy.one/gallery): Photos of the hostel, glass suite and Meghalaya.
 - [Privacy Policy](https://xtsy.one/privacy-policy): Data and privacy practices.
 - [Terms of Service](https://xtsy.one/terms-of-service): Booking terms and conditions.

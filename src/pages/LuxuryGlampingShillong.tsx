@@ -202,7 +202,6 @@ const LuxuryGlampingShillong = memo(() => {
               <Link to="/destination-wedding-shillong" className="text-sm text-primary hover:underline">Destination Wedding</Link>
               <Link to="/meghalaya-couple-tour-package" className="text-sm text-primary hover:underline">Couple Tour Package</Link>
               <Link to="/experience-by-xtsy" className="text-sm text-primary hover:underline">270° Suite Full Details</Link>
-              <Link to="/gallery" className="text-sm text-primary hover:underline">Photo Gallery</Link>
             </div>
           </nav>
         </div>
