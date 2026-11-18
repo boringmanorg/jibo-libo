@@ -11,7 +11,7 @@ import { IMG, COVERS, first } from '@/data/v2Images';
 import { Eyebrow, LiveDot, Marquee, Photo, SectionHead, SpinningMark } from '../primitives';
 import { inr, lowestDormPrice, roomPrice } from '../pricing';
 import { HAPPY_GUESTS } from '@/data/brandFacts';
-import { getTourCatalogueStats } from '@/data/tourCatalogueStats';
+import { TOUR_CATALOGUE_TOTAL } from '@/data/tourCatalogueCount';
 
 const PAD = 'px-4 sm:px-8 lg:px-14';
 
@@ -28,7 +28,7 @@ export function StatsStrip() {
   const stats = [
     { value: HAPPY_GUESTS.display, label: 'Happy guests' },
     { value: '4.7', label: 'Google rating' },
-    { value: String(getTourCatalogueStats().total), label: 'Tour packages' },
+    { value: String(TOUR_CATALOGUE_TOTAL), label: 'Tour packages' },
     { value: '24/7', label: 'Travel support' },
   ];
   return (
@@ -333,7 +333,7 @@ export function ExpeditionsBanner() {
   );
 }
 
-export { Reviews } from './HomeReviews';
+export { HomeReviewsLite as Reviews } from './HomeReviewsLite';
 
 export const HOME_FAQS: [string, string][] = [
   ['What is the best time to visit Shillong, Meghalaya?', 'October to May brings clear skies and pleasant weather. June to September is monsoon, when Cherrapunji’s waterfalls are at full force. XTSY is open all year.'],

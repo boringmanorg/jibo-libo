@@ -14,7 +14,8 @@ import { GOOGLE_RATING, BISTRO_GOOGLE_RATING } from '@/data/brandFacts';
 import { PlatformScores } from '@/components/reviews/PlatformScores';
 import { Button } from '@/components/ui/button';
 
-type R = { reviewId?: string; name: string; rating: number; ratingScale?: number; comment: string; date: string; property: string; source: string; ownerReply?: string };
+export type { R } from './ReviewCard';
+import { Stars, Card, type R } from './ReviewCard';
 
 function allReviews(): R[] {
   const seen = new Set<string>();
@@ -36,21 +37,17 @@ const SPOTS: { side: 'left' | 'right'; x: number; t: number; r: number }[] = [
   { side: 'left', x: 1, t: 54, r: 3 }, { side: 'right', x: 1, t: 56, r: -3 }, { side: 'left', x: 11, t: 78, r: -2 }, { side: 'right', x: 11, t: 79, r: 2 },
 ]
 
-const Stars = ({ n, scale = 5 }: { n: number; scale?: number }) => (
-  scale === 5 ? <span aria-label={`${n} out of 5 stars`} className="text-xt-crimson">{'★'.repeat(Math.max(0, Math.min(5, Math.round(n))))}<span className="text-xt-line">{'★'.repeat(5 - Math.max(0, Math.min(5, Math.round(n))))}</span></span> : <span aria-label={`${n} out of ${scale}`} className="font-bold text-xt-crimson">{n}/{scale}</span>
-);
+/** Picks the eight showcase cards; the homepage uses a saved copy (homeFeaturedReviews). */
+export function pickFloating(reviews: R[], match?: RegExp, bistro?: boolean): R[] {
+    const good = reviews.filter((r) => r.rating / (r.ratingScale ?? 5) >= 0.8 && r.comment.length > 25);
+    const b = good.filter((r) => r.property === 'TAB Bistro by XTSY').sort((a, z) => Number(/food|meal|chicken|bistro|breakfast|dinner/i.test(z.comment)) - Number(/food|meal|chicken|bistro|breakfast|dinner/i.test(a.comment)));
+    const h = good.filter((r) => r.property !== 'TAB Bistro by XTSY');
+    const mixed = match ? (bistro ? [...b, ...h] : good) : [...h.filter((r) => r.source === 'Airbnb' && r.name !== 'Akshit').slice(0, 1), ...h.filter((r) => r.source === 'Agoda').slice(0, 1), ...h.filter((r) => r.source === 'Google').slice(0, 4), ...b.slice(0, 2), ...h];
+    return mixed.slice(0, SPOTS.length);
+  }
 
-function Card({ r, onOpen, className = '', style }: { r: R; onOpen: () => void; className?: string; style?: React.CSSProperties }) {
-  return (
-    <Button variant="ghost" type="button" onClick={onOpen} style={style}
-      className={`flex min-h-12 relative h-full w-[260px] sm:w-full flex-col items-start whitespace-normal gap-3 rounded-3xl border border-xt-line/60 bg-xt-paper p-5 pt-6 text-left text-xt-ink transition-transform hover:-translate-y-1 hover:bg-xt-paper focus-visible:outline focus-visible:outline-2 focus-visible:outline-xt-crimson ${className}`}>
-      <span aria-hidden className="xt-display absolute right-5 top-2 text-[56px] leading-none text-xt-crimson/20">&ldquo;</span>
-      <Stars n={r.rating} scale={r.ratingScale} />
-      <span className="line-clamp-5 flex-1 whitespace-pre-line text-[15px] leading-relaxed">{r.comment}</span>
-      <span className="border-t border-xt-line/60 pt-3 text-[13px] font-bold text-xt-mute">{r.name} · {r.property === 'TAB Bistro by XTSY' ? 'TAB Bistro' : r.property === 'Experience by XTSY' ? 'Glass suite' : 'Hostel'} · {r.source}</span>
-    </Button>
-  );
-}
+/** Every saved review for the default homepage showcase. */
+export function defaultReviews(): R[] { return allReviews(); }
 
 export type ReviewShowcaseProps = {
   /** Only reviews whose text matches this pattern (verbatim reviews, filtered by topic). */
@@ -63,51 +60,27 @@ export type ReviewShowcaseProps = {
   description?: string;
   /** Extra verbatim reviews shown first (e.g. Airbnb reviews for one listing). */
   extra?: R[];
+  /** Render only the pop-ups (lazy-loaded from the homepage's light showcase). */
+  dialogOnly?: boolean;
+  initialOpen?: R | null;
+  initialAll?: boolean;
 };
 
-export function Reviews({ extra = [], match, bistro, hostel, badge = 'Guest reviews', title = `${GOOGLE_RATING.value} on Google from ${GOOGLE_RATING.count} reviews`, description = 'Real words from guests of XTSY Travellers Hostel and TAB Bistro by XTSY, with hostel reviews from Airbnb and Agoda.' }: ReviewShowcaseProps = {}) {
+export function Reviews({ extra = [], match, bistro, hostel, badge = 'Guest reviews', title = `${GOOGLE_RATING.value} on Google from ${GOOGLE_RATING.count} reviews`, description = 'Real words from guests of XTSY Travellers Hostel and TAB Bistro by XTSY, with hostel reviews from Airbnb and Agoda.', dialogOnly, initialOpen = null, initialAll = false }: ReviewShowcaseProps = {}) {
   const reviews = useMemo(() => {
     const all = allReviews().filter((r) => !hostel || r.property === 'XTSY Travellers Hostel');
     if (!match) return [...extra, ...all];
     return [...extra, ...all.filter((r) => (bistro && r.property === 'TAB Bistro by XTSY') || match.test(r.comment))];
   }, [match, bistro, hostel, extra]);
-  const floating = useMemo(() => {
-    const good = reviews.filter((r) => r.rating / (r.ratingScale ?? 5) >= 0.8 && r.comment.length > 25);
-    const b = good.filter((r) => r.property === 'TAB Bistro by XTSY').sort((a, z) => Number(/food|meal|chicken|bistro|breakfast|dinner/i.test(z.comment)) - Number(/food|meal|chicken|bistro|breakfast|dinner/i.test(a.comment)));
-    const h = good.filter((r) => r.property !== 'TAB Bistro by XTSY');
-    const mixed = match ? (bistro ? [...b, ...h] : good) : [...h.filter((r) => r.source === 'Airbnb' && r.name !== 'Akshit').slice(0, 1), ...h.filter((r) => r.source === 'Agoda').slice(0, 1), ...h.filter((r) => r.source === 'Google').slice(0, 4), ...b.slice(0, 2), ...h];
-    return mixed.slice(0, SPOTS.length);
-  }, [reviews, match, bistro]);
-  const [open, setOpen] = useState<R | null>(null);
-  const [all, setAll] = useState(false);
+  const floating = useMemo(() => pickFloating(reviews, match, bistro), [reviews, match, bistro]);
+  const [open, setOpen] = useState<R | null>(initialOpen);
+  const [all, setAll] = useState(initialAll);
   const [tab, setTab] = useState<'all' | 'hostel' | 'bistro'>(bistro ? 'bistro' : 'all');
   const [source, setSource] = useState('All platforms');
   const list = reviews.filter((r) => (tab === 'all' || (tab === 'bistro') === (r.property === 'TAB Bistro by XTSY')) && (source === 'All platforms' || r.source === source));
   const rating = bistro ? BISTRO_GOOGLE_RATING : GOOGLE_RATING;
 
-  return (
-    <section className="mx-auto w-full max-w-[1600px] px-4 pb-20 sm:px-8 lg:px-14">
-      <div className="relative overflow-hidden rounded-[32px] bg-xt-night px-5 py-14 text-white sm:px-10 lg:px-14 lg:py-16">
-        <div aria-hidden className="pointer-events-none absolute -top-40 left-1/2 h-80 w-[70%] -translate-x-1/2 rounded-full bg-xt-crimson/25 blur-3xl" />
-        <div className="relative mx-auto flex max-w-[860px] flex-col items-center gap-4 text-center">
-          <span className="rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[13px] font-bold uppercase tracking-[0.18em]">{badge}</span>
-          <h2 className="xt-display m-0 text-[42px] leading-[0.95] sm:text-[64px] lg:text-[76px]">{title}</h2>
-          <p className="m-0 max-w-[620px] text-[16px] leading-relaxed text-xt-fog sm:text-[18px]">{description}</p>
-          {bistro ? <p className="m-0 font-bold text-xt-paper">{rating.value} on Google from {rating.count} reviews · TAB Bistro by XTSY</p> : !extra.length && <PlatformScores />}
-          <Button type="button" onClick={() => setAll(true)} className="xt-btn mt-2 flex h-14 items-center gap-2 rounded-full bg-xt-crimson px-7 text-[16px] font-extrabold text-xt-paper hover:bg-xt-crimson/90">
-            Read guest reviews <ArrowRight className="h-5 w-5" />
-          </Button>
-        </div>
-
-        <div className="relative -mx-5 mt-12 flex snap-x gap-4 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-4 lg:gap-5">
-          {floating.map((r, i) => (
-            <div key={r.name + i} className={`xt-review-pop shrink-0 snap-start ${i % 2 ? 'lg:translate-y-8' : ''}`} style={{ animationDelay: `${(i % 4) * 0.08}s` }}>
-              <Card r={r} onOpen={() => setOpen(r)} />
-            </div>
-          ))}
-        </div>
-      </div>
-
+  const dialogs = (<>
       <Dialog open={!!open} onOpenChange={(v) => !v && setOpen(null)}>
         <DialogContent className="max-h-[88vh] overflow-y-auto max-w-lg rounded-3xl bg-xt-paper text-xt-ink">
           {open && (<>
@@ -144,6 +117,32 @@ export function Reviews({ extra = [], match, bistro, hostel, badge = 'Guest revi
           </ul>
         </DialogContent>
       </Dialog>
+  </>);
+  if (dialogOnly) return dialogs;
+  return (
+    <section className="mx-auto w-full max-w-[1600px] px-4 pb-20 sm:px-8 lg:px-14">
+      <div className="relative overflow-hidden rounded-[32px] bg-xt-night px-5 py-14 text-white sm:px-10 lg:px-14 lg:py-16">
+        <div aria-hidden className="pointer-events-none absolute -top-40 left-1/2 h-80 w-[70%] -translate-x-1/2 rounded-full bg-xt-crimson/25 blur-3xl" />
+        <div className="relative mx-auto flex max-w-[860px] flex-col items-center gap-4 text-center">
+          <span className="rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[13px] font-bold uppercase tracking-[0.18em]">{badge}</span>
+          <h2 className="xt-display m-0 text-[42px] leading-[0.95] sm:text-[64px] lg:text-[76px]">{title}</h2>
+          <p className="m-0 max-w-[620px] text-[16px] leading-relaxed text-xt-fog sm:text-[18px]">{description}</p>
+          {bistro ? <p className="m-0 font-bold text-xt-paper">{rating.value} on Google from {rating.count} reviews · TAB Bistro by XTSY</p> : !extra.length && <PlatformScores />}
+          <Button type="button" onClick={() => setAll(true)} className="xt-btn mt-2 flex h-14 items-center gap-2 rounded-full bg-xt-crimson px-7 text-[16px] font-extrabold text-xt-paper hover:bg-xt-crimson/90">
+            Read guest reviews <ArrowRight className="h-5 w-5" />
+          </Button>
+        </div>
+
+        <div className="relative -mx-5 mt-12 flex snap-x gap-4 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-4 lg:gap-5">
+          {floating.map((r, i) => (
+            <div key={r.name + i} className={`xt-review-pop shrink-0 snap-start ${i % 2 ? 'lg:translate-y-8' : ''}`} style={{ animationDelay: `${(i % 4) * 0.08}s` }}>
+              <Card r={r} onOpen={() => setOpen(r)} />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {dialogs}
     </section>
   );
 }

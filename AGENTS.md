@@ -3,7 +3,7 @@
 - Keep the transport reference's sources, review date and FAQ answers in one browser-safe module shared by visible content and route-owned schema; do not present static guidance as live road, fare or timetable data.
 
 - Read hosted-guest displays from the static brandFacts guest total; a single owner-updated value prevents counters and editorial references from drifting.
-- Derive the homepage tour count from both /tours card catalogues via tourCatalogueStats, not overlapping category filters, so domestic and international cards are counted once per displayed card.
+- Derive the homepage tour count from both /tours card catalogues via tourCatalogueStats, saved in tourCatalogueCount with a test guarding drift, so the homepage never loads the catalogues; homepage review cards likewise come from the generated homeFeaturedReviews and the full feed loads on demand.
 
 - Keep platform review snapshots in browser-safe data, preserve each original rating scale and listing identity, and label historical/unconfirmed scores; shared review displays must not imply current OTA availability or blend selected-review averages.
 - Use the complete ID-deduplicated Google hostel snapshot in shared review lists, including rating-only entries; legacy excerpts must not duplicate the same listing feed.
@@ -40,3 +40,4 @@
 - Keep suite photo-strip keyframes global and parameterise geometry with CSS variables; preserve spaced static tile transforms when motion is disabled so preview and accessibility settings cannot stack the photos.
 - Use a single translated photo track at tablet widths instead of cylindrical projection; shared movement preserves constant gaps and full photo framing through resizing and reduced-motion settings.
 - Prerender only visitor-identical public pages listed explicitly in vite.config.ts with auto-discovery off; the router keeps trailingSlash "preserve" because the prerenderer requests "/page/" and would otherwise loop on redirects.
+- Route head()/loader helpers must not import the programmatic guide library; route options are bundled into the main script on every page.

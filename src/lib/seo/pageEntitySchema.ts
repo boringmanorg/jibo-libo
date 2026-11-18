@@ -20,7 +20,7 @@
  * inventing per-page values: a fixed datePublished and the shared
  * SEO_CONTENT_UPDATED as dateModified.
  */
-import { SEO_CONTENT_UPDATED } from './programmaticSeo';
+import { SEO_CONTENT_UPDATED } from './contentUpdated';
 
 const SITE = 'https://xtsy.one';
 const PUBLISHER = { '@id': `${SITE}/#organization` };

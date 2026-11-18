@@ -21,7 +21,8 @@ import { schemaImage } from './metadataText';
 import { RENTAL_VEHICLE_PHOTO } from '@/data/relevantTravelPhotos';
 
 const SITE = 'https://xtsy.one';
-export const SEO_CONTENT_UPDATED = '2026-10-22';
+export { SEO_CONTENT_UPDATED } from './contentUpdated';
+import { SEO_CONTENT_UPDATED } from './contentUpdated';
 
 export const CATEGORY_LABELS: Record<string, string> = {
   hostels: 'Hostels', hotels: 'Hotels', homestays: 'Homestays', glamping: 'Glamping',
