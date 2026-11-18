@@ -1,5 +1,12 @@
 # Roadmap — Master SEO prompt (xtsy.one)
 
+## Platform review display — 18 November 2026
+- [x] Show TAB Bistro's verified 4.7/34 Google rating and all 23 saved written Bistro reviews, alongside matching hostel food comments.
+- [x] Add seven source-labelled hostel platform entries to shared review sections and stay hubs; Booking.com historical/unlisted, Goibibo owner-reported, Agoda verified 8.4/32 and Airbnb verified 5.0/3.
+- [ ] MakeMyTrip score waits for owner confirmation of conflicting 4.1/5 versus 4.8/5; displayed as pending rather than invented.
+- [x] Recovered five Agoda and all three hostel Airbnb comments from public listings; preserved original scales and low-rated feedback.
+- [x] Five concrete score tests passed; review lists/filters checked on six pages at desktop and phone widths, no overflow or page errors. Preview clean. Publishing is not requested.
+
 ## Owner-approved date-change policy — 14 November 2026
 - [x] Changed the shared guest policy and all three AI reference occurrences from 90 to 15 days. Existing 15-day pages, assistant answers, prices and other terms unchanged.
 - [x] 27 tests passed; preview safety page renders 15 days, both AI reference files return HTTP 200 with 15 days and no former window; build OK. Prices unchanged; publish required.

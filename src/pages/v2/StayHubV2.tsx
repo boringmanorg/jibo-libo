@@ -15,6 +15,7 @@ import { openTripChat } from '@/components/v2/tripChatEvents';
 import { XTSY_MAPS_URL } from '@/data/siteSchemas';
 import { PageShell, Breadcrumbs, PAD } from '@/components/v2/blocks';
 import { Photo, waLink } from '@/components/v2/primitives';
+import { Reviews } from '@/components/v2/home/HomeReviews';
 
 function Faq({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
@@ -111,6 +112,8 @@ export default function StayHubV2({ variant }: { variant: StayHubVariant }) {
       </section>
 
       {variant === 'hostels' && <HostelComparison />}
+
+      <Reviews hostel match={/./} badge="Hostel guest reviews" description="Guest experiences at XTSY Travellers Hostel, from Google, Airbnb and Agoda." />
 
       <section className={`${PAD} grid gap-8 pb-14 lg:grid-cols-12`}>
         <div className="flex flex-col gap-4 lg:col-span-5">

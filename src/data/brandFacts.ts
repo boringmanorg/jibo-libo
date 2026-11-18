@@ -33,6 +33,9 @@ export const BRAND = {
 /** XTSY's Google rating — used for the hostel, tours, travel and the Dawki campsite (booked via XTSY). */
 export const GOOGLE_RATING = { value: '4.7', count: 252, label: '4.7★ · 252 Google reviews' } as const;
 
+/** TAB Bistro's own Google listing, read 17 November 2026; never use the hostel count. */
+export const BISTRO_GOOGLE_RATING = { value: '4.7', count: 34, label: '4.7★ · 34 Google reviews' } as const;
+
 export const PROPERTY_ADDRESS = 'Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya 793018';
 export const PROPERTY_CHECK_IN = '11:00';
 export const PROPERTY_CHECK_OUT = '10:00';

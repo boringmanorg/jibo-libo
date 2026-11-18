@@ -1,5 +1,7 @@
 # Architecture rules
 
+- Keep platform review snapshots in browser-safe data, preserve each original rating scale and listing identity, and label historical/unconfirmed scores; shared review displays must not imply current OTA availability or blend selected-review averages.
+
 - Apply the shared browser-safe service coverage policy to guide robots, directory links, related links and sitemap generation; preserve out-of-scope addresses with noindex and redirect excluded cuisine listings before metadata.
 
 - Retired tour offers must leave the shared catalogue and sitemap and redirect before metadata loading; this prevents stale offer schemas and indexed duplicate pages.

@@ -13,7 +13,8 @@
  * review actually counts.
  */
 import { useCallback, useMemo, useState } from "react";
-import { featuredBistroReviews } from "@/data/featuredGoogleReviews";
+import { bistroGoogleReviews } from "@/data/bistroGoogleReviews";
+import { BISTRO_GOOGLE_RATING } from "@/data/brandFacts";
 
 export interface RestaurantReview {
   id: string;
@@ -40,7 +41,7 @@ export interface ReviewSubmission {
 }
 
 /** Curated Google reviews, shaped for the review showcases. */
-const STATIC_REVIEWS: RestaurantReview[] = featuredBistroReviews.map((r, i) => ({
+const STATIC_REVIEWS: RestaurantReview[] = bistroGoogleReviews.map((r, i) => ({
   id: `featured-${i}`,
   name: r.name,
   rating: r.rating,
@@ -67,10 +68,7 @@ export function useRestaurantReviews() {
   );
 
   const stats = useMemo(() => {
-    const count = reviews.length;
-    const average =
-      count > 0 ? Math.round((reviews.reduce((s, r) => s + r.rating, 0) / count) * 10) / 10 : 0;
-    return { count, average };
+    return { count: BISTRO_GOOGLE_RATING.count, average: Number(BISTRO_GOOGLE_RATING.value) };
   }, [reviews]);
 
   const refetch = useCallback(async () => {}, []);

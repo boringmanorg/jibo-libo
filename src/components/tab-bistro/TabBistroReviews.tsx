@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { useRestaurantReviews, type RestaurantReview } from "@/hooks/useRestaurantReviews";
 import { featuredBistroReviews } from "@/data/featuredGoogleReviews";
+import { BISTRO_GOOGLE_RATING } from "@/data/brandFacts";
 
 const FEATURED: RestaurantReview[] = featuredBistroReviews.map((r) => ({
   id: `google-${r.name}`,
@@ -174,7 +175,7 @@ const TabBistroReviews = memo(({ reviews, stats, submitReview, onSubmitted }: Pr
           </h2>
           {stats.count > 0 && (
             <span className="text-xs text-muted-foreground">
-              {stats.count} featured Google reviews · Shillong
+              {BISTRO_GOOGLE_RATING.value} on Google from {BISTRO_GOOGLE_RATING.count} reviews · TAB Bistro by XTSY
             </span>
           )}
         </div>
