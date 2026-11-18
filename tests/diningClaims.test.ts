@@ -149,7 +149,6 @@ describe('dining pages never advertise food TAB Bistro does not serve', () => {
  * they speak only for TAB Bistro, so there is no city-guide case to allow.
  */
 const BISTRO_SOURCES = [
-  'src/routes/(restaurant)/restaurant-in-shillong.tsx',
   'src/components/v2/home/HomeSections.tsx',
   'src/pages/TabBistro.tsx',
   'src/components/tab-bistro/TabBistroSpecials.tsx',

@@ -18,3 +18,13 @@ describe('owner-approved page moves', () => {
     for (const next of new Set(Object.values(MOVED_PAGES))) expect(sitemapText).toContain(`<loc>https://xtsy.one${next}</loc>`);
   });
 });
+
+import { legacyRedirectTarget } from '../src/data/legacyRedirects';
+describe('legacy forwarding', () => {
+  it('old glass suite address forwards to the suite page', () => {
+    expect(legacyRedirectTarget('/xtsy-270')).toBe('/stays/experience-by-xtsy');
+  });
+  it('trailing slash forwards too', () => {
+    expect(legacyRedirectTarget('/meghalaya-tour-packages/')).toBe('/tours/meghalaya-tour-packages');
+  });
+});

@@ -1,3 +1,4 @@
+import { legacyRedirectTarget } from "@/data/legacyRedirects";
 import "./lib/error-capture";
 
 import { consumeLastCapturedError } from "./lib/error-capture";
@@ -113,6 +114,18 @@ function withGoneStatus(request: Request, response: Response): Response {
 const CANONICAL_HOST = "xtsy.one";
 const HSTS = "max-age=63072000; includeSubDomains; preload";
 
+/** Old page addresses (src/data/legacyRedirects.ts) forward permanently in one hop, query kept. */
+export function legacyRedirect(request: Request): Response | null {
+  let url: URL;
+  try { url = new URL(request.url); } catch { return null; }
+  const target = legacyRedirectTarget(url.pathname);
+  if (!target) return null;
+  return new Response(null, {
+    status: 301,
+    headers: { location: target + url.search, "cache-control": "public, max-age=3600", "x-redirect-source": "legacy-page" },
+  });
+}
+
 export function canonicalHostRedirect(request: Request): Response | null {
   let url: URL;
   try {
@@ -165,6 +178,8 @@ export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     const hostRedirect = canonicalHostRedirect(request);
     if (hostRedirect) return hostRedirect;
+    const legacy = legacyRedirect(request);
+    if (legacy) return legacy;
 
     try {
       const handler = await getServerEntry();
