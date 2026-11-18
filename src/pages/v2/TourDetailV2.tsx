@@ -378,6 +378,11 @@ function RelatedTours({ current, currentSlug }: { current: TourPackage; currentS
         ))}
         </ul>
       <Link to="/tours" className="mt-4 inline-flex min-h-12 items-center text-[15px] font-bold text-xt-crimson">See all tours →</Link>
+      <p className="m-0 mt-3 text-[15px] leading-relaxed text-xt-mute">
+        Travelling in through Guwahati? Read the{' '}
+        <Link to="/travel-guide/guwahati-to-shillong-transport" className="font-bold text-xt-crimson underline">Guwahati to Shillong transport guide</Link>{' '}
+        for shared taxis, cabs, buses and road-transfer advice before you pick your dates.
+      </p>
     </section>
   );
 }

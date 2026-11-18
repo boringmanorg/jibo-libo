@@ -61,6 +61,15 @@ export default function BookingFacts() {
         </div>
 
         <div>
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-white">Getting to Shillong</h3>
+          <p className="mt-2 text-sm">
+            Flying into Guwahati or travelling overland? Read the{' '}
+            <a className="underline" href="/travel-guide/guwahati-to-shillong-transport">Guwahati to Shillong transport guide</a>{' '}
+            for shared taxis, cabs, buses and road-transfer advice before you set your arrival time.
+          </p>
+        </div>
+
+        <div>
           <h3 className="text-sm font-semibold uppercase tracking-wide text-white">Questions?</h3>
           <p className="mt-2 text-sm">
             Email <a className="underline" href="mailto:booking@xtsy.one">booking@xtsy.one</a> for bookings, or{' '}
