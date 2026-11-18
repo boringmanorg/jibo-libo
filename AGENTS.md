@@ -41,3 +41,5 @@
 - Use a single translated photo track at tablet widths instead of cylindrical projection; shared movement preserves constant gaps and full photo framing through resizing and reduced-motion settings.
 - Prerender only visitor-identical public pages listed explicitly in vite.config.ts with auto-discovery off; the router keeps trailingSlash "preserve" because the prerenderer requests "/page/" and would otherwise loop on redirects.
 - Route head()/loader helpers must not import the programmatic guide library; route options are bundled into the main script on every page.
+
+- Group route files in pathless folders `(stays)`, `(tours)`, `(restaurant)`, `(guides)`, `(company)`, `(admin)`; group folders never change public URLs, so new pages go in the matching group.
