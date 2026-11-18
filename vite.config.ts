@@ -11,6 +11,13 @@ export default defineConfig({
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
+    // Top public pages are identical for every visitor; build them once at publish
+    // so visitors skip the server render wait. Never list personalised/private pages.
+    pages: [
+      "/", "/experience-by-xtsy", "/tours", "/work-from-home", "/destination-wedding-shillong",
+      "/best-hostel-in-shillong", "/xtsy-rentals", "/meghalaya-tour-packages", "/guides", "/faq",
+    ].map((path) => ({ path, prerender: { outputPath: path === "/" ? "/index.html" : `${path}/index.html` } })),
+    prerender: { enabled: true, autoStaticPathsDiscovery: false },
   },
   // CI only: hidden source maps so the bundle report can attribute bytes to modules.
   // Normal (Lovable) builds are unchanged.

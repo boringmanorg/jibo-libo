@@ -39,3 +39,4 @@
 - Route stay questions and itinerary introductions through the browser-safe guest-needs recommendation helper; offer the property only for matching room and location needs, and label fixed-base itineraries as proposals so advice does not imply a confirmed stay.
 - Keep suite photo-strip keyframes global and parameterise geometry with CSS variables; preserve spaced static tile transforms when motion is disabled so preview and accessibility settings cannot stack the photos.
 - Use a single translated photo track at tablet widths instead of cylindrical projection; shared movement preserves constant gaps and full photo framing through resizing and reduced-motion settings.
+- Prerender only visitor-identical public pages listed explicitly in vite.config.ts with auto-discovery off; the router keeps trailingSlash "preserve" because the prerenderer requests "/page/" and would otherwise loop on redirects.
