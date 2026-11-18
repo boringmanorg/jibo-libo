@@ -75,7 +75,7 @@ export function Reviews({ extra = [], match, bistro, hostel, badge = 'Guest revi
     const good = reviews.filter((r) => r.rating / (r.ratingScale ?? 5) >= 0.8 && r.comment.length > 25);
     const b = good.filter((r) => r.property === 'TAB Bistro by XTSY').sort((a, z) => Number(/food|meal|chicken|bistro|breakfast|dinner/i.test(z.comment)) - Number(/food|meal|chicken|bistro|breakfast|dinner/i.test(a.comment)));
     const h = good.filter((r) => r.property !== 'TAB Bistro by XTSY');
-    const mixed = match ? (bistro ? [...b, ...h] : good) : [...h.filter((r) => r.source === 'Airbnb').slice(0, 1), ...h.filter((r) => r.source === 'Agoda').slice(0, 1), ...h.filter((r) => r.source === 'Google').slice(0, 4), ...b.slice(0, 2), ...h];
+    const mixed = match ? (bistro ? [...b, ...h] : good) : [...h.filter((r) => r.source === 'Airbnb' && r.name !== 'Akshit').slice(0, 1), ...h.filter((r) => r.source === 'Agoda').slice(0, 1), ...h.filter((r) => r.source === 'Google').slice(0, 4), ...b.slice(0, 2), ...h];
     return mixed.slice(0, SPOTS.length);
   }, [reviews, match, bistro]);
   const [open, setOpen] = useState<R | null>(null);
