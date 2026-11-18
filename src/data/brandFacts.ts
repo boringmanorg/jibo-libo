@@ -33,6 +33,9 @@ export const BRAND = {
 /** XTSY's Google rating — used for the hostel, tours, travel and the Dawki campsite (booked via XTSY). */
 export const GOOGLE_RATING = { value: '4.7', count: 252, label: '4.7★ · 252 Google reviews' } as const;
 
+/** Owner-confirmed hosted guests; never calculated from website activity. */
+export const HAPPY_GUESTS = { count: 11116, display: '11,116', updateMode: 'owner-confirmed' } as const;
+
 /** TAB Bistro's own Google listing, read 17 November 2026; never use the hostel count. */
 export const BISTRO_GOOGLE_RATING = { value: '4.7', count: 34, label: '4.7★ · 34 Google reviews' } as const;
 
@@ -107,7 +110,7 @@ export const PARTNER_NETWORK_NOTE =
 export const whyXTSYSection = (): SEOSection => ({
   heading: 'Why Travellers Pick XTSY',
   content:
-    "XTSY is a Northeast Indian independent hospitality brand — Shillong-born, traveller-built, and having hosted 10,786+ guests through owned properties, curated tours, weddings, catering and rentals.",
+    `XTSY is a Northeast Indian independent hospitality brand — Shillong-born, traveller-built, and having hosted ${HAPPY_GUESTS.display} guests through owned properties, curated tours, weddings, catering and rentals.`,
   listItems: [
     'NEITA 2025 nominee — Best Budget-Friendly Accommodation in Northeast India',
     "Experience by XTSY — India's Most Romantic Couple En-suite",

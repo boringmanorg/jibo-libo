@@ -1,6 +1,6 @@
 import { MapPin, Star, Calendar } from 'lucide-react';
 import { Helmet } from '@/lib/seo/helmet';
-import { BRAND } from '@/data/brandFacts';
+import { BRAND, HAPPY_GUESTS } from '@/data/brandFacts';
 
 const AUTHOR_SCHEMA = {
   '@context': 'https://schema.org',
@@ -34,7 +34,7 @@ const AuthorBox = () => (
           <div className="flex flex-wrap gap-3 mt-2 text-xs text-muted-foreground">
             <span className="flex items-center gap-1"><MapPin className="h-3 w-3" /> Guest travel desk in New Shillong</span>
             <span className="flex items-center gap-1"><Star className="h-3 w-3" /> 4.7★ Google Rating (252 Google reviews)</span>
-            <span className="flex items-center gap-1"><Calendar className="h-3 w-3" /> 10,786+ guests hosted</span>
+            <span className="flex items-center gap-1"><Calendar className="h-3 w-3" /> {HAPPY_GUESTS.display} guests hosted</span>
           </div>
           <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
             Our team lives and breathes Meghalaya travel. Every guide is written from first-hand experience exploring the region's waterfalls, caves, living root bridges, and hidden villages.
