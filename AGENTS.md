@@ -1,6 +1,7 @@
 # Architecture rules
 
 - Read hosted-guest displays from the static brandFacts guest total; a single owner-updated value prevents counters and editorial references from drifting.
+- Derive the homepage tour count from both /tours card catalogues via tourCatalogueStats, not overlapping category filters, so domestic and international cards are counted once per displayed card.
 
 - Keep platform review snapshots in browser-safe data, preserve each original rating scale and listing identity, and label historical/unconfirmed scores; shared review displays must not imply current OTA availability or blend selected-review averages.
 - Use the complete ID-deduplicated Google hostel snapshot in shared review lists, including rating-only entries; legacy excerpts must not duplicate the same listing feed.

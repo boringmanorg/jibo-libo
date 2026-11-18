@@ -11,6 +11,7 @@ import { IMG, COVERS, first } from '@/data/v2Images';
 import { Eyebrow, LiveDot, Marquee, Photo, SectionHead, SpinningMark } from '../primitives';
 import { inr, lowestDormPrice, roomPrice } from '../pricing';
 import { HAPPY_GUESTS } from '@/data/brandFacts';
+import { getTourCatalogueStats } from '@/data/tourCatalogueStats';
 
 const PAD = 'px-4 sm:px-8 lg:px-14';
 
@@ -27,7 +28,7 @@ export function StatsStrip() {
   const stats = [
     { value: HAPPY_GUESTS.display, label: 'Happy guests' },
     { value: '4.7', label: 'Google rating' },
-    { value: '30+', label: 'Tour packages' },
+    { value: String(getTourCatalogueStats().total), label: 'Tour packages' },
     { value: '24/7', label: 'Travel support' },
   ];
   return (
