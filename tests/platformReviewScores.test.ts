@@ -16,9 +16,10 @@ describe('Separate listing scores', () => {
     expect(hostelPlatformScores.find((r) => r.platform === 'Booking.com')).toEqual({ platform: 'Booking.com', value: '9.4', scale: 10 });
     expect(hostelPlatformScores.every((r) => !('note' in r) && !('count' in r))).toBe(true);
   });
-  it('combines Goibibo and MakeMyTrip into one row', () => {
-    expect(hostelPlatformScores.find((r) => r.platform === 'Goibibo · MakeMyTrip')).toEqual({ platform: 'Goibibo · MakeMyTrip', value: '4.7–4.8', scale: 5 });
-    expect(hostelPlatformScores.some((r) => r.platform === 'Goibibo' || r.platform === 'MakeMyTrip')).toBe(false);
+  it('keeps Goibibo and MakeMyTrip as separate rows and leaves Google to the headline', () => {
+    expect(hostelPlatformScores.find((r) => r.platform === 'Goibibo')).toEqual({ platform: 'Goibibo', value: '4.7', scale: 5 });
+    expect(hostelPlatformScores.find((r) => r.platform === 'MakeMyTrip')).toEqual({ platform: 'MakeMyTrip', value: '4.8', scale: 5 });
+    expect(hostelPlatformScores.some((r) => r.platform === 'Google')).toBe(false);
   });
   it('shows the hostel Airbnb score, not the suite listing', () => {
     expect(hostelPlatformScores.find((r) => r.platform === 'Airbnb')).toMatchObject({ value: '5.0', scale: 5 });
