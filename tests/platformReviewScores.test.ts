@@ -12,11 +12,16 @@ describe('Separate listing scores', () => {
     expect([BISTRO_GOOGLE_RATING.value, BISTRO_GOOGLE_RATING.count]).toEqual(['4.7', 34]);
     expect(bistroGoogleReviews).toHaveLength(23);
   });
-  it('keeps the historical Booking.com score separate from current availability', () => {
-    expect(hostelPlatformScores.find((r) => r.platform === 'Booking.com')).toMatchObject({ value: '9.4', scale: 10, note: 'Historical score · not currently listed' });
+  it('keeps the Booking.com score without notes or review totals', () => {
+    expect(hostelPlatformScores.find((r) => r.platform === 'Booking.com')).toEqual({ platform: 'Booking.com', value: '9.4', scale: 10 });
+    expect(hostelPlatformScores.every((r) => !('note' in r) && !('count' in r))).toBe(true);
   });
-  it('shows the hostel Airbnb score from its three reviews, not the suite listing', () => {
-    expect(hostelPlatformScores.find((r) => r.platform === 'Airbnb')).toMatchObject({ value: '5.0', scale: 5, count: 3 });
+  it('combines Goibibo and MakeMyTrip into one row', () => {
+    expect(hostelPlatformScores.find((r) => r.platform === 'Goibibo · MakeMyTrip')).toEqual({ platform: 'Goibibo · MakeMyTrip', value: '4.7–4.8', scale: 5 });
+    expect(hostelPlatformScores.some((r) => r.platform === 'Goibibo' || r.platform === 'MakeMyTrip')).toBe(false);
+  });
+  it('shows the hostel Airbnb score, not the suite listing', () => {
+    expect(hostelPlatformScores.find((r) => r.platform === 'Airbnb')).toMatchObject({ value: '5.0', scale: 5 });
     expect(hostelOtaReviews.filter((r) => r.source === 'Airbnb')).toHaveLength(3);
   });
   it('preserves low-rated feedback and original Agoda ten-point scale', () => {
