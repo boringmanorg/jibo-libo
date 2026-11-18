@@ -80,7 +80,7 @@ export function Reviews({ extra = [], match, bistro, hostel, badge = 'Guest revi
   }, [reviews, match, bistro]);
   const [open, setOpen] = useState<R | null>(null);
   const [all, setAll] = useState(false);
-  const [tab, setTab] = useState<'all' | 'hostel' | 'bistro'>('all');
+  const [tab, setTab] = useState<'all' | 'hostel' | 'bistro'>(bistro ? 'bistro' : 'all');
   const [source, setSource] = useState('All platforms');
   const list = reviews.filter((r) => (tab === 'all' || (tab === 'bistro') === (r.property === 'TAB Bistro by XTSY')) && (source === 'All platforms' || r.source === source));
   const rating = bistro ? BISTRO_GOOGLE_RATING : GOOGLE_RATING;
@@ -124,7 +124,7 @@ export function Reviews({ extra = [], match, bistro, hostel, badge = 'Guest revi
           <DialogTitle className="text-[22px]">{badge}</DialogTitle>
           <DialogDescription className="text-xt-mute">{reviews.length} saved written reviews. {bistro ? 'TAB Bistro by XTSY' : 'XTSY Travellers Hostel'} is rated {rating.value}★ from {rating.count} Google reviews. Platform totals include reviews not available here.</DialogDescription>
           <div className="flex flex-wrap gap-2">
-            {!match && ([['all', 'All'], ['hostel', 'XTSY Travellers Hostel'], ['bistro', 'TAB Bistro by XTSY']] as const).map(([k, l]) => (
+            {(!match || bistro) && ([['all', 'All'], ['hostel', 'XTSY Travellers Hostel'], ['bistro', 'TAB Bistro by XTSY']] as const).map(([k, l]) => (
               <Button key={k} type="button" aria-pressed={tab === k} onClick={() => setTab(k)} className={`min-h-12 h-auto whitespace-normal rounded-full px-4 text-[14px] font-bold ${tab === k ? 'bg-xt-crimson text-xt-paper' : 'bg-xt-cream text-xt-ink'}`}>{l}</Button>
             ))}
           </div>
