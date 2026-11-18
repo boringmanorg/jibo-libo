@@ -1602,6 +1602,135 @@ export type Database = {
         }
         Relationships: []
       }
+      console_audit_log: {
+        Row: {
+          action: string
+          actor: string
+          created_at: string
+          details: Json
+          id: string
+        }
+        Insert: {
+          action: string
+          actor?: string
+          created_at?: string
+          details?: Json
+          id?: string
+        }
+        Update: {
+          action?: string
+          actor?: string
+          created_at?: string
+          details?: Json
+          id?: string
+        }
+        Relationships: []
+      }
+      console_integration_settings: {
+        Row: {
+          id: number
+          last_pms_sync_at: string | null
+          last_pos_sync_at: string | null
+          live_tables_showcase: boolean
+          pms_enabled: boolean
+          pos_enabled: boolean
+          updated_at: string
+        }
+        Insert: {
+          id?: number
+          last_pms_sync_at?: string | null
+          last_pos_sync_at?: string | null
+          live_tables_showcase?: boolean
+          pms_enabled?: boolean
+          pos_enabled?: boolean
+          updated_at?: string
+        }
+        Update: {
+          id?: number
+          last_pms_sync_at?: string | null
+          last_pos_sync_at?: string | null
+          live_tables_showcase?: boolean
+          pms_enabled?: boolean
+          pos_enabled?: boolean
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      console_inventory_overrides: {
+        Row: {
+          created_at: string
+          created_by: string
+          end_date: string
+          id: string
+          pms_reference: string | null
+          pms_status: string
+          property_id: string
+          reason: string | null
+          start_date: string
+          state: string
+          unit_type_id: string
+        }
+        Insert: {
+          created_at?: string
+          created_by?: string
+          end_date: string
+          id?: string
+          pms_reference?: string | null
+          pms_status?: string
+          property_id: string
+          reason?: string | null
+          start_date: string
+          state: string
+          unit_type_id: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string
+          end_date?: string
+          id?: string
+          pms_reference?: string | null
+          pms_status?: string
+          property_id?: string
+          reason?: string | null
+          start_date?: string
+          state?: string
+          unit_type_id?: string
+        }
+        Relationships: []
+      }
+      console_table_overrides: {
+        Row: {
+          created_at: string
+          created_by: string
+          id: string
+          outlet_id: string
+          pos_status: string
+          service_date: string
+          slot_time: string
+          state: string
+        }
+        Insert: {
+          created_at?: string
+          created_by?: string
+          id?: string
+          outlet_id: string
+          pos_status?: string
+          service_date: string
+          slot_time: string
+          state: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string
+          id?: string
+          outlet_id?: string
+          pos_status?: string
+          service_date?: string
+          slot_time?: string
+          state?: string
+        }
+        Relationships: []
+      }
       demand_forecasts: {
         Row: {
           actual_demand: number | null
@@ -6298,6 +6427,7 @@ export type Database = {
         Args: { _property_id: string; _user_id: string }
         Returns: boolean
       }
+      is_super_admin: { Args: never; Returns: boolean }
       location_prefs_insert_allowed: { Args: never; Returns: boolean }
       log_booking_access_attempt: {
         Args: {

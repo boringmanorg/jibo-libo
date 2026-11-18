@@ -10,6 +10,11 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as adminAdminRouteRouteImport } from './routes/(admin)/admin/route'
+import { Route as adminAdminIndexRouteImport } from './routes/(admin)/admin/index'
+import { Route as adminAdminRestaurantsRouteImport } from './routes/(admin)/admin/restaurants'
+import { Route as adminAdminSettingsRouteImport } from './routes/(admin)/admin/settings'
+import { Route as adminAdminStaysRouteImport } from './routes/(admin)/admin/stays'
 import { Route as companyAboutIndexRouteImport } from './routes/(company)/about.index'
 import { Route as companyAboutContactRouteImport } from './routes/(company)/about/contact'
 import { Route as companyAboutContactUsRouteImport } from './routes/(company)/about/contact-us'
@@ -88,6 +93,31 @@ const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const adminAdminRouteRoute = adminAdminRouteRouteImport.update({
+  id: '/(admin)/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const adminAdminIndexRoute = adminAdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => adminAdminRouteRoute,
+} as any)
+const adminAdminRestaurantsRoute = adminAdminRestaurantsRouteImport.update({
+  id: '/restaurants',
+  path: '/restaurants',
+  getParentRoute: () => adminAdminRouteRoute,
+} as any)
+const adminAdminSettingsRoute = adminAdminSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => adminAdminRouteRoute,
+} as any)
+const adminAdminStaysRoute = adminAdminStaysRouteImport.update({
+  id: '/stays',
+  path: '/stays',
+  getParentRoute: () => adminAdminRouteRoute,
 } as any)
 const companyAboutIndexRoute = companyAboutIndexRouteImport.update({
   id: '/(company)/about/',
@@ -503,6 +533,10 @@ const guidesDestinationsStateCityAttractionRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof adminAdminRouteRouteWithChildren
+  '/admin/restaurants': typeof adminAdminRestaurantsRoute
+  '/admin/settings': typeof adminAdminSettingsRoute
+  '/admin/stays': typeof adminAdminStaysRoute
   '/about/contact': typeof companyAboutContactRoute
   '/about/contact-us': typeof companyAboutContactUsRoute
   '/about/faq': typeof companyAboutFaqRoute
@@ -564,6 +598,7 @@ export interface FileRoutesByFullPath {
   '/tours/shillong-tour-package': typeof toursToursShillongTourPackageRoute
   '/tours/travel': typeof toursToursTravelRoute
   '/tours/xtsy-rentals': typeof toursToursXtsyRentalsRoute
+  '/admin/': typeof adminAdminIndexRoute
   '/about/': typeof companyAboutIndexRoute
   '/destinations/': typeof guidesDestinationsIndexRoute
   '/guides/': typeof guidesGuidesIndexRoute
@@ -579,6 +614,9 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin/restaurants': typeof adminAdminRestaurantsRoute
+  '/admin/settings': typeof adminAdminSettingsRoute
+  '/admin/stays': typeof adminAdminStaysRoute
   '/about/contact': typeof companyAboutContactRoute
   '/about/contact-us': typeof companyAboutContactUsRoute
   '/about/faq': typeof companyAboutFaqRoute
@@ -640,6 +678,7 @@ export interface FileRoutesByTo {
   '/tours/shillong-tour-package': typeof toursToursShillongTourPackageRoute
   '/tours/travel': typeof toursToursTravelRoute
   '/tours/xtsy-rentals': typeof toursToursXtsyRentalsRoute
+  '/admin': typeof adminAdminIndexRoute
   '/about': typeof companyAboutIndexRoute
   '/destinations': typeof guidesDestinationsIndexRoute
   '/guides': typeof guidesGuidesIndexRoute
@@ -656,6 +695,10 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/(admin)/admin': typeof adminAdminRouteRouteWithChildren
+  '/(admin)/admin/restaurants': typeof adminAdminRestaurantsRoute
+  '/(admin)/admin/settings': typeof adminAdminSettingsRoute
+  '/(admin)/admin/stays': typeof adminAdminStaysRoute
   '/(company)/about/contact': typeof companyAboutContactRoute
   '/(company)/about/contact-us': typeof companyAboutContactUsRoute
   '/(company)/about/faq': typeof companyAboutFaqRoute
@@ -717,6 +760,7 @@ export interface FileRoutesById {
   '/(tours)/tours/shillong-tour-package': typeof toursToursShillongTourPackageRoute
   '/(tours)/tours/travel': typeof toursToursTravelRoute
   '/(tours)/tours/xtsy-rentals': typeof toursToursXtsyRentalsRoute
+  '/(admin)/admin/': typeof adminAdminIndexRoute
   '/(company)/about/': typeof companyAboutIndexRoute
   '/(guides)/destinations/': typeof guidesDestinationsIndexRoute
   '/(guides)/guides/': typeof guidesGuidesIndexRoute
@@ -734,6 +778,10 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/admin'
+    | '/admin/restaurants'
+    | '/admin/settings'
+    | '/admin/stays'
     | '/about/contact'
     | '/about/contact-us'
     | '/about/faq'
@@ -795,6 +843,7 @@ export interface FileRouteTypes {
     | '/tours/shillong-tour-package'
     | '/tours/travel'
     | '/tours/xtsy-rentals'
+    | '/admin/'
     | '/about/'
     | '/destinations/'
     | '/guides/'
@@ -810,6 +859,9 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/admin/restaurants'
+    | '/admin/settings'
+    | '/admin/stays'
     | '/about/contact'
     | '/about/contact-us'
     | '/about/faq'
@@ -871,6 +923,7 @@ export interface FileRouteTypes {
     | '/tours/shillong-tour-package'
     | '/tours/travel'
     | '/tours/xtsy-rentals'
+    | '/admin'
     | '/about'
     | '/destinations'
     | '/guides'
@@ -886,6 +939,10 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/(admin)/admin'
+    | '/(admin)/admin/restaurants'
+    | '/(admin)/admin/settings'
+    | '/(admin)/admin/stays'
     | '/(company)/about/contact'
     | '/(company)/about/contact-us'
     | '/(company)/about/faq'
@@ -947,6 +1004,7 @@ export interface FileRouteTypes {
     | '/(tours)/tours/shillong-tour-package'
     | '/(tours)/tours/travel'
     | '/(tours)/tours/xtsy-rentals'
+    | '/(admin)/admin/'
     | '/(company)/about/'
     | '/(guides)/destinations/'
     | '/(guides)/guides/'
@@ -963,6 +1021,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  adminAdminRouteRoute: typeof adminAdminRouteRouteWithChildren
   companyAboutContactRoute: typeof companyAboutContactRoute
   companyAboutContactUsRoute: typeof companyAboutContactUsRoute
   companyAboutFaqRoute: typeof companyAboutFaqRoute
@@ -1046,6 +1105,41 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/(admin)/admin': {
+      id: '/(admin)/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof adminAdminRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(admin)/admin/': {
+      id: '/(admin)/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof adminAdminIndexRouteImport
+      parentRoute: typeof adminAdminRouteRoute
+    }
+    '/(admin)/admin/restaurants': {
+      id: '/(admin)/admin/restaurants'
+      path: '/restaurants'
+      fullPath: '/admin/restaurants'
+      preLoaderRoute: typeof adminAdminRestaurantsRouteImport
+      parentRoute: typeof adminAdminRouteRoute
+    }
+    '/(admin)/admin/settings': {
+      id: '/(admin)/admin/settings'
+      path: '/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof adminAdminSettingsRouteImport
+      parentRoute: typeof adminAdminRouteRoute
+    }
+    '/(admin)/admin/stays': {
+      id: '/(admin)/admin/stays'
+      path: '/stays'
+      fullPath: '/admin/stays'
+      preLoaderRoute: typeof adminAdminStaysRouteImport
+      parentRoute: typeof adminAdminRouteRoute
     }
     '/(company)/about/': {
       id: '/(company)/about/'
@@ -1561,8 +1655,27 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface adminAdminRouteRouteChildren {
+  adminAdminRestaurantsRoute: typeof adminAdminRestaurantsRoute
+  adminAdminSettingsRoute: typeof adminAdminSettingsRoute
+  adminAdminStaysRoute: typeof adminAdminStaysRoute
+  adminAdminIndexRoute: typeof adminAdminIndexRoute
+}
+
+const adminAdminRouteRouteChildren: adminAdminRouteRouteChildren = {
+  adminAdminRestaurantsRoute: adminAdminRestaurantsRoute,
+  adminAdminSettingsRoute: adminAdminSettingsRoute,
+  adminAdminStaysRoute: adminAdminStaysRoute,
+  adminAdminIndexRoute: adminAdminIndexRoute,
+}
+
+const adminAdminRouteRouteWithChildren = adminAdminRouteRoute._addFileChildren(
+  adminAdminRouteRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  adminAdminRouteRoute: adminAdminRouteRouteWithChildren,
   companyAboutContactRoute: companyAboutContactRoute,
   companyAboutContactUsRoute: companyAboutContactUsRoute,
   companyAboutFaqRoute: companyAboutFaqRoute,

@@ -23,3 +23,14 @@ export async function saasRequest<T>(cfg: SaasConfig, path: string, init: { meth
   if (!res.ok) throw new Error(`posbyxtsy.club ${path} failed: ${res.status}`);
   return (await res.json()) as T;
 }
+
+/**
+ * Endpoint + key without the env on/off flag. The super admin console combines this
+ * with its own saved PMS/POS switches; returns null until both secrets exist.
+ */
+export function getSaasEndpoint(): SaasConfig | null {
+  const baseUrl = process.env.XTSY_SAAS_API_URL;
+  const apiKey = process.env.XTSY_SAAS_API_KEY;
+  if (!baseUrl || !apiKey) return null;
+  return { baseUrl, apiKey };
+}

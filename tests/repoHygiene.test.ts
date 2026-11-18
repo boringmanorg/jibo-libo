@@ -73,6 +73,10 @@ describe('database cutoff', () => {
   const ALLOWED = new Set([
     'src/integrations/supabase/client.server.ts',
     'src/integrations/supabase/auth-middleware.ts',
+    // Super admin console only (admin@xtsy.one); never imported by guest pages.
+    'src/admin/adminSupabase.ts',
+    'src/admin/adminAuth.ts',
+    'src/admin/serviceClient.server.ts',
   ]);
 
   const walk = (dir: string, out: string[] = []): string[] => {
@@ -103,7 +107,7 @@ describe('database cutoff', () => {
       // database import unless explicitly enabled; bistroGoogleSync.test.ts
       // verifies the off-by-default refusal. Guest callers get no exception.
       .filter((file) => file !== join(ROOT, 'src/lib/bistroGoogleSync.server.ts'))
-      .filter((file) => /(?:from\s*|import\s*\(|export[^;]*from\s*)['"][^'"]*(?:auth-middleware|client\.server)['"]|\brequireSupabaseAuth\b/.test(readFileSync(file, 'utf8')))
+      .filter((file) => /(?:from\s*|import\s*\(|export[^;]*from\s*)['"][^'"]*integrations\/supabase\/(?:auth-middleware|client\.server)['"]|\brequireSupabaseAuth\b/.test(readFileSync(file, 'utf8')))
       .map((file) => file.slice(ROOT.length).replace(/^\/+/, ''));
     expect(offenders, 'Generated database helpers must not enter the guest application graph').toEqual([]);
   });

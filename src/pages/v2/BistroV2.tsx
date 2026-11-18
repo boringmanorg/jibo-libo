@@ -15,6 +15,7 @@ import { IMG, first } from '@/data/v2Images';
 import { PageShell, PageHero, Btn, Section, H2, FaqList, PAD } from '@/components/v2/blocks';
 import { Photo, Marquee, Eyebrow, waLink } from '@/components/v2/primitives';
 import { TableBookingForm } from '@/components/v2/TableBookingForm';
+import { LiveTables } from '@/components/v2/LiveTables';
 import { BISTRO_BREAKFAST, BISTRO_EVENING, BISTRO_HOURS_SENTENCE, BISTRO_LUNCH_DETAILS } from '@/data/tabBistroHours';
 
 const MAPS_URL = 'https://www.google.com/maps/search/?api=1&query=TAB+Bistro+by+XTSY+Mawdiangdiang+New+Shillong+Township';
@@ -122,6 +123,7 @@ export default function BistroV2() {
         </Section>
 
         <Section id="book-a-table" className="scroll-mt-24 pt-0">
+          <LiveTables />
           <TableBookingForm />
         </Section>
 
