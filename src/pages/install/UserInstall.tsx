@@ -93,9 +93,9 @@ export default function UserInstall() {
       {/* Header */}
       <div className="sticky top-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
         <div className="flex items-center justify-between px-4 py-3">
-          <button onClick={() => navigate('/')} className="p-2 -ml-2">
+          <a href="/" aria-label="Back to XTSY home" className="p-2 -ml-2 inline-flex min-h-12 min-w-12 items-center justify-center">
             <X className="w-5 h-5 text-muted-foreground" />
-          </button>
+          </a>
           <span className="text-sm font-medium text-foreground">Install XTSY</span>
           <div className="w-9" />
         </div>
@@ -203,6 +203,13 @@ export default function UserInstall() {
       </div>
       
       {/* iOS Instructions Modal */}
+      <nav aria-label="Explore XTSY" className="px-4 pb-10 max-w-md mx-auto flex flex-wrap justify-center gap-3 text-sm">
+        <a href="/" className="inline-flex min-h-12 items-center px-3 text-primary underline-offset-4 hover:underline">Home</a>
+        <a href="/book" className="inline-flex min-h-12 items-center px-3 text-primary underline-offset-4 hover:underline">Book a stay</a>
+        <a href="/tours" className="inline-flex min-h-12 items-center px-3 text-primary underline-offset-4 hover:underline">Tours</a>
+        <a href="/tab-bistro" className="inline-flex min-h-12 items-center px-3 text-primary underline-offset-4 hover:underline">TAB Bistro</a>
+      </nav>
+
       <AnimatePresence>
         {showIOSInstructions && (
           <motion.div
