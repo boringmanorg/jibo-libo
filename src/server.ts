@@ -148,7 +148,9 @@ function withEdgeCacheHeaders(request: Request, response: Response): Response {
   try { key = cacheKey(request); } catch { key = null; }
   if (!key || response.status !== 200) return response;
   if (!(response.headers.get("content-type") ?? "").includes("text/html") || response.headers.has("set-cookie")) return response;
-  const value = "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400";
+  // No CDN HTML caching: a CDN copy outlives a publish and points at deleted /assets/* files
+  // (Ahrefs 18 Nov 2026: 335 pages with broken JS/CSS). The build-keyed page cache keeps TTFB low.
+  const value = "public, max-age=0, must-revalidate";
   try {
     response.headers.set("cache-control", value);
     return response;
