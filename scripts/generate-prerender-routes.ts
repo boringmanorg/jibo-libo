@@ -31,7 +31,7 @@ export const STATIC_ROUTES = [
   '/tours/meghalaya-couple-tour-package',
   '/guides/meghalaya-photo-gallery',
   '/guides/best-time-to-visit-meghalaya',
-  '/budget-trip-meghalaya',
+  '/guides/budget-trip-meghalaya',
   '/hidden-places-meghalaya',
   '/meghalaya-3-day-itinerary',
   '/meghalaya-5-day-itinerary',

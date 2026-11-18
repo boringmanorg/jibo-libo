@@ -28,3 +28,16 @@ describe('legacy forwarding', () => {
     expect(legacyRedirectTarget('/meghalaya-tour-packages/')).toBe('/tours/meghalaya-tour-packages');
   });
 });
+
+import { guidePath, resolveForwardTarget } from '../src/lib/guidePath';
+describe('guide folder', () => {
+  it('top-level guide slugs live under /guides', () => {
+    expect(guidePath('meghalaya-travel-guide')).toBe('/guides/meghalaya-travel-guide');
+  });
+  it('real sections keep their own address', () => {
+    expect(guidePath('tab-bistro')).toBe('/tab-bistro');
+  });
+  it('forwarding targets that moved resolve in one hop', () => {
+    expect(resolveForwardTarget('/meghalaya-tour-packages')).toBe('/tours/meghalaya-tour-packages');
+  });
+});

@@ -43,10 +43,10 @@ export function programmaticPayload(slug: string): ProgrammaticPayload {
   }
   if (isThinSEOPage(model.page)) return { status: 'thin' };
   const { page, hero } = model;
-  const questions = rankedQuestionsFor(`/${slug}`);
+  const questions = rankedQuestionsFor(`/guides/${slug}`);
   if (questions) model.page = { ...page, faqs: questions.map(({ q, a }) => ({ question: q, answer: a })) };
   const head: RouteHeadInput = {
-    path: `/${CANONICAL_TWIN[page.slug] ?? page.slug}`,
+    path: `/guides/${CANONICAL_TWIN[page.slug] ?? page.slug}`,
     title: page.title,
     description: page.metaDescription,
     keywords: page.keywords?.join(', '),

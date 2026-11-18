@@ -33,14 +33,14 @@ async function main() {
   for (const p of ALL_SEO_PAGES as any[]) {
     if (seen.has(p.slug)) continue;
     if (!isIndexableSEOSlug(p.slug, p)) continue;
-    const full = `${SITE}/${p.slug}`;
+    const full = `${SITE}/guides/${p.slug}`;
     if (owned.has(full)) { skippedOwned++; continue; }
     seen.add(p.slug);
     unique.push(p);
   }
 
   const urls = unique.map(p => `  <url>
-    <loc>${SITE}/${p.slug}</loc>
+    <loc>${SITE}/guides/${p.slug}</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>`).join('\n');

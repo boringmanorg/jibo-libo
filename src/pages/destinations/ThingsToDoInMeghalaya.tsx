@@ -1,3 +1,4 @@
+import { guidePath } from '@/lib/guidePath';
 import { destinationPath } from '@/data/neTaxonomy';
 import { useState } from 'react';
 import heroImage from '@/assets/northeast-ecological-education-authentic.jpg';
@@ -120,7 +121,7 @@ const ThingsToDoInMeghalaya = () => {
               {destinationCategories.map((cat) => (
                 <Link
                   key={cat.slug}
-                  to={`/${cat.slug}`}
+                  to={guidePath(cat.slug)}
                   className="px-4 py-2 rounded-full border border-white/30 text-sm text-white hover:bg-primary hover:text-primary-foreground transition-colors"
                 >
                   {cat.name}

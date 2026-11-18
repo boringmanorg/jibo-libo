@@ -9,7 +9,7 @@ import path from 'path';
 
 const BASE = process.env.BASE_URL || 'http://localhost:4174';
 const OUT = process.env.OUT_DIR || 'shots';
-const ROUTES = (process.env.SEO_ROUTES || '/,/stays/best-hostel-in-shillong,/cheap-hostels-shillong,/xtsy-270,/about/faq,/tours/plan-trip-with-ai,/hostels-in-shillong-today,/shillong-dormitory,/tours/3-day-meghalaya-itinerary,/hostel-in-guwahati-tonight,/guwahati-to-tawang').split(',');
+const ROUTES = (process.env.SEO_ROUTES || '/,/stays/best-hostel-in-shillong,/cheap-hostels-shillong,/xtsy-270,/about/faq,/tours/plan-trip-with-ai,/guides/hostels-in-shillong-today,/guides/shillong-dormitory,/tours/3-day-meghalaya-itinerary,/guides/hostel-in-guwahati-tonight,/guides/guwahati-to-tawang').split(',');
 
 const pick = (html: string, re: RegExp) => (html.match(re)?.[1] ?? '').replace(/\s+/g, ' ').trim();
 

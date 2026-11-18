@@ -1,3 +1,4 @@
+import { guidePath } from '@/lib/guidePath';
 import { WaAnchor } from '@/components/WaAnchor';
 import { useParams, Link, Navigate } from '@/lib/router-compat';
 import NotFound from '@/pages/NotFound';
@@ -36,7 +37,7 @@ const buildSchema = (page: SEOPageData) => {
     '@type': page.schemaType,
     name: page.h1,
     description: page.metaDescription,
-    url: `https://xtsy.one/${page.slug}`,
+    url: `https://xtsy.one/guides/${page.slug}`,
   };
 
   if (['Hostel', 'Hotel', 'LodgingBusiness'].includes(page.schemaType)) {
@@ -115,7 +116,7 @@ const buildSchema = (page: SEOPageData) => {
   if (page.schemaType === 'TouristAttraction') {
     const geo = getDestinationGeo(page.slug);
     Object.assign(base, {
-      '@id': `https://xtsy.one/${page.slug}#attraction`,
+      '@id': `https://xtsy.one/guides/${page.slug}#attraction`,
       isAccessibleForFree: true,
       publicAccess: true,
       geo: { '@type': 'GeoCoordinates', latitude: geo.lat, longitude: geo.lng },
@@ -127,7 +128,7 @@ const buildSchema = (page: SEOPageData) => {
 
   if (page.schemaType === 'Restaurant') {
     Object.assign(base, {
-      '@id': `https://xtsy.one/${page.slug}#restaurant`,
+      '@id': `https://xtsy.one/guides/${page.slug}#restaurant`,
       servesCuisine: ['North Indian', 'Tandoor', 'Indo-Chinese', 'Thai', 'Continental', 'Italian', 'Seafood', 'Northeast Indian', 'Cafe'],
       address: { '@type': 'PostalAddress', streetAddress: 'Mawdiangdiang Road', addressLocality: 'Shillong', addressRegion: 'Meghalaya', postalCode: '793018', addressCountry: 'IN' },
       geo: { '@type': 'GeoCoordinates', latitude: 25.6025457, longitude: 91.9448902 },
@@ -232,7 +233,7 @@ const WheelLinksNav = memo(({ slug }: { slug: string }) => {
         {links.map(link => (
           <Link
             key={link.slug}
-            to={`/${link.slug}`}
+            to={guidePath(link.slug)}
             className="flex items-center gap-1.5 text-sm text-primary hover:underline py-1"
           >
             <span aria-hidden="true">{LINK_TYPE_LABELS[link.type]}</span>
@@ -518,7 +519,7 @@ const ProgrammaticSEOPage = () => {
               <h2 className="text-lg font-semibold text-foreground mb-4">More {categoryLabel}</h2>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                 {categoryPages.map(rp => (
-                  <Link key={rp.slug} to={`/${rp.slug}`} className="text-sm text-primary hover:underline">
+                  <Link key={rp.slug} to={guidePath(rp.slug)} className="text-sm text-primary hover:underline">
                     {rp.h1}
                   </Link>
                 ))}
@@ -549,7 +550,7 @@ const ProgrammaticSEOPage = () => {
               <h2 className="text-lg font-semibold text-foreground mb-4">Related Pages</h2>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                 {related.map(rp => (
-                  <Link key={rp.slug} to={`/${rp.slug}`} className="text-sm text-primary hover:underline">
+                  <Link key={rp.slug} to={guidePath(rp.slug)} className="text-sm text-primary hover:underline">
                     {rp.h1}
                   </Link>
                 ))}

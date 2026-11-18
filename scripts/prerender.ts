@@ -46,7 +46,7 @@ function buildSchema(page: SEOPageData): string {
     '@type': page.schemaType,
     name: page.h1,
     description: page.metaDescription,
-    url: `${SITE_URL}/${page.slug}`,
+    url: `${SITE_URL}/guides/${page.slug}`,
   };
 
   if (['Hostel', 'Hotel', 'LodgingBusiness'].includes(page.schemaType)) {
@@ -178,13 +178,13 @@ function generatePageHTML(page: SEOPageData, templateHTML: string): string {
   // Replace canonical
   html = html.replace(
     /<link rel="canonical" href="[^"]*" \/>/,
-    `<link rel="canonical" href="${SITE_URL}/${page.slug}" />`
+    `<link rel="canonical" href="${SITE_URL}/guides/${page.slug}" />`
   );
 
   // Replace OG tags
   html = html.replace(/<meta property="og:title" content="[^"]*" \/>/, `<meta property="og:title" content="${escapeHtml(page.title)}" />`);
   html = html.replace(/<meta property="og:description" content="[^"]*" \/>/, `<meta property="og:description" content="${escapeHtml(page.metaDescription)}" />`);
-  html = html.replace(/<meta property="og:url" content="[^"]*" \/>/, `<meta property="og:url" content="${SITE_URL}/${page.slug}" />`);
+  html = html.replace(/<meta property="og:url" content="[^"]*" \/>/, `<meta property="og:url" content="${SITE_URL}/guides/${page.slug}" />`);
 
   // Replace Twitter tags
   html = html.replace(/<meta name="twitter:title" content="[^"]*" \/>/, `<meta name="twitter:title" content="${escapeHtml(page.title)}" />`);

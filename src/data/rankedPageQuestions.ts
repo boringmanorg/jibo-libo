@@ -29,28 +29,28 @@ export const RANKED_PAGE_QUESTIONS: Record<string, RankedQuestion[]> = {
     { q: 'Where is the workation stay?', a: 'The XTSY workation stay is at XTSY Travellers Hostel in New Shillong Township, with TAB Bistro on site for meals and coffee.' },
     { q: 'Can I combine remote work with Meghalaya day trips?', a: 'Yes. The desk can help plan time off around Shillong, Sohra, Dawki and Mawlynnong. Keep sightseeing separate from working hours and confirm transport for your dates.' },
   ],
-  '/pre-wedding-shoot-meghalaya': [
+  '/guides/pre-wedding-shoot-meghalaya': [
     { q: 'What locations does the Meghalaya pre-wedding guide cover?', a: 'The guide covers river scenery at Dawki, waterfall settings and living root bridges. Choose locations around the time available, weather and walking required rather than trying to visit them all in one shoot.' },
     { q: 'Can rain affect a pre-wedding shoot in Meghalaya?', a: 'Yes. Rain and mist can affect outdoor photography, access and visibility, especially during the monsoon. Agree on an alternative location or flexible schedule with your photographer.' },
     enquiryQuestion,
   ],
-  '/workation-tawang': [
+  '/guides/workation-tawang': [
     { q: 'What should I confirm before booking a Tawang workation?', a: 'Confirm the accommodation, internet connection, backup connectivity, workspace, power backup and weekly or monthly quote for your dates. Do not assume that every property offers the same facilities.' },
     partnerQuestion,
     enquiryQuestion,
   ],
   '/stays/luxury-glamping-shillong': suiteQuestions,
-  '/3-day-mizoram-itinerary': [
+  '/guides/3-day-mizoram-itinerary': [
     { q: 'Can I adapt the three-day Mizoram itinerary?', a: 'Yes. Treat it as a starting plan and confirm the stops, travel time and accommodation for your arrival and departure dates with the desk.' },
     partnerQuestion,
     enquiryQuestion,
   ],
-  '/budget-trip-meghalaya': [
+  '/guides/budget-trip-meghalaya': [
     { q: 'What costs should I include in a Meghalaya trip budget?', a: 'Allow for accommodation, meals, transfers, day-trip transport, attraction entry and activities. Shared transport and splitting a cab can help control costs; get current quotes before committing to a total budget.' },
     { q: 'Can I stay in Shillong and explore Meghalaya?', a: 'Shillong can be a base for day trips, while overnight stays closer to distant stops reduce return driving. XTSY’s own stay is in New Shillong Township; accommodation elsewhere is arranged through partners.' },
     enquiryQuestion,
   ],
-  '/backpacking-northeast-india': [
+  '/guides/backpacking-northeast-india': [
     { q: 'What does the Northeast India backpacking guide cover?', a: 'The guide covers routes, budgets, permits, stays and travel planning across the Northeast, including Meghalaya and Sikkim. Plan each state separately rather than assuming one route or permit rule covers the whole region.' },
     partnerQuestion,
     enquiryQuestion,
@@ -61,7 +61,7 @@ export const RANKED_PAGE_QUESTIONS: Record<string, RankedQuestion[]> = {
     { q: 'How do I enquire about a hostel bed?', a: 'Choose your room and dates on the XTSY booking page, enter your guest details and send the WhatsApp enquiry. Availability and the booking are confirmed by the desk, not by submitting the enquiry alone.' },
   ],
   '/travel-guide/guwahati-to-shillong-transport': TRANSPORT_QUESTIONS,
-  '/10-day-meghalaya-itinerary': [
+  '/guides/10-day-meghalaya-itinerary': [
     { q: 'What does the ten-day Meghalaya route cover?', a: 'The plan begins with Shillong and Sohra, continues to the Nongriat root-bridge trail and the Umngot River, then explores the Jaintia Hills before returning to Shillong.' },
     { q: 'Should I allow extra time for Nongriat?', a: 'Yes. The trail starts at Tyrna and includes thousands of steps. The itinerary keeps time for the walk and recovery instead of combining a demanding trek and a long onward drive in one afternoon.' },
     { q: 'Why does the ten-day plan include a buffer?', a: 'Rain, visibility and road conditions can change sightseeing plans. A local or buffer day and a return to Shillong before departure reduce the risk of rushing a long transfer.' },
@@ -81,12 +81,12 @@ export const RANKED_PAGE_QUESTIONS: Record<string, RankedQuestion[]> = {
     { q: 'What activities are available at Umiam Lake?', a: 'The guide covers boating, kayaking, pedal-boating, lakeside picnics and photography. Check activity availability and conditions with the local water-sports operator.' },
     { q: 'When should I visit Umiam Lake for photographs?', a: 'The guide recommends early mornings for mist and reflections, and sunset for photography. October to May usually offers clearer skies; visibility still depends on the weather.' },
   ],
-  '/workation-cherrapunji': [
+  '/guides/workation-cherrapunji': [
     { q: 'What should I check for a Cherrapunji workation stay?', a: 'Confirm Wi-Fi, backup power, a suitable work area, meals and the weekly or monthly quote with the accommodation provider before booking.' },
     partnerQuestion,
     enquiryQuestion,
   ],
-  '/kongthong-whistling-village': [
+  '/guides/kongthong-whistling-village': [
     { q: 'Why is Kongthong called the whistling village?', a: 'Kongthong is known for Jingrwai Lawbei, the tradition in which a mother gives her child a personal melody used to call them, alongside their regular name.' },
     { q: 'Can I stay overnight in Kongthong?', a: 'The guide describes basic, community-run homestay options. Confirm availability and facilities locally or ask the XTSY desk to arrange a partner stay; XTSY does not own a property there.' },
     { q: 'What should I plan before visiting Kongthong?', a: 'Allow time for the road journey from Shillong and village exploration. Arrange transport and confirm accommodation if staying overnight, and respect residents’ privacy when photographing or recording.' },
@@ -96,7 +96,7 @@ export const RANKED_PAGE_QUESTIONS: Record<string, RankedQuestion[]> = {
     { q: 'What is in the XTSY merchandise collection?', a: 'The collection includes travel bags, bottles, clothing and accessories, plus laptop sleeves, notebooks and other work-from-anywhere items.' },
     { q: 'Where is merchandise pickup planned?', a: 'The page lists pickup at XTSY Travellers Hostel or TAB Bistro by XTSY on Mawdiangdiang Road, New Shillong Township. Confirm ordering and pickup availability when the item launches.' },
   ],
-  '/shillong-dormitory': [
+  '/guides/shillong-dormitory': [
     { q: 'Does XTSY have a four-bed mixed dorm?', a: 'No. The four-bed bookable dorm is women-only. Mixed dorm options are the six-bed and eight-bed dorms.' },
     { q: 'What facilities are described for XTSY dorm beds?', a: 'The dorm guide describes lockers, reading lights and charging points. Check the chosen room on the booking page and ask the desk about any specific requirements.' },
     { q: 'Where is the dormitory in Shillong?', a: 'XTSY Travellers Hostel is on Mawdiangdiang Road in New Shillong Township, near NIFT Shillong and IIM Shillong, rather than in Police Bazaar.' },
@@ -111,22 +111,22 @@ export const RANKED_PAGE_QUESTIONS: Record<string, RankedQuestion[]> = {
     { q: 'Does every tour have a fixed price?', a: 'No. Some packages list a price while others are on request. Check the individual tour for duration and inclusions, and confirm a quote for your dates and group size.' },
     enquiryQuestion,
   ],
-  '/workation-shillong': [
+  '/guides/workation-shillong': [
     { q: 'Where can I work remotely with XTSY in Shillong?', a: 'XTSY Travellers Hostel in New Shillong Township offers long-stay workation options with Wi-Fi, workspace access and breakfast. Confirm the facilities and selected plan for your dates.' },
     { q: 'Can I request a weekly or monthly workation quote?', a: 'Yes. Share your arrival date, length of stay and workspace needs with the desk to confirm availability, the rate and plan inclusions.' },
     { q: 'Can the desk help plan time off during a Shillong workation?', a: 'Yes. Ask about local sightseeing or trips toward Sohra and Dawki, allowing enough time for travel around your working schedule.' },
   ],
-  '/2-day-meghalaya-itinerary': [
+  '/guides/2-day-meghalaya-itinerary': [
     { q: 'Can I customise a two-day Meghalaya trip?', a: 'Yes. Keep the route focused and share arrival and departure times with the desk. Confirm which stops fit the available road time instead of assuming the whole state can be covered in two days.' },
     { q: 'Can rain affect the two-day Meghalaya plan?', a: 'Yes. Rain, mist and road conditions can change sightseeing and travel times. Keep the stop list flexible and confirm conditions before leaving.' },
     enquiryQuestion,
   ],
-  '/2-day-nagaland-itinerary': [
+  '/guides/2-day-nagaland-itinerary': [
     { q: 'How should I use the two-day Nagaland itinerary?', a: 'Use it as a starting point for a short visit. Confirm the actual stops, transfers and stay locations for your arrival and departure times before booking.' },
     partnerQuestion,
     enquiryQuestion,
   ],
-  '/3-day-nagaland-itinerary': [
+  '/guides/3-day-nagaland-itinerary': [
     { q: 'Can the three-day Nagaland plan be tailored?', a: 'Yes. Share your travel dates and interests with the desk and confirm a practical route, accommodation and transport for the time available.' },
     partnerQuestion,
     enquiryQuestion,

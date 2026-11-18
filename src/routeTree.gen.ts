@@ -10,7 +10,6 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as SlugRouteImport } from './routes/$slug'
 import { Route as companyAboutIndexRouteImport } from './routes/(company)/about.index'
 import { Route as companyAboutContactRouteImport } from './routes/(company)/about/contact'
 import { Route as companyAboutContactUsRouteImport } from './routes/(company)/about/contact-us'
@@ -26,6 +25,7 @@ import { Route as companyAboutUnsubscribeRouteImport } from './routes/(company)/
 import { Route as companyAboutXtsyFactsRouteImport } from './routes/(company)/about/xtsy-facts'
 import { Route as guidesDestinationsIndexRouteImport } from './routes/(guides)/destinations/index'
 import { Route as guidesGuidesIndexRouteImport } from './routes/(guides)/guides/index'
+import { Route as guidesGuidesSlugRouteImport } from './routes/(guides)/guides/$slug'
 import { Route as guidesGuidesBestTimeToVisitMeghalayaRouteImport } from './routes/(guides)/guides/best-time-to-visit-meghalaya'
 import { Route as guidesGuidesHiddenPlacesInMeghalayaRouteImport } from './routes/(guides)/guides/hidden-places-in-meghalaya'
 import { Route as guidesGuidesMeghalayaCavesRouteImport } from './routes/(guides)/guides/meghalaya-caves'
@@ -87,11 +87,6 @@ import { Route as guidesDestinationsStateCityAttractionRouteImport } from './rou
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SlugRoute = SlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const companyAboutIndexRoute = companyAboutIndexRouteImport.update({
@@ -172,6 +167,11 @@ const guidesDestinationsIndexRoute = guidesDestinationsIndexRouteImport.update({
 const guidesGuidesIndexRoute = guidesGuidesIndexRouteImport.update({
   id: '/(guides)/guides/',
   path: '/guides/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const guidesGuidesSlugRoute = guidesGuidesSlugRouteImport.update({
+  id: '/(guides)/guides/$slug',
+  path: '/guides/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const guidesGuidesBestTimeToVisitMeghalayaRoute =
@@ -503,7 +503,6 @@ const guidesDestinationsStateCityAttractionRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/$slug': typeof SlugRoute
   '/about/contact': typeof companyAboutContactRoute
   '/about/contact-us': typeof companyAboutContactUsRoute
   '/about/faq': typeof companyAboutFaqRoute
@@ -516,6 +515,7 @@ export interface FileRoutesByFullPath {
   '/about/terms-of-service': typeof companyAboutTermsOfServiceRoute
   '/about/unsubscribe': typeof companyAboutUnsubscribeRoute
   '/about/xtsy-facts': typeof companyAboutXtsyFactsRoute
+  '/guides/$slug': typeof guidesGuidesSlugRoute
   '/guides/best-time-to-visit-meghalaya': typeof guidesGuidesBestTimeToVisitMeghalayaRoute
   '/guides/hidden-places-in-meghalaya': typeof guidesGuidesHiddenPlacesInMeghalayaRoute
   '/guides/meghalaya-caves': typeof guidesGuidesMeghalayaCavesRoute
@@ -579,7 +579,6 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/$slug': typeof SlugRoute
   '/about/contact': typeof companyAboutContactRoute
   '/about/contact-us': typeof companyAboutContactUsRoute
   '/about/faq': typeof companyAboutFaqRoute
@@ -592,6 +591,7 @@ export interface FileRoutesByTo {
   '/about/terms-of-service': typeof companyAboutTermsOfServiceRoute
   '/about/unsubscribe': typeof companyAboutUnsubscribeRoute
   '/about/xtsy-facts': typeof companyAboutXtsyFactsRoute
+  '/guides/$slug': typeof guidesGuidesSlugRoute
   '/guides/best-time-to-visit-meghalaya': typeof guidesGuidesBestTimeToVisitMeghalayaRoute
   '/guides/hidden-places-in-meghalaya': typeof guidesGuidesHiddenPlacesInMeghalayaRoute
   '/guides/meghalaya-caves': typeof guidesGuidesMeghalayaCavesRoute
@@ -656,7 +656,6 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/$slug': typeof SlugRoute
   '/(company)/about/contact': typeof companyAboutContactRoute
   '/(company)/about/contact-us': typeof companyAboutContactUsRoute
   '/(company)/about/faq': typeof companyAboutFaqRoute
@@ -669,6 +668,7 @@ export interface FileRoutesById {
   '/(company)/about/terms-of-service': typeof companyAboutTermsOfServiceRoute
   '/(company)/about/unsubscribe': typeof companyAboutUnsubscribeRoute
   '/(company)/about/xtsy-facts': typeof companyAboutXtsyFactsRoute
+  '/(guides)/guides/$slug': typeof guidesGuidesSlugRoute
   '/(guides)/guides/best-time-to-visit-meghalaya': typeof guidesGuidesBestTimeToVisitMeghalayaRoute
   '/(guides)/guides/hidden-places-in-meghalaya': typeof guidesGuidesHiddenPlacesInMeghalayaRoute
   '/(guides)/guides/meghalaya-caves': typeof guidesGuidesMeghalayaCavesRoute
@@ -734,7 +734,6 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/$slug'
     | '/about/contact'
     | '/about/contact-us'
     | '/about/faq'
@@ -747,6 +746,7 @@ export interface FileRouteTypes {
     | '/about/terms-of-service'
     | '/about/unsubscribe'
     | '/about/xtsy-facts'
+    | '/guides/$slug'
     | '/guides/best-time-to-visit-meghalaya'
     | '/guides/hidden-places-in-meghalaya'
     | '/guides/meghalaya-caves'
@@ -810,7 +810,6 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/$slug'
     | '/about/contact'
     | '/about/contact-us'
     | '/about/faq'
@@ -823,6 +822,7 @@ export interface FileRouteTypes {
     | '/about/terms-of-service'
     | '/about/unsubscribe'
     | '/about/xtsy-facts'
+    | '/guides/$slug'
     | '/guides/best-time-to-visit-meghalaya'
     | '/guides/hidden-places-in-meghalaya'
     | '/guides/meghalaya-caves'
@@ -886,7 +886,6 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/$slug'
     | '/(company)/about/contact'
     | '/(company)/about/contact-us'
     | '/(company)/about/faq'
@@ -899,6 +898,7 @@ export interface FileRouteTypes {
     | '/(company)/about/terms-of-service'
     | '/(company)/about/unsubscribe'
     | '/(company)/about/xtsy-facts'
+    | '/(guides)/guides/$slug'
     | '/(guides)/guides/best-time-to-visit-meghalaya'
     | '/(guides)/guides/hidden-places-in-meghalaya'
     | '/(guides)/guides/meghalaya-caves'
@@ -963,7 +963,6 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  SlugRoute: typeof SlugRoute
   companyAboutContactRoute: typeof companyAboutContactRoute
   companyAboutContactUsRoute: typeof companyAboutContactUsRoute
   companyAboutFaqRoute: typeof companyAboutFaqRoute
@@ -976,6 +975,7 @@ export interface RootRouteChildren {
   companyAboutTermsOfServiceRoute: typeof companyAboutTermsOfServiceRoute
   companyAboutUnsubscribeRoute: typeof companyAboutUnsubscribeRoute
   companyAboutXtsyFactsRoute: typeof companyAboutXtsyFactsRoute
+  guidesGuidesSlugRoute: typeof guidesGuidesSlugRoute
   guidesGuidesBestTimeToVisitMeghalayaRoute: typeof guidesGuidesBestTimeToVisitMeghalayaRoute
   guidesGuidesHiddenPlacesInMeghalayaRoute: typeof guidesGuidesHiddenPlacesInMeghalayaRoute
   guidesGuidesMeghalayaCavesRoute: typeof guidesGuidesMeghalayaCavesRoute
@@ -1045,13 +1045,6 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/$slug': {
-      id: '/$slug'
-      path: '/$slug'
-      fullPath: '/$slug'
-      preLoaderRoute: typeof SlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/(company)/about/': {
@@ -1157,6 +1150,13 @@ declare module '@tanstack/react-router' {
       path: '/guides'
       fullPath: '/guides/'
       preLoaderRoute: typeof guidesGuidesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(guides)/guides/$slug': {
+      id: '/(guides)/guides/$slug'
+      path: '/guides/$slug'
+      fullPath: '/guides/$slug'
+      preLoaderRoute: typeof guidesGuidesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/(guides)/guides/best-time-to-visit-meghalaya': {
@@ -1563,7 +1563,6 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  SlugRoute: SlugRoute,
   companyAboutContactRoute: companyAboutContactRoute,
   companyAboutContactUsRoute: companyAboutContactUsRoute,
   companyAboutFaqRoute: companyAboutFaqRoute,
@@ -1578,6 +1577,7 @@ const rootRouteChildren: RootRouteChildren = {
   companyAboutTermsOfServiceRoute: companyAboutTermsOfServiceRoute,
   companyAboutUnsubscribeRoute: companyAboutUnsubscribeRoute,
   companyAboutXtsyFactsRoute: companyAboutXtsyFactsRoute,
+  guidesGuidesSlugRoute: guidesGuidesSlugRoute,
   guidesGuidesBestTimeToVisitMeghalayaRoute:
     guidesGuidesBestTimeToVisitMeghalayaRoute,
   guidesGuidesHiddenPlacesInMeghalayaRoute:

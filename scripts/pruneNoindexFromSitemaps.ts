@@ -20,7 +20,9 @@ for (const f of fs.readdirSync(PUBLIC).filter((x) => /^sitemap.*\.xml$/.test(x))
   const file = path.join(PUBLIC, f);
   const xml = fs.readFileSync(file, 'utf8');
   const out = xml.replace(/\s*<url>\s*<loc>https:\/\/xtsy\.one\/([^<]*)<\/loc>[\s\S]*?<\/url>/g, (m, slug: string) => {
-    const cleanSlug = slug.endsWith('/') ? slug.slice(0, -1) : slug;
+    const rawSlug = slug.endsWith('/') ? slug.slice(0, -1) : slug;
+    // Guide pages live under /guides; indexing rules are keyed by the bare guide slug.
+    const cleanSlug = rawSlug.startsWith('guides/') && !STATIC_ROUTE_SET.has(rawSlug) ? rawSlug.slice(7) : rawSlug;
     const isKnownStaticRoute = STATIC_ROUTE_SET.has(cleanSlug);
     // Owner-approved moved pages were indexable at their old address; keep their new address listed.
     const movedFrom = Object.keys(MOVED_PAGES).find((old) => MOVED_PAGES[old] === '/' + cleanSlug)?.slice(1);

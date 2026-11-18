@@ -673,7 +673,7 @@ services.forEach((s) => {
 // 4) GENERAL "BEST / TOP / WHERE TO EAT" CLUSTER
 // ===========================================================================
 const generals: Occasion[] = [
-  // 'best-restaurant-in-shillong' removed: 301 → /best-restaurants-shillong (duplicate-title fix, Semrush E3).
+  // 'best-restaurant-in-shillong' removed: 301 → /guides/best-restaurants-shillong (duplicate-title fix, Semrush E3).
   {
     slug: 'top-restaurants-in-shillong',
     h1: 'Top Restaurants in Shillong',

@@ -133,10 +133,10 @@ export default function HowToReachMeghalaya() {
             heading out:
           </p>
           <ul className="list-disc pl-6 space-y-2 text-foreground/90">
-            <li><Link className="text-primary underline" to="/dawki-umngot-river-guide">Dawki &amp; Umngot River</Link> — 82 km, ~2.5 hr</li>
-            <li><Link className="text-primary underline" to="/cherrapunji-travel-guide">Cherrapunji (Sohra)</Link> — 54 km, ~1.5 hr</li>
+            <li><Link className="text-primary underline" to="/guides/dawki-umngot-river-guide">Dawki &amp; Umngot River</Link> — 82 km, ~2.5 hr</li>
+            <li><Link className="text-primary underline" to="/guides/cherrapunji-travel-guide">Cherrapunji (Sohra)</Link> — 54 km, ~1.5 hr</li>
             <li><Link className="text-primary underline" to="/guides/meghalaya-villages">Mawlynnong &amp; Kongthong</Link> — 78–90 km, 2.5–3 hr</li>
-            <li><Link className="text-primary underline" to="/umiam-lake-shillong">Umiam Lake</Link> — 15 km, on the drive in from Guwahati</li>
+            <li><Link className="text-primary underline" to="/guides/umiam-lake-shillong">Umiam Lake</Link> — 15 km, on the drive in from Guwahati</li>
           </ul>
         </section>
 

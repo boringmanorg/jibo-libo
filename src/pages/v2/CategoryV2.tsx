@@ -16,7 +16,7 @@ import {
  */
 const CategoryV2 = () => {
   const { pathname } = useLocation();
-  const slug = pathname.replace(/^\/|\/$/g, '');
+  const slug = pathname.replace(/\/$/, '').split('/').pop() ?? '';
   const category = destinationCategories.find(c => c.slug === slug);
 
   if (!category) {
@@ -30,7 +30,7 @@ const CategoryV2 = () => {
   const ogImage = destinations[0] ? getDestinationImages(destinations[0].slug, 1)[0]?.src : undefined;
 
   const pageTitle = `Best ${category.name} in Meghalaya — Travel Guide 2026`;
-  const canonical = `https://xtsy.one/${category.slug}`;
+  const canonical = `https://xtsy.one/guides/${category.slug}`;
 
   // Visible FAQs backed by FAQPage schema (answers must be on-page for the rich result).
   const faqs: { q: string; a: string }[] = [
@@ -93,7 +93,7 @@ const CategoryV2 = () => {
     { to: '/guides/things-to-do-in-meghalaya', label: 'Things to Do in Meghalaya' },
     { to: '/tours/meghalaya-tour-packages', label: 'Meghalaya Tour Packages' },
     { to: '/guides/best-time-to-visit-meghalaya', label: 'Best Time to Visit' },
-    { to: '/meghalaya-travel-guide', label: 'Meghalaya Travel Guide' },
+    { to: '/guides/meghalaya-travel-guide', label: 'Meghalaya Travel Guide' },
     { to: '/stays/best-hostel-in-shillong', label: 'Best Hostel in Shillong' },
     { to: '/tours', label: 'Northeast India Tours' },
     { to: '/guides/meghalaya-photo-gallery', label: 'Photo Gallery' },

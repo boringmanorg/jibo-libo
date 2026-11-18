@@ -1,3 +1,4 @@
+import { guidePath } from '@/lib/guidePath';
 import { Link } from '@/lib/router-compat';
 import type { SEOPageCategory } from '@/data/seoPages';
 
@@ -64,7 +65,7 @@ const TopicalClusterNav = ({ category, currentSlug }: { category: SEOPageCategor
       <h3 className="text-sm font-semibold text-foreground mb-3">📚 Explore This Topic</h3>
       <div className="space-y-1.5">
         <Link
-          to={`/${cluster.pillar.slug}`}
+          to={guidePath(cluster.pillar.slug)}
           className={`block text-sm px-3 py-1.5 rounded-md transition-colors ${
             cluster.pillar.slug === currentSlug
               ? 'bg-primary/10 text-primary font-medium'
@@ -76,7 +77,7 @@ const TopicalClusterNav = ({ category, currentSlug }: { category: SEOPageCategor
         {cluster.children.map(child => (
           <Link
             key={child.slug}
-            to={`/${child.slug}`}
+            to={guidePath(child.slug)}
             className={`block text-sm px-3 py-1.5 rounded-md ml-3 transition-colors ${
               child.slug === currentSlug
                 ? 'bg-primary/10 text-primary font-medium'

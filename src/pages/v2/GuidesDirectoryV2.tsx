@@ -2,6 +2,7 @@
  * /guides — every live Shillong, Meghalaya and Northeast guide on one crawlable page,
  * grouped by topic. Linked from the footer so no guide is more than two clicks from home.
  */
+import { guidePath } from '@/lib/guidePath';
 import { Link } from '@/lib/router-compat';
 import { getRouteApi } from '@tanstack/react-router';
 import { useState } from 'react';
@@ -96,7 +97,7 @@ export default function GuidesDirectoryV2() {
             <ul className="m-0 grid list-none gap-x-8 gap-y-0 p-0 md:grid-cols-2">
               {g.pages.map((p) => (
                 <li key={p.slug}>
-                  <Link to={`/${p.slug}`} className="group flex min-h-12 items-start justify-between gap-4 border-b border-xt-line py-5 text-xt-ink hover:text-xt-crimson">
+                  <Link to={guidePath(p.slug)} className="group flex min-h-12 items-start justify-between gap-4 border-b border-xt-line py-5 text-xt-ink hover:text-xt-crimson">
                     <span className="min-w-0">
                       <span className="block text-[16px] font-bold leading-relaxed">{p.label}</span>
                       <span className="mt-1 block break-all text-[13px] text-xt-mute">/{p.slug}</span>

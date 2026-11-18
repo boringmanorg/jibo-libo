@@ -1,4 +1,5 @@
 import { legacyRedirectTarget } from "@/data/legacyRedirects";
+import { guidePath, resolveForwardTarget } from "@/lib/guidePath";
 import "./lib/error-capture";
 
 import { consumeLastCapturedError } from "./lib/error-capture";
@@ -126,6 +127,22 @@ export function legacyRedirect(request: Request): Response | null {
   });
 }
 
+/** Old top-level guide addresses (e.g. /meghalaya-travel-guide) forward to /guides/<slug> in one hop. */
+async function guideRedirect(request: Request): Promise<Response | null> {
+  let url: URL;
+  try { url = new URL(request.url); } catch { return null; }
+  const m = /^\/([a-z0-9-]+)\/?$/.exec(url.pathname);
+  if (!m || guidePath(m[1]) !== `/guides/${m[1]}`) return null;
+  const { programmaticPayload } = await import("@/lib/seo/guidePageData");
+  const data = programmaticPayload(m[1]);
+  const target = data.status === "redirect" ? resolveForwardTarget(data.to) : data.status === "ok" ? `/guides/${m[1]}` : null;
+  if (!target) return null;
+  return new Response(null, {
+    status: 301,
+    headers: { location: target + url.search, "cache-control": "public, max-age=3600", "x-redirect-source": "legacy-guide" },
+  });
+}
+
 export function canonicalHostRedirect(request: Request): Response | null {
   let url: URL;
   try {
@@ -180,6 +197,8 @@ export default {
     if (hostRedirect) return hostRedirect;
     const legacy = legacyRedirect(request);
     if (legacy) return legacy;
+    const guide = await guideRedirect(request);
+    if (guide) return guide;
 
     try {
       const handler = await getServerEntry();

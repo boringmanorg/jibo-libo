@@ -150,7 +150,7 @@ export const meghalayaDestinations: MeghalayaDestination[] = [
     nearbyAttractions: ['Shillong Peak', 'Elephant Falls', 'Don Bosco Museum'],
     planningLinks: [
       { to: '/', label: 'XTSY Shillong stays and travel desk', context: 'Start with your base and onward travel plans.' },
-      { to: '/meghalaya-travel-guide', label: 'Meghalaya travel guide', context: 'Fit a Umiam Lake visit into your wider trip.' },
+      { to: '/guides/meghalaya-travel-guide', label: 'Meghalaya travel guide', context: 'Fit a Umiam Lake visit into your wider trip.' },
       { to: '/guides/meghalaya-viewpoints', label: 'Viewpoints in Meghalaya', context: 'Browse more scenic stops for your itinerary.' },
       { to: '/guides/things-to-do-in-meghalaya', label: 'Things to do in Meghalaya', context: 'Compare lake outings with treks, caves and other activities.' },
       { to: '/destinations/meghalaya/shillong', label: 'Places to visit in Shillong', context: 'Plan the rest of your Shillong sightseeing.' },

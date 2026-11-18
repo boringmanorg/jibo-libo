@@ -204,7 +204,7 @@ function mainEntity(page: SEOPageData, url: string, hero: Hero): Record<string, 
 }
 
 export function schemaFor(page: SEOPageData): Record<string, unknown>[] {
-  const url = `${SITE}/${page.slug}`;
+  const url = `${SITE}/guides/${page.slug}`;
   const hero = heroFor(page);
   const hub = CATEGORY_HUB[page.category] ?? '/guides/things-to-do-in-meghalaya';
   const graph: Record<string, unknown>[] = [

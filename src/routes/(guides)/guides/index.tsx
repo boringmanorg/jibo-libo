@@ -1,3 +1,4 @@
+import { guidePath } from '@/lib/guidePath';
 import { createFileRoute } from "@tanstack/react-router";
 import GuidesDirectoryV2 from "@/pages/v2/GuidesDirectoryV2";
 import { buildRouteHead } from "@/lib/seo-head";
@@ -20,7 +21,7 @@ export const Route = createFileRoute("/(guides)/guides/")({
         mainEntity: {
           "@type": "ItemList",
           numberOfItems: items.length,
-          itemListElement: items.map((p, i) => ({ "@type": "ListItem", position: i + 1, name: p.label, url: `https://xtsy.one/${p.slug}` })),
+          itemListElement: items.map((p, i) => ({ "@type": "ListItem", position: i + 1, name: p.label, url: `https://xtsy.one${guidePath(p.slug)}` })),
         },
       }],
     });

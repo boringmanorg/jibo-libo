@@ -134,7 +134,7 @@ export const DINING_SPOKE_PAGES: SEOPageData[] = [
     'TAB Bistro by XTSY is a multi-cuisine restaurant in New Shillong Township, a cab ride from Police Bazar, serving tandoor, Indo-Chinese, North Indian gravies and biryani, open daily for breakfast 8:45 AM–12 PM & dinner 5–11 PM.',
   ),
 
-  // 'best-restaurant-shillong' removed: 301 → /best-restaurants-shillong (duplicate-title fix, Semrush E3).
+  // 'best-restaurant-shillong' removed: 301 → /guides/best-restaurants-shillong (duplicate-title fix, Semrush E3).
 
   // ── 5. CATERING SERVICES HUB ──────────────────────────────────────────────
   spoke(

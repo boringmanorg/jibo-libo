@@ -92,7 +92,7 @@ for (const page of ALL_SEO_PAGES) {
   const isDest = page.category === 'destinations' || page.category === 'attractions';
   includedSlugs.add(page.slug);
   if (isDest) { skippedLegacyPlaces++; continue; }
-  pushUnique(`/${page.slug}`, 1.0);
+  pushUnique(`/guides/${page.slug}`, 1.0);
 }
 
 // RECOVERY_PLACES_PATHS are also legacy `/places-to-visit/*` redirects and are

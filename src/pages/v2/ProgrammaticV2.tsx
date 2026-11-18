@@ -1,3 +1,4 @@
+import { guidePath } from '@/lib/guidePath';
 import { WaAnchor } from '@/components/WaAnchor';
 /**
  * /$slug — the ~530 programmatic SEO pages in the 2026 design.
@@ -17,7 +18,7 @@ import NotFound from '@/pages/NotFound';
 import StayEatExplore from '@/components/seo/StayEatExplore';
 import TopicalClusterNav from '@/components/seo/TopicalClusterNav';
 // Page data arrives from the route loader (server function), so no guide text is bundled here.
-const route = getRouteApi('/$slug');
+const route = getRouteApi('/(guides)/guides/$slug');
 import { openTripChat } from '@/components/v2/tripChatEvents';
 import { inr, lowestDormPrice, roomPrice } from '@/components/v2/pricing';
 import { PageShell, Breadcrumbs, PAD } from '@/components/v2/blocks';
@@ -123,7 +124,7 @@ export default function ProgrammaticV2() {
               </section>
             ))}
 
-            {!rankedQuestionsFor(`/${page.slug}`) && page.faqs.length > 0 && (
+            {!rankedQuestionsFor(`/guides/${page.slug}`) && page.faqs.length > 0 && (
               <section className="flex flex-col gap-3">
                 <h2 className="xt-display m-0 text-[32px] leading-none sm:text-[40px]">Frequently asked questions</h2>
                 {page.faqs.map((f) => <Faq key={f.question} q={f.question} a={f.answer} />)}
@@ -175,7 +176,7 @@ export default function ProgrammaticV2() {
         <nav aria-label="Related guides" className={`${PAD} flex flex-col gap-8 py-12`}>
           {['destinations', 'attractions', 'itineraries', 'travel-guides'].includes(page.category) && <StayEatExplore context={page.h1} />}
           <TopicalClusterNav category={page.category} currentSlug={page.slug} />
-          {[{ t: 'Explore related pages', items: wheel.map((l) => ({ to: `/${l.slug}`, label: l.label })) }, { t: `More ${label.toLowerCase()}`, items: sameCat.map((p) => ({ to: `/${p.slug}`, label: p.h1 })) }, { t: 'Related', items: related.map((p) => ({ to: `/${p.slug}`, label: p.h1 })) }]
+          {[{ t: 'Explore related pages', items: wheel.map((l) => ({ to: guidePath(l.slug), label: l.label })) }, { t: `More ${label.toLowerCase()}`, items: sameCat.map((p) => ({ to: guidePath(p.slug), label: p.h1 })) }, { t: 'Related', items: related.map((p) => ({ to: guidePath(p.slug), label: p.h1 })) }]
             .filter((g) => g.items.length)
             .map((g) => (
               <div key={g.t} className="flex flex-col gap-3">

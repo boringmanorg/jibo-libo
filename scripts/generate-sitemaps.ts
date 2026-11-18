@@ -170,7 +170,7 @@ async function main() {
       // Destination/attraction pages live in the hierarchical taxonomy:
       // /destinations/:state/:city/:attraction (legacy /places-to-visit/* now 301s).
       const isDestination = page.category === 'destinations' || page.category === 'attractions';
-      let urlPath = `/${page.slug}`;
+      let urlPath = `/guides/${page.slug}`;
       if (isDestination) {
         // Resolve aliases to their canonical attraction, then to the hierarchy.
         const dest = getDestinationBySlug(page.slug);

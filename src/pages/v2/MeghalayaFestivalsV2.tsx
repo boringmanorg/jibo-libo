@@ -41,7 +41,7 @@ const MEGHALAYA: Festival[] = [
     who: 'Everyone',
     what: 'Pink cherry blossoms across the city, with music, food and craft stalls. The festival has been held in some years and not others, so check the year\'s announcement.',
     plan: 'Blossoms line roads across Shillong and New Shillong; book early, as stays fill up.',
-    guide: { to: '/shillong-cherry-blossom-festival', label: 'Full Cherry Blossom Festival guide' },
+    guide: { to: '/guides/shillong-cherry-blossom-festival', label: 'Full Cherry Blossom Festival guide' },
   },
   {
     name: 'Wangala (100 Drums Festival)',
