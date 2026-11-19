@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { getAdminSupabase, SUPER_ADMIN_EMAIL } from '@/admin/adminSupabase';
+import { deniedMessage, deniedReason, signInErrorMessage, type DeniedReason } from '@/admin/signInMessages';
 
 export const Route = createFileRoute('/(admin)/admin')({
   ssr: false,
@@ -26,6 +27,7 @@ type Status = 'loading' | 'out' | 'denied' | 'in' | 'recovery';
 function AdminLayout() {
   const [status, setStatus] = useState<Status>('loading');
   const [email, setEmail] = useState('');
+  const [reason, setReason] = useState<DeniedReason>('wrong_email');
 
   useEffect(() => {
     const sb = getAdminSupabase();
@@ -34,7 +36,9 @@ function AdminLayout() {
       const u = data.user;
       if (!u) return setStatus('out');
       setEmail(u.email ?? '');
-      if (u.email?.toLowerCase() !== SUPER_ADMIN_EMAIL) return setStatus('denied');
+      const why = deniedReason(u, SUPER_ADMIN_EMAIL);
+      setReason(why);
+      if (why !== 'no_admin_role') return setStatus('denied');
       const { data: ok } = await sb.rpc('is_super_admin');
       setStatus(ok === true ? 'in' : 'denied');
     };
@@ -56,7 +60,7 @@ function AdminLayout() {
       {status === 'denied' && (
         <div className="mx-auto max-w-md p-10 text-center">
           <h1 className="text-xl font-semibold">Access denied</h1>
-          <p className="mt-2 text-muted-foreground">{email} is not allowed in this console.</p>
+          <p className="mt-2 text-muted-foreground">{deniedMessage(reason, email)}</p>
           <Button className="mt-6 min-h-12" onClick={signOut}>Sign out</Button>
         </div>
       )}
@@ -90,7 +94,7 @@ function SignIn() {
     e.preventDefault(); setBusy(true); setMsg('');
     const { error } = await getAdminSupabase().auth.signInWithPassword({ email, password });
     setBusy(false);
-    if (error) setMsg('Sign-in failed. Check the password.');
+    if (error) setMsg(signInErrorMessage(error));
   };
   const reset = async () => {
     const { error } = await getAdminSupabase().auth.resetPasswordForEmail(email, { redirectTo: `${window.location.origin}/admin` });
