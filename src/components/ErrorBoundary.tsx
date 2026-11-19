@@ -11,6 +11,33 @@ interface State {
   retryCount: number;
 }
 
+/** Error from loading a code file that a newer deploy replaced. */
+export function isChunkLoadError(message: string): boolean {
+  return /Loading chunk|dynamically imported module|Failed to fetch dynamically|Importing a module script failed|error loading dynamically imported module|Unable to preload CSS/i.test(
+    message,
+  );
+}
+
+const STALE_RELOAD_STORAGE = 'xtsy_stale_reload_at';
+
+/** Reload once per minute at most, so a stale tab picks up the new deploy without looping. */
+export function shouldReloadForStaleDeploy(now: number, lastReloadAt: number | null): boolean {
+  return lastReloadAt === null || now - lastReloadAt > 60_000;
+}
+
+export function reloadForStaleDeployOnce(): boolean {
+  try {
+    const raw = sessionStorage.getItem(STALE_RELOAD_STORAGE);
+    const last = raw ? Number(raw) : null;
+    if (!shouldReloadForStaleDeploy(Date.now(), Number.isFinite(last) ? last : null)) return false;
+    sessionStorage.setItem(STALE_RELOAD_STORAGE, String(Date.now()));
+  } catch {
+    return false;
+  }
+  window.location.reload();
+  return true;
+}
+
 /**
  * Error Boundary component optimized for mobile - catches JavaScript errors
  * and provides auto-retry functionality for transient network issues.
@@ -37,14 +64,10 @@ class ErrorBoundary extends Component<Props, State> {
       error.message.includes('NetworkError') ||
       error.message.includes('Load failed'); // Safari-specific
     
-    // Auto-retry for chunk loading failures (common on mobile)
-    const isChunkError = 
-      error.message.includes('Loading chunk') || 
-      error.message.includes('dynamically imported module') ||
-      error.message.includes('Failed to fetch dynamically') ||
-      error.message.includes('Importing a module script failed') || // Safari
-      error.message.includes('error loading dynamically imported module'); // Firefox
-    
+    // A file from an older deploy: re-rendering cannot fix it, a fresh load can.
+    const isChunkError = isChunkLoadError(error.message);
+    if (isChunkError && reloadForStaleDeployOnce()) return;
+
     if (
       this.state.retryCount < ErrorBoundary.MAX_RETRIES &&
       (isChunkError || isNetworkError)
@@ -67,8 +90,9 @@ class ErrorBoundary extends Component<Props, State> {
     }
   }
 
+  // Full reload: picks up a new deploy and clears any half-loaded state.
   handleRetry = () => {
-    this.setState({ hasError: false, error: null, retryCount: 0 });
+    window.location.reload();
   };
 
   handleReload = () => {
@@ -129,9 +153,23 @@ class ErrorBoundary extends Component<Props, State> {
             <p style={{ color: '#9ca3af', fontSize: '14px', marginBottom: '24px', lineHeight: '1.5' }}>
               {!navigator.onLine 
                 ? 'Please check your internet connection and try again.'
-                : 'This might be a network issue. Please try again.'
+                : 'Something on this page failed to load. Please try again.'
               }
             </p>
+            {this.state.error?.message && (
+              <p
+                style={{
+                  color: '#6b7280',
+                  fontSize: '12px',
+                  fontFamily: 'ui-monospace, monospace',
+                  marginBottom: '24px',
+                  wordBreak: 'break-word',
+                }}
+              >
+                Error: {this.state.error.message.slice(0, 200)}
+                {typeof window !== 'undefined' ? ` (${window.location.pathname})` : ''}
+              </p>
+            )}
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <button

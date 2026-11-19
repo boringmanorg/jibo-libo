@@ -8,6 +8,7 @@
  */
 import { Component, ReactNode } from 'react';
 import SafeShell from './SafeShell';
+import { isChunkLoadError, reloadForStaleDeployOnce } from '@/components/ErrorBoundary';
 
 interface State { hasError: boolean; error: Error | null; retries: number; }
 interface Props { children: ReactNode; routeKey?: string; }
@@ -32,6 +33,9 @@ export class RouteErrorBoundary extends Component<Props, State> {
       });
     } catch {/* noop */}
     console.error('[RouteErrorBoundary]', this.props.routeKey, error.message);
+
+    // A file from an older deploy: reload once to pick up the new one.
+    if (isChunkLoadError(error.message) && reloadForStaleDeployOnce()) return;
 
     // Auto-retry chunk-load / network errors once
     const transient = /chunk|dynamically imported|Failed to fetch|NetworkError|Load failed/i.test(error.message);
