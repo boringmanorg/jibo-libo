@@ -27,10 +27,11 @@ describe('room catalogue (owner, 19 Nov 2026)', () => {
     for (const r of BOOKING_ROOM_TYPES) expect(r.id).toBe(r.name.toLowerCase().replace(/[^a-z0-9]+/g, '-'));
   });
 
-  it('keeps old website IDs working, including the retired xtsy-270', () => {
-    expect(findRoomType('xtsy-270')?.id).toBe('experience-by-xtsy');
-    expect(findRoomType('6-bed-mixed-dorm')?.id).toBe('bed-in-6-bed-mixed-dormitory');
-    expect(findRoomType('nope')).toBeUndefined();
+  it('knows rooms only by their new IDs; the old site IDs, including xtsy-270, are gone', () => {
+    expect(findRoomType('experience-by-xtsy')?.name).toBe('Experience by XTSY');
+    for (const old of ['xtsy-270', '6-bed-mixed-dorm', '8-bed-mixed-dorm', '4-bed-female-only-dorm', 'king-double-room', 'nope']) {
+      expect(findRoomType(old)).toBeUndefined();
+    }
   });
 
   it('labels dorm prices per bed and rooms per room', () => {
@@ -118,10 +119,12 @@ describe('pricing: rates, then GST, then the gateway charge', () => {
     expect(() => quoteStay({ checkIn: '2026-12-02', checkOut: '2026-12-02', rooms, breakfastGuests: 0 })).toThrow();
     expect(() => quoteStay({ checkIn: '2026-12-01', checkOut: '2027-01-15', rooms, breakfastGuests: 0 })).toThrow(/30 nights/);
   });
-  it('adds the gateway charge only for the method the guest picks', () => {
-    const fees: FeeTable = { ...DEFAULT_FEE_TABLE, credit_card: { bps: 200 } };
-    expect(chargeFor(rupees(525), 'credit_card', fees)).toEqual({ amount: rupees(525), gatewayCharge: rupees(10.5), payable: rupees(535.5) });
-    expect(chargeFor(rupees(525), 'upi', fees).gatewayCharge).toBe(0);
+  it('adds the charge for the method the guest picks, plus 18% GST on that charge', () => {
+    // ₹525 advance by credit card at 1.99%: ₹10.45 charge, ₹1.88 GST on it.
+    expect(chargeFor(rupees(525), 'credit_card', DEFAULT_FEE_TABLE)).toEqual({ amount: 52500, gatewayCharge: 1045, gstOnCharge: 188, payable: 53733 });
+    // UPI at 0.5%: ₹2.63 charge, ₹0.47 GST.
+    expect(chargeFor(rupees(525), 'upi', DEFAULT_FEE_TABLE)).toMatchObject({ gatewayCharge: 263, gstOnCharge: 47 });
+    expect(chargeFor(rupees(525), 'wallet', DEFAULT_FEE_TABLE).payable).toBe(52500);
   });
 });
 
@@ -136,20 +139,27 @@ describe('GST slab selection', () => {
   });
 });
 
-describe('gateway charge table', () => {
-  it('starts with no charge on any method', () => {
-    expect(Object.values(DEFAULT_FEE_TABLE).every((r) => r.bps === 0)).toBe(true);
+describe('gateway charge table (Zoho convenience fee)', () => {
+  it('starts at Zoho\'s published fees, including 0.5% on UPI, with nothing on wallets', () => {
+    expect(Object.fromEntries(Object.entries(DEFAULT_FEE_TABLE).map(([k, v]) => [k, v.bps]))).toEqual({
+      upi: 50, debit_card: 90, credit_card: 199, international_card: 300, net_banking: 200, wallet: 0,
+    });
     expect(validateFeeTable(DEFAULT_FEE_TABLE)).toEqual([]);
   });
-  it('allows a charge on credit and international cards', () => {
-    expect(validateFeeTable({ ...DEFAULT_FEE_TABLE, credit_card: { bps: 200 }, international_card: { bps: 300 } })).toEqual([]);
+  it('allows passing on charges for UPI, cards and net banking', () => {
+    const table: FeeTable = { ...DEFAULT_FEE_TABLE, upi: { bps: 50 }, debit_card: { bps: 40 } };
+    expect(validateFeeTable(table)).toEqual([]);
   });
-  it('needs a written reason before charging UPI or debit cards', () => {
-    expect(validateFeeTable({ ...DEFAULT_FEE_TABLE, upi: { bps: 100 } })).toHaveLength(1);
-    expect(validateFeeTable({ ...DEFAULT_FEE_TABLE, upi: { bps: 100, override: { reason: 'Gateway confirmed in writing' } } })).toEqual([]);
+  it('never charges a guest more than Zoho\'s own fee', () => {
+    expect(validateFeeTable({ ...DEFAULT_FEE_TABLE, upi: { bps: 60 } })[0]).toMatch(/more than Zoho's fee of 0.5%/);
+    expect(validateFeeTable({ ...DEFAULT_FEE_TABLE, credit_card: { bps: 250 } })).toHaveLength(1);
   });
-  it('caps any charge at 5%', () => {
-    expect(validateFeeTable({ ...DEFAULT_FEE_TABLE, credit_card: { bps: 600 } })).toHaveLength(1);
+  it('refuses a charge on wallets, which Zoho\'s convenience fee does not cover', () => {
+    expect(validateFeeTable({ ...DEFAULT_FEE_TABLE, wallet: { bps: 100 } })[0]).toMatch(/does not cover/);
+  });
+  it('refuses fractional or negative rates', () => {
+    expect(validateFeeTable({ ...DEFAULT_FEE_TABLE, upi: { bps: 12.5 } })).toHaveLength(1);
+    expect(validateFeeTable({ ...DEFAULT_FEE_TABLE, upi: { bps: -1 } })).toHaveLength(1);
   });
 });
 

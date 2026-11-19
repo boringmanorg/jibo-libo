@@ -10,6 +10,7 @@ export type GatewayId = 'zoho' | 'razorpay';
 export interface CheckoutRequest {
   /** XTSY booking reference, e.g. XTSY-7KQ2M; also the gateway's reference number. */
   reference: string;
+  /** The booking amount only. With Zoho's convenience fee on, Zoho adds the fee and its GST at checkout. */
   amount: Paise;
   description: string;
   method: PaymentMethod;

@@ -1,9 +1,11 @@
 /**
- * Gateway charges passed on to the guest, set per payment method by an admin.
- * Owner, 19 Nov 2026: charges are added after GST, depending on how the guest pays.
- * Default allows a charge only on credit and international cards: surcharges on debit and
- * prepaid cards are not permitted, UPI carries zero MDR, and any charge must be shown
- * separately and not exceed the gateway's actual cost.
+ * Gateway charges passed on to the guest (owner, 19 Nov 2026: added after GST, by payment method).
+ *
+ * With Zoho Payments this uses Zoho's own convenience-fee feature: the Zoho team switches it on,
+ * Zoho adds the fee at checkout as its own line with 18% GST, for cards, net banking and UPI
+ * (not bank transfers or recurring payments). The engine therefore sends Zoho the booking amount
+ * only and shows this table's figures as the expected charge, so a guest is never charged twice.
+ * Each charge is capped at Zoho's published platform fee for that method.
  */
 export type PaymentMethod = 'upi' | 'debit_card' | 'credit_card' | 'international_card' | 'net_banking' | 'wallet';
 
@@ -16,15 +18,28 @@ export const PAYMENT_METHODS: { id: PaymentMethod; label: string }[] = [
   { id: 'wallet', label: 'Wallet' },
 ];
 
-/** Methods where passing on the charge is allowed without a written override. */
-export const PASS_THROUGH_ALLOWED: ReadonlySet<PaymentMethod> = new Set(['credit_card', 'international_card']);
+/** GST Zoho adds on a convenience fee. */
+export const GST_ON_FEE_BPS = 1800;
 
-export interface FeeRule { bps: number; override?: { reason: string } }
+/**
+ * Zoho Payments India platform fees, from zoho.com/in/payments/pricing (checked 19 Nov 2026).
+ * Debit cards: 0.4% up to ₹2,000, 0.9% above (the higher figure is used as the cap).
+ * Credit cards: 1.99% for most merchants. UPI via RuPay debit is 0%.
+ */
+export const ZOHO_PLATFORM_FEE_BPS: Record<PaymentMethod, number> = {
+  upi: 50, debit_card: 90, credit_card: 199, international_card: 300, net_banking: 200, wallet: 200,
+};
+
+/** Methods Zoho's convenience-fee feature can charge. */
+export const ZOHO_CONVENIENCE_FEE_METHODS: ReadonlySet<PaymentMethod> = new Set(['upi', 'debit_card', 'credit_card', 'international_card', 'net_banking']);
+
+export interface FeeRule { bps: number }
 export type FeeTable = Record<PaymentMethod, FeeRule>;
 
+/** Starts at Zoho's published fees; set each to what Zoho actually enables on your account. Wallets carry none. */
 export const DEFAULT_FEE_TABLE: FeeTable = {
-  upi: { bps: 0 }, debit_card: { bps: 0 }, credit_card: { bps: 0 },
-  international_card: { bps: 0 }, net_banking: { bps: 0 }, wallet: { bps: 0 },
+  upi: { bps: 50 }, debit_card: { bps: 90 }, credit_card: { bps: 199 },
+  international_card: { bps: 300 }, net_banking: { bps: 200 }, wallet: { bps: 0 },
 };
 
 /** Problems with a fee table an admin wants to save; empty when it is acceptable. */
@@ -32,12 +47,15 @@ export function validateFeeTable(table: FeeTable): string[] {
   const problems: string[] = [];
   for (const { id, label } of PAYMENT_METHODS) {
     const rule = table[id];
-    if (!rule || !Number.isInteger(rule.bps) || rule.bps < 0 || rule.bps > 500) {
-      problems.push(`${label}: charge must be a whole number of basis points between 0 and 500 (0–5%).`);
+    if (!rule || !Number.isInteger(rule.bps) || rule.bps < 0) {
+      problems.push(`${label}: charge must be a whole number of basis points (100 = 1%).`);
       continue;
     }
-    if (rule.bps > 0 && !PASS_THROUGH_ALLOWED.has(id) && !rule.override?.reason?.trim()) {
-      problems.push(`${label}: passing on a charge here needs a written reason (for example, your gateway's or CA's confirmation).`);
+    if (rule.bps > ZOHO_PLATFORM_FEE_BPS[id]) {
+      problems.push(`${label}: ${rule.bps / 100}% is more than Zoho's fee of ${ZOHO_PLATFORM_FEE_BPS[id] / 100}%. A guest can be charged at most the actual cost.`);
+    }
+    if (rule.bps > 0 && !ZOHO_CONVENIENCE_FEE_METHODS.has(id)) {
+      problems.push(`${label}: Zoho's convenience fee does not cover this method, so no charge can be added.`);
     }
   }
   return problems;

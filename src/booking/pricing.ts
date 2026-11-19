@@ -7,7 +7,7 @@ import { stayNights, type IsoDate } from './dates';
 import { applyBps, type Paise } from './money';
 import { splitPayment } from './policy';
 import { slabBps, suggestAccommodationSlab, type GstSlab } from './tax';
-import type { FeeTable, PaymentMethod } from './payments/fees';
+import { GST_ON_FEE_BPS, type FeeTable, type PaymentMethod } from './payments/fees';
 
 export interface QuoteRequest {
   checkIn: IsoDate;
@@ -68,8 +68,13 @@ export function quoteStay(req: QuoteRequest): Quote {
   return { nights: nights.length, lines, taxable, gst, total, ...splitPayment(total) };
 }
 
-/** What the guest pays now for one payment (advance or balance), including the gateway charge. */
-export function chargeFor(amount: Paise, method: PaymentMethod, fees: FeeTable): { amount: Paise; gatewayCharge: Paise; payable: Paise } {
+/**
+ * What the guest pays for one payment (advance or balance): the amount, the gateway charge for
+ * the chosen method, and 18% GST on that charge. With Zoho's convenience fee switched on, Zoho
+ * adds the charge at its checkout; this figure is what the guest is shown beforehand.
+ */
+export function chargeFor(amount: Paise, method: PaymentMethod, fees: FeeTable): { amount: Paise; gatewayCharge: Paise; gstOnCharge: Paise; payable: Paise } {
   const gatewayCharge = applyBps(amount, fees[method]?.bps ?? 0);
-  return { amount, gatewayCharge, payable: amount + gatewayCharge };
+  const gstOnCharge = applyBps(gatewayCharge, GST_ON_FEE_BPS);
+  return { amount, gatewayCharge, gstOnCharge, payable: amount + gatewayCharge + gstOnCharge };
 }
