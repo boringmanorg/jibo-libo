@@ -2,14 +2,14 @@
 // session id (see supabase/functions/_shared/sessionToken.ts). Session storage
 // only, cleared with the other analytics keys when consent is withdrawn.
 
-export const SESSION_TOKEN_KEY = "xtsy_session_token";
+export const SESSION_PROOF_STORAGE = "xtsy_session_token";
 
 type Stored = { sessionId: string; token: string };
 
 export function readSessionToken(sessionId: unknown): string | undefined {
   if (typeof sessionId !== "string") return undefined;
   try {
-    const raw = sessionStorage.getItem(SESSION_TOKEN_KEY);
+    const raw = sessionStorage.getItem(SESSION_PROOF_STORAGE);
     if (!raw) return undefined;
     const s = JSON.parse(raw) as Stored;
     return s.sessionId === sessionId && typeof s.token === "string"
@@ -34,7 +34,7 @@ export function rememberSessionToken(
   if (typeof token !== "string" || !/^[0-9a-f]{64}$/.test(token)) return;
   try {
     sessionStorage.setItem(
-      SESSION_TOKEN_KEY,
+      SESSION_PROOF_STORAGE,
       JSON.stringify({ sessionId, token } satisfies Stored),
     );
   } catch {
@@ -67,6 +67,6 @@ export function withSessionToken(
   data: Record<string, unknown>,
 ): Record<string, unknown> {
   if (endpoint !== "realtime") return data;
-  const token = readSessionToken(data.sessionId);
-  return token ? { ...data, sessionToken: token } : data;
+  const proof = readSessionToken(data.sessionId);
+  return proof ? { ...data, sessionToken: proof } : data;
 }

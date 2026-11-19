@@ -6,16 +6,16 @@ import {
   verifySessionToken,
 } from "../supabase/functions/_shared/sessionToken";
 
-const SECRET = "test-secret-not-real";
+const SIGNING = "test-signing-value";
 
 describe("analytics session token", () => {
   it("verifies only the token issued for that session id", async () => {
-    const t = await signSessionToken(SECRET, "s_abcdef123456");
+    const t = await signSessionToken(SIGNING, "s_abcdef123456");
     expect(t).toMatch(/^[0-9a-f]{64}$/);
-    expect(await verifySessionToken(SECRET, "s_abcdef123456", t)).toBe(true);
-    expect(await verifySessionToken(SECRET, "s_other_session", t)).toBe(false);
+    expect(await verifySessionToken(SIGNING, "s_abcdef123456", t)).toBe(true);
+    expect(await verifySessionToken(SIGNING, "s_other_session", t)).toBe(false);
     expect(
-      await verifySessionToken("another-secret", "s_abcdef123456", t),
+      await verifySessionToken("another-value", "s_abcdef123456", t),
     ).toBe(false);
   });
   it("rejects missing, malformed and forged tokens", async () => {
@@ -28,7 +28,7 @@ describe("analytics session token", () => {
       "0".repeat(64),
       "G".repeat(64),
     ]) {
-      expect(await verifySessionToken(SECRET, "s_abcdef123456", bad)).toBe(
+      expect(await verifySessionToken(SIGNING, "s_abcdef123456", bad)).toBe(
         false,
       );
     }
@@ -36,7 +36,7 @@ describe("analytics session token", () => {
       await verifySessionToken(
         "",
         "s_abcdef123456",
-        await signSessionToken(SECRET, "s_abcdef123456"),
+        await signSessionToken(SIGNING, "s_abcdef123456"),
       ),
     ).toBe(false);
   });

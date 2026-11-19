@@ -319,7 +319,7 @@ Deno.serve(async (req) => {
     await Promise.allSettled(parallelOps);
 
     // ============ EXISTING ANALYTICS LOGIC ============
-    let issuedSessionToken: string | null = null;
+    let issuedProof: string | null = null;
     switch (endpoint) {
       case 'pageview': {
         const { data: existingSession } = await supabase
@@ -507,7 +507,7 @@ Deno.serve(async (req) => {
             .upsert(row, { onConflict: 'session_id', ignoreDuplicates: true })
             .select('session_id');
           if (inserted && inserted.length > 0) {
-            issuedSessionToken = await signSessionToken(tokenSecret, sid);
+            issuedProof = await signSessionToken(tokenSecret, sid);
           }
         }
 
@@ -660,7 +660,7 @@ Deno.serve(async (req) => {
       }
     }
 
-    return new Response(JSON.stringify(issuedSessionToken ? { success: true, sessionToken: issuedSessionToken } : { success: true }), {
+    return new Response(JSON.stringify(issuedProof ? { success: true, sessionToken: issuedProof } : { success: true }), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
 
