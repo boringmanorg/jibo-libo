@@ -4,13 +4,14 @@ import Footer from '@/components/Footer';
 import { Helmet } from '@/lib/seo/helmet';
 import { CreditCard, XCircle, Calendar, Shield, AlertTriangle, FileText, IndianRupee, Clock, CheckCircle, Info } from 'lucide-react';
 import PageFaq from '@/components/seo/PageFaq';
+import { BOOKING_POLICY_ANSWER, BOOKING_POLICY_TEXT, HOSTEL_POLICIES } from '@/data/hostelPolicies';
 
 /**
  * Pricing and Cancellation Policies page for XTSY
  * Comprehensive pricing, GST information, and cancellation policies for accommodation and tourism services
  */
 export const PricingCancellationPolicy: React.FC = () => {
-  const lastUpdated = "September 29, 2026";
+  const lastUpdated = "November 19, 2026";
   
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -177,8 +178,8 @@ export const PricingCancellationPolicy: React.FC = () => {
                 <ul className="space-y-2 text-foreground/90">
                   <li>• All advance payments are <strong>strictly non-refundable</strong></li>
                   <li>• Advance payment secures your room and blocks inventory exclusively for you</li>
-                  <li>• Minimum advance varies by room type and season (typically 50-100% of booking value)</li>
-                  <li>• Balance payment (if any) is due at check-in</li>
+                  <li>• A <strong>{HOSTEL_POLICIES.advancePercent}% advance</strong> of the booking value confirms your booking</li>
+                  <li>• The remaining <strong>{HOSTEL_POLICIES.balancePercent}%</strong> is paid at check-in, by payment link or QR</li>
                 </ul>
               </div>
             </section>
@@ -196,7 +197,7 @@ export const PricingCancellationPolicy: React.FC = () => {
                 </h4>
                 <ul className="space-y-2 text-foreground/90">
                   <li>• <strong>Cancellations are not accepted</strong> once an advance payment is made</li>
-                  <li>• No refunds will be issued under any circumstances for cancellations</li>
+                  <li>• No refunds will be issued for cancellations, for any reason</li>
                   <li>• No-shows are treated as cancellations with no refund</li>
                   <li>• This policy applies to all room types, packages, and services</li>
                 </ul>
@@ -230,10 +231,10 @@ export const PricingCancellationPolicy: React.FC = () => {
                   Bookings can be <strong>modified instead of cancelled</strong>, subject to availability:
                 </p>
                 <ul className="space-y-2 text-foreground/90">
-                  <li>• Date modification allowed within <strong>15 days</strong> from original check-in date</li>
-                  <li>• Only <strong>one-time modification</strong> permitted per booking</li>
+                  <li>• Only <strong>one date change</strong> is permitted per booking</li>
+                  <li>• The request must be made at least <strong>{HOSTEL_POLICIES.modificationCutoffDays} days before</strong> the original check-in date</li>
+                  <li>• <strong>No changes</strong> are possible within {HOSTEL_POLICIES.modificationCutoffDays} days of check-in, including for bookings made within that period</li>
                   <li>• Room type upgrades/downgrades subject to availability and fare difference</li>
-                  <li>• Modification request must be made at least 48 hours before original check-in</li>
                   <li>• Any rate difference (higher dates) must be paid at time of modification</li>
                 </ul>
               </div>

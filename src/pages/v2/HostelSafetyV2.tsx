@@ -2,7 +2,7 @@ import { ShieldCheck, Moon, Clock, Users, LockKeyhole, MessageCircle } from 'luc
 import { PageShell, PAD, Btn } from '@/components/v2/blocks';
 import { Photo, waLink } from '@/components/v2/primitives';
 import { COVERS } from '@/data/v2Images';
-import { HOSTEL_POLICIES } from '@/data/hostelPolicies';
+import { BOOKING_POLICY_ANSWER, BOOKING_POLICY_TEXT, HOSTEL_POLICIES } from '@/data/hostelPolicies';
 import { PROPERTY_ADDRESS, BRAND } from '@/data/brandFacts';
 import { roomPrice, inr } from '@/components/v2/pricing';
 
@@ -59,7 +59,7 @@ export default function HostelSafetyV2() {
         <div>
           <h2 className="mb-5 text-[26px] font-extrabold">Before you arrive</h2>
           <p className="text-[16px] leading-relaxed text-xt-mute">{PROPERTY_ADDRESS}. We are near NIFT Shillong, IIM Shillong and NEIGRIHMS, not in Police Bazaar. Share the hostel’s map pin with your driver.</p>
-          <p className="text-[16px] leading-relaxed text-xt-mute">A WhatsApp enquiry is pending until the host confirms it. Advance payments are non-refundable. One date modification may be requested within {HOSTEL_POLICIES.modificationDays} days of the original check-in, with at least {HOSTEL_POLICIES.modificationNoticeHours} hours’ notice, subject to availability and any rate difference.</p>
+          <p className="text-[16px] leading-relaxed text-xt-mute">A WhatsApp enquiry is pending until the host confirms it. {BOOKING_POLICY_ANSWER}</p>
           <div className="mt-6 flex flex-wrap gap-3"><Btn to={waLink('Namaste XTSY! I have a question about hostel safety and house rules (https://xtsy.one/about/safety-house-rules).')}><MessageCircle className="h-5 w-5" />{BRAND.whatsappDisplay}</Btn><Btn to="/about/pricing-cancellation-policy" kind="outline">Booking policy</Btn></div>
         </div>
       </section>
