@@ -1,5 +1,6 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 import { getCorsHeaders } from '../_shared/cors.ts';
+import { isValidSessionId, signSessionToken, verifySessionToken } from '../_shared/sessionToken.ts';
 
 // ============= TRAFFIC FILTERING =============
 // Lovable/Admin URL patterns to block at INSERT time
@@ -318,6 +319,7 @@ Deno.serve(async (req) => {
     await Promise.allSettled(parallelOps);
 
     // ============ EXISTING ANALYTICS LOGIC ============
+    let issuedProof: string | null = null;
     switch (endpoint) {
       case 'pageview': {
         const { data: existingSession } = await supabase
@@ -480,16 +482,34 @@ Deno.serve(async (req) => {
       }
 
       case 'realtime': {
-        await supabase.from('analytics_realtime').upsert({
-          session_id: data.sessionId,
+        // Security: a caller may only refresh a realtime row it can prove it owns.
+        // The first caller to create a session's row gets a signed token back; later
+        // updates need that token, so a guessed or leaked session id cannot overwrite it.
+        const sid = data.sessionId;
+        if (!isValidSessionId(sid)) break;
+        const tokenSecret = Deno.env.get('ANALYTICS_SESSION_SECRET') || supabaseServiceKey;
+        const row = {
+          session_id: sid,
           visitor_id: data.visitorId,
           page_path: data.page_path,
           country_code: data.country_code,
           device_type: data.deviceType,
           last_seen_at: new Date().toISOString(),
-        }, {
-          onConflict: 'session_id',
-        });
+        };
+
+        if (await verifySessionToken(tokenSecret, sid, data.sessionToken)) {
+          // Owner: refresh (or re-create after the 5-minute cleanup).
+          await supabase.from('analytics_realtime').upsert(row, { onConflict: 'session_id' });
+        } else {
+          // Insert only; an existing row is left untouched (ON CONFLICT DO NOTHING).
+          const { data: inserted } = await supabase
+            .from('analytics_realtime')
+            .upsert(row, { onConflict: 'session_id', ignoreDuplicates: true })
+            .select('session_id');
+          if (inserted && inserted.length > 0) {
+            issuedProof = await signSessionToken(tokenSecret, sid);
+          }
+        }
 
         const { error: cleanupError } = await supabase.rpc('cleanup_stale_realtime_visitors');
         if (cleanupError) {
@@ -640,7 +660,7 @@ Deno.serve(async (req) => {
       }
     }
 
-    return new Response(JSON.stringify({ success: true }), {
+    return new Response(JSON.stringify(issuedProof ? { success: true, sessionToken: issuedProof } : { success: true }), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
 
