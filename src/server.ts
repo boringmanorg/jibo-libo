@@ -6,7 +6,7 @@ import { consumeLastCapturedError } from "./lib/error-capture";
 import { GONE_SLUGS } from "./data/seoGoneSlugs";
 import { renderErrorPage } from "./lib/error-page";
 import { withPageCache, cacheKey } from "./lib/pageCache";
-import { serverOnlySecurityHeaders } from "./utils/productionSecurityHeaders";
+import { isAdminPath, serverOnlySecurityHeaders, withAdminConnectSources } from "./utils/productionSecurityHeaders";
 
 type ServerEntry = {
   fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
@@ -52,16 +52,27 @@ function isH3SwallowedErrorBody(body: string): boolean {
 // Framing protection must be an HTTP header: browsers ignore frame-ancestors and X-Frame-Options
 // in <meta> tags (the 22 Oct 2026 error sweep found both ignored, and logged, on every page).
 const FRAME_HEADERS = serverOnlySecurityHeaders({ isDevelopment: false });
-function withFrameProtection(response: Response): Response {
+const ADMIN_FRAME_HEADERS = {
+  ...FRAME_HEADERS,
+  "Content-Security-Policy": withAdminConnectSources(FRAME_HEADERS["Content-Security-Policy"]),
+};
+function withFrameProtection(request: Request, response: Response): Response {
   const type = response.headers.get("content-type") ?? "";
   if (!type.includes("text/html")) return response;
+  let admin = false;
+  try {
+    admin = isAdminPath(new URL(request.url).pathname);
+  } catch {
+    /* keep the guest policy */
+  }
+  const headers = admin ? ADMIN_FRAME_HEADERS : FRAME_HEADERS;
   let out = response;
   try {
-    for (const [k, v] of Object.entries(FRAME_HEADERS)) out.headers.set(k, v);
+    for (const [k, v] of Object.entries(headers)) out.headers.set(k, v);
   } catch {
     // Immutable headers (e.g. a cached or fetched Response): copy, then set.
     out = new Response(response.body, response);
-    for (const [k, v] of Object.entries(FRAME_HEADERS)) out.headers.set(k, v);
+    for (const [k, v] of Object.entries(headers)) out.headers.set(k, v);
   }
   return out;
 }
@@ -206,7 +217,7 @@ export default {
       const response = await withPageCache(request, ctx, async () =>
         normalizeCatastrophicSsrResponse(await handler.fetch(request.clone(), env, ctx)),
       );
-      return withEdgeCacheHeaders(request, withFrameProtection(withGoneStatus(request, response)));
+      return withEdgeCacheHeaders(request, withFrameProtection(request, withGoneStatus(request, response)));
     } catch (error) {
       console.error(error);
       return new Response(renderErrorPage(), {

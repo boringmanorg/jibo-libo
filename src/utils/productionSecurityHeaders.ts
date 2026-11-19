@@ -152,3 +152,20 @@ export const secureCorsHeaders = {
   'Access-Control-Max-Age': '86400',
   'Vary': 'Origin, Authorization'
 };
+/**
+ * The super admin console (/admin) signs in against Lovable Cloud (Supabase), so its
+ * pages also allow that origin in connect-src. Guest pages keep the stricter policy.
+ */
+export const ADMIN_CONNECT_SOURCES = ['https://*.supabase.co', 'wss://*.supabase.co'];
+
+export function isAdminPath(pathname: string): boolean {
+  return pathname === '/admin' || pathname.startsWith('/admin/');
+}
+
+export function withAdminConnectSources(csp: string): string {
+  return csp.replace(/connect-src ([^;]*)/, (_m, list: string) => {
+    const have = new Set(list.split(/\s+/));
+    const extra = ADMIN_CONNECT_SOURCES.filter((s) => !have.has(s));
+    return `connect-src ${[list.trim(), ...extra].join(' ')}`;
+  });
+}

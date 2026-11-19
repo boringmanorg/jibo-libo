@@ -11,7 +11,7 @@ export const SUPER_ADMIN = 'admin@xtsy.one';
 export const requireSuperAdmin = createMiddleware({ type: 'function' })
   .client(async ({ next }) => {
     const { getAdminSupabase } = await import('./adminSupabase');
-    const { data } = await getAdminSupabase().auth.getSession();
+    const { data } = await (await getAdminSupabase()).auth.getSession();
     const token = data.session?.access_token;
     return next({ headers: token ? { Authorization: `Bearer ${token}` } : {} });
   })

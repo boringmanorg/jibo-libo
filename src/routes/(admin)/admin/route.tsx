@@ -28,34 +28,47 @@ function AdminLayout() {
   const [status, setStatus] = useState<Status>('loading');
   const [email, setEmail] = useState('');
   const [reason, setReason] = useState<DeniedReason>('wrong_email');
+  const [configError, setConfigError] = useState('');
 
   useEffect(() => {
-    const sb = getAdminSupabase();
-    const evaluate = async () => {
-      const { data } = await sb.auth.getUser();
-      const u = data.user;
-      if (!u) return setStatus('out');
-      setEmail(u.email ?? '');
-      const why = deniedReason(u, SUPER_ADMIN_EMAIL);
-      setReason(why);
-      if (why !== 'no_admin_role') return setStatus('denied');
-      const { data: ok } = await sb.rpc('is_super_admin');
-      setStatus(ok === true ? 'in' : 'denied');
-    };
-    const { data: sub } = sb.auth.onAuthStateChange((event) => {
-      if (event === 'PASSWORD_RECOVERY') return setStatus('recovery');
-      if (event === 'SIGNED_IN' || event === 'SIGNED_OUT' || event === 'USER_UPDATED') void evaluate();
-    });
-    void evaluate();
-    return () => sub.subscription.unsubscribe();
+    let unsubscribe: (() => void) | undefined;
+    let cancelled = false;
+    void (async () => {
+      let sb;
+      try {
+        sb = await getAdminSupabase();
+      } catch (e) {
+        if (!cancelled) { setConfigError(e instanceof Error ? e.message : String(e)); setStatus('out'); }
+        return;
+      }
+      if (cancelled) return;
+      const evaluate = async () => {
+        const { data } = await sb.auth.getUser();
+        const u = data.user;
+        if (!u) return setStatus('out');
+        setEmail(u.email ?? '');
+        const why = deniedReason(u, SUPER_ADMIN_EMAIL);
+        setReason(why);
+        if (why !== 'no_admin_role') return setStatus('denied');
+        const { data: ok } = await sb.rpc('is_super_admin');
+        setStatus(ok === true ? 'in' : 'denied');
+      };
+      const { data: sub } = sb.auth.onAuthStateChange((event) => {
+        if (event === 'PASSWORD_RECOVERY') return setStatus('recovery');
+        if (event === 'SIGNED_IN' || event === 'SIGNED_OUT' || event === 'USER_UPDATED') void evaluate();
+      });
+      unsubscribe = () => sub.subscription.unsubscribe();
+      void evaluate();
+    })();
+    return () => { cancelled = true; unsubscribe?.(); };
   }, []);
 
-  const signOut = async () => { await getAdminSupabase().auth.signOut(); setStatus('out'); };
+  const signOut = async () => { await (await getAdminSupabase()).auth.signOut(); setStatus('out'); };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       {status === 'loading' && <p className="p-10 text-center text-muted-foreground">Checking access…</p>}
-      {status === 'out' && <SignIn />}
+      {status === 'out' && <SignIn configError={configError} />}
       {status === 'recovery' && <SetPassword onDone={() => setStatus('loading')} />}
       {status === 'denied' && (
         <div className="mx-auto max-w-md p-10 text-center">
@@ -85,19 +98,25 @@ function AdminLayout() {
   );
 }
 
-function SignIn() {
+function SignIn({ configError = '' }: { configError?: string }) {
   const [email, setEmail] = useState(SUPER_ADMIN_EMAIL);
   const [password, setPassword] = useState('');
-  const [msg, setMsg] = useState('');
+  const [msg, setMsg] = useState(configError);
   const [busy, setBusy] = useState(false);
   const submit = async (e: FormEvent) => {
     e.preventDefault(); setBusy(true); setMsg('');
-    const { error } = await getAdminSupabase().auth.signInWithPassword({ email, password });
+    let error;
+    try {
+      ({ error } = await (await getAdminSupabase()).auth.signInWithPassword({ email, password }));
+    } catch (e) {
+      setBusy(false);
+      return setMsg(e instanceof Error ? e.message : String(e));
+    }
     setBusy(false);
     if (error) setMsg(signInErrorMessage(error));
   };
   const reset = async () => {
-    const { error } = await getAdminSupabase().auth.resetPasswordForEmail(email, { redirectTo: `${window.location.origin}/admin` });
+    const { error } = await (await getAdminSupabase()).auth.resetPasswordForEmail(email, { redirectTo: `${window.location.origin}/admin` });
     setMsg(error ? 'Could not send reset email.' : 'Password reset email sent.');
   };
   return (
@@ -117,7 +136,7 @@ function SetPassword({ onDone }: { onDone: () => void }) {
   const [msg, setMsg] = useState('');
   const submit = async (e: FormEvent) => {
     e.preventDefault();
-    const { error } = await getAdminSupabase().auth.updateUser({ password: pw });
+    const { error } = await (await getAdminSupabase()).auth.updateUser({ password: pw });
     if (error) return setMsg(error.message);
     onDone();
   };
