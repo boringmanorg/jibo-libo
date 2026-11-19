@@ -9,6 +9,7 @@ import {
   cleanAnalyticsUrl 
 } from '@/utils/analyticsFilters';
 import { deferUntilIdle } from '@/utils/deferUntilIdle';
+import { newAnalyticsSessionId, rememberSessionToken, withSessionToken } from '@/lib/analyticsSessionToken';
 
 // Check if this is a Lovable admin session - skip all tracking if so
 let isAdminSession: boolean | null = null;
@@ -45,7 +46,7 @@ const getSessionId = (): string => {
     }
   }
   
-  const newId = 's_' + Date.now().toString(36) + Math.random().toString(36).substring(2, 9);
+  const newId = newAnalyticsSessionId();
   sessionStorage.setItem('xtsy_session', JSON.stringify({ id: newId, lastActivity: Date.now() }));
   return newId;
 };
@@ -121,9 +122,10 @@ const sendAnalytics = async (endpoint: string, data: Record<string, unknown>) =>
   }
 
   try {
-    await (await getSupabase()).functions.invoke('track-analytics', {
-      body: { endpoint, data },
+    const { data: res } = await (await getSupabase()).functions.invoke('track-analytics', {
+      body: { endpoint, data: withSessionToken(endpoint, data) },
     });
+    if (endpoint === 'realtime') rememberSessionToken(data.sessionId, res);
   } catch (error) {
     console.error('[Analytics] Failed to send:', error);
   }

@@ -7,6 +7,7 @@ import {
   initLovableSessionDetection, 
   cleanAnalyticsUrl 
 } from '@/utils/analyticsFilters';
+import { newAnalyticsSessionId, rememberSessionToken, withSessionToken } from '@/lib/analyticsSessionToken';
 
 // Check if this is a Lovable admin session - skip all tracking if so
 let isAdminSession: boolean | null = null;
@@ -45,7 +46,7 @@ const getSessionId = (): string => {
     }
   }
   
-  const newId = 's_' + Math.random().toString(36).substring(2, 15) + Date.now().toString(36);
+  const newId = newAnalyticsSessionId();
   sessionStorage.setItem('xtsy_session', JSON.stringify({ id: newId, lastActivity: Date.now() }));
   return newId;
 };
@@ -151,9 +152,10 @@ const sendAnalytics = async (endpoint: string, data: Record<string, unknown>) =>
   }
 
   try {
-    await supabase.functions.invoke('track-analytics', {
-      body: { endpoint, data },
+    const { data: res } = await supabase.functions.invoke('track-analytics', {
+      body: { endpoint, data: withSessionToken(endpoint, data) },
     });
+    if (endpoint === 'realtime') rememberSessionToken(data.sessionId, res);
   } catch (error) {
     // Silent fail - analytics should never break the app
     console.debug('Analytics error:', error);
