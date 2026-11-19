@@ -28585,31 +28585,19 @@
  {
   "url": "/tab-bistro",
   "status": 200,
-  "words": 8,
+  "words": 1492,
   "findings": [
    {
-    "rule": "seo:h1 count",
-    "detail": "0: "
+    "rule": "rating:review count",
+    "detail": "34 (expected 142) — \"o by XTSY and XTSY Travellers Hostel guests on Google, word for word. 4.7 on Google from 34 reviews · TAB Bistro by XTSY Read gu\""
    },
    {
-    "rule": "seo:thin (<300 words)",
-    "detail": "8"
+    "rule": "placeholder:coming soon",
+    "detail": "on. Book a table View the menu WhatsApp us Rooftop terrace · café coming soon North Indian Indo-Chinese Thai Contin"
    },
    {
     "rule": "schema:address",
     "detail": "XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}"
-   },
-   {
-    "rule": "aeo:no FAQ or question headings",
-    "detail": ""
-   },
-   {
-    "rule": "aeo:no \"New Shillong Township\" entity mention",
-    "detail": ""
-   },
-   {
-    "rule": "aeo:no concise answer paragraph under H1",
-    "detail": "0"
    }
   ],
   "seo": {
@@ -28619,9 +28607,11 @@
    "descLen": 156,
    "canonical": "https://xtsy.one/tab-bistro",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
-   "h1": [],
+   "h1": [
+    "TAB Bistro by XTSY"
+   ],
    "ogImage": true,
-   "imgs": 1,
+   "imgs": 4,
    "imgsNoAlt": 0
   },
   "aeo": {
@@ -28633,13 +28623,20 @@
     "Restaurant",
     "GeoCoordinates",
     "OpeningHoursSpecification",
-    "AggregateRating"
+    "AggregateRating",
+    "Review",
+    "Person",
+    "Rating",
+    "Menu",
+    "MenuSection",
+    "MenuItem",
+    "Offer"
    ],
    "faqSchemaQuestions": 0,
-   "questionHeadings": 0,
-   "firstParagraphWords": 0,
-   "mentionsBrand": false,
-   "mentionsLocation": false,
+   "questionHeadings": 5,
+   "firstParagraphWords": 37,
+   "mentionsBrand": true,
+   "mentionsLocation": true,
    "updatedDate": false
   },
   "info": []

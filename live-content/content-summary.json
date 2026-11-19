@@ -31,18 +31,18 @@
   "schema:address": {
    "pages": 638,
    "examples": [
-    "/ — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
     "/stays/experience-by-xtsy — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
+    "/ — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
     "/tours — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
     "/about/faq — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
+    "/stays/workation — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
+    "/about/xtsy-facts — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
+    "/about/xtsy-facts — XTSY: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
     "/about/safety-house-rules — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
     "/about — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
-    "/stays/xtsy-vs-zostel — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
-    "/stays/workation — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
-    "/stays/pet-friendly — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
-    "/tab-bistro — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
-    "/about/xtsy-facts — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
-    "/about/xtsy-facts — XTSY: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}"
+    "/about/terms-of-service — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
+    "/tours/xtsy-rentals — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
+    "/about/pricing-cancellation-policy — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}"
    ]
   },
   "guests:count": {
@@ -52,14 +52,14 @@
     "/about — 11,116 — \"dian travel to feel personal, well designed and worth talking about. 11,116 Happy guests 4.7 Google rating (252) 9.4 \"",
     "/about — 11,116 — \"ravellers Hostel is rated 4.7★ from 252 Google reviews and has hosted 11,116 guests. TAB Bistro by XTSY has its own Goog\"",
     "/guides/budget-stay-shillong — 11,116 — \"hospitality brand — Shillong-born, traveller-built, and having hosted 11,116 guests through owned properties, curated to\"",
-    "/guides/group-stay-shillong — 11,116 — \"hospitality brand — Shillong-born, traveller-built, and having hosted 11,116 guests through owned properties, curated to\"",
+    "/guides/hostel-near-police-bazar-shillong — 11,116 — \"hospitality brand — Shillong-born, traveller-built, and having hosted 11,116 guests through owned properties, curated to\"",
+    "/guides/homestay-in-cherrapunji — 11,116 — \"hospitality brand — Shillong-born, traveller-built, and having hosted 11,116 guests through owned properties, curated to\"",
     "/guides/homestay-in-dawki — 11,116 — \"hospitality brand — Shillong-born, traveller-built, and having hosted 11,116 guests through owned properties, curated to\"",
-    "/guides/couples-hostel-shillong — 11,116 — \"hospitality brand — Shillong-born, traveller-built, and having hosted 11,116 guests through owned properties, curated to\"",
-    "/guides/solo-travel-hostel-shillong — 11,116 — \"hospitality brand — Shillong-born, traveller-built, and having hosted 11,116 guests through owned properties, curated to\"",
     "/guides/homestay-shillong-city — 11,116 — \"hospitality brand — Shillong-born, traveller-built, and having hosted 11,116 guests through owned properties, curated to\"",
-    "/guides/zostel-vs-xtsy-shillong — 11,116 — \"hospitality brand — Shillong-born, traveller-built, and having hosted 11,116 guests through owned properties, curated to\"",
-    "/guides/isabella-hostel-vs-xtsy — 11,116 — \"hospitality brand — Shillong-born, traveller-built, and having hosted 11,116 guests through owned properties, curated to\"",
-    "/guides/stargaze-hostel-vs-xtsy — 11,116 — \"hospitality brand — Shillong-born, traveller-built, and having hosted 11,116 guests through owned properties, curated to\""
+    "/guides/couples-hostel-shillong — 11,116 — \"hospitality brand — Shillong-born, traveller-built, and having hosted 11,116 guests through owned properties, curated to\"",
+    "/guides/homestay-in-mawlynnong — 11,116 — \"hospitality brand — Shillong-born, traveller-built, and having hosted 11,116 guests through owned properties, curated to\"",
+    "/guides/group-stay-shillong — 11,116 — \"hospitality brand — Shillong-born, traveller-built, and having hosted 11,116 guests through owned properties, curated to\"",
+    "/guides/isabella-hostel-vs-xtsy — 11,116 — \"hospitality brand — Shillong-born, traveller-built, and having hosted 11,116 guests through owned properties, curated to\""
    ]
   },
   "rating:value": {
@@ -71,19 +71,26 @@
     "/tours — 4.8 — \"king.com 9.4 / 10 Hostelworld 8.6 / 10 Airbnb 5.0 / 5 Goibibo 4.7 / 5 MakeMyTrip 4.8 / 5 Agoda 8.4 / 10 Read guest reviews “ ★★★★★ Absolu\"",
     "/stays/workation — 5.0 — \"Hostel · guest ratings by platform Booking.com 9.4 / 10 Hostelworld 8.6 / 10 Airbnb 5.0 / 5 Goibibo 4.7 / 5 MakeMyTrip 4.8 / 5 Agoda 8.4 /\"",
     "/stays/workation — 4.8 — \"king.com 9.4 / 10 Hostelworld 8.6 / 10 Airbnb 5.0 / 5 Goibibo 4.7 / 5 MakeMyTrip 4.8 / 5 Agoda 8.4 / 10 Read guest reviews “ ★★★★★ My fou\"",
-    "/stays/budget-hostels-shillong — 5.0 — \"Hostel · guest ratings by platform Booking.com 9.4 / 10 Hostelworld 8.6 / 10 Airbnb 5.0 / 5 Goibibo 4.7 / 5 MakeMyTrip 4.8 / 5 Agoda 8.4 /\"",
-    "/stays/budget-hostels-shillong — 4.8 — \"king.com 9.4 / 10 Hostelworld 8.6 / 10 Airbnb 5.0 / 5 Goibibo 4.7 / 5 MakeMyTrip 4.8 / 5 Agoda 8.4 / 10 Read guest reviews “ ★★★★★ We sta\"",
     "/stays/best-hostel-in-shillong — 5.0 — \"Hostel · guest ratings by platform Booking.com 9.4 / 10 Hostelworld 8.6 / 10 Airbnb 5.0 / 5 Goibibo 4.7 / 5 MakeMyTrip 4.8 / 5 Agoda 8.4 /\"",
-    "/stays/best-hostel-in-shillong — 4.8 — \"king.com 9.4 / 10 Hostelworld 8.6 / 10 Airbnb 5.0 / 5 Goibibo 4.7 / 5 MakeMyTrip 4.8 / 5 Agoda 8.4 / 10 Read guest reviews “ ★★★★★ We sta\""
+    "/stays/best-hostel-in-shillong — 4.8 — \"king.com 9.4 / 10 Hostelworld 8.6 / 10 Airbnb 5.0 / 5 Goibibo 4.7 / 5 MakeMyTrip 4.8 / 5 Agoda 8.4 / 10 Read guest reviews “ ★★★★★ We sta\"",
+    "/stays/budget-hostels-shillong — 5.0 — \"Hostel · guest ratings by platform Booking.com 9.4 / 10 Hostelworld 8.6 / 10 Airbnb 5.0 / 5 Goibibo 4.7 / 5 MakeMyTrip 4.8 / 5 Agoda 8.4 /\"",
+    "/stays/budget-hostels-shillong — 4.8 — \"king.com 9.4 / 10 Hostelworld 8.6 / 10 Airbnb 5.0 / 5 Goibibo 4.7 / 5 MakeMyTrip 4.8 / 5 Agoda 8.4 / 10 Read guest reviews “ ★★★★★ We sta\""
    ]
   },
   "aeo:no FAQ or question headings": {
-   "pages": 4,
+   "pages": 3,
    "examples": [
-    "/tab-bistro — ",
+    "/about/terms-of-service — ",
     "/about/privacy-policy — ",
-    "/expeditions — ",
-    "/about/terms-of-service — "
+    "/expeditions — "
+   ]
+  },
+  "rating:review count": {
+   "pages": 3,
+   "examples": [
+    "/tab-bistro — 34 (expected 142) — \"o by XTSY and XTSY Travellers Hostel guests on Google, word for word. 4.7 on Google from 34 reviews · TAB Bistro by XTSY Read gu\"",
+    "/stays/best-hostel-in-shillong — 481 (expected 252) — \"y, groups of up to 6, no pets Guest rating 4.7★ from 252 Google reviews 7.3/10 on ixigo (481 reviews); 8.0/10 on Hostelworld (24)\"",
+    "/stays/hostel-near-me — 252 (expected 142) — \"University — a quiet, green base with TAB Bistro on site. Dorm beds from ₹399 , 4.7★ from 252 Google reviews. Get Directions Che\""
    ]
   },
   "seo:duplicate description": {
@@ -100,18 +107,11 @@
     "/stays/best-hostel-in-shillong — nd birds welcome, dogs by breed and size 18+ only, groups of up to 6, no pets Guest rating 4.7★ from 252 Google reviews"
    ]
   },
-  "aeo:no concise answer paragraph under H1": {
+  "placeholder:coming soon": {
    "pages": 2,
    "examples": [
-    "/tab-bistro — 0",
-    "/about/xtsy-facts — 101"
-   ]
-  },
-  "rating:review count": {
-   "pages": 2,
-   "examples": [
-    "/stays/best-hostel-in-shillong — 481 (expected 252) — \"y, groups of up to 6, no pets Guest rating 4.7★ from 252 Google reviews 7.3/10 on ixigo (481 reviews); 8.0/10 on Hostelworld (24)\"",
-    "/stays/hostel-near-me — 252 (expected 142) — \"University — a quiet, green base with TAB Bistro on site. Dorm beds from ₹399 , 4.7★ from 252 Google reviews. Get Directions Che\""
+    "/tab-bistro — on. Book a table View the menu WhatsApp us Rooftop terrace · café coming soon North Indian Indo-Chinese Thai Contin",
+    "/about/merch — lso ask Is XTSY merchandise available to buy now? The collection is coming soon. The page offers a Notify me enquiry r"
    ]
   },
   "policy:cancellation/refund claim": {
@@ -127,34 +127,16 @@
     "/ —  Check-out strictly 10 AM Check-in Check-out Guests 1 guest 2 guests 3 guests 4"
    ]
   },
-  "seo:h1 count": {
+  "aeo:no concise answer paragraph under H1": {
    "pages": 1,
    "examples": [
-    "/tab-bistro — 0: "
-   ]
-  },
-  "seo:thin (<300 words)": {
-   "pages": 1,
-   "examples": [
-    "/tab-bistro — 8"
-   ]
-  },
-  "aeo:no \"New Shillong Township\" entity mention": {
-   "pages": 1,
-   "examples": [
-    "/tab-bistro — "
+    "/about/xtsy-facts — 101"
    ]
   },
   "price:king/private room": {
    "pages": 1,
    "examples": [
     "/stays/best-hostel-in-shillong — ₹2993 — \"Double ₹2,399, all inclusive Private rooms; deluxe room listed around ₹2,993 plus taxes on booking sites Women-only dor\""
-   ]
-  },
-  "placeholder:coming soon": {
-   "pages": 1,
-   "examples": [
-    "/about/merch — lso ask Is XTSY merchandise available to buy now? The collection is coming soon. The page offers a Notify me enquiry r"
    ]
   }
  }
