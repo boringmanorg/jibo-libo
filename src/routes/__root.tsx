@@ -274,10 +274,8 @@ const RouteBoundary = memo(({ children }: { children: ReactNode }) => (
 RouteBoundary.displayName = "RouteBoundary";
 
 function RootComponent() {
-  const pathname = useLocation().pathname;
-  // The router creates this client (src/router.tsx); without the provider every useQuery
-  // crashes ("No QueryClient set") — /tab-bistro's live tables and the whole /admin console.
   const { queryClient } = Route.useRouteContext();
+  const pathname = useLocation().pathname;
   // Every guest-facing surface (pages, account, consent, chat) uses the light
   // 2026 palette; admin and franchise consoles keep the dark theme.
   const isGuestPage = !/^\/(admin(?:\/|$)|admin-login(?:\/|$)|franchise(?:\/|$)|\.lovable(?:\/|$)|api(?:\/|$))/.test(pathname);
