@@ -2,11 +2,11 @@
  {
   "route": "/",
   "status": 200,
-  "wallMs": 9446,
+  "wallMs": 9297,
   "ttfb": 157,
-  "fcp": 1460,
+  "fcp": 1384,
   "lcp": {
-   "t": 1460,
+   "t": 1384,
    "size": 249600,
    "url": "http://localhost:4174/img/o/xtsy-property-images-8-portrait-828.avif",
    "tag": "IMG",
@@ -15,7 +15,7 @@
   },
   "lcpCandidates": [
    {
-    "t": 1460,
+    "t": 1384,
     "size": 249600,
     "url": "http://localhost:4174/img/o/xtsy-property-images-8-portrait-828.avif",
     "tag": "IMG",
@@ -23,11 +23,11 @@
     "text": ""
    }
   ],
-  "cls": 0.009,
+  "cls": 0.011,
   "shifts": [
    {
     "v": 0.0086,
-    "t": 3014,
+    "t": 2859,
     "nodes": [
      "DIV.max-w-5xl"
     ],
@@ -39,19 +39,22 @@
     ]
    },
    {
-    "v": 0.0003,
-    "t": 3200,
+    "v": 0.0022,
+    "t": 3073,
     "nodes": [
      "A.xt-btn flex h-14 items-center gap-2.5 rounded-full bg-xt-paper pl-4 pr-6 text-[1",
-     "DIV.flex items-center gap-2"
+     "DIV.flex items-center gap-2",
+     "SUP.ml-0.5 text-[10px] font-bold"
     ],
     "rects": [
      "160,650 187x49 -> 165,650 199x49",
-     "177,43 199x44 -> 172,43 204x44"
+     "177,43 199x44 -> 172,43 204x44",
+     "105,53 9x14 -> 74,53 7x14"
     ],
     "text": [
      "Plan a trip with AI",
-     "Plan with AIBook now"
+     "Plan with AIBook now",
+     "®"
     ]
    }
   ],
@@ -84,9 +87,9 @@
   },
   "biggest": [
    {
-    "url": "http://localhost:4174/assets/index-DmGBZJPs.js",
+    "url": "http://localhost:4174/assets/index-DvlPZMny.js",
     "type": "script",
-    "bytes": 558367,
+    "bytes": 558366,
     "kb": 545
    },
    {
@@ -126,13 +129,13 @@
     "kb": 47
    },
    {
-    "url": "http://localhost:4174/assets/routes-W1dRQj0G.js",
+    "url": "http://localhost:4174/assets/routes-B1LQJe3f.js",
     "type": "script",
     "bytes": 44257,
     "kb": 43
    },
    {
-    "url": "http://localhost:4174/assets/TripChat-D6L8G2kd.js",
+    "url": "http://localhost:4174/assets/TripChat-6egaRxpT.js",
     "type": "script",
     "bytes": 40172,
     "kb": 39
@@ -160,11 +163,11 @@
  {
   "route": "/best-hostel-in-shillong",
   "status": 200,
-  "wallMs": 9234,
-  "ttfb": 316,
-  "fcp": 1424,
+  "wallMs": 9232,
+  "ttfb": 313,
+  "fcp": 1420,
   "lcp": {
-   "t": 1424,
+   "t": 1420,
    "size": 72910,
    "url": "",
    "tag": "P",
@@ -173,7 +176,7 @@
   },
   "lcpCandidates": [
    {
-    "t": 1424,
+    "t": 1420,
     "size": 72910,
     "url": "",
     "tag": "P",
@@ -181,11 +184,11 @@
     "text": "For most travellers a top pick in Shillong is XTSY Traveller"
    }
   ],
-  "cls": 0.022,
+  "cls": 0.02,
   "shifts": [
    {
     "v": 0.0197,
-    "t": 2862,
+    "t": 2847,
     "nodes": [
      "DIV.rounded-[22px] bg-xt-blush p-5",
      "#text.",
@@ -209,32 +212,29 @@
     ]
    },
    {
-    "v": 0.0023,
-    "t": 2987,
+    "v": 0.0004,
+    "t": 2997,
     "nodes": [
      "DIV.flex items-center gap-2",
      "BUTTON.xt-btn flex h-12 items-center rounded-full border-[1.5px] border-xt-ink px-6 tex",
      "LI.flex items-center gap-1.5",
-     "SUP.ml-0.5 text-[10px] font-bold",
      "SPAN."
     ],
     "rects": [
      "177,43 199x44 -> 172,43 204x44",
      "141,649 170x42 -> 147,649 182x42",
      "63,124 108x20 -> 68,124 120x20",
-     "105,53 9x14 -> 74,53 7x14",
      "52,124 5x20 -> 56,124 6x20"
     ],
     "text": [
      "Plan with AIBook now",
      "Book on WhatsApp",
      "Hostels in Shillong",
-     "®",
      "/"
     ]
    }
   ],
-  "requests": 69,
+  "requests": 71,
   "byType": {
    "document": {
     "n": 2,
@@ -245,8 +245,8 @@
     "kb": 54
    },
    "script": {
-    "n": 56,
-    "kb": 1192
+    "n": 58,
+    "kb": 1194
    },
    "stylesheet": {
     "n": 2,
@@ -259,9 +259,9 @@
   },
   "biggest": [
    {
-    "url": "http://localhost:4174/assets/index-DmGBZJPs.js",
+    "url": "http://localhost:4174/assets/index-DvlPZMny.js",
     "type": "script",
-    "bytes": 558367,
+    "bytes": 558366,
     "kb": 545
    },
    {
@@ -271,7 +271,7 @@
     "kb": 191
    },
    {
-    "url": "http://localhost:4174/assets/HomeReviews-BwlnCf5q.js",
+    "url": "http://localhost:4174/assets/HomeReviews-D5sbdFX_.js",
     "type": "script",
     "bytes": 159096,
     "kb": 155
@@ -335,11 +335,11 @@
  {
   "route": "/cheap-hostels-shillong",
   "status": 200,
-  "wallMs": 9237,
-  "ttfb": 307,
-  "fcp": 1408,
+  "wallMs": 9244,
+  "ttfb": 314,
+  "fcp": 1388,
   "lcp": {
-   "t": 1408,
+   "t": 1388,
    "size": 65892,
    "url": "",
    "tag": "P",
@@ -348,7 +348,7 @@
   },
   "lcpCandidates": [
    {
-    "t": 1408,
+    "t": 1388,
     "size": 65892,
     "url": "",
     "tag": "P",
@@ -360,7 +360,7 @@
   "shifts": [
    {
     "v": 0.0417,
-    "t": 2803,
+    "t": 2874,
     "nodes": [
      "DIV.rounded-[22px] bg-xt-blush p-5",
      "#text.",
@@ -385,7 +385,7 @@
    },
    {
     "v": 0.0005,
-    "t": 3001,
+    "t": 3009,
     "nodes": [
      "DIV.flex items-center gap-2",
      "BUTTON.xt-btn flex h-12 items-center rounded-full border-[1.5px] border-xt-ink px-6 tex",
@@ -406,7 +406,7 @@
     ]
    }
   ],
-  "requests": 69,
+  "requests": 71,
   "byType": {
    "document": {
     "n": 2,
@@ -417,8 +417,8 @@
     "kb": 54
    },
    "script": {
-    "n": 56,
-    "kb": 1192
+    "n": 58,
+    "kb": 1194
    },
    "stylesheet": {
     "n": 2,
@@ -431,9 +431,9 @@
   },
   "biggest": [
    {
-    "url": "http://localhost:4174/assets/index-DmGBZJPs.js",
+    "url": "http://localhost:4174/assets/index-DvlPZMny.js",
     "type": "script",
-    "bytes": 558367,
+    "bytes": 558366,
     "kb": 545
    },
    {
@@ -443,7 +443,7 @@
     "kb": 191
    },
    {
-    "url": "http://localhost:4174/assets/HomeReviews-BwlnCf5q.js",
+    "url": "http://localhost:4174/assets/HomeReviews-D5sbdFX_.js",
     "type": "script",
     "bytes": 159096,
     "kb": 155
@@ -507,11 +507,11 @@
  {
   "route": "/shillong-dormitory",
   "status": 200,
-  "wallMs": 9224,
-  "ttfb": 313,
-  "fcp": 1416,
+  "wallMs": 9152,
+  "ttfb": 312,
+  "fcp": 1372,
   "lcp": {
-   "t": 1416,
+   "t": 1372,
    "size": 81295,
    "url": "",
    "tag": "P",
@@ -520,7 +520,7 @@
   },
   "lcpCandidates": [
    {
-    "t": 1416,
+    "t": 1372,
     "size": 81295,
     "url": "",
     "tag": "P",
@@ -532,7 +532,7 @@
   "shifts": [
    {
     "v": 0.004,
-    "t": 2850,
+    "t": 2843,
     "nodes": [
      "#text.",
      "#text."
@@ -548,7 +548,7 @@
    },
    {
     "v": 0.0026,
-    "t": 3187,
+    "t": 3117,
     "nodes": [
      "DIV.flex items-center gap-2",
      "BUTTON.xt-btn flex h-11 items-center rounded-full border-[1.5px] border-xt-ink px-5 tex",
@@ -601,9 +601,9 @@
   },
   "biggest": [
    {
-    "url": "http://localhost:4174/assets/index-DmGBZJPs.js",
+    "url": "http://localhost:4174/assets/index-DvlPZMny.js",
     "type": "script",
-    "bytes": 558367,
+    "bytes": 558366,
     "kb": 545
    },
    {
@@ -677,11 +677,11 @@
  {
   "route": "/xtsy-270",
   "status": 200,
-  "wallMs": 10770,
-  "ttfb": 312,
-  "fcp": 1432,
+  "wallMs": 10741,
+  "ttfb": 308,
+  "fcp": 1384,
   "lcp": {
-   "t": 1432,
+   "t": 1384,
    "size": 62486,
    "url": "",
    "tag": "H1",
@@ -690,7 +690,7 @@
   },
   "lcpCandidates": [
    {
-    "t": 1432,
+    "t": 1384,
     "size": 62486,
     "url": "",
     "tag": "H1",
@@ -702,7 +702,7 @@
   "shifts": [
    {
     "v": 0.2187,
-    "t": 3257,
+    "t": 3219,
     "nodes": [
      "DIV.overflow-hidden relative mt-4 h-[280px] w-full sm:h-[580px]",
      "P.xt-in xt-d2 m-0 max-w-[620px] text-[17px] leading-relaxed sm:text-[20px]",
@@ -727,7 +727,7 @@
    },
    {
     "v": 0.0083,
-    "t": 3546,
+    "t": 3529,
     "nodes": [
      "#text.",
      "DIV.xt-in xt-d2 flex items-end gap-4",
@@ -751,7 +751,7 @@
     ]
    }
   ],
-  "requests": 90,
+  "requests": 91,
   "byType": {
    "document": {
     "n": 2,
@@ -774,15 +774,15 @@
     "kb": 92
    },
    "other": {
-    "n": 1,
+    "n": 2,
     "kb": 0
    }
   },
   "biggest": [
    {
-    "url": "http://localhost:4174/assets/index-DmGBZJPs.js",
+    "url": "http://localhost:4174/assets/index-DvlPZMny.js",
     "type": "script",
-    "bytes": 558367,
+    "bytes": 558366,
     "kb": 545
    },
    {
@@ -792,7 +792,7 @@
     "kb": 191
    },
    {
-    "url": "http://localhost:4174/assets/HomeReviews-BwlnCf5q.js",
+    "url": "http://localhost:4174/assets/HomeReviews-D5sbdFX_.js",
     "type": "script",
     "bytes": 159096,
     "kb": 155
@@ -856,11 +856,11 @@
  {
   "route": "https://xtsy.one/",
   "status": 200,
-  "wallMs": 9762,
-  "ttfb": 441,
-  "fcp": 2484,
+  "wallMs": 10073,
+  "ttfb": 456,
+  "fcp": 2544,
   "lcp": {
-   "t": 2860,
+   "t": 2864,
    "size": 249600,
    "url": "https://xtsy.one/img/o/xtsy-property-images-8-portrait-828.avif",
    "tag": "IMG",
@@ -869,7 +869,7 @@
   },
   "lcpCandidates": [
    {
-    "t": 2484,
+    "t": 2544,
     "size": 2618,
     "url": "",
     "tag": "A",
@@ -877,7 +877,7 @@
     "text": "Dorm beds from ₹399/night"
    },
    {
-    "t": 2748,
+    "t": 2784,
     "size": 38556,
     "url": "",
     "tag": "H1",
@@ -885,7 +885,7 @@
     "text": "XTSY Travellers Hostel"
    },
    {
-    "t": 2860,
+    "t": 2864,
     "size": 249600,
     "url": "https://xtsy.one/img/o/xtsy-property-images-8-portrait-828.avif",
     "tag": "IMG",
@@ -895,19 +895,19 @@
   ],
   "cls": 0,
   "shifts": [],
-  "requests": 70,
+  "requests": 68,
   "byType": {
    "document": {
     "n": 1,
     "kb": 140
    },
+   "script": {
+    "n": 57,
+    "kb": 1126
+   },
    "image": {
     "n": 2,
     "kb": 53
-   },
-   "script": {
-    "n": 58,
-    "kb": 1127
    },
    "font": {
     "n": 5,
@@ -920,17 +920,13 @@
    "fetch": {
     "n": 1,
     "kb": 0
-   },
-   "other": {
-    "n": 1,
-    "kb": 0
    }
   },
   "biggest": [
    {
-    "url": "https://xtsy.one/assets/index-CsRA4TG_.js",
+    "url": "https://xtsy.one/assets/index-C-qStoK3.js",
     "type": "script",
-    "bytes": 558278,
+    "bytes": 558353,
     "kb": 545
    },
    {
@@ -958,10 +954,10 @@
     "kb": 67
    },
    {
-    "url": "https://xtsy.one/assets/query-C7V0Qs6Y.js",
+    "url": "https://xtsy.one/assets/query-CkHYinGN.js",
     "type": "script",
-    "bytes": 48584,
-    "kb": 47
+    "bytes": 48971,
+    "kb": 48
    },
    {
     "url": "https://xtsy.one/img/o/xtsy-property-images-8-portrait-828.avif",
@@ -970,13 +966,13 @@
     "kb": 47
    },
    {
-    "url": "https://xtsy.one/assets/routes-Cxi5IZ8h.js",
+    "url": "https://xtsy.one/assets/routes-BG9gnnsh.js",
     "type": "script",
     "bytes": 44257,
     "kb": 43
    },
    {
-    "url": "https://xtsy.one/assets/TripChat-G8A_CE_X.js",
+    "url": "https://xtsy.one/assets/TripChat-CIZAdxP-.js",
     "type": "script",
     "bytes": 40172,
     "kb": 39

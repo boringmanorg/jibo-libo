@@ -1,9 +1,9 @@
 {
   "results": [
     {
-      "bundleName": ".output/public/assets/index-DmGBZJPs.js",
-      "totalBytes": 558367,
-      "mappedBytes": 547740,
+      "bundleName": ".output/public/assets/index-DvlPZMny.js",
+      "totalBytes": 558366,
+      "mappedBytes": 547739,
       "unmappedBytes": 10584,
       "eolBytes": 43,
       "sourceMapCommentBytes": 0,
@@ -345,7 +345,7 @@
           "size": 556
         },
         "../../../src/routes/__root.tsx": {
-          "size": 9556
+          "size": 9555
         },
         "../../../src/lib/seo-head.ts": {
           "size": 1747
