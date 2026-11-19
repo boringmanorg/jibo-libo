@@ -228,7 +228,7 @@ jobs:
         env:
           BASE_URL: ${{ env.PROD_URL }}
           OUT_DIR: shots/lcp
-          LCP_ROUTES: /,/best-hostel-in-shillong,/xtsy-270,/tours/5n-6d-tawang-tour,/destinations/meghalaya/shillong,/living-root-bridges-meghalaya,/tab-bistro,/faq
+          LCP_ROUTES: /,/stays/best-hostel-in-shillong,/stays/experience-by-xtsy,/tours/5n-6d-tawang-tour,/destinations/meghalaya/shillong,/guides/living-root-bridges-meghalaya,/tab-bistro,/about/faq
 
       - name: Whole-site navigation crawl (links, orphans, depth, duplicates, design)
         continue-on-error: true
