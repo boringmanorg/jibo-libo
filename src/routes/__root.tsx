@@ -274,6 +274,7 @@ const RouteBoundary = memo(({ children }: { children: ReactNode }) => (
 RouteBoundary.displayName = "RouteBoundary";
 
 function RootComponent() {
+  const { queryClient } = Route.useRouteContext();
   const pathname = useLocation().pathname;
   // Every guest-facing surface (pages, account, consent, chat) uses the light
   // 2026 palette; admin and franchise consoles keep the dark theme.
@@ -301,6 +302,7 @@ function RootComponent() {
   }, []);
 
   return (
+    <QueryClientProvider client={queryClient}>
     <HelmetProvider>
       <AppProvider>
           <div className={isGuestPage ? "dark public-design" : "dark"} id="main-content">
@@ -340,6 +342,7 @@ function RootComponent() {
           </div>
       </AppProvider>
     </HelmetProvider>
+    </QueryClientProvider>
   );
 }
 
