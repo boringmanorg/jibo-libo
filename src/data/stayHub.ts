@@ -10,6 +10,7 @@ import { inr, lowestDormPrice, roomPrice } from '@/components/v2/pricing';
 import { GOOGLE_RATING } from './brandFacts';
 import { PANORAMA_DECORATION, PANORAMA_STAY_ONLY } from '@/data/panoramaPricing';
 import { fromXtsy } from '@/lib/travel/routing';
+import { BOOKING_POLICY_ANSWER, BOOKING_POLICY_TEXT, HOSTEL_POLICIES } from '@/data/hostelPolicies';
 
 export type StayHubVariant = 'hostels' | 'budget';
 const SITE = 'https://xtsy.one';
@@ -55,7 +56,7 @@ export function stayHubFaqs(v: StayHubVariant): { q: string; a: string }[] {
     { q: 'Where is XTSY Travellers Hostel?', a: 'Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya 793018 — near NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. It is not in Police Bazaar or central Shillong; the drive to Police Bazaar takes about 30 minutes.' },
     { q: 'Is there a women-only dorm in Shillong?', a: `Yes. XTSY has a 4-bed women-only dorm (${inr(roomPrice('4-bed-female-only-dorm').now)} a night) with female staff on call, lockers and 24/7 arrival support.` },
     { q: 'What are check-in and check-out times?', a: 'Standard check-in is 11 AM and check-out is strictly 10 AM. Arriving late? Message the desk with your arrival time.' },
-    { q: 'What is the cancellation policy?', a: 'The booking amount is non-refundable — there is no free cancellation. You can change your dates once within 15 days of the original check-in (ask at least 48 hours before), subject to availability and any rate difference.' },
+    { q: 'What is the cancellation policy?', a: BOOKING_POLICY_ANSWER },
     { q: 'Are pets allowed?', a: 'Cats and birds are most welcome. Dogs are accepted depending on breed and size — please contact the XTSY desk about any additional charges before booking.' },
     { q: 'How do I get to XTSY from Guwahati airport?', a: `It is about ${fromXtsy('guwahati').hours + 0.25} hours by road (roughly 120 km). Shared taxis run Guwahati–Shillong all day, or the XTSY desk can send a cab.` },
     { q: 'Is it more affordable to book the hostel direct?', a: 'Yes. OTAs add their commission to the price you see. Booking direct on xtsy.one or WhatsApp gets you the base rate and a GST invoice.' },

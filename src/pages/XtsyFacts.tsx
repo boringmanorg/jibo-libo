@@ -8,6 +8,7 @@ import { Link } from '@/lib/router-compat';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { BRAND, GOOGLE_RATING, PROPERTY_ADDRESS, PROPERTY_CHECK_IN, PROPERTY_CHECK_OUT, GROUP_VENTURES } from '@/data/brandFacts';
+import { BOOKING_POLICY_ANSWER, BOOKING_POLICY_TEXT, HOSTEL_POLICIES } from '@/data/hostelPolicies';
 
 const FACTS: Array<[string, string]> = [
   ['Legal name', BRAND.legalName],
@@ -35,7 +36,8 @@ const BUSINESSES: Array<[string, string]> = [
 ];
 
 const POLICIES: Array<[string, string]> = [
-  ['Cancellation', 'No free cancellation; the booking amount is non-refundable. One date change is allowed within 15 days, subject to availability.'],
+  ['Cancellation', `${BOOKING_POLICY_TEXT.cancellation} ${BOOKING_POLICY_TEXT.dateChange}`],
+  ['Payment', BOOKING_POLICY_TEXT.payment],
   ['Pets', 'Cats and birds welcome; dogs depending on breed and size — contact the XTSY desk about any extra charges.'],
   ['Couples', 'All adult couples are welcome, married or not. Both guests need a valid government photo ID at check-in.'],
   ['Stargazing', 'Not promoted and never promised. The suite glass is UV-treated, cutting visibility by about 30%, and views depend strictly on day-to-day sky conditions. Please do not call or enquire specifically for stargazing. Bookings are not cancelled or refunded for weather or poor sky visibility.'],

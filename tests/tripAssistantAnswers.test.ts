@@ -8,10 +8,11 @@ describe('trip assistant question routing', () => {
     'Can I move my reservation to next week?',
     'Can I change my booking within 15 days?',
     'Can I reschedule my booking?',
-  ])('routes %s to the unchanged cancellation answer', (question) => {
+  ])('routes %s to the cancellation answer', (question) => {
     const { reply, state } = respond(question, INITIAL_STATE);
-    expect(reply.text).toContain('once within 15 days');
-    expect(reply.text).toContain('at least 48 hours before');
+    expect(reply.text).toContain('at least 14 days before check-in');
+    expect(reply.text).toContain('no refund on cancellation, for any reason');
+    expect(reply.text).toContain('25% advance');
     expect(reply.text).toContain('non-refundable');
     expect(reply.plan).toBeUndefined();
     expect(state.hasPlan).toBe(false);

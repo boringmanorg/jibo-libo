@@ -8,6 +8,7 @@ import { Link } from '@/lib/router-compat';
 import { PageShell, PAD, FaqList } from '@/components/v2/blocks';
 import { SpinningMark, waLink, WHATSAPP_DISPLAY } from '@/components/v2/primitives';
 import { BRAND } from '@/data/brandFacts';
+import { BOOKING_POLICY_ANSWER, BOOKING_POLICY_TEXT, HOSTEL_POLICIES } from '@/data/hostelPolicies';
 
 const PHONE = '+91 8837317070';
 const PHONE_TEL = '+918837317070';
@@ -20,7 +21,7 @@ const TOPICS = ['A room or dorm bed', 'Experience by XTSY', 'A tour package', 'B
 const CONTACT_FAQS = [
   { q: 'What is the fastest way to reach XTSY?', a: 'WhatsApp the XTSY desk on +91 88373 17070 — it is answered day and night. You can also email booking@xtsy.one for bookings and enquiries, or admin@xtsy.one for billing, invoices and policies.' },
   { q: 'What are the check-in and check-out times?', a: 'Check-in is from 11 AM and check-out is at 10 AM. Arriving late? Message the desk on WhatsApp so we can plan your arrival.' },
-  { q: 'Can I cancel my booking?', a: 'There is no free cancellation: the booking amount is non-refundable. You can change your dates once within 15 days of the original check-in (ask at least 48 hours before), subject to availability.' },
+  { q: 'Can I cancel my booking?', a: BOOKING_POLICY_ANSWER },
   { q: 'Can I bring my pet?', a: 'Cats and birds are most welcome. Dogs are accepted depending on breed and size. Contact the XTSY desk before booking for any additional charges.' },
 ];
 

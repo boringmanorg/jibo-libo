@@ -3,6 +3,7 @@
  * High-intent programmatic pages targeting immediate booking queries
  */
 import type { SEOPageData } from './seoPages';
+import { BOOKING_POLICY_ANSWER, BOOKING_POLICY_TEXT, HOSTEL_POLICIES } from '@/data/hostelPolicies';
 
 const today = new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
 
@@ -11,9 +12,9 @@ export const LAST_MINUTE_SEO_PAGES: SEOPageData[] = [
     slug: 'hostels-in-shillong-today',
     category: 'hostels',
     title: `Hostels in Shillong Available Today (${today}) | Book Now`,
-    metaDescription: `Find hostels available in Shillong today. Dorm beds from ₹399/night, private rooms from ₹2,399. Real-time availability, instant booking confirmation at XTSY.`,
+    metaDescription: `Find hostels available in Shillong today. Dorm beds from ₹399/night, private rooms from ₹2,399. The desk confirms availability on WhatsApp at XTSY.`,
     h1: `Hostels Available in Shillong Today`,
-    intro: `Looking for a hostel in Shillong right now? XTSY Travellers Hostel has beds and rooms available tonight. Book instantly with real-time availability — no waiting, no uncertainty. From budget dorm beds starting at ₹399/night to private king rooms at ₹2,399/night.`,
+    intro: `Looking for a hostel in Shillong right now? Send your dates and the XTSY desk confirms on WhatsApp whether a bed or room is free tonight. From budget dorm beds starting at ₹399/night to private king rooms at ₹2,399/night.`,
     sections: [
       {
         heading: 'Available Right Now',
@@ -32,8 +33,8 @@ export const LAST_MINUTE_SEO_PAGES: SEOPageData[] = [
         listItems: [
           'Direct desk support on WhatsApp',
           'Instant WhatsApp confirmation',
-          'Booking amount is non-refundable; one date change allowed (subject to availability)',
-          'Real-time availability — no overbooking risk',
+          `${BOOKING_POLICY_TEXT.payment} Non-refundable; bookings made within ${HOSTEL_POLICIES.modificationCutoffDays} days of check-in cannot be changed`,
+          'Availability confirmed by the desk before you pay',
         ],
       },
       {
@@ -56,9 +57,9 @@ export const LAST_MINUTE_SEO_PAGES: SEOPageData[] = [
     slug: 'shillong-last-minute-stays',
     category: 'accommodation',
     title: `Last Minute Stays in Shillong — Available Now (${today})`,
-    metaDescription: `Need a last-minute stay in Shillong? Rooms and dorms available right now from ₹399/night. Instant booking, real-time availability at XTSY Travellers Hostel.`,
+    metaDescription: `Need a last-minute stay in Shillong? Rooms and dorms from ₹399/night at XTSY Travellers Hostel; the desk confirms availability on WhatsApp.`,
     h1: 'Last Minute Stays in Shillong',
-    intro: `Spontaneous trip to Shillong? We've got you covered. XTSY Travellers Hostel offers instant booking with real-time availability. No advance planning needed — find a bed or room available right now and book in under 30 seconds.`,
+    intro: `Spontaneous trip to Shillong? We've got you covered. XTSY Travellers Hostel takes same-day enquiries. Send your dates and the desk confirms on WhatsApp what is free tonight.`,
     sections: [
       {
         heading: 'Book in 30 Seconds',
@@ -80,8 +81,8 @@ export const LAST_MINUTE_SEO_PAGES: SEOPageData[] = [
       },
     ],
     faqs: [
-      { question: 'Can I get a room in Shillong at the last minute?', answer: 'Yes, XTSY accepts same-day bookings online. We show real-time availability so you know exactly what\'s open before you book.' },
-      { question: 'Do I need to pay in advance for last-minute booking?', answer: 'No advance payment required for most room types. You can pay at check-in. Some premium rooms may require a small deposit.' },
+      { question: 'Can I get a room in Shillong at the last minute?', answer: 'Yes, XTSY accepts same-day bookings. Send your dates on WhatsApp and the desk confirms what is free before you pay.' },
+      { question: 'Do I need to pay in advance for last-minute booking?', answer: `Yes. ${BOOKING_POLICY_TEXT.payment} Last-minute bookings (within ${HOSTEL_POLICIES.modificationCutoffDays} days of check-in) are non-refundable and cannot be changed.` },
     ],
     schemaType: 'LodgingBusiness',
     relatedSlugs: ['hostels-in-shillong-today', 'shillong-stay-tonight', 'hotels-in-shillong-available-now', 'meghalaya-trip-today'],
@@ -129,9 +130,9 @@ export const LAST_MINUTE_SEO_PAGES: SEOPageData[] = [
     slug: 'hotels-in-shillong-available-now',
     category: 'hotels',
     title: `Hotels in Shillong Available Now (${today}) — Instant Booking`,
-    metaDescription: `Hotels and rooms in Shillong available right now. Private rooms from ₹2,399/night, luxury suites from ₹4,999. Real-time availability, instant confirmation.`,
+    metaDescription: `Hotels and rooms in Shillong available right now. Private rooms from ₹2,399/night, suites from ₹4,999. The desk confirms availability on WhatsApp.`,
     h1: 'Hotels & Rooms in Shillong Available Now',
-    intro: `Need a hotel room in Shillong right now? Check real-time availability below. XTSY offers private rooms and luxury suites with instant booking confirmation — no waiting for host approval.`,
+    intro: `Need a hotel room in Shillong right now? Send your dates and the XTSY desk confirms on WhatsApp which private rooms and suites are free.`,
     sections: [
       {
         heading: 'Private Rooms Available Today',
@@ -164,7 +165,7 @@ export const LAST_MINUTE_SEO_PAGES: SEOPageData[] = [
     slug: 'shillong-stay-tonight',
     category: 'accommodation',
     title: `Stay in Shillong Tonight — Rooms & Beds Available (${today})`,
-    metaDescription: `Need a place to stay in Shillong tonight? Beds from ₹399, rooms from ₹2,399. Real-time availability, instant booking, WhatsApp confirmation at XTSY Hostel.`,
+    metaDescription: `Need a place to stay in Shillong tonight? Beds from ₹399, rooms from ₹2,399. Availability confirmed on WhatsApp at XTSY Hostel.`,
     h1: 'Stay in Shillong Tonight',
     intro: `It's not too late to find the perfect stay in Shillong. Whether you need a budget dorm bed or a luxury glass suite with panoramic mountain views, we have options available right now. Book in 30 seconds, get confirmed on WhatsApp.`,
     sections: [

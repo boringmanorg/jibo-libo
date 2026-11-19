@@ -12,6 +12,7 @@ import {
   Star, Wifi, Shield, MapPin, Phone, MessageCircle, Check,
   Bed, CalendarCheck, IndianRupee, Clock, CreditCard, BadgeCheck,
 } from 'lucide-react';
+import { BOOKING_POLICY_ANSWER, BOOKING_POLICY_TEXT, HOSTEL_POLICIES } from '@/data/hostelPolicies';
 
 const HostelBookingShillong = memo(() => {
   const hostelSchema = {
@@ -93,7 +94,7 @@ const HostelBookingShillong = memo(() => {
     },
     {
       q: 'Can I cancel or modify my booking?',
-      a: 'The booking amount is non-refundable — there is no free cancellation. Bookings can be modified once within 15 days of the original check-in (request at least 48 hours before), subject to availability and any rate difference.',
+      a: BOOKING_POLICY_ANSWER,
     },
     ...hostelDealFaqs,
   ];
@@ -145,7 +146,7 @@ const HostelBookingShillong = memo(() => {
             </h1>
             <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
               Enquire with XTSY Travellers Hostel direct. The desk confirms availability on WhatsApp;
-              one free date change, 4.7★ from 252 Google reviews.
+              one date change up to {HOSTEL_POLICIES.modificationCutoffDays} days before check-in, 4.7★ from 252 Google reviews.
             </p>
             <div className="flex items-center justify-center gap-1 mb-6">
               {[1,2,3,4,5].map(i => <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />)}
@@ -175,7 +176,7 @@ const HostelBookingShillong = memo(() => {
               {[
                 { icon: IndianRupee, title: 'More affordable than OTAs', desc: 'No commission markup vs Hostelworld / Booking.com.' },
                 { icon: Clock, title: 'WhatsApp Confirmation', desc: 'The desk replies to confirm availability.' },
-                { icon: Shield, title: 'One Free Date Change', desc: 'Booking amount is non-refundable; change dates once within 15 days.' },
+                { icon: Shield, title: 'One Free Date Change', desc: `Booking amount is non-refundable; change dates once, at least ${HOSTEL_POLICIES.modificationCutoffDays} days before check-in.` },
                 { icon: CreditCard, title: 'No Online Payment', desc: 'Send an enquiry; payment arrangements follow desk confirmation.' },
               ].map((f) => (
                 <Card key={f.title} className="border-border/50">

@@ -2,13 +2,14 @@ import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Helmet } from '@/lib/seo/helmet';
+import { BOOKING_POLICY_ANSWER, BOOKING_POLICY_TEXT, HOSTEL_POLICIES } from '@/data/hostelPolicies';
 
 /**
  * Terms of Service page for XTSY
  * Comprehensive terms covering accommodation bookings and user agreements
  */
 export const TermsOfService: React.FC = () => {
-  const lastUpdated = "September 29, 2026";
+  const lastUpdated = "November 19, 2026";
   const effectiveDate = "September 29, 2026";
   
   return (
@@ -117,7 +118,7 @@ export const TermsOfService: React.FC = () => {
               <ul className="list-disc pl-6 space-y-2">
                 <li>Payment is processed through secure third-party payment providers</li>
                 <li>We accept major credit/debit cards, UPI, and net banking</li>
-                <li>Advance payment is required at the time of booking</li>
+                <li>A {HOSTEL_POLICIES.advancePercent}% advance payment is required to confirm a booking; the remaining {HOSTEL_POLICIES.balancePercent}% is paid at check-in</li>
                 <li>All advance payments are strictly non-refundable</li>
                 <li>You authorize us to charge your payment method for the booking amount</li>
               </ul>
@@ -137,17 +138,17 @@ export const TermsOfService: React.FC = () => {
               <h3 className="text-xl font-medium mb-3 text-foreground">5.1 Guest Cancellations</h3>
               <ul className="list-disc pl-6 space-y-2">
                 <li>Cancellations are <strong>not accepted</strong> once an advance payment is made</li>
-                <li>No refunds will be issued under any circumstances for guest-initiated cancellations</li>
+                <li>No refunds will be issued for guest-initiated cancellations, for any reason</li>
                 <li>No-shows are treated as cancellations with no refund</li>
                 <li>This applies to all room types, packages, and promotional bookings</li>
               </ul>
               
               <h3 className="text-xl font-medium mb-3 mt-6 text-foreground">5.2 Booking Modifications</h3>
-              <p>Instead of cancellation, you may request a modification:</p>
+              <p>Instead of cancellation, you may request a date change:</p>
               <ul className="list-disc pl-6 space-y-2 mt-3">
-                <li>Date modification allowed within 15 days from original check-in</li>
-                <li>Only one modification permitted per booking</li>
-                <li>Request must be made at least 48 hours before original check-in</li>
+                <li>Only one date change is permitted per booking</li>
+                <li>The request must be made at least {HOSTEL_POLICIES.modificationCutoffDays} days before the original check-in date</li>
+                <li>No changes are possible within {HOSTEL_POLICIES.modificationCutoffDays} days of check-in, including for bookings made within that period</li>
                 <li>Subject to availability and any rate difference</li>
               </ul>
               

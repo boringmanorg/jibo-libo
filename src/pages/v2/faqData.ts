@@ -2,7 +2,7 @@
  *  (bundled into every page) doesn't pull the whole FAQ page into the main chunk. */
 import { inr, lowestDormPrice, roomPrice } from '@/components/v2/pricing';
 import { PROPERTY_ADDRESS } from '@/data/brandFacts';
-import { HOSTEL_POLICIES } from '@/data/hostelPolicies';
+import { BOOKING_POLICY_ANSWER, BOOKING_POLICY_TEXT, HOSTEL_POLICIES } from '@/data/hostelPolicies';
 
 export type Topic = { id: string; n: string; q: [string, string][] };
 
@@ -40,7 +40,7 @@ export function buildTopics(): Topic[] {
       ['Do you rent bikes and cars?', 'Yes. Royal Enfields from ₹1,300 a day and cars from ₹1,800, booked through trusted rental partners, with drivers on request.'],
     ] },
     { id: 'booking', n: 'Booking & payments', q: [
-      ['What is your cancellation policy?', 'All advance payments are non-refundable. You can modify a booking once within 15 days of the original check-in, requested at least 48 hours before, subject to availability and any rate difference. No refunds for no-shows. Full details are on the Pricing & Cancellation Policy page.'],
+      ['What is your cancellation policy?', `${BOOKING_POLICY_ANSWER} Full details are on the Pricing & Cancellation Policy page.`],
       ['What payment methods work?', 'UPI, bank transfers, cards and cash. International guests can pay by PayPal or wire transfer.'],
       ['Is airport pickup available?', 'Yes, from Guwahati Airport and Shillong Airport (Umroi). Ask the desk when you book.'],
       ['Do groups get discounts?', 'Groups of 6+ get special rates on stays and tours. Colleges, corporates and clubs: message us for a quote.'],

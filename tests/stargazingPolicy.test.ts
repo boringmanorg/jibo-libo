@@ -41,10 +41,11 @@ describe('brand facts the assistant used to get wrong', () => {
 });
 
 describe('date-change policy', () => {
-  it('quotes the 15-day window, not the old 90', () => {
+  it('quotes the 14-day cutoff (19 Nov 2026), not the old 15- or 90-day windows', () => {
     for (const q of ['what is your cancellation policy', 'can I change my dates', 'can I reschedule my booking']) {
       const t = ask(q).text ?? '';
-      expect(t, q).toContain('15 days');
+      expect(t, q).toContain('at least 14 days before check-in');
+      expect(t, q).not.toContain('15 days');
       expect(t, q).not.toContain('90 days');
     }
   });

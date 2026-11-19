@@ -3,6 +3,7 @@ import { Link } from '@/lib/router-compat';
 import { Check, X, MessageCircle, IndianRupee } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { openWhatsApp } from '@/utils/privacyCompliantWhatsApp';
+import { BOOKING_POLICY_ANSWER, BOOKING_POLICY_TEXT, HOSTEL_POLICIES } from '@/data/hostelPolicies';
 
 interface Row {
   feature: string;
@@ -14,7 +15,7 @@ interface Row {
 const rows: Row[] = [
   { feature: 'Price per dorm bed', direct: 'From ₹399 — base rate', ota: '₹460–₹470 after 15–18% commission', directWins: true },
   { feature: 'Commission added to your rate', direct: 'None', ota: '15–18% built into the price', directWins: true },
-  { feature: 'Cancellation', direct: 'Free up to 48 hrs, one free date change', ota: 'OTA policy — often non-refundable rates', directWins: true },
+  { feature: 'Cancellation', direct: BOOKING_POLICY_TEXT.short, ota: 'OTA policy — often non-refundable rates', directWins: false },
   { feature: 'Prepayment', direct: 'Most dorms pay on arrival', ota: 'Card hold or full prepayment', directWins: true },
   { feature: 'Confirmation', direct: 'Instant WhatsApp + GST invoice', ota: 'Email voucher only', directWins: true },
   { feature: 'Room / bed preference', direct: 'Request bunk, dorm or floor directly', ota: 'Assigned at check-in', directWins: true },

@@ -16,6 +16,7 @@ import { XTSY_POINT, pointOfHub, pointOfPlace, travel } from './routing';
 import { buildPlan, fmtH, type Plan, type TripStyle } from './planner';
 import { inr, lowestDormPrice, roomPrice } from '@/components/v2/pricing';
 import { PANORAMA_DECORATION, PANORAMA_STAY_ONLY } from '@/data/panoramaPricing';
+import { BOOKING_POLICY_ANSWER, BOOKING_POLICY_TEXT, HOSTEL_POLICIES } from '@/data/hostelPolicies';
 
 export interface ChatState {
   /** Set once a guest raises stargazing, so every later plan carries the notice. */
@@ -241,7 +242,7 @@ const FACTS: [RegExp, () => string, string[]][] = [
   [/stargaz|star ?gaz|night sky|milky ?way|\bastro|see (the )?stars|star view|starry/, () => STARGAZING_NOTICE, ['Experience by XTSY', 'Talk to the desk on WhatsApp']],
   [/live music|music event|\bband\b|\bdj\b|\bgig\b|live performance/, () => 'We do not run regular live music nights. We can host a music event if it is pre-booked with the desk — message us with your dates and what you have in mind and we will tell you what is possible.', ['Talk to the desk on WhatsApp', 'Plan a group trip']],
   [/bonfire|camp ?fire|fire ?pit/, () => 'A bonfire runs every night for in-house guests and stays open till late. Private parties on the property also run late into the night.', ['Check availability', 'Plan a 3-day trip']],
-  [/cancel|refund|(?:change|move|modify|amend|shift).{0,40}(?:booking|reservation|dates?|check.?in)|date change|reschedul|postpone/, () => 'The booking amount is **non-refundable** — there is no free cancellation. You can change your dates **once within 15 days** of the original check-in (ask at least 48 hours before), subject to availability and any rate difference. Full terms are on the Pricing & Cancellation Policy page.', ['Talk to the desk on WhatsApp']],
+  [/cancel|refund|(?:change|move|modify|amend|shift).{0,40}(?:booking|reservation|dates?|check.?in)|date change|reschedul|postpone/, () => `The booking amount is **non-refundable**: no refund on cancellation, for any reason. You can change your dates **once, if you ask at least ${HOSTEL_POLICIES.modificationCutoffDays} days before check-in**, subject to availability and any rate difference; within ${HOSTEL_POLICIES.modificationCutoffDays} days of check-in, dates cannot be changed. ${BOOKING_POLICY_TEXT.payment} Full terms are on the Pricing & Cancellation Policy page.`, ['Talk to the desk on WhatsApp']],
 ];
 
 function priceAnswer(): string {
