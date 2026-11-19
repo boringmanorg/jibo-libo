@@ -203,12 +203,13 @@ async function main() {
 
   let hydrationFailures: Failure[] = [];
   if (DO_HYDRATE) {
-    // Franchise dashboard routes require an authenticated franchise account.
-    // Anonymous CI sessions redirect/blank these protected screens by design;
-    // their public login/install routes are covered separately by SSR smoke.
-    const authGatedRoutes = new Set(['/franchise', '/franchise/bookings', '/franchise/availability', '/franchise/messages', '/franchise/more']);
+    // Signed-in consoles (/admin, which replaced /franchise on 18 Nov 2026) need a staff
+    // session and the backend URL, neither of which an anonymous CI run has. They fail
+    // here by design, not because they are broken; SSR smoke above still renders them.
+    const AUTH_GATED_PREFIXES = ['/admin', '/franchise'];
+    const isAuthGated = (r: string) => AUTH_GATED_PREFIXES.some((p) => r === p || r.startsWith(`${p}/`));
     const ssrRoutes = routes.filter(
-      (r) => !clientOnlyRoutes.has(r) && !authGatedRoutes.has(r) && !goneRoutes.has(r),
+      (r) => !clientOnlyRoutes.has(r) && !isAuthGated(r) && !goneRoutes.has(r),
     );
     const step = Math.max(1, Math.floor(ssrRoutes.length / Math.max(1, SAMPLE - 5)));
     const sample = [

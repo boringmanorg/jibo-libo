@@ -154,7 +154,6 @@ const COMPARE: { label: string; xtsy: string; zostel: string }[] = [
   { label: 'Women-only dorm', xtsy: 'Yes, 4 beds', zostel: 'Female dorm available' },
   { label: 'Food', xtsy: 'TAB Bistro on site', zostel: 'In-house café; breakfast extra' },
   { label: 'Check-in / check-out', xtsy: '11 AM / 10 AM', zostel: '1 PM / 10 AM' },
-  { label: 'Cancellation', xtsy: 'Non-refundable; one date change allowed (see FAQs)', zostel: 'Free cancellation more than 8 days ahead (as listed on Hostelworld)' },
   { label: 'Who can stay', xtsy: 'Groups of 6–60 welcome; cats and birds welcome, dogs by breed and size', zostel: '18+ only, groups of up to 6, no pets' },
   { label: 'Guest rating', xtsy: '4.7★ from 252 Google reviews', zostel: '7.3/10 on ixigo (481 reviews); 8.0/10 on Hostelworld (24)' },
 ];

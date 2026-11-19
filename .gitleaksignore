@@ -2,7 +2,7 @@
 #  - Supabase anon/publishable key (role=anon, public by design) in .env, scripts, tests, a migration
 #  - placeholders in .env.example; comments naming SUPABASE_SERVICE_ROLE_KEY in scripts
 #  - the IndexNow key (published at /<key>.txt by design)
-#  - browser storage key names (xtsy_*), cache keys and unsubscribe token field names
+#  - browser storage key names (xtsy_*, xtsy-admin-console), cache keys and unsubscribe token field names
 # New findings are not covered and fail the Security checks workflow.
 .env.example:generic-secret:10
 .env.example:generic-secret:11
@@ -14,6 +14,7 @@ scripts/indexing/indexnow-submit.ts:generic-api-key:14
 scripts/indexing/indexnow-submit.ts:generic-secret:14
 scripts/optimize-and-upload-images.ts:generic-secret:13
 scripts/storage-cache-control.ts:generic-secret:11
+src/admin/adminSupabase.ts:generic-secret:13
 src/hooks/useConversionSignals.ts:generic-secret:160
 src/utils/aiReferralTracking.ts:generic-secret:45
 supabase/functions/fetch-exchange-rates/index.ts:generic-secret:9

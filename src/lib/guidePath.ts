@@ -7,7 +7,8 @@ const TOP_LEVEL = new Set(['', 'about', 'guides', 'book', 'tours', 'stays', 'tab
 export function guidePath(slug: string): string {
   const clean = slug.replace(/^\/+|\/+$/g, '');
   if (clean.includes('/') || TOP_LEVEL.has(clean)) return `/${clean}`;
-  return `/guides/${clean}`;
+  // A slug that moved to /tours or /stays has no guide page: link to where it lives now.
+  return legacyRedirectTarget(`/${clean}`) ?? `/guides/${clean}`;
 }
 
 import { legacyRedirectTarget } from '@/data/legacyRedirects';
