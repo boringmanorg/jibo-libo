@@ -1,0 +1,40 @@
+/**
+ * Units free per night = capacity − confirmed − live holds, or zero on a blocked night.
+ * With STAAH connected, `capacity` is STAAH's available count for that night and `confirmed`
+ * covers only engine bookings STAAH has not acknowledged yet.
+ */
+import { stayNights, type IsoDate } from './dates';
+
+export interface Hold { roomTypeId: string; units: number; nights: IsoDate[]; expiresAt: Date }
+export interface NightLoad { roomTypeId: string; night: IsoDate; units: number }
+
+export interface AvailabilityInput {
+  roomTypeId: string;
+  checkIn: IsoDate;
+  checkOut: IsoDate;
+  /** Units per night; a function so STAAH's per-night counts can be plugged in. */
+  capacity: (night: IsoDate) => number;
+  confirmed: NightLoad[];
+  holds: Hold[];
+  blockedNights: Set<IsoDate>;
+  now: Date;
+}
+
+export function freeUnitsPerNight(input: AvailabilityInput): { night: IsoDate; free: number }[] {
+  return stayNights(input.checkIn, input.checkOut).map((night) => {
+    if (input.blockedNights.has(night)) return { night, free: 0 };
+    const booked = input.confirmed
+      .filter((l) => l.roomTypeId === input.roomTypeId && l.night === night)
+      .reduce((s, l) => s + l.units, 0);
+    const held = input.holds
+      .filter((h) => h.roomTypeId === input.roomTypeId && h.expiresAt > input.now && h.nights.includes(night))
+      .reduce((s, h) => s + h.units, 0);
+    return { night, free: Math.max(0, input.capacity(night) - booked - held) };
+  });
+}
+
+/** Units sellable for the whole stay: the tightest night decides. */
+export function freeUnitsForStay(input: AvailabilityInput): number {
+  const nights = freeUnitsPerNight(input);
+  return nights.length === 0 ? 0 : Math.min(...nights.map((n) => n.free));
+}
