@@ -17,7 +17,11 @@ export default defineConfig({
       "/", "/stays/experience-by-xtsy", "/tours", "/stays/workation", "/tours/destination-wedding-shillong",
       "/stays/best-hostel-in-shillong", "/tours/xtsy-rentals", "/tours/meghalaya-tour-packages", "/guides", "/about/faq",
     ].map((path) => ({ path, prerender: { outputPath: path === "/" ? "/index.html" : `${path}/index.html` } })),
-    prerender: { enabled: true, autoStaticPathsDiscovery: false },
+    // crawlLinks: false — build ONLY the pages above. Crawling wrote ~660 static pages that
+    // Cloudflare serves ahead of src/server.ts, and one broken link failed every publish.
+    // Not in CI's node-server build: its prerender preview cannot call that server bundle
+    // ("server.fetch is not a function") and the job hangs until timeout.
+    prerender: { enabled: process.env.NITRO_PRESET !== "node-server", autoStaticPathsDiscovery: false, crawlLinks: false },
   },
   // CI only: hidden source maps so the bundle report can attribute bytes to modules.
   // Normal (Lovable) builds are unchanged.
