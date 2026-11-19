@@ -99,6 +99,13 @@
       "when": 1794992515119,
       "tag": "0013_super_admin_console",
       "breakpoints": true
+    },
+    {
+      "idx": 14,
+      "version": "7",
+      "when": 1795105608340,
+      "tag": "0014_booking_engine_tables",
+      "breakpoints": true
     }
   ]
 }

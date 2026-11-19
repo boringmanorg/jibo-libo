@@ -212,3 +212,15 @@ end $$;
 
 -- The audit log is append-only, even for the admin.
 drop policy if exists be_audit_log_admin_update on public.be_audit_log;
+
+-- Admin role for the super admin account, matched by email (not a hard-coded id),
+-- so a re-created admin@xtsy.one user gets the role that is_super_admin() needs.
+-- Only a confirmed account is granted; an unconfirmed one must be confirmed first.
+insert into public.user_roles (user_id, role)
+select u.id, 'admin'::app_role
+from auth.users u
+where lower(u.email) = 'admin@xtsy.one'
+  and u.email_confirmed_at is not null
+  and not exists (
+    select 1 from public.user_roles r where r.user_id = u.id and r.role = 'admin'::app_role
+  );

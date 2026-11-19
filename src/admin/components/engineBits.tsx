@@ -4,7 +4,7 @@ import { formatInr } from '@/booking/money';
 
 export const selectCls = 'h-12 w-full rounded-md border border-input bg-background px-3 text-base';
 export const inr = (paise: number | string) => formatInr(Number(paise));
-export const MIGRATION_FILE = 'supabase/migrations/20261119140000_booking_engine_tables.sql';
+export const MIGRATION_FILE = 'drizzle/migrations/0014_booking_engine_tables.sql';
 
 export function NotSetUp() {
   return (
