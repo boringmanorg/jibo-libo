@@ -25,3 +25,6 @@ export function stayNights(checkIn: IsoDate, checkOut: IsoDate): IsoDate[] {
   const n = daysBetween(checkIn, checkOut);
   return Array.from({ length: Math.max(0, n) }, (_, i) => fromDay(toDay(checkIn) + i));
 }
+
+/** The date `n` days after `d` (negative goes back). */
+export const addDays = (d: IsoDate, n: number): IsoDate => fromDay(toDay(d) + n);

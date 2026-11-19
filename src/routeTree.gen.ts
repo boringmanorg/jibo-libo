@@ -12,8 +12,12 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as adminAdminRouteRouteImport } from './routes/(admin)/admin/route'
 import { Route as adminAdminIndexRouteImport } from './routes/(admin)/admin/index'
+import { Route as adminAdminBookingEngineRouteImport } from './routes/(admin)/admin/booking-engine'
+import { Route as adminAdminBookingsRouteImport } from './routes/(admin)/admin/bookings'
+import { Route as adminAdminNightAuditRouteImport } from './routes/(admin)/admin/night-audit'
 import { Route as adminAdminRestaurantsRouteImport } from './routes/(admin)/admin/restaurants'
 import { Route as adminAdminSettingsRouteImport } from './routes/(admin)/admin/settings'
+import { Route as adminAdminStaahRouteImport } from './routes/(admin)/admin/staah'
 import { Route as adminAdminStaysRouteImport } from './routes/(admin)/admin/stays'
 import { Route as companyAboutIndexRouteImport } from './routes/(company)/about.index'
 import { Route as companyAboutContactRouteImport } from './routes/(company)/about/contact'
@@ -104,6 +108,21 @@ const adminAdminIndexRoute = adminAdminIndexRouteImport.update({
   path: '/',
   getParentRoute: () => adminAdminRouteRoute,
 } as any)
+const adminAdminBookingEngineRoute = adminAdminBookingEngineRouteImport.update({
+  id: '/booking-engine',
+  path: '/booking-engine',
+  getParentRoute: () => adminAdminRouteRoute,
+} as any)
+const adminAdminBookingsRoute = adminAdminBookingsRouteImport.update({
+  id: '/bookings',
+  path: '/bookings',
+  getParentRoute: () => adminAdminRouteRoute,
+} as any)
+const adminAdminNightAuditRoute = adminAdminNightAuditRouteImport.update({
+  id: '/night-audit',
+  path: '/night-audit',
+  getParentRoute: () => adminAdminRouteRoute,
+} as any)
 const adminAdminRestaurantsRoute = adminAdminRestaurantsRouteImport.update({
   id: '/restaurants',
   path: '/restaurants',
@@ -112,6 +131,11 @@ const adminAdminRestaurantsRoute = adminAdminRestaurantsRouteImport.update({
 const adminAdminSettingsRoute = adminAdminSettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
+  getParentRoute: () => adminAdminRouteRoute,
+} as any)
+const adminAdminStaahRoute = adminAdminStaahRouteImport.update({
+  id: '/staah',
+  path: '/staah',
   getParentRoute: () => adminAdminRouteRoute,
 } as any)
 const adminAdminStaysRoute = adminAdminStaysRouteImport.update({
@@ -534,8 +558,12 @@ const guidesDestinationsStateCityAttractionRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof adminAdminRouteRouteWithChildren
+  '/admin/booking-engine': typeof adminAdminBookingEngineRoute
+  '/admin/bookings': typeof adminAdminBookingsRoute
+  '/admin/night-audit': typeof adminAdminNightAuditRoute
   '/admin/restaurants': typeof adminAdminRestaurantsRoute
   '/admin/settings': typeof adminAdminSettingsRoute
+  '/admin/staah': typeof adminAdminStaahRoute
   '/admin/stays': typeof adminAdminStaysRoute
   '/about/contact': typeof companyAboutContactRoute
   '/about/contact-us': typeof companyAboutContactUsRoute
@@ -614,8 +642,12 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin/booking-engine': typeof adminAdminBookingEngineRoute
+  '/admin/bookings': typeof adminAdminBookingsRoute
+  '/admin/night-audit': typeof adminAdminNightAuditRoute
   '/admin/restaurants': typeof adminAdminRestaurantsRoute
   '/admin/settings': typeof adminAdminSettingsRoute
+  '/admin/staah': typeof adminAdminStaahRoute
   '/admin/stays': typeof adminAdminStaysRoute
   '/about/contact': typeof companyAboutContactRoute
   '/about/contact-us': typeof companyAboutContactUsRoute
@@ -696,8 +728,12 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/(admin)/admin': typeof adminAdminRouteRouteWithChildren
+  '/(admin)/admin/booking-engine': typeof adminAdminBookingEngineRoute
+  '/(admin)/admin/bookings': typeof adminAdminBookingsRoute
+  '/(admin)/admin/night-audit': typeof adminAdminNightAuditRoute
   '/(admin)/admin/restaurants': typeof adminAdminRestaurantsRoute
   '/(admin)/admin/settings': typeof adminAdminSettingsRoute
+  '/(admin)/admin/staah': typeof adminAdminStaahRoute
   '/(admin)/admin/stays': typeof adminAdminStaysRoute
   '/(company)/about/contact': typeof companyAboutContactRoute
   '/(company)/about/contact-us': typeof companyAboutContactUsRoute
@@ -779,8 +815,12 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/admin'
+    | '/admin/booking-engine'
+    | '/admin/bookings'
+    | '/admin/night-audit'
     | '/admin/restaurants'
     | '/admin/settings'
+    | '/admin/staah'
     | '/admin/stays'
     | '/about/contact'
     | '/about/contact-us'
@@ -859,8 +899,12 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/admin/booking-engine'
+    | '/admin/bookings'
+    | '/admin/night-audit'
     | '/admin/restaurants'
     | '/admin/settings'
+    | '/admin/staah'
     | '/admin/stays'
     | '/about/contact'
     | '/about/contact-us'
@@ -940,8 +984,12 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/(admin)/admin'
+    | '/(admin)/admin/booking-engine'
+    | '/(admin)/admin/bookings'
+    | '/(admin)/admin/night-audit'
     | '/(admin)/admin/restaurants'
     | '/(admin)/admin/settings'
+    | '/(admin)/admin/staah'
     | '/(admin)/admin/stays'
     | '/(company)/about/contact'
     | '/(company)/about/contact-us'
@@ -1120,6 +1168,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof adminAdminIndexRouteImport
       parentRoute: typeof adminAdminRouteRoute
     }
+    '/(admin)/admin/booking-engine': {
+      id: '/(admin)/admin/booking-engine'
+      path: '/booking-engine'
+      fullPath: '/admin/booking-engine'
+      preLoaderRoute: typeof adminAdminBookingEngineRouteImport
+      parentRoute: typeof adminAdminRouteRoute
+    }
+    '/(admin)/admin/bookings': {
+      id: '/(admin)/admin/bookings'
+      path: '/bookings'
+      fullPath: '/admin/bookings'
+      preLoaderRoute: typeof adminAdminBookingsRouteImport
+      parentRoute: typeof adminAdminRouteRoute
+    }
+    '/(admin)/admin/night-audit': {
+      id: '/(admin)/admin/night-audit'
+      path: '/night-audit'
+      fullPath: '/admin/night-audit'
+      preLoaderRoute: typeof adminAdminNightAuditRouteImport
+      parentRoute: typeof adminAdminRouteRoute
+    }
     '/(admin)/admin/restaurants': {
       id: '/(admin)/admin/restaurants'
       path: '/restaurants'
@@ -1132,6 +1201,13 @@ declare module '@tanstack/react-router' {
       path: '/settings'
       fullPath: '/admin/settings'
       preLoaderRoute: typeof adminAdminSettingsRouteImport
+      parentRoute: typeof adminAdminRouteRoute
+    }
+    '/(admin)/admin/staah': {
+      id: '/(admin)/admin/staah'
+      path: '/staah'
+      fullPath: '/admin/staah'
+      preLoaderRoute: typeof adminAdminStaahRouteImport
       parentRoute: typeof adminAdminRouteRoute
     }
     '/(admin)/admin/stays': {
@@ -1656,15 +1732,23 @@ declare module '@tanstack/react-router' {
 }
 
 interface adminAdminRouteRouteChildren {
+  adminAdminBookingEngineRoute: typeof adminAdminBookingEngineRoute
+  adminAdminBookingsRoute: typeof adminAdminBookingsRoute
+  adminAdminNightAuditRoute: typeof adminAdminNightAuditRoute
   adminAdminRestaurantsRoute: typeof adminAdminRestaurantsRoute
   adminAdminSettingsRoute: typeof adminAdminSettingsRoute
+  adminAdminStaahRoute: typeof adminAdminStaahRoute
   adminAdminStaysRoute: typeof adminAdminStaysRoute
   adminAdminIndexRoute: typeof adminAdminIndexRoute
 }
 
 const adminAdminRouteRouteChildren: adminAdminRouteRouteChildren = {
+  adminAdminBookingEngineRoute: adminAdminBookingEngineRoute,
+  adminAdminBookingsRoute: adminAdminBookingsRoute,
+  adminAdminNightAuditRoute: adminAdminNightAuditRoute,
   adminAdminRestaurantsRoute: adminAdminRestaurantsRoute,
   adminAdminSettingsRoute: adminAdminSettingsRoute,
+  adminAdminStaahRoute: adminAdminStaahRoute,
   adminAdminStaysRoute: adminAdminStaysRoute,
   adminAdminIndexRoute: adminAdminIndexRoute,
 }
