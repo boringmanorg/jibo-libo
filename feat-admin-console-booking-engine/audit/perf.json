@@ -1,0 +1,1005 @@
+[
+ {
+  "route": "/",
+  "status": 200,
+  "wallMs": 9354,
+  "ttfb": 156,
+  "fcp": 1320,
+  "lcp": {
+   "t": 1320,
+   "size": 249600,
+   "url": "http://localhost:4174/img/o/xtsy-property-images-8-portrait-828.avif",
+   "tag": "IMG",
+   "cls": "absolute inset-0 -z-20 h-full w-full object-cover",
+   "text": ""
+  },
+  "lcpCandidates": [
+   {
+    "t": 1320,
+    "size": 249600,
+    "url": "http://localhost:4174/img/o/xtsy-property-images-8-portrait-828.avif",
+    "tag": "IMG",
+    "cls": "absolute inset-0 -z-20 h-full w-full object-cover",
+    "text": ""
+   }
+  ],
+  "cls": 0.009,
+  "shifts": [
+   {
+    "v": 0.0086,
+    "t": 2995,
+    "nodes": [
+     "DIV.max-w-5xl"
+    ],
+    "rects": [
+     "18,373 355x385 -> 18,391 355x367"
+    ],
+    "text": [
+     "Best hostel in Shillong · New Shillong T"
+    ]
+   },
+   {
+    "v": 0.0003,
+    "t": 3098,
+    "nodes": [
+     "A.xt-btn flex h-14 items-center gap-2.5 rounded-full bg-xt-paper pl-4 pr-6 text-[1",
+     "DIV.flex items-center gap-2"
+    ],
+    "rects": [
+     "160,650 187x49 -> 165,650 199x49",
+     "177,43 199x44 -> 172,43 204x44"
+    ],
+    "text": [
+     "Plan a trip with AI",
+     "Plan with AIBook now"
+    ]
+   }
+  ],
+  "requests": 69,
+  "byType": {
+   "document": {
+    "n": 1,
+    "kb": 138
+   },
+   "image": {
+    "n": 2,
+    "kb": 53
+   },
+   "script": {
+    "n": 57,
+    "kb": 1102
+   },
+   "stylesheet": {
+    "n": 2,
+    "kb": 201
+   },
+   "font": {
+    "n": 5,
+    "kb": 92
+   },
+   "other": {
+    "n": 2,
+    "kb": 0
+   }
+  },
+  "biggest": [
+   {
+    "url": "http://localhost:4174/assets/index-CC8TKk20.js",
+    "type": "script",
+    "bytes": 559523,
+    "kb": 546
+   },
+   {
+    "url": "http://localhost:4174/assets/styles-CHLacUj4.css",
+    "type": "stylesheet",
+    "bytes": 195950,
+    "kb": 191
+   },
+   {
+    "url": "http://localhost:4174/",
+    "type": "document",
+    "bytes": 141100,
+    "kb": 138
+   },
+   {
+    "url": "http://localhost:4174/assets/roomTypes-DCECmwwc.js",
+    "type": "script",
+    "bytes": 72111,
+    "kb": 70
+   },
+   {
+    "url": "http://localhost:4174/assets/meghalayaDestinations-Rr92qsXA.js",
+    "type": "script",
+    "bytes": 69022,
+    "kb": 67
+   },
+   {
+    "url": "http://localhost:4174/assets/query-CkHYinGN.js",
+    "type": "script",
+    "bytes": 48971,
+    "kb": 48
+   },
+   {
+    "url": "http://localhost:4174/img/o/xtsy-property-images-8-portrait-828.avif",
+    "type": "image",
+    "bytes": 48516,
+    "kb": 47
+   },
+   {
+    "url": "http://localhost:4174/assets/routes-DeJtmpDG.js",
+    "type": "script",
+    "bytes": 44257,
+    "kb": 43
+   },
+   {
+    "url": "http://localhost:4174/assets/TripChat-e_Vbsviz.js",
+    "type": "script",
+    "bytes": 40331,
+    "kb": 39
+   },
+   {
+    "url": "http://localhost:4174/assets/AppContext-CRta89UJ.js",
+    "type": "script",
+    "bytes": 29373,
+    "kb": 29
+   },
+   {
+    "url": "https://fonts.gstatic.com/s/josefinsans/v34/Qw3aZQNVED7rKGKxtqIqX5EUDXx4.woff2",
+    "type": "font",
+    "bytes": 28528,
+    "kb": 28
+   },
+   {
+    "url": "http://localhost:4174/assets/utils-D0T3A-kS.js",
+    "type": "script",
+    "bytes": 27564,
+    "kb": 27
+   }
+  ]
+ },
+ {
+  "route": "/best-hostel-in-shillong",
+  "status": 200,
+  "wallMs": 9265,
+  "ttfb": 313,
+  "fcp": 1396,
+  "lcp": {
+   "t": 1396,
+   "size": 72910,
+   "url": "",
+   "tag": "P",
+   "cls": "m-0 text-[16px] leading-relaxed",
+   "text": "For most travellers a top pick in Shillong is XTSY Traveller"
+  },
+  "lcpCandidates": [
+   {
+    "t": 1396,
+    "size": 72910,
+    "url": "",
+    "tag": "P",
+    "cls": "m-0 text-[16px] leading-relaxed",
+    "text": "For most travellers a top pick in Shillong is XTSY Traveller"
+   }
+  ],
+  "cls": 0.022,
+  "shifts": [
+   {
+    "v": 0.0197,
+    "t": 2821,
+    "nodes": [
+     "DIV.rounded-[22px] bg-xt-blush p-5",
+     "#text.",
+     "IMG.absolute inset-0 h-full w-full object-cover",
+     "svg.[object SVGAnimatedString]",
+     "DIV.flex flex-wrap gap-2"
+    ],
+    "rects": [
+     "14,357 362x296 -> 14,336 362x296",
+     "14,232 362x120 -> 14,208 362x120",
+     "14,740 362x104 -> 14,719 362x125",
+     "166,719 210x125 -> 166,719 210x125",
+     "14,670 362x42 -> 14,649 362x42"
+    ],
+    "text": [
+     "Quick answerFor most travellers a top pi",
+     "Hostels in Shillong",
+     "",
+     "",
+     "Book a stayBook on WhatsApp"
+    ]
+   },
+   {
+    "v": 0.0023,
+    "t": 2981,
+    "nodes": [
+     "DIV.flex items-center gap-2",
+     "BUTTON.xt-btn flex h-12 items-center rounded-full border-[1.5px] border-xt-ink px-6 tex",
+     "LI.flex items-center gap-1.5",
+     "SUP.ml-0.5 text-[10px] font-bold",
+     "SPAN."
+    ],
+    "rects": [
+     "177,43 199x44 -> 172,43 204x44",
+     "141,649 170x42 -> 147,649 182x42",
+     "63,124 108x20 -> 68,124 120x20",
+     "105,53 9x14 -> 74,53 7x14",
+     "52,124 5x20 -> 56,124 6x20"
+    ],
+    "text": [
+     "Plan with AIBook now",
+     "Book on WhatsApp",
+     "Hostels in Shillong",
+     "®",
+     "/"
+    ]
+   }
+  ],
+  "requests": 71,
+  "byType": {
+   "document": {
+    "n": 2,
+    "kb": 98
+   },
+   "image": {
+    "n": 4,
+    "kb": 54
+   },
+   "script": {
+    "n": 58,
+    "kb": 1196
+   },
+   "stylesheet": {
+    "n": 2,
+    "kb": 201
+   },
+   "font": {
+    "n": 5,
+    "kb": 92
+   }
+  },
+  "biggest": [
+   {
+    "url": "http://localhost:4174/assets/index-CC8TKk20.js",
+    "type": "script",
+    "bytes": 559523,
+    "kb": 546
+   },
+   {
+    "url": "http://localhost:4174/assets/styles-CHLacUj4.css",
+    "type": "stylesheet",
+    "bytes": 195950,
+    "kb": 191
+   },
+   {
+    "url": "http://localhost:4174/assets/HomeReviews-CYQv12DB.js",
+    "type": "script",
+    "bytes": 159096,
+    "kb": 155
+   },
+   {
+    "url": "http://localhost:4174/stays/best-hostel-in-shillong",
+    "type": "document",
+    "bytes": 99997,
+    "kb": 98
+   },
+   {
+    "url": "http://localhost:4174/assets/roomTypes-DCECmwwc.js",
+    "type": "script",
+    "bytes": 72111,
+    "kb": 70
+   },
+   {
+    "url": "http://localhost:4174/assets/meghalayaDestinations-Rr92qsXA.js",
+    "type": "script",
+    "bytes": 69022,
+    "kb": 67
+   },
+   {
+    "url": "http://localhost:4174/assets/query-CkHYinGN.js",
+    "type": "script",
+    "bytes": 48971,
+    "kb": 48
+   },
+   {
+    "url": "http://localhost:4174/img/o/xtsy-property-images-8-828.avif",
+    "type": "image",
+    "bytes": 33261,
+    "kb": 32
+   },
+   {
+    "url": "http://localhost:4174/assets/AppContext-CRta89UJ.js",
+    "type": "script",
+    "bytes": 29373,
+    "kb": 29
+   },
+   {
+    "url": "https://fonts.gstatic.com/s/josefinsans/v34/Qw3aZQNVED7rKGKxtqIqX5EUDXx4.woff2",
+    "type": "font",
+    "bytes": 28528,
+    "kb": 28
+   },
+   {
+    "url": "http://localhost:4174/assets/utils-D0T3A-kS.js",
+    "type": "script",
+    "bytes": 27564,
+    "kb": 27
+   },
+   {
+    "url": "http://localhost:4174/assets/manrope-latin-DHIcAJRg.woff2",
+    "type": "font",
+    "bytes": 24836,
+    "kb": 24
+   }
+  ]
+ },
+ {
+  "route": "/cheap-hostels-shillong",
+  "status": 200,
+  "wallMs": 9253,
+  "ttfb": 308,
+  "fcp": 1404,
+  "lcp": {
+   "t": 1404,
+   "size": 65892,
+   "url": "",
+   "tag": "P",
+   "cls": "m-0 text-[16px] leading-relaxed",
+   "text": "The best budget-friendly bed in Shillong at XTSY Travellers "
+  },
+  "lcpCandidates": [
+   {
+    "t": 1404,
+    "size": 65892,
+    "url": "",
+    "tag": "P",
+    "cls": "m-0 text-[16px] leading-relaxed",
+    "text": "The best budget-friendly bed in Shillong at XTSY Travellers "
+   }
+  ],
+  "cls": 0.042,
+  "shifts": [
+   {
+    "v": 0,
+    "t": 2681,
+    "nodes": [
+     "SUP.ml-0.5 text-[10px] font-bold"
+    ],
+    "rects": [
+     "105,53 9x14 -> 73,53 9x14"
+    ],
+    "text": [
+     "®"
+    ]
+   },
+   {
+    "v": 0.0417,
+    "t": 2855,
+    "nodes": [
+     "DIV.rounded-[22px] bg-xt-blush p-5",
+     "#text.",
+     "IMG.absolute inset-0 h-full w-full object-cover",
+     "DIV.flex flex-wrap gap-2",
+     "svg.[object SVGAnimatedString]"
+    ],
+    "rects": [
+     "14,437 362x270 -> 14,386 362x270",
+     "14,211 362x171 -> 14,208 362x171",
+     "14,794 362x50 -> 14,743 362x101",
+     "14,724 362x42 -> 14,673 362x42",
+     "166,743 210x101 -> 166,743 210x101"
+    ],
+    "text": [
+     "Quick answerThe best budget-friendly bed",
+     "Budget-friendly hostels in Shillong",
+     "",
+     "Book a stayBook on WhatsApp",
+     ""
+    ]
+   },
+   {
+    "v": 0.0005,
+    "t": 2969,
+    "nodes": [
+     "DIV.flex items-center gap-2",
+     "BUTTON.xt-btn flex h-12 items-center rounded-full border-[1.5px] border-xt-ink px-6 tex",
+     "LI.flex items-center gap-1.5",
+     "SPAN."
+    ],
+    "rects": [
+     "177,43 199x44 -> 172,43 204x44",
+     "141,673 170x42 -> 147,673 182x42",
+     "63,124 197x20 -> 68,124 222x20",
+     "52,124 5x20 -> 56,124 6x20"
+    ],
+    "text": [
+     "Plan with AIBook now",
+     "Book on WhatsApp",
+     "Budget-friendly hostels in Shillong",
+     "/"
+    ]
+   }
+  ],
+  "requests": 69,
+  "byType": {
+   "document": {
+    "n": 2,
+    "kb": 92
+   },
+   "image": {
+    "n": 4,
+    "kb": 54
+   },
+   "script": {
+    "n": 56,
+    "kb": 1194
+   },
+   "stylesheet": {
+    "n": 2,
+    "kb": 201
+   },
+   "font": {
+    "n": 5,
+    "kb": 92
+   }
+  },
+  "biggest": [
+   {
+    "url": "http://localhost:4174/assets/index-CC8TKk20.js",
+    "type": "script",
+    "bytes": 559523,
+    "kb": 546
+   },
+   {
+    "url": "http://localhost:4174/assets/styles-CHLacUj4.css",
+    "type": "stylesheet",
+    "bytes": 195950,
+    "kb": 191
+   },
+   {
+    "url": "http://localhost:4174/assets/HomeReviews-CYQv12DB.js",
+    "type": "script",
+    "bytes": 159096,
+    "kb": 155
+   },
+   {
+    "url": "http://localhost:4174/stays/budget-hostels-shillong",
+    "type": "document",
+    "bytes": 94214,
+    "kb": 92
+   },
+   {
+    "url": "http://localhost:4174/assets/roomTypes-DCECmwwc.js",
+    "type": "script",
+    "bytes": 72111,
+    "kb": 70
+   },
+   {
+    "url": "http://localhost:4174/assets/meghalayaDestinations-Rr92qsXA.js",
+    "type": "script",
+    "bytes": 69022,
+    "kb": 67
+   },
+   {
+    "url": "http://localhost:4174/assets/query-CkHYinGN.js",
+    "type": "script",
+    "bytes": 48971,
+    "kb": 48
+   },
+   {
+    "url": "http://localhost:4174/img/o/xtsy-property-images-8-828.avif",
+    "type": "image",
+    "bytes": 33261,
+    "kb": 32
+   },
+   {
+    "url": "http://localhost:4174/assets/AppContext-CRta89UJ.js",
+    "type": "script",
+    "bytes": 29373,
+    "kb": 29
+   },
+   {
+    "url": "https://fonts.gstatic.com/s/josefinsans/v34/Qw3aZQNVED7rKGKxtqIqX5EUDXx4.woff2",
+    "type": "font",
+    "bytes": 28528,
+    "kb": 28
+   },
+   {
+    "url": "http://localhost:4174/assets/utils-D0T3A-kS.js",
+    "type": "script",
+    "bytes": 27564,
+    "kb": 27
+   },
+   {
+    "url": "http://localhost:4174/assets/manrope-latin-DHIcAJRg.woff2",
+    "type": "font",
+    "bytes": 24836,
+    "kb": 24
+   }
+  ]
+ },
+ {
+  "route": "/shillong-dormitory",
+  "status": 200,
+  "wallMs": 9172,
+  "ttfb": 312,
+  "fcp": 1380,
+  "lcp": {
+   "t": 1380,
+   "size": 81295,
+   "url": "",
+   "tag": "P",
+   "cls": "m-0 max-w-[720px] text-[18px] leading-relaxed text-xt-ink",
+   "text": "XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong T"
+  },
+  "lcpCandidates": [
+   {
+    "t": 1380,
+    "size": 81295,
+    "url": "",
+    "tag": "P",
+    "cls": "m-0 max-w-[720px] text-[18px] leading-relaxed text-xt-ink",
+    "text": "XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong T"
+   }
+  ],
+  "cls": 0.005,
+  "shifts": [
+   {
+    "v": 0.004,
+    "t": 2762,
+    "nodes": [
+     "#text.",
+     "#text."
+    ],
+    "rects": [
+     "14,209 362x136 -> 14,206 362x136",
+     "14,181 362x17 -> 14,181 362x17"
+    ],
+    "text": [
+     "Dormitory Accommodation in Shillong",
+     "October 2026"
+    ]
+   },
+   {
+    "v": 0.001,
+    "t": 3144,
+    "nodes": [
+     "DIV.flex items-center gap-2",
+     "BUTTON.xt-btn flex h-11 items-center rounded-full border-[1.5px] border-xt-ink px-5 tex",
+     "LI.flex items-center gap-1.5",
+     "LI.flex items-center gap-1.5",
+     "SPAN."
+    ],
+    "rects": [
+     "177,43 199x44 -> 172,43 204x44",
+     "130,597 149x39 -> 135,597 160x39",
+     "121,124 217x20 -> 133,124 242x20",
+     "63,117 53x34 -> 68,117 60x34",
+     "52,124 5x20 -> 56,124 6x20"
+    ],
+    "text": [
+     "Plan with AIBook now",
+     "Ask on WhatsApp",
+     "Dormitory Accommodation in Shillong",
+     "Hostels/",
+     "/"
+    ]
+   }
+  ],
+  "requests": 68,
+  "byType": {
+   "document": {
+    "n": 2,
+    "kb": 79
+   },
+   "image": {
+    "n": 2,
+    "kb": 38
+   },
+   "script": {
+    "n": 55,
+    "kb": 1020
+   },
+   "stylesheet": {
+    "n": 2,
+    "kb": 201
+   },
+   "font": {
+    "n": 5,
+    "kb": 92
+   },
+   "other": {
+    "n": 2,
+    "kb": 0
+   }
+  },
+  "biggest": [
+   {
+    "url": "http://localhost:4174/assets/index-CC8TKk20.js",
+    "type": "script",
+    "bytes": 559523,
+    "kb": 546
+   },
+   {
+    "url": "http://localhost:4174/assets/styles-CHLacUj4.css",
+    "type": "stylesheet",
+    "bytes": 195950,
+    "kb": 191
+   },
+   {
+    "url": "http://localhost:4174/guides/shillong-dormitory",
+    "type": "document",
+    "bytes": 81155,
+    "kb": 79
+   },
+   {
+    "url": "http://localhost:4174/assets/roomTypes-DCECmwwc.js",
+    "type": "script",
+    "bytes": 72111,
+    "kb": 70
+   },
+   {
+    "url": "http://localhost:4174/assets/meghalayaDestinations-Rr92qsXA.js",
+    "type": "script",
+    "bytes": 69022,
+    "kb": 67
+   },
+   {
+    "url": "http://localhost:4174/assets/query-CkHYinGN.js",
+    "type": "script",
+    "bytes": 48971,
+    "kb": 48
+   },
+   {
+    "url": "http://localhost:4174/img/o/xtsy-property-images-8-828.avif",
+    "type": "image",
+    "bytes": 33261,
+    "kb": 32
+   },
+   {
+    "url": "http://localhost:4174/assets/AppContext-CRta89UJ.js",
+    "type": "script",
+    "bytes": 29373,
+    "kb": 29
+   },
+   {
+    "url": "https://fonts.gstatic.com/s/josefinsans/v34/Qw3aZQNVED7rKGKxtqIqX5EUDXx4.woff2",
+    "type": "font",
+    "bytes": 28528,
+    "kb": 28
+   },
+   {
+    "url": "http://localhost:4174/assets/utils-D0T3A-kS.js",
+    "type": "script",
+    "bytes": 27564,
+    "kb": 27
+   },
+   {
+    "url": "http://localhost:4174/assets/manrope-latin-DHIcAJRg.woff2",
+    "type": "font",
+    "bytes": 24836,
+    "kb": 24
+   },
+   {
+    "url": "http://localhost:4174/assets/helmet-CzyJIrvc.js",
+    "type": "script",
+    "bytes": 17811,
+    "kb": 17
+   }
+  ]
+ },
+ {
+  "route": "/xtsy-270",
+  "status": 200,
+  "wallMs": 10739,
+  "ttfb": 308,
+  "fcp": 1392,
+  "lcp": {
+   "t": 1392,
+   "size": 62486,
+   "url": "",
+   "tag": "H1",
+   "cls": "xt-in xt-d1 xt-display m-0 text-balance break-words text-[34px] leading-[0.95] sm:text-[52px] lg:text-[64px]",
+   "text": "Experience by XTSY: The Romantic Couple Stay in India is now"
+  },
+  "lcpCandidates": [
+   {
+    "t": 1392,
+    "size": 62486,
+    "url": "",
+    "tag": "H1",
+    "cls": "xt-in xt-d1 xt-display m-0 text-balance break-words text-[34px] leading-[0.95] sm:text-[52px] lg:text-[64px]",
+    "text": "Experience by XTSY: The Romantic Couple Stay in India is now"
+   }
+  ],
+  "cls": 0.227,
+  "shifts": [
+   {
+    "v": 0.2188,
+    "t": 3240,
+    "nodes": [
+     "DIV.overflow-hidden relative mt-4 h-[280px] w-full sm:h-[580px]",
+     "P.xt-in xt-d2 m-0 max-w-[620px] text-[17px] leading-relaxed sm:text-[20px]",
+     "DIV.xt-in xt-d2 flex items-end gap-4",
+     "#text.",
+     "DIV.xt-in xt-d3 flex flex-wrap justify-center gap-3"
+    ],
+    "rects": [
+     "0,755 390x89 -> 0,668 390x176",
+     "14,430 362x83 -> 14,365 362x83",
+     "14,534 362x78 -> 28,459 336x70",
+     "35,212 320x139 -> 35,210 320x139",
+     "40,627 311x49 -> 40,540 311x49"
+    ],
+    "text": [
+     "",
+     "A 270° panoramic glass suite in the pine",
+     "₹4,999per night, without breakfastregula",
+     "Experience by XTSY: The Romantic Couple ",
+     "Book / EnquireWhatsApp us"
+    ]
+   },
+   {
+    "v": 0.0083,
+    "t": 3513,
+    "nodes": [
+     "#text.",
+     "DIV.xt-in xt-d2 flex items-end gap-4",
+     "DIV.xt-in xt-d3 flex flex-wrap justify-center gap-3",
+     "DIV.rounded-2xl bg-xt-paper px-5 py-3 text-[15px] font-extrabold text-xt-ink",
+     "DIV.flex items-center gap-2"
+    ],
+    "rects": [
+     "14,367 362x78 -> 14,367 362x78",
+     "28,459 336x70 -> 19,459 353x70",
+     "40,540 311x49 -> 31,540 328x49",
+     "66,610 259x44 -> 53,610 284x44",
+     "177,43 199x44 -> 172,43 204x44"
+    ],
+    "text": [
+     "A 270° panoramic glass suite in the pine",
+     "₹4,999per night, without breakfastregula",
+     "Book / EnquireWhatsApp us",
+     "Booked direct only · 1 suite a night",
+     "Plan with AIBook now"
+    ]
+   }
+  ],
+  "requests": 90,
+  "byType": {
+   "document": {
+    "n": 2,
+    "kb": 116
+   },
+   "image": {
+    "n": 14,
+    "kb": 460
+   },
+   "script": {
+    "n": 66,
+    "kb": 1264
+   },
+   "stylesheet": {
+    "n": 2,
+    "kb": 201
+   },
+   "font": {
+    "n": 5,
+    "kb": 92
+   },
+   "other": {
+    "n": 1,
+    "kb": 0
+   }
+  },
+  "biggest": [
+   {
+    "url": "http://localhost:4174/assets/index-CC8TKk20.js",
+    "type": "script",
+    "bytes": 559523,
+    "kb": 546
+   },
+   {
+    "url": "http://localhost:4174/assets/styles-CHLacUj4.css",
+    "type": "stylesheet",
+    "bytes": 195950,
+    "kb": 191
+   },
+   {
+    "url": "http://localhost:4174/assets/HomeReviews-CYQv12DB.js",
+    "type": "script",
+    "bytes": 159096,
+    "kb": 155
+   },
+   {
+    "url": "http://localhost:4174/stays/experience-by-xtsy",
+    "type": "document",
+    "bytes": 119265,
+    "kb": 116
+   },
+   {
+    "url": "http://localhost:4174/assets/roomTypes-DCECmwwc.js",
+    "type": "script",
+    "bytes": 72111,
+    "kb": 70
+   },
+   {
+    "url": "http://localhost:4174/assets/meghalayaDestinations-Rr92qsXA.js",
+    "type": "script",
+    "bytes": 69022,
+    "kb": 67
+   },
+   {
+    "url": "http://localhost:4174/img/o/xtsy-270-xtsy270-900.avif",
+    "type": "image",
+    "bytes": 55069,
+    "kb": 54
+   },
+   {
+    "url": "http://localhost:4174/assets/query-CkHYinGN.js",
+    "type": "script",
+    "bytes": 48971,
+    "kb": 48
+   },
+   {
+    "url": "http://localhost:4174/img/o/xtsy-270-xtsy270-7-910.avif",
+    "type": "image",
+    "bytes": 48023,
+    "kb": 47
+   },
+   {
+    "url": "http://localhost:4174/img/o/xtsy-270-xtsy270-3-1280.avif",
+    "type": "image",
+    "bytes": 45332,
+    "kb": 44
+   },
+   {
+    "url": "http://localhost:4174/img/o/xtsy-270-xtsy270-6-1280.avif",
+    "type": "image",
+    "bytes": 42520,
+    "kb": 42
+   },
+   {
+    "url": "http://localhost:4174/img/emoji/shooting_star_3d.png",
+    "type": "image",
+    "bytes": 40888,
+    "kb": 40
+   }
+  ]
+ },
+ {
+  "route": "https://xtsy.one/",
+  "status": 200,
+  "wallMs": 10141,
+  "ttfb": 839,
+  "fcp": 3088,
+  "lcp": {
+   "t": 3172,
+   "size": 249600,
+   "url": "https://xtsy.one/img/o/xtsy-property-images-8-portrait-828.avif",
+   "tag": "IMG",
+   "cls": "absolute inset-0 -z-20 h-full w-full object-cover",
+   "text": ""
+  },
+  "lcpCandidates": [
+   {
+    "t": 3088,
+    "size": 38556,
+    "url": "",
+    "tag": "H1",
+    "cls": "xt-display m-0 h-[2em] text-6xl leading-none sm:text-8xl lg:text-9xl",
+    "text": "XTSY Travellers Hostel"
+   },
+   {
+    "t": 3172,
+    "size": 249600,
+    "url": "https://xtsy.one/img/o/xtsy-property-images-8-portrait-828.avif",
+    "tag": "IMG",
+    "cls": "absolute inset-0 -z-20 h-full w-full object-cover",
+    "text": ""
+   }
+  ],
+  "cls": 0,
+  "shifts": [],
+  "requests": 69,
+  "byType": {
+   "document": {
+    "n": 1,
+    "kb": 140
+   },
+   "script": {
+    "n": 58,
+    "kb": 1128
+   },
+   "image": {
+    "n": 2,
+    "kb": 53
+   },
+   "font": {
+    "n": 5,
+    "kb": 92
+   },
+   "stylesheet": {
+    "n": 2,
+    "kb": 201
+   },
+   "fetch": {
+    "n": 1,
+    "kb": 0
+   }
+  },
+  "biggest": [
+   {
+    "url": "https://xtsy.one/assets/index-B006TSEP.js",
+    "type": "script",
+    "bytes": 557993,
+    "kb": 545
+   },
+   {
+    "url": "https://xtsy.one/assets/styles-C0phqOvB.css",
+    "type": "stylesheet",
+    "bytes": 195456,
+    "kb": 191
+   },
+   {
+    "url": "https://xtsy.one/",
+    "type": "document",
+    "bytes": 143160,
+    "kb": 140
+   },
+   {
+    "url": "https://xtsy.one/assets/roomTypes-DCECmwwc.js",
+    "type": "script",
+    "bytes": 72111,
+    "kb": 70
+   },
+   {
+    "url": "https://xtsy.one/assets/meghalayaDestinations-Rr92qsXA.js",
+    "type": "script",
+    "bytes": 69022,
+    "kb": 67
+   },
+   {
+    "url": "https://xtsy.one/assets/query-CkHYinGN.js",
+    "type": "script",
+    "bytes": 48971,
+    "kb": 48
+   },
+   {
+    "url": "https://xtsy.one/img/o/xtsy-property-images-8-portrait-828.avif",
+    "type": "image",
+    "bytes": 48516,
+    "kb": 47
+   },
+   {
+    "url": "https://xtsy.one/assets/routes-CEmrVDtu.js",
+    "type": "script",
+    "bytes": 44257,
+    "kb": 43
+   },
+   {
+    "url": "https://xtsy.one/assets/TripChat-B7YTWk11.js",
+    "type": "script",
+    "bytes": 40331,
+    "kb": 39
+   },
+   {
+    "url": "https://xtsy.one/assets/AppContext-CRta89UJ.js",
+    "type": "script",
+    "bytes": 29373,
+    "kb": 29
+   },
+   {
+    "url": "https://xtsy.one/__l5e/events.b979ee024b15adfd.js",
+    "type": "script",
+    "bytes": 28786,
+    "kb": 28
+   },
+   {
+    "url": "https://fonts.gstatic.com/s/josefinsans/v34/Qw3aZQNVED7rKGKxtqIqX5EUDXx4.woff2",
+    "type": "font",
+    "bytes": 28528,
+    "kb": 28
+   }
+  ]
+ }
+]
