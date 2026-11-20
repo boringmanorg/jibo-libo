@@ -741,7 +741,7 @@
  {
   "url": "/book/campsite",
   "status": 200,
-  "words": 431,
+  "words": 466,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",

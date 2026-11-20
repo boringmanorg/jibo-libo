@@ -1,10 +1,10 @@
 {
   "results": [
     {
-      "bundleName": ".output/public/assets/index-CYdCNfLt.js",
-      "totalBytes": 559459,
-      "mappedBytes": 547351,
-      "unmappedBytes": 12065,
+      "bundleName": ".output/public/assets/index-U9Q5xXX6.js",
+      "totalBytes": 559340,
+      "mappedBytes": 547240,
+      "unmappedBytes": 12057,
       "eolBytes": 43,
       "sourceMapCommentBytes": 0,
       "files": {
@@ -12,7 +12,7 @@
           "size": 3476
         },
         "[no source]": {
-          "size": 14295
+          "size": 14304
         },
         "../../../node_modules/scheduler/index.js": {
           "size": 14
@@ -486,10 +486,10 @@
           "size": 632
         },
         "../../../src/routes/(stays)/book/index.tsx": {
-          "size": 780
+          "size": 644
         },
         "../../../src/routes/(stays)/book/campsite.tsx": {
-          "size": 361
+          "size": 377
         },
         "../../../src/routes/(stays)/book/confirmation.tsx": {
           "size": 260
@@ -669,7 +669,7 @@
           "size": 0
         },
         "[unmapped]": {
-          "size": 12065
+          "size": 12057
         },
         "[EOLs]": {
           "size": 43

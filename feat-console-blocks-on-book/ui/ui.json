@@ -100,6 +100,22 @@
   "design": "v2",
   "axe": [
    {
+    "id": "color-contrast",
+    "impact": "serious",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "count": 7,
+    "examples": [
+     ".px-1.py-2\\.5.rounded-2xl:nth-child(1) > .mt-1.text-xt-leaf.font-semibold",
+     ".px-1.py-2\\.5.rounded-2xl:nth-child(2) > .mt-1.text-xt-leaf.font-semibold",
+     ".px-1.py-2\\.5.rounded-2xl:nth-child(3) > .mt-1.text-xt-leaf.font-semibold"
+    ],
+    "detail": [
+     "Fix any of the following:\n  Element has insufficient color contrast of 4.03 (foreground color: #2f8f5b, background color: #ffffff, font size: 7.9pt (10.5px), font weight: normal). Expected contrast ratio of 4.5:1",
+     "Fix any of the following:\n  Element has insufficient color contrast of 4.03 (foreground color: #2f8f5b, background color: #ffffff, font size: 7.9pt (10.5px), font weight: normal). Expected contrast ratio of 4.5:1",
+     "Fix any of the following:\n  Element has insufficient color contrast of 4.03 (foreground color: #2f8f5b, background color: #ffffff, font size: 7.9pt (10.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+    ]
+   },
+   {
     "id": "scrollable-region-focusable",
     "impact": "serious",
     "help": "Scrollable region must have keyboard access",
@@ -772,6 +788,22 @@
   "title": "Book Shnonpedeng Riverside Camping | XTSY",
   "design": "v2",
   "axe": [
+   {
+    "id": "color-contrast",
+    "impact": "serious",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "count": 7,
+    "examples": [
+     ".px-1.py-2\\.5.rounded-2xl:nth-child(1) > .mt-1.text-xt-leaf.font-semibold",
+     ".px-1.py-2\\.5.rounded-2xl:nth-child(2) > .mt-1.text-xt-leaf.font-semibold",
+     ".px-1.py-2\\.5.rounded-2xl:nth-child(3) > .mt-1.text-xt-leaf.font-semibold"
+    ],
+    "detail": [
+     "Fix any of the following:\n  Element has insufficient color contrast of 4.03 (foreground color: #2f8f5b, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+     "Fix any of the following:\n  Element has insufficient color contrast of 4.03 (foreground color: #2f8f5b, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+     "Fix any of the following:\n  Element has insufficient color contrast of 4.03 (foreground color: #2f8f5b, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+    ]
+   },
    {
     "id": "scrollable-region-focusable",
     "impact": "serious",

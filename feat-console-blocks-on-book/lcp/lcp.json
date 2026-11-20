@@ -2,16 +2,16 @@
  {
   "route": "/",
   "lcpRuns": [
-   1392,
-   1376,
-   1368
+   1272,
+   1272,
+   1240
   ],
-  "ttfb": 154,
+  "ttfb": 158,
   "htmlKb": 23,
-  "domInteractive": 1029,
-  "fcp": 1376,
+  "domInteractive": 1011,
+  "fcp": 1272,
   "lcp": {
-   "t": 1376,
+   "t": 1272,
    "size": 263680,
    "url": "http://localhost:4174/img/o/xtsy-property-images-8-portrait-828.avif",
    "tag": "IMG",
@@ -26,8 +26,8 @@
   },
   "cls": 0.009,
   "lcpRes": {
-   "start": 203,
-   "end": 1220,
+   "start": 202,
+   "end": 1198,
    "kb": 48,
    "initiator": "link"
   },
@@ -35,10 +35,10 @@
    {
     "url": "/assets/styles-BlkqxoPo.css",
     "kb": 29,
-    "end": 984
+    "end": 970
    }
   ],
-  "longTaskMsBeforeLcp": 269,
+  "longTaskMsBeforeLcp": 195,
   "beforeLcp": {
    "jsKb": 355,
    "cssKb": 29,
@@ -49,7 +49,7 @@
     {
      "url": "/img/o/xtsy-property-images-8-portrait-828.avif",
      "kb": 48,
-     "start": 203
+     "start": 202
     },
     {
      "url": "/assets/xtsy-color-logo-DLbAB-SC.webp",
@@ -59,8 +59,8 @@
    ],
    "scripts": [
     {
-     "url": "/assets/index-CYdCNfLt.js",
-     "kb": 156,
+     "url": "/assets/index-U9Q5xXX6.js",
+     "kb": 155,
      "start": 205,
      "end": 2257
     },
@@ -68,182 +68,182 @@
      "url": "/assets/jsx-runtime-B4UN2VIk.js",
      "kb": 4,
      "start": 205,
-     "end": 512
+     "end": 491
     },
     {
      "url": "/assets/react-dom-gWqXm1NC.js",
      "kb": 2,
-     "start": 206,
-     "end": 520
+     "start": 205,
+     "end": 512
     },
     {
      "url": "/assets/createServerFn-BCO2Xlzw.js",
      "kb": 13,
-     "start": 206,
-     "end": 956
+     "start": 205,
+     "end": 942
     },
     {
      "url": "/assets/redirect-D2YulXhr.js",
      "kb": 1,
-     "start": 206,
-     "end": 706
+     "start": 205,
+     "end": 691
     },
     {
      "url": "/assets/link-b82KqvVK.js",
      "kb": 5,
-     "start": 207,
-     "end": 820
+     "start": 206,
+     "end": 812
     },
     {
      "url": "/assets/invariant-DEEwAagU.js",
      "kb": 0,
-     "start": 207,
-     "end": 891
+     "start": 206,
+     "end": 877
     },
     {
      "url": "/assets/root-DLTE-HSj.js",
      "kb": 0,
-     "start": 208,
-     "end": 999
+     "start": 207,
+     "end": 985
     },
     {
      "url": "/assets/query-Dy-DD5Y_.js",
      "kb": 5,
-     "start": 209,
-     "end": 1127
-    },
-    {
-     "url": "/assets/dataLayerService-BfBty7hs.js",
-     "kb": 2,
-     "start": 209,
-     "end": 1163
+     "start": 207,
+     "end": 1113
     },
     {
      "url": "/assets/route-b3voNKpA.js",
      "kb": 1,
-     "start": 210,
-     "end": 1156
+     "start": 207,
+     "end": 1142
+    },
+    {
+     "url": "/assets/dataLayerService-BfBty7hs.js",
+     "kb": 2,
+     "start": 207,
+     "end": 1149
     },
     {
      "url": "/assets/useRouter-BsG9fRJS.js",
      "kb": 0,
-     "start": 210,
-     "end": 1185
+     "start": 207,
+     "end": 1170
     },
     {
      "url": "/assets/matchContext-VpDvYkLy.js",
      "kb": 0,
-     "start": 211,
-     "end": 1292
+     "start": 207,
+     "end": 1278
     },
     {
      "url": "/assets/router-compat-Dvq9BDKs.js",
      "kb": 2,
-     "start": 211,
-     "end": 1342
+     "start": 207,
+     "end": 1313
     },
     {
      "url": "/assets/consent-BxHGynN8.js",
      "kb": 2,
-     "start": 212,
-     "end": 1349
+     "start": 207,
+     "end": 1334
     },
     {
      "url": "/assets/helmet-Co_7mHeO.js",
      "kb": 6,
-     "start": 212,
-     "end": 1435
+     "start": 209,
+     "end": 1413
     },
     {
      "url": "/assets/dist-BsIiesyF.js",
      "kb": 2,
-     "start": 212,
-     "end": 1414
+     "start": 209,
+     "end": 1384
     },
     {
      "url": "/assets/dist-DFc3gDaP.js",
      "kb": 2,
-     "start": 213,
-     "end": 1470
+     "start": 209,
+     "end": 1456
     },
     {
      "url": "/assets/dist-MB1QKl4x.js",
      "kb": 5,
-     "start": 213,
-     "end": 1549
+     "start": 210,
+     "end": 1527
     },
     {
      "url": "/assets/dist-CHpcj0at.js",
      "kb": 1,
-     "start": 214,
-     "end": 1513
+     "start": 210,
+     "end": 1499
     },
     {
      "url": "/assets/dist-NilkmuZg.js",
      "kb": 1,
-     "start": 215,
-     "end": 1578
+     "start": 210,
+     "end": 1549
     },
     {
      "url": "/assets/createLucideIcon-CFLhf0yt.js",
      "kb": 1,
-     "start": 215,
-     "end": 1599
+     "start": 210,
+     "end": 1570
     },
     {
      "url": "/assets/utils-D0T3A-kS.js",
      "kb": 8,
-     "start": 215,
-     "end": 1735
+     "start": 211,
+     "end": 1714
     },
     {
      "url": "/assets/AppContext-CRta89UJ.js",
      "kb": 11,
-     "start": 216,
-     "end": 1843
+     "start": 211,
+     "end": 1828
     },
     {
-     "url": "/assets/SiteFooter--tAU_BUN.js",
+     "url": "/assets/SiteFooter-dLXYf3ja.js",
      "kb": 5,
-     "start": 216,
-     "end": 1806
+     "start": 211,
+     "end": 1785
     },
     {
      "url": "/assets/dist-mYMNlRkg.js",
      "kb": 1,
-     "start": 216,
-     "end": 1764
+     "start": 212,
+     "end": 1736
     },
     {
      "url": "/assets/analyticsFilters-DmyFCvLb.js",
      "kb": 1,
-     "start": 217,
-     "end": 1786
+     "start": 212,
+     "end": 1749
     },
     {
      "url": "/assets/tripChatEvents-KCcyjeFX.js",
      "kb": 0,
-     "start": 218,
-     "end": 1892
+     "start": 212,
+     "end": 1872
     },
     {
      "url": "/assets/preload-helper-7y9sWmk5.js",
      "kb": 1,
-     "start": 219,
-     "end": 1929
+     "start": 212,
+     "end": 1900
     },
     {
      "url": "/assets/neTaxonomy-BLz7XbGg.js",
      "kb": 5,
-     "start": 219,
-     "end": 2006
+     "start": 213,
+     "end": 1964
     }
    ]
   },
   "headOrder": [
    "preload:image /assets/xtsy-color-logo-DLbAB-SC.webp",
    "stylesheet /assets/styles-BlkqxoPo.css",
-   "modulepreload /assets/index-CYdCNfLt.js",
+   "modulepreload /assets/index-U9Q5xXX6.js",
    "modulepreload /assets/jsx-runtime-B4UN2VIk.js",
    "modulepreload /assets/react-dom-gWqXm1NC.js",
    "modulepreload /assets/createServerFn-BCO2Xlzw.js",
@@ -267,7 +267,7 @@
    "modulepreload /assets/createLucideIcon-CFLhf0yt.js",
    "modulepreload /assets/utils-D0T3A-kS.js",
    "modulepreload /assets/AppContext-CRta89UJ.js",
-   "modulepreload /assets/SiteFooter--tAU_BUN.js",
+   "modulepreload /assets/SiteFooter-dLXYf3ja.js",
    "modulepreload /assets/dist-mYMNlRkg.js",
    "modulepreload /assets/analyticsFilters-DmyFCvLb.js",
    "modulepreload /assets/tripChatEvents-KCcyjeFX.js",
@@ -297,12 +297,12 @@
    "image:/img/o/xtsy-property-images-8-1280.avif fp=high",
    "image:/img/o/xtsy-property-images-8-portrait-828.avif fp=high"
   ],
-  "lcpMs": 1376,
+  "lcpMs": 1272,
   "breakdown": {
-   "ttfb": 154,
-   "loadDelay": 49,
-   "loadDuration": 1017,
-   "renderDelay": 156
+   "ttfb": 158,
+   "loadDelay": 44,
+   "loadDuration": 996,
+   "renderDelay": 74
   },
   "lcpImage": {
    "file": "xtsy-property-images-8-portrait-828.avif",
@@ -313,16 +313,16 @@
  {
   "route": "/stays/best-hostel-in-shillong",
   "lcpRuns": [
-   1252,
-   1240,
-   1248
+   1172,
+   1184,
+   1176
   ],
   "ttfb": 153,
   "htmlKb": 19,
-  "domInteractive": 1018,
-  "fcp": 1248,
+  "domInteractive": 977,
+  "fcp": 1176,
   "lcp": {
-   "t": 1248,
+   "t": 1176,
    "size": 71604,
    "url": "",
    "tag": "P",
@@ -341,12 +341,12 @@
    {
     "url": "/assets/styles-BlkqxoPo.css",
     "kb": 29,
-    "end": 971
+    "end": 943
    }
   ],
-  "longTaskMsBeforeLcp": 135,
+  "longTaskMsBeforeLcp": 94,
   "beforeLcp": {
-   "jsKb": 314,
+   "jsKb": 313,
    "cssKb": 29,
    "imgKb": 55,
    "thirdPartyKb": 0,
@@ -355,211 +355,211 @@
     {
      "url": "/img/o/xtsy-property-images-8-828.avif",
      "kb": 33,
-     "start": 198
+     "start": 193
     },
     {
      "url": "/img/o/xtsy-6-bed-mixed-dormitory-1-828.avif",
      "kb": 9,
-     "start": 1229
+     "start": 1157
     },
     {
      "url": "/img/o/xtsy-6-bed-mixed-dormitory-2-828.avif",
      "kb": 8,
-     "start": 1229
+     "start": 1156
     },
     {
      "url": "/assets/xtsy-color-logo-DLbAB-SC.webp",
      "kb": 6,
-     "start": 199
+     "start": 193
     }
    ],
    "scripts": [
     {
-     "url": "/assets/index-CYdCNfLt.js",
-     "kb": 156,
-     "start": 199,
-     "end": 2188
+     "url": "/assets/index-U9Q5xXX6.js",
+     "kb": 155,
+     "start": 194,
+     "end": 2152
     },
     {
      "url": "/assets/jsx-runtime-B4UN2VIk.js",
      "kb": 4,
-     "start": 199,
-     "end": 486
+     "start": 195,
+     "end": 457
     },
     {
      "url": "/assets/react-dom-gWqXm1NC.js",
      "kb": 2,
-     "start": 201,
-     "end": 493
+     "start": 195,
+     "end": 421
     },
     {
      "url": "/assets/createServerFn-BCO2Xlzw.js",
      "kb": 13,
-     "start": 201,
-     "end": 936
+     "start": 195,
+     "end": 707
     },
     {
      "url": "/assets/redirect-D2YulXhr.js",
      "kb": 1,
-     "start": 202,
-     "end": 679
+     "start": 195,
+     "end": 600
     },
     {
      "url": "/assets/link-b82KqvVK.js",
      "kb": 5,
-     "start": 202,
-     "end": 821
+     "start": 195,
+     "end": 743
     },
     {
      "url": "/assets/invariant-DEEwAagU.js",
      "kb": 0,
-     "start": 203,
-     "end": 864
+     "start": 195,
+     "end": 772
     },
     {
      "url": "/assets/root-DLTE-HSj.js",
      "kb": 0,
-     "start": 203,
-     "end": 993
-    },
-    {
-     "url": "/assets/query-Dy-DD5Y_.js",
-     "kb": 5,
-     "start": 204,
-     "end": 1072
+     "start": 195,
+     "end": 886
     },
     {
      "url": "/assets/dataLayerService-BfBty7hs.js",
      "kb": 2,
-     "start": 204,
-     "end": 1115
+     "start": 195,
+     "end": 978
+    },
+    {
+     "url": "/assets/query-Dy-DD5Y_.js",
+     "kb": 5,
+     "start": 195,
+     "end": 1008
     },
     {
      "url": "/assets/route-b3voNKpA.js",
      "kb": 1,
-     "start": 205,
-     "end": 1136
+     "start": 197,
+     "end": 1044
     },
     {
      "url": "/assets/useRouter-BsG9fRJS.js",
      "kb": 0,
-     "start": 205,
-     "end": 1158
+     "start": 197,
+     "end": 1101
     },
     {
      "url": "/assets/matchContext-VpDvYkLy.js",
      "kb": 0,
-     "start": 206,
-     "end": 1186
+     "start": 197,
+     "end": 1136
     },
     {
      "url": "/assets/router-compat-Dvq9BDKs.js",
      "kb": 2,
-     "start": 206,
-     "end": 1244
+     "start": 198,
+     "end": 1193
     },
     {
      "url": "/assets/consent-BxHGynN8.js",
      "kb": 2,
-     "start": 206,
-     "end": 1294
+     "start": 198,
+     "end": 1208
     },
     {
      "url": "/assets/helmet-Co_7mHeO.js",
      "kb": 6,
-     "start": 206,
-     "end": 1379
+     "start": 198,
+     "end": 1279
     },
     {
      "url": "/assets/dist-BsIiesyF.js",
      "kb": 2,
-     "start": 206,
-     "end": 1351
+     "start": 198,
+     "end": 1294
     },
     {
      "url": "/assets/dist-DFc3gDaP.js",
      "kb": 2,
-     "start": 208,
-     "end": 1386
+     "start": 198,
+     "end": 1315
     },
     {
      "url": "/assets/dist-MB1QKl4x.js",
      "kb": 5,
-     "start": 209,
-     "end": 1451
+     "start": 199,
+     "end": 1401
     },
     {
      "url": "/assets/dist-CHpcj0at.js",
      "kb": 1,
-     "start": 209,
-     "end": 1465
+     "start": 199,
+     "end": 1373
     },
     {
      "url": "/assets/dist-NilkmuZg.js",
      "kb": 1,
-     "start": 210,
-     "end": 1509
+     "start": 199,
+     "end": 1437
     },
     {
      "url": "/assets/createLucideIcon-CFLhf0yt.js",
      "kb": 1,
-     "start": 210,
-     "end": 1544
+     "start": 199,
+     "end": 1458
     },
     {
      "url": "/assets/utils-D0T3A-kS.js",
      "kb": 8,
-     "start": 211,
-     "end": 1636
+     "start": 200,
+     "end": 1551
     },
     {
      "url": "/assets/AppContext-CRta89UJ.js",
      "kb": 11,
-     "start": 211,
-     "end": 1773
-    },
-    {
-     "url": "/assets/SiteFooter--tAU_BUN.js",
-     "kb": 5,
-     "start": 211,
-     "end": 1716
+     "start": 200,
+     "end": 1694
     },
     {
      "url": "/assets/dist-mYMNlRkg.js",
      "kb": 1,
-     "start": 211,
-     "end": 1687
+     "start": 200,
+     "end": 1616
+    },
+    {
+     "url": "/assets/SiteFooter-dLXYf3ja.js",
+     "kb": 5,
+     "start": 200,
+     "end": 1651
     },
     {
      "url": "/assets/analyticsFilters-DmyFCvLb.js",
      "kb": 1,
-     "start": 211,
-     "end": 1722
+     "start": 200,
+     "end": 1638
     },
     {
      "url": "/assets/tripChatEvents-KCcyjeFX.js",
      "kb": 0,
-     "start": 214,
-     "end": 1795
+     "start": 201,
+     "end": 1716
     },
     {
      "url": "/assets/preload-helper-7y9sWmk5.js",
      "kb": 1,
-     "start": 214,
-     "end": 1852
+     "start": 201,
+     "end": 1780
     },
     {
      "url": "/assets/neTaxonomy-BLz7XbGg.js",
      "kb": 5,
-     "start": 215,
-     "end": 1944
+     "start": 203,
+     "end": 1873
     }
    ]
   },
   "headOrder": [
    "preload:image /assets/xtsy-color-logo-DLbAB-SC.webp",
    "stylesheet /assets/styles-BlkqxoPo.css",
-   "modulepreload /assets/index-CYdCNfLt.js",
+   "modulepreload /assets/index-U9Q5xXX6.js",
    "modulepreload /assets/jsx-runtime-B4UN2VIk.js",
    "modulepreload /assets/react-dom-gWqXm1NC.js",
    "modulepreload /assets/createServerFn-BCO2Xlzw.js",
@@ -583,7 +583,7 @@
    "modulepreload /assets/createLucideIcon-CFLhf0yt.js",
    "modulepreload /assets/utils-D0T3A-kS.js",
    "modulepreload /assets/AppContext-CRta89UJ.js",
-   "modulepreload /assets/SiteFooter--tAU_BUN.js",
+   "modulepreload /assets/SiteFooter-dLXYf3ja.js",
    "modulepreload /assets/dist-mYMNlRkg.js",
    "modulepreload /assets/analyticsFilters-DmyFCvLb.js",
    "modulepreload /assets/tripChatEvents-KCcyjeFX.js",
@@ -612,28 +612,28 @@
    "font:/assets/staatliches-latin-ext-DrUetcJP.woff2",
    "image:/img/o/xtsy-property-images-8-1280.avif fp=high"
   ],
-  "lcpMs": 1248,
+  "lcpMs": 1176,
   "breakdown": {
    "ttfb": 153,
    "loadDelay": 0,
    "loadDuration": 0,
-   "renderDelay": 1095
+   "renderDelay": 1023
   },
   "lcpImage": null
  },
  {
   "route": "/stays/experience-by-xtsy",
   "lcpRuns": [
-   1232,
-   1244,
-   1228
+   1116,
+   1136,
+   1128
   ],
-  "ttfb": 155,
+  "ttfb": 153,
   "htmlKb": 18,
-  "domInteractive": 1023,
-  "fcp": 1232,
+  "domInteractive": 981,
+  "fcp": 1128,
   "lcp": {
-   "t": 1232,
+   "t": 1128,
    "size": 54108,
    "url": "",
    "tag": "H1",
@@ -652,10 +652,10 @@
    {
     "url": "/assets/styles-BlkqxoPo.css",
     "kb": 29,
-    "end": 972
+    "end": 943
    }
   ],
-  "longTaskMsBeforeLcp": 152,
+  "longTaskMsBeforeLcp": 103,
   "beforeLcp": {
    "jsKb": 410,
    "cssKb": 29,
@@ -666,234 +666,234 @@
     {
      "url": "/img/o/xtsy-270-xtsy270-900.avif",
      "kb": 54,
-     "start": 202
+     "start": 186
     },
     {
      "url": "/img/o/xtsy-270-xtsy270-6-1280.avif",
      "kb": 42,
-     "start": 202
+     "start": 186
     },
     {
      "url": "/img/emoji/shooting_star_3d.png",
      "kb": 40,
-     "start": 200
+     "start": 186
     },
     {
      "url": "/img/emoji/heart_with_ribbon_3d.png",
      "kb": 33,
-     "start": 202
+     "start": 186
     },
     {
      "url": "/img/o/xtsy-270-xtsy270-2-900.avif",
      "kb": 32,
-     "start": 202
+     "start": 186
     },
     {
      "url": "/img/emoji/two_hearts_3d.png",
      "kb": 30,
-     "start": 202
+     "start": 186
     },
     {
      "url": "/img/emoji/glowing_star_3d.png",
      "kb": 28,
-     "start": 200
+     "start": 185
     },
     {
      "url": "/img/emoji/crescent_moon_3d.png",
      "kb": 24,
-     "start": 202
+     "start": 186
     },
     {
      "url": "/img/emoji/sparkles_3d.png",
      "kb": 22,
-     "start": 200
+     "start": 186
     },
     {
      "url": "/assets/xtsy-color-logo-DLbAB-SC.webp",
      "kb": 6,
-     "start": 199
+     "start": 185
     }
    ],
    "scripts": [
     {
-     "url": "/assets/index-CYdCNfLt.js",
-     "kb": 156,
-     "start": 203,
-     "end": 2152
-    },
-    {
      "url": "/assets/react-dom-gWqXm1NC.js",
      "kb": 2,
-     "start": 203,
-     "end": 492
+     "start": 187,
+     "end": 477
     },
     {
      "url": "/assets/jsx-runtime-B4UN2VIk.js",
      "kb": 4,
-     "start": 203,
-     "end": 528
+     "start": 187,
+     "end": 485
+    },
+    {
+     "url": "/assets/index-U9Q5xXX6.js",
+     "kb": 155,
+     "start": 187,
+     "end": 2122
     },
     {
      "url": "/assets/createServerFn-BCO2Xlzw.js",
      "kb": 13,
-     "start": 205,
-     "end": 943
+     "start": 187,
+     "end": 921
     },
     {
      "url": "/assets/redirect-D2YulXhr.js",
      "kb": 1,
-     "start": 205,
-     "end": 678
+     "start": 188,
+     "end": 657
     },
     {
      "url": "/assets/link-b82KqvVK.js",
      "kb": 5,
-     "start": 206,
-     "end": 822
+     "start": 188,
+     "end": 785
     },
     {
      "url": "/assets/invariant-DEEwAagU.js",
      "kb": 0,
-     "start": 206,
-     "end": 865
+     "start": 188,
+     "end": 842
     },
     {
      "url": "/assets/root-DLTE-HSj.js",
      "kb": 0,
-     "start": 206,
-     "end": 986
+     "start": 188,
+     "end": 949
     },
     {
      "url": "/assets/query-Dy-DD5Y_.js",
      "kb": 5,
-     "start": 207,
-     "end": 1072
+     "start": 188,
+     "end": 1049
     },
     {
      "url": "/assets/dataLayerService-BfBty7hs.js",
      "kb": 2,
-     "start": 207,
-     "end": 1121
+     "start": 188,
+     "end": 1100
     },
     {
      "url": "/assets/route-b3voNKpA.js",
      "kb": 1,
-     "start": 208,
-     "end": 1115
+     "start": 188,
+     "end": 1093
     },
     {
      "url": "/assets/useRouter-BsG9fRJS.js",
      "kb": 0,
-     "start": 208,
-     "end": 1136
+     "start": 190,
+     "end": 1115
     },
     {
      "url": "/assets/matchContext-VpDvYkLy.js",
      "kb": 0,
-     "start": 209,
-     "end": 1151
+     "start": 190,
+     "end": 1121
     },
     {
      "url": "/assets/router-compat-Dvq9BDKs.js",
      "kb": 2,
-     "start": 209,
-     "end": 1251
+     "start": 190,
+     "end": 1221
     },
     {
      "url": "/assets/consent-BxHGynN8.js",
      "kb": 2,
-     "start": 210,
-     "end": 1300
-    },
-    {
-     "url": "/assets/helmet-Co_7mHeO.js",
-     "kb": 6,
-     "start": 211,
-     "end": 1379
+     "start": 190,
+     "end": 1278
     },
     {
      "url": "/assets/dist-BsIiesyF.js",
      "kb": 2,
-     "start": 211,
-     "end": 1343
+     "start": 190,
+     "end": 1321
+    },
+    {
+     "url": "/assets/helmet-Co_7mHeO.js",
+     "kb": 6,
+     "start": 190,
+     "end": 1364
     },
     {
      "url": "/assets/dist-DFc3gDaP.js",
      "kb": 2,
-     "start": 211,
-     "end": 1358
+     "start": 191,
+     "end": 1328
     },
     {
      "url": "/assets/dist-MB1QKl4x.js",
      "kb": 5,
-     "start": 212,
-     "end": 1458
+     "start": 191,
+     "end": 1428
     },
     {
      "url": "/assets/dist-CHpcj0at.js",
      "kb": 1,
-     "start": 213,
-     "end": 1465
+     "start": 191,
+     "end": 1443
     },
     {
      "url": "/assets/dist-NilkmuZg.js",
      "kb": 1,
-     "start": 213,
-     "end": 1508
+     "start": 191,
+     "end": 1480
     },
     {
      "url": "/assets/createLucideIcon-CFLhf0yt.js",
      "kb": 1,
-     "start": 213,
-     "end": 1522
+     "start": 192,
+     "end": 1493
     },
     {
      "url": "/assets/utils-D0T3A-kS.js",
      "kb": 8,
-     "start": 213,
-     "end": 1615
+     "start": 193,
+     "end": 1607
     },
     {
      "url": "/assets/AppContext-CRta89UJ.js",
      "kb": 11,
-     "start": 213,
-     "end": 1773
+     "start": 193,
+     "end": 1743
     },
     {
-     "url": "/assets/SiteFooter--tAU_BUN.js",
+     "url": "/assets/SiteFooter-dLXYf3ja.js",
      "kb": 5,
-     "start": 213,
-     "end": 1715
+     "start": 193,
+     "end": 1693
     },
     {
      "url": "/assets/dist-mYMNlRkg.js",
      "kb": 1,
-     "start": 213,
-     "end": 1687
+     "start": 194,
+     "end": 1658
     },
     {
      "url": "/assets/analyticsFilters-DmyFCvLb.js",
      "kb": 1,
-     "start": 213,
-     "end": 1701
+     "start": 194,
+     "end": 1672
     },
     {
      "url": "/assets/tripChatEvents-KCcyjeFX.js",
      "kb": 0,
-     "start": 213,
-     "end": 1788
+     "start": 194,
+     "end": 1765
     },
     {
      "url": "/assets/preload-helper-7y9sWmk5.js",
      "kb": 1,
-     "start": 214,
-     "end": 1845
+     "start": 194,
+     "end": 1822
     },
     {
-     "url": "/assets/SEOHead-C6VXVDic.js",
-     "kb": 3,
-     "start": 217,
-     "end": 1923
+     "url": "/assets/neTaxonomy-BLz7XbGg.js",
+     "kb": 5,
+     "start": 194,
+     "end": 1893
     }
    ]
   },
@@ -909,7 +909,7 @@
    "preload:image /img/o/xtsy-270-xtsy270-6-1280.avif",
    "preload:image /img/o/xtsy-270-xtsy270-900.avif",
    "stylesheet /assets/styles-BlkqxoPo.css",
-   "modulepreload /assets/index-CYdCNfLt.js",
+   "modulepreload /assets/index-U9Q5xXX6.js",
    "modulepreload /assets/jsx-runtime-B4UN2VIk.js",
    "modulepreload /assets/react-dom-gWqXm1NC.js",
    "modulepreload /assets/createServerFn-BCO2Xlzw.js",
@@ -933,7 +933,7 @@
    "modulepreload /assets/createLucideIcon-CFLhf0yt.js",
    "modulepreload /assets/utils-D0T3A-kS.js",
    "modulepreload /assets/AppContext-CRta89UJ.js",
-   "modulepreload /assets/SiteFooter--tAU_BUN.js",
+   "modulepreload /assets/SiteFooter-dLXYf3ja.js",
    "modulepreload /assets/dist-mYMNlRkg.js",
    "modulepreload /assets/analyticsFilters-DmyFCvLb.js",
    "modulepreload /assets/tripChatEvents-KCcyjeFX.js",
@@ -961,28 +961,28 @@
    "font:/assets/manrope-latin-ext-Ch3YOpNY.woff2",
    "font:/assets/staatliches-latin-ext-DrUetcJP.woff2"
   ],
-  "lcpMs": 1232,
+  "lcpMs": 1128,
   "breakdown": {
-   "ttfb": 155,
+   "ttfb": 153,
    "loadDelay": 0,
    "loadDuration": 0,
-   "renderDelay": 1077
+   "renderDelay": 975
   },
   "lcpImage": null
  },
  {
   "route": "/tours/5n-6d-tawang-tour",
   "lcpRuns": [
-   1252,
-   1224,
-   1248
+   1160,
+   1152,
+   1156
   ],
-  "ttfb": 155,
+  "ttfb": 154,
   "htmlKb": 17,
-  "domInteractive": 1051,
-  "fcp": 1248,
+  "domInteractive": 988,
+  "fcp": 1156,
   "lcp": {
-   "t": 1248,
+   "t": 1156,
    "size": 100056,
    "url": "http://localhost:4174/img/px/sig-5n-6d-tawang-tour-828.avif",
    "tag": "IMG",
@@ -997,8 +997,8 @@
   },
   "cls": 0.002,
   "lcpRes": {
-   "start": 203,
-   "end": 998,
+   "start": 190,
+   "end": 992,
    "kb": 31,
    "initiator": "link"
   },
@@ -1006,12 +1006,12 @@
    {
     "url": "/assets/styles-BlkqxoPo.css",
     "kb": 29,
-    "end": 1005
+    "end": 957
    }
   ],
-  "longTaskMsBeforeLcp": 100,
+  "longTaskMsBeforeLcp": 72,
   "beforeLcp": {
-   "jsKb": 404,
+   "jsKb": 403,
    "cssKb": 29,
    "imgKb": 37,
    "thirdPartyKb": 0,
@@ -1020,201 +1020,201 @@
     {
      "url": "/img/px/sig-5n-6d-tawang-tour-828.avif",
      "kb": 31,
-     "start": 203
+     "start": 190
     },
     {
      "url": "/assets/xtsy-color-logo-DLbAB-SC.webp",
      "kb": 6,
-     "start": 204
+     "start": 190
     }
    ],
    "scripts": [
     {
-     "url": "/assets/index-CYdCNfLt.js",
-     "kb": 156,
-     "start": 206,
-     "end": 2192
+     "url": "/assets/index-U9Q5xXX6.js",
+     "kb": 155,
+     "start": 192,
+     "end": 2165
     },
     {
      "url": "/assets/jsx-runtime-B4UN2VIk.js",
      "kb": 4,
-     "start": 206,
-     "end": 526
+     "start": 192,
+     "end": 470
     },
     {
      "url": "/assets/react-dom-gWqXm1NC.js",
      "kb": 2,
-     "start": 206,
-     "end": 490
-    },
-    {
-     "url": "/assets/createServerFn-BCO2Xlzw.js",
-     "kb": 13,
-     "start": 206,
-     "end": 940
+     "start": 192,
+     "end": 485
     },
     {
      "url": "/assets/redirect-D2YulXhr.js",
      "kb": 1,
-     "start": 208,
-     "end": 712
+     "start": 192,
+     "end": 671
+    },
+    {
+     "url": "/assets/createServerFn-BCO2Xlzw.js",
+     "kb": 13,
+     "start": 192,
+     "end": 914
     },
     {
      "url": "/assets/link-b82KqvVK.js",
      "kb": 5,
-     "start": 208,
-     "end": 847
+     "start": 193,
+     "end": 799
     },
     {
      "url": "/assets/invariant-DEEwAagU.js",
      "kb": 0,
-     "start": 209,
-     "end": 898
+     "start": 193,
+     "end": 857
     },
     {
      "url": "/assets/root-DLTE-HSj.js",
      "kb": 0,
-     "start": 209,
-     "end": 1020
+     "start": 194,
+     "end": 978
     },
     {
      "url": "/assets/query-Dy-DD5Y_.js",
      "kb": 5,
-     "start": 210,
-     "end": 1112
+     "start": 194,
+     "end": 1057
     },
     {
      "url": "/assets/dataLayerService-BfBty7hs.js",
      "kb": 2,
-     "start": 210,
-     "end": 1126
+     "start": 194,
+     "end": 1086
     },
     {
      "url": "/assets/route-b3voNKpA.js",
      "kb": 1,
-     "start": 211,
-     "end": 1163
+     "start": 194,
+     "end": 1121
     },
     {
      "url": "/assets/useRouter-BsG9fRJS.js",
      "kb": 0,
-     "start": 211,
-     "end": 1170
+     "start": 194,
+     "end": 1143
     },
     {
      "url": "/assets/matchContext-VpDvYkLy.js",
      "kb": 0,
-     "start": 212,
-     "end": 1184
+     "start": 195,
+     "end": 1157
     },
     {
      "url": "/assets/router-compat-Dvq9BDKs.js",
      "kb": 2,
-     "start": 213,
-     "end": 1284
+     "start": 195,
+     "end": 1236
     },
     {
      "url": "/assets/consent-BxHGynN8.js",
      "kb": 2,
-     "start": 213,
-     "end": 1305
+     "start": 195,
+     "end": 1265
     },
     {
      "url": "/assets/helmet-Co_7mHeO.js",
      "kb": 6,
-     "start": 214,
-     "end": 1412
+     "start": 196,
+     "end": 1371
     },
     {
      "url": "/assets/dist-BsIiesyF.js",
      "kb": 2,
-     "start": 214,
-     "end": 1370
+     "start": 196,
+     "end": 1343
     },
     {
      "url": "/assets/dist-DFc3gDaP.js",
      "kb": 2,
-     "start": 215,
-     "end": 1391
+     "start": 196,
+     "end": 1364
     },
     {
      "url": "/assets/dist-MB1QKl4x.js",
      "kb": 5,
-     "start": 215,
-     "end": 1499
+     "start": 196,
+     "end": 1450
     },
     {
      "url": "/assets/dist-CHpcj0at.js",
      "kb": 1,
-     "start": 216,
-     "end": 1477
+     "start": 197,
+     "end": 1435
     },
     {
      "url": "/assets/dist-NilkmuZg.js",
      "kb": 1,
-     "start": 216,
-     "end": 1535
+     "start": 197,
+     "end": 1507
     },
     {
      "url": "/assets/createLucideIcon-CFLhf0yt.js",
      "kb": 1,
-     "start": 216,
-     "end": 1549
+     "start": 197,
+     "end": 1522
     },
     {
      "url": "/assets/utils-D0T3A-kS.js",
      "kb": 8,
-     "start": 217,
-     "end": 1656
+     "start": 198,
+     "end": 1614
     },
     {
      "url": "/assets/AppContext-CRta89UJ.js",
      "kb": 11,
-     "start": 218,
-     "end": 1791
-    },
-    {
-     "url": "/assets/SiteFooter--tAU_BUN.js",
-     "kb": 5,
-     "start": 218,
-     "end": 1756
+     "start": 198,
+     "end": 1750
     },
     {
      "url": "/assets/dist-mYMNlRkg.js",
      "kb": 1,
-     "start": 219,
-     "end": 1713
+     "start": 198,
+     "end": 1686
+    },
+    {
+     "url": "/assets/SiteFooter-dLXYf3ja.js",
+     "kb": 5,
+     "start": 198,
+     "end": 1693
     },
     {
      "url": "/assets/analyticsFilters-DmyFCvLb.js",
      "kb": 1,
-     "start": 219,
-     "end": 1735
+     "start": 198,
+     "end": 1708
     },
     {
      "url": "/assets/tripChatEvents-KCcyjeFX.js",
      "kb": 0,
-     "start": 220,
-     "end": 1814
+     "start": 199,
+     "end": 1773
     },
     {
      "url": "/assets/preload-helper-7y9sWmk5.js",
      "kb": 1,
-     "start": 221,
-     "end": 1878
+     "start": 199,
+     "end": 1851
     },
     {
      "url": "/assets/neTaxonomy-BLz7XbGg.js",
      "kb": 5,
-     "start": 221,
-     "end": 1956
+     "start": 199,
+     "end": 1914
     }
    ]
   },
   "headOrder": [
    "preload:image /assets/xtsy-color-logo-DLbAB-SC.webp",
    "stylesheet /assets/styles-BlkqxoPo.css",
-   "modulepreload /assets/index-CYdCNfLt.js",
+   "modulepreload /assets/index-U9Q5xXX6.js",
    "modulepreload /assets/jsx-runtime-B4UN2VIk.js",
    "modulepreload /assets/react-dom-gWqXm1NC.js",
    "modulepreload /assets/createServerFn-BCO2Xlzw.js",
@@ -1238,7 +1238,7 @@
    "modulepreload /assets/createLucideIcon-CFLhf0yt.js",
    "modulepreload /assets/utils-D0T3A-kS.js",
    "modulepreload /assets/AppContext-CRta89UJ.js",
-   "modulepreload /assets/SiteFooter--tAU_BUN.js",
+   "modulepreload /assets/SiteFooter-dLXYf3ja.js",
    "modulepreload /assets/dist-mYMNlRkg.js",
    "modulepreload /assets/analyticsFilters-DmyFCvLb.js",
    "modulepreload /assets/tripChatEvents-KCcyjeFX.js",
@@ -1267,12 +1267,12 @@
    "font:/assets/staatliches-latin-ext-DrUetcJP.woff2",
    "image:/img/px/sig-5n-6d-tawang-tour-1280.avif fp=high"
   ],
-  "lcpMs": 1248,
+  "lcpMs": 1156,
   "breakdown": {
-   "ttfb": 155,
-   "loadDelay": 48,
-   "loadDuration": 795,
-   "renderDelay": 250
+   "ttfb": 154,
+   "loadDelay": 36,
+   "loadDuration": 802,
+   "renderDelay": 164
   },
   "lcpImage": {
    "file": "sig-5n-6d-tawang-tour-828.avif",
@@ -1283,16 +1283,16 @@
  {
   "route": "/destinations/meghalaya/shillong",
   "lcpRuns": [
-   1068,
-   1068,
-   1072
+   996,
+   984,
+   1004
   ],
-  "ttfb": 154,
+  "ttfb": 152,
   "htmlKb": 13,
-  "domInteractive": 902,
-  "fcp": 1068,
+  "domInteractive": 846,
+  "fcp": 996,
   "lcp": {
-   "t": 1068,
+   "t": 996,
    "size": 23936,
    "url": "",
    "tag": "P",
@@ -1311,10 +1311,10 @@
    {
     "url": "/assets/styles-BlkqxoPo.css",
     "kb": 29,
-    "end": 855
+    "end": 814
    }
   ],
-  "longTaskMsBeforeLcp": 76,
+  "longTaskMsBeforeLcp": 50,
   "beforeLcp": {
    "jsKb": 312,
    "cssKb": 29,
@@ -1325,206 +1325,206 @@
     {
      "url": "/img/o/xtsyvoyage-elephant-falls-736.webp",
      "kb": 154,
-     "start": 1058
+     "start": 984
     },
     {
      "url": "/img/o/xtsyvoyage-umiam-lake-736.webp",
      "kb": 71,
-     "start": 1056
+     "start": 983
     },
     {
      "url": "/assets/xtsy-color-logo-DLbAB-SC.webp",
      "kb": 6,
-     "start": 199
+     "start": 183
     }
    ],
    "scripts": [
     {
-     "url": "/assets/index-CYdCNfLt.js",
-     "kb": 156,
-     "start": 200,
-     "end": 2029
+     "url": "/assets/index-U9Q5xXX6.js",
+     "kb": 155,
+     "start": 185,
+     "end": 2001
     },
     {
      "url": "/assets/jsx-runtime-B4UN2VIk.js",
      "kb": 4,
-     "start": 201,
-     "end": 491
+     "start": 185,
+     "end": 456
     },
     {
      "url": "/assets/react-dom-gWqXm1NC.js",
      "kb": 2,
-     "start": 202,
-     "end": 469
-    },
-    {
-     "url": "/assets/createServerFn-BCO2Xlzw.js",
-     "kb": 13,
-     "start": 202,
-     "end": 648
+     "start": 185,
+     "end": 434
     },
     {
      "url": "/assets/redirect-D2YulXhr.js",
      "kb": 1,
-     "start": 203,
-     "end": 613
+     "start": 186,
+     "end": 607
+    },
+    {
+     "url": "/assets/createServerFn-BCO2Xlzw.js",
+     "kb": 13,
+     "start": 186,
+     "end": 627
     },
     {
      "url": "/assets/link-b82KqvVK.js",
      "kb": 5,
-     "start": 203,
-     "end": 719
+     "start": 186,
+     "end": 707
     },
     {
      "url": "/assets/invariant-DEEwAagU.js",
      "kb": 0,
-     "start": 204,
-     "end": 670
+     "start": 186,
+     "end": 649
     },
     {
      "url": "/assets/root-DLTE-HSj.js",
      "kb": 0,
-     "start": 204,
-     "end": 785
-    },
-    {
-     "url": "/assets/dataLayerService-BfBty7hs.js",
-     "kb": 2,
-     "start": 204,
-     "end": 870
+     "start": 187,
+     "end": 779
     },
     {
      "url": "/assets/query-Dy-DD5Y_.js",
      "kb": 5,
-     "start": 204,
-     "end": 884
+     "start": 187,
+     "end": 864
+    },
+    {
+     "url": "/assets/dataLayerService-BfBty7hs.js",
+     "kb": 2,
+     "start": 187,
+     "end": 843
     },
     {
      "url": "/assets/route-b3voNKpA.js",
      "kb": 1,
-     "start": 204,
-     "end": 892
+     "start": 187,
+     "end": 871
     },
     {
      "url": "/assets/useRouter-BsG9fRJS.js",
      "kb": 0,
-     "start": 204,
-     "end": 949
+     "start": 187,
+     "end": 942
     },
     {
      "url": "/assets/matchContext-VpDvYkLy.js",
      "kb": 0,
-     "start": 204,
-     "end": 1013
+     "start": 187,
+     "end": 979
     },
     {
      "url": "/assets/router-compat-Dvq9BDKs.js",
      "kb": 2,
-     "start": 204,
-     "end": 1042
+     "start": 188,
+     "end": 1021
     },
     {
      "url": "/assets/consent-BxHGynN8.js",
      "kb": 2,
-     "start": 207,
-     "end": 1078
+     "start": 188,
+     "end": 1057
     },
     {
      "url": "/assets/helmet-Co_7mHeO.js",
      "kb": 6,
-     "start": 208,
-     "end": 1135
+     "start": 189,
+     "end": 1114
     },
     {
      "url": "/assets/dist-BsIiesyF.js",
      "kb": 2,
-     "start": 208,
-     "end": 1142
+     "start": 189,
+     "end": 1129
     },
     {
      "url": "/assets/dist-DFc3gDaP.js",
      "kb": 2,
-     "start": 209,
-     "end": 1192
+     "start": 189,
+     "end": 1157
     },
     {
      "url": "/assets/dist-MB1QKl4x.js",
      "kb": 5,
-     "start": 209,
-     "end": 1256
+     "start": 189,
+     "end": 1228
     },
     {
      "url": "/assets/dist-CHpcj0at.js",
      "kb": 1,
-     "start": 210,
-     "end": 1242
+     "start": 190,
+     "end": 1221
     },
     {
      "url": "/assets/dist-NilkmuZg.js",
      "kb": 1,
-     "start": 210,
-     "end": 1300
+     "start": 190,
+     "end": 1272
     },
     {
      "url": "/assets/createLucideIcon-CFLhf0yt.js",
      "kb": 1,
-     "start": 210,
-     "end": 1314
+     "start": 190,
+     "end": 1286
     },
     {
      "url": "/assets/utils-D0T3A-kS.js",
      "kb": 8,
-     "start": 210,
-     "end": 1435
+     "start": 190,
+     "end": 1400
     },
     {
      "url": "/assets/AppContext-CRta89UJ.js",
      "kb": 11,
-     "start": 212,
-     "end": 1564
+     "start": 191,
+     "end": 1543
     },
     {
-     "url": "/assets/SiteFooter--tAU_BUN.js",
+     "url": "/assets/SiteFooter-dLXYf3ja.js",
      "kb": 5,
-     "start": 212,
-     "end": 1514
+     "start": 191,
+     "end": 1486
     },
     {
      "url": "/assets/dist-mYMNlRkg.js",
      "kb": 1,
-     "start": 212,
-     "end": 1479
+     "start": 191,
+     "end": 1444
     },
     {
      "url": "/assets/analyticsFilters-DmyFCvLb.js",
      "kb": 1,
-     "start": 212,
-     "end": 1500
+     "start": 192,
+     "end": 1472
     },
     {
      "url": "/assets/tripChatEvents-KCcyjeFX.js",
      "kb": 0,
-     "start": 213,
-     "end": 1600
+     "start": 192,
+     "end": 1565
     },
     {
      "url": "/assets/preload-helper-7y9sWmk5.js",
      "kb": 1,
-     "start": 214,
-     "end": 1643
+     "start": 192,
+     "end": 1607
     },
     {
-     "url": "/assets/neTaxonomy-BLz7XbGg.js",
-     "kb": 5,
-     "start": 214,
-     "end": 1728
+     "url": "/assets/SEOHead-C6VXVDic.js",
+     "kb": 3,
+     "start": 193,
+     "end": 1693
     }
    ]
   },
   "headOrder": [
    "preload:image /assets/xtsy-color-logo-DLbAB-SC.webp",
    "stylesheet /assets/styles-BlkqxoPo.css",
-   "modulepreload /assets/index-CYdCNfLt.js",
+   "modulepreload /assets/index-U9Q5xXX6.js",
    "modulepreload /assets/jsx-runtime-B4UN2VIk.js",
    "modulepreload /assets/react-dom-gWqXm1NC.js",
    "modulepreload /assets/createServerFn-BCO2Xlzw.js",
@@ -1548,7 +1548,7 @@
    "modulepreload /assets/createLucideIcon-CFLhf0yt.js",
    "modulepreload /assets/utils-D0T3A-kS.js",
    "modulepreload /assets/AppContext-CRta89UJ.js",
-   "modulepreload /assets/SiteFooter--tAU_BUN.js",
+   "modulepreload /assets/SiteFooter-dLXYf3ja.js",
    "modulepreload /assets/dist-mYMNlRkg.js",
    "modulepreload /assets/analyticsFilters-DmyFCvLb.js",
    "modulepreload /assets/tripChatEvents-KCcyjeFX.js",
@@ -1576,28 +1576,28 @@
    "font:/assets/manrope-latin-ext-Ch3YOpNY.woff2",
    "font:/assets/staatliches-latin-ext-DrUetcJP.woff2"
   ],
-  "lcpMs": 1068,
+  "lcpMs": 996,
   "breakdown": {
-   "ttfb": 154,
+   "ttfb": 152,
    "loadDelay": 0,
    "loadDuration": 0,
-   "renderDelay": 914
+   "renderDelay": 844
   },
   "lcpImage": null
  },
  {
   "route": "/guides/living-root-bridges-meghalaya",
   "lcpRuns": [
-   1252,
-   1268,
-   1232
+   1156,
+   1164,
+   1164
   ],
-  "ttfb": 154,
+  "ttfb": 152,
   "htmlKb": 21,
-  "domInteractive": 1031,
-  "fcp": 1252,
+  "domInteractive": 985,
+  "fcp": 1164,
   "lcp": {
-   "t": 1252,
+   "t": 1164,
    "size": 65151,
    "url": "",
    "tag": "H1",
@@ -1616,10 +1616,10 @@
    {
     "url": "/assets/styles-BlkqxoPo.css",
     "kb": 29,
-    "end": 978
+    "end": 949
    }
   ],
-  "longTaskMsBeforeLcp": 127,
+  "longTaskMsBeforeLcp": 82,
   "beforeLcp": {
    "jsKb": 336,
    "cssKb": 29,
@@ -1630,201 +1630,201 @@
     {
      "url": "/img/o/xtsyvoyage-nongriat-double-decker-root-bridge-736.avif",
      "kb": 75,
-     "start": 200
+     "start": 190
     },
     {
      "url": "/assets/xtsy-color-logo-DLbAB-SC.webp",
      "kb": 6,
-     "start": 202
+     "start": 191
     }
    ],
    "scripts": [
     {
-     "url": "/assets/index-CYdCNfLt.js",
-     "kb": 156,
-     "start": 203,
-     "end": 2409
+     "url": "/assets/index-U9Q5xXX6.js",
+     "kb": 155,
+     "start": 192,
+     "end": 2379
     },
     {
      "url": "/assets/jsx-runtime-B4UN2VIk.js",
      "kb": 4,
-     "start": 204,
-     "end": 506
+     "start": 192,
+     "end": 463
     },
     {
      "url": "/assets/react-dom-gWqXm1NC.js",
      "kb": 2,
-     "start": 204,
+     "start": 192,
      "end": 492
     },
     {
      "url": "/assets/createServerFn-BCO2Xlzw.js",
      "kb": 13,
-     "start": 204,
-     "end": 936
+     "start": 193,
+     "end": 907
     },
     {
      "url": "/assets/redirect-D2YulXhr.js",
      "kb": 1,
-     "start": 205,
-     "end": 693
+     "start": 193,
+     "end": 663
     },
     {
      "url": "/assets/link-b82KqvVK.js",
      "kb": 5,
-     "start": 205,
-     "end": 821
+     "start": 193,
+     "end": 792
     },
     {
      "url": "/assets/invariant-DEEwAagU.js",
      "kb": 0,
-     "start": 205,
-     "end": 879
+     "start": 193,
+     "end": 850
     },
     {
      "url": "/assets/root-DLTE-HSj.js",
      "kb": 0,
-     "start": 206,
-     "end": 1000
+     "start": 193,
+     "end": 971
     },
     {
      "url": "/assets/query-Dy-DD5Y_.js",
      "kb": 5,
-     "start": 207,
-     "end": 1121
+     "start": 193,
+     "end": 1092
     },
     {
      "url": "/assets/dataLayerService-BfBty7hs.js",
      "kb": 2,
-     "start": 207,
-     "end": 1143
+     "start": 193,
+     "end": 1107
     },
     {
      "url": "/assets/route-b3voNKpA.js",
      "kb": 1,
-     "start": 207,
-     "end": 1158
+     "start": 193,
+     "end": 1129
     },
     {
      "url": "/assets/useRouter-BsG9fRJS.js",
      "kb": 0,
-     "start": 207,
-     "end": 1179
+     "start": 193,
+     "end": 1142
     },
     {
      "url": "/assets/matchContext-VpDvYkLy.js",
      "kb": 0,
-     "start": 207,
-     "end": 1293
+     "start": 194,
+     "end": 1264
     },
     {
      "url": "/assets/router-compat-Dvq9BDKs.js",
      "kb": 2,
-     "start": 208,
-     "end": 1343
+     "start": 194,
+     "end": 1315
     },
     {
      "url": "/assets/consent-BxHGynN8.js",
      "kb": 2,
-     "start": 208,
-     "end": 1372
+     "start": 196,
+     "end": 1343
     },
     {
      "url": "/assets/helmet-Co_7mHeO.js",
      "kb": 6,
-     "start": 208,
-     "end": 1458
+     "start": 196,
+     "end": 1414
     },
     {
      "url": "/assets/dist-BsIiesyF.js",
      "kb": 2,
-     "start": 210,
-     "end": 1493
+     "start": 196,
+     "end": 1457
     },
     {
      "url": "/assets/dist-DFc3gDaP.js",
      "kb": 2,
-     "start": 211,
-     "end": 1536
+     "start": 196,
+     "end": 1507
     },
     {
      "url": "/assets/dist-MB1QKl4x.js",
      "kb": 5,
-     "start": 212,
-     "end": 1615
+     "start": 196,
+     "end": 1586
     },
     {
      "url": "/assets/dist-CHpcj0at.js",
      "kb": 1,
-     "start": 212,
-     "end": 1637
+     "start": 197,
+     "end": 1594
     },
     {
      "url": "/assets/dist-NilkmuZg.js",
      "kb": 1,
-     "start": 213,
-     "end": 1659
+     "start": 197,
+     "end": 1622
     },
     {
      "url": "/assets/createLucideIcon-CFLhf0yt.js",
      "kb": 1,
-     "start": 213,
-     "end": 1694
+     "start": 197,
+     "end": 1665
     },
     {
      "url": "/assets/utils-D0T3A-kS.js",
      "kb": 8,
-     "start": 213,
-     "end": 1930
+     "start": 197,
+     "end": 1900
     },
     {
      "url": "/assets/AppContext-CRta89UJ.js",
      "kb": 11,
-     "start": 213,
-     "end": 1973
+     "start": 197,
+     "end": 1944
     },
     {
-     "url": "/assets/SiteFooter--tAU_BUN.js",
+     "url": "/assets/SiteFooter-dLXYf3ja.js",
      "kb": 5,
-     "start": 213,
-     "end": 1916
+     "start": 198,
+     "end": 1886
     },
     {
      "url": "/assets/dist-mYMNlRkg.js",
      "kb": 1,
-     "start": 215,
-     "end": 1844
+     "start": 198,
+     "end": 1801
     },
     {
      "url": "/assets/analyticsFilters-DmyFCvLb.js",
      "kb": 1,
-     "start": 216,
-     "end": 1880
+     "start": 198,
+     "end": 1844
     },
     {
      "url": "/assets/tripChatEvents-KCcyjeFX.js",
      "kb": 0,
-     "start": 216,
-     "end": 2009
+     "start": 199,
+     "end": 1965
     },
     {
      "url": "/assets/preload-helper-7y9sWmk5.js",
      "kb": 1,
-     "start": 217,
-     "end": 2044
+     "start": 199,
+     "end": 2008
     },
     {
      "url": "/assets/neTaxonomy-BLz7XbGg.js",
      "kb": 5,
-     "start": 217,
-     "end": 2137
+     "start": 199,
+     "end": 2115
     }
    ]
   },
   "headOrder": [
    "preload:image /assets/xtsy-color-logo-DLbAB-SC.webp",
    "stylesheet /assets/styles-BlkqxoPo.css",
-   "modulepreload /assets/index-CYdCNfLt.js",
+   "modulepreload /assets/index-U9Q5xXX6.js",
    "modulepreload /assets/jsx-runtime-B4UN2VIk.js",
    "modulepreload /assets/react-dom-gWqXm1NC.js",
    "modulepreload /assets/createServerFn-BCO2Xlzw.js",
@@ -1848,7 +1848,7 @@
    "modulepreload /assets/createLucideIcon-CFLhf0yt.js",
    "modulepreload /assets/utils-D0T3A-kS.js",
    "modulepreload /assets/AppContext-CRta89UJ.js",
-   "modulepreload /assets/SiteFooter--tAU_BUN.js",
+   "modulepreload /assets/SiteFooter-dLXYf3ja.js",
    "modulepreload /assets/dist-mYMNlRkg.js",
    "modulepreload /assets/analyticsFilters-DmyFCvLb.js",
    "modulepreload /assets/tripChatEvents-KCcyjeFX.js",
@@ -1877,28 +1877,28 @@
    "font:/assets/staatliches-latin-ext-DrUetcJP.woff2",
    "image:/img/o/xtsyvoyage-nongriat-double-decker-root-bridge-736.avif fp=high"
   ],
-  "lcpMs": 1252,
+  "lcpMs": 1164,
   "breakdown": {
-   "ttfb": 154,
+   "ttfb": 152,
    "loadDelay": 0,
    "loadDuration": 0,
-   "renderDelay": 1098
+   "renderDelay": 1012
   },
   "lcpImage": null
  },
  {
   "route": "/tab-bistro",
   "lcpRuns": [
-   1204,
-   1192,
-   1208
+   1096,
+   1108,
+   1108
   ],
   "ttfb": 153,
   "htmlKb": 20,
-  "domInteractive": 976,
-  "fcp": 1204,
+  "domInteractive": 942,
+  "fcp": 1108,
   "lcp": {
-   "t": 1204,
+   "t": 1108,
    "size": 50652,
    "url": "",
    "tag": "P",
@@ -1917,12 +1917,12 @@
    {
     "url": "/assets/styles-BlkqxoPo.css",
     "kb": 29,
-    "end": 928
+    "end": 907
    }
   ],
-  "longTaskMsBeforeLcp": 170,
+  "longTaskMsBeforeLcp": 119,
   "beforeLcp": {
-   "jsKb": 385,
+   "jsKb": 384,
    "cssKb": 29,
    "imgKb": 25,
    "thirdPartyKb": 0,
@@ -1931,201 +1931,201 @@
     {
      "url": "/img/o/xtsy-tab-bistro-by-xtsy-1-828.avif",
      "kb": 19,
-     "start": 199
+     "start": 194
     },
     {
      "url": "/assets/xtsy-color-logo-DLbAB-SC.webp",
      "kb": 6,
-     "start": 200
+     "start": 194
     }
    ],
    "scripts": [
     {
-     "url": "/assets/index-CYdCNfLt.js",
-     "kb": 156,
-     "start": 201,
-     "end": 2122
+     "url": "/assets/index-U9Q5xXX6.js",
+     "kb": 155,
+     "start": 195,
+     "end": 2102
     },
     {
      "url": "/assets/jsx-runtime-B4UN2VIk.js",
      "kb": 4,
-     "start": 202,
-     "end": 506
+     "start": 195,
+     "end": 457
     },
     {
      "url": "/assets/react-dom-gWqXm1NC.js",
      "kb": 2,
-     "start": 202,
-     "end": 499
+     "start": 196,
+     "end": 492
     },
     {
      "url": "/assets/createServerFn-BCO2Xlzw.js",
      "kb": 13,
-     "start": 203,
-     "end": 907
+     "start": 196,
+     "end": 865
     },
     {
      "url": "/assets/redirect-D2YulXhr.js",
      "kb": 1,
-     "start": 203,
-     "end": 686
+     "start": 197,
+     "end": 671
     },
     {
      "url": "/assets/link-b82KqvVK.js",
      "kb": 5,
-     "start": 204,
-     "end": 800
+     "start": 197,
+     "end": 779
     },
     {
      "url": "/assets/invariant-DEEwAagU.js",
      "kb": 0,
-     "start": 204,
-     "end": 864
+     "start": 197,
+     "end": 851
     },
     {
      "url": "/assets/root-DLTE-HSj.js",
      "kb": 0,
-     "start": 205,
-     "end": 893
+     "start": 197,
+     "end": 900
     },
     {
      "url": "/assets/query-Dy-DD5Y_.js",
      "kb": 5,
-     "start": 205,
-     "end": 1007
+     "start": 197,
+     "end": 986
     },
     {
      "url": "/assets/dataLayerService-BfBty7hs.js",
      "kb": 2,
-     "start": 205,
-     "end": 1035
+     "start": 197,
+     "end": 1022
     },
     {
      "url": "/assets/route-b3voNKpA.js",
      "kb": 1,
-     "start": 206,
-     "end": 1057
+     "start": 197,
+     "end": 1037
     },
     {
      "url": "/assets/useRouter-BsG9fRJS.js",
      "kb": 0,
-     "start": 206,
-     "end": 1072
+     "start": 198,
+     "end": 1058
     },
     {
      "url": "/assets/matchContext-VpDvYkLy.js",
      "kb": 0,
-     "start": 206,
-     "end": 1093
+     "start": 198,
+     "end": 1073
     },
     {
      "url": "/assets/router-compat-Dvq9BDKs.js",
      "kb": 2,
-     "start": 206,
-     "end": 1186
+     "start": 199,
+     "end": 1165
     },
     {
      "url": "/assets/consent-BxHGynN8.js",
      "kb": 2,
-     "start": 206,
-     "end": 1214
-    },
-    {
-     "url": "/assets/helmet-Co_7mHeO.js",
-     "kb": 6,
-     "start": 209,
-     "end": 1308
+     "start": 199,
+     "end": 1193
     },
     {
      "url": "/assets/dist-BsIiesyF.js",
      "kb": 2,
-     "start": 209,
-     "end": 1264
+     "start": 199,
+     "end": 1258
+    },
+    {
+     "url": "/assets/helmet-Co_7mHeO.js",
+     "kb": 6,
+     "start": 199,
+     "end": 1294
     },
     {
      "url": "/assets/dist-DFc3gDaP.js",
      "kb": 2,
-     "start": 210,
-     "end": 1293
-    },
-    {
-     "url": "/assets/dist-MB1QKl4x.js",
-     "kb": 5,
-     "start": 210,
-     "end": 1400
+     "start": 199,
+     "end": 1280
     },
     {
      "url": "/assets/dist-CHpcj0at.js",
      "kb": 1,
-     "start": 211,
-     "end": 1386
+     "start": 199,
+     "end": 1358
+    },
+    {
+     "url": "/assets/dist-MB1QKl4x.js",
+     "kb": 5,
+     "start": 199,
+     "end": 1379
     },
     {
      "url": "/assets/dist-NilkmuZg.js",
      "kb": 1,
-     "start": 212,
-     "end": 1429
+     "start": 199,
+     "end": 1422
     },
     {
      "url": "/assets/createLucideIcon-CFLhf0yt.js",
      "kb": 1,
-     "start": 212,
-     "end": 1457
+     "start": 199,
+     "end": 1437
     },
     {
      "url": "/assets/utils-D0T3A-kS.js",
      "kb": 8,
-     "start": 213,
-     "end": 1543
+     "start": 199,
+     "end": 1529
+    },
+    {
+     "url": "/assets/SiteFooter-dLXYf3ja.js",
+     "kb": 5,
+     "start": 199,
+     "end": 1630
     },
     {
      "url": "/assets/AppContext-CRta89UJ.js",
      "kb": 11,
-     "start": 213,
-     "end": 1701
-    },
-    {
-     "url": "/assets/SiteFooter--tAU_BUN.js",
-     "kb": 5,
-     "start": 213,
-     "end": 1651
+     "start": 199,
+     "end": 1672
     },
     {
      "url": "/assets/dist-mYMNlRkg.js",
      "kb": 1,
-     "start": 214,
-     "end": 1608
+     "start": 199,
+     "end": 1595
     },
     {
      "url": "/assets/analyticsFilters-DmyFCvLb.js",
      "kb": 1,
-     "start": 214,
-     "end": 1637
+     "start": 199,
+     "end": 1622
     },
     {
      "url": "/assets/tripChatEvents-KCcyjeFX.js",
      "kb": 0,
-     "start": 215,
-     "end": 1708
+     "start": 200,
+     "end": 1688
     },
     {
      "url": "/assets/preload-helper-7y9sWmk5.js",
      "kb": 1,
-     "start": 216,
-     "end": 1772
+     "start": 200,
+     "end": 1759
     },
     {
      "url": "/assets/neTaxonomy-BLz7XbGg.js",
      "kb": 5,
-     "start": 217,
-     "end": 1865
+     "start": 200,
+     "end": 1859
     }
    ]
   },
   "headOrder": [
    "preload:image /assets/xtsy-color-logo-DLbAB-SC.webp",
    "stylesheet /assets/styles-BlkqxoPo.css",
-   "modulepreload /assets/index-CYdCNfLt.js",
+   "modulepreload /assets/index-U9Q5xXX6.js",
    "modulepreload /assets/jsx-runtime-B4UN2VIk.js",
    "modulepreload /assets/react-dom-gWqXm1NC.js",
    "modulepreload /assets/createServerFn-BCO2Xlzw.js",
@@ -2149,7 +2149,7 @@
    "modulepreload /assets/createLucideIcon-CFLhf0yt.js",
    "modulepreload /assets/utils-D0T3A-kS.js",
    "modulepreload /assets/AppContext-CRta89UJ.js",
-   "modulepreload /assets/SiteFooter--tAU_BUN.js",
+   "modulepreload /assets/SiteFooter-dLXYf3ja.js",
    "modulepreload /assets/dist-mYMNlRkg.js",
    "modulepreload /assets/analyticsFilters-DmyFCvLb.js",
    "modulepreload /assets/tripChatEvents-KCcyjeFX.js",
@@ -2177,28 +2177,28 @@
    "font:/assets/manrope-latin-ext-Ch3YOpNY.woff2",
    "font:/assets/staatliches-latin-ext-DrUetcJP.woff2"
   ],
-  "lcpMs": 1204,
+  "lcpMs": 1108,
   "breakdown": {
    "ttfb": 153,
    "loadDelay": 0,
    "loadDuration": 0,
-   "renderDelay": 1051
+   "renderDelay": 955
   },
   "lcpImage": null
  },
  {
   "route": "/about/faq",
   "lcpRuns": [
-   1196,
-   1216,
-   1216
+   1116,
+   1140,
+   1140
   ],
-  "ttfb": 153,
+  "ttfb": 152,
   "htmlKb": 16,
-  "domInteractive": 1043,
-  "fcp": 1216,
+  "domInteractive": 984,
+  "fcp": 1140,
   "lcp": {
-   "t": 1216,
+   "t": 1140,
    "size": 174224,
    "url": "http://localhost:4174/img/o/xtsy-property-images-8-828.avif",
    "tag": "IMG",
@@ -2213,8 +2213,8 @@
   },
   "cls": 0.146,
   "lcpRes": {
-   "start": 206,
-   "end": 1026,
+   "start": 192,
+   "end": 993,
    "kb": 33,
    "initiator": "link"
   },
@@ -2222,12 +2222,12 @@
    {
     "url": "/assets/styles-BlkqxoPo.css",
     "kb": 29,
-    "end": 998
+    "end": 950
    }
   ],
-  "longTaskMsBeforeLcp": 79,
+  "longTaskMsBeforeLcp": 56,
   "beforeLcp": {
-   "jsKb": 314,
+   "jsKb": 313,
    "cssKb": 29,
    "imgKb": 38,
    "thirdPartyKb": 0,
@@ -2236,201 +2236,201 @@
     {
      "url": "/img/o/xtsy-property-images-8-828.avif",
      "kb": 33,
-     "start": 206
+     "start": 192
     },
     {
      "url": "/assets/xtsy-color-logo-DLbAB-SC.webp",
      "kb": 6,
-     "start": 207
+     "start": 193
     }
    ],
    "scripts": [
     {
-     "url": "/assets/index-CYdCNfLt.js",
-     "kb": 156,
-     "start": 207,
-     "end": 2206
+     "url": "/assets/index-U9Q5xXX6.js",
+     "kb": 155,
+     "start": 194,
+     "end": 2174
     },
     {
      "url": "/assets/jsx-runtime-B4UN2VIk.js",
      "kb": 4,
-     "start": 208,
-     "end": 511
+     "start": 194,
+     "end": 485
     },
     {
      "url": "/assets/react-dom-gWqXm1NC.js",
      "kb": 2,
-     "start": 209,
-     "end": 482
+     "start": 195,
+     "end": 471
     },
     {
      "url": "/assets/createServerFn-BCO2Xlzw.js",
      "kb": 13,
-     "start": 209,
-     "end": 933
+     "start": 195,
+     "end": 914
     },
     {
      "url": "/assets/redirect-D2YulXhr.js",
      "kb": 1,
-     "start": 210,
-     "end": 690
+     "start": 195,
+     "end": 664
     },
     {
      "url": "/assets/link-b82KqvVK.js",
      "kb": 5,
-     "start": 211,
-     "end": 818
+     "start": 196,
+     "end": 786
     },
     {
      "url": "/assets/invariant-DEEwAagU.js",
      "kb": 0,
-     "start": 211,
-     "end": 876
+     "start": 196,
+     "end": 843
     },
     {
      "url": "/assets/root-DLTE-HSj.js",
      "kb": 0,
-     "start": 212,
-     "end": 991
+     "start": 196,
+     "end": 965
     },
     {
      "url": "/assets/query-Dy-DD5Y_.js",
      "kb": 5,
-     "start": 212,
-     "end": 1084
+     "start": 196,
+     "end": 1051
     },
     {
      "url": "/assets/dataLayerService-BfBty7hs.js",
      "kb": 2,
-     "start": 212,
-     "end": 1112
+     "start": 197,
+     "end": 1094
     },
     {
      "url": "/assets/route-b3voNKpA.js",
      "kb": 1,
-     "start": 212,
-     "end": 1148
+     "start": 197,
+     "end": 1108
     },
     {
      "url": "/assets/useRouter-BsG9fRJS.js",
      "kb": 0,
-     "start": 212,
-     "end": 1163
+     "start": 197,
+     "end": 1123
     },
     {
      "url": "/assets/matchContext-VpDvYkLy.js",
      "kb": 0,
-     "start": 213,
-     "end": 1184
+     "start": 198,
+     "end": 1151
     },
     {
      "url": "/assets/router-compat-Dvq9BDKs.js",
      "kb": 2,
-     "start": 215,
-     "end": 1262
+     "start": 198,
+     "end": 1229
     },
     {
      "url": "/assets/consent-BxHGynN8.js",
      "kb": 2,
-     "start": 216,
-     "end": 1291
+     "start": 198,
+     "end": 1273
     },
     {
      "url": "/assets/helmet-Co_7mHeO.js",
      "kb": 6,
-     "start": 216,
-     "end": 1391
+     "start": 198,
+     "end": 1365
     },
     {
      "url": "/assets/dist-BsIiesyF.js",
      "kb": 2,
-     "start": 217,
-     "end": 1355
+     "start": 199,
+     "end": 1315
     },
     {
      "url": "/assets/dist-DFc3gDaP.js",
      "kb": 2,
-     "start": 217,
-     "end": 1384
+     "start": 199,
+     "end": 1351
     },
     {
      "url": "/assets/dist-MB1QKl4x.js",
      "kb": 5,
-     "start": 218,
-     "end": 1469
+     "start": 199,
+     "end": 1430
     },
     {
      "url": "/assets/dist-CHpcj0at.js",
      "kb": 1,
-     "start": 218,
-     "end": 1456
+     "start": 199,
+     "end": 1444
     },
     {
      "url": "/assets/dist-NilkmuZg.js",
      "kb": 1,
-     "start": 219,
-     "end": 1513
+     "start": 200,
+     "end": 1473
     },
     {
      "url": "/assets/createLucideIcon-CFLhf0yt.js",
      "kb": 1,
-     "start": 219,
-     "end": 1549
+     "start": 200,
+     "end": 1516
     },
     {
      "url": "/assets/utils-D0T3A-kS.js",
      "kb": 8,
-     "start": 219,
-     "end": 1648
+     "start": 200,
+     "end": 1608
     },
     {
      "url": "/assets/AppContext-CRta89UJ.js",
      "kb": 11,
-     "start": 220,
-     "end": 1778
-    },
-    {
-     "url": "/assets/SiteFooter--tAU_BUN.js",
-     "kb": 5,
-     "start": 221,
-     "end": 1720
+     "start": 201,
+     "end": 1751
     },
     {
      "url": "/assets/dist-mYMNlRkg.js",
      "kb": 1,
-     "start": 221,
-     "end": 1692
+     "start": 201,
+     "end": 1652
+    },
+    {
+     "url": "/assets/SiteFooter-dLXYf3ja.js",
+     "kb": 5,
+     "start": 201,
+     "end": 1687
     },
     {
      "url": "/assets/analyticsFilters-DmyFCvLb.js",
      "kb": 1,
-     "start": 221,
-     "end": 1727
+     "start": 201,
+     "end": 1694
     },
     {
      "url": "/assets/tripChatEvents-KCcyjeFX.js",
      "kb": 0,
-     "start": 222,
-     "end": 1806
+     "start": 201,
+     "end": 1773
     },
     {
      "url": "/assets/preload-helper-7y9sWmk5.js",
      "kb": 1,
-     "start": 223,
-     "end": 1856
+     "start": 202,
+     "end": 1816
     },
     {
      "url": "/assets/neTaxonomy-BLz7XbGg.js",
      "kb": 5,
-     "start": 224,
-     "end": 1948
+     "start": 202,
+     "end": 1916
     }
    ]
   },
   "headOrder": [
    "preload:image /assets/xtsy-color-logo-DLbAB-SC.webp",
    "stylesheet /assets/styles-BlkqxoPo.css",
-   "modulepreload /assets/index-CYdCNfLt.js",
+   "modulepreload /assets/index-U9Q5xXX6.js",
    "modulepreload /assets/jsx-runtime-B4UN2VIk.js",
    "modulepreload /assets/react-dom-gWqXm1NC.js",
    "modulepreload /assets/createServerFn-BCO2Xlzw.js",
@@ -2454,7 +2454,7 @@
    "modulepreload /assets/createLucideIcon-CFLhf0yt.js",
    "modulepreload /assets/utils-D0T3A-kS.js",
    "modulepreload /assets/AppContext-CRta89UJ.js",
-   "modulepreload /assets/SiteFooter--tAU_BUN.js",
+   "modulepreload /assets/SiteFooter-dLXYf3ja.js",
    "modulepreload /assets/dist-mYMNlRkg.js",
    "modulepreload /assets/analyticsFilters-DmyFCvLb.js",
    "modulepreload /assets/tripChatEvents-KCcyjeFX.js",
@@ -2482,12 +2482,12 @@
    "font:/assets/manrope-latin-ext-Ch3YOpNY.woff2",
    "font:/assets/staatliches-latin-ext-DrUetcJP.woff2"
   ],
-  "lcpMs": 1216,
+  "lcpMs": 1140,
   "breakdown": {
-   "ttfb": 153,
-   "loadDelay": 53,
-   "loadDuration": 820,
-   "renderDelay": 190
+   "ttfb": 152,
+   "loadDelay": 40,
+   "loadDuration": 801,
+   "renderDelay": 147
   },
   "lcpImage": {
    "file": "xtsy-property-images-8-828.avif",
