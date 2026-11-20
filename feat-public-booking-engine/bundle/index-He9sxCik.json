@@ -1,10 +1,10 @@
 {
   "results": [
     {
-      "bundleName": ".output/public/assets/index-BBmyQb6-.js",
-      "totalBytes": 557025,
-      "mappedBytes": 545526,
-      "unmappedBytes": 11456,
+      "bundleName": ".output/public/assets/index-He9sxCik.js",
+      "totalBytes": 557100,
+      "mappedBytes": 545538,
+      "unmappedBytes": 11519,
       "eolBytes": 43,
       "sourceMapCommentBytes": 0,
       "files": {
@@ -12,7 +12,7 @@
           "size": 3469
         },
         "[no source]": {
-          "size": 12875
+          "size": 12887
         },
         "../../../node_modules/scheduler/index.js": {
           "size": 14
@@ -660,7 +660,7 @@
           "size": 0
         },
         "[unmapped]": {
-          "size": 11456
+          "size": 11519
         },
         "[EOLs]": {
           "size": 43
