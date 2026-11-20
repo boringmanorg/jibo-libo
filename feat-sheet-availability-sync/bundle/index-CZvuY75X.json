@@ -1,10 +1,10 @@
 {
   "results": [
     {
-      "bundleName": ".output/public/assets/index-DMrqf9Ja.js",
-      "totalBytes": 559463,
-      "mappedBytes": 547383,
-      "unmappedBytes": 12037,
+      "bundleName": ".output/public/assets/index-CZvuY75X.js",
+      "totalBytes": 559111,
+      "mappedBytes": 546984,
+      "unmappedBytes": 12084,
       "eolBytes": 43,
       "sourceMapCommentBytes": 0,
       "files": {
@@ -12,13 +12,13 @@
           "size": 3476
         },
         "[no source]": {
-          "size": 14344
+          "size": 14248
         },
         "../../../node_modules/scheduler/index.js": {
           "size": 14
         },
         "../../../node_modules/react-dom/cjs/react-dom-client.production.js": {
-          "size": 203116
+          "size": 203132
         },
         "../../../node_modules/react-dom/client.js": {
           "size": 210
@@ -168,7 +168,7 @@
           "size": 360
         },
         "../../../node_modules/@radix-ui/react-toast/dist/index.mjs": {
-          "size": 11161
+          "size": 11166
         },
         "../../../node_modules/lucide-react/dist/esm/icons/bath.js": {
           "size": 272
@@ -276,7 +276,7 @@
           "size": 1700
         },
         "../../../src/components/v2/ChatLauncher.tsx": {
-          "size": 2157
+          "size": 2154
         },
         "../../../src/data/seoGoneSlugs.ts": {
           "size": 79
@@ -318,7 +318,7 @@
           "size": 556
         },
         "../../../src/routes/__root.tsx": {
-          "size": 9549
+          "size": 9552
         },
         "../../../src/data/siteSchemas.ts": {
           "size": 3045
@@ -327,7 +327,7 @@
           "size": 692
         },
         "../../../src/routes/(admin)/admin/route.tsx": {
-          "size": 467
+          "size": 455
         },
         "../../../src/routes/(admin)/admin/index.tsx": {
           "size": 56
@@ -335,20 +335,17 @@
         "../../../src/routes/(admin)/admin/booking-engine.tsx": {
           "size": 70
         },
-        "../../../src/routes/(admin)/admin/booking-preview.tsx": {
-          "size": 71
-        },
         "../../../src/routes/(admin)/admin/bookings.tsx": {
           "size": 64
         },
-        "../../../src/routes/(admin)/admin/form-c.tsx": {
-          "size": 62
+        "../../../src/routes/(admin)/admin/inbox.tsx": {
+          "size": 61
+        },
+        "../../../src/routes/(admin)/admin/inventory.tsx": {
+          "size": 130
         },
         "../../../src/routes/(admin)/admin/invoices.tsx": {
           "size": 64
-        },
-        "../../../src/routes/(admin)/admin/night-audit.tsx": {
-          "size": 67
         },
         "../../../src/routes/(admin)/admin/restaurants.tsx": {
           "size": 67
@@ -358,9 +355,6 @@
         },
         "../../../src/routes/(admin)/admin/settings.tsx": {
           "size": 64
-        },
-        "../../../src/routes/(admin)/admin/staah.tsx": {
-          "size": 61
         },
         "../../../src/routes/(admin)/admin/stays.tsx": {
           "size": 61
@@ -375,7 +369,7 @@
           "size": 309
         },
         "../../../src/pages/v2/faqData.ts": {
-          "size": 7609
+          "size": 7601
         },
         "../../../src/routes/(company)/about/faq.tsx": {
           "size": 460
@@ -456,16 +450,16 @@
           "size": 359
         },
         "../../../src/routes/(guides)/guides/things-to-do-in-meghalaya.tsx": {
-          "size": 492
+          "size": 493
         },
         "../../../src/routes/(guides)/places-to-visit/$slug.tsx": {
           "size": 494
         },
         "../../../src/data/meghalayaTransportReference.ts": {
-          "size": 3401
+          "size": 3395
         },
         "../../../src/routes/(guides)/travel-guide/guwahati-to-shillong-transport.tsx": {
-          "size": 196
+          "size": 193
         },
         "../../../src/pages/howToReachFaqs.ts": {
           "size": 1704
@@ -486,22 +480,22 @@
           "size": 632
         },
         "../../../src/routes/(stays)/book/index.tsx": {
-          "size": 782
+          "size": 778
         },
         "../../../src/routes/(stays)/book/campsite.tsx": {
           "size": 377
         },
         "../../../src/routes/(stays)/book/confirmation.tsx": {
-          "size": 260
+          "size": 259
         },
         "../../../src/routes/(stays)/book/select.tsx": {
           "size": 308
         },
         "../../../src/data/stayHub.ts": {
-          "size": 6697
+          "size": 6687
         },
         "../../../src/routes/(stays)/stays/best-hostel-in-shillong.tsx": {
-          "size": 372
+          "size": 376
         },
         "../../../src/routes/(stays)/stays/budget-hostels-shillong.tsx": {
           "size": 375
@@ -528,13 +522,13 @@
           "size": 2343
         },
         "../../../src/pages/v2/experienceData.ts": {
-          "size": 1125
+          "size": 1126
         },
         "../../../src/routes/(stays)/stays/experience-by-xtsy.tsx": {
-          "size": 390
+          "size": 391
         },
         "../../../src/routes/(stays)/stays/female-travellers.tsx": {
-          "size": 623
+          "size": 622
         },
         "../../../src/routes/(stays)/stays/group-bookings-meghalaya.tsx": {
           "size": 359
@@ -609,7 +603,7 @@
           "size": 735
         },
         "../../../src/pages/v2/planTripData.ts": {
-          "size": 2246
+          "size": 2243
         },
         "../../../src/routes/(tours)/tours/plan-trip-with-ai.tsx": {
           "size": 469
@@ -648,7 +642,7 @@
           "size": 1343
         },
         "../../../src/routeTree.gen.ts": {
-          "size": 12039
+          "size": 11826
         },
         "../../../src/router.tsx": {
           "size": 624
@@ -669,7 +663,7 @@
           "size": 0
         },
         "[unmapped]": {
-          "size": 12037
+          "size": 12084
         },
         "[EOLs]": {
           "size": 43

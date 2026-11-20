@@ -1,66 +1,75 @@
 $ vite dev
 [33mThe plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the [1mresolve.tsconfigPaths[22m option. You can remove the plugin and set [1mresolve.tsconfigPaths: true[22m in your Vite config instead.[39m
 
-  [32m[1mVITE[22m v8.3.6[39m  [2mready in [0m[1m990[22m[2m[0m ms[22m
+  [32m[1mVITE[22m v8.3.6[39m  [2mready in [0m[1m739[22m[2m[0m ms[22m
 
   [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m8080[22m/[39m
-  [32m➜[39m  [1mNetwork[22m: [36mhttp://10.1.0.73:[1m8080[22m/[39m  [2meth0[22m
-[2m9:34:46 PM[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m connected.
-[2m9:34:48 PM[22m [33m[1m[vite][22m[39m [33m[2m(ssr)[22m[39m [33mwarning: /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts:49:30 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://10.1.0.226:[1m8080[22m/[39m  [2meth0[22m
+[2m10:40:07 PM[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m connected.
+[2m10:40:09 PM[22m [33m[1m[vite][22m[39m [33m[2m(ssr)[22m[39m [33mwarning: /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts:49:30 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
   Plugin: [35mtanstack-start-core::server-fn:ssr[39m
   File: [36m/home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts[39m
-[2m9:34:48 PM[22m [33m[1m[vite][22m[39m [33m[2m(ssr)[22m[39m [33mwarning: /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts:58:24 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[2m10:40:09 PM[22m [33m[1m[vite][22m[39m [33m[2m(ssr)[22m[39m [33mwarning: /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts:58:24 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
   Plugin: [35mtanstack-start-core::server-fn:ssr[39m
   File: [36m/home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts[39m
-[2m9:34:48 PM[22m [33m[1m[vite][22m[39m [33m[2m(ssr)[22m[39m [33mwarning: /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts:71:32 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[2m10:40:09 PM[22m [33m[1m[vite][22m[39m [33m[2m(ssr)[22m[39m [33mwarning: /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts:71:32 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
   Plugin: [35mtanstack-start-core::server-fn:ssr[39m
   File: [36m/home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts[39m
-[2m9:34:48 PM[22m [33m[1m[vite][22m[39m [33m[2m(ssr)[22m[39m [33mwarning: /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts:91:35 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[2m10:40:09 PM[22m [33m[1m[vite][22m[39m [33m[2m(ssr)[22m[39m [33mwarning: /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts:91:35 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
   Plugin: [35mtanstack-start-core::server-fn:ssr[39m
   File: [36m/home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts[39m
-[2m9:34:49 PM[22m [33m[1m[vite][22m[39m [33m[2m(ssr)[22m[39m [33mwarning: /home/runner/work/jibo-libo/jibo-libo/src/lib/travel/tripAssistant.functions.ts:6:35 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[2m10:40:09 PM[22m [33m[1m[vite][22m[39m [33m[2m(ssr)[22m[39m [33mwarning: /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts:108:32 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+  Plugin: [35mtanstack-start-core::server-fn:ssr[39m
+  File: [36m/home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts[39m
+[2m10:40:10 PM[22m [33m[1m[vite][22m[39m [33m[2m(ssr)[22m[39m [33mwarning: /home/runner/work/jibo-libo/jibo-libo/src/lib/travel/tripAssistant.functions.ts:6:35 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
   Plugin: [35mtanstack-start-core::server-fn:ssr[39m
   File: [36m/home/runner/work/jibo-libo/jibo-libo/src/lib/travel/tripAssistant.functions.ts[39m
-[2m9:34:53 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mdependencies optimized: [33m@tanstack/router-core, @tanstack/router-core/isServer, @tanstack/router-core/ssr/client, seroval[32m[39m
-[2m9:34:53 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32moptimized dependencies changed. reloading[39m
-[2m9:34:56 PM[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [33mwarning: /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts:49:30 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[2m10:40:14 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mdependencies optimized: [33m@tanstack/router-core, @tanstack/router-core/isServer, @tanstack/router-core/ssr/client, seroval[32m[39m
+[2m10:40:14 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32moptimized dependencies changed. reloading[39m
+[2m10:40:16 PM[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [33mwarning: /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts:49:30 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
   Plugin: [35mtanstack-start-core::server-fn:client[39m
   File: [36m/home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts[39m
-[2m9:34:56 PM[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [33mwarning: /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts:58:24 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[2m10:40:16 PM[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [33mwarning: /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts:58:24 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
   Plugin: [35mtanstack-start-core::server-fn:client[39m
   File: [36m/home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts[39m
-[2m9:34:56 PM[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [33mwarning: /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts:71:32 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[2m10:40:16 PM[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [33mwarning: /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts:71:32 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
   Plugin: [35mtanstack-start-core::server-fn:client[39m
   File: [36m/home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts[39m
-[2m9:34:56 PM[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [33mwarning: /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts:91:35 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[2m10:40:16 PM[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [33mwarning: /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts:91:35 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
   Plugin: [35mtanstack-start-core::server-fn:client[39m
   File: [36m/home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts[39m
-[2m9:35:13 PM[22m [33m[1m[vite][22m[39m [33m[2m(ssr)[22m[39m [33mwarning: /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts?tss-serverfn-split:49:30 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[2m10:40:16 PM[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [33mwarning: /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts:108:32 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+  Plugin: [35mtanstack-start-core::server-fn:client[39m
+  File: [36m/home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts[39m
+[2m10:40:32 PM[22m [33m[1m[vite][22m[39m [33m[2m(ssr)[22m[39m [33mwarning: /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts?tss-serverfn-split:49:30 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
   Plugin: [35mtanstack-start-core::server-fn:ssr[39m
   File: [36m/home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts?tss-serverfn-split[39m
-[2m9:35:13 PM[22m [33m[1m[vite][22m[39m [33m[2m(ssr)[22m[39m [33mwarning: /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts?tss-serverfn-split:58:24 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[2m10:40:32 PM[22m [33m[1m[vite][22m[39m [33m[2m(ssr)[22m[39m [33mwarning: /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts?tss-serverfn-split:58:24 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
   Plugin: [35mtanstack-start-core::server-fn:ssr[39m
   File: [36m/home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts?tss-serverfn-split[39m
-[2m9:35:13 PM[22m [33m[1m[vite][22m[39m [33m[2m(ssr)[22m[39m [33mwarning: /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts?tss-serverfn-split:71:32 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[2m10:40:32 PM[22m [33m[1m[vite][22m[39m [33m[2m(ssr)[22m[39m [33mwarning: /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts?tss-serverfn-split:71:32 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
   Plugin: [35mtanstack-start-core::server-fn:ssr[39m
   File: [36m/home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts?tss-serverfn-split[39m
-[2m9:35:13 PM[22m [33m[1m[vite][22m[39m [33m[2m(ssr)[22m[39m [33mwarning: /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts?tss-serverfn-split:91:35 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[2m10:40:32 PM[22m [33m[1m[vite][22m[39m [33m[2m(ssr)[22m[39m [33mwarning: /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts?tss-serverfn-split:91:35 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
   Plugin: [35mtanstack-start-core::server-fn:ssr[39m
   File: [36m/home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts?tss-serverfn-split[39m
-[2m9:36:09 PM[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [33mwarning: /home/runner/work/jibo-libo/jibo-libo/src/lib/travel/tripAssistant.functions.ts:6:35 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[2m10:40:32 PM[22m [33m[1m[vite][22m[39m [33m[2m(ssr)[22m[39m [33mwarning: /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts?tss-serverfn-split:108:32 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+  Plugin: [35mtanstack-start-core::server-fn:ssr[39m
+  File: [36m/home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts?tss-serverfn-split[39m
+[2m10:41:25 PM[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [33mwarning: /home/runner/work/jibo-libo/jibo-libo/src/lib/travel/tripAssistant.functions.ts:6:35 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
   Plugin: [35mtanstack-start-core::server-fn:client[39m
   File: [36m/home/runner/work/jibo-libo/jibo-libo/src/lib/travel/tripAssistant.functions.ts[39m
-[2m9:36:10 PM[22m [33m[1m[vite][22m[39m [33m[2m(ssr)[22m[39m [33mwarning: /home/runner/work/jibo-libo/jibo-libo/src/lib/travel/tripAssistant.functions.ts?tss-serverfn-split:6:35 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[2m10:41:26 PM[22m [33m[1m[vite][22m[39m [33m[2m(ssr)[22m[39m [33mwarning: /home/runner/work/jibo-libo/jibo-libo/src/lib/travel/tripAssistant.functions.ts?tss-serverfn-split:6:35 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
   Plugin: [35mtanstack-start-core::server-fn:ssr[39m
   File: [36m/home/runner/work/jibo-libo/jibo-libo/src/lib/travel/tripAssistant.functions.ts?tss-serverfn-split[39m
-[2m9:36:24 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2m.output/public/google26fc7f8979f6290c.html[22m
-[2m9:36:24 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2m.output/public/index.html[22m
-[2m9:36:24 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2m.output/public/guides/index.html[22m
-[2m9:36:24 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2m.output/public/tours/index.html[22m
-[2m9:36:25 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2m.output/public/about/faq/index.html[22m
-[2m9:36:25 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2m.output/public/stays/best-hostel-in-shillong/index.html[22m
-[2m9:36:25 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2m.output/public/stays/workation/index.html[22m
-[2m9:36:25 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2m.output/public/tours/destination-wedding-shillong/index.html[22m
-[2m9:36:25 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2m.output/public/tours/meghalaya-tour-packages/index.html[22m
-[2m9:36:25 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2m.output/public/tours/xtsy-rentals/index.html[22m
-[2m9:36:25 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2m.output/public/stays/experience-by-xtsy/index.html[22m
+[2m10:41:39 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2m.output/public/google26fc7f8979f6290c.html[22m
+[2m10:41:39 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2m.output/public/index.html[22m
+[2m10:41:39 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2m.output/public/guides/index.html[22m
+[2m10:41:39 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2m.output/public/tours/index.html[22m
+[2m10:41:39 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2m.output/public/about/faq/index.html[22m
+[2m10:41:39 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2m.output/public/stays/best-hostel-in-shillong/index.html[22m
+[2m10:41:39 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2m.output/public/stays/experience-by-xtsy/index.html[22m
+[2m10:41:39 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2m.output/public/stays/workation/index.html[22m
+[2m10:41:39 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2m.output/public/tours/destination-wedding-shillong/index.html[22m
+[2m10:41:39 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2m.output/public/tours/meghalaya-tour-packages/index.html[22m
+[2m10:41:39 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2m.output/public/tours/xtsy-rentals/index.html[22m
