@@ -7,7 +7,9 @@
  * search works, payment is switched off.
  */
 import { useEffect, useMemo, useState, type FormEvent } from 'react';
-import { CalendarDays, ChevronDown, ChevronUp, Minus, Plus, Users, X, MessageCircle, ArrowLeft, ShieldCheck } from 'lucide-react';
+import { CalendarDays, ChevronDown, ChevronUp, Minus, Plus, Users, X, MessageCircle, ArrowLeft, ShieldCheck, Trash2 } from 'lucide-react';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { HOUSE_RULES } from '@/booking/houseRules';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -19,6 +21,7 @@ import { PAYMENT_METHODS, type PaymentMethod } from '@/booking/payments/fees';
 import { BOOKING_POLICY_TEXT, HOSTEL_POLICIES } from '@/data/hostelPolicies';
 import { roomContent } from '@/booking/roomContent';
 import type { RoomResult, SearchResult } from '@/booking/publicEngine.core';
+import { isIndian } from '@/booking/guestRules';
 import { quoteFn, searchStaysFn, startCheckoutFn } from '@/booking/publicEngine.functions';
 import { openWhatsAppDirectly } from '@/utils/privacyCompliantWhatsApp';
 
@@ -63,6 +66,9 @@ export default function StayEngine({ mode }: { mode: 'live' | 'preview' }) {
   }, [result]);
 
   const lines = useMemo(() => Object.entries(cart).map(([id, v]) => ({ room: result?.rooms.find((r) => r.id === id), ...v })).filter((l) => l.room), [cart, result]);
+  const [rulesOpen, setRulesOpen] = useState(false);
+  const remove = (id: string) => setCart((c) => { const n = { ...c }; delete n[id]; return n; });
+  const roomQuote = useRoomQuote(result, cart);
   const setDates = (ci: IsoDate, co: IsoDate) => {
     setCheckIn(ci);
     setCheckOut(co > ci ? co : addDays(ci, 1));
@@ -100,13 +106,14 @@ export default function StayEngine({ mode }: { mode: 'live' | 'preview' }) {
 
           <aside className="hidden lg:block">
             <div className="sticky top-24">
-              <Summary result={result} lines={lines} onContinue={() => setStep('details')} />
+              <Summary result={result} lines={lines} quote={roomQuote} onRemove={remove} onContinue={() => setRulesOpen(true)} />
             </div>
           </aside>
 
           <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-background/95 p-4 backdrop-blur lg:hidden">
-            <Summary compact result={result} lines={lines} onContinue={() => setStep('details')} />
+            <Summary compact result={result} lines={lines} quote={roomQuote} onRemove={remove} onContinue={() => setRulesOpen(true)} />
           </div>
+          <KnowBeforeYouGo open={rulesOpen} onOpenChange={setRulesOpen} onContinue={() => { setRulesOpen(false); setStep('details'); window.scrollTo({ top: 0 }); }} />
         </div>
       ) : (
         result && <Details mode={mode} result={result} cart={cart} lines={lines} onBack={() => setStep('rooms')} />
@@ -238,59 +245,132 @@ function RoomSkeletons() {
 
 type Line = { room?: RoomResult; units: number; guests: number };
 
-function Summary({ result, lines, onContinue, compact }: { result: SearchResult | null; lines: Line[]; onContinue: () => void; compact?: boolean }) {
-  const nightly = lines.reduce((s, l) => s + (l.room?.fromRate ?? 0) * l.units, 0);
+/** Quote for the room step (no breakfast, UPI): tax, grand total and the 25% payable now. */
+function useRoomQuote(result: SearchResult | null, cart: Cart): QuoteData | null {
+  const [q, setQ] = useState<QuoteData | null>(null);
+  const key = JSON.stringify(cart);
+  useEffect(() => {
+    const rooms = Object.entries(cart).map(([roomTypeId, v]) => ({ roomTypeId, ...v }));
+    if (!result || rooms.length === 0) { setQ(null); return; }
+    let stale = false;
+    quoteFn({ data: { checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfastGuests: 0, method: 'upi' } })
+      .then((r) => !stale && setQ(r.ok ? r.data : null))
+      .catch(() => !stale && setQ(null));
+    return () => { stale = true; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [result?.checkIn, result?.checkOut, key]);
+  return q;
+}
+
+const nightsLabel = (n: number) => `${n} night${n === 1 ? '' : 's'}`;
+const longDateFmt = new Intl.DateTimeFormat('en-IN', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+const longDate = (d: IsoDate) => longDateFmt.format(new Date(`${d}T00:00:00Z`));
+
+function Summary({ result, lines, quote, onRemove, onContinue, compact }: {
+  result: SearchResult | null; lines: Line[]; quote: QuoteData | null; onRemove: (id: string) => void; onContinue: () => void; compact?: boolean;
+}) {
+  const nights = result?.nights ?? 1;
   if (compact) {
     return (
       <div className="flex items-center justify-between gap-3">
         <div className="text-sm">
-          {lines.length ? <><span className="font-semibold">{formatInr(nightly * (result?.nights ?? 1))}</span> <span className="text-muted-foreground">+ GST · {result?.nights} night(s)</span></>
-            : result?.fromRate != null ? <>From <span className="font-semibold">{formatInr(result.fromRate)}</span> / night</> : 'No rooms free for these dates'}
+          {lines.length && quote ? (
+            <><span className="text-muted-foreground">Payable now </span><span className="font-semibold">{formatInr(quote.quote.advance)}</span>
+              <span className="block text-xs text-muted-foreground">Total {formatInr(quote.quote.total)} incl. tax · {nightsLabel(nights)}</span></>
+          ) : result?.fromRate != null ? <>From <span className="font-semibold">{formatInr(result.fromRate)}</span> / night</> : 'No rooms free for these dates'}
         </div>
-        <Button className="min-h-12 rounded-full px-6" disabled={!lines.length} onClick={onContinue}>Continue</Button>
+        <Button className="min-h-12 rounded-full px-6" disabled={!lines.length} onClick={onContinue}>Book now</Button>
+      </div>
+    );
+  }
+  if (!lines.length) {
+    return (
+      <div className="rounded-2xl border border-border bg-card p-5">
+        {result?.fromRate != null ? (
+          <p className="text-2xl font-semibold">From {formatInr(result.fromRate)} <span className="text-sm font-normal text-muted-foreground">/ night</span></p>
+        ) : (
+          <p className="text-lg font-semibold">{result ? 'Fully booked for these dates' : 'Loading…'}</p>
+        )}
+        <Button className="mt-4 min-h-12 w-full rounded-full" disabled>Select rooms</Button>
+        <p className="mt-3 text-xs text-muted-foreground">{BOOKING_POLICY_TEXT.payment}</p>
       </div>
     );
   }
   return (
     <div className="rounded-2xl border border-border bg-card p-5">
-      {result?.fromRate != null ? (
-        <p className="text-2xl font-semibold">From {formatInr(result.fromRate)} <span className="text-sm font-normal text-muted-foreground">/ night</span></p>
-      ) : (
-        <p className="text-lg font-semibold">{result ? 'Fully booked for these dates' : 'Loading…'}</p>
-      )}
-      {lines.length > 0 && (
-        <ul className="mt-4 space-y-2 text-sm">
-          {lines.map((l) => (
-            <li key={l.room!.id} className="flex justify-between gap-3">
-              <span>{l.room!.name} × {l.units}</span>
-              <span>{formatInr(l.room!.fromRate * l.units * (result?.nights ?? 1))}</span>
-            </li>
-          ))}
-          <li className="text-xs text-muted-foreground">{result?.nights} night(s) · GST added at the next step</li>
-        </ul>
-      )}
-      <Button className="mt-4 min-h-12 w-full rounded-full" disabled={!lines.length} onClick={onContinue}>
-        {lines.length ? 'Continue' : 'Select rooms'}
-      </Button>
-      <p className="mt-3 text-xs text-muted-foreground">{BOOKING_POLICY_TEXT.payment}</p>
+      <h2 className="text-2xl font-semibold">Booking summary</h2>
+      {result && <p className="text-sm text-muted-foreground"><span className="text-foreground">{nightsLabel(nights)}</span> starting from <span className="text-foreground">{longDate(result.checkIn)}</span></p>}
+      <ul className="mt-4 space-y-4 border-b border-dashed border-border pb-4">
+        {lines.map((l) => (
+          <li key={l.room!.id}>
+            <div className="flex items-start justify-between gap-3">
+              <p className="font-medium leading-snug">{l.room!.name} × {l.units}</p>
+              <button type="button" onClick={() => onRemove(l.room!.id)} className="-mr-2 -mt-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-muted-foreground hover:text-foreground" aria-label={`Remove ${l.room!.name}`}>
+                <Trash2 className="h-4 w-4" />
+              </button>
+            </div>
+            <div className="flex justify-between text-sm text-muted-foreground">
+              <span>{formatInr(l.room!.fromRate)} × {l.units} × {nightsLabel(nights)}</span>
+              <span className="text-foreground">{formatInr(l.room!.fromRate * l.units * nights)}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+      {quote ? (
+        <dl className="mt-4 space-y-2">
+          <div className="flex justify-between"><dt>Tax (GST)</dt><dd>{formatInr(quote.quote.gst)}</dd></div>
+          <div className="flex justify-between text-lg font-medium"><dt>Grand total</dt><dd>{formatInr(quote.quote.total)}</dd></div>
+          <div className="flex justify-between text-lg font-semibold"><dt>Payable now ({HOSTEL_POLICIES.advancePercent}%)</dt><dd>{formatInr(quote.quote.advance)}</dd></div>
+          <p className="text-xs text-muted-foreground">+ payment gateway charge for your method. The rest is paid at check-in.</p>
+        </dl>
+      ) : <p className="mt-4 text-sm text-muted-foreground">Calculating…</p>}
+      <Button className="mt-4 min-h-12 w-full rounded-full" onClick={onContinue}>Book now</Button>
     </div>
   );
 }
+
+function KnowBeforeYouGo({ open, onOpenChange, onContinue }: { open: boolean; onOpenChange: (o: boolean) => void; onContinue: () => void }) {
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="max-w-md border-border bg-card text-foreground">
+        <DialogHeader>
+          <DialogTitle className="text-2xl text-foreground">Know before you go</DialogTitle>
+          <DialogDescription className="text-muted-foreground">XTSY Travellers Hostel, New Shillong Township</DialogDescription>
+        </DialogHeader>
+        <dl className="max-h-[50vh] space-y-3 overflow-y-auto">
+          {HOUSE_RULES.map((r) => (
+            <div key={r.label}>
+              <dt className="text-xs text-muted-foreground">{r.label}</dt>
+              <dd className="text-sm text-foreground">{r.value}</dd>
+            </div>
+          ))}
+        </dl>
+        <Button className="min-h-12 w-full rounded-full" onClick={onContinue}>Continue</Button>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
+const NATIONALITIES = ['India', 'Bangladesh', 'Bhutan', 'Nepal', 'Myanmar', 'Thailand', 'Malaysia', 'Singapore', 'Japan', 'South Korea', 'China', 'Australia', 'United Kingdom', 'United States', 'Canada', 'Germany', 'France', 'Netherlands', 'Spain', 'Italy', 'Israel', 'Russia', 'Other'];
 
 function Details({ mode, result, cart, lines, onBack }: { mode: 'live' | 'preview'; result: SearchResult; cart: Cart; lines: Line[]; onBack: () => void }) {
   const totalGuests = lines.reduce((s, l) => s + l.guests, 0);
   const [breakfast, setBreakfast] = useState(0);
   const [method, setMethod] = useState<PaymentMethod>('upi');
-  const [guest, setGuest] = useState({ name: '', phone: '', email: '', nationality: 'Indian' });
+  const [guest, setGuest] = useState({ name: '', phone: '', email: '', gender: '' as '' | 'female' | 'male' | 'other', nationality: 'India', otherNationality: '' });
   const [policy, setPolicy] = useState(false);
   const [female, setFemale] = useState(false);
   const [sky, setSky] = useState(false);
   const [quote, setQuote] = useState<QuoteData | null>(null);
   const [msg, setMsg] = useState('');
   const [busy, setBusy] = useState(false);
+  const [mismatch, setMismatch] = useState(false);
   const rooms = Object.entries(cart).map(([roomTypeId, v]) => ({ roomTypeId, ...v }));
-  const needsFemale = lines.some((l) => l.room?.femaleOnly);
+  const femaleLines = lines.filter((l) => l.room?.femaleOnly);
+  const femaleBeds = femaleLines.reduce((s, l) => s + l.units, 0);
   const needsSky = lines.some((l) => l.room?.id === 'experience-by-xtsy');
+  const nationality = guest.nationality === 'Other' ? guest.otherNationality : guest.nationality;
+  const foreign = nationality.trim() !== '' && !isIndian(nationality);
 
   useEffect(() => {
     let stale = false;
@@ -300,14 +380,17 @@ function Details({ mode, result, cart, lines, onBack }: { mode: 'live' | 'previe
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [breakfast, method, result.checkIn, result.checkOut, JSON.stringify(cart)]);
 
+  const ready = policy && guest.gender !== '' && (!needsSky || sky) && (femaleBeds <= 1 || female);
+
   const submit = async (e: FormEvent) => {
     e.preventDefault();
+    if (femaleBeds > 0 && guest.gender !== 'female') return setMismatch(true);
     if (mode === 'preview') return setMsg('Preview only: payment opens when the launch switch is on.');
     setBusy(true);
     setMsg('');
     const r = await startCheckoutFn({ data: {
       checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfastGuests: breakfast, method,
-      guest: { name: guest.name, phone: guest.phone, email: guest.email || undefined, nationality: guest.nationality || undefined },
+      guest: { name: guest.name, phone: guest.phone, email: guest.email, gender: guest.gender as 'female' | 'male' | 'other', nationality },
       policyAccepted: policy, femaleOnlyAck: female, skyViewAck: sky,
     } }).catch(() => ({ ok: false as const, error: 'Could not reach the booking service. Please try again.' }));
     if (r.ok) { window.location.assign(r.data.redirectUrl); return; }
@@ -320,16 +403,37 @@ function Details({ mode, result, cart, lines, onBack }: { mode: 'live' | 'previe
   );
 
   return (
-    <form onSubmit={submit} className="grid gap-6 lg:grid-cols-[1fr_360px]">
+    <form onSubmit={submit} className="grid gap-6 lg:grid-cols-[1fr_380px]">
       <section className="space-y-6">
-        <button type="button" onClick={onBack} className="flex min-h-11 items-center gap-2 text-sm text-muted-foreground hover:text-foreground"><ArrowLeft className="h-4 w-4" /> Change rooms or dates</button>
-        <h1 className="text-3xl font-semibold">Guest details</h1>
-        <div className="grid gap-4 sm:grid-cols-2">
-          <Field id="g-name" label="Full name (as on ID)" required value={guest.name} onChange={(v) => setGuest({ ...guest, name: v })} autoComplete="name" />
-          <Field id="g-phone" label="Phone (WhatsApp)" required type="tel" value={guest.phone} onChange={(v) => setGuest({ ...guest, phone: v })} autoComplete="tel" />
-          <Field id="g-email" label="Email (for your receipt)" type="email" value={guest.email} onChange={(v) => setGuest({ ...guest, email: v })} autoComplete="email" />
-          <Field id="g-nat" label="Nationality" value={guest.nationality} onChange={(v) => setGuest({ ...guest, nationality: v })} />
+        <div className="flex items-center gap-3">
+          <button type="button" onClick={onBack} className="flex h-11 w-11 items-center justify-center rounded-full hover:bg-muted" aria-label="Back to rooms"><ArrowLeft className="h-6 w-6" /></button>
+          <h1 className="text-3xl font-semibold">Confirm &amp; pay</h1>
         </div>
+
+        <h2 className="text-xl font-semibold">Guest details</h2>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Field id="g-name" label="Full name (as per ID)" required value={guest.name} onChange={(v) => setGuest({ ...guest, name: v })} autoComplete="name" />
+          <Field id="g-email" label="Email" required type="email" value={guest.email} onChange={(v) => setGuest({ ...guest, email: v })} autoComplete="email" />
+          <Field id="g-phone" label="Mobile number (WhatsApp)" required type="tel" value={guest.phone} onChange={(v) => setGuest({ ...guest, phone: v })} autoComplete="tel" />
+          <fieldset className="space-y-1">
+            <legend className="text-sm font-medium">Gender<span className="text-destructive"> *</span></legend>
+            <div className="flex min-h-11 flex-wrap items-center gap-4 rounded-md border border-border px-3">
+              {(['male', 'female', 'other'] as const).map((g) => (
+                <label key={g} className="flex min-h-11 items-center gap-2 text-sm capitalize">
+                  <input type="radio" name="gender" value={g} checked={guest.gender === g} onChange={() => setGuest({ ...guest, gender: g })} required /> {g}
+                </label>
+              ))}
+            </div>
+          </fieldset>
+          <div className="space-y-1">
+            <Label htmlFor="g-nat">Nationality<span className="text-destructive"> *</span></Label>
+            <select id="g-nat" className="min-h-11 w-full rounded-md border border-border bg-background px-3 text-base" value={guest.nationality} onChange={(e) => setGuest({ ...guest, nationality: e.target.value })}>
+              {NATIONALITIES.map((n) => <option key={n} value={n}>{n}</option>)}
+            </select>
+          </div>
+          {guest.nationality === 'Other' && <Field id="g-nat-other" label="Your nationality" required value={guest.otherNationality} onChange={(v) => setGuest({ ...guest, otherNationality: v })} />}
+        </div>
+        {foreign && <p className="text-sm text-muted-foreground">Foreign nationals: please carry your passport and visa. The desk files Form C within 24 hours of arrival.</p>}
 
         <fieldset className="space-y-2">
           <legend className="text-sm font-medium">Breakfast from TAB Bistro (₹280 per person per morning + GST)</legend>
@@ -350,39 +454,68 @@ function Details({ mode, result, cart, lines, onBack }: { mode: 'live' | 'previe
           <p className="text-xs text-muted-foreground">Indian cards, UPI and net banking. The gateway charge for your method is shown in the summary.</p>
         </fieldset>
 
-        <div className="space-y-3 rounded-xl border border-border p-4 text-sm">
-          <p className="font-medium">Booking policy</p>
-          <ul className="list-disc space-y-1 pl-5 text-muted-foreground">
-            <li>{BOOKING_POLICY_TEXT.payment}</li>
-            <li>{BOOKING_POLICY_TEXT.cancellation}</li>
-            <li>{BOOKING_POLICY_TEXT.dateChange}</li>
-            <li>Rates exclude breakfast, GST and payment gateway charges.</li>
-          </ul>
-          <Ack id="ack-policy" checked={policy} onChange={setPolicy}>I accept the booking policy.</Ack>
-          {needsFemale && <Ack id="ack-female" checked={female} onChange={setFemale}>The female deluxe dorm bed is for a female guest.</Ack>}
-          {needsSky && <Ack id="ack-sky" checked={sky} onChange={setSky}>I understand the suite’s sky view depends on the weather and is not guaranteed.</Ack>}
+        <div className="divide-y divide-border border-y border-border">
+          <details className="group py-4">
+            <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between text-xl font-semibold">Cancellation policy <ChevronDown className="h-5 w-5 transition-transform group-open:rotate-180" aria-hidden /></summary>
+            <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-muted-foreground">
+              <li>{BOOKING_POLICY_TEXT.cancellation}</li>
+              <li>{BOOKING_POLICY_TEXT.dateChange}</li>
+              <li>Full refund only if XTSY cannot provide the room you booked.</li>
+            </ul>
+          </details>
+          <details className="group py-4">
+            <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between text-xl font-semibold">Property policy <ChevronDown className="h-5 w-5 transition-transform group-open:rotate-180" aria-hidden /></summary>
+            <dl className="mt-2 space-y-2 text-sm">
+              {HOUSE_RULES.map((r) => <div key={r.label}><dt className="text-muted-foreground">{r.label}</dt><dd>{r.value}</dd></div>)}
+              <div><dt className="text-muted-foreground">Rates</dt><dd>Exclude breakfast, GST and payment gateway charges.</dd></div>
+            </dl>
+          </details>
         </div>
       </section>
 
       <aside>
         <div className="sticky top-24 space-y-4 rounded-2xl border border-border bg-card p-5">
-          <p className="text-sm text-muted-foreground">{date(result.checkIn)} → {date(result.checkOut)} · {result.nights} night(s) · {totalGuests} guest(s)</p>
+          <div>
+            <h2 className="text-2xl font-semibold">Summary</h2>
+            <p className="text-sm text-muted-foreground"><span className="text-foreground">{nightsLabel(result.nights)}</span> starting from <span className="text-foreground">{longDate(result.checkIn)}</span> · {totalGuests} guest(s)</p>
+          </div>
+          <ul className="space-y-3 border-b border-dashed border-border pb-4">
+            {lines.map((l) => {
+              const img = roomContent(l.room!.id).images[0];
+              return (
+                <li key={l.room!.id} className="flex gap-3">
+                  {img ? <img src={img} alt="" className="h-14 w-14 shrink-0 rounded-lg object-cover" /> : <div className="h-14 w-14 shrink-0 rounded-lg bg-muted" />}
+                  <div className="flex-1 text-sm">
+                    <p className="font-medium leading-snug">{l.room!.name} × {l.units}</p>
+                    <p className="flex justify-between text-muted-foreground"><span>{formatInr(l.room!.fromRate)} × {nightsLabel(result.nights)}</span><span className="text-foreground">{formatInr(l.room!.fromRate * l.units * result.nights)}</span></p>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
           {quote ? (
             <dl className="space-y-2 text-sm">
-              {quote.quote.lines.map((l) => (
+              {quote.quote.lines.filter((l) => l.label.startsWith('Breakfast')).map((l) => (
                 <div key={l.label} className="flex justify-between gap-3"><dt className="text-muted-foreground">{l.label}</dt><dd>{formatInr(l.taxable)}</dd></div>
               ))}
-              <div className="flex justify-between gap-3"><dt className="text-muted-foreground">GST</dt><dd>{formatInr(quote.quote.gst)}</dd></div>
-              <div className="flex justify-between gap-3 border-t border-border pt-2 font-medium"><dt>Booking total</dt><dd>{formatInr(quote.quote.total)}</dd></div>
+              <div className="flex justify-between gap-3"><dt>Stay total</dt><dd>{formatInr(quote.quote.taxable)}</dd></div>
+              <div className="flex justify-between gap-3"><dt>Tax total (GST)</dt><dd>{formatInr(quote.quote.gst)}</dd></div>
+              <div className="flex justify-between gap-3 border-t border-dashed border-border pt-2 text-base font-semibold"><dt>Grand total</dt><dd>{formatInr(quote.quote.total)}</dd></div>
               <div className="flex justify-between gap-3"><dt className="text-muted-foreground">Advance ({HOSTEL_POLICIES.advancePercent}%)</dt><dd>{formatInr(quote.quote.advance)}</dd></div>
               <div className="flex justify-between gap-3"><dt className="text-muted-foreground">Gateway charge + 18% GST</dt><dd>{formatInr(quote.advanceCharge.gatewayCharge + quote.advanceCharge.gstOnCharge)}</dd></div>
-              <div className="flex justify-between gap-3 border-t border-border pt-2 text-base font-semibold"><dt>Pay now</dt><dd>{formatInr(quote.advanceCharge.payable)}</dd></div>
+              <div className="flex justify-between gap-3 text-base font-semibold text-emerald-400"><dt>Payable now</dt><dd>{formatInr(quote.advanceCharge.payable)}</dd></div>
               <div className="flex justify-between gap-3 text-muted-foreground"><dt>At check-in ({HOSTEL_POLICIES.balancePercent}%)</dt><dd>{formatInr(quote.quote.balance)}</dd></div>
             </dl>
           ) : <p className="text-sm text-muted-foreground">Calculating…</p>}
-          <Button type="submit" className="min-h-12 w-full rounded-full" disabled={busy || !quote}>
+
+          <div className="space-y-3 border-t border-border pt-4 text-sm">
+            <Ack id="ack-policy" checked={policy} onChange={setPolicy}>I accept the cancellation and property policies.<span className="text-destructive"> *</span></Ack>
+            {femaleBeds > 1 && <Ack id="ack-female" checked={female} onChange={setFemale}>Every guest in the female deluxe dorm is female.<span className="text-destructive"> *</span></Ack>}
+            {needsSky && <Ack id="ack-sky" checked={sky} onChange={setSky}>I understand the suite’s sky view depends on the weather and is not guaranteed.<span className="text-destructive"> *</span></Ack>}
+          </div>
+          <Button type="submit" className="min-h-12 w-full rounded-full" disabled={busy || !quote || !ready}>
             <ShieldCheck className="mr-2 h-4 w-4" aria-hidden />
-            {busy ? 'Opening payment…' : quote ? `Pay ${formatInr(quote.advanceCharge.payable)} securely` : 'Pay advance'}
+            {busy ? 'Opening payment…' : 'Confirm & pay'}
           </Button>
           {msg && <p className="text-sm text-destructive" role="alert">{msg}</p>}
           <button type="button" onClick={whatsapp} className="flex min-h-11 w-full items-center justify-center gap-2 text-sm text-muted-foreground hover:text-foreground">
@@ -390,6 +523,18 @@ function Details({ mode, result, cart, lines, onBack }: { mode: 'live' | 'previe
           </button>
         </div>
       </aside>
+
+      <Dialog open={mismatch} onOpenChange={setMismatch}>
+        <DialogContent className="max-w-sm border-border bg-card text-center text-foreground">
+          <DialogHeader>
+            <DialogTitle className="text-center text-2xl text-foreground">Gender mismatch</DialogTitle>
+            <DialogDescription className="text-center text-base text-foreground/80">
+              You chose {femaleBeds} bed{femaleBeds > 1 ? 's' : ''} in the female-only dorm, but the lead guest is not female. Check the guest’s gender or choose another room.
+            </DialogDescription>
+          </DialogHeader>
+          <Button variant="ghost" className="min-h-11 text-primary" onClick={() => setMismatch(false)}>Got it</Button>
+        </DialogContent>
+      </Dialog>
     </form>
   );
 }

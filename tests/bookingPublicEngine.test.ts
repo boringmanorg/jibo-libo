@@ -17,7 +17,7 @@ import type { ChannelManager } from '../src/booking/channel/channelManager';
 // ---- a small in-memory stand-in for the Supabase query builder --------------------------
 type Row = Record<string, any>;
 function fakeDb(seed: Record<string, Row[]> = {}) {
-  const t: Record<string, Row[]> = { be_settings: [], be_room_mapping: [], be_bookings: [], be_booking_lines: [], be_holds: [], be_payments: [], be_webhook_events: [], be_invoices: [], be_channel_log: [], ...seed };
+  const t: Record<string, Row[]> = { be_guests: [], be_settings: [], be_room_mapping: [], be_bookings: [], be_booking_lines: [], be_holds: [], be_payments: [], be_webhook_events: [], be_invoices: [], be_channel_log: [], ...seed };
   let idn = 0;
   const unique: Record<string, string> = { be_webhook_events: 'key', be_bookings: 'reference' };
   function q(table: string) {
@@ -108,7 +108,7 @@ const deps = (over: Partial<EngineDeps> = {}): EngineDeps => ({ db: fakeDb(), en
 const input = (over: Partial<CheckoutInput> = {}): CheckoutInput => ({
   checkIn: '2026-12-01', checkOut: '2026-12-03',
   rooms: [{ roomTypeId: 'king-room-with-mountain-view', units: 1, guests: 2 }],
-  breakfastGuests: 0, guest: { name: 'Test Guest', phone: '+91 98765 43210' }, method: 'upi', policyAccepted: true, ...over,
+  breakfastGuests: 0, guest: { name: 'Test Guest', phone: '+91 98765 43210', email: 'guest@example.com', gender: 'male', nationality: 'India' }, method: 'upi', policyAccepted: true, ...over,
 });
 
 describe('dates', () => {
@@ -160,12 +160,13 @@ describe('search', () => {
 describe('checkout', () => {
   it('lists every problem before touching the database', () => {
     const p = checkoutProblems(input({
-      policyAccepted: false, guest: { name: 'A', phone: '12' },
+      policyAccepted: false, guest: { name: 'A', phone: '12', email: 'bad', gender: 'male', nationality: 'India' },
       rooms: [{ roomTypeId: 'bed-in-4-bed-female-deluxe-dormitory', units: 1, guests: 1 }, { roomTypeId: 'experience-by-xtsy', units: 1, guests: 2 }],
       breakfastGuests: 5,
     }));
     expect(p.join(' ')).toMatch(/policy/);
-    expect(p.join(' ')).toMatch(/female guests only/);
+    expect(p.join(' ')).toMatch(/Gender mismatch/);
+    expect(p.join(' ')).toMatch(/valid email/);
     expect(p.join(' ')).toMatch(/sky view/);
     expect(p.join(' ')).toMatch(/Breakfast guests/);
     expect(p.join(' ')).toMatch(/phone/);
@@ -202,8 +203,8 @@ describe('checkout', () => {
     const d = deps({ db, gateway: fakeGateway({ status: 'pending' }), channel: connectedChannel() });
     await startCheckout(d, input(), 'https://xtsy.one');
     await expect(startCheckout(d, input(), 'https://xtsy.one')).rejects.toThrow(/already have a booking waiting/);
-    await startCheckout(d, input({ guest: { name: 'Second', phone: '+91 90000 00002' } }), 'https://xtsy.one');
-    await expect(startCheckout(d, input({ guest: { name: 'Third', phone: '+91 90000 00003' } }), 'https://xtsy.one')).rejects.toThrow(/no longer has 1 free/);
+    await startCheckout(d, input({ guest: { name: 'Second', phone: '+91 90000 00002', email: 's@example.com', gender: 'male', nationality: 'India' } }), 'https://xtsy.one');
+    await expect(startCheckout(d, input({ guest: { name: 'Third', phone: '+91 90000 00003', email: 't@example.com', gender: 'male', nationality: 'India' } }), 'https://xtsy.one')).rejects.toThrow(/no longer has 1 free/);
   });
 });
 
@@ -254,6 +255,26 @@ describe('payment confirmation', () => {
     expect(pb).toMatchObject({ reference, status: 'confirmed', nights: 2, advance: 126000, balance: 378000, lastChangeDate: '2026-11-17' });
     expect(JSON.stringify(pb)).not.toMatch(/Test Guest|98765/);
     expect(await publicBooking(d, 'not-a-ref')).toBeNull();
+  });
+});
+
+describe('guest checks', () => {
+  it('a female lead guest can book one female-dorm bed; two need the others confirmed', () => {
+    const female = { name: 'Asha', phone: '+91 98765 43210', email: 'a@example.com', gender: 'female' as const, nationality: 'India' };
+    const one = [{ roomTypeId: 'bed-in-4-bed-female-deluxe-dormitory', units: 1, guests: 1 }];
+    expect(checkoutProblems(input({ guest: female, rooms: one }))).toEqual([]);
+    const two = [{ roomTypeId: 'bed-in-4-bed-female-deluxe-dormitory', units: 2, guests: 2 }];
+    expect(checkoutProblems(input({ guest: female, rooms: two })).join(' ')).toMatch(/every guest/);
+    expect(checkoutProblems(input({ guest: female, rooms: two, femaleOnlyAck: true }))).toEqual([]);
+  });
+
+  it('records the lead guest and flags Form C for foreign nationals', async () => {
+    const db = fakeDb(liveSeed());
+    const d = deps({ db, gateway: fakeGateway({ status: 'pending' }), channel: connectedChannel() });
+    await startCheckout(d, input({ guest: { name: 'Lena', phone: '+49 1512 3456789', email: 'l@example.com', gender: 'female', nationality: 'Germany' } }), 'https://xtsy.one');
+    expect(db.t.be_guests[0]).toMatchObject({ full_name: 'Lena', gender: 'female', nationality: 'Germany', form_c_status: 'due' });
+    await startCheckout(d, input({ guest: { name: 'Ravi', phone: '+91 90000 11111', email: 'r@example.com', gender: 'male', nationality: 'India' }, rooms: [{ roomTypeId: 'triple-room-with-mountain-view', units: 1, guests: 3 }] }), 'https://xtsy.one');
+    expect(db.t.be_guests[1].form_c_status).toBe('not_required');
   });
 });
 

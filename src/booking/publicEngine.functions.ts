@@ -67,8 +67,9 @@ export const startCheckoutFn = createServerFn({ method: 'POST' })
     guest: z.object({
       name: z.string().trim().min(2).max(120),
       phone: z.string().trim().min(10).max(20),
-      email: z.string().trim().max(160).optional(),
-      nationality: z.string().trim().max(60).optional(),
+      email: z.string().trim().max(160),
+      gender: z.enum(['female', 'male', 'other']),
+      nationality: z.string().trim().max(60),
     }),
     policyAccepted: z.boolean(), femaleOnlyAck: z.boolean().optional(), skyViewAck: z.boolean().optional(),
   }))

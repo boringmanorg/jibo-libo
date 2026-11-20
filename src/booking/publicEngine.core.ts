@@ -24,6 +24,7 @@ import { createZohoGateway, zohoConfigFromEnv } from './payments/zoho.server';
 import { financialYear, invoiceNumber } from './invoiceNumber';
 import { HOSTEL_POLICIES } from '@/data/hostelPolicies';
 import type { Paise } from './money';
+import { isIndian } from './guestRules';
 
 type Db = any;
 export interface EngineDeps {
@@ -219,9 +220,11 @@ export interface CheckoutInput {
   checkOut: string;
   rooms: { roomTypeId: string; units: number; guests: number }[];
   breakfastGuests: number;
-  guest: { name: string; phone: string; email?: string; nationality?: string };
+  /** The lead guest. Gender is checked against female-only dorms; nationality decides Form C. */
+  guest: { name: string; phone: string; email: string; gender: 'female' | 'male' | 'other'; nationality: string };
   method: PaymentMethod;
   policyAccepted: boolean;
+  /** With more than one female-dorm bed: the other guests in it are female too. */
   femaleOnlyAck?: boolean;
   skyViewAck?: boolean;
 }
@@ -247,7 +250,8 @@ export function checkoutProblems(input: CheckoutInput): string[] {
     if (ids.has(r.roomTypeId)) out.push(`${room.name} is listed twice.`);
     ids.add(r.roomTypeId);
     if (room.soldAs === 'bed') beds += r.units; else rooms += r.units;
-    if (room.femaleOnly && !input.femaleOnlyAck) out.push(`${room.name} is for female guests only; please confirm.`);
+    if (room.femaleOnly && input.guest.gender !== 'female') out.push(`Gender mismatch: ${room.name} is for female guests only. Check the lead guest’s gender or choose another room.`);
+    if (room.femaleOnly && r.units > 1 && !input.femaleOnlyAck) out.push(`Please confirm every guest in ${room.name} is female.`);
     if (room.id === 'experience-by-xtsy' && !input.skyViewAck) out.push('Please confirm you understand the suite’s sky view depends on the weather.');
   }
   if (beds > MAX_BEDS_PER_BOOKING) out.push(`Up to ${MAX_BEDS_PER_BOOKING} beds per online booking; for groups, message the desk.`);
@@ -256,7 +260,9 @@ export function checkoutProblems(input: CheckoutInput): string[] {
   if (input.breakfastGuests < 0 || input.breakfastGuests > totalGuests) out.push('Breakfast guests cannot exceed guests staying.');
   if (!/^\+?[0-9 ]{10,15}$/.test(input.guest.phone.trim())) out.push('Enter a valid phone number.');
   if (input.guest.name.trim().length < 2) out.push('Enter the guest’s full name.');
-  if (input.guest.email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(input.guest.email)) out.push('Enter a valid email or leave it empty.');
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(input.guest.email.trim())) out.push('Enter a valid email for your receipt.');
+  if (!['female', 'male', 'other'].includes(input.guest.gender)) out.push('Choose the lead guest’s gender.');
+  if (input.guest.nationality.trim().length < 2) out.push('Choose a nationality.');
   return out;
 }
 
@@ -296,8 +302,8 @@ export async function startCheckout(d: EngineDeps, input: CheckoutInput, origin:
 
   const ins = await db.from('be_bookings').insert({
     reference, status: 'held', source: 'website', check_in: checkIn, check_out: checkOut,
-    guest_name: input.guest.name.trim(), guest_email: input.guest.email?.trim() || null, guest_phone: phone,
-    nationality: input.guest.nationality?.trim() || null, guests,
+    guest_name: input.guest.name.trim(), guest_email: input.guest.email.trim(), guest_phone: phone,
+    nationality: input.guest.nationality.trim(), guests,
     taxable_paise: quote.taxable, gst_paise: quote.gst, total_paise: quote.total,
     advance_paise: quote.advance, balance_paise: quote.balance,
     policy_version: state.settings.policyVersion, policy_accepted_at: d.now.toISOString(),
@@ -317,6 +323,12 @@ export async function startCheckout(d: EngineDeps, input: CheckoutInput, origin:
     booking_id: bookingId, room_type_id: r.roomTypeId, units: r.units, guests: r.guests,
     taxable_paise: roomLines[i].taxable, gst_bps: roomLines[i].gstBps, gst_paise: roomLines[i].gst,
   })));
+  await db.from('be_guests').insert({
+    booking_id: bookingId, full_name: input.guest.name.trim(), gender: input.guest.gender,
+    nationality: input.guest.nationality.trim(),
+    // Foreign nationals need a Form C within 24 hours of arrival.
+    form_c_status: isIndian(input.guest.nationality) ? 'not_required' : 'due',
+  });
   await db.from('be_holds').insert(input.rooms.map((r) => ({
     booking_id: bookingId, room_type_id: r.roomTypeId, units: r.units, nights, expires_at: expiresAt.toISOString(),
   })));

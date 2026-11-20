@@ -21,9 +21,13 @@ export const Route = createFileRoute("/(stays)/book/")({
   // The live engine appears only when the console's launch gate allows it (STAAH connected,
   // rooms mapped, payment keys saved, switch on). Until then, and on any error, guests keep
   // the WhatsApp enquiry flow.
+  // A paused Cloud database must not hold the page: after 1.5 s guests get the enquiry flow.
   loader: async () => {
     try {
-      return await getEngineStatus();
+      return await Promise.race([
+        getEngineStatus(),
+        new Promise<{ live: false }>((resolve) => setTimeout(() => resolve({ live: false }), 1500)),
+      ]);
     } catch {
       return { live: false };
     }
