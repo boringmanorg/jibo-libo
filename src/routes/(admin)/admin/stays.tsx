@@ -72,6 +72,13 @@ function Stays() {
         <p className="mt-2 text-xs text-muted-foreground">Rates come from the PMS when connected; until then, from the site's approved prices.</p>
       </CardContent></Card>
 
+      <Card><CardHeader><CardTitle>Availability from your Google Sheet</CardTitle></CardHeader><CardContent className="space-y-2 text-sm">
+        {data.sheetSyncedAt
+          ? <p>Last received <span className="font-semibold">{new Date(data.sheetSyncedAt).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', dateStyle: 'medium', timeStyle: 'short' })}</span>. The booking page starts from the sheet's count for each night, then takes off the blocks below.</p>
+          : <p>Not connected yet. Until the sheet sends its numbers, the booking page starts from the full room count and takes off the blocks below.</p>}
+        <p className="text-muted-foreground">The sheet sends from its XTSY menu, after edits and every 10 minutes. Only room numbers, dates and counts are sent; guest names stay in the sheet.</p>
+      </CardContent></Card>
+
       <Card><CardHeader><CardTitle>Block or open dates</CardTitle></CardHeader><CardContent className="space-y-4">
         <p className="text-sm text-muted-foreground">Blocks show on the guest booking page (/book) straight away: blocked nights read “Full”, and guests can’t pick more beds or rooms than are left.</p>
         <div className="grid gap-3 md:grid-cols-5">

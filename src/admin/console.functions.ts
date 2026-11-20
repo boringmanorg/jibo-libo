@@ -31,11 +31,13 @@ export const getConsoleOverview = createServerFn({ method: 'GET' })
   .handler(async ({ context }) => {
     const ctx = context as Ctx;
     const { cfg } = await endpoint();
-    const [s, inv, tables, log] = await Promise.all([
+    const [s, inv, tables, log, sheet] = await Promise.all([
       settings(ctx),
       ctx.supabase.from('console_inventory_overrides').select('*').order('start_date'),
       ctx.supabase.from('console_table_overrides').select('*').order('service_date'),
       ctx.supabase.from('console_audit_log').select('*').order('created_at', { ascending: false }).limit(25),
+      // Last time the Google Sheet sent availability (the table exists once migration 0018 has run).
+      ctx.supabase.from('be_sheet_availability').select('synced_at').order('synced_at', { ascending: false }).limit(1),
     ]);
     return {
       settings: s,
@@ -49,6 +51,7 @@ export const getConsoleOverview = createServerFn({ method: 'GET' })
       inventoryOverrides: (inv.data ?? []).map((o: any) => ({ ...o, property_id: canonicalPropertyId(o.property_id) })),
       tableOverrides: tables.data ?? [],
       audit: log.data ?? [],
+      sheetSyncedAt: (sheet.data?.[0]?.synced_at as string | undefined) ?? null,
     };
   });
 

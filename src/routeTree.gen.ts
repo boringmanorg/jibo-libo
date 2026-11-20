@@ -96,6 +96,7 @@ import { Route as adminAdminInvoicesIdRouteImport } from './routes/(admin)/admin
 import { Route as guidesDestinationsStateIndexRouteImport } from './routes/(guides)/destinations/$state/index'
 import { Route as toursExpeditionsTypeRouteRouteImport } from './routes/(tours)/expeditions/$type/$route'
 import { Route as ApiPublicHooksBistroGoogleSyncRouteImport } from './routes/api/public/hooks/bistro-google-sync'
+import { Route as ApiPublicHooksSheetAvailabilityRouteImport } from './routes/api/public/hooks/sheet-availability'
 import { Route as ApiPublicHooksZohoPaymentsRouteImport } from './routes/api/public/hooks/zoho-payments'
 import { Route as guidesDestinationsStateCityIndexRouteImport } from './routes/(guides)/destinations/$state/$city/index'
 import { Route as guidesDestinationsStateCityAttractionRouteImport } from './routes/(guides)/destinations/$state/$city/$attraction'
@@ -580,6 +581,12 @@ const ApiPublicHooksBistroGoogleSyncRoute =
     path: '/api/public/hooks/bistro-google-sync',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ApiPublicHooksSheetAvailabilityRoute =
+  ApiPublicHooksSheetAvailabilityRouteImport.update({
+    id: '/api/public/hooks/sheet-availability',
+    path: '/api/public/hooks/sheet-availability',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ApiPublicHooksZohoPaymentsRoute =
   ApiPublicHooksZohoPaymentsRouteImport.update({
     id: '/api/public/hooks/zoho-payments',
@@ -686,6 +693,7 @@ export interface FileRoutesByFullPath {
   '/admin/invoices/$id': typeof adminAdminInvoicesIdRoute
   '/expeditions/$type/$route': typeof toursExpeditionsTypeRouteRoute
   '/api/public/hooks/bistro-google-sync': typeof ApiPublicHooksBistroGoogleSyncRoute
+  '/api/public/hooks/sheet-availability': typeof ApiPublicHooksSheetAvailabilityRoute
   '/api/public/hooks/zoho-payments': typeof ApiPublicHooksZohoPaymentsRoute
   '/destinations/$state/': typeof guidesDestinationsStateIndexRoute
   '/destinations/$state/$city/$attraction': typeof guidesDestinationsStateCityAttractionRoute
@@ -777,6 +785,7 @@ export interface FileRoutesByTo {
   '/admin/invoices/$id': typeof adminAdminInvoicesIdRoute
   '/expeditions/$type/$route': typeof toursExpeditionsTypeRouteRoute
   '/api/public/hooks/bistro-google-sync': typeof ApiPublicHooksBistroGoogleSyncRoute
+  '/api/public/hooks/sheet-availability': typeof ApiPublicHooksSheetAvailabilityRoute
   '/api/public/hooks/zoho-payments': typeof ApiPublicHooksZohoPaymentsRoute
   '/destinations/$state': typeof guidesDestinationsStateIndexRoute
   '/destinations/$state/$city/$attraction': typeof guidesDestinationsStateCityAttractionRoute
@@ -870,6 +879,7 @@ export interface FileRoutesById {
   '/(admin)/admin/invoices/$id': typeof adminAdminInvoicesIdRoute
   '/(tours)/expeditions/$type/$route': typeof toursExpeditionsTypeRouteRoute
   '/api/public/hooks/bistro-google-sync': typeof ApiPublicHooksBistroGoogleSyncRoute
+  '/api/public/hooks/sheet-availability': typeof ApiPublicHooksSheetAvailabilityRoute
   '/api/public/hooks/zoho-payments': typeof ApiPublicHooksZohoPaymentsRoute
   '/(guides)/destinations/$state/': typeof guidesDestinationsStateIndexRoute
   '/(guides)/destinations/$state/$city/$attraction': typeof guidesDestinationsStateCityAttractionRoute
@@ -964,6 +974,7 @@ export interface FileRouteTypes {
     | '/admin/invoices/$id'
     | '/expeditions/$type/$route'
     | '/api/public/hooks/bistro-google-sync'
+    | '/api/public/hooks/sheet-availability'
     | '/api/public/hooks/zoho-payments'
     | '/destinations/$state/'
     | '/destinations/$state/$city/$attraction'
@@ -1055,6 +1066,7 @@ export interface FileRouteTypes {
     | '/admin/invoices/$id'
     | '/expeditions/$type/$route'
     | '/api/public/hooks/bistro-google-sync'
+    | '/api/public/hooks/sheet-availability'
     | '/api/public/hooks/zoho-payments'
     | '/destinations/$state'
     | '/destinations/$state/$city/$attraction'
@@ -1147,6 +1159,7 @@ export interface FileRouteTypes {
     | '/(admin)/admin/invoices/$id'
     | '/(tours)/expeditions/$type/$route'
     | '/api/public/hooks/bistro-google-sync'
+    | '/api/public/hooks/sheet-availability'
     | '/api/public/hooks/zoho-payments'
     | '/(guides)/destinations/$state/'
     | '/(guides)/destinations/$state/$city/$attraction'
@@ -1227,6 +1240,7 @@ export interface RootRouteChildren {
   toursToursIndexRoute: typeof toursToursIndexRoute
   toursExpeditionsTypeRouteRoute: typeof toursExpeditionsTypeRouteRoute
   ApiPublicHooksBistroGoogleSyncRoute: typeof ApiPublicHooksBistroGoogleSyncRoute
+  ApiPublicHooksSheetAvailabilityRoute: typeof ApiPublicHooksSheetAvailabilityRoute
   ApiPublicHooksZohoPaymentsRoute: typeof ApiPublicHooksZohoPaymentsRoute
   guidesDestinationsStateIndexRoute: typeof guidesDestinationsStateIndexRoute
   guidesDestinationsStateCityAttractionRoute: typeof guidesDestinationsStateCityAttractionRoute
@@ -1844,6 +1858,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicHooksBistroGoogleSyncRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/hooks/sheet-availability': {
+      id: '/api/public/hooks/sheet-availability'
+      path: '/api/public/hooks/sheet-availability'
+      fullPath: '/api/public/hooks/sheet-availability'
+      preLoaderRoute: typeof ApiPublicHooksSheetAvailabilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/hooks/zoho-payments': {
       id: '/api/public/hooks/zoho-payments'
       path: '/api/public/hooks/zoho-payments'
@@ -2001,6 +2022,7 @@ const rootRouteChildren: RootRouteChildren = {
   toursToursIndexRoute: toursToursIndexRoute,
   toursExpeditionsTypeRouteRoute: toursExpeditionsTypeRouteRoute,
   ApiPublicHooksBistroGoogleSyncRoute: ApiPublicHooksBistroGoogleSyncRoute,
+  ApiPublicHooksSheetAvailabilityRoute: ApiPublicHooksSheetAvailabilityRoute,
   ApiPublicHooksZohoPaymentsRoute: ApiPublicHooksZohoPaymentsRoute,
   guidesDestinationsStateIndexRoute: guidesDestinationsStateIndexRoute,
   guidesDestinationsStateCityAttractionRoute:

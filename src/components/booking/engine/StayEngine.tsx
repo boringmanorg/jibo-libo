@@ -24,6 +24,7 @@ import { isIndian } from '@/booking/guestRules';
 import { getBotCheckConfigFn, quoteFn, searchStaysFn, startCheckoutFn } from '@/booking/publicEngine.functions';
 import { staticDateProblem, staticQuote, staticSearch } from '@/booking/staticSearch';
 import type { ClosureRow } from '@/booking/consoleClosures';
+import type { SheetAvailability } from '@/booking/sheetAvailability';
 import { localEnquiryRef } from '@/lib/localEnquiry';
 import { generateBookingMessage, bookingPageSource } from '@/utils/privacyCompliantWhatsApp';
 import { trackBookingStart } from '@/utils/dataLayerService';
@@ -56,7 +57,7 @@ const FACTS: { icon: typeof Clock; text: string }[] = [
   { icon: PawPrint, text: 'Cats and birds welcome' },
 ];
 
-export default function StayEngine({ mode, photos, closures, initialLocation }: { mode: EngineMode; photos?: Record<string, { src: string; alt: string }[]>; closures?: ClosureRow[]; initialLocation?: BookLocation }) {
+export default function StayEngine({ mode, photos, closures, sheet, initialLocation }: { mode: EngineMode; photos?: Record<string, { src: string; alt: string }[]>; closures?: ClosureRow[]; sheet?: SheetAvailability; initialLocation?: BookLocation }) {
   const [location, setLocation] = useState<BookLocation | null>(initialLocation ?? (mode === 'preview' ? 'new-shillong' : null));
   const pickLocation = (l: BookLocation | null) => {
     setLocation(l);
@@ -85,7 +86,7 @@ export default function StayEngine({ mode, photos, closures, initialLocation }: 
     setError('');
     if (enquiry) {
       const problem = staticDateProblem(checkIn, checkOut);
-      if (problem) { setResult(null); setError(problem); } else setResult(staticSearch(checkIn, checkOut, photos, closures));
+      if (problem) { setResult(null); setError(problem); } else setResult(staticSearch(checkIn, checkOut, photos, closures, sheet));
       setLoading(false);
       return;
     }
@@ -98,7 +99,7 @@ export default function StayEngine({ mode, photos, closures, initialLocation }: 
       .catch(() => !stale && setError('Rooms could not load. Check your connection and try again.'))
       .finally(() => !stale && setLoading(false));
     return () => { stale = true; };
-  }, [checkIn, checkOut, enquiry, closures]);
+  }, [checkIn, checkOut, enquiry, closures, sheet]);
 
   // Drop anything no longer free for the new dates.
   useEffect(() => {

@@ -31,12 +31,12 @@ export const Route = createFileRoute("/(stays)/book/")({
 });
 
 function BookPage() {
-  const { live, photos, closures } = Route.useLoaderData();
+  const { live, photos, closures, sheet } = Route.useLoaderData();
   const { location } = Route.useSearch();
   // Site header (logo, menu) and footer around the booking page; the page has its own bottom bar.
   return (
     <PageShell cta={false} bar={false}>
-      <StayEngine mode={live ? "live" : "enquiry"} photos={photos} closures={closures} initialLocation={location} />
+      <StayEngine mode={live ? "live" : "enquiry"} photos={photos} closures={closures} sheet={sheet} initialLocation={location} />
     </PageShell>
   );
 }
