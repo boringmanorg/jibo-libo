@@ -17,7 +17,7 @@
  {
   "url": "/book",
   "status": 200,
-  "ms": 11,
+  "ms": 6,
   "depth": 1,
   "inSitemap": false,
   "title": "Hostel Booking Shillong — Book Dorms & Rooms Online | XTSY",
@@ -32,7 +32,7 @@
  {
   "url": "/stays/best-hostel-in-shillong",
   "status": 200,
-  "ms": 16,
+  "ms": 13,
   "depth": 1,
   "inSitemap": true,
   "title": "Hostel in New Shillong: Dorms & Private Rooms | XTSY",
@@ -62,7 +62,7 @@
  {
   "url": "/tours",
   "status": 200,
-  "ms": 16,
+  "ms": 6,
   "depth": 1,
   "inSitemap": true,
   "title": "Meghalaya, Northeast India & Beyond Tour Packages | XTSY",
@@ -77,7 +77,7 @@
  {
   "url": "/tab-bistro",
   "status": 200,
-  "ms": 13,
+  "ms": 4,
   "depth": 1,
   "inSitemap": true,
   "title": "TAB Bistro New Shillong: Tandoor, Biryani & Indo-Chinese",
@@ -92,7 +92,7 @@
  {
   "url": "/stays/workation",
   "status": 200,
-  "ms": 10,
+  "ms": 16,
   "depth": 1,
   "inSitemap": true,
   "title": "Work From Meghalaya: Wifi, Desks & Long Stays | XTSY",
@@ -107,7 +107,7 @@
  {
   "url": "/guides/things-to-do-in-meghalaya",
   "status": 200,
-  "ms": 25,
+  "ms": 19,
   "depth": 1,
   "inSitemap": true,
   "title": "Things to Do in Meghalaya: 20 Ideas | XTSY",
@@ -122,7 +122,7 @@
  {
   "url": "/about/merch",
   "status": 200,
-  "ms": 12,
+  "ms": 18,
   "depth": 1,
   "inSitemap": true,
   "title": "XTSY Merch — Travel Gear & Work-from-Anywhere Kit",
@@ -137,7 +137,7 @@
  {
   "url": "/stays/group-bookings-meghalaya",
   "status": 200,
-  "ms": 9,
+  "ms": 10,
   "depth": 1,
   "inSitemap": true,
   "title": "Group Bookings in Meghalaya: Stays & Tours | XTSY",
@@ -152,7 +152,7 @@
  {
   "url": "/stays/pet-friendly",
   "status": 200,
-  "ms": 8,
+  "ms": 10,
   "depth": 1,
   "inSitemap": true,
   "title": "Pet Friendly Stay in Shillong, Meghalaya | XTSY",
@@ -167,7 +167,7 @@
  {
   "url": "/tours/plan-trip-with-ai",
   "status": 200,
-  "ms": 7,
+  "ms": 9,
   "depth": 1,
   "inSitemap": true,
   "title": "Plan a Meghalaya & Northeast India Trip with AI | XTSY",
@@ -182,7 +182,7 @@
  {
   "url": "/stays/hostel-booking",
   "status": 200,
-  "ms": 11,
+  "ms": 12,
   "depth": 1,
   "inSitemap": false,
   "title": "Hostel Booking in Shillong — Direct from ₹400 | XTSY",
@@ -197,7 +197,7 @@
  {
   "url": "/tours/meghalaya-tour-packages",
   "status": 200,
-  "ms": 8,
+  "ms": 10,
   "depth": 1,
   "inSitemap": true,
   "title": "Meghalaya Tour Package: Saturday Group 4D/3N ₹9,000 | XTSY",
@@ -212,7 +212,7 @@
  {
   "url": "/destinations",
   "status": 200,
-  "ms": 11,
+  "ms": 10,
   "depth": 1,
   "inSitemap": true,
   "title": "Northeast India Destinations — State & City Guides | XTSY",
@@ -227,7 +227,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/nohkalikai-falls",
   "status": 200,
-  "ms": 9,
+  "ms": 7,
   "depth": 1,
   "inSitemap": true,
   "title": "Nohkalikai Falls, Cherrapunji — Timings & How to Reach",
@@ -242,7 +242,7 @@
  {
   "url": "/destinations/meghalaya/dawki/dawki-umngot-river",
   "status": 200,
-  "ms": 8,
+  "ms": 6,
   "depth": 1,
   "inSitemap": true,
   "title": "Dawki – Umngot River, Dawki — Timings & How to Reach",
@@ -287,7 +287,7 @@
  {
   "url": "/destinations/meghalaya/shillong/umiam-lake",
   "status": 200,
-  "ms": 6,
+  "ms": 8,
   "depth": 1,
   "inSitemap": true,
   "title": "Umiam Lake (Barapani): Boating & Shillong Travel Guide",
@@ -317,7 +317,7 @@
  {
   "url": "/stays/female-travellers",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 1,
   "inSitemap": true,
   "title": "Solo Female Travellers in Shillong: Safe Stay | XTSY",
@@ -347,7 +347,7 @@
  {
   "url": "/stays/campsite-dawki",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 1,
   "inSitemap": true,
   "title": "Shnonpedeng Riverside Camping by the Umngot | XTSY",
@@ -407,7 +407,7 @@
  {
   "url": "/destinations/nagaland",
   "status": 200,
-  "ms": 6,
+  "ms": 5,
   "depth": 1,
   "inSitemap": true,
   "title": "Nagaland Travel Guide — Places, Routes & Stays",
@@ -452,7 +452,7 @@
  {
   "url": "/tours/6n-7d-meghalaya-tour",
   "status": 200,
-  "ms": 7,
+  "ms": 10,
   "depth": 1,
   "inSitemap": true,
   "title": "6 Nights 7 Days Meghalaya Tour — 6 Nights / 7 Days | XTSY",
@@ -467,7 +467,7 @@
  {
   "url": "/tours/4n-5d-shillong-meghalaya-tour",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 1,
   "inSitemap": true,
   "title": "4 Nights 5 Days Shillong Meghalaya Tour | XTSY Tours",
@@ -497,7 +497,7 @@
  {
   "url": "/expeditions",
   "status": 200,
-  "ms": 5,
+  "ms": 6,
   "depth": 1,
   "inSitemap": true,
   "title": "Motorbike & 4x4 Expeditions in Northeast India | XTSY",
@@ -557,7 +557,7 @@
  {
   "url": "/stays/hostel-near-me",
   "status": 200,
-  "ms": 8,
+  "ms": 7,
   "depth": 1,
   "inSitemap": true,
   "title": "Hostel Near Me in Shillong — XTSY, New Shillong Township",
@@ -572,7 +572,7 @@
  {
   "url": "/stays/luxury-glamping-shillong",
   "status": 200,
-  "ms": 5,
+  "ms": 6,
   "depth": 1,
   "inSitemap": true,
   "title": "Luxury Glamping in Shillong & Meghalaya | XTSY",
@@ -587,7 +587,7 @@
  {
   "url": "/guides/best-time-to-visit-meghalaya",
   "status": 200,
-  "ms": 6,
+  "ms": 5,
   "depth": 1,
   "inSitemap": true,
   "title": "Best Time to Visit Meghalaya (Month by Month) | XTSY",
@@ -602,7 +602,7 @@
  {
   "url": "/guides/meghalaya-waterfalls",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 1,
   "inSitemap": true,
   "title": "Meghalaya Waterfalls: Nohkalikai & More | XTSY",
@@ -662,7 +662,7 @@
  {
   "url": "/travel-guide/how-to-reach-meghalaya",
   "status": 200,
-  "ms": 6,
+  "ms": 8,
   "depth": 1,
   "inSitemap": true,
   "title": "How to Reach Meghalaya & Shillong (2026 Guide)",
@@ -677,7 +677,7 @@
  {
   "url": "/travel-guide/guwahati-to-shillong-transport",
   "status": 200,
-  "ms": 8,
+  "ms": 6,
   "depth": 1,
   "inSitemap": true,
   "title": "Guwahati to Shillong & Meghalaya Road Planning Guide | XTSY",
@@ -692,7 +692,7 @@
  {
   "url": "/travel-guide/meghalaya-for-international-tourists",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 1,
   "inSitemap": true,
   "title": "Meghalaya for International Tourists: Visa & Permits",
@@ -707,7 +707,7 @@
  {
   "url": "/tours/3-day-meghalaya-itinerary",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 1,
   "inSitemap": true,
   "title": "3 Day Meghalaya Itinerary from Shillong | XTSY",
@@ -722,7 +722,7 @@
  {
   "url": "/tours/5-day-meghalaya-itinerary",
   "status": 200,
-  "ms": 9,
+  "ms": 8,
   "depth": 1,
   "inSitemap": true,
   "title": "5 Day Meghalaya Itinerary: Route, Cost, Stays | XTSY",
@@ -737,7 +737,7 @@
  {
   "url": "/tours/budget-trip-to-meghalaya",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 1,
   "inSitemap": true,
   "title": "Budget Trip to Meghalaya: Costs & Plan | XTSY",
@@ -752,7 +752,7 @@
  {
   "url": "/tours/destination-wedding-shillong",
   "status": 200,
-  "ms": 6,
+  "ms": 5,
   "depth": 1,
   "inSitemap": true,
   "title": "Destination Wedding Venue in Shillong | XTSY",
@@ -767,7 +767,7 @@
  {
   "url": "/tours/backpacking-india",
   "status": 200,
-  "ms": 19,
+  "ms": 8,
   "depth": 1,
   "inSitemap": true,
   "title": "Backpacking India: Routes, Budget & Hostels | XTSY",
@@ -782,7 +782,7 @@
  {
   "url": "/guides/places-to-visit-in-meghalaya",
   "status": 200,
-  "ms": 11,
+  "ms": 7,
   "depth": 1,
   "inSitemap": true,
   "title": "Places to Visit in Meghalaya: Top 25 Spots | XTSY",
@@ -812,7 +812,7 @@
  {
   "url": "/stays/partner-stays",
   "status": 200,
-  "ms": 4,
+  "ms": 6,
   "depth": 1,
   "inSitemap": true,
   "title": "Become an XTSY Partner Stay in Meghalaya | XTSY",
@@ -857,7 +857,7 @@
  {
   "url": "/about/faq",
   "status": 200,
-  "ms": 4,
+  "ms": 3,
   "depth": 1,
   "inSitemap": true,
   "title": "Hostel FAQs — Shillong Rates, Safety & Booking | XTSY",
@@ -872,7 +872,7 @@
  {
   "url": "/about/safety-house-rules",
   "status": 200,
-  "ms": 6,
+  "ms": 5,
   "depth": 1,
   "inSitemap": true,
   "title": "Hostel Safety & House Rules | XTSY",
@@ -887,7 +887,7 @@
  {
   "url": "/about/contact",
   "status": 200,
-  "ms": 5,
+  "ms": 4,
   "depth": 1,
   "inSitemap": true,
   "title": "Contact XTSY Shillong: Phone, Address & Map",
@@ -902,7 +902,7 @@
  {
   "url": "/about/pricing-cancellation-policy",
   "status": 200,
-  "ms": 6,
+  "ms": 5,
   "depth": 1,
   "inSitemap": true,
   "title": "Pricing & Cancellation Policy | XTSY Shillong",
@@ -947,7 +947,7 @@
  {
   "url": "/book?property=xtsy-experience",
   "status": 200,
-  "ms": 6,
+  "ms": 5,
   "depth": 2,
   "inSitemap": false,
   "title": "Hostel Booking Shillong — Book Dorms & Rooms Online | XTSY",
@@ -962,7 +962,7 @@
  {
   "url": "/tours/6d-meghalaya-honeymoon-package",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 2,
   "inSitemap": true,
   "title": "6 Days Meghalaya Honeymoon Package | XTSY Tours",
@@ -992,7 +992,7 @@
  {
   "url": "/tours/5d-meghalaya-trip-package",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 2,
   "inSitemap": true,
   "title": "5 Days Meghalaya Trip Package — 4 Nights / 5 Days | XTSY",
@@ -1007,7 +1007,7 @@
  {
   "url": "/tours/5n-6d-meghalaya-holiday-package",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 2,
   "inSitemap": true,
   "title": "5 Nights 6 Days Meghalaya Holiday Package | XTSY Tours",
@@ -1022,7 +1022,7 @@
  {
   "url": "/tours/7n-guwahati-shillong-kaziranga-tour",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 2,
   "inSitemap": true,
   "title": "7 Nights Guwahati Shillong Kaziranga Tour | XTSY Tours",
@@ -1037,7 +1037,7 @@
  {
   "url": "/tours/6n-7d-arunachal-pradesh-tour",
   "status": 200,
-  "ms": 9,
+  "ms": 7,
   "depth": 2,
   "inSitemap": true,
   "title": "6 Nights 7 Days Arunachal Pradesh Tour | XTSY Tours",
@@ -1052,7 +1052,7 @@
  {
   "url": "/tours/7n-8d-tawang-tour",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 2,
   "inSitemap": true,
   "title": "7 Nights 8 Days Tawang Tour — 7 Nights / 8 Days | XTSY",
@@ -1067,7 +1067,7 @@
  {
   "url": "/tours/wari-chora-hidden-gem-of-meghalaya",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 2,
   "inSitemap": true,
   "title": "Wari Chora — Hidden Gem of Meghalaya — 3 Days | XTSY",
@@ -1112,7 +1112,7 @@
  {
   "url": "/tours/xtsy-270-romantic-meghalaya-escape",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 2,
   "inSitemap": true,
   "title": "XTSY 270 Romantic Meghalaya Escape — 6 Days | XTSY",
@@ -1127,7 +1127,7 @@
  {
   "url": "/tours/xtsy-270-honeymoon-cloud-retreat",
   "status": 200,
-  "ms": 7,
+  "ms": 5,
   "depth": 2,
   "inSitemap": false,
   "title": "XTSY 270 Honeymoon Cloud Retreat — 5 Days | XTSY",
@@ -1157,7 +1157,7 @@
  {
   "url": "/tours/xtsy-solo-traveller-pass-meghalaya",
   "status": 200,
-  "ms": 6,
+  "ms": 11,
   "depth": 2,
   "inSitemap": true,
   "title": "XTSY Solo Traveller Pass — Meghalaya — 5 Days | XTSY",
@@ -1172,7 +1172,7 @@
  {
   "url": "/tours/ne-india-solo-bike-circuit-meghalaya",
   "status": 200,
-  "ms": 6,
+  "ms": 12,
   "depth": 2,
   "inSitemap": true,
   "title": "NE India Solo Bike Circuit — Meghalaya — 6 Days | XTSY",
@@ -1187,7 +1187,7 @@
  {
   "url": "/tours/dawki-crystal-waters-winter-escape",
   "status": 200,
-  "ms": 7,
+  "ms": 9,
   "depth": 2,
   "inSitemap": true,
   "title": "Dawki Crystal Waters Winter Escape — 3 Days | XTSY",
@@ -1202,7 +1202,7 @@
  {
   "url": "/tours/double-decker-root-bridge-cherrapunji",
   "status": 200,
-  "ms": 8,
+  "ms": 7,
   "depth": 2,
   "inSitemap": true,
   "title": "Double Decker Root Bridge & Cherrapunji — 5 Days | XTSY",
@@ -1217,7 +1217,7 @@
  {
   "url": "/tours/shillong-winter-cultural-sojourn",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 2,
   "inSitemap": true,
   "title": "Shillong Winter Cultural Sojourn — 2 Days from ₹4,800 | XTSY",
@@ -1232,7 +1232,7 @@
  {
   "url": "/tours/krang-suri-waterfall-budget-getaway",
   "status": 200,
-  "ms": 6,
+  "ms": 8,
   "depth": 2,
   "inSitemap": true,
   "title": "Krang Suri Waterfall Budget Getaway — 2 Days | XTSY",
@@ -1247,7 +1247,7 @@
  {
   "url": "/tours/phe-phe-moopun-waterfalls-adventure",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 2,
   "inSitemap": true,
   "title": "Phe Phe & Moopun Waterfalls Adventure — 3 Days | XTSY",
@@ -1262,7 +1262,7 @@
  {
   "url": "/tours/meghalaya-waterfalls-budget-circuit",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 2,
   "inSitemap": true,
   "title": "Meghalaya Waterfalls Budget Circuit — 3 Days | XTSY",
@@ -1307,7 +1307,7 @@
  {
   "url": "/tours/arunachal-bike-expedition-solo-friendly",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 2,
   "inSitemap": true,
   "title": "Arunachal Bike Expedition — Solo Friendly — 8 Days | XTSY",
@@ -1337,7 +1337,7 @@
  {
   "url": "/tours/arunachal-winter-cultural-festival",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 2,
   "inSitemap": true,
   "title": "Arunachal Winter Cultural Festival — 6 Days | XTSY",
@@ -1397,7 +1397,7 @@
  {
   "url": "/tours/nagaland-dzukou-valley-kohima-heritage",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 2,
   "inSitemap": true,
   "title": "Nagaland Dzukou Valley & Kohima Heritage — 5 Days | XTSY",
@@ -1427,7 +1427,7 @@
  {
   "url": "/tours/manipur-loktak-lake-winter-discovery",
   "status": 200,
-  "ms": 7,
+  "ms": 8,
   "depth": 2,
   "inSitemap": true,
   "title": "Manipur Loktak Lake Winter Discovery — 4 Days | XTSY",
@@ -1457,7 +1457,7 @@
  {
   "url": "/tours/pelling-kanchenjunga-winter-views",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 2,
   "inSitemap": true,
   "title": "Pelling Kanchenjunga Winter Views — 4 Days | XTSY",
@@ -1472,7 +1472,7 @@
  {
   "url": "/tours/north-sikkim-winter-expedition",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 2,
   "inSitemap": true,
   "title": "North Sikkim Winter Expedition — 7 Days from ₹39,999 | XTSY",
@@ -1502,7 +1502,7 @@
  {
   "url": "/tours/classic-kerala-kochi-munnar-thekkady-alleppey",
   "status": 200,
-  "ms": 6,
+  "ms": 9,
   "depth": 2,
   "inSitemap": true,
   "title": "Classic Kerala: Kochi, Munnar, Thekkady & Alleppey | XTSY",
@@ -1517,7 +1517,7 @@
  {
   "url": "/tours/munnar-tea-hills-eravikulam",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 2,
   "inSitemap": true,
   "title": "Munnar Tea Hills & Eravikulam — 4 Days | XTSY",
@@ -1682,7 +1682,7 @@
  {
   "url": "/tours/dharamshala-mcleod-ganj-winter",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 2,
   "inSitemap": true,
   "title": "Dharamshala McLeod Ganj Winter — 5 Days from ₹31,999 | XTSY",
@@ -1697,7 +1697,7 @@
  {
   "url": "/tours/kodaikanal-madurai-hills-and-temples",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 2,
   "inSitemap": true,
   "title": "Kodaikanal & Madurai: Hills and Temples — 5 Days | XTSY",
@@ -1712,7 +1712,7 @@
  {
   "url": "/tours/ooty-coonoor-nilgiri-mountain-railway",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 2,
   "inSitemap": true,
   "title": "Ooty & Coonoor: Nilgiri Mountain Railway — 5 Days | XTSY",
@@ -1727,7 +1727,7 @@
  {
   "url": "/tours/mahabalipuram-pondicherry-chennai-heritage-coast",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 2,
   "inSitemap": true,
   "title": "Mahabalipuram, Pondicherry & Chennai Heritage Coast | XTSY",
@@ -1742,7 +1742,7 @@
  {
   "url": "/tours/dravidian-architecture-masterclass",
   "status": 200,
-  "ms": 7,
+  "ms": 17,
   "depth": 2,
   "inSitemap": true,
   "title": "Dravidian Architecture Masterclass — 10 Days | XTSY",
@@ -1757,7 +1757,7 @@
  {
   "url": "/tours/kodaikanal-winter-hill-retreat",
   "status": 200,
-  "ms": 6,
+  "ms": 11,
   "depth": 2,
   "inSitemap": true,
   "title": "Kodaikanal Winter Hill Retreat — 3 Days from ₹20,999 | XTSY",
@@ -1787,7 +1787,7 @@
  {
   "url": "/tours/great-living-chola-temples-navagraha-circuit",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 2,
   "inSitemap": true,
   "title": "Great Living Chola Temples & Navagraha Circuit | XTSY Tours",
@@ -1817,7 +1817,7 @@
  {
   "url": "/tours/grand-tamil-nadu-temple-circuit-premium-heritage",
   "status": 200,
-  "ms": 7,
+  "ms": 8,
   "depth": 2,
   "inSitemap": true,
   "title": "Grand Tamil Nadu Temple Circuit — Premium Heritage | XTSY",
@@ -1832,7 +1832,7 @@
  {
   "url": "/tours/sacred-temples-of-south-india-9-day-spiritual-journey",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 2,
   "inSitemap": true,
   "title": "Sacred Temples of South India — 9 Day Spiritual Journey",
@@ -1847,7 +1847,7 @@
  {
   "url": "/tours/nainital-winter-lake-serenity",
   "status": 200,
-  "ms": 13,
+  "ms": 8,
   "depth": 2,
   "inSitemap": true,
   "title": "Nainital Winter Lake Serenity — 4 Days from ₹24,999 | XTSY",
@@ -1862,7 +1862,7 @@
  {
   "url": "/tours/char-dham-winter-pilgrimage-prep",
   "status": 200,
-  "ms": 12,
+  "ms": 8,
   "depth": 2,
   "inSitemap": true,
   "title": "Char Dham Winter Pilgrimage Prep — 8 Days | XTSY",
@@ -1877,7 +1877,7 @@
  {
   "url": "/tours/vietnam-discovery-trail",
   "status": 200,
-  "ms": 12,
+  "ms": 8,
   "depth": 2,
   "inSitemap": true,
   "title": "Vietnam Discovery Trail — 10 Days from ₹74,999 | XTSY",
@@ -1907,7 +1907,7 @@
  {
   "url": "/tours/bali-wellness-culture-retreat",
   "status": 200,
-  "ms": 7,
+  "ms": 10,
   "depth": 2,
   "inSitemap": true,
   "title": "Bali Wellness & Culture Retreat — 7 Days from ₹59,999 | XTSY",
@@ -1922,7 +1922,7 @@
  {
   "url": "/tours/nepal-himalayan-culture-trek-lite",
   "status": 200,
-  "ms": 7,
+  "ms": 10,
   "depth": 2,
   "inSitemap": true,
   "title": "Nepal Himalayan Culture & Trek Lite — 7 Days | XTSY",
@@ -1952,7 +1952,7 @@
  {
   "url": "/tours/sri-lanka-heritage-wildlife-loop",
   "status": 200,
-  "ms": 10,
+  "ms": 7,
   "depth": 2,
   "inSitemap": true,
   "title": "Sri Lanka Heritage & Wildlife Loop — 8 Days | XTSY",
@@ -1967,7 +1967,7 @@
  {
   "url": "/tours/turkey-history-landscape-route",
   "status": 200,
-  "ms": 8,
+  "ms": 7,
   "depth": 2,
   "inSitemap": true,
   "title": "Turkey History & Landscape Route — 9 Days | XTSY",
@@ -1997,7 +1997,7 @@
  {
   "url": "/tours/georgia-wine-mountains-trail",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 2,
   "inSitemap": true,
   "title": "Georgia Wine & Mountains Trail — 7 Days from ₹69,999 | XTSY",
@@ -2057,7 +2057,7 @@
  {
   "url": "/guides/meghalaya-photo-gallery",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 2,
   "inSitemap": true,
   "title": "Meghalaya Photo Gallery: Real Trip Photos | XTSY",
@@ -2072,7 +2072,7 @@
  {
   "url": "/destinations/meghalaya/shillong/shillong-peak",
   "status": 200,
-  "ms": 8,
+  "ms": 6,
   "depth": 2,
   "inSitemap": true,
   "title": "Shillong Peak, Shillong — Timings & How to Reach",
@@ -2087,7 +2087,7 @@
  {
   "url": "/destinations/meghalaya/shillong/elephant-falls",
   "status": 200,
-  "ms": 11,
+  "ms": 6,
   "depth": 2,
   "inSitemap": true,
   "title": "Elephant Falls, Shillong — Timings, Entry Fee & How to Reach",
@@ -2102,7 +2102,7 @@
  {
   "url": "/destinations/meghalaya/shillong/mawphlang-sacred-forest",
   "status": 200,
-  "ms": 7,
+  "ms": 5,
   "depth": 2,
   "inSitemap": true,
   "title": "Mawphlang Sacred Forest, Shillong — Timings & How to Reach",
@@ -2117,7 +2117,7 @@
  {
   "url": "/destinations/meghalaya/shillong/sweet-falls",
   "status": 200,
-  "ms": 9,
+  "ms": 6,
   "depth": 2,
   "inSitemap": true,
   "title": "Sweet Falls, Shillong — Timings & How to Reach",
@@ -2132,7 +2132,7 @@
  {
   "url": "/destinations/meghalaya/shillong/bishop-falls",
   "status": 200,
-  "ms": 11,
+  "ms": 6,
   "depth": 2,
   "inSitemap": true,
   "title": "Bishop Falls, Shillong — Timings & How to Reach",
@@ -2147,7 +2147,7 @@
  {
   "url": "/destinations/meghalaya/shillong/spread-eagle-falls",
   "status": 200,
-  "ms": 8,
+  "ms": 6,
   "depth": 2,
   "inSitemap": true,
   "title": "Spread Eagle Falls, Shillong — Timings & How to Reach",
@@ -2207,7 +2207,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/rainbow-falls",
   "status": 200,
-  "ms": 6,
+  "ms": 5,
   "depth": 2,
   "inSitemap": true,
   "title": "Rainbow Falls, Cherrapunji — Timings & How to Reach",
@@ -2222,7 +2222,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/garden-of-caves",
   "status": 200,
-  "ms": 7,
+  "ms": 5,
   "depth": 2,
   "inSitemap": true,
   "title": "Garden of Caves, Cherrapunji — Timings & How to Reach",
@@ -2237,7 +2237,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/arwah-cave",
   "status": 200,
-  "ms": 6,
+  "ms": 5,
   "depth": 2,
   "inSitemap": true,
   "title": "Arwah Cave, Cherrapunji — Timings & How to Reach",
@@ -2252,7 +2252,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/dainthlen-falls",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 2,
   "inSitemap": true,
   "title": "Dainthlen Falls, Cherrapunji — Timings & How to Reach",
@@ -2282,7 +2282,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/krem-mawmluh",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 2,
   "inSitemap": true,
   "title": "Krem Mawmluh, Cherrapunji — Timings & How to Reach",
@@ -2327,7 +2327,7 @@
  {
   "url": "/destinations/meghalaya/dawki/shnongpdeng",
   "status": 200,
-  "ms": 8,
+  "ms": 6,
   "depth": 2,
   "inSitemap": true,
   "title": "Shnongpdeng Village, Dawki — Timings & How to Reach",
@@ -2342,7 +2342,7 @@
  {
   "url": "/destinations/meghalaya/nongstoin/nongkhnum-island",
   "status": 200,
-  "ms": 6,
+  "ms": 5,
   "depth": 2,
   "inSitemap": true,
   "title": "Nongkhnum Island, Nongstoin — Timings & How to Reach",
@@ -2387,7 +2387,7 @@
  {
   "url": "/destinations/meghalaya/mawlynnong/mawlynnong-village",
   "status": 200,
-  "ms": 6,
+  "ms": 5,
   "depth": 2,
   "inSitemap": true,
   "title": "Mawlynnong Village, Mawlynnong — Timings & How to Reach",
@@ -2432,7 +2432,7 @@
  {
   "url": "/expeditions/4x4/meghalaya-loop",
   "status": 200,
-  "ms": 5,
+  "ms": 6,
   "depth": 2,
   "inSitemap": true,
   "title": "4x4 Expedition Meghalaya: Loop, Season & Cost | XTSY",
@@ -2522,7 +2522,7 @@
  {
   "url": "/destinations/meghalaya/nongstoin",
   "status": 200,
-  "ms": 5,
+  "ms": 4,
   "depth": 2,
   "inSitemap": true,
   "title": "Places to Visit in Nongstoin, Meghalaya | XTSY",
@@ -2537,7 +2537,7 @@
  {
   "url": "/destinations/meghalaya/tura",
   "status": 200,
-  "ms": 5,
+  "ms": 4,
   "depth": 2,
   "inSitemap": true,
   "title": "Places to Visit in Tura (Garo Hills), Meghalaya | XTSY",
@@ -2612,7 +2612,7 @@
  {
   "url": "/destinations/arunachal-pradesh/tawang",
   "status": 200,
-  "ms": 5,
+  "ms": 4,
   "depth": 2,
   "inSitemap": true,
   "title": "Places to Visit in Tawang, Arunachal Pradesh | XTSY",
@@ -2657,7 +2657,7 @@
  {
   "url": "/destinations/arunachal-pradesh/dirang",
   "status": 200,
-  "ms": 5,
+  "ms": 6,
   "depth": 2,
   "inSitemap": true,
   "title": "Places to Visit in Dirang, Arunachal Pradesh | XTSY",
@@ -2672,7 +2672,7 @@
  {
   "url": "/destinations/nagaland/kohima",
   "status": 200,
-  "ms": 5,
+  "ms": 4,
   "depth": 2,
   "inSitemap": true,
   "title": "Places to Visit in Kohima, Nagaland | XTSY",
@@ -2687,7 +2687,7 @@
  {
   "url": "/destinations/nagaland/dimapur",
   "status": 200,
-  "ms": 5,
+  "ms": 4,
   "depth": 2,
   "inSitemap": true,
   "title": "Places to Visit in Dimapur, Nagaland | XTSY",
@@ -2717,7 +2717,7 @@
  {
   "url": "/destinations/manipur/imphal",
   "status": 200,
-  "ms": 5,
+  "ms": 4,
   "depth": 2,
   "inSitemap": true,
   "title": "Places to Visit in Imphal, Manipur | XTSY",
@@ -2732,7 +2732,7 @@
  {
   "url": "/destinations/manipur/loktak",
   "status": 200,
-  "ms": 5,
+  "ms": 4,
   "depth": 2,
   "inSitemap": true,
   "title": "Places to Visit in Loktak (Moirang), Manipur | XTSY",
@@ -2762,7 +2762,7 @@
  {
   "url": "/destinations/mizoram",
   "status": 200,
-  "ms": 5,
+  "ms": 4,
   "depth": 2,
   "inSitemap": true,
   "title": "Mizoram Travel Guide — Places, Routes & Stays",
@@ -2777,7 +2777,7 @@
  {
   "url": "/destinations/mizoram/aizawl",
   "status": 200,
-  "ms": 5,
+  "ms": 4,
   "depth": 2,
   "inSitemap": true,
   "title": "Places to Visit in Aizawl, Mizoram | XTSY",
@@ -2807,7 +2807,7 @@
  {
   "url": "/destinations/mizoram/phawngpui",
   "status": 200,
-  "ms": 5,
+  "ms": 4,
   "depth": 2,
   "inSitemap": true,
   "title": "Places to Visit in Phawngpui, Mizoram | XTSY",
@@ -2822,7 +2822,7 @@
  {
   "url": "/destinations/tripura",
   "status": 200,
-  "ms": 5,
+  "ms": 4,
   "depth": 2,
   "inSitemap": true,
   "title": "Tripura Travel Guide — Places, Routes & Stays",
@@ -2852,7 +2852,7 @@
  {
   "url": "/destinations/tripura/unakoti",
   "status": 200,
-  "ms": 5,
+  "ms": 4,
   "depth": 2,
   "inSitemap": true,
   "title": "Places to Visit in Unakoti, Tripura | XTSY",
@@ -2882,7 +2882,7 @@
  {
   "url": "/guides/meghalaya-travel-guide",
   "status": 200,
-  "ms": 18,
+  "ms": 8,
   "depth": 2,
   "inSitemap": true,
   "title": "Meghalaya Travel Guide 2026 — Ultimate Planning Resource",
@@ -2897,7 +2897,7 @@
  {
   "url": "/destinations/meghalaya/dawki/dawki-suspension-bridge",
   "status": 200,
-  "ms": 12,
+  "ms": 6,
   "depth": 2,
   "inSitemap": true,
   "title": "Dawki Suspension Bridge, Dawki — Timings & How to Reach",
@@ -2912,7 +2912,7 @@
  {
   "url": "/destinations/meghalaya/jowai/thadlaskein-lake",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 2,
   "inSitemap": true,
   "title": "Thadlaskein Lake, Jowai — Timings & How to Reach",
@@ -3047,7 +3047,7 @@
  {
   "url": "/expeditions/motorbike/guwahati-to-kohima",
   "status": 200,
-  "ms": 6,
+  "ms": 5,
   "depth": 2,
   "inSitemap": true,
   "title": "Guwahati to Kohima via Assam Motorbike Route | XTSY",
@@ -3062,7 +3062,7 @@
  {
   "url": "/expeditions/motorbike/meghalaya-loop",
   "status": 200,
-  "ms": 5,
+  "ms": 4,
   "depth": 2,
   "inSitemap": true,
   "title": "Meghalaya Loop Motorbike Route | XTSY",
@@ -3077,7 +3077,7 @@
  {
   "url": "/expeditions/4x4/guwahati-to-shillong",
   "status": 200,
-  "ms": 5,
+  "ms": 4,
   "depth": 2,
   "inSitemap": true,
   "title": "Guwahati to Shillong 4x4 Route | XTSY",
@@ -3092,7 +3092,7 @@
  {
   "url": "/expeditions/4x4/guwahati-to-tawang",
   "status": 200,
-  "ms": 6,
+  "ms": 9,
   "depth": 2,
   "inSitemap": true,
   "title": "Guwahati to Tawang via Assam 4x4 Route | XTSY",
@@ -3107,7 +3107,7 @@
  {
   "url": "/expeditions/4x4/guwahati-to-kohima",
   "status": 200,
-  "ms": 5,
+  "ms": 11,
   "depth": 2,
   "inSitemap": true,
   "title": "Guwahati to Kohima via Assam 4x4 Route | XTSY",
@@ -3122,7 +3122,7 @@
  {
   "url": "/destinations/meghalaya/nongstoin/langshiang-falls",
   "status": 200,
-  "ms": 6,
+  "ms": 9,
   "depth": 2,
   "inSitemap": true,
   "title": "Langshiang Falls, Nongstoin — Timings & How to Reach",
@@ -3137,7 +3137,7 @@
  {
   "url": "/destinations/meghalaya/jowai/phe-phe-falls",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 2,
   "inSitemap": true,
   "title": "Phe Phe Falls, Jowai — Timings & How to Reach",
@@ -3152,7 +3152,7 @@
  {
   "url": "/destinations/meghalaya/mawsynram/mawjymbuin-cave",
   "status": 200,
-  "ms": 5,
+  "ms": 6,
   "depth": 2,
   "inSitemap": true,
   "title": "Mawjymbuin Cave, Mawsynram — Timings & How to Reach",
@@ -3197,7 +3197,7 @@
  {
   "url": "/destinations/meghalaya/shillong/nongjrong-sunrise-viewpoint",
   "status": 200,
-  "ms": 6,
+  "ms": 5,
   "depth": 2,
   "inSitemap": true,
   "title": "Nongjrong Sunrise Viewpoint, Shillong — Travel Guide",
@@ -3212,7 +3212,7 @@
  {
   "url": "/destinations/meghalaya/nongstoin/mawthadraishan-peak",
   "status": 200,
-  "ms": 6,
+  "ms": 5,
   "depth": 2,
   "inSitemap": true,
   "title": "Mawthadraishan Peak, Nongstoin — Timings & How to Reach",
@@ -3227,7 +3227,7 @@
  {
   "url": "/destinations/meghalaya/shillong/wah-rilang-viewpoint",
   "status": 200,
-  "ms": 7,
+  "ms": 5,
   "depth": 2,
   "inSitemap": true,
   "title": "Wah Rilang Viewpoint, Shillong — Timings & How to Reach",
@@ -3242,7 +3242,7 @@
  {
   "url": "/destinations/meghalaya/nongstoin/ranikor",
   "status": 200,
-  "ms": 7,
+  "ms": 5,
   "depth": 2,
   "inSitemap": true,
   "title": "Ranikor, Nongstoin — Timings & How to Reach",
@@ -3257,7 +3257,7 @@
  {
   "url": "/guides/dawki-umngot-river-guide",
   "status": 200,
-  "ms": 8,
+  "ms": 7,
   "depth": 2,
   "inSitemap": true,
   "title": "Dawki & Umngot River Guide 2026 — Crystal Clear Waters",
@@ -3272,7 +3272,7 @@
  {
   "url": "/guides/cherrapunji-travel-guide",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 2,
   "inSitemap": true,
   "title": "Cherrapunji Travel Guide 2026 — Wettest Place on Earth",
@@ -3302,7 +3302,7 @@
  {
   "url": "/guides/10-day-meghalaya-itinerary",
   "status": 200,
-  "ms": 8,
+  "ms": 7,
   "depth": 2,
   "inSitemap": true,
   "title": "10-Day Meghalaya Itinerary: Route, Stays & Trek Tips | XTSY",
@@ -3317,7 +3317,7 @@
  {
   "url": "/guides",
   "status": 200,
-  "ms": 65,
+  "ms": 37,
   "depth": 2,
   "inSitemap": true,
   "title": "Shillong & Meghalaya Guides, Adventure Routes | XTSY",
@@ -3332,7 +3332,7 @@
  {
   "url": "/guides/shillong-cherry-blossom-festival",
   "status": 200,
-  "ms": 9,
+  "ms": 7,
   "depth": 2,
   "inSitemap": true,
   "title": "Shillong Cherry Blossom Festival 2026: Dates & Stay",
@@ -3347,7 +3347,7 @@
  {
   "url": "/about/xtsy-facts",
   "status": 200,
-  "ms": 6,
+  "ms": 5,
   "depth": 2,
   "inSitemap": true,
   "title": "XTSY Facts: Legal Name, Founder, Address & Policies | XTSY",
@@ -3407,7 +3407,7 @@
  {
   "url": "/tours?group=northeast",
   "status": 200,
-  "ms": 12,
+  "ms": 13,
   "depth": 3,
   "inSitemap": false,
   "title": "Meghalaya, Northeast India & Beyond Tour Packages | XTSY",
@@ -3437,7 +3437,7 @@
  {
   "url": "/guides/how-to-reach-shillong",
   "status": 200,
-  "ms": 8,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "How to Reach Shillong — Flights, Trains, Buses & Taxis",
@@ -3467,7 +3467,7 @@
  {
   "url": "/guides/places-to-visit-meghalaya",
   "status": 200,
-  "ms": 8,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "80 Places to Visit in Meghalaya — Complete Destination Guide",
@@ -3482,7 +3482,7 @@
  {
   "url": "/guides/things-to-do-meghalaya",
   "status": 200,
-  "ms": 7,
+  "ms": 9,
   "depth": 3,
   "inSitemap": true,
   "title": "50 Best Things to Do in Meghalaya | Activity Guide",
@@ -3497,7 +3497,7 @@
  {
   "url": "/guides/nohkalikai-falls-meghalaya",
   "status": 200,
-  "ms": 8,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Nohkalikai Falls — India's Tallest Waterfall Guide 2026",
@@ -3512,7 +3512,7 @@
  {
   "url": "/guides/krang-suri-falls-meghalaya",
   "status": 200,
-  "ms": 8,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Krang Suri Falls — Meghalaya's Most Beautiful Swimming Hole",
@@ -3527,7 +3527,7 @@
  {
   "url": "/guides/mawsmai-cave-cherrapunji",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Mawsmai Cave — Cherrapunji's Easy Limestone Cave Walk",
@@ -3602,7 +3602,7 @@
  {
   "url": "/guides/waterfalls-in-meghalaya",
   "status": 200,
-  "ms": 8,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "25 Stunning Waterfalls in Meghalaya: Guide",
@@ -3662,7 +3662,7 @@
  {
   "url": "/guides/mawlynnong-cleanest-village",
   "status": 200,
-  "ms": 7,
+  "ms": 10,
   "depth": 3,
   "inSitemap": true,
   "title": "Mawlynnong — Asia's Cleanest Village Guide 2026",
@@ -3708,7 +3708,7 @@
   "url": "/guides/shillong-to-dawki-road-trip",
   "status": 301,
   "location": "/guides/shillong-to-dawki-trip",
-  "ms": 1,
+  "ms": 0,
   "depth": 3,
   "inSitemap": false,
   "title": "",
@@ -3722,7 +3722,7 @@
  {
   "url": "/guides/shnongpdeng-camping-guide",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Shnongpdeng Camping Guide — Adventure on Umngot River",
@@ -3737,7 +3737,7 @@
  {
   "url": "/guides/homestay-in-dawki",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Homestay in Dawki — Near Umngot River | XTSY",
@@ -3753,7 +3753,7 @@
   "url": "/guides/things-to-do-in-cherrapunjee",
   "status": 301,
   "location": "/guides/cherrapunji-travel-guide",
-  "ms": 1,
+  "ms": 0,
   "depth": 3,
   "inSitemap": false,
   "title": "",
@@ -3812,7 +3812,7 @@
  {
   "url": "/guides/living-root-bridges-meghalaya",
   "status": 200,
-  "ms": 8,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Living Root Bridges of Meghalaya: A 2026 Trekking Guide",
@@ -3888,7 +3888,7 @@
   "url": "/guides/best-cafes-shillong",
   "status": 301,
   "location": "/guides/cafes-in-shillong",
-  "ms": 1,
+  "ms": 0,
   "depth": 3,
   "inSitemap": false,
   "title": "",
@@ -3902,7 +3902,7 @@
  {
   "url": "/guides/wei-sawdong-falls-meghalaya",
   "status": 200,
-  "ms": 8,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Wei Sawdong Falls — Meghalaya's Hidden Three-Tiered Gem",
@@ -3917,7 +3917,7 @@
  {
   "url": "/guides/dawki-river-boating",
   "status": 200,
-  "ms": 8,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Dawki River Boating 2026 — Prices, Timings & Tips",
@@ -3932,7 +3932,7 @@
  {
   "url": "/guides/laitlum-canyons-shillong",
   "status": 200,
-  "ms": 8,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Laitlum Canyons — Shillong's Most Dramatic Viewpoint",
@@ -3947,7 +3947,7 @@
  {
   "url": "/guides/mawphlang-sacred-forest",
   "status": 200,
-  "ms": 8,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Mawphlang Sacred Forest — Ancient Protected Grove Guide",
@@ -3962,7 +3962,7 @@
  {
   "url": "/guides/shnongpdeng-camping",
   "status": 200,
-  "ms": 8,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Shnongpdeng Camping Guide 2026 — River Adventures & Stays",
@@ -3977,7 +3977,7 @@
  {
   "url": "/guides/2-day-shillong-itinerary",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "2-Day Shillong Itinerary — Perfect Weekend Plan",
@@ -4037,7 +4037,7 @@
  {
   "url": "/guides/6-day-meghalaya-itinerary",
   "status": 200,
-  "ms": 9,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "6-Day Meghalaya Itinerary 2026 — Day-by-Day Guide | XTSY",
@@ -4082,7 +4082,7 @@
  {
   "url": "/guides/2-day-meghalaya-itinerary",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "2 Day Meghalaya Itinerary (2026) – Day-Wise Plan & Stays",
@@ -4142,7 +4142,7 @@
  {
   "url": "/guides/backpacking-northeast-india",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Backpacking Northeast India 2026 — Complete Guide",
@@ -4157,7 +4157,7 @@
  {
   "url": "/guides/budget-trip-meghalaya",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Budget Trip to Meghalaya — Complete Guide Under ₹10K",
@@ -4172,7 +4172,7 @@
  {
   "url": "/guides/dawki-river-travel-guide",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Dawki River Travel Guide — Crystal Clear Umngot River",
@@ -4187,7 +4187,7 @@
  {
   "url": "/guides/dawki-to-mawlynnong-guide",
   "status": 200,
-  "ms": 13,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Dawki to Mawlynnong Day Trip Guide 2026 | XTSY",
@@ -4202,7 +4202,7 @@
  {
   "url": "/guides/guwahati-to-baghmara",
   "status": 200,
-  "ms": 11,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Guwahati to Baghmara (2026) | XTSY",
@@ -4217,7 +4217,7 @@
  {
   "url": "/guides/guwahati-to-bomdila",
   "status": 200,
-  "ms": 9,
+  "ms": 16,
   "depth": 3,
   "inSitemap": true,
   "title": "Guwahati to Bomdila (2026) | XTSY",
@@ -4232,7 +4232,7 @@
  {
   "url": "/guides/guwahati-to-cherrapunji",
   "status": 200,
-  "ms": 7,
+  "ms": 11,
   "depth": 3,
   "inSitemap": true,
   "title": "Guwahati to Cherrapunji (2026) | XTSY",
@@ -4247,7 +4247,7 @@
  {
   "url": "/guides/guwahati-to-dawki",
   "status": 200,
-  "ms": 6,
+  "ms": 8,
   "depth": 3,
   "inSitemap": true,
   "title": "Guwahati to Dawki (2026) | XTSY",
@@ -4262,7 +4262,7 @@
  {
   "url": "/guides/guwahati-to-dzukou-valley",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Guwahati to Dzukou Valley (2026) | XTSY",
@@ -4277,7 +4277,7 @@
  {
   "url": "/guides/guwahati-to-itanagar",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Guwahati to Itanagar (2026) | XTSY",
@@ -4292,7 +4292,7 @@
  {
   "url": "/guides/guwahati-to-jorhat",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Guwahati to Jorhat (2026) | XTSY",
@@ -4307,7 +4307,7 @@
  {
   "url": "/guides/guwahati-to-jowai",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Guwahati to Jowai (2026) | XTSY",
@@ -4337,7 +4337,7 @@
  {
   "url": "/guides/guwahati-to-kaziranga",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Guwahati to Kaziranga (2026) | XTSY",
@@ -4352,7 +4352,7 @@
  {
   "url": "/guides/guwahati-to-kohima",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Guwahati to Kohima (2026) | XTSY",
@@ -4367,7 +4367,7 @@
  {
   "url": "/guides/guwahati-to-majuli",
   "status": 200,
-  "ms": 7,
+  "ms": 8,
   "depth": 3,
   "inSitemap": true,
   "title": "Guwahati to Majuli (2026) | XTSY",
@@ -4442,7 +4442,7 @@
  {
   "url": "/guides/guwahati-to-nongstoin",
   "status": 200,
-  "ms": 8,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Guwahati to Nongstoin (2026) | XTSY",
@@ -4487,7 +4487,7 @@
  {
   "url": "/guides/guwahati-to-sivasagar",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Guwahati to Sivasagar (2026) | XTSY",
@@ -4502,7 +4502,7 @@
  {
   "url": "/guides/guwahati-to-tawang",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Guwahati to Tawang (2026) | XTSY",
@@ -4532,7 +4532,7 @@
  {
   "url": "/guides/guwahati-to-tura",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Guwahati to Tura (2026) | XTSY",
@@ -4577,7 +4577,7 @@
  {
   "url": "/guides/how-to-reach-cherrapunji",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "How to Reach Cherrapunji 2026 — From Shillong & More",
@@ -4592,7 +4592,7 @@
  {
   "url": "/guides/how-to-reach-dawki",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "How to Reach Dawki 2026 — Crystal River Guide | XTSY",
@@ -4607,7 +4607,7 @@
  {
   "url": "/guides/how-to-reach-meghalaya-from-bangalore",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "How to Reach Meghalaya from Bangalore 2026 — Guide",
@@ -4622,7 +4622,7 @@
  {
   "url": "/guides/how-to-reach-meghalaya-from-delhi",
   "status": 200,
-  "ms": 7,
+  "ms": 8,
   "depth": 3,
   "inSitemap": true,
   "title": "How to Reach Meghalaya from Delhi 2026 — Best Routes",
@@ -4637,7 +4637,7 @@
  {
   "url": "/guides/how-to-reach-meghalaya-from-kolkata",
   "status": 200,
-  "ms": 6,
+  "ms": 13,
   "depth": 3,
   "inSitemap": true,
   "title": "How to Reach Meghalaya from Kolkata 2026 — Guide",
@@ -4667,7 +4667,7 @@
  {
   "url": "/guides/meghalaya-in-april",
   "status": 200,
-  "ms": 8,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Meghalaya in April 2026 — Weather & Guide | XTSY",
@@ -4682,7 +4682,7 @@
  {
   "url": "/guides/meghalaya-in-august",
   "status": 200,
-  "ms": 7,
+  "ms": 8,
   "depth": 3,
   "inSitemap": true,
   "title": "Meghalaya in August 2026 — Weather & Guide | XTSY",
@@ -4757,7 +4757,7 @@
  {
   "url": "/guides/meghalaya-in-june",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Meghalaya in June 2026 — Weather & Guide | XTSY",
@@ -4772,7 +4772,7 @@
  {
   "url": "/guides/meghalaya-in-march",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Meghalaya in March 2026 — Weather & Guide | XTSY",
@@ -4802,7 +4802,7 @@
  {
   "url": "/guides/meghalaya-in-november",
   "status": 200,
-  "ms": 8,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Meghalaya in November 2026 — Weather & Guide | XTSY",
@@ -4817,7 +4817,7 @@
  {
   "url": "/guides/meghalaya-in-october",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Meghalaya in October 2026 — Weather & Guide | XTSY",
@@ -4847,7 +4847,7 @@
  {
   "url": "/guides/meghalaya-road-trip-guide",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Meghalaya Road Trip Guide — Routes, Tips & Stops",
@@ -4877,7 +4877,7 @@
  {
   "url": "/guides/meghalaya-trip-cost",
   "status": 200,
-  "ms": 14,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Meghalaya Trip Cost 2026 — Complete Budget Breakdown",
@@ -4892,7 +4892,7 @@
  {
   "url": "/guides/north-east-trip-guide",
   "status": 200,
-  "ms": 15,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "North East India Trip Guide 2026 | XTSY Travel",
@@ -4907,7 +4907,7 @@
  {
   "url": "/guides/offbeat-meghalaya",
   "status": 200,
-  "ms": 8,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Offbeat Places in Meghalaya 2026 — Hidden Gems | XTSY",
@@ -4922,7 +4922,7 @@
  {
   "url": "/guides/shillong-to-cherrapunji-road-trip",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Shillong to Cherrapunji Road Trip Guide 2026 | XTSY",
@@ -4952,7 +4952,7 @@
  {
   "url": "/guides/shillong-to-nongjrong",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Shillong to Nongjrong Trip Guide 2026 | XTSY",
@@ -4967,7 +4967,7 @@
  {
   "url": "/guides/shillong-vacation-planner",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Shillong Vacation Planner 2026 — Complete Guide",
@@ -5057,7 +5057,7 @@
  {
   "url": "/guides/best-chinese-restaurant-shillong",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Best Chinese Restaurant in Shillong — Indo-Chinese",
@@ -5072,7 +5072,7 @@
  {
   "url": "/guides/best-chinese-restaurant-in-shillong",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Best Chinese Restaurant in Shillong | TAB Bistro",
@@ -5102,7 +5102,7 @@
  {
   "url": "/guides/best-food-places-in-shillong",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Best Food Places in Shillong | TAB Bistro",
@@ -5147,7 +5147,7 @@
  {
   "url": "/guides/best-veg-restaurants-shillong",
   "status": 200,
-  "ms": 7,
+  "ms": 16,
   "depth": 3,
   "inSitemap": true,
   "title": "Best Veg Restaurants in Shillong — Top Vegetarian Dining",
@@ -5162,7 +5162,7 @@
  {
   "url": "/guides/birthday-party-catering-shillong",
   "status": 200,
-  "ms": 6,
+  "ms": 12,
   "depth": 3,
   "inSitemap": true,
   "title": "Birthday Party Catering in Shillong — Menus | TAB Bistro",
@@ -5177,7 +5177,7 @@
  {
   "url": "/guides/birthday-party-restaurant-shillong",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Birthday Party Restaurant in Shillong | TAB Bistro",
@@ -5237,7 +5237,7 @@
  {
   "url": "/guides/bulk-food-order-shillong",
   "status": 200,
-  "ms": 6,
+  "ms": 5,
   "depth": 3,
   "inSitemap": true,
   "title": "Bulk Food Order in Shillong — Party & Corporate | TAB Bistro",
@@ -5297,7 +5297,7 @@
  {
   "url": "/guides/chinese-food-in-shillong",
   "status": 200,
-  "ms": 5,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Chinese Restaurant in Shillong — Chinese Menu | TAB Bistro",
@@ -5327,7 +5327,7 @@
  {
   "url": "/guides/continental-restaurant-shillong",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Continental Restaurant in Shillong | TAB Bistro",
@@ -5342,7 +5342,7 @@
  {
   "url": "/guides/corporate-event-catering-shillong",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Corporate & Event Catering in Shillong | TAB Bistro by XTSY",
@@ -5387,7 +5387,7 @@
  {
   "url": "/guides/dinner-in-shillong",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Dinner in Shillong — Best Dinner Restaurants | TAB Bistro",
@@ -5507,7 +5507,7 @@
  {
   "url": "/guides/healthy-food-restaurant-shillong",
   "status": 200,
-  "ms": 8,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Healthy & Light Restaurant in Shillong | TAB Bistro",
@@ -5522,7 +5522,7 @@
  {
   "url": "/guides/indo-chinese-restaurant-shillong",
   "status": 200,
-  "ms": 8,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Indo-Chinese Restaurant in Shillong | TAB Bistro",
@@ -5627,7 +5627,7 @@
  {
   "url": "/guides/north-indian-restaurant-shillong",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "North Indian Restaurant in Shillong | TAB Bistro",
@@ -5642,7 +5642,7 @@
  {
   "url": "/guides/online-food-order-shillong",
   "status": 200,
-  "ms": 15,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Order Food Online in Shillong — Multi-Cuisine | TAB Bistro",
@@ -5657,7 +5657,7 @@
  {
   "url": "/guides/party-catering-shillong",
   "status": 200,
-  "ms": 9,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Party Catering & Bulk Food Orders in Shillong",
@@ -5672,7 +5672,7 @@
  {
   "url": "/guides/party-food-order-shillong",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Party Food Orders in Shillong | TAB Bistro",
@@ -5732,7 +5732,7 @@
  {
   "url": "/guides/pure-veg-restaurant-shillong",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Pure Veg Restaurant in Shillong — Vegetarian Food Guide",
@@ -5762,7 +5762,7 @@
  {
   "url": "/guides/restaurant-near-iim-shillong",
   "status": 200,
-  "ms": 6,
+  "ms": 5,
   "depth": 3,
   "inSitemap": true,
   "title": "Restaurants Near IIM Shillong, New Shillong Township",
@@ -5777,7 +5777,7 @@
  {
   "url": "/guides/restaurant-near-mlcu-shillong",
   "status": 200,
-  "ms": 7,
+  "ms": 8,
   "depth": 3,
   "inSitemap": true,
   "title": "Restaurants Near MLCU, New Shillong Township",
@@ -5807,7 +5807,7 @@
  {
   "url": "/guides/restaurant-near-neigrims-shillong",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Restaurants Near NEIGRIMS, New Shillong Township",
@@ -5822,7 +5822,7 @@
  {
   "url": "/guides/restaurant-near-nift-shillong",
   "status": 200,
-  "ms": 6,
+  "ms": 5,
   "depth": 3,
   "inSitemap": true,
   "title": "Restaurants Near NIFT Shillong, New Shillong Township",
@@ -5837,7 +5837,7 @@
  {
   "url": "/guides/romantic-restaurant-shillong",
   "status": 200,
-  "ms": 6,
+  "ms": 5,
   "depth": 3,
   "inSitemap": true,
   "title": "Romantic Restaurant in Shillong — Couple Dining | TAB Bistro",
@@ -5882,7 +5882,7 @@
  {
   "url": "/guides/takeaway-food-shillong",
   "status": 200,
-  "ms": 6,
+  "ms": 5,
   "depth": 3,
   "inSitemap": true,
   "title": "Takeaway Food in Shillong — Pickup Meals | TAB Bistro",
@@ -5927,7 +5927,7 @@
  {
   "url": "/guides/top-restaurants-in-shillong",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Top Restaurants in Shillong | TAB Bistro",
@@ -5942,7 +5942,7 @@
  {
   "url": "/guides/vegetarian-food-in-shillong",
   "status": 200,
-  "ms": 6,
+  "ms": 15,
   "depth": 3,
   "inSitemap": true,
   "title": "Vegetarian Food in Shillong — Where to Eat Veg | TAB Bistro",
@@ -5957,7 +5957,7 @@
  {
   "url": "/guides/wedding-catering-shillong",
   "status": 200,
-  "ms": 6,
+  "ms": 9,
   "depth": 3,
   "inSitemap": true,
   "title": "Wedding Catering in Shillong — Menus & Packages | TAB Bistro",
@@ -5972,7 +5972,7 @@
  {
   "url": "/guides/wedding-catering-services-shillong",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Wedding Catering Services in Shillong | TAB Bistro",
@@ -6107,7 +6107,7 @@
  {
   "url": "/guides/2-day-nagaland-trip",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "2 Day Nagaland Trip Plan (2026) – Cost, Route & Stays",
@@ -6152,7 +6152,7 @@
  {
   "url": "/guides/3-day-arunachal-pradesh-itinerary",
   "status": 200,
-  "ms": 18,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "3 Day Arunachal Pradesh Itinerary (2026)",
@@ -6167,7 +6167,7 @@
  {
   "url": "/guides/3-day-arunachal-pradesh-trip",
   "status": 200,
-  "ms": 10,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "3 Day Arunachal Pradesh Trip Plan (2026)",
@@ -6182,7 +6182,7 @@
  {
   "url": "/guides/3-day-assam-itinerary",
   "status": 200,
-  "ms": 8,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "3 Day Assam Itinerary (2026) – Day-Wise Plan & Stays",
@@ -6197,7 +6197,7 @@
  {
   "url": "/guides/3-day-assam-trip",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "3 Day Assam Trip Plan (2026) – Cost, Route & Stays",
@@ -6212,7 +6212,7 @@
  {
   "url": "/guides/3-day-meghalaya-trip",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "3 Day Meghalaya Trip Plan (2026) – Cost, Route & Stays",
@@ -6227,7 +6227,7 @@
  {
   "url": "/guides/3-day-mizoram-itinerary",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "3 Day Mizoram Itinerary (2026) – Day-Wise Plan & Stays",
@@ -6242,7 +6242,7 @@
  {
   "url": "/guides/3-day-mizoram-trip",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "3 Day Mizoram Trip Plan (2026) – Cost, Route & Stays",
@@ -6317,7 +6317,7 @@
  {
   "url": "/guides/4-day-arunachal-pradesh-itinerary",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "4 Day Arunachal Pradesh Itinerary (2026)",
@@ -6332,7 +6332,7 @@
  {
   "url": "/guides/4-day-assam-itinerary",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "4 Day Assam Itinerary (2026) – Day-Wise Plan & Stays",
@@ -6377,7 +6377,7 @@
  {
   "url": "/guides/monsoon-in-agartala",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Monsoon in Agartala 2026 – XTSY Travel Guide",
@@ -6392,7 +6392,7 @@
  {
   "url": "/guides/monsoon-in-aizawl",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Monsoon in Aizawl 2026 – XTSY Travel Guide",
@@ -6407,7 +6407,7 @@
  {
   "url": "/guides/monsoon-in-bomdila",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Monsoon in Bomdila 2026 – XTSY Travel Guide",
@@ -6467,7 +6467,7 @@
  {
   "url": "/guides/monsoon-in-dzukou-valley",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Monsoon in Dzukou Valley 2026 – XTSY Travel Guide",
@@ -6482,7 +6482,7 @@
  {
   "url": "/guides/monsoon-in-guwahati",
   "status": 200,
-  "ms": 8,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Monsoon in Guwahati 2026 – XTSY Travel Guide",
@@ -6497,7 +6497,7 @@
  {
   "url": "/guides/monsoon-in-haflong",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Monsoon in Haflong 2026 – XTSY Travel Guide",
@@ -6512,7 +6512,7 @@
  {
   "url": "/guides/monsoon-in-imphal",
   "status": 200,
-  "ms": 8,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Monsoon in Imphal 2026 – XTSY Travel Guide",
@@ -6527,7 +6527,7 @@
  {
   "url": "/guides/monsoon-in-itanagar",
   "status": 200,
-  "ms": 14,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Monsoon in Itanagar 2026 – XTSY Travel Guide",
@@ -6542,7 +6542,7 @@
  {
   "url": "/guides/monsoon-in-jorhat",
   "status": 200,
-  "ms": 12,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Monsoon in Jorhat 2026 – XTSY Travel Guide",
@@ -6557,7 +6557,7 @@
  {
   "url": "/guides/monsoon-in-jowai",
   "status": 200,
-  "ms": 10,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Monsoon in Jowai 2026 – XTSY Travel Guide",
@@ -6662,7 +6662,7 @@
  {
   "url": "/guides/monsoon-in-mokokchung",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Monsoon in Mokokchung 2026 – XTSY Travel Guide",
@@ -6677,7 +6677,7 @@
  {
   "url": "/guides/monsoon-in-nongjrong",
   "status": 200,
-  "ms": 6,
+  "ms": 16,
   "depth": 3,
   "inSitemap": true,
   "title": "Monsoon in Nongjrong 2026 – XTSY Travel Guide",
@@ -6692,7 +6692,7 @@
  {
   "url": "/guides/monsoon-in-pasighat",
   "status": 200,
-  "ms": 6,
+  "ms": 10,
   "depth": 3,
   "inSitemap": true,
   "title": "Monsoon in Pasighat 2026 – XTSY Travel Guide",
@@ -6707,7 +6707,7 @@
  {
   "url": "/guides/monsoon-in-reiek",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Monsoon in Reiek 2026 – XTSY Travel Guide",
@@ -6722,7 +6722,7 @@
  {
   "url": "/guides/monsoon-in-shillong",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Monsoon in Shillong 2026 – XTSY Travel Guide",
@@ -6767,7 +6767,7 @@
  {
   "url": "/guides/monsoon-in-tezpur",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Monsoon in Tezpur 2026 – XTSY Travel Guide",
@@ -6797,7 +6797,7 @@
  {
   "url": "/guides/monsoon-in-unakoti",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Monsoon in Unakoti 2026 – XTSY Travel Guide",
@@ -6812,7 +6812,7 @@
  {
   "url": "/guides/monsoon-in-ziro",
   "status": 200,
-  "ms": 8,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Monsoon in Ziro 2026 – XTSY Travel Guide",
@@ -6827,7 +6827,7 @@
  {
   "url": "/guides/accommodation-near-iim-shillong",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Accommodation IIM Shillong (2026) | XTSY",
@@ -6842,7 +6842,7 @@
  {
   "url": "/guides/accommodation-near-nehu",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Accommodation NEHU (2026) | XTSY",
@@ -6857,7 +6857,7 @@
  {
   "url": "/guides/accommodation-near-nift-shillong",
   "status": 200,
-  "ms": 5,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Accommodation NIFT Shillong (2026) | XTSY",
@@ -6872,7 +6872,7 @@
  {
   "url": "/guides/stays-in-shillong",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Best Stays in Shillong 2026 — Budget to Luxury | XTSY",
@@ -6887,7 +6887,7 @@
  {
   "url": "/guides/group-booking-shillong",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Group Booking Shillong — Dorms & Rooms | XTSY",
@@ -6902,7 +6902,7 @@
  {
   "url": "/guides/guest-house-shillong",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Guest House in Shillong — Affordable Stays | XTSY",
@@ -6917,7 +6917,7 @@
  {
   "url": "/guides/hostel-near-iim-shillong",
   "status": 200,
-  "ms": 13,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Hostel IIM Shillong (2026) | XTSY",
@@ -6932,7 +6932,7 @@
  {
   "url": "/guides/hostel-near-nift-shillong",
   "status": 200,
-  "ms": 13,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Hostel NIFT Shillong (2026) | XTSY",
@@ -6947,7 +6947,7 @@
  {
   "url": "/guides/hotel-near-iim-shillong",
   "status": 200,
-  "ms": 10,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Hotel IIM Shillong (2026) | XTSY",
@@ -7052,7 +7052,7 @@
  {
   "url": "/guides/stay-near-iim-shillong",
   "status": 200,
-  "ms": 6,
+  "ms": 5,
   "depth": 3,
   "inSitemap": true,
   "title": "Stay IIM Shillong (2026) | XTSY",
@@ -7067,7 +7067,7 @@
  {
   "url": "/guides/stay-near-iit-guwahati",
   "status": 200,
-  "ms": 7,
+  "ms": 5,
   "depth": 3,
   "inSitemap": true,
   "title": "Stay IIT Guwahati (2026) | XTSY",
@@ -7082,7 +7082,7 @@
  {
   "url": "/guides/shillong-stay-tonight",
   "status": 200,
-  "ms": 7,
+  "ms": 5,
   "depth": 3,
   "inSitemap": true,
   "title": "Stay in Shillong Tonight — Rooms & Beds Available (20 Novem…",
@@ -7097,7 +7097,7 @@
  {
   "url": "/guides/stay-near-nehu",
   "status": 200,
-  "ms": 7,
+  "ms": 5,
   "depth": 3,
   "inSitemap": true,
   "title": "Stay NEHU (2026) | XTSY — Budget Rooms, 24/7 Check-in",
@@ -7112,7 +7112,7 @@
  {
   "url": "/guides/stay-near-nift-shillong",
   "status": 200,
-  "ms": 6,
+  "ms": 5,
   "depth": 3,
   "inSitemap": true,
   "title": "Stay NIFT Shillong (2026) | XTSY",
@@ -7127,7 +7127,7 @@
  {
   "url": "/guides/student-accommodation-near-iim-shillong",
   "status": 200,
-  "ms": 6,
+  "ms": 5,
   "depth": 3,
   "inSitemap": true,
   "title": "Student Accommodation IIM Shillong (2026) | XTSY",
@@ -7142,7 +7142,7 @@
  {
   "url": "/guides/student-accommodation-near-nehu",
   "status": 200,
-  "ms": 6,
+  "ms": 5,
   "depth": 3,
   "inSitemap": true,
   "title": "Student Accommodation NEHU (2026) | XTSY",
@@ -7157,7 +7157,7 @@
  {
   "url": "/guides/student-accommodation-near-nift-shillong",
   "status": 200,
-  "ms": 6,
+  "ms": 5,
   "depth": 3,
   "inSitemap": true,
   "title": "Student Accommodation NIFT Shillong (2026) | XTSY",
@@ -7172,7 +7172,7 @@
  {
   "url": "/guides/meghalaya-tour-package-3-days",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "3 Day Meghalaya Tour Package — ₹7,999 | XTSY",
@@ -7187,7 +7187,7 @@
  {
   "url": "/guides/meghalaya-tour-package-5-days",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "5 Day Meghalaya Tour Package — ₹13,999 | XTSY",
@@ -7202,7 +7202,7 @@
  {
   "url": "/guides/tour-operators-meghalaya",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Best Tour Operators in Meghalaya 2026 | XTSY",
@@ -7232,7 +7232,7 @@
  {
   "url": "/guides/dawki-tour-package",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Dawki Tour Package 2026: Clear River & Camping | XTSY",
@@ -7262,7 +7262,7 @@
  {
   "url": "/guides/meghalaya-honeymoon-package",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Meghalaya Honeymoon Package — ₹18,999/Couple | XTSY",
@@ -7292,7 +7292,7 @@
  {
   "url": "/guides/nongjrong-tour-package",
   "status": 200,
-  "ms": 5,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Nongjrong Tour Package from Shillong | XTSY",
@@ -7337,7 +7337,7 @@
  {
   "url": "/guides/arunachal-pradesh-tour-packages",
   "status": 200,
-  "ms": 10,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Tour packages Arunachal Pradesh (2026) | XTSY",
@@ -7352,7 +7352,7 @@
  {
   "url": "/guides/assam-tour-packages",
   "status": 200,
-  "ms": 12,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Tour packages Assam (2026) | XTSY",
@@ -7367,7 +7367,7 @@
  {
   "url": "/guides/manipur-tour-packages",
   "status": 200,
-  "ms": 11,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Tour packages Manipur (2026) | XTSY",
@@ -7382,7 +7382,7 @@
  {
   "url": "/guides/mizoram-tour-packages",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Tour packages Mizoram (2026) | XTSY",
@@ -7397,7 +7397,7 @@
  {
   "url": "/guides/nagaland-tour-packages",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Tour packages Nagaland (2026) | XTSY",
@@ -7412,7 +7412,7 @@
  {
   "url": "/guides/sikkim-tour-packages",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Tour packages Sikkim (2026) | XTSY",
@@ -7442,7 +7442,7 @@
  {
   "url": "/guides/corporate-retreat-agartala",
   "status": 200,
-  "ms": 7,
+  "ms": 16,
   "depth": 3,
   "inSitemap": true,
   "title": "Corporate Retreat in Agartala 2026 – XTSY",
@@ -7457,7 +7457,7 @@
  {
   "url": "/guides/corporate-retreat-aizawl",
   "status": 200,
-  "ms": 7,
+  "ms": 10,
   "depth": 3,
   "inSitemap": true,
   "title": "Corporate Retreat in Aizawl 2026 – XTSY",
@@ -7472,7 +7472,7 @@
  {
   "url": "/guides/corporate-retreat-arunachal-pradesh",
   "status": 200,
-  "ms": 7,
+  "ms": 8,
   "depth": 3,
   "inSitemap": true,
   "title": "Corporate Retreat in Arunachal Pradesh 2026 – XTSY",
@@ -7502,7 +7502,7 @@
  {
   "url": "/guides/corporate-retreat-cherrapunji",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Corporate Retreat in Cherrapunji 2026 – XTSY",
@@ -7517,7 +7517,7 @@
  {
   "url": "/guides/corporate-retreat-dawki",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Corporate Retreat in Dawki 2026 – XTSY",
@@ -7592,7 +7592,7 @@
  {
   "url": "/guides/corporate-retreat-kaziranga",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Corporate Retreat in Kaziranga 2026 – XTSY",
@@ -7607,7 +7607,7 @@
  {
   "url": "/guides/corporate-retreat-kohima",
   "status": 200,
-  "ms": 9,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Corporate Retreat in Kohima 2026 – XTSY",
@@ -7622,7 +7622,7 @@
  {
   "url": "/guides/corporate-retreat-mawlynnong",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Corporate Retreat in Mawlynnong 2026 – XTSY",
@@ -7637,7 +7637,7 @@
  {
   "url": "/guides/corporate-retreat-meghalaya",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Corporate Retreat in Meghalaya 2026 – XTSY",
@@ -7667,7 +7667,7 @@
  {
   "url": "/guides/corporate-retreat-nongjrong",
   "status": 200,
-  "ms": 6,
+  "ms": 5,
   "depth": 3,
   "inSitemap": true,
   "title": "Corporate Retreat in Nongjrong 2026 – XTSY",
@@ -7682,7 +7682,7 @@
  {
   "url": "/guides/corporate-retreat-pelling",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Corporate Retreat in Pelling 2026 – XTSY",
@@ -7697,7 +7697,7 @@
  {
   "url": "/guides/corporate-retreat-shnongpdeng",
   "status": 200,
-  "ms": 7,
+  "ms": 8,
   "depth": 3,
   "inSitemap": true,
   "title": "Corporate Retreat in Shnongpdeng 2026 – XTSY",
@@ -7712,7 +7712,7 @@
  {
   "url": "/guides/corporate-retreat-tawang",
   "status": 200,
-  "ms": 7,
+  "ms": 8,
   "depth": 3,
   "inSitemap": true,
   "title": "Corporate Retreat in Tawang 2026 – XTSY",
@@ -7727,7 +7727,7 @@
  {
   "url": "/guides/corporate-retreat-ziro",
   "status": 200,
-  "ms": 16,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Corporate Retreat in Ziro 2026 – XTSY",
@@ -7742,7 +7742,7 @@
  {
   "url": "/guides/bike-trip-agartala",
   "status": 200,
-  "ms": 11,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Bike Trip Agartala 2026 — Route, Permits & Stays",
@@ -7757,7 +7757,7 @@
  {
   "url": "/guides/bike-trip-aizawl",
   "status": 200,
-  "ms": 9,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Bike Trip Aizawl 2026 — Route, Permits & Stays",
@@ -7772,7 +7772,7 @@
  {
   "url": "/guides/bike-trip-arunachal-pradesh",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Bike Trip Arunachal Pradesh 2026",
@@ -7787,7 +7787,7 @@
  {
   "url": "/guides/bike-trip-assam",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Bike Trip Assam 2026 — Route, Permits & Stays",
@@ -7832,7 +7832,7 @@
  {
   "url": "/guides/bike-trip-gangtok",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Bike Trip Gangtok 2026 — Route, Permits & Stays",
@@ -7847,7 +7847,7 @@
  {
   "url": "/guides/bike-trip-guwahati",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Bike Trip Guwahati 2026 — Route, Permits & Stays",
@@ -7877,7 +7877,7 @@
  {
   "url": "/guides/bike-trip-jowai",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Bike Trip Jowai 2026 — Route, Permits & Stays",
@@ -7907,7 +7907,7 @@
  {
   "url": "/guides/bike-trip-kohima",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Bike Trip Kohima 2026 — Route, Permits & Stays",
@@ -7937,7 +7937,7 @@
  {
   "url": "/guides/bike-trip-meghalaya",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Bike Trip Meghalaya 2026 — Route, Permits & Stays",
@@ -7952,7 +7952,7 @@
  {
   "url": "/guides/bike-trip-nongjrong",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Bike Trip Nongjrong 2026 — Route, Permits & Stays",
@@ -7967,7 +7967,7 @@
  {
   "url": "/guides/bike-trip-pelling",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Bike Trip Pelling 2026 — Route, Permits & Stays",
@@ -8057,7 +8057,7 @@
  {
   "url": "/guides/shillong-dormitory",
   "status": 200,
-  "ms": 5,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Dormitory in Shillong — Mixed & Female Dorms | XTSY",
@@ -8102,7 +8102,7 @@
  {
   "url": "/guides/couples-hostel-shillong",
   "status": 200,
-  "ms": 15,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Hostel for Couples in Shillong 2026: XTSY Private Rooms",
@@ -8117,7 +8117,7 @@
  {
   "url": "/guides/hostel-in-shillong-last-minute",
   "status": 200,
-  "ms": 9,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Hostel in Shillong Last Minute — XTSY, New Shillong Township",
@@ -8132,7 +8132,7 @@
  {
   "url": "/guides/hostel-in-shillong-now",
   "status": 200,
-  "ms": 9,
+  "ms": 5,
   "depth": 3,
   "inSitemap": true,
   "title": "Hostel in Shillong Right Now — XTSY, New Shillong Township",
@@ -8147,7 +8147,7 @@
  {
   "url": "/guides/hostel-in-shillong-this-weekend",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Hostel in Shillong This Weekend",
@@ -8177,7 +8177,7 @@
  {
   "url": "/guides/hostel-in-shillong-tonight",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Hostel in Shillong Tonight — XTSY, New Shillong Township",
@@ -8192,7 +8192,7 @@
  {
   "url": "/guides/hostel-near-police-bazar-shillong",
   "status": 200,
-  "ms": 7,
+  "ms": 16,
   "depth": 3,
   "inSitemap": true,
   "title": "Hostel near Police Bazar Shillong? Where XTSY Is | XTSY",
@@ -8207,7 +8207,7 @@
  {
   "url": "/guides/hostel-near-shillong-airport",
   "status": 200,
-  "ms": 6,
+  "ms": 13,
   "depth": 3,
   "inSitemap": true,
   "title": "Hostel near Shillong Airport — XTSY, New Shillong Township",
@@ -8222,7 +8222,7 @@
  {
   "url": "/guides/hostels-in-shillong-today",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Hostels in Shillong Today — Beds from ₹400 | XTSY",
@@ -8282,7 +8282,7 @@
  {
   "url": "/guides/stargaze-hostel-vs-xtsy",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Stargaze Hostel vs XTSY Shillong — Compare Now",
@@ -8297,7 +8297,7 @@
  {
   "url": "/guides/zion-backpackers-vs-xtsy",
   "status": 200,
-  "ms": 8,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Zion Backpackers vs XTSY Shillong — Compare",
@@ -8342,7 +8342,7 @@
  {
   "url": "/guides/dawki-guide",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Dawki — Crystal Clear Umngot River | Travel Guide",
@@ -8357,7 +8357,7 @@
  {
   "url": "/guides/elephant-falls-shillong",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Elephant Falls — Shillong's Most Accessible Waterfall",
@@ -8402,7 +8402,7 @@
  {
   "url": "/guides/shillong-guide",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Shillong — The Scotland of the East | Complete Guide",
@@ -8417,7 +8417,7 @@
  {
   "url": "/guides/shillong-peak-viewpoint",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Shillong Peak — Highest Point & 360° Panoramic Views",
@@ -8447,7 +8447,7 @@
  {
   "url": "/guides/homestay-near-guwahati-airport",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Airport Homestay in Guwahati (2026) | XTSY",
@@ -8462,7 +8462,7 @@
  {
   "url": "/guides/homestay-near-shillong-airport",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Airport Homestay in Shillong (2026) | XTSY",
@@ -8477,7 +8477,7 @@
  {
   "url": "/guides/best-homestay-in-cherrapunji",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Best Homestay in Cherrapunji (2026) | XTSY",
@@ -8492,7 +8492,7 @@
  {
   "url": "/guides/best-homestay-in-guwahati",
   "status": 200,
-  "ms": 5,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Best Homestay in Guwahati (2026) | XTSY",
@@ -8507,7 +8507,7 @@
  {
   "url": "/guides/best-homestay-in-shillong",
   "status": 200,
-  "ms": 16,
+  "ms": 5,
   "depth": 3,
   "inSitemap": true,
   "title": "Best Homestay in Shillong (2026) | XTSY",
@@ -8522,7 +8522,7 @@
  {
   "url": "/guides/homestay-in-cherrapunji",
   "status": 200,
-  "ms": 14,
+  "ms": 5,
   "depth": 3,
   "inSitemap": true,
   "title": "Homestay in Cherrapunji — Local Experience | XTSY",
@@ -8567,7 +8567,7 @@
  {
   "url": "/guides/homestay-in-shillong-last-minute",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Homestay in Shillong Last Minute (2026) | XTSY",
@@ -8597,7 +8597,7 @@
  {
   "url": "/guides/homestay-in-shillong-this-weekend",
   "status": 200,
-  "ms": 6,
+  "ms": 9,
   "depth": 3,
   "inSitemap": true,
   "title": "Homestay in Shillong This Weekend (2026) | XTSY",
@@ -8612,7 +8612,7 @@
  {
   "url": "/guides/homestay-in-shillong-today",
   "status": 200,
-  "ms": 6,
+  "ms": 13,
   "depth": 3,
   "inSitemap": true,
   "title": "Homestay in Shillong Today (2026) | XTSY",
@@ -8627,7 +8627,7 @@
  {
   "url": "/guides/homestay-in-shillong-tomorrow",
   "status": 200,
-  "ms": 6,
+  "ms": 12,
   "depth": 3,
   "inSitemap": true,
   "title": "Homestay in Shillong Tomorrow (2026) | XTSY",
@@ -8687,7 +8687,7 @@
  {
   "url": "/guides/glamping-near-shillong-airport",
   "status": 200,
-  "ms": 6,
+  "ms": 5,
   "depth": 3,
   "inSitemap": true,
   "title": "Airport Glamping in Shillong (2026) | XTSY",
@@ -8702,7 +8702,7 @@
  {
   "url": "/guides/best-glamping-in-cherrapunji",
   "status": 200,
-  "ms": 6,
+  "ms": 5,
   "depth": 3,
   "inSitemap": true,
   "title": "Best Glamping in Cherrapunji (2026) | XTSY",
@@ -8747,7 +8747,7 @@
  {
   "url": "/guides/glamping-in-shillong-last-minute",
   "status": 200,
-  "ms": 6,
+  "ms": 5,
   "depth": 3,
   "inSitemap": true,
   "title": "Glamping in Shillong Last Minute (2026) | XTSY",
@@ -8762,7 +8762,7 @@
  {
   "url": "/guides/glamping-in-shillong-now",
   "status": 200,
-  "ms": 6,
+  "ms": 5,
   "depth": 3,
   "inSitemap": true,
   "title": "Glamping in Shillong Now (2026) | XTSY",
@@ -8777,7 +8777,7 @@
  {
   "url": "/guides/glamping-in-shillong-this-weekend",
   "status": 200,
-  "ms": 6,
+  "ms": 5,
   "depth": 3,
   "inSitemap": true,
   "title": "Glamping in Shillong This Weekend (2026) | XTSY",
@@ -8792,7 +8792,7 @@
  {
   "url": "/guides/glamping-in-shillong-today",
   "status": 200,
-  "ms": 6,
+  "ms": 5,
   "depth": 3,
   "inSitemap": true,
   "title": "Glamping in Shillong Today (2026) | XTSY",
@@ -8807,7 +8807,7 @@
  {
   "url": "/guides/glamping-in-shillong-tomorrow",
   "status": 200,
-  "ms": 5,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Glamping in Shillong Tomorrow (2026) | XTSY",
@@ -8822,7 +8822,7 @@
  {
   "url": "/guides/glamping-in-shillong-tonight",
   "status": 200,
-  "ms": 5,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Glamping in Shillong Tonight (2026) | XTSY",
@@ -8882,7 +8882,7 @@
  {
   "url": "/guides/group-tour-cherrapunji",
   "status": 200,
-  "ms": 7,
+  "ms": 8,
   "depth": 3,
   "inSitemap": true,
   "title": "Group Tour Cherrapunji 2026 – Custom Itineraries by XTSY",
@@ -8897,7 +8897,7 @@
  {
   "url": "/guides/group-tour-dawki",
   "status": 200,
-  "ms": 17,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Group Tour Dawki 2026 – Custom Itineraries by XTSY",
@@ -8912,7 +8912,7 @@
  {
   "url": "/guides/group-tour-jowai",
   "status": 200,
-  "ms": 10,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Group Tour Jowai 2026 – Custom Itineraries by XTSY",
@@ -8927,7 +8927,7 @@
  {
   "url": "/guides/group-tour-mawlynnong",
   "status": 200,
-  "ms": 10,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Group Tour Mawlynnong 2026 – Custom Itineraries by XTSY",
@@ -8957,7 +8957,7 @@
  {
   "url": "/guides/group-tour-nongjrong",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Group Tour Nongjrong 2026 – Custom Itineraries by XTSY",
@@ -8972,7 +8972,7 @@
  {
   "url": "/guides/group-tour-package-cherrapunji",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Group Tour Package Cherrapunji 2026 – Custom Itineraries…",
@@ -9002,7 +9002,7 @@
  {
   "url": "/guides/group-tour-package-mawlynnong",
   "status": 200,
-  "ms": 6,
+  "ms": 18,
   "depth": 3,
   "inSitemap": true,
   "title": "Group Tour Package Mawlynnong 2026 – Custom Itineraries by…",
@@ -9017,7 +9017,7 @@
  {
   "url": "/guides/group-tour-package-shillong",
   "status": 200,
-  "ms": 6,
+  "ms": 15,
   "depth": 3,
   "inSitemap": true,
   "title": "Group Tour Package Shillong 2026 – Custom Itineraries by…",
@@ -9032,7 +9032,7 @@
  {
   "url": "/guides/group-tour-shillong",
   "status": 200,
-  "ms": 6,
+  "ms": 8,
   "depth": 3,
   "inSitemap": true,
   "title": "Group Tour Shillong 2026 – Custom Itineraries by XTSY",
@@ -9047,7 +9047,7 @@
  {
   "url": "/guides/group-tour-shnongpdeng",
   "status": 200,
-  "ms": 6,
+  "ms": 8,
   "depth": 3,
   "inSitemap": true,
   "title": "Group Tour Shnongpdeng 2026 – Custom Itineraries by XTSY",
@@ -9062,7 +9062,7 @@
  {
   "url": "/guides/workation-aizawl",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Workation in Aizawl 2026 – Long-Stay by XTSY",
@@ -9092,7 +9092,7 @@
  {
   "url": "/guides/workation-dawki",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Workation in Dawki 2026 – Long-Stay by XTSY",
@@ -9107,7 +9107,7 @@
  {
   "url": "/guides/workation-gangtok",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Workation in Gangtok 2026 – Long-Stay by XTSY",
@@ -9122,7 +9122,7 @@
  {
   "url": "/guides/workation-guwahati",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Workation in Guwahati 2026 – Long-Stay by XTSY",
@@ -9152,7 +9152,7 @@
  {
   "url": "/guides/workation-kohima",
   "status": 200,
-  "ms": 7,
+  "ms": 8,
   "depth": 3,
   "inSitemap": true,
   "title": "Workation in Kohima 2026 – Long-Stay by XTSY",
@@ -9242,7 +9242,7 @@
  {
   "url": "/guides/honeymoon-package-cherrapunji",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Honeymoon Package Cherrapunji 2026 – Custom by XTSY",
@@ -9257,7 +9257,7 @@
  {
   "url": "/guides/honeymoon-package-dawki",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Honeymoon Package Dawki 2026 – Custom by XTSY",
@@ -9287,7 +9287,7 @@
  {
   "url": "/guides/honeymoon-package-mawlynnong",
   "status": 200,
-  "ms": 17,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Honeymoon Package Mawlynnong 2026 – Custom by XTSY",
@@ -9302,7 +9302,7 @@
  {
   "url": "/guides/honeymoon-package-mawsynram",
   "status": 200,
-  "ms": 12,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Honeymoon Package Mawsynram 2026 – Custom by XTSY",
@@ -9317,7 +9317,7 @@
  {
   "url": "/guides/honeymoon-package-meghalaya",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Honeymoon Package Meghalaya 2026 – Custom by XTSY",
@@ -9347,7 +9347,7 @@
  {
   "url": "/guides/honeymoon-package-shillong",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Honeymoon Package Shillong 2026 – Custom by XTSY",
@@ -9362,7 +9362,7 @@
  {
   "url": "/guides/honeymoon-package-shnongpdeng",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Honeymoon Package Shnongpdeng 2026 – Custom by XTSY",
@@ -9392,7 +9392,7 @@
  {
   "url": "/guides/elephant-falls-guide",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Elephant Falls Shillong — Three-Tiered Waterfall",
@@ -9407,7 +9407,7 @@
  {
   "url": "/guides/krang-suri-falls-guide",
   "status": 200,
-  "ms": 7,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Krang Suri Falls — Blue Lagoon of Meghalaya | Guide",
@@ -9422,7 +9422,7 @@
  {
   "url": "/guides/laitlum-canyons-guide",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Laitlum Canyons — Shillong's Best Viewpoint | Guide",
@@ -9437,7 +9437,7 @@
  {
   "url": "/guides/living-root-bridge-trek",
   "status": 200,
-  "ms": 6,
+  "ms": 14,
   "depth": 3,
   "inSitemap": true,
   "title": "Living Root Bridge Trek — Double Decker Root Bridge",
@@ -9452,7 +9452,7 @@
  {
   "url": "/guides/rainbow-falls-guide",
   "status": 200,
-  "ms": 7,
+  "ms": 10,
   "depth": 3,
   "inSitemap": true,
   "title": "Rainbow Falls Meghalaya — Nongriat Trek Guide",
@@ -9467,7 +9467,7 @@
  {
   "url": "/guides/wei-sawdong-falls-guide",
   "status": 200,
-  "ms": 7,
+  "ms": 9,
   "depth": 3,
   "inSitemap": true,
   "title": "Wei Sawdong Falls — Three-Tiered Hidden Gem",
@@ -9482,7 +9482,7 @@
  {
   "url": "/guides/car-booking-shillong",
   "status": 200,
-  "ms": 6,
+  "ms": 5,
   "depth": 3,
   "inSitemap": true,
   "title": "Car Booking Shillong — Instant Online | XTSY Rentals",
@@ -9512,7 +9512,7 @@
  {
   "url": "/guides/guwahati-to-shillong-transport",
   "status": 200,
-  "ms": 5,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Guwahati to Shillong — Transport Guide 2026 | XTSY",
@@ -9527,7 +9527,7 @@
  {
   "url": "/guides/scooty-rental-shillong",
   "status": 200,
-  "ms": 6,
+  "ms": 5,
   "depth": 3,
   "inSitemap": true,
   "title": "Scooty Rental in Shillong — From ₹500/Day | XTSY",
@@ -9557,7 +9557,7 @@
  {
   "url": "/guides/suv-rental-shillong",
   "status": 200,
-  "ms": 9,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "SUV Rental in Shillong — 4x4 for Meghalaya | XTSY",
@@ -9632,7 +9632,7 @@
  {
   "url": "/guides/zip-lining-meghalaya",
   "status": 200,
-  "ms": 6,
+  "ms": 7,
   "depth": 3,
   "inSitemap": true,
   "title": "Zip Lining in Meghalaya 2026 — Adventure Activity",
@@ -9677,7 +9677,7 @@
  {
   "url": "/guides/patient-attendant-stay-neigrihms",
   "status": 200,
-  "ms": 17,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Patient Attendant Stay Near NEIGRIHMS — From ₹400",
@@ -9692,7 +9692,7 @@
  {
   "url": "/guides/patient-attendant-stay-neigrims",
   "status": 200,
-  "ms": 18,
+  "ms": 6,
   "depth": 3,
   "inSitemap": true,
   "title": "Patient Attendant Stay NEIGRIMS (2026) | XTSY",
@@ -9707,7 +9707,7 @@
  {
   "url": "/guides/stay-near-neigrims",
   "status": 200,
-  "ms": 8,
+  "ms": 5,
   "depth": 3,
   "inSitemap": true,
   "title": "Stay NEIGRIMS (2026) | XTSY — Stay Near, 24/7 Check-in",
@@ -9722,7 +9722,7 @@
  {
   "url": "/guides/corporate-retreat-shillong",
   "status": 200,
-  "ms": 6,
+  "ms": 11,
   "depth": 3,
   "inSitemap": true,
   "title": "Corporate Retreat in Shillong — Team Offsite | XTSY",
@@ -9737,7 +9737,7 @@
  {
   "url": "/guides/outdoor-venue-shillong",
   "status": 200,
-  "ms": 6,
+  "ms": 12,
   "depth": 3,
   "inSitemap": true,
   "title": "Outdoor Venue in Shillong — Events & Weddings | XTSY",
@@ -9752,7 +9752,7 @@
  {
   "url": "/guides/pre-wedding-shoot-meghalaya",
   "status": 200,
-  "ms": 6,
+  "ms": 8,
   "depth": 3,
   "inSitemap": true,
   "title": "Pre-Wedding Shoot in Meghalaya — Best Locations 2026",
@@ -9828,7 +9828,7 @@
   "url": "/guides/best-waterfalls-meghalaya",
   "status": 301,
   "location": "/guides/meghalaya-waterfalls",
-  "ms": 0,
+  "ms": 1,
   "depth": 4,
   "inSitemap": false,
   "title": "",
@@ -9858,7 +9858,7 @@
   "url": "/guides/mawryngkhang-bamboo-trail",
   "status": 301,
   "location": "/guides/trekking-in-meghalaya",
-  "ms": 1,
+  "ms": 0,
   "depth": 4,
   "inSitemap": false,
   "title": "",
@@ -9903,7 +9903,7 @@
   "url": "/guides/dawki-suspension-bridge-meghalaya",
   "status": 301,
   "location": "/guides/dawki-guide",
-  "ms": 0,
+  "ms": 1,
   "depth": 4,
   "inSitemap": false,
   "title": "",

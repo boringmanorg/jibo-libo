@@ -2,11 +2,11 @@
  {
   "route": "/",
   "status": 200,
-  "wallMs": 9913,
-  "ttfb": 157,
-  "fcp": 1384,
+  "wallMs": 9978,
+  "ttfb": 156,
+  "fcp": 1436,
   "lcp": {
-   "t": 1384,
+   "t": 1436,
    "size": 249600,
    "url": "http://localhost:4174/img/o/xtsy-hostel-front-portrait-828.avif",
    "tag": "IMG",
@@ -15,7 +15,7 @@
   },
   "lcpCandidates": [
    {
-    "t": 1384,
+    "t": 1436,
     "size": 249600,
     "url": "http://localhost:4174/img/o/xtsy-hostel-front-portrait-828.avif",
     "tag": "IMG",
@@ -23,11 +23,24 @@
     "text": ""
    }
   ],
-  "cls": 0.008,
+  "cls": 0.009,
   "shifts": [
    {
+    "v": 0.0007,
+    "t": 3235,
+    "nodes": [
+     "#text."
+    ],
+    "rects": [
+     "18,444 355x171 -> 18,441 355x171"
+    ],
+    "text": [
+     "XTSY Travellers Hostel"
+    ]
+   },
+   {
     "v": 0.008,
-    "t": 3226,
+    "t": 3375,
     "nodes": [
      "DIV.max-w-5xl"
     ],
@@ -39,23 +52,26 @@
     ]
    },
    {
-    "v": 0.0003,
-    "t": 3341,
+    "v": 0.0004,
+    "t": 3475,
     "nodes": [
      "A.xt-btn flex h-14 items-center gap-2.5 rounded-full bg-xt-paper pl-4 pr-6 text-[1",
-     "DIV.flex items-center gap-2"
+     "DIV.flex items-center gap-2",
+     "A.flex h-full items-center whitespace-nowrap text-xt-paper underline-offset-2 hove"
     ],
     "rects": [
      "160,650 187x49 -> 165,650 199x49",
-     "177,43 199x44 -> 172,43 204x44"
+     "177,43 199x44 -> 172,43 204x44",
+     "121,0 149x32 -> 118,0 155x32"
     ],
     "text": [
      "Plan a trip with AI",
-     "Plan with AIBook now"
+     "Plan with AIBook now",
+     "Dorm beds from ₹400/night"
     ]
    }
   ],
-  "requests": 88,
+  "requests": 87,
   "byType": {
    "document": {
     "n": 1,
@@ -76,10 +92,6 @@
    "font": {
     "n": 5,
     "kb": 92
-   },
-   "other": {
-    "n": 1,
-    "kb": 0
    }
   },
   "biggest": [
@@ -160,11 +172,11 @@
  {
   "route": "/best-hostel-in-shillong",
   "status": 200,
-  "wallMs": 9697,
-  "ttfb": 307,
-  "fcp": 1364,
+  "wallMs": 9808,
+  "ttfb": 315,
+  "fcp": 1416,
   "lcp": {
-   "t": 1364,
+   "t": 1416,
    "size": 72910,
    "url": "",
    "tag": "P",
@@ -173,7 +185,7 @@
   },
   "lcpCandidates": [
    {
-    "t": 1364,
+    "t": 1416,
     "size": 72910,
     "url": "",
     "tag": "P",
@@ -185,7 +197,7 @@
   "shifts": [
    {
     "v": 0.0197,
-    "t": 2792,
+    "t": 2828,
     "nodes": [
      "DIV.rounded-[22px] bg-xt-blush p-5",
      "#text.",
@@ -210,7 +222,7 @@
    },
    {
     "v": 0.0005,
-    "t": 3143,
+    "t": 3170,
     "nodes": [
      "DIV.flex items-center gap-2",
      "BUTTON.xt-btn flex h-12 items-center rounded-full border-[1.5px] border-xt-ink px-6 tex",
@@ -232,9 +244,22 @@
      "Hostels in Shillong",
      "/"
     ]
+   },
+   {
+    "v": 0,
+    "t": 3201,
+    "nodes": [
+     "SUP.ml-0.5 text-[10px] font-bold"
+    ],
+    "rects": [
+     "106,53 9x14 -> 74,53 9x14"
+    ],
+    "text": [
+     "™"
+    ]
    }
   ],
-  "requests": 82,
+  "requests": 84,
   "byType": {
    "document": {
     "n": 2,
@@ -245,8 +270,8 @@
     "kb": 39
    },
    "script": {
-    "n": 69,
-    "kb": 1298
+    "n": 71,
+    "kb": 1300
    },
    "stylesheet": {
     "n": 2,
@@ -335,11 +360,11 @@
  {
   "route": "/cheap-hostels-shillong",
   "status": 200,
-  "wallMs": 9708,
-  "ttfb": 307,
-  "fcp": 1360,
+  "wallMs": 9716,
+  "ttfb": 310,
+  "fcp": 1368,
   "lcp": {
-   "t": 1360,
+   "t": 1368,
    "size": 65892,
    "url": "",
    "tag": "P",
@@ -348,7 +373,7 @@
   },
   "lcpCandidates": [
    {
-    "t": 1360,
+    "t": 1368,
     "size": 65892,
     "url": "",
     "tag": "P",
@@ -360,7 +385,7 @@
   "shifts": [
    {
     "v": 0.0417,
-    "t": 2793,
+    "t": 2812,
     "nodes": [
      "DIV.rounded-[22px] bg-xt-blush p-5",
      "#text.",
@@ -385,7 +410,7 @@
    },
    {
     "v": 0.0006,
-    "t": 3155,
+    "t": 3160,
     "nodes": [
      "DIV.flex items-center gap-2",
      "BUTTON.xt-btn flex h-12 items-center rounded-full border-[1.5px] border-xt-ink px-6 tex",
@@ -409,7 +434,7 @@
     ]
    }
   ],
-  "requests": 82,
+  "requests": 84,
   "byType": {
    "document": {
     "n": 2,
@@ -420,8 +445,8 @@
     "kb": 39
    },
    "script": {
-    "n": 69,
-    "kb": 1298
+    "n": 71,
+    "kb": 1300
    },
    "stylesheet": {
     "n": 2,
@@ -510,11 +535,11 @@
  {
   "route": "/shillong-dormitory",
   "status": 200,
-  "wallMs": 9797,
-  "ttfb": 314,
-  "fcp": 1348,
+  "wallMs": 9849,
+  "ttfb": 312,
+  "fcp": 1364,
   "lcp": {
-   "t": 1348,
+   "t": 1364,
    "size": 81295,
    "url": "",
    "tag": "P",
@@ -523,7 +548,7 @@
   },
   "lcpCandidates": [
    {
-    "t": 1348,
+    "t": 1364,
     "size": 81295,
     "url": "",
     "tag": "P",
@@ -535,7 +560,7 @@
   "shifts": [
    {
     "v": 0.0005,
-    "t": 3113,
+    "t": 3129,
     "nodes": [
      "#text."
     ],
@@ -548,7 +573,7 @@
    },
    {
     "v": 0.0004,
-    "t": 3181,
+    "t": 3199,
     "nodes": [
      "#text."
     ],
@@ -561,7 +586,7 @@
    },
    {
     "v": 0.0012,
-    "t": 3249,
+    "t": 3277,
     "nodes": [
      "DIV.flex items-center gap-2",
      "BUTTON.xt-btn flex h-11 items-center rounded-full border-[1.5px] border-xt-ink px-5 tex",
@@ -690,11 +715,11 @@
  {
   "route": "/xtsy-270",
   "status": 200,
-  "wallMs": 11254,
-  "ttfb": 312,
-  "fcp": 1396,
+  "wallMs": 11280,
+  "ttfb": 308,
+  "fcp": 1416,
   "lcp": {
-   "t": 1396,
+   "t": 1416,
    "size": 62486,
    "url": "",
    "tag": "H1",
@@ -703,7 +728,7 @@
   },
   "lcpCandidates": [
    {
-    "t": 1396,
+    "t": 1416,
     "size": 62486,
     "url": "",
     "tag": "H1",
@@ -715,7 +740,7 @@
   "shifts": [
    {
     "v": 0.219,
-    "t": 3493,
+    "t": 3502,
     "nodes": [
      "DIV.overflow-hidden relative mt-4 h-[280px] w-full sm:h-[580px]",
      "P.xt-in xt-d2 m-0 max-w-[620px] text-[17px] leading-relaxed sm:text-[20px]",
@@ -740,7 +765,7 @@
    },
    {
     "v": 0.0088,
-    "t": 3784,
+    "t": 3761,
     "nodes": [
      "#text.",
      "DIV.xt-in xt-d2 flex items-end gap-4",
@@ -865,11 +890,11 @@
  {
   "route": "https://xtsy.one/",
   "status": 200,
-  "wallMs": 10182,
-  "ttfb": 290,
-  "fcp": 2664,
+  "wallMs": 10370,
+  "ttfb": 459,
+  "fcp": 2736,
   "lcp": {
-   "t": 2996,
+   "t": 3076,
    "size": 249600,
    "url": "https://xtsy.one/img/o/xtsy-property-images-8-portrait-828.avif",
    "tag": "IMG",
@@ -878,15 +903,15 @@
   },
   "lcpCandidates": [
    {
-    "t": 2664,
-    "size": 11052,
+    "t": 2736,
+    "size": 2652,
     "url": "",
     "tag": "A",
-    "cls": "flex h-[60px] items-center justify-center gap-3 overflow-hidden bg-xt-blush px-4 text-center text-[13px] font-bold leadi",
-    "text": "Last-minute stay tonight? Check availability for dorms, priv"
+    "cls": "flex h-full items-center whitespace-nowrap text-xt-paper underline-offset-2 hover:underline",
+    "text": "Dorm beds from ₹400/night"
    },
    {
-    "t": 2900,
+    "t": 2992,
     "size": 38232,
     "url": "",
     "tag": "H1",
@@ -894,7 +919,7 @@
     "text": "XTSY Travellers Hostel"
    },
    {
-    "t": 2996,
+    "t": 3076,
     "size": 249600,
     "url": "https://xtsy.one/img/o/xtsy-property-images-8-portrait-828.avif",
     "tag": "IMG",

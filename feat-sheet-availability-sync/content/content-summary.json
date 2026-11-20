@@ -35,14 +35,14 @@
     "/ — ₹400 — \" Shillong · New Shillong Township XTSY Travellers Hostel Dorms from ₹400 · King Double ₹2,400 · Experience by XTSY ₹4,\"",
     "/ — ₹400 — \" 4.7 Google rating 74 Tour packages 24/7 Travel support Dorms from ₹400 Experience by XTSY TAB Bistro Partner stays a\"",
     "/ — ₹400 — \"ortheast Workation Pet-friendly Women safe stays 30+ tours Dorms from ₹400 Experience by XTSY TAB Bistro Partner stays a\"",
-    "/stays/pet-friendly — ₹400 — \"Skip to content Book direct with the XTSY desk · Dorm beds from ₹400 /night · New Shillong Township, near IIM & N\"",
-    "/stays/pet-friendly — ₹400 — \"by XTSY · XTSY Voyage · Travel by XTSY Travel.Sleep.Binge Dorms from ₹400 a night, plus GST Book a stay Plan a trip w\"",
-    "/stays/experience-by-xtsy — ₹400 — \"Skip to content Book direct with the XTSY desk · Dorm beds from ₹400 /night · New Shillong Township, near IIM & N\"",
+    "/about — ₹400 — \"Skip to content Book direct with the XTSY desk · Dorm beds from ₹400 /night · New Shillong Township, near IIM & N\"",
+    "/about — ₹400 — \"dorm with lockers and curtains. 4 Mixed dorms 6 and 8-bed dorms from ₹400 a night. Recognition Nominated at NEITA 202\"",
+    "/about — ₹400 — \"by XTSY · XTSY Voyage · Travel by XTSY Travel.Sleep.Binge Dorms from ₹400 a night, plus GST Book a stay Plan a trip w\"",
+    "/tours — ₹400 — \"Skip to content Book direct with the XTSY desk · Dorm beds from ₹400 /night · New Shillong Township, near IIM & N\"",
     "/about/faq — ₹400 — \"Skip to content Book direct with the XTSY desk · Dorm beds from ₹400 /night · New Shillong Township, near IIM & N\"",
     "/about/faq — ₹400 — \"ook now Your stay, answered XTSY Travellers Hostel FAQs Dorms from ₹400 plus GST. New Shillong Township. Check-in 11 \"",
     "/about/faq — ₹400 — \"gle contact. What rooms do you have? + 6 and 8-bed mixed dorms from ₹400, a 4-bed female-only dorm (₹600), King Double\"",
-    "/about/faq — ₹400 — \"by XTSY · XTSY Voyage · Travel by XTSY Travel.Sleep.Binge Dorms from ₹400 a night, plus GST Book a stay Plan a trip w\"",
-    "/about/safety-house-rules — ₹400 — \"Skip to content Book direct with the XTSY desk · Dorm beds from ₹400 /night · New Shillong Township, near IIM & N\""
+    "/about/faq — ₹400 — \"by XTSY · XTSY Voyage · Travel by XTSY Travel.Sleep.Binge Dorms from ₹400 a night, plus GST Book a stay Plan a trip w\""
    ]
   },
   "price:king/private room": {
@@ -66,16 +66,16 @@
    "pages": 638,
    "examples": [
     "/ — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
-    "/stays/pet-friendly — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
-    "/stays/experience-by-xtsy — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
+    "/about — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
+    "/tours — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
     "/about/faq — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
     "/about/safety-house-rules — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
-    "/tours — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
-    "/tab-bistro — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
-    "/tours/xtsy-rentals — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
-    "/stays/workation — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
     "/about/xtsy-facts — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
     "/about/xtsy-facts — XTSY: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
+    "/stays/workation — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
+    "/stays/female-travellers — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
+    "/tours/xtsy-rentals — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
+    "/tab-bistro — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}",
     "/stays/campsite-dawki — XTSY Ventures Private Limited: {\"@type\":\"PostalAddress\",\"addressLocality\":\"Coimbatore\",\"addressRegion\":\"Tamil Nadu\",\"addressCountry\":\"IN\"}"
    ]
   },
@@ -85,32 +85,32 @@
     "/ — 11,116 — \"Shillong Township — elsewhere we book trusted partners. How it works 11,116 Happy guests 4.7 Google rating 74 Tour pa\"",
     "/about — 11,116 — \"dian travel to feel personal, well designed and worth talking about. 11,116 Happy guests 4.7 Google rating (252) 9.4 \"",
     "/about — 11,116 — \"ravellers Hostel is rated 4.7★ from 252 Google reviews and has hosted 11,116 guests. TAB Bistro by XTSY has its own Goog\"",
+    "/guides/couples-hostel-shillong — 11,116 — \"hospitality brand — Shillong-born, traveller-built, and having hosted 11,116 guests through owned properties, curated to\"",
+    "/guides/hostel-near-police-bazar-shillong — 11,116 — \"hospitality brand — Shillong-born, traveller-built, and having hosted 11,116 guests through owned properties, curated to\"",
     "/guides/shillong-dormitory — 11,116 — \"hospitality brand — Shillong-born, traveller-built, and having hosted 11,116 guests through owned properties, curated to\"",
     "/guides/budget-stay-shillong — 11,116 — \"hospitality brand — Shillong-born, traveller-built, and having hosted 11,116 guests through owned properties, curated to\"",
-    "/guides/hostel-near-police-bazar-shillong — 11,116 — \"hospitality brand — Shillong-born, traveller-built, and having hosted 11,116 guests through owned properties, curated to\"",
     "/guides/group-stay-shillong — 11,116 — \"hospitality brand — Shillong-born, traveller-built, and having hosted 11,116 guests through owned properties, curated to\"",
-    "/guides/solo-travel-hostel-shillong — 11,116 — \"hospitality brand — Shillong-born, traveller-built, and having hosted 11,116 guests through owned properties, curated to\"",
-    "/guides/couples-hostel-shillong — 11,116 — \"hospitality brand — Shillong-born, traveller-built, and having hosted 11,116 guests through owned properties, curated to\"",
-    "/guides/homestay-in-dawki — 11,116 — \"hospitality brand — Shillong-born, traveller-built, and having hosted 11,116 guests through owned properties, curated to\"",
     "/guides/homestay-in-cherrapunji — 11,116 — \"hospitality brand — Shillong-born, traveller-built, and having hosted 11,116 guests through owned properties, curated to\"",
-    "/guides/homestay-in-mawlynnong — 11,116 — \"hospitality brand — Shillong-born, traveller-built, and having hosted 11,116 guests through owned properties, curated to\""
+    "/guides/homestay-in-dawki — 11,116 — \"hospitality brand — Shillong-born, traveller-built, and having hosted 11,116 guests through owned properties, curated to\"",
+    "/guides/homestay-in-mawlynnong — 11,116 — \"hospitality brand — Shillong-born, traveller-built, and having hosted 11,116 guests through owned properties, curated to\"",
+    "/guides/homestay-shillong-city — 11,116 — \"hospitality brand — Shillong-born, traveller-built, and having hosted 11,116 guests through owned properties, curated to\""
    ]
   },
   "seo:og:image missing": {
    "pages": 134,
    "examples": [
     "/ — ",
-    "/tab-bistro — ",
+    "/about — ",
     "/about/xtsy-facts — ",
+    "/tab-bistro — ",
+    "/about/pricing-cancellation-policy — ",
     "/about/privacy-policy — ",
     "/about/terms-of-service — ",
-    "/about — ",
-    "/about/pricing-cancellation-policy — ",
-    "/expeditions — ",
     "/tours/meghalaya-tour-packages — ",
+    "/expeditions — ",
     "/tours/meghalaya-couple-tour-package — ",
-    "/tours/shillong-tour-package — ",
-    "/guides/best-time-to-visit-meghalaya — "
+    "/guides/best-time-to-visit-meghalaya — ",
+    "/tours/shillong-tour-package — "
    ]
   },
   "price:female dorm": {
@@ -186,13 +186,6 @@
     "/expeditions — "
    ]
   },
-  "seo:duplicate description": {
-   "pages": 2,
-   "examples": [
-    "/stays/experience-by-xtsy — 2 pages: stay in a 270° panoramic glass suite for two in new shillong township, meghalaya",
-    "/xtsy-270 — 2 pages: stay in a 270° panoramic glass suite for two in new shillong township, meghalaya"
-   ]
-  },
   "placeholder:coming soon": {
    "pages": 2,
    "examples": [
@@ -205,6 +198,13 @@
    "examples": [
     "/stays/xtsy-vs-zostel — d and size). Zostel Shillong lists an 18+ rule, groups of up to 6 and no pets. Does XTSY arrange trips for groups? Yes",
     "/stays/best-hostel-in-shillong — nd birds welcome, dogs by breed and size 18+ only, groups of up to 6, no pets Guest rating 4.7★ from 252 Google reviews"
+   ]
+  },
+  "seo:duplicate description": {
+   "pages": 2,
+   "examples": [
+    "/stays/experience-by-xtsy — 2 pages: stay in a 270° panoramic glass suite for two in new shillong township, meghalaya",
+    "/xtsy-270 — 2 pages: stay in a 270° panoramic glass suite for two in new shillong township, meghalaya"
    ]
   },
   "policy:check-in time": {
