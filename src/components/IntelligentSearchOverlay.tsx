@@ -1,6 +1,6 @@
 /**
- * IntelligentSearchOverlay — Full-screen search overlay with categorized results
- * Fuzzy search powered by Fuse.js with keyword highlighting and keyboard navigation
+ * IntelligentSearchOverlay — full-screen search: results appear below the box as the guest types,
+ * grouped by section, with matched words highlighted and keyboard navigation.
  */
 
 import { useState, useRef, useEffect, useCallback } from 'react';
@@ -27,16 +27,12 @@ const TRENDING_SEARCHES = [
 ];
 
 function highlightMatch(text: string, query: string): React.ReactNode {
-  if (!query.trim()) return text;
-  const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
-  const regex = new RegExp(`(${terms.map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`, 'gi');
-  const parts = text.split(regex);
-  return parts.map((part, i) =>
-    regex.test(part) ? (
-      <mark key={i} className="bg-primary/30 text-foreground rounded-sm px-0.5">{part}</mark>
-    ) : (
-      part
-    )
+  const terms = query.toLowerCase().split(/[^\p{L}\p{N}]+/u).filter((t) => t.length >= 2);
+  if (!terms.length || !text) return text;
+  const regex = new RegExp(`(${terms.map((t) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`, 'gi');
+  // split() with one capture group puts the matched parts at the odd positions.
+  return text.split(regex).map((part, i) =>
+    i % 2 === 1 ? <mark key={i} className="bg-primary/30 text-foreground rounded-sm px-0.5">{part}</mark> : part,
   );
 }
 
@@ -44,6 +40,7 @@ export default function IntelligentSearchOverlay({ isOpen, onClose }: Intelligen
   const navigate = useNavigate();
   const inputRef = useRef<HTMLInputElement>(null);
   const [selectedIndex, setSelectedIndex] = useState(-1);
+  const [limit, setLimit] = useState(40);
   const resultsContainerRef = useRef<HTMLDivElement>(null);
 
   const {
@@ -52,8 +49,10 @@ export default function IntelligentSearchOverlay({ isOpen, onClose }: Intelligen
     categorizedResults,
     hasResults,
     isEmptyQuery,
+    isReady,
+    totalResults,
     clearSearch,
-  } = useIntelligentSearch();
+  } = useIntelligentSearch(limit);
 
   // Focus input on open
   useEffect(() => {
@@ -79,6 +78,7 @@ export default function IntelligentSearchOverlay({ isOpen, onClose }: Intelligen
 
   // Flatten results for keyboard nav
   const flatResults = categorizedResults.flatMap((c) => c.items);
+  const positionOf = new Map(flatResults.map((r, i) => [r, i]));
 
   const handleSelect = useCallback(
     (entry: SearchEntry) => {
@@ -106,42 +106,38 @@ export default function IntelligentSearchOverlay({ isOpen, onClose }: Intelligen
       setSelectedIndex((p) => Math.max(p - 1, -1));
     } else if (e.key === 'Enter') {
       e.preventDefault();
-      if (selectedIndex >= 0 && flatResults[selectedIndex]) {
-        handleSelect(flatResults[selectedIndex]);
-      } else if (query.trim()) {
-        // Navigate to search results page
-        onClose();
-        clearSearch();
-        navigate(`/search?q=${encodeURIComponent(query.trim())}`);
-      }
+      // Enter opens the highlighted result, or the best match when none is highlighted.
+      const pick = flatResults[selectedIndex >= 0 ? selectedIndex : 0];
+      if (pick) handleSelect(pick);
     } else if (e.key === 'Escape') {
       onClose();
     }
   };
 
-  // Reset selection on query change
+  // Reset selection and the result count on query change
   useEffect(() => {
     setSelectedIndex(-1);
+    setLimit(40);
   }, [query]);
 
-  // Track every meaningful query (debounced inside logger) + zero-result queries
+  // Log a query once the guest pauses typing (not every keystroke), plus zero-result queries.
+  const resultCount = flatResults.length;
   useEffect(() => {
-    if (isEmptyQuery || query.length < 3) return;
-    logSearchQuery({
-      query,
-      source: 'header_overlay',
-      resultCount: flatResults.length,
-    });
-    if (!hasResults) {
-      try {
-        const zeroResults = JSON.parse(sessionStorage.getItem('xtsy_zero_results') || '[]');
-        if (!zeroResults.includes(query.trim().toLowerCase())) {
-          zeroResults.push(query.trim().toLowerCase());
-          sessionStorage.setItem('xtsy_zero_results', JSON.stringify(zeroResults.slice(-30)));
-        }
-      } catch {}
-    }
-  }, [query, isEmptyQuery, hasResults, flatResults.length]);
+    if (isEmptyQuery || query.trim().length < 3 || !isReady) return;
+    const t = setTimeout(() => {
+      logSearchQuery({ query, source: 'header_overlay', resultCount });
+      if (resultCount === 0) {
+        try {
+          const zeroResults = JSON.parse(sessionStorage.getItem('xtsy_zero_results') || '[]');
+          if (!zeroResults.includes(query.trim().toLowerCase())) {
+            zeroResults.push(query.trim().toLowerCase());
+            sessionStorage.setItem('xtsy_zero_results', JSON.stringify(zeroResults.slice(-30)));
+          }
+        } catch {}
+      }
+    }, 900);
+    return () => clearTimeout(t);
+  }, [query, isEmptyQuery, isReady, resultCount]);
 
   const handleTrendingClick = (label: string) => {
     setQuery(label);
@@ -166,7 +162,9 @@ export default function IntelligentSearchOverlay({ isOpen, onClose }: Intelligen
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="Search stays, experiences, tours, locations..."
+              placeholder="Search stays, tours, places, rentals, food…"
+              aria-label="Search xtsy.one"
+              aria-controls="xtsy-search-results"
               className="flex-1 bg-transparent text-lg sm:text-xl text-foreground placeholder:text-muted-foreground/60 outline-hidden caret-primary"
               autoComplete="off"
               autoCorrect="off"
@@ -191,7 +189,7 @@ export default function IntelligentSearchOverlay({ isOpen, onClose }: Intelligen
       </div>
 
       {/* Results Body */}
-      <div ref={resultsContainerRef} className="flex-1 overflow-y-auto overscroll-contain">
+      <div ref={resultsContainerRef} id="xtsy-search-results" aria-live="polite" className="flex-1 overflow-y-auto overscroll-contain">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
           {/* Trending / Empty State */}
           {isEmptyQuery && (
@@ -235,7 +233,7 @@ export default function IntelligentSearchOverlay({ isOpen, onClose }: Intelligen
                   </div>
                   <div className="space-y-1">
                     {group.items.map((item) => {
-                      const flatIdx = flatResults.indexOf(item);
+                      const flatIdx = positionOf.get(item) ?? -1;
                       return (
                         <button
                           key={item.id}
@@ -274,25 +272,25 @@ export default function IntelligentSearchOverlay({ isOpen, onClose }: Intelligen
                 </div>
               ))}
 
-              {/* View all results link */}
-              {query.trim() && (
+              {/* More results, in place */}
+              {totalResults >= limit && limit < 200 && (
                 <button
-                  onClick={() => {
-                    onClose();
-                    clearSearch();
-                    navigate(`/search?q=${encodeURIComponent(query.trim())}`);
-                  }}
+                  onClick={() => setLimit(200)}
                   className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-primary/10 hover:bg-primary/20 text-primary font-semibold text-sm transition-colors"
                 >
                   <Search className="w-4 h-4" />
-                  View all results for "{query}"
+                  Show more results for "{query}"
                 </button>
               )}
             </div>
           )}
 
+          {!isEmptyQuery && !isReady && (
+            <p className="py-12 text-center text-sm text-muted-foreground" role="status">Loading search…</p>
+          )}
+
           {/* No Results */}
-          {!isEmptyQuery && !hasResults && (
+          {!isEmptyQuery && isReady && !hasResults && (
             <div className="text-center py-12">
               <div className="text-4xl mb-4">🔍</div>
               <p className="text-foreground font-medium mb-1">No results for "{query}"</p>

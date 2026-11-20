@@ -194,7 +194,7 @@ var CDN_IMAGE_MAP = {
   "xtsy/Property Images 5.jpg": "/__l5e/assets-v1/2ea15529-3f9d-472d-8397-366f0eff6d69/xtsy-property-images-5.jpg",
   "xtsy/Property Images 6.jpg": "/__l5e/assets-v1/3cc41ef4-70bb-4a2c-adaa-82fcea2b8aba/xtsy-property-images-6.jpg",
   "xtsy/Property Images 7.jpg": "/__l5e/assets-v1/295e6c6c-8105-428e-b939-a08fb9111f21/xtsy-property-images-7.jpg",
-  "xtsy/Property Images 8.jpg": "/__l5e/assets-v1/9e5240e9-0814-426b-83f8-393edea1b8e8/xtsy-property-images-8.jpg",
+  "xtsy/Property Images 8.jpg": "/img/o/xtsy-hostel-front-1280.webp",
   "xtsy/Property Images 9.jpg": "/__l5e/assets-v1/f69c75e2-f1a0-4c50-abfc-e4c31028ed92/xtsy-property-images-9.jpg",
   "xtsy/TAB Bistro by XTSY 1.jpeg": "/__l5e/assets-v1/400db637-bd9f-43ca-b639-5c2e626497e5/xtsy-tab-bistro-by-xtsy-1.jpeg",
   "xtsy/TAB Bistro by XTSY.jpeg": "/__l5e/assets-v1/25f05fa4-5f52-4eda-ab5a-216c4b4b5772/xtsy-tab-bistro-by-xtsy.jpeg",

@@ -9,7 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import {
-  ALL_STAYS, WHOLE_PROPERTY, consoleCheckAvailability, deleteInventoryOverride, getConsoleOverview, listPmsEnquiries, saveInventoryOverride, syncRoomsNow,
+  ALL_STAYS, WHOLE_PROPERTY, consoleCheckAvailability, listSheetLinks, setSheetLink, deleteInventoryOverride, getConsoleOverview, listPmsEnquiries, saveInventoryOverride, syncRoomsNow,
 } from '@/admin/console.functions';
 
 export const Route = createFileRoute('/(admin)/admin/stays')({ component: Stays });
@@ -72,6 +72,8 @@ function Stays() {
         <p className="mt-2 text-xs text-muted-foreground">Rates come from the PMS when connected; until then, from the site's approved prices.</p>
       </CardContent></Card>
 
+      <SheetLinks syncedAt={data.sheetSyncedAt} />
+
       <Card><CardHeader><CardTitle>Block or open dates</CardTitle></CardHeader><CardContent className="space-y-4">
         <p className="text-sm text-muted-foreground">Blocks show on the guest booking page (/book) straight away: blocked nights read “Full”, and guests can’t pick more beds or rooms than are left.</p>
         <div className="grid gap-3 md:grid-cols-5">
@@ -127,3 +129,43 @@ function Stays() {
     </div>
   );
 }
+
+/** Google Sheet connection: approve the pairing code the sheet shows, see the last sync, disconnect. */
+function SheetLinks({ syncedAt }: { syncedAt: string | null }) {
+  const qc = useQueryClient();
+  const list = useServerFn(listSheetLinks);
+  const set = useServerFn(setSheetLink);
+  const q = useQuery({ queryKey: ['console', 'sheet-links'], queryFn: () => list(), refetchInterval: 15_000 });
+  const m = useMutation({
+    mutationFn: (v: { id: string; action: 'approve' | 'revoke' }) => set({ data: v }),
+    onSuccess: (_r, v) => { toast.success(v.action === 'approve' ? 'Sheet connected. Choose XTSY → Set up automatic sync in the sheet.' : 'Disconnected'); void qc.invalidateQueries({ queryKey: ['console'] }); },
+    onError: (e) => toast.error(e.message),
+  });
+  const when = (iso: string | null) => (iso ? new Date(iso).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', dateStyle: 'medium', timeStyle: 'short' }) : 'never');
+  const links = q.data?.links ?? [];
+  return (
+    <Card><CardHeader><CardTitle>Availability from your Google Sheet</CardTitle></CardHeader><CardContent className="space-y-4 text-sm">
+      <p>{syncedAt ? <>Last received <span className="font-semibold">{when(syncedAt)}</span>.</> : 'Not connected yet.'} Every change you save in the sheet is published at the next minute, when every open booking page updates together. Only room numbers, dates and counts are sent; the sheet is never written to.</p>
+      {!q.data?.ready && q.data && <p className="text-muted-foreground">Connections appear once this update’s database change has run.</p>}
+      {links.length === 0 && q.data?.ready && <p className="text-muted-foreground">In the sheet, choose XTSY → Connect to xtsy.one. A pairing code appears there and here; approve it to connect. No password is needed.</p>}
+      <ul className="divide-y divide-border">
+        {links.map((l: any) => (
+          <li key={l.id} className="flex flex-wrap items-center justify-between gap-3 py-3">
+            <span>
+              <span className="font-medium">{l.label}</span>{' '}
+              {l.status === 'pending'
+                ? <Badge variant="secondary">Waiting for approval · code {l.pair_code}</Badge>
+                : <Badge>Connected</Badge>}
+              <span className="block text-muted-foreground">{l.status === 'pending' ? `Asked ${when(l.created_at)}. Approve only if the sheet shows the same code.` : `Last sync ${when(l.last_sync_at)}${l.last_sync_rows ? ` · ${l.last_sync_rows} room-nights` : ''}`}</span>
+            </span>
+            <span className="flex gap-2">
+              {l.status === 'pending' && <Button className="min-h-11" disabled={m.isPending} onClick={() => m.mutate({ id: l.id, action: 'approve' })}>Approve</Button>}
+              <Button variant="outline" className="min-h-11" disabled={m.isPending} onClick={() => m.mutate({ id: l.id, action: 'revoke' })}>{l.status === 'pending' ? 'Reject' : 'Disconnect'}</Button>
+            </span>
+          </li>
+        ))}
+      </ul>
+    </CardContent></Card>
+  );
+}
+

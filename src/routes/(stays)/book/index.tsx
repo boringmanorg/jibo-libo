@@ -1,15 +1,21 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useRouter } from "@tanstack/react-router";
+import { useEffect } from "react";
 import StayEngine from "@/components/booking/engine/StayEngine";
 import { PageShell } from "@/components/v2/blocks";
 import { z } from "zod";
 import { loadBookPageData } from "@/booking/bookPageLoader";
+import type { IsoDate } from "@/booking/dates";
 import { buildRouteHead } from "@/lib/seo-head";
 import { inr, roomPrice } from "@/components/v2/pricing";
 import { PANORAMA_STAY_ONLY } from "@/data/panoramaPricing";
 
 export const Route = createFileRoute("/(stays)/book/")({
   // "dawki" is kept as an alias so older links land on the Shnonpedeng camp.
-  validateSearch: z.object({ location: z.enum(["new-shillong", "shnonpedeng", "dawki"]).optional().transform((l) => (l === "dawki" ? "shnonpedeng" : l)) }),
+  validateSearch: z.object({
+    location: z.enum(["new-shillong", "shnonpedeng", "dawki"]).optional().transform((l) => (l === "dawki" ? "shnonpedeng" : l)),
+    checkIn: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional().catch(undefined),
+    checkOut: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional().catch(undefined),
+  }),
   head: () =>
     buildRouteHead({
       path: "/book",
@@ -31,12 +37,27 @@ export const Route = createFileRoute("/(stays)/book/")({
 });
 
 function BookPage() {
-  const { live, photos, closures } = Route.useLoaderData();
-  const { location } = Route.useSearch();
+  const { live, photos, closures, sheet } = Route.useLoaderData();
+  // Live availability follows the Google Sheet on a shared one-minute clock: a sync is published as
+  // the next minute's snapshot, and every open page refreshes just after that minute starts, so all
+  // current guests switch together. New and returning guests load the last published snapshot.
+  const router = useRouter();
+  useEffect(() => {
+    let timer = 0;
+    const schedule = () => {
+      const wait = 60_000 - (Date.now() % 60_000) + 1_500 + Math.floor(Math.random() * 1_500);
+      timer = window.setTimeout(() => { if (document.visibilityState === 'visible') void router.invalidate(); schedule(); }, wait);
+    };
+    schedule();
+    const back = () => { if (document.visibilityState === 'visible') void router.invalidate(); };
+    document.addEventListener('visibilitychange', back);
+    return () => { window.clearTimeout(timer); document.removeEventListener('visibilitychange', back); };
+  }, [router]);
+  const { location, checkIn, checkOut } = Route.useSearch();
   // Site header (logo, menu) and footer around the booking page; the page has its own bottom bar.
   return (
     <PageShell cta={false} bar={false}>
-      <StayEngine mode={live ? "live" : "enquiry"} photos={photos} closures={closures} initialLocation={location} />
+      <StayEngine mode={live ? "live" : "enquiry"} photos={photos} closures={closures} sheet={sheet} initialLocation={location} initialDates={checkIn && checkOut ? { checkIn: checkIn as IsoDate, checkOut: checkOut as IsoDate } : undefined} />
     </PageShell>
   );
 }

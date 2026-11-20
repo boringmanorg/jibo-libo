@@ -11,6 +11,7 @@
     "seo:intelligence": "tsx scripts/seoIntelligenceAudit.ts",
     "prebuild": "tsx scripts/generateWorkerSlimMap.ts && npm run sitemaps:rebuild",
     "build": "vite build",
+    "search:pages": "npx -y vite-node@6.0.0 scripts/generateSearchPages.ts",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",

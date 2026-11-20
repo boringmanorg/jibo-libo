@@ -17,6 +17,7 @@ import { staahNotConnected } from './channel/staah.server';
 import { addDays, daysBetween, isIsoDate, stayNights, todayInIndia, type IsoDate } from './dates';
 import { freeUnitsPerNight, type Hold, type NightLoad } from './availability';
 import { closureFromRow, freeAfterClosures, type ClosureRow } from './consoleClosures';
+import { sheetCapacity, type SheetAvailability } from './sheetAvailability';
 import { canTakeLiveBookings, launchBlockers, type LaunchState } from './launchGate';
 import { settingsFromRow, type BookingSettings } from './consoleSettings';
 import { quoteStay, chargeFor, type Quote } from './pricing';
@@ -106,9 +107,31 @@ export async function engineStatus(d: EngineDeps): Promise<{ live: boolean }> {
 }
 
 /** /book on load: whether payment is live, plus console-uploaded photos by room type. */
-export async function bookPageData(d: EngineDeps): Promise<{ live: boolean; photos: Record<string, { src: string; alt: string }[]>; closures: ClosureRow[] }> {
-  const [status, photos, closures] = await Promise.all([engineStatus(d), loadRoomPhotos(d).catch(() => new Map()), loadClosures(d).catch(() => [])]);
-  return { live: status.live, photos: Object.fromEntries(photos), closures };
+export async function bookPageData(d: EngineDeps): Promise<{ live: boolean; photos: Record<string, { src: string; alt: string }[]>; closures: ClosureRow[]; sheet: SheetAvailability; refreshAt: number }> {
+  const [status, photos, closures, sheet] = await Promise.all([engineStatus(d), loadRoomPhotos(d).catch(() => new Map()), loadClosures(d).catch(() => []), loadSheetAvailability(d).catch(() => ({}))]);
+  // Next minute boundary: when the next published snapshot (if any) becomes visible to everyone.
+  return { live: status.live, photos: Object.fromEntries(photos), closures, sheet, refreshAt: (Math.floor(d.now.getTime() / 60_000) + 1) * 60_000 };
+}
+
+/**
+ * The Google Sheet snapshot published for the current minute (from today to its last month).
+ * Snapshots are versioned by minute and a new one only becomes visible at a minute boundary, so
+ * every guest on the site sees the same numbers at the same time.
+ */
+export async function loadSheetAvailability(d: EngineDeps): Promise<SheetAvailability> {
+  if (!d.db) return {};
+  const from = todayInIndia(d.now);
+  const out: SheetAvailability = {};
+  const current = await d.db.from('be_sheet_availability').select('version').lte('version', Math.floor(d.now.getTime() / 60_000)).order('version', { ascending: false }).limit(1);
+  const version = current.data?.[0]?.version;
+  if (current.error || version === undefined) return out;
+  for (let page = 0; page < 20; page++) {
+    const r = await d.db.from('be_sheet_availability').select('room_type_id,night,free').eq('version', version).gte('night', from).order('night').range(page * 1000, page * 1000 + 999);
+    if (r.error) return out;
+    for (const row of (r.data ?? []) as { room_type_id: string; night: string; free: number }[]) (out[row.room_type_id] ??= {})[row.night.slice(0, 10) as IsoDate] = row.free;
+    if ((r.data ?? []).length < 1000) break;
+  }
+  return out;
 }
 
 /**
@@ -225,6 +248,7 @@ export async function searchStays(d: EngineDeps, q: { checkIn: string; checkOut:
   const loads = await loadLoads(d, checkIn, rangeEnd, channel.connected);
   const photos = await loadRoomPhotos(d);
   const closures = await loadClosures(d).catch(() => [] as ClosureRow[]);
+  const sheet = channel.connected ? {} : await loadSheetAvailability(d).catch(() => ({} as SheetAvailability));
   const ariFor = (id: string, night: IsoDate) => ari.find((a) => a.roomTypeId === id && a.night === night);
 
   const rooms: RoomResult[] = BOOKING_ROOM_TYPES.map((room) => {
@@ -240,7 +264,7 @@ export async function searchStays(d: EngineDeps, q: { checkIn: string; checkOut:
     const blocked = new Set(nightsInSpan.filter(closedNight));
     const free = freeUnitsPerNight({
       roomTypeId: room.id, checkIn, checkOut: rangeEnd,
-      capacity: (night) => freeAfterClosures(closures, room.id, night, channel.connected ? ariFor(room.id, night)?.available ?? 0 : room.units),
+      capacity: (night) => freeAfterClosures(closures, room.id, night, channel.connected ? ariFor(room.id, night)?.available ?? 0 : sheetCapacity(sheet, room.id, night, room.units)),
       confirmed: loads.confirmed, holds: loads.holds, blockedNights: blocked, now: d.now,
     });
     const strip: NightCell[] = free.slice(0, STRIP_NIGHTS).map(({ night, free: f }) => ({
@@ -418,10 +442,11 @@ async function oversold(d: EngineDeps, rooms: CheckoutInput['rooms'], checkIn: I
   const loads = await loadLoads(d, checkIn, checkOut, channel.connected);
   const ari = channel.connected ? await channel.getAri(rooms.map((r) => r.roomTypeId), checkIn, checkOut) : [];
   const closures = await loadClosures(d).catch(() => [] as ClosureRow[]);
+  const sheet = channel.connected ? {} : await loadSheetAvailability(d).catch(() => ({} as SheetAvailability));
   return rooms.some((r) => {
     const room = findRoomType(r.roomTypeId)!;
     return stayNights(checkIn, checkOut).some((night) => {
-      const cap = freeAfterClosures(closures, room.id, night, channel.connected ? ari.find((a) => a.roomTypeId === room.id && a.night === night)?.available ?? 0 : room.units);
+      const cap = freeAfterClosures(closures, room.id, night, channel.connected ? ari.find((a) => a.roomTypeId === room.id && a.night === night)?.available ?? 0 : sheetCapacity(sheet, room.id, night, room.units));
       const used = [...loads.confirmed.filter((l) => l.roomTypeId === room.id && l.night === night).map((l) => l.units),
         ...loads.holds.filter((h) => h.roomTypeId === room.id && h.expiresAt > d.now && h.nights.includes(night)).map((h) => h.units)]
         .reduce((s, u) => s + u, 0);

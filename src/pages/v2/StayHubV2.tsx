@@ -14,7 +14,7 @@ import { fromXtsy } from '@/lib/travel/routing';
 import { openTripChat } from '@/components/v2/tripChatEvents';
 import { XTSY_MAPS_URL } from '@/data/siteSchemas';
 import { PageShell, Breadcrumbs, PAD } from '@/components/v2/blocks';
-import { Photo, waLink } from '@/components/v2/primitives';
+import { Photo, waLink, PhotoCaption } from '@/components/v2/primitives';
 import { Reviews } from '@/components/v2/home/HomeReviews';
 
 function Faq({ q, a }: { q: string; a: string }) {
@@ -68,7 +68,10 @@ export default function StayHubV2({ variant }: { variant: StayHubVariant }) {
             <WaAnchor href={waLink('Hi XTSY! I want to book a bed in Shillong. Dates: … Guests: …', 'stay')} className="xt-btn flex h-12 items-center rounded-full border-[1.5px] border-xt-ink px-6 text-[15px] font-extrabold text-xt-ink hover:text-xt-ink">Book on WhatsApp</WaAnchor>
           </div>
         </div>
-        <Photo src={COVERS.home} alt="XTSY Travellers Hostel among the pines of New Shillong Township" eager tone="pine" sizes="(max-width: 1024px) 100vw, 40vw" className="aspect-[4/5] rounded-[28px] sm:aspect-[5/4] lg:col-span-5" />
+        <figure className="m-0 flex flex-col gap-1.5 lg:col-span-5">
+          <Photo src={COVERS.home} alt="XTSY Travellers Hostel among the pines of New Shillong Township" eager tone="pine" sizes="(max-width: 1024px) 100vw, 40vw" className="aspect-[4/5] rounded-[28px] sm:aspect-[5/4]" />
+          <PhotoCaption src={COVERS.home} />
+        </figure>
       </section>
 
       <section className={`${PAD} flex flex-col gap-5 pb-14`}>

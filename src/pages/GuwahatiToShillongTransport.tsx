@@ -8,6 +8,7 @@ import { TRANSPORT_REFERENCE, TRANSPORT_SOURCES } from '@/data/meghalayaTranspor
 import { IMG } from '@/data/v2Images';
 import { responsiveImage } from '@/data/cdnImages';
 import { BRAND, PROPERTY_ADDRESS } from '@/data/brandFacts';
+import { PhotoCaption } from '@/components/v2/primitives';
 
 const choices = [
   { title: 'Shared taxi', icon: Users, fit: 'Flexible solo arrivals', check: 'Agree the pickup, waiting time, seat fare, luggage allowance and final stop. Do not assume a shared vehicle departs immediately or includes a hotel transfer.' },
@@ -38,7 +39,7 @@ export default function GuwahatiToShillongTransport() {
           <p className="mt-4 text-sm text-muted-foreground">Prepared by {BRAND.brand} · Sources reviewed <time dateTime={TRANSPORT_REFERENCE.reviewedIso}>{TRANSPORT_REFERENCE.reviewed}</time></p>
           <figure className="my-7">
             <img src={image?.src ?? IMG.umiam} srcSet={image?.srcSet} sizes="(max-width: 1024px) 100vw, 960px" alt="Umiam Lake in Meghalaya" width={image?.w ?? 1280} height={image?.h ?? 853} decoding="async" fetchPriority="high" className="aspect-[16/9] w-full rounded-lg object-cover sm:aspect-[21/9]" />
-            <figcaption className="mt-2 text-sm text-muted-foreground">Umiam Lake · An optional stop when your arrival time and onward plans allow.</figcaption>
+            <figcaption className="mt-2 text-sm text-muted-foreground">Umiam Lake · An optional stop when your arrival time and onward plans allow.<PhotoCaption src={image?.src ?? IMG.umiam} className="mt-1" /></figcaption>
           </figure>
         </header>
 

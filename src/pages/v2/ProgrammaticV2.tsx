@@ -22,7 +22,7 @@ const route = getRouteApi('/(guides)/guides/$slug');
 import { openTripChat } from '@/components/v2/tripChatEvents';
 import { inr, lowestDormPrice, roomPrice } from '@/components/v2/pricing';
 import { PageShell, Breadcrumbs, PAD } from '@/components/v2/blocks';
-import { waLink } from '@/components/v2/primitives';
+import { PhotoCaption, waLink } from '@/components/v2/primitives';
 import { avifSrcSet } from '@/data/cdnImages';
 import { rankedQuestionsFor } from '@/data/rankedPageQuestions';
 
@@ -85,12 +85,15 @@ export default function ProgrammaticV2() {
               <button type="button" onClick={() => openTripChat(`Plan a trip: ${page.h1}`)} className="xt-btn flex h-11 items-center gap-2 rounded-full bg-xt-ink px-5 text-[14px] font-extrabold text-xt-paper">✦ Plan this with AI</button>
             </div>
           </div>
-          <div className="relative overflow-hidden rounded-[28px] bg-xt-slate lg:col-span-5">
+          <figure className="m-0 flex flex-col gap-1.5 lg:col-span-5">
+          <div className="relative overflow-hidden rounded-[28px] bg-xt-slate">
             <picture>
               {avifSrcSet(hero.srcSet) && <source type="image/avif" srcSet={avifSrcSet(hero.srcSet)!} sizes="(max-width: 1024px) 100vw, 40vw" />}
               <img src={hero.src} srcSet={hero.srcSet} sizes="(max-width: 1024px) 100vw, 40vw" width={hero.w} height={hero.h} alt={hero.alt} fetchPriority="high" decoding="async" className="aspect-[16/11] h-auto w-full object-cover" />
             </picture>
           </div>
+          <PhotoCaption src={hero.src} />
+          </figure>
         </header>
 
         <section className={`${PAD} grid gap-6 pb-10 lg:grid-cols-12`}>

@@ -1,3 +1,4 @@
+import RouteHeroBand from './RouteHeroBand';
 import { WaAnchor } from '@/components/WaAnchor';
 /**
  * SiteHeader (v2) — sand header with announcement strip, main nav, search,
@@ -88,6 +89,7 @@ export default function SiteHeader() {
 
 
   return (
+    <>
     <div className="xt sticky top-0 z-50">
       <div className="flex h-9 items-center justify-center gap-3 overflow-hidden bg-xt-slate px-4 text-[12px] font-semibold text-xt-paper sm:h-10 sm:text-[14px]">
         <span className="hidden whitespace-nowrap sm:inline">Book direct with the XTSY desk</span>
@@ -193,5 +195,8 @@ export default function SiteHeader() {
         </Suspense>
       )}
     </div>
+    {/* Hero photo for pages whose own layout has none; rendered here so every page gets it. */}
+    <RouteHeroBand />
+    </>
   );
 }

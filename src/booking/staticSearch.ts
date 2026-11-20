@@ -12,6 +12,7 @@ import { chargeFor, quoteStay } from './pricing';
 import type { PaymentMethod } from './payments/fees';
 import type { SearchResult } from './publicEngine.core';
 import { freeAfterClosures, type ClosureRow } from './consoleClosures';
+import { sheetCapacity, type SheetAvailability } from './sheetAvailability';
 
 const STRIP_NIGHTS = 7;
 
@@ -25,11 +26,12 @@ export function staticDateProblem(checkIn: string, checkOut: string, now = new D
   return null;
 }
 
-export function staticSearch(checkIn: IsoDate, checkOut: IsoDate, photos: Record<string, { src: string; alt: string }[]> = {}, closures: ClosureRow[] = []): SearchResult {
+export function staticSearch(checkIn: IsoDate, checkOut: IsoDate, photos: Record<string, { src: string; alt: string }[]> = {}, closures: ClosureRow[] = [], sheet: SheetAvailability = {}): SearchResult {
   const nights = daysBetween(checkIn, checkOut);
   const rooms = BOOKING_ROOM_TYPES.map((r) => {
-    // Room count less whatever the console has blocked; caps the +/− stepper and marks full nights.
-    const free = (night: IsoDate) => freeAfterClosures(closures, r.id, night, r.units);
+    // The Google Sheet's count for the night (else the full room count), less console blocks;
+    // caps the +/− stepper and marks full nights.
+    const free = (night: IsoDate) => freeAfterClosures(closures, r.id, night, sheetCapacity(sheet, r.id, night, r.units));
     const stay = stayNights(checkIn, checkOut).map(free);
     return {
       id: r.id, name: r.name, descriptor: r.descriptor, soldAs: r.soldAs, femaleOnly: r.femaleOnly, maxGuestsPerUnit: r.maxGuestsPerUnit,
