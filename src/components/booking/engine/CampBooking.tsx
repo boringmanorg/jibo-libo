@@ -10,7 +10,7 @@ import { HOSTEL_POLICIES } from '@/data/hostelPolicies';
 import { localEnquiryRef } from '@/lib/localEnquiry';
 import { bookingPageSource, openWhatsAppDirectly } from '@/utils/privacyCompliantWhatsApp';
 import { trackBookingStart } from '@/utils/dataLayerService';
-import { CAMP, CAMP_MEALS, CAMP_PHOTOS, CAMP_PLANS, campGuests, campProblem, campQuote, type CampMealId } from '@/data/shnonpedengCamp';
+import { CAMP, CAMP_GST_NOTE, CAMP_MEALS, CAMP_PHOTOS, CAMP_PLANS, campGuests, campProblem, campQuote, type CampMealId } from '@/data/shnonpedengCamp';
 import { PhotoStrip } from './BookExtras';
 
 const inr = (n: number) => `₹${n.toLocaleString('en-IN')}`;
@@ -166,7 +166,7 @@ export default function CampBooking({ onBack }: { onBack?: () => void }) {
             <button type="button" onClick={send} className="mt-5 flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-xt-crimson font-bold text-white">
               <MessageCircle className="h-5 w-5" aria-hidden /> Send to the desk on WhatsApp
             </button>
-            <p className="mt-3 text-center text-xs text-xt-fog">The XTSY desk confirms availability and the final amount, then you pay the {HOSTEL_POLICIES.advancePercent}% advance. Non-refundable; one date change up to 14 days before check-in.</p>
+            <p className="mt-3 text-center text-xs text-xt-fog">{CAMP_GST_NOTE} The XTSY desk confirms availability and the final amount, then you pay the {HOSTEL_POLICIES.advancePercent}% advance. Non-refundable; one date change up to 14 days before check-in.</p>
             {sent && <p className="mt-3 rounded-2xl bg-white/10 p-3 text-sm">Sent with enquiry ID <span className="font-mono">{sent}</span>. If WhatsApp didn’t open, message +91 88373 17070 with this ID.</p>}
           </div>
           {onBack && (

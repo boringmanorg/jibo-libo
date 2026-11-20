@@ -135,8 +135,8 @@ export const PROPERTIES: Record<string, Property> = {
     locationId: 'dawki',
     description: 'Riverside tents on the Umngot at Shnonpedeng, an XTSY franchise accommodation partner. Full tent for two or a single bed space; breakfast and dinner on request.',
     // Hero = suspension-bridge photo (Dawki Campsite 4) per brand reference.
-    heroImage: cdn('xtsy-adventure-campsite/Dawki Campsite 4.jpeg'),
-    images: DAWKI_CAMPING_IMAGES.slice(0, 8),
+    heroImage: '/img/o/shnonpedeng-camp-1-1280.webp',
+    images: ['/img/o/shnonpedeng-camp-1-1280.webp', '/img/o/shnonpedeng-camp-3-1280.webp', '/img/o/shnonpedeng-camp-2-1280.webp', '/img/o/shnonpedeng-camp-6-1280.webp', '/img/o/shnonpedeng-camp-4-1280.webp', '/img/o/shnonpedeng-camp-5-1280.webp'],
     amenities: ['Riverside tents', 'Bonfire', 'Breakfast on request', 'Dinner on request'],
     priceRange: { min: 750, max: 1400 },
     rating: 4.7,

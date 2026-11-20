@@ -4,7 +4,6 @@
  * Owner-set rates (20 Nov 2026), in rupees. Browser-safe: used by /book, /book/campsite and
  * /stays/campsite-dawki so every page shows the same figures.
  */
-import { DAWKI_CAMPING_IMAGES } from './properties';
 
 export const CAMP = {
   place: 'Shnonpedeng',
@@ -30,7 +29,22 @@ export type CampMealId = keyof typeof CAMP_MEALS;
 
 export const CAMP_FROM = CAMP_PLANS.bed.price;
 
-export const CAMP_PHOTOS = DAWKI_CAMPING_IMAGES.map((src) => ({ src, alt: 'Riverside tents on the Umngot river' }));
+/** Partner's own photos (owner, 20 Nov 2026), WebP in public/img/o. Order: hero first. */
+export const CAMP_PHOTOS: { src: string; alt: string }[] = [
+  { n: 1, alt: 'Tents on the sandy bank of the Umngot at Shnonpedeng, with kayaks and the suspension bridge' },
+  { n: 3, alt: 'Grey dome tents on the riverbank at Shnonpedeng under forested hills' },
+  { n: 2, alt: 'Tents by the Umngot at sunset, Shnonpedeng' },
+  { n: 6, alt: 'The Shnonpedeng camp on the Umngot, seen from the bank' },
+  { n: 4, alt: 'Tents beside the boats on the Umngot at Shnonpedeng' },
+  { n: 5, alt: 'A row of tents on the Umngot riverbank, Shnonpedeng' },
+].map(({ n, alt }) => ({ src: `/img/o/shnonpedeng-camp-${n}-1280.webp`, alt }));
+
+/**
+ * Listed camp prices exclude GST. No GST is collected for now (owner, 20 Nov 2026); when it starts,
+ * set the rate here and every page and quote adds it on top.
+ */
+export const CAMP_GST_PERCENT = 0;
+export const CAMP_GST_NOTE = CAMP_GST_PERCENT > 0 ? `Prices exclude GST; ${CAMP_GST_PERCENT}% GST is added.` : 'Prices exclude GST. No GST is charged for now.';
 
 export type CampRequest = {
   nights: number;
@@ -65,5 +79,8 @@ export function campQuote(r: CampRequest): { lines: CampQuoteLine[]; total: numb
     const people = r.meals[m.id];
     if (people > 0) lines.push({ label: `${m.title} × ${people} guest${people === 1 ? '' : 's'} × ${n} ${m.id === 'breakfast' ? 'morning' : 'night'}${n === 1 ? '' : 's'}`, amount: people * m.price * n });
   }
-  return { lines, total: lines.reduce((s, l) => s + l.amount, 0) };
+  const subtotal = lines.reduce((s, l) => s + l.amount, 0);
+  const gst = Math.round((subtotal * CAMP_GST_PERCENT) / 100);
+  if (gst > 0) lines.push({ label: `GST ${CAMP_GST_PERCENT}%`, amount: gst });
+  return { lines, total: subtotal + gst };
 }

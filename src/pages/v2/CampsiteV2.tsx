@@ -7,7 +7,7 @@ import { Helmet } from '@/lib/seo/helmet';
 import SEOHead from '@/components/SEOHead';
 import { PageShell, PageHero, Btn, Section, H2, PriceCards, FaqList, PAD } from '@/components/v2/blocks';
 import { Photo, waLink } from '@/components/v2/primitives';
-import { CAMP, CAMP_MEALS, CAMP_PHOTOS, CAMP_PLANS } from '@/data/shnonpedengCamp';
+import { CAMP, CAMP_GST_NOTE, CAMP_MEALS, CAMP_PHOTOS, CAMP_PLANS } from '@/data/shnonpedengCamp';
 
 const inr = (n: number) => `₹${n.toLocaleString('en-IN')}`;
 
@@ -50,11 +50,12 @@ export default function CampsiteV2() {
           title="Sleep beside the Umngot."
           text={`Riverside tents at Shnonpedeng with a bonfire in the evening. ${CAMP.name} is an XTSY franchise accommodation partner: the partner runs the camp and its kitchen, and the XTSY desk takes your booking and stays your contact.`}
           actions={<><Btn to="/book/campsite">Book a tent</Btn><Btn to={wa} kind="outline-light">Ask on WhatsApp</Btn></>}
-          media={<Photo src={CAMP_PHOTOS[3]?.src ?? CAMP_PHOTOS[0]?.src} alt="Riverside tents on the Umngot river" eager tone="slate" className="aspect-[628/560] rounded-[32px]" />}
+          media={<Photo src={CAMP_PHOTOS[0]?.src} alt={CAMP_PHOTOS[0]?.alt ?? 'Riverside tents on the Umngot'} eager tone="slate" className="aspect-[628/560] rounded-[32px]" />}
         />
 
         <Section id="packages">
           <H2 eyebrow="Per night">Pick your tent</H2>
+          <p className="m-0 text-[14px] text-xt-mute">{CAMP_GST_NOTE}</p>
           <PriceCards
             cards={[
               { t: CAMP_PLANS.tent.title, price: inr(CAMP_PLANS.tent.price), text: `${CAMP_PLANS.tent.line} Price is ${CAMP_PLANS.tent.unit}.`, hot: true, cta: <Btn to="/book/campsite" className="w-full">Book a tent</Btn> },
@@ -72,7 +73,7 @@ export default function CampsiteV2() {
 
         <section className={`${PAD} grid gap-6 pb-16 sm:grid-cols-3`}>
           {CAMP_PHOTOS.slice(0, 6).map((p, i) => (
-            <Photo key={p.src} src={p.src} alt={`${p.alt}, photo ${i + 1}`} tone={(['pine', 'slate', 'sand'] as const)[i % 3]} className="xt-reveal aspect-[421/300] rounded-3xl" />
+            <Photo key={p.src} src={p.src} alt={p.alt} tone={(['pine', 'slate', 'sand'] as const)[i % 3]} className="xt-reveal aspect-[421/300] rounded-3xl" />
           ))}
         </section>
 

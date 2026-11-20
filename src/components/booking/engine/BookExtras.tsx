@@ -42,7 +42,7 @@ const LOCATIONS: { id: BookLocation; place: string; name: string; line: string; 
     stays: 'Dorms from ₹400, rooms from ₹2,400, plus GST',
   },
   {
-    id: 'shnonpedeng', place: 'Shnonpedeng', name: CAMP.name, photo: CAMP_PHOTOS[3]?.src ?? CAMP_PHOTOS[0]?.src,
+    id: 'shnonpedeng', place: 'Shnonpedeng', name: CAMP.name, photo: CAMP_PHOTOS[0]?.src,
     line: `Riverside tents by the Umngot. ${CAMP.partnerLine}, with breakfast and dinner on request.`,
     stays: `Tents from ${inr(CAMP_FROM)} a person a night`,
   },

@@ -40,3 +40,19 @@ describe('TAB Bistro breakfast menu for stays', () => {
     expect(new Set(BREAKFAST_ITEMS.map((i) => i.id)).size).toBe(BREAKFAST_ITEMS.length);
   });
 });
+
+describe('Shnonpedeng photos and GST (owner, 20 Nov 2026)', () => {
+  it('uses the partner photos, all present on disk', async () => {
+    const { CAMP_PHOTOS } = await import('@/data/shnonpedengCamp');
+    const { existsSync } = await import('node:fs');
+    expect(CAMP_PHOTOS).toHaveLength(6);
+    for (const p of CAMP_PHOTOS) expect(existsSync(`public${p.src}`)).toBe(true);
+    expect(CAMP_PHOTOS.some((p) => /Dawki Campsite/.test(p.src))).toBe(false);
+  });
+  it('adds no GST for now and says prices exclude GST', async () => {
+    const { CAMP_GST_PERCENT, CAMP_GST_NOTE } = await import('@/data/shnonpedengCamp');
+    expect(CAMP_GST_PERCENT).toBe(0);
+    expect(CAMP_GST_NOTE).toMatch(/exclude GST/);
+    expect(campQuote({ nights: 1, tents: 1, beds: 0, meals: none }).total).toBe(1400);
+  });
+});

@@ -2,6 +2,7 @@
  * Homepage sections below the hero (v2). All prices come from the booking
  * engine / package catalogue, all photos are real XTSY or XTSY Voyage photos.
  */
+import { CAMP_PHOTOS } from '@/data/shnonpedengCamp';
 import { useState } from 'react';
 import { Link } from '@/lib/router-compat';
 import { ArrowRight } from 'lucide-react';
@@ -126,7 +127,7 @@ export function CampsiteBanner() {
   return (
     <section className={`${PAD} pb-20 pt-10`}>
       <Link to="/stays/campsite-dawki" className="xt-reveal xt-lift grid overflow-hidden rounded-[32px] bg-xt-pine text-[#EAF0EA] hover:text-[#EAF0EA] lg:grid-cols-2">
-        <Photo afterLoad src={first(IMG.campsite)} alt="Tents beside the Umngot river at the Shnonpedeng partner camp" tone="slate" className="aspect-[664/440] lg:aspect-auto lg:min-h-[440px]" />
+        <Photo afterLoad src={CAMP_PHOTOS[0]?.src} alt={CAMP_PHOTOS[0]?.alt ?? 'Tents beside the Umngot at Shnonpedeng'} tone="slate" className="aspect-[664/440] lg:aspect-auto lg:min-h-[440px]" />
         <div className="flex flex-col justify-center gap-4 p-7 sm:p-[52px]">
           <span className="xt-eyebrow text-[15px] text-[#F2B8C2]! sm:text-[18px]">New · Shnonpedeng riverside camping, an XTSY franchise partner</span>
           <h2 className="xt-display m-0 text-[44px] leading-[0.95] sm:text-[64px]">Sleep beside the Umngot.</h2>
