@@ -6,9 +6,9 @@ export const Route = createFileRoute("/(stays)/stays/campsite-dawki")({
   head: () =>
     buildRouteHead({
       path: "/stays/campsite-dawki",
-      title: "Dawki Campsite by the Umngot River | XTSY",
+      title: "Shnonpedeng Riverside Camping by the Umngot | XTSY",
       description:
-        "Camp beside the Umngot river at XTSY's Dawki adventure campsite: riverside tents, kayaking, bonfires and meals, with rates and how to reach from Shillong.",
+        "Riverside tents on the Umngot at Shnonpedeng, an XTSY franchise partner camp: full tent for two ₹1,400 a night, bed space ₹750, bonfire, and breakfast or dinner on request.",
     }),
   component: XTSYAdventureCampsiteDawki,
 });

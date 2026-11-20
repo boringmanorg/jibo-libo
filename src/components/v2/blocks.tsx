@@ -62,7 +62,7 @@ export function PageShell({
   /** Sticky phone booking bar; defaults to "Book a stay". Pass false to hide it. */
   bar?: BarAction | false;
 }) {
-  const action = bar === false ? null : bar ?? { label: 'Book a stay', to: '/book', note: `Dorms from ${inr(lowestDormPrice())} a night, incl. taxes` };
+  const action = bar === false ? null : bar ?? { label: 'Book a stay', to: '/book', note: `Dorms from ${inr(lowestDormPrice())} a night, plus GST` };
   return (
     <div className={cn('xt min-h-screen', action && 'pb-[72px] md:pb-0')}>
       <SiteHeader />

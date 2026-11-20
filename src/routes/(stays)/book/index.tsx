@@ -1,11 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import StayEngine from "@/components/booking/engine/StayEngine";
+import { PageShell } from "@/components/v2/blocks";
+import { z } from "zod";
 import { getBookPageDataFn } from "@/booking/publicEngine.functions";
 import { buildRouteHead } from "@/lib/seo-head";
 import { inr, roomPrice } from "@/components/v2/pricing";
 import { PANORAMA_STAY_ONLY } from "@/data/panoramaPricing";
 
 export const Route = createFileRoute("/(stays)/book/")({
+  // "dawki" is kept as an alias so older links land on the Shnonpedeng camp.
+  validateSearch: z.object({ location: z.enum(["new-shillong", "shnonpedeng", "dawki"]).optional().transform((l) => (l === "dawki" ? "shnonpedeng" : l)) }),
   head: () =>
     buildRouteHead({
       path: "/book",
@@ -38,5 +42,11 @@ export const Route = createFileRoute("/(stays)/book/")({
 
 function BookPage() {
   const { live, photos } = Route.useLoaderData();
-  return <StayEngine mode={live ? "live" : "enquiry"} photos={photos} />;
+  const { location } = Route.useSearch();
+  // Site header (logo, menu) and footer around the booking page; the page has its own bottom bar.
+  return (
+    <PageShell cta={false} bar={false}>
+      <StayEngine mode={live ? "live" : "enquiry"} photos={photos} initialLocation={location} />
+    </PageShell>
+  );
 }

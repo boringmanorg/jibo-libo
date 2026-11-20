@@ -27,6 +27,10 @@ import { localEnquiryRef } from '@/lib/localEnquiry';
 import { generateBookingMessage, bookingPageSource } from '@/utils/privacyCompliantWhatsApp';
 import { trackBookingStart } from '@/utils/dataLayerService';
 import { openWhatsAppDirectly } from '@/utils/privacyCompliantWhatsApp';
+import { BrandStory, LocationPicker, NEW_SHILLONG_PHOTOS, PhotoStrip, Promotions, type BookLocation } from './BookExtras';
+import CampBooking from './CampBooking';
+import BreakfastPicker, { picksToList } from './BreakfastPicker';
+import { breakfastItem } from '@/data/breakfastMenu';
 
 type Cart = Record<string, { units: number; guests: number }>;
 type QuoteData = Awaited<ReturnType<typeof import('@/booking/publicEngine.core').quoteCheckout>>;
@@ -44,16 +48,6 @@ const longDate = (d: IsoDate) => longDateFmt.format(utc(d));
 const nightsLabel = (n: number) => `${n} night${n === 1 ? '' : 's'}`;
 const unitWord = (r: { soldAs: 'bed' | 'room' }, n = 1) => (r.soldAs === 'bed' ? (n === 1 ? 'bed' : 'beds') : n === 1 ? 'room' : 'rooms');
 
-/** Header photos: one strong picture per space, suite first. */
-const HERO_PHOTOS = [
-  { src: roomContent('experience-by-xtsy').images[0], alt: 'Experience by XTSY glass suite' },
-  { src: roomContent('king-room-with-mountain-view').images[0], alt: 'King Room with Mountain View' },
-  { src: roomContent('bed-in-4-bed-female-deluxe-dormitory').images[0], alt: 'Female deluxe dormitory' },
-  { src: roomContent('experience-by-xtsy').images[1], alt: 'Experience by XTSY suite interior' },
-  { src: roomContent('bed-in-6-bed-mixed-dormitory').images[0], alt: 'Six-bed mixed dormitory' },
-  { src: roomContent('king-room-with-mountain-view').images[1], alt: 'King Room with Mountain View, second view' },
-].filter((p): p is { src: string; alt: string } => Boolean(p.src));
-
 const FACTS: { icon: typeof Clock; text: string }[] = [
   { icon: Clock, text: `Check-in ${HOSTEL_POLICIES.checkIn}, check-out ${HOSTEL_POLICIES.checkOut}` },
   { icon: Flame, text: 'Bonfire every night for in-house guests' },
@@ -61,7 +55,17 @@ const FACTS: { icon: typeof Clock; text: string }[] = [
   { icon: PawPrint, text: 'Cats and birds welcome' },
 ];
 
-export default function StayEngine({ mode, photos }: { mode: EngineMode; photos?: Record<string, { src: string; alt: string }[]> }) {
+export default function StayEngine({ mode, photos, initialLocation }: { mode: EngineMode; photos?: Record<string, { src: string; alt: string }[]>; initialLocation?: BookLocation }) {
+  const [location, setLocation] = useState<BookLocation | null>(initialLocation ?? (mode === 'preview' ? 'new-shillong' : null));
+  const pickLocation = (l: BookLocation | null) => {
+    setLocation(l);
+    try {
+      const u = new URL(window.location.href);
+      if (l) u.searchParams.set('location', l); else u.searchParams.delete('location');
+      window.history.replaceState(window.history.state, '', u);
+    } catch { /* URL update is cosmetic */ }
+    window.scrollTo({ top: 0 });
+  };
   const enquiry = mode === 'enquiry';
   const today = todayInIndia(new Date());
   const [checkIn, setCheckIn] = useState<IsoDate>(today);
@@ -118,14 +122,25 @@ export default function StayEngine({ mode, photos }: { mode: EngineMode; photos?
         </p>
       )}
 
-      {step === 'rooms' ? (
+      {location === null ? (
         <>
-          <Hero />
+          <LocationPicker onPick={pickLocation} />
+          <BrandStory />
+        </>
+      ) : location === 'shnonpedeng' ? (
+        <>
+          <CampBooking onBack={() => pickLocation(null)} />
+          <Promotions step={1} />
+          <BrandStory />
+        </>
+      ) : step === 'rooms' ? (
+        <>
+          <Hero onChangeLocation={mode === 'preview' ? undefined : () => pickLocation(null)} />
           <div className="mx-auto mt-10 grid max-w-6xl gap-8 px-4 lg:grid-cols-[1fr_360px]">
             <section aria-labelledby="select-room" className="min-w-0">
               <h2 id="select-room" className="xt-display text-4xl text-xt-ink">Choose your bed or room</h2>
               {enquiry && <p className="mt-1 text-sm text-xt-mute">Pick what you’d like and send it to the desk on WhatsApp. The desk confirms availability, then you pay the {HOSTEL_POLICIES.advancePercent}% advance.</p>}
-              <div className="sticky top-0 z-30 -mx-4 mt-3 flex flex-col gap-3 bg-xt-sand/95 px-4 py-3 backdrop-blur md:flex-row md:items-center md:justify-between lg:static lg:mx-0 lg:bg-transparent lg:px-0 lg:backdrop-blur-none">
+              <div className="sticky top-[104px] z-30 -mx-4 mt-3 flex flex-col gap-3 border-b border-xt-line bg-[#F6F1EA] px-4 py-3 shadow-[0_8px_16px_-12px_rgba(31,34,48,.35)] sm:top-[124px] md:flex-row md:items-center md:justify-between lg:static lg:mx-0 lg:border-0 lg:bg-transparent lg:px-0 lg:shadow-none">
                 <DateBar checkIn={checkIn} checkOut={checkOut} min={today} onChange={setDates} />
                 <div className="inline-flex w-fit rounded-full border border-xt-line bg-white/60 p-1" role="tablist" aria-label="Room type">
                   {([['all', 'All stays'], ['bed', 'Dorm beds'], ['room', 'Private rooms']] as const).map(([k, label]) => (
@@ -158,27 +173,32 @@ export default function StayEngine({ mode, photos }: { mode: EngineMode; photos?
             <Summary enquiry={enquiry} compact result={result} lines={lines} quote={roomQuote} onRemove={remove} onContinue={() => setRulesOpen(true)} />
           </div>
           <KnowBeforeYouGo open={rulesOpen} onOpenChange={setRulesOpen} onContinue={toDetails} />
+          <BrandStory />
+          <Promotions step={1} />
         </>
       ) : (
-        result && <Details mode={mode} result={result} cart={cart} lines={lines} onBack={() => setStep('rooms')} />
+        result && (
+          <>
+            <Details mode={mode} result={result} cart={cart} lines={lines} onBack={() => setStep('rooms')} />
+            <Promotions step={2} />
+          </>
+        )
       )}
     </div>
   );
 }
 
-function Hero() {
+function Hero({ onChangeLocation }: { onChangeLocation?: () => void }) {
   return (
     <header className="mx-auto max-w-6xl px-4 pt-8">
+      {onChangeLocation && (
+        <button type="button" onClick={onChangeLocation} className="mb-3 flex min-h-11 items-center gap-2 text-sm font-semibold text-xt-mute hover:text-xt-ink">← Change location</button>
+      )}
       <div className="xt-in">
         <h1 className="xt-display text-[clamp(3rem,9vw,6.5rem)] leading-[0.88] text-xt-ink">XTSY Travellers Hostel</h1>
         <p className="mt-3 text-base text-xt-mute">Mawdiangdiang Road, New Shillong Township, Meghalaya</p>
       </div>
-      <div className="-mx-4 mt-6 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" aria-label="Photos of the hostel">
-        {HERO_PHOTOS.map((p, i) => (
-          <img key={p.src} src={p.src} alt={p.alt} loading={i < 3 ? 'eager' : 'lazy'}
-            className={cn('h-64 shrink-0 snap-start rounded-[28px] object-cover sm:h-80', i === 0 ? 'w-[82%] sm:w-[46%]' : i % 2 ? 'w-[64%] sm:w-[26%]' : 'w-[72%] sm:w-[34%]')} />
-        ))}
-      </div>
+      <PhotoStrip photos={NEW_SHILLONG_PHOTOS} />
       <ul className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-sm text-xt-ink">
         {FACTS.map(({ icon: Icon, text }) => (
           <li key={text} className="flex items-center gap-2"><Icon className="h-4 w-4 text-xt-pine" aria-hidden />{text}</li>
@@ -339,9 +359,9 @@ function useRoomQuote(result: SearchResult | null, cart: Cart, enquiry: boolean)
   useEffect(() => {
     const rooms = Object.entries(cart).map(([roomTypeId, v]) => ({ roomTypeId, ...v }));
     if (!result || rooms.length === 0) { setQ(null); return; }
-    if (enquiry) { setQ(staticQuote({ checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfastGuests: 0, method: 'upi' })); return; }
+    if (enquiry) { setQ(staticQuote({ checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfast: [], method: 'upi' })); return; }
     let stale = false;
-    quoteFn({ data: { checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfastGuests: 0, method: 'upi' } })
+    quoteFn({ data: { checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfast: [], method: 'upi' } })
       .then((r) => !stale && setQ(r.ok ? r.data : null))
       .catch(() => !stale && setQ(null));
     return () => { stale = true; };
@@ -457,7 +477,8 @@ const inputCls = 'min-h-12 w-full rounded-2xl border border-xt-line bg-white px-
 
 function Details({ mode, result, cart, lines, onBack }: { mode: EngineMode; result: SearchResult; cart: Cart; lines: Line[]; onBack: () => void }) {
   const totalGuests = lines.reduce((s, l) => s + l.guests, 0);
-  const [breakfast, setBreakfast] = useState(0);
+  const [picks, setPicks] = useState<Record<string, number>>({});
+  const breakfast = picksToList(picks);
   const [method, setMethod] = useState<PaymentMethod>('upi');
   const [guest, setGuest] = useState({ name: '', phone: '', email: '', gender: '' as '' | 'female' | 'male' | 'other', nationality: 'India', otherNationality: '' });
   const [policy, setPolicy] = useState(false);
@@ -478,13 +499,13 @@ function Details({ mode, result, cart, lines, onBack }: { mode: EngineMode; resu
   const [sentRef, setSentRef] = useState('');
 
   useEffect(() => {
-    if (enquiry) { setQuote(staticQuote({ checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfastGuests: breakfast, method })); return; }
+    if (enquiry) { setQuote(staticQuote({ checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfast, method })); return; }
     let stale = false;
-    quoteFn({ data: { checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfastGuests: breakfast, method } })
+    quoteFn({ data: { checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfast, method } })
       .then((r) => !stale && (r.ok ? setQuote(r.data) : setMsg(r.error)));
     return () => { stale = true; };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [breakfast, method, result.checkIn, result.checkOut, JSON.stringify(cart)]);
+  }, [JSON.stringify(breakfast), method, result.checkIn, result.checkOut, JSON.stringify(cart)]);
 
   const ready = policy && guest.gender !== '' && (!needsSky || sky) && (femaleBeds <= 1 || female) && (enquiry || !botRequired || botToken !== '');
 
@@ -496,7 +517,7 @@ function Details({ mode, result, cart, lines, onBack }: { mode: EngineMode; resu
     setBusy(true);
     setMsg('');
     const r = await startCheckoutFn({ data: {
-      checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfastGuests: breakfast, method,
+      checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfast, method,
       guest: { name: guest.name, phone: guest.phone, email: guest.email, gender: guest.gender as 'female' | 'male' | 'other', nationality },
       policyAccepted: policy, femaleOnlyAck: female, skyViewAck: sky, botToken: botToken || undefined,
     } }).catch(() => ({ ok: false as const, error: 'The booking service did not respond. Check your connection and try again.' }));
@@ -516,7 +537,7 @@ function Details({ mode, result, cart, lines, onBack }: { mode: EngineMode; resu
     const roomsText = lines.map((l) => `${l.units}× ${l.room!.name} (${formatInr(l.room!.fromRate)}/night plus GST)`).join(', ');
     const extras = [
       `Lead guest: ${guest.gender}, ${nationality}`,
-      breakfast > 0 && `Breakfast for ${breakfast} guest${breakfast > 1 ? 's' : ''}`,
+      breakfast.length > 0 && `TAB Bistro breakfast each morning: ${breakfast.map((b) => `${b.qty} × ${breakfastItem(b.item)?.name ?? b.item}`).join(', ')}`,
       `Advance (${HOSTEL_POLICIES.advancePercent}%) after confirmation: ${formatInr(quote.quote.advance)}`,
       needsSky && 'Understood: sky view depends on the weather and is not guaranteed',
       'Accepted the cancellation and property policies',
@@ -573,10 +594,7 @@ function Details({ mode, result, cart, lines, onBack }: { mode: EngineMode; resu
         </Panel>
 
         <Panel title="Breakfast at TAB Bistro">
-          <p className="mb-3 text-sm text-xt-mute">₹280 per person per morning, plus GST.</p>
-          <select className={cn(inputCls, 'sm:w-64')} value={breakfast} onChange={(e) => setBreakfast(Number(e.target.value))} aria-label="Guests taking breakfast">
-            {Array.from({ length: totalGuests + 1 }, (_, i) => <option key={i} value={i}>{i === 0 ? 'No breakfast' : `${i} guest${i > 1 ? 's' : ''}`}</option>)}
-          </select>
+          <BreakfastPicker picks={picks} onChange={setPicks} mornings={result.nights} />
         </Panel>
 
         {!enquiry && <Panel title="Pay the advance with">
@@ -634,7 +652,7 @@ function Details({ mode, result, cart, lines, onBack }: { mode: EngineMode; resu
             {quote ? (
               <dl className="space-y-2 text-sm">
                 {quote.quote.lines.filter((l) => l.label.startsWith('Breakfast')).map((l) => (
-                  <div key={l.label} className="flex justify-between gap-3 text-xt-fog"><dt>Breakfast</dt><dd>{formatInr(l.taxable)}</dd></div>
+                  <div key={l.label} className="flex justify-between gap-3 text-xt-fog"><dt>{l.label.replace(/^Breakfast: /, 'Breakfast, ')}</dt><dd className="shrink-0">{formatInr(l.taxable)}</dd></div>
                 ))}
                 <div className="flex justify-between gap-3 text-xt-fog"><dt>Stay total</dt><dd>{formatInr(quote.quote.taxable)}</dd></div>
                 <div className="flex justify-between gap-3 text-xt-fog"><dt>GST</dt><dd>{formatInr(quote.quote.gst)}</dd></div>

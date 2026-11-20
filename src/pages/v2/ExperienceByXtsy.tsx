@@ -14,7 +14,7 @@ import { IMG } from '@/data/v2Images';
 import { PageShell, Btn, Section, H2, FeatureCards, PriceCards, FaqList, PAD } from '@/components/v2/blocks';
 import { Photo, waLink } from '@/components/v2/primitives';
 import { inr, roomPrice } from '@/components/v2/pricing';
-import { PANORAMA_DECORATION, PANORAMA_BREAKFAST_PER_PERSON } from '@/data/panoramaPricing';
+import { PANORAMA_DECORATION } from '@/data/panoramaPricing';
 import { TiltedGridHero } from '@/components/ui/tilted-grid-hero';
 
 // Smaller AVIF copies for the moving strip (~900 px instead of 1280 px WebP), so slow connections load it faster.
@@ -68,7 +68,7 @@ export default function ExperienceByXtsy() {
   return (
     <>
       <SEOHead title="Experience by XTSY | Glass Glamping for Two, New Shillong" description="Stay in a 270° panoramic glass suite for two in New Shillong Township, Meghalaya. View photos, amenities and rates; enquire on WhatsApp for availability." keywords={(XTSY270_DATA as { seoKeywords?: string }).seoKeywords} canonicalUrl={XTSY270_DATA.canonicalUrl} ogType="product" />
-      <PageShell bar={{ label: 'Book a stay', to: wa, note: `Experience by XTSY · ${inr(now)} a night, incl. taxes` }} cta={{ title: 'One suite. One night. Yours?', sub: 'Reserve on WhatsApp. Book 48 hours ahead for decoration and concierge.' }}>
+      <PageShell bar={{ label: 'Book a stay', to: wa, note: `Experience by XTSY · ${inr(now)} a night, plus GST` }} cta={{ title: 'One suite. One night. Yours?', sub: 'Reserve on WhatsApp. Book 48 hours ahead for decoration and concierge.' }}>
         <section className="xt-suite-motion relative overflow-hidden pt-14 sm:pt-20" style={{ background: '#1F2438', color: '#F4EFE8' }}>
           <svg viewBox="0 0 1440 820" preserveAspectRatio="xMidYMid slice" aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full">
             <g fill="#F4EFE8">
@@ -128,7 +128,7 @@ export default function ExperienceByXtsy() {
           <H2 eyebrow="Packages">Choose your night</H2>
           <PriceCards
             cards={[
-              { t: 'Stay only', price: inr(now), hot: true, text: `One night in the glass suite for two, plus GST, without breakfast. Add à la carte breakfast from TAB Bistro by XTSY at ${inr(PANORAMA_BREAKFAST_PER_PERSON)} per person + 5% GST (${inr(PANORAMA_BREAKFAST_PER_PERSON * 2)} + GST for two).${suite.was > now ? ` Regular ${inr(suite.was)}.` : ''}`, cta: <Btn to={wa} kind="outline" className="w-full">Reserve</Btn> },
+              { t: 'Stay only', price: inr(now), hot: true, text: `One night in the glass suite for two, plus GST, without breakfast. Add breakfast when you book: pick dishes and drinks from the TAB Bistro menu, at menu prices plus 5% GST.${suite.was > now ? ` Regular ${inr(suite.was)}.` : ''}`, cta: <Btn to={wa} kind="outline" className="w-full">Reserve</Btn> },
               { t: 'Decoration add-on', price: `+${inr(PANORAMA_DECORATION)}`, text: 'For anniversaries, proposals, honeymoons and birthdays. Book 48 hours ahead.', cta: <Btn to={waLink('Hi XTSY! I want to add the decoration package to my Experience by XTSY stay.', 'experience-by-xtsy')} kind="outline" className="w-full">Add to my stay</Btn> },
             ]}
           />

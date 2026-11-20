@@ -99,25 +99,33 @@ describe('cancellation and payment split', () => {
 
 describe('pricing: rates, then GST, then the gateway charge', () => {
   it('prices two dorm beds for two nights at 5% GST', () => {
-    const q = quoteStay({ checkIn: '2026-12-01', checkOut: '2026-12-03', rooms: [{ roomTypeId: 'bed-in-6-bed-mixed-dormitory', units: 2, guests: 2 }], breakfastGuests: 0 });
+    const q = quoteStay({ checkIn: '2026-12-01', checkOut: '2026-12-03', rooms: [{ roomTypeId: 'bed-in-6-bed-mixed-dormitory', units: 2, guests: 2 }], breakfast: [] });
     expect([q.taxable, q.gst, q.total, q.advance, q.balance]).toEqual([rupees(2000), rupees(100), rupees(2100), rupees(525), rupees(1575)]);
   });
   it('prices the suite to the paisa', () => {
-    const q = quoteStay({ checkIn: '2026-12-01', checkOut: '2026-12-02', rooms: [{ roomTypeId: 'experience-by-xtsy', units: 1, guests: 2 }], breakfastGuests: 0 });
+    const q = quoteStay({ checkIn: '2026-12-01', checkOut: '2026-12-02', rooms: [{ roomTypeId: 'experience-by-xtsy', units: 1, guests: 2 }], breakfast: [] });
     expect([q.taxable, q.gst, q.total]).toEqual([499900, 24995, 524895]);
   });
-  it('adds breakfast at ₹280 per person per morning plus GST', () => {
-    const q = quoteStay({ checkIn: '2026-12-01', checkOut: '2026-12-03', rooms: [{ roomTypeId: 'king-room-with-mountain-view', units: 1, guests: 2 }], breakfastGuests: 2 });
-    const bf = q.lines.find((l) => l.label.startsWith('Breakfast'))!;
-    expect([bf.taxable, bf.gst]).toEqual([rupees(1120), rupees(56)]);
+  it('prices breakfast item by item from the TAB Bistro menu, every morning, plus 5% GST', () => {
+    // 2 × Masala Dosa (₹180) + 2 × Milk Chai (₹60) each morning, two mornings.
+    const q = quoteStay({ checkIn: '2026-12-01', checkOut: '2026-12-03', rooms: [{ roomTypeId: 'king-room-with-mountain-view', units: 1, guests: 2 }], breakfast: [{ item: 'masala-dosa', qty: 2 }, { item: 'milk-chai', qty: 2 }] });
+    const bf = q.lines.filter((l) => l.label.startsWith('Breakfast'));
+    expect(bf.map((l) => l.taxable)).toEqual([rupees(720), rupees(240)]);
+    expect(bf.map((l) => l.gst)).toEqual([rupees(36), rupees(12)]);
+  });
+  it('refuses breakfast items that are not on the menu, or odd quantities', () => {
+    const base = { checkIn: '2026-12-01' as const, checkOut: '2026-12-02' as const, rooms: [{ roomTypeId: 'king-room-with-mountain-view', units: 1, guests: 2 }] };
+    expect(() => quoteStay({ ...base, breakfast: [{ item: 'caviar', qty: 1 }] })).toThrow(/not on the TAB Bistro menu/);
+    expect(() => quoteStay({ ...base, breakfast: [{ item: 'masala-dosa', qty: 0 }] })).toThrow();
+    expect(() => quoteStay({ ...base, breakfast: [{ item: 'masala-dosa', qty: 1 }, { item: 'masala-dosa', qty: 1 }] })).toThrow(/twice/);
   });
   it('refuses more guests than the beds or rooms hold', () => {
-    expect(() => quoteStay({ checkIn: '2026-12-01', checkOut: '2026-12-02', rooms: [{ roomTypeId: 'bed-in-8-bed-mixed-dormitory', units: 2, guests: 3 }], breakfastGuests: 0 })).toThrow(/hold up to 2/);
+    expect(() => quoteStay({ checkIn: '2026-12-01', checkOut: '2026-12-02', rooms: [{ roomTypeId: 'bed-in-8-bed-mixed-dormitory', units: 2, guests: 3 }], breakfast: [] })).toThrow(/hold up to 2/);
   });
   it('refuses empty and over-long stays', () => {
     const rooms = [{ roomTypeId: 'experience-by-xtsy', units: 1, guests: 1 }];
-    expect(() => quoteStay({ checkIn: '2026-12-02', checkOut: '2026-12-02', rooms, breakfastGuests: 0 })).toThrow();
-    expect(() => quoteStay({ checkIn: '2026-12-01', checkOut: '2027-01-15', rooms, breakfastGuests: 0 })).toThrow(/30 nights/);
+    expect(() => quoteStay({ checkIn: '2026-12-02', checkOut: '2026-12-02', rooms, breakfast: [] })).toThrow();
+    expect(() => quoteStay({ checkIn: '2026-12-01', checkOut: '2027-01-15', rooms, breakfast: [] })).toThrow(/30 nights/);
   });
   it('adds the charge for the method the guest picks, plus 18% GST on that charge', () => {
     // ₹525 advance by credit card at 1.99%: ₹10.45 charge, ₹1.88 GST on it.

@@ -140,7 +140,7 @@ export async function changeDates(d: ConsoleDeps, id: string, checkIn: IsoDate, 
   if (!decision.allowed) throw new ConsoleError(decision.reason);
   if (!channelOf(d).connected) throw new ConsoleError('STAAH is not connected, so the new dates cannot be checked against OTA bookings.');
   if (stayNights(checkIn, checkOut).length === 0) throw new ConsoleError('Check-out must be after check-in.');
-  const q = quoteStay({ checkIn, checkOut, breakfastGuests: 0, rooms: lines.map((l: any) => ({ roomTypeId: l.room_type_id, units: l.units, guests: l.guests })) });
+  const q = quoteStay({ checkIn, checkOut, breakfast: [], rooms: lines.map((l: any) => ({ roomTypeId: l.room_type_id, units: l.units, guests: l.guests })) });
   const extra = Math.max(0, q.total - booking.total_paise);
   const { error } = await d.db.from('be_bookings').update({
     check_in: checkIn, check_out: checkOut, date_changes_used: booking.date_changes_used + 1,

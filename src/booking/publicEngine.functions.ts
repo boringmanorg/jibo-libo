@@ -53,8 +53,10 @@ export const searchStaysFn = createServerFn({ method: 'GET' })
     return asResult(async () => core.searchStays(await deps(), data));
   });
 
+const breakfast = z.array(z.object({ item: z.string().max(80), qty: z.number().int().min(1).max(20) })).max(30);
+
 export const quoteFn = createServerFn({ method: 'POST' })
-  .inputValidator(z.object({ checkIn: date, checkOut: date, rooms, breakfastGuests: z.number().int().min(0).max(24), method }))
+  .inputValidator(z.object({ checkIn: date, checkOut: date, rooms, breakfast, method }))
   .handler(async ({ data }) => {
     const core = await import('./publicEngine.core');
     const { settingsFromRow } = await import('./consoleSettings');
@@ -68,7 +70,7 @@ export const quoteFn = createServerFn({ method: 'POST' })
 
 export const startCheckoutFn = createServerFn({ method: 'POST' })
   .inputValidator(z.object({
-    checkIn: date, checkOut: date, rooms, breakfastGuests: z.number().int().min(0).max(24), method,
+    checkIn: date, checkOut: date, rooms, breakfast, method,
     guest: z.object({
       name: z.string().trim().min(2).max(120),
       phone: z.string().trim().min(10).max(20),

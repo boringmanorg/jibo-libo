@@ -180,16 +180,16 @@ function buildSearchIndex(): SearchEntry[] {
   // 3b. XTSY Adventure Campsite Dawki — featured experience entry
   entries.push({
     id: 'exp-dawki-campsite',
-    title: 'XTSY Adventure Campsite — Dawki',
-    description: 'Riverside camping on Umngot · ₹800 only camping · ₹1000 with breakfast',
+    title: 'Shnonpedeng Riverside Camping (XTSY partner)',
+    description: 'Riverside tents on the Umngot · bed space ₹750 · full tent for two ₹1,400',
     category: 'experiences',
     icon: '⛺',
     url: '/stays/campsite-dawki',
-    price: '₹800',
-    location: 'Dawki, Meghalaya',
+    price: '₹750',
+    location: 'Shnonpedeng, Meghalaya',
     keywords: [
       'dawki camping', 'camping in dawki', 'umngot river camping', 'dawki tent stay',
-      'riverside camping meghalaya', 'xtsy adventure campsite', 'best camping dawki',
+      'riverside camping meghalaya', 'shnonpedeng camping', 'shnongpdeng camping', 'xtsy adventure campsite', 'best camping dawki',
       'budget stay dawki', 'dawki bonfire', 'dawki kayaking', 'stay in dawki today',
       'camping near dawki', 'tent stay meghalaya', 'meghalaya adventure camping',
     ],

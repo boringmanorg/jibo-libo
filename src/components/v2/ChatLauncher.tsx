@@ -7,7 +7,8 @@ import { useLocation } from '@/lib/router-compat';
 import { OPEN_EVENT } from './tripChatEvents';
 
 const TripChat = lazy(() => import('./TripChat'));
-const HIDDEN = /^\/(admin|franchise|admin-login|book\/|plan-trip-with-ai)/;
+// Hidden on /book too: mid-booking, the floating button covered the date bar and booking bar on phones.
+const HIDDEN = /^\/(admin|franchise|admin-login|book(\/|$|\?)|plan-trip-with-ai)/;
 
 export default function ChatLauncher() {
   const { pathname } = useLocation();
