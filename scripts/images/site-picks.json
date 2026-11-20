@@ -1,1 +1,12 @@
-{}
+{
+ "car-ignis": 3, "car-swift": 2, "car-baleno": 4, "car-i20": 2, "car-punch": 1, "car-venue": 1, "car-urban-cruiser": 2,
+ "car-sonet": 4, "car-ertiga": 4, "car-carens": 8, "car-innova-crysta": 3,
+ "bike-meteor-350": 2, "bike-himalayan-411": 2, "bike-hunter-350": 1, "bike-himalayan-450": 2,
+ "tour-74": 6, "tour-75": 7, "tour-76": 8, "tour-77": 6, "tour-93": 8, "tour-65": 7, "tour-67": 2, "tour-66": 1,
+ "tour-85": 7, "tour-86": 3, "tour-87": 2, "tour-90": 6, "tour-91": 1, "tour-92": 2, "tour-704": 3, "tour-7": 1,
+ "sig-5d-meghalaya-trip-package": 6,
+ "hero-mizoram": 2, "hero-nongstoin": 1, "hero-mawsynram": 5, "hero-shillong": 2, "hero-majuli": 2, "hero-ziro": 2,
+ "dest-mawphlang-sacred-forest": 6, "dest-wei-sawdong-falls": 2, "dest-arwah-cave": 8, "dest-dainthlen-falls": 5,
+ "dest-thadlaskein-lake": 2, "dest-balpakram-national-park": 6, "dest-nokrek-biosphere-reserve": 6,
+ "dest-mawjymbuin-cave": 1, "dest-siju-cave": 2, "dest-phe-phe-falls": 1
+}
