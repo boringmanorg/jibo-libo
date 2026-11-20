@@ -4,6 +4,7 @@
  * Launching a new property or outlet = adding one record here (or later, from the PMS/POS API).
  */
 import { ROOM_TYPES } from '@/config/roomTypes';
+import { CAMP, CAMP_PLANS, CAMP_TENTS, CAMP_UNIT_ID } from '@/data/shnonpedengCamp';
 import { PROPERTY_ADDRESS, PROPERTY_CHECK_IN, PROPERTY_CHECK_OUT } from '@/data/brandFacts';
 import { BISTRO_BREAKFAST, BISTRO_EVENING, BISTRO_LAST_ORDER } from '@/data/tabBistroHours';
 import type { GeoLocation, PmsProperty, PosOutlet } from './types';
@@ -36,6 +37,8 @@ const base = {
 const unitsFor = (propertyType: string) =>
   Object.values(ROOM_TYPES).filter((r) => r.propertyType === propertyType && r.isBookable).map((r) => r.id);
 
+export const CAMP_PROPERTY_ID = 'XTSY-SHN-CAMP';
+
 export const PMS_PROPERTIES: PmsProperty[] = [
   {
     ...base,
@@ -44,18 +47,33 @@ export const PMS_PROPERTIES: PmsProperty[] = [
     name: 'XTSY Travellers Hostel',
     brand: 'xtsy-hostel',
     path: '/stays/best-hostel-in-shillong',
-    unitTypeIds: unitsFor('XTSY Travellers Hostel'),
+    // One property (owner, 20 Nov 2026): the hostel's rooms and Experience by XTSY on the same site.
+    unitTypeIds: [...unitsFor('Experience by XTSY'), ...unitsFor('XTSY Travellers Hostel')],
   },
   {
     ...base,
-    propertyId: 'XTSY-SHL-SUITE',
-    slug: 'experience-by-xtsy',
-    name: 'Experience by XTSY',
-    brand: 'experience-by-xtsy',
-    path: '/stays/experience-by-xtsy',
-    unitTypeIds: unitsFor('Experience by XTSY'),
+    propertyId: CAMP_PROPERTY_ID,
+    slug: 'shnonpedeng-riverside-camping',
+    name: CAMP.name,
+    brand: 'xtsy-partner-camp',
+    path: '/stays/campsite-dawki',
+    location: { ...NEW_SHILLONG, citySlug: 'shnonpedeng', city: 'Shnonpedeng', address: CAMP.where },
+    tax: { type: 'GST', inclusive: false },
+    franchise: { franchiseId: 'shnonpedeng-camp', ownership: 'franchise' },
+    unitTypeIds: [CAMP_UNIT_ID],
   },
 ];
+
+/** Experience by XTSY used to be its own console property; old blocks saved under it belong to the hostel. */
+const LEGACY_PROPERTY: Record<string, string> = { 'XTSY-SHL-SUITE': 'XTSY-SHL-HOSTEL' };
+export const canonicalPropertyId = (id: string) => LEGACY_PROPERTY[id] ?? id;
+
+/** Name, nightly rate (₹, before GST) and units for any room type in the console, hostel or camp. */
+export function unitInfo(id: string): { name: string; rate: number; totalUnits: number } | undefined {
+  if (id === CAMP_UNIT_ID) return { name: 'Riverside tent (sleeps 2; bed spaces share a tent)', rate: CAMP_PLANS.tent.price, totalUnits: CAMP_TENTS };
+  const r = ROOM_TYPES[id];
+  return r ? { name: r.name, rate: r.basePrice, totalUnits: r.totalUnits } : undefined;
+}
 
 export const POS_OUTLETS: PosOutlet[] = [
   {
@@ -78,5 +96,5 @@ export const POS_OUTLETS: PosOutlet[] = [
   },
 ];
 
-export const findProperty = (id: string) => PMS_PROPERTIES.find((p) => p.propertyId === id);
+export const findProperty = (id: string) => PMS_PROPERTIES.find((p) => p.propertyId === canonicalPropertyId(id));
 export const findOutlet = (id: string) => POS_OUTLETS.find((o) => o.outletId === id);

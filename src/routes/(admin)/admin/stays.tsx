@@ -9,7 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import {
-  consoleCheckAvailability, deleteInventoryOverride, getConsoleOverview, listPmsEnquiries, saveInventoryOverride, syncRoomsNow,
+  ALL_STAYS, WHOLE_PROPERTY, consoleCheckAvailability, deleteInventoryOverride, getConsoleOverview, listPmsEnquiries, saveInventoryOverride, syncRoomsNow,
 } from '@/admin/console.functions';
 
 export const Route = createFileRoute('/(admin)/admin/stays')({ component: Stays });
@@ -35,20 +35,24 @@ function Stays() {
   const [start, setStart] = useState(today());
   const [end, setEnd] = useState(plus(today(), 1));
   const [reason, setReason] = useState('');
+  const [count, setCount] = useState('');
   const [ci, setCi] = useState(today());
   const [co, setCo] = useState(plus(today(), 1));
   const [guests, setGuests] = useState(2);
 
   const refresh = () => qc.invalidateQueries({ queryKey: ['console'] });
   const saveM = useMutation({
-    mutationFn: (state: 'blocked' | 'open') => save({ data: { propertyId, unitTypeId: unit || property!.units[0].id, startDate: start, endDate: end, state, reason: reason || undefined } }),
-    onSuccess: (r) => { toast.success(r.pmsStatus === 'synced' ? 'Saved and sent to PMS' : 'Saved — waiting for PMS'); refresh(); },
+    mutationFn: (state: 'blocked' | 'open') => save({ data: { propertyId, unitTypeId: unit || property!.units[0].id, startDate: start, endDate: end, state, reason: reason || undefined, units: single && Number(count) > 0 && state === 'blocked' ? Number(count) : undefined } }),
+    onSuccess: (r) => { toast.success(`${r.saved > 1 ? `${r.saved} rooms saved` : 'Saved'}${r.pmsStatus === 'synced' ? ' and sent to PMS' : '. The booking page uses it now; waiting for PMS'}`); setCount(''); refresh(); },
     onError: (e) => toast.error(e.message),
   });
   const syncM = useMutation({ mutationFn: () => sync(), onSuccess: (r) => { toast(r.message); refresh(); } });
   const checkM = useMutation({ mutationFn: () => check({ data: { propertyId, checkIn: ci, checkOut: co, guests } }), onError: (e) => toast.error(e.message) });
 
   if (!data || !property) return <p className="text-muted-foreground">Loading…</p>;
+  const chosen = unit || property.units[0].id;
+  const single = chosen !== WHOLE_PROPERTY && chosen !== ALL_STAYS;
+  const chosenUnit = property.units.find((u) => u.id === chosen);
   const name = (id: string) => property.units.find((u) => u.id === id)?.name ?? id;
   const overrides = data.inventoryOverrides.filter((o: any) => o.property_id === propertyId);
 
@@ -69,9 +73,15 @@ function Stays() {
       </CardContent></Card>
 
       <Card><CardHeader><CardTitle>Block or open dates</CardTitle></CardHeader><CardContent className="space-y-4">
-        <div className="grid gap-3 md:grid-cols-4">
-          <div><Label htmlFor="unit">Room</Label><select id="unit" className={selectCls} value={unit || property.units[0].id} onChange={(e) => setUnit(e.target.value)}>
+        <p className="text-sm text-muted-foreground">Blocks show on the guest booking page (/book) straight away: blocked nights read “Full”, and guests can’t pick more beds or rooms than are left.</p>
+        <div className="grid gap-3 md:grid-cols-5">
+          <div><Label htmlFor="unit">Room</Label><select id="unit" className={selectCls} value={chosen} onChange={(e) => { setUnit(e.target.value); setCount(''); }}>
+            <option value={WHOLE_PROPERTY}>Whole property: every {property.propertyId === 'XTSY-SHL-HOSTEL' ? 'room, including Experience by XTSY,' : 'tent'} at {property.name}</option>
+            <option value={ALL_STAYS}>Every property: {data.properties.map((p) => p.name).join(' and ')}</option>
             {property.units.map((u) => <option key={u.id} value={u.id}>{u.name}</option>)}</select></div>
+          <div><Label htmlFor="bn">How many to close</Label><Input id="bn" type="number" min={1} max={chosenUnit?.totalUnits ?? 1} inputMode="numeric" className="h-12 text-base" disabled={!single}
+            placeholder={single ? `All ${chosenUnit?.totalUnits ?? ''}` : 'All'} value={count} onChange={(e) => setCount(e.target.value)} />
+            <p className="mt-1 text-xs text-muted-foreground">{single ? `Leave blank to close all ${chosenUnit?.totalUnits ?? ''}.` : 'Closes every bed and room.'}</p></div>
           <div><Label htmlFor="bs">From</Label><Input id="bs" type="date" className="h-12 text-base" value={start} onChange={(e) => setStart(e.target.value)} /></div>
           <div><Label htmlFor="be">To (inclusive)</Label><Input id="be" type="date" className="h-12 text-base" value={end} onChange={(e) => setEnd(e.target.value)} /></div>
           <div><Label htmlFor="br">Reason</Label><Input id="br" className="h-12 text-base" placeholder="Maintenance" value={reason} onChange={(e) => setReason(e.target.value)} /></div>
@@ -83,7 +93,7 @@ function Stays() {
         {overrides.length > 0 && (
           <ul className="divide-y divide-border text-sm">{overrides.map((o: any) => (
             <li key={o.id} className="flex flex-wrap items-center justify-between gap-2 py-2">
-              <span>{o.state === 'blocked' ? 'Blocked' : 'Opened'} · {name(o.unit_type_id)} · {o.start_date} → {o.end_date}{o.reason ? ` · ${o.reason}` : ''}</span>
+              <span>{o.state === 'blocked' ? 'Blocked' : 'Opened'} · {name(o.unit_type_id)}{o.state === 'blocked' && o.units ? ` (${o.units} of ${property.units.find((u) => u.id === o.unit_type_id)?.totalUnits ?? '?'})` : ''} · {o.start_date} → {o.end_date}{o.reason ? ` · ${o.reason}` : ''}</span>
               <span className="flex items-center gap-2"><Badge variant={o.pms_status === 'synced' ? 'default' : o.pms_status === 'failed' ? 'destructive' : 'secondary'}>{o.pms_status === 'pending' ? 'waiting for PMS' : o.pms_status}</Badge>
                 <Button variant="ghost" className="min-h-12" onClick={async () => { await remove({ data: { id: o.id } }); refresh(); }}>Remove</Button></span>
             </li>))}</ul>

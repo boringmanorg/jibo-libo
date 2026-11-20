@@ -5,10 +5,11 @@
  */
 import { createServerFn } from '@tanstack/react-start';
 import { z } from 'zod';
-import { ROOM_TYPES } from '@/config/roomTypes';
-import { PMS_PROPERTIES, POS_OUTLETS, findOutlet, findProperty } from '@/integrations/xtsy-saas/catalogue';
+import { PMS_PROPERTIES, POS_OUTLETS, canonicalPropertyId, findOutlet, findProperty, unitInfo } from '@/integrations/xtsy-saas/catalogue';
 import { requireSuperAdmin } from './adminAuth';
-import { rangeHitsBlock, staticTableSlots } from './slots';
+import { staticTableSlots } from './slots';
+import { closedUnits, closureFromRow, type ClosureRow } from '@/booking/consoleClosures';
+import { stayNights } from '@/booking/dates';
 
 const date = z.string().regex(/^\d{4}-\d{2}-\d{2}$/);
 type Ctx = { supabase: any; userId: string };
@@ -41,10 +42,11 @@ export const getConsoleOverview = createServerFn({ method: 'GET' })
       secretsConfigured: Boolean(cfg),
       properties: PMS_PROPERTIES.map((p) => ({
         propertyId: p.propertyId, name: p.name, path: p.path,
-        units: p.unitTypeIds.map((id) => ({ id, name: ROOM_TYPES[id].name, rate: ROOM_TYPES[id].basePrice, totalUnits: ROOM_TYPES[id].totalUnits })),
+        units: p.unitTypeIds.map((id) => ({ id, ...unitInfo(id)! })),
       })),
       outlets: POS_OUTLETS.map((o) => ({ outletId: o.outletId, name: o.name, path: o.path })),
-      inventoryOverrides: inv.data ?? [],
+      // Rows saved under the old separate Experience by XTSY property show with the hostel.
+      inventoryOverrides: (inv.data ?? []).map((o: any) => ({ ...o, property_id: canonicalPropertyId(o.property_id) })),
       tableOverrides: tables.data ?? [],
       audit: log.data ?? [],
     };
@@ -89,43 +91,69 @@ export const consoleCheckAvailability = createServerFn({ method: 'POST' })
       const live = await saasRequest<{ units: { unitTypeId: string; available: number; nightlyRate: number; currency: string }[] }>(cfg, '/pms/v1/availability', { method: 'POST', body: data });
       return { source: 'pms' as const, units: live.units.map((u) => ({ ...u, blocked: false })) };
     }
-    const { data: blocks } = await ctx.supabase.from('console_inventory_overrides').select('*').eq('property_id', property.propertyId).eq('state', 'blocked');
+    // Same rules as the guest booking page: partial blocks add up, a later opening cancels a block.
+    const { data: rows } = await ctx.supabase.from('console_inventory_overrides').select('*').in('property_id', [property.propertyId, ...(property.propertyId === 'XTSY-SHL-HOSTEL' ? ['XTSY-SHL-SUITE'] : [])]).order('created_at');
+    const closures = (rows ?? []).map(closureFromRow).filter((x: ClosureRow | null): x is ClosureRow => x !== null);
+    const nights = stayNights(data.checkIn, data.checkOut);
     return {
       source: 'static' as const,
       units: property.unitTypeIds.map((id) => {
-        const blocked = (blocks ?? []).some((b: any) => b.unit_type_id === id && rangeHitsBlock(data.checkIn, data.checkOut, b.start_date, b.end_date));
-        return { unitTypeId: id, available: blocked ? 0 : ROOM_TYPES[id].totalUnits, nightlyRate: ROOM_TYPES[id].basePrice, currency: property.currency, blocked };
+        const total = unitInfo(id)!.totalUnits;
+        const available = Math.min(...nights.map((n) => Math.max(0, total - closedUnits(closures, id, n))));
+        return { unitTypeId: id, available, nightlyRate: unitInfo(id)!.rate, currency: property.currency, blocked: available === 0 };
       }),
     };
   });
 
+/** Room choices beyond a single room type: every room of the chosen property, or of every property. */
+export const WHOLE_PROPERTY = '__property__';
+export const ALL_STAYS = '__all_stays__';
+
 export const saveInventoryOverride = createServerFn({ method: 'POST' })
   .middleware([requireSuperAdmin])
-  .inputValidator(z.object({ propertyId: z.string().max(40), unitTypeId: z.string().max(60), startDate: date, endDate: date, state: z.enum(['blocked', 'open']), reason: z.string().max(200).optional() }))
+  .inputValidator(z.object({
+    propertyId: z.string().max(40), unitTypeId: z.string().max(60), startDate: date, endDate: date, state: z.enum(['blocked', 'open']),
+    reason: z.string().max(200).optional(),
+    /** Close only this many beds or rooms; leave out to close all of them. Single room type only. */
+    units: z.number().int().min(1).max(50).optional(),
+  }))
   .handler(async ({ data, context }) => {
     const ctx = context as Ctx;
     const property = findProperty(data.propertyId);
-    if (!property || !property.unitTypeIds.includes(data.unitTypeId)) throw new Error('Unknown room');
+    if (!property) throw new Error('Unknown property');
     if (data.endDate < data.startDate) throw new Error('End date is before start date');
-    const { data: row, error } = await ctx.supabase.from('console_inventory_overrides').insert({
-      property_id: data.propertyId, unit_type_id: data.unitTypeId, start_date: data.startDate, end_date: data.endDate, state: data.state, reason: data.reason ?? null,
-    }).select().single();
-    if (error) throw new Error('Could not save');
+    const targets: { propertyId: string; unitTypeId: string }[] =
+      data.unitTypeId === ALL_STAYS ? PMS_PROPERTIES.flatMap((p) => p.unitTypeIds.map((u) => ({ propertyId: p.propertyId, unitTypeId: u })))
+      : data.unitTypeId === WHOLE_PROPERTY ? property.unitTypeIds.map((u) => ({ propertyId: property.propertyId, unitTypeId: u }))
+      : property.unitTypeIds.includes(data.unitTypeId) ? [{ propertyId: property.propertyId, unitTypeId: data.unitTypeId }]
+      : [];
+    if (!targets.length) throw new Error('Unknown room');
+    const units = targets.length === 1 && data.units ? Math.min(data.units, unitInfo(targets[0].unitTypeId)?.totalUnits ?? data.units) : undefined;
+    // `units` is sent only when set, so saving still works before the units column exists.
+    const { data: rows, error } = await ctx.supabase.from('console_inventory_overrides').insert(targets.map((t) => ({
+      property_id: t.propertyId, unit_type_id: t.unitTypeId, start_date: data.startDate, end_date: data.endDate, state: data.state,
+      reason: data.reason ?? null, ...(units ? { units } : {}),
+    }))).select();
+    if (error || !rows?.length) throw new Error(units ? 'Could not save. If this keeps happening, the database update for partial blocks has not run yet: block all units instead.' : 'Could not save');
     const s = await settings(ctx);
     const { cfg, saasRequest } = await endpoint();
     let pmsStatus = 'pending';
     if (s.pms_enabled && cfg) {
-      try {
-        const res = await saasRequest<{ reference: string }>(cfg, '/pms/v1/inventory/overrides', { method: 'POST', body: data });
-        pmsStatus = 'synced';
-        await ctx.supabase.from('console_inventory_overrides').update({ pms_status: 'synced', pms_reference: res.reference }).eq('id', row.id);
-      } catch {
-        pmsStatus = 'failed';
-        await ctx.supabase.from('console_inventory_overrides').update({ pms_status: 'failed' }).eq('id', row.id);
+      pmsStatus = 'synced';
+      for (const row of rows) {
+        try {
+          const res = await saasRequest<{ reference: string }>(cfg, '/pms/v1/inventory/overrides', { method: 'POST', body: {
+            propertyId: row.property_id, unitTypeId: row.unit_type_id, startDate: data.startDate, endDate: data.endDate, state: data.state, reason: data.reason, ...(units ? { units } : {}),
+          } });
+          await ctx.supabase.from('console_inventory_overrides').update({ pms_status: 'synced', pms_reference: res.reference }).eq('id', row.id);
+        } catch {
+          pmsStatus = 'failed';
+          await ctx.supabase.from('console_inventory_overrides').update({ pms_status: 'failed' }).eq('id', row.id);
+        }
       }
     }
-    await audit(ctx, `inventory.${data.state}`, { ...data, pmsStatus });
-    return { id: row.id, pmsStatus };
+    await audit(ctx, `inventory.${data.state}`, { ...data, rooms: targets.length, pmsStatus });
+    return { id: rows[0].id, saved: rows.length, pmsStatus };
   });
 
 export const deleteInventoryOverride = createServerFn({ method: 'POST' })

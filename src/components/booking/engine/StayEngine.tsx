@@ -23,6 +23,7 @@ import type { RoomResult, SearchResult } from '@/booking/publicEngine.core';
 import { isIndian } from '@/booking/guestRules';
 import { getBotCheckConfigFn, quoteFn, searchStaysFn, startCheckoutFn } from '@/booking/publicEngine.functions';
 import { staticDateProblem, staticQuote, staticSearch } from '@/booking/staticSearch';
+import type { ClosureRow } from '@/booking/consoleClosures';
 import { localEnquiryRef } from '@/lib/localEnquiry';
 import { generateBookingMessage, bookingPageSource } from '@/utils/privacyCompliantWhatsApp';
 import { trackBookingStart } from '@/utils/dataLayerService';
@@ -55,7 +56,7 @@ const FACTS: { icon: typeof Clock; text: string }[] = [
   { icon: PawPrint, text: 'Cats and birds welcome' },
 ];
 
-export default function StayEngine({ mode, photos, initialLocation }: { mode: EngineMode; photos?: Record<string, { src: string; alt: string }[]>; initialLocation?: BookLocation }) {
+export default function StayEngine({ mode, photos, closures, initialLocation }: { mode: EngineMode; photos?: Record<string, { src: string; alt: string }[]>; closures?: ClosureRow[]; initialLocation?: BookLocation }) {
   const [location, setLocation] = useState<BookLocation | null>(initialLocation ?? (mode === 'preview' ? 'new-shillong' : null));
   const pickLocation = (l: BookLocation | null) => {
     setLocation(l);
@@ -84,7 +85,7 @@ export default function StayEngine({ mode, photos, initialLocation }: { mode: En
     setError('');
     if (enquiry) {
       const problem = staticDateProblem(checkIn, checkOut);
-      if (problem) { setResult(null); setError(problem); } else setResult(staticSearch(checkIn, checkOut, photos));
+      if (problem) { setResult(null); setError(problem); } else setResult(staticSearch(checkIn, checkOut, photos, closures));
       setLoading(false);
       return;
     }
@@ -97,7 +98,7 @@ export default function StayEngine({ mode, photos, initialLocation }: { mode: En
       .catch(() => !stale && setError('Rooms could not load. Check your connection and try again.'))
       .finally(() => !stale && setLoading(false));
     return () => { stale = true; };
-  }, [checkIn, checkOut, enquiry]);
+  }, [checkIn, checkOut, enquiry, closures]);
 
   // Drop anything no longer free for the new dates.
   useEffect(() => {
@@ -129,7 +130,7 @@ export default function StayEngine({ mode, photos, initialLocation }: { mode: En
         </>
       ) : location === 'shnonpedeng' ? (
         <>
-          <CampBooking onBack={() => pickLocation(null)} />
+          <CampBooking onBack={() => pickLocation(null)} closures={closures} />
           <Promotions step={1} />
           <BrandStory />
         </>
@@ -255,6 +256,8 @@ function RoomCard({ room, enquiry, picked, onPick }: { room: RoomResult; enquiry
   const content = roomContent(room.id);
   const images = room.photos?.length ? room.photos.map((p) => p.src) : content.images;
   const soldOut = room.freeForStay === 0;
+  // Enquiry mode has no booking counts; it shows counts only where the console has closed some.
+  const showCount = (free: number) => !enquiry || (room.totalUnits !== undefined && free < room.totalUnits);
   const maxUnits = Math.min(room.freeForStay, room.soldAs === 'bed' ? 8 : 3);
   const setUnits = (u: number) => {
     if (u <= 0) return onPick(null);
@@ -293,7 +296,7 @@ function RoomCard({ room, enquiry, picked, onPick }: { room: RoomResult; enquiry
                 <div className="text-right">
                   <p className="leading-tight"><span className="text-2xl font-extrabold text-xt-ink">{formatInr(room.fromRate)}</span><span className="text-sm text-xt-mute"> / night</span></p>
                   <p className="text-xs text-xt-mute">per {unitWord(room)}, plus GST</p>
-                  {!enquiry && room.freeForStay <= 2 && <p className="text-xs font-bold text-xt-crimson">Only {room.freeForStay} {unitWord(room, room.freeForStay)} left</p>}
+                  {showCount(room.freeForStay) && room.freeForStay <= 2 && <p className="text-xs font-bold text-xt-crimson">Only {room.freeForStay} {unitWord(room, room.freeForStay)} left</p>}
                 </div>
                 {picked ? (
                   <div className="flex items-center rounded-full bg-xt-ink text-xt-sand" role="group" aria-label={`${unitWord(room, 2)} selected`}>
@@ -331,7 +334,7 @@ function RoomCard({ room, enquiry, picked, onPick }: { room: RoomResult; enquiry
                 {ok ? (
                   <>
                     <p className="mt-1 font-bold text-xt-leaf">{formatInr(n.rate)}</p>
-                    {!enquiry && <p className="text-xt-mute">{n.free} left</p>}
+                    {showCount(n.free) && <p className="text-xt-mute">{n.free} left</p>}
                   </>
                 ) : (
                   <>
