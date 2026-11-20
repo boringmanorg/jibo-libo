@@ -41,6 +41,11 @@ export const getEngineStatus = createServerFn({ method: 'GET' }).handler(async (
   return core.engineStatus(await deps());
 });
 
+export const getBookPageDataFn = createServerFn({ method: 'GET' }).handler(async () => {
+  const core = await import('./publicEngine.core');
+  return core.bookPageData(await deps());
+});
+
 export const searchStaysFn = createServerFn({ method: 'GET' })
   .inputValidator(z.object({ checkIn: date, checkOut: date }))
   .handler(async ({ data }) => {

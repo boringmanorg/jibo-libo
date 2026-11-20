@@ -4,8 +4,9 @@
  * 2026 identity (.xt: sand, crimson, pine; Staatliches display, Manrope body) so it reads as the
  * same brand as the rest of xtsy.one.
  *
- * mode="live": guests can pay. mode="preview": the owner reviews the page from the console;
- * search works, payment is switched off.
+ * mode="live": guests can pay. mode="preview": the owner reviews the live page from the console;
+ * payment is switched off. mode="enquiry": /book before online booking is live: the same page from
+ * the static catalogue (no database, no availability counts), ending in a WhatsApp enquiry.
  */
 import { useEffect, useMemo, useRef, useState, type FormEvent, type ReactNode } from 'react';
 import { CalendarDays, ChevronDown, ChevronLeft, ChevronRight, Minus, Plus, Users, X, MessageCircle, ArrowLeft, ShieldCheck, Trash2, Flame, Coffee, PawPrint, Clock } from 'lucide-react';
@@ -21,12 +22,17 @@ import { roomContent } from '@/booking/roomContent';
 import type { RoomResult, SearchResult } from '@/booking/publicEngine.core';
 import { isIndian } from '@/booking/guestRules';
 import { getBotCheckConfigFn, quoteFn, searchStaysFn, startCheckoutFn } from '@/booking/publicEngine.functions';
+import { staticDateProblem, staticQuote, staticSearch } from '@/booking/staticSearch';
+import { localEnquiryRef } from '@/lib/localEnquiry';
+import { generateBookingMessage, bookingPageSource } from '@/utils/privacyCompliantWhatsApp';
+import { trackBookingStart } from '@/utils/dataLayerService';
 import { openWhatsAppDirectly } from '@/utils/privacyCompliantWhatsApp';
 
 type Cart = Record<string, { units: number; guests: number }>;
 type QuoteData = Awaited<ReturnType<typeof import('@/booking/publicEngine.core').quoteCheckout>>;
 type Line = { room?: RoomResult; units: number; guests: number };
 type Filter = 'all' | 'bed' | 'room';
+export type EngineMode = 'live' | 'preview' | 'enquiry';
 
 const utc = (d: IsoDate) => new Date(`${d}T00:00:00Z`);
 const dayFmt = new Intl.DateTimeFormat('en-IN', { weekday: 'short', timeZone: 'UTC' });
@@ -55,7 +61,8 @@ const FACTS: { icon: typeof Clock; text: string }[] = [
   { icon: PawPrint, text: 'Cats and birds welcome' },
 ];
 
-export default function StayEngine({ mode }: { mode: 'live' | 'preview' }) {
+export default function StayEngine({ mode, photos }: { mode: EngineMode; photos?: Record<string, { src: string; alt: string }[]> }) {
+  const enquiry = mode === 'enquiry';
   const today = todayInIndia(new Date());
   const [checkIn, setCheckIn] = useState<IsoDate>(today);
   const [checkOut, setCheckOut] = useState<IsoDate>(addDays(today, 1));
@@ -71,6 +78,12 @@ export default function StayEngine({ mode }: { mode: 'live' | 'preview' }) {
     let stale = false;
     setLoading(true);
     setError('');
+    if (enquiry) {
+      const problem = staticDateProblem(checkIn, checkOut);
+      if (problem) { setResult(null); setError(problem); } else setResult(staticSearch(checkIn, checkOut, photos));
+      setLoading(false);
+      return;
+    }
     searchStaysFn({ data: { checkIn, checkOut } })
       .then((r) => {
         if (stale) return;
@@ -80,7 +93,7 @@ export default function StayEngine({ mode }: { mode: 'live' | 'preview' }) {
       .catch(() => !stale && setError('Rooms could not load. Check your connection and try again.'))
       .finally(() => !stale && setLoading(false));
     return () => { stale = true; };
-  }, [checkIn, checkOut]);
+  }, [checkIn, checkOut, enquiry]);
 
   // Drop anything no longer free for the new dates.
   useEffect(() => {
@@ -90,7 +103,7 @@ export default function StayEngine({ mode }: { mode: 'live' | 'preview' }) {
 
   const lines = useMemo(() => Object.entries(cart).map(([id, v]) => ({ room: result?.rooms.find((r) => r.id === id), ...v })).filter((l) => l.room), [cart, result]);
   const remove = (id: string) => setCart((c) => { const n = { ...c }; delete n[id]; return n; });
-  const roomQuote = useRoomQuote(result, cart);
+  const roomQuote = useRoomQuote(result, cart, enquiry);
   const setDates = (ci: IsoDate, co: IsoDate) => { setCheckIn(ci); setCheckOut(co > ci ? co : addDays(ci, 1)); };
   const shown = result?.rooms.filter((r) => filter === 'all' || r.soldAs === filter) ?? [];
   const toDetails = () => { setRulesOpen(false); setStep('details'); window.scrollTo({ top: 0 }); };
@@ -111,6 +124,7 @@ export default function StayEngine({ mode }: { mode: 'live' | 'preview' }) {
           <div className="mx-auto mt-10 grid max-w-6xl gap-8 px-4 lg:grid-cols-[1fr_360px]">
             <section aria-labelledby="select-room" className="min-w-0">
               <h2 id="select-room" className="xt-display text-4xl text-xt-ink">Choose your bed or room</h2>
+              {enquiry && <p className="mt-1 text-sm text-xt-mute">Pick what you’d like and send it to the desk on WhatsApp. The desk confirms availability, then you pay the {HOSTEL_POLICIES.advancePercent}% advance.</p>}
               <div className="sticky top-0 z-30 -mx-4 mt-3 flex flex-col gap-3 bg-xt-sand/95 px-4 py-3 backdrop-blur md:flex-row md:items-center md:justify-between lg:static lg:mx-0 lg:bg-transparent lg:px-0 lg:backdrop-blur-none">
                 <DateBar checkIn={checkIn} checkOut={checkOut} min={today} onChange={setDates} />
                 <div className="inline-flex w-fit rounded-full border border-xt-line bg-white/60 p-1" role="tablist" aria-label="Room type">
@@ -127,7 +141,7 @@ export default function StayEngine({ mode }: { mode: 'live' | 'preview' }) {
               {loading && !result && <RoomSkeletons />}
               <div className={cn('mt-6 space-y-5 transition-opacity', loading && result && 'opacity-50')} aria-busy={loading}>
                 {shown.map((r) => (
-                  <RoomCard key={r.id} room={r} picked={cart[r.id]}
+                  <RoomCard key={r.id} room={r} enquiry={enquiry} picked={cart[r.id]}
                     onPick={(v) => setCart((c) => { const n = { ...c }; if (v) n[r.id] = v; else delete n[r.id]; return n; })} />
                 ))}
               </div>
@@ -135,13 +149,13 @@ export default function StayEngine({ mode }: { mode: 'live' | 'preview' }) {
 
             <aside className="hidden lg:block">
               <div className="sticky top-6">
-                <Summary result={result} lines={lines} quote={roomQuote} onRemove={remove} onContinue={() => setRulesOpen(true)} />
+                <Summary enquiry={enquiry} result={result} lines={lines} quote={roomQuote} onRemove={remove} onContinue={() => setRulesOpen(true)} />
               </div>
             </aside>
           </div>
 
           <div className="fixed inset-x-0 bottom-0 z-40 bg-xt-night p-4 text-xt-sand shadow-[0_-12px_32px_rgba(31,34,48,.25)] lg:hidden">
-            <Summary compact result={result} lines={lines} quote={roomQuote} onRemove={remove} onContinue={() => setRulesOpen(true)} />
+            <Summary enquiry={enquiry} compact result={result} lines={lines} quote={roomQuote} onRemove={remove} onContinue={() => setRulesOpen(true)} />
           </div>
           <KnowBeforeYouGo open={rulesOpen} onOpenChange={setRulesOpen} onContinue={toDetails} />
         </>
@@ -216,7 +230,7 @@ function PhotoCarousel({ images, alt, dim }: { images: string[]; alt: string; di
   );
 }
 
-function RoomCard({ room, picked, onPick }: { room: RoomResult; picked?: { units: number; guests: number }; onPick: (v: { units: number; guests: number } | null) => void }) {
+function RoomCard({ room, enquiry, picked, onPick }: { room: RoomResult; enquiry: boolean; picked?: { units: number; guests: number }; onPick: (v: { units: number; guests: number } | null) => void }) {
   const [open, setOpen] = useState(false);
   const content = roomContent(room.id);
   const images = room.photos?.length ? room.photos.map((p) => p.src) : content.images;
@@ -250,7 +264,7 @@ function RoomCard({ room, picked, onPick }: { room: RoomResult; picked?: { units
           <div className="mt-auto flex flex-wrap items-end justify-between gap-4 pt-2">
             <button type="button" onClick={() => setOpen((o) => !o)} aria-expanded={open} aria-controls={`strip-${room.id}`}
               className="flex min-h-11 items-center gap-2 rounded-full border border-xt-line px-4 text-sm font-semibold text-xt-ink hover:border-xt-stone">
-              <CalendarDays className="h-4 w-4" aria-hidden /> Next 7 nights <ChevronDown className={cn('h-4 w-4 transition-transform', open && 'rotate-180')} aria-hidden />
+              <CalendarDays className="h-4 w-4" aria-hidden /> {enquiry ? 'Prices, next 7 nights' : 'Next 7 nights'} <ChevronDown className={cn('h-4 w-4 transition-transform', open && 'rotate-180')} aria-hidden />
             </button>
             {soldOut ? (
               <span className="rounded-full bg-xt-oat px-5 py-2.5 text-sm font-bold text-xt-mute">Sold out for these dates</span>
@@ -259,7 +273,7 @@ function RoomCard({ room, picked, onPick }: { room: RoomResult; picked?: { units
                 <div className="text-right">
                   <p className="leading-tight"><span className="text-2xl font-extrabold text-xt-ink">{formatInr(room.fromRate)}</span><span className="text-sm text-xt-mute"> / night</span></p>
                   <p className="text-xs text-xt-mute">per {unitWord(room)}, plus GST</p>
-                  {room.freeForStay <= 2 && <p className="text-xs font-bold text-xt-crimson">Only {room.freeForStay} {unitWord(room, room.freeForStay)} left</p>}
+                  {!enquiry && room.freeForStay <= 2 && <p className="text-xs font-bold text-xt-crimson">Only {room.freeForStay} {unitWord(room, room.freeForStay)} left</p>}
                 </div>
                 {picked ? (
                   <div className="flex items-center rounded-full bg-xt-ink text-xt-sand" role="group" aria-label={`${unitWord(room, 2)} selected`}>
@@ -297,7 +311,7 @@ function RoomCard({ room, picked, onPick }: { room: RoomResult; picked?: { units
                 {ok ? (
                   <>
                     <p className="mt-1 font-bold text-xt-leaf">{formatInr(n.rate)}</p>
-                    <p className="text-xt-mute">{n.free} left</p>
+                    {!enquiry && <p className="text-xt-mute">{n.free} left</p>}
                   </>
                 ) : (
                   <>
@@ -319,24 +333,25 @@ function RoomSkeletons() {
 }
 
 /** Quote for the room step (no breakfast, UPI): tax, grand total and the 25% payable now. */
-function useRoomQuote(result: SearchResult | null, cart: Cart): QuoteData | null {
+function useRoomQuote(result: SearchResult | null, cart: Cart, enquiry: boolean): QuoteData | null {
   const [q, setQ] = useState<QuoteData | null>(null);
   const key = JSON.stringify(cart);
   useEffect(() => {
     const rooms = Object.entries(cart).map(([roomTypeId, v]) => ({ roomTypeId, ...v }));
     if (!result || rooms.length === 0) { setQ(null); return; }
+    if (enquiry) { setQ(staticQuote({ checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfastGuests: 0, method: 'upi' })); return; }
     let stale = false;
     quoteFn({ data: { checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfastGuests: 0, method: 'upi' } })
       .then((r) => !stale && setQ(r.ok ? r.data : null))
       .catch(() => !stale && setQ(null));
     return () => { stale = true; };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [result?.checkIn, result?.checkOut, key]);
+  }, [result?.checkIn, result?.checkOut, key, enquiry]);
   return q;
 }
 
-function Summary({ result, lines, quote, onRemove, onContinue, compact }: {
-  result: SearchResult | null; lines: Line[]; quote: QuoteData | null; onRemove: (id: string) => void; onContinue: () => void; compact?: boolean;
+function Summary({ enquiry, result, lines, quote, onRemove, onContinue, compact }: {
+  enquiry: boolean; result: SearchResult | null; lines: Line[]; quote: QuoteData | null; onRemove: (id: string) => void; onContinue: () => void; compact?: boolean;
 }) {
   const nights = result?.nights ?? 1;
   if (compact) {
@@ -344,7 +359,7 @@ function Summary({ result, lines, quote, onRemove, onContinue, compact }: {
       <div className="flex items-center justify-between gap-3">
         <div className="text-sm">
           {lines.length && quote ? (
-            <><span className="text-xt-fog">Pay now </span><span className="text-lg font-extrabold">{formatInr(quote.quote.advance)}</span>
+            <><span className="text-xt-fog">{enquiry ? 'Advance ' : 'Pay now '}</span><span className="text-lg font-extrabold">{formatInr(quote.quote.advance)}</span>
               <span className="block text-xs text-xt-fog">Total {formatInr(quote.quote.total)} with GST, {nightsLabel(nights)}</span></>
           ) : result?.fromRate != null ? <>From <span className="text-lg font-extrabold">{formatInr(result.fromRate)}</span> a night</> : 'Nothing free for these dates'}
         </div>
@@ -392,7 +407,7 @@ function Summary({ result, lines, quote, onRemove, onContinue, compact }: {
               <div className="flex justify-between text-xt-fog"><dt>GST</dt><dd>{formatInr(quote.quote.gst)}</dd></div>
               <div className="flex justify-between text-base font-semibold"><dt>Total</dt><dd>{formatInr(quote.quote.total)}</dd></div>
               <div className="mt-3 flex items-end justify-between rounded-2xl bg-xt-slate p-4">
-                <dt><span className="block text-xs text-xt-fog">Pay now ({HOSTEL_POLICIES.advancePercent}%)</span><span className="text-xs text-xt-fog">rest at check-in</span></dt>
+                <dt><span className="block text-xs text-xt-fog">{enquiry ? `Advance (${HOSTEL_POLICIES.advancePercent}%)` : `Pay now (${HOSTEL_POLICIES.advancePercent}%)`}</span><span className="text-xs text-xt-fog">{enquiry ? 'after the desk confirms' : 'rest at check-in'}</span></dt>
                 <dd className="xt-display text-4xl leading-none">{formatInr(quote.quote.advance)}</dd>
               </div>
             </dl>
@@ -440,7 +455,7 @@ function KnowBeforeYouGo({ open, onOpenChange, onContinue }: { open: boolean; on
 const NATIONALITIES = ['India', 'Bangladesh', 'Bhutan', 'Nepal', 'Myanmar', 'Thailand', 'Malaysia', 'Singapore', 'Japan', 'South Korea', 'China', 'Australia', 'United Kingdom', 'United States', 'Canada', 'Germany', 'France', 'Netherlands', 'Spain', 'Italy', 'Israel', 'Russia', 'Other'];
 const inputCls = 'min-h-12 w-full rounded-2xl border border-xt-line bg-white px-4 text-base text-xt-ink outline-none focus:border-xt-ink focus-visible:ring-2 focus-visible:ring-xt-ink/20';
 
-function Details({ mode, result, cart, lines, onBack }: { mode: 'live' | 'preview'; result: SearchResult; cart: Cart; lines: Line[]; onBack: () => void }) {
+function Details({ mode, result, cart, lines, onBack }: { mode: EngineMode; result: SearchResult; cart: Cart; lines: Line[]; onBack: () => void }) {
   const totalGuests = lines.reduce((s, l) => s + l.guests, 0);
   const [breakfast, setBreakfast] = useState(0);
   const [method, setMethod] = useState<PaymentMethod>('upi');
@@ -459,8 +474,11 @@ function Details({ mode, result, cart, lines, onBack }: { mode: 'live' | 'previe
   const needsSky = lines.some((l) => l.room?.id === 'experience-by-xtsy');
   const nationality = guest.nationality === 'Other' ? guest.otherNationality : guest.nationality;
   const foreign = nationality.trim() !== '' && !isIndian(nationality);
+  const enquiry = mode === 'enquiry';
+  const [sentRef, setSentRef] = useState('');
 
   useEffect(() => {
+    if (enquiry) { setQuote(staticQuote({ checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfastGuests: breakfast, method })); return; }
     let stale = false;
     quoteFn({ data: { checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfastGuests: breakfast, method } })
       .then((r) => !stale && (r.ok ? setQuote(r.data) : setMsg(r.error)));
@@ -468,11 +486,12 @@ function Details({ mode, result, cart, lines, onBack }: { mode: 'live' | 'previe
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [breakfast, method, result.checkIn, result.checkOut, JSON.stringify(cart)]);
 
-  const ready = policy && guest.gender !== '' && (!needsSky || sky) && (femaleBeds <= 1 || female) && (!botRequired || botToken !== '');
+  const ready = policy && guest.gender !== '' && (!needsSky || sky) && (femaleBeds <= 1 || female) && (enquiry || !botRequired || botToken !== '');
 
   const submit = async (e: FormEvent) => {
     e.preventDefault();
     if (femaleBeds > 0 && guest.gender !== 'female') return setMismatch(true);
+    if (enquiry) return sendEnquiry();
     if (mode === 'preview') return setMsg('Preview only: payment opens when the launch switch is on.');
     setBusy(true);
     setMsg('');
@@ -488,6 +507,33 @@ function Details({ mode, result, cart, lines, onBack }: { mode: 'live' | 'previe
     resetBotCheck();
   };
 
+  /** Enquiry mode: open WhatsApp on the guest's click with everything filled in. */
+  const sendEnquiry = () => {
+    if (!quote) return;
+    const tab = window.open('', '_blank');
+    const reference = localEnquiryRef();
+    const source = bookingPageSource();
+    const roomsText = lines.map((l) => `${l.units}× ${l.room!.name} (${formatInr(l.room!.fromRate)}/night plus GST)`).join(', ');
+    const extras = [
+      `Lead guest: ${guest.gender}, ${nationality}`,
+      breakfast > 0 && `Breakfast for ${breakfast} guest${breakfast > 1 ? 's' : ''}`,
+      `Advance (${HOSTEL_POLICIES.advancePercent}%) after confirmation: ${formatInr(quote.quote.advance)}`,
+      needsSky && 'Understood: sky view depends on the weather and is not guaranteed',
+      'Accepted the cancellation and property policies',
+    ].filter(Boolean).join(' | ');
+    const message = generateBookingMessage({
+      roomType: roomsText, guests: totalGuests, checkIn: result.checkIn, checkOut: result.checkOut, nights: result.nights,
+      totalPrice: Math.round(quote.quote.total / 100), guestName: guest.name, email: guest.email, phone: guest.phone,
+      specialRequests: extras, reference, source,
+    });
+    try {
+      trackBookingStart(lines[0]?.room?.name ?? 'Multiple', Math.round(quote.quote.total / 100), result.checkIn, result.checkOut, lines.reduce((s, l) => s + l.units, 0));
+    } catch { /* analytics is optional */ }
+    const url = `https://wa.me/918837317070?text=${encodeURIComponent(message)}`;
+    if (tab && !tab.closed) { tab.opener = null; tab.location.href = url; } else openWhatsAppDirectly(message);
+    setSentRef(reference);
+  };
+
   const whatsapp = () => openWhatsAppDirectly(
     `Hi XTSY, I'd like to book ${lines.map((l) => `${l.units} × ${l.room!.name}`).join(', ')} from ${date(result.checkIn)} to ${date(result.checkOut)} (${totalGuests} guest${totalGuests > 1 ? 's' : ''}).`,
   );
@@ -497,7 +543,7 @@ function Details({ mode, result, cart, lines, onBack }: { mode: 'live' | 'previe
       <section className="min-w-0 space-y-8">
         <div className="flex items-center gap-3">
           <button type="button" onClick={onBack} className="flex h-12 w-12 items-center justify-center rounded-full border border-xt-line bg-white text-xt-ink hover:border-xt-stone" aria-label="Back to rooms"><ArrowLeft className="h-5 w-5" /></button>
-          <h1 className="xt-display text-5xl leading-none text-xt-ink sm:text-6xl">Confirm &amp; pay</h1>
+          <h1 className="xt-display text-5xl leading-none text-xt-ink sm:text-6xl">{enquiry ? 'Confirm & send' : 'Confirm & pay'}</h1>
         </div>
 
         <Panel title="Lead guest">
@@ -533,7 +579,7 @@ function Details({ mode, result, cart, lines, onBack }: { mode: 'live' | 'previe
           </select>
         </Panel>
 
-        <Panel title="Pay the advance with">
+        {!enquiry && <Panel title="Pay the advance with">
           <div className="grid gap-2 sm:grid-cols-2">
             {PAYMENT_METHODS.filter((m) => m.id !== 'wallet').map((m) => (
               <label key={m.id} className={cn('flex min-h-12 cursor-pointer items-center gap-3 rounded-2xl border px-4 text-sm font-semibold', method === m.id ? 'border-xt-ink bg-white text-xt-ink shadow-[0_0_0_1px_#1F2230]' : 'border-xt-line bg-white/60 text-xt-mute')}>
@@ -542,7 +588,7 @@ function Details({ mode, result, cart, lines, onBack }: { mode: 'live' | 'previe
             ))}
           </div>
           <p className="mt-3 text-xs text-xt-mute">Indian cards, UPI and net banking. The gateway charge for your method shows in the summary.</p>
-        </Panel>
+        </Panel>}
 
         <div className="divide-y divide-xt-line border-y border-xt-line">
           <details className="group py-2">
@@ -594,11 +640,20 @@ function Details({ mode, result, cart, lines, onBack }: { mode: 'live' | 'previe
                 <div className="flex justify-between gap-3 text-xt-fog"><dt>GST</dt><dd>{formatInr(quote.quote.gst)}</dd></div>
                 <div className="flex justify-between gap-3 text-base font-semibold"><dt>Total</dt><dd>{formatInr(quote.quote.total)}</dd></div>
                 <div className="flex justify-between gap-3 text-xt-fog"><dt>Advance ({HOSTEL_POLICIES.advancePercent}%)</dt><dd>{formatInr(quote.quote.advance)}</dd></div>
-                <div className="flex justify-between gap-3 text-xt-fog"><dt>Gateway charge with GST</dt><dd>{formatInr(quote.advanceCharge.gatewayCharge + quote.advanceCharge.gstOnCharge)}</dd></div>
-                <div className="mt-3 flex items-end justify-between rounded-2xl bg-xt-slate p-4">
-                  <dt className="text-xs text-xt-fog">Pay now<span className="block">{formatInr(quote.quote.balance)} at check-in</span></dt>
-                  <dd className="xt-display text-4xl leading-none">{formatInr(quote.advanceCharge.payable)}</dd>
-                </div>
+                {enquiry ? (
+                  <div className="mt-3 flex items-end justify-between rounded-2xl bg-xt-slate p-4">
+                    <dt className="text-xs text-xt-fog">Advance after the desk confirms<span className="block">{formatInr(quote.quote.balance)} at check-in</span></dt>
+                    <dd className="xt-display text-4xl leading-none">{formatInr(quote.quote.advance)}</dd>
+                  </div>
+                ) : (
+                  <>
+                    <div className="flex justify-between gap-3 text-xt-fog"><dt>Gateway charge with GST</dt><dd>{formatInr(quote.advanceCharge.gatewayCharge + quote.advanceCharge.gstOnCharge)}</dd></div>
+                    <div className="mt-3 flex items-end justify-between rounded-2xl bg-xt-slate p-4">
+                      <dt className="text-xs text-xt-fog">Pay now<span className="block">{formatInr(quote.quote.balance)} at check-in</span></dt>
+                      <dd className="xt-display text-4xl leading-none">{formatInr(quote.advanceCharge.payable)}</dd>
+                    </div>
+                  </>
+                )}
               </dl>
             ) : <p className="text-sm text-xt-fog">Working out your total…</p>}
           </div>
@@ -606,15 +661,20 @@ function Details({ mode, result, cart, lines, onBack }: { mode: 'live' | 'previe
             <Ack id="ack-policy" checked={policy} onChange={setPolicy}>I accept the cancellation and property policies.</Ack>
             {femaleBeds > 1 && <Ack id="ack-female" checked={female} onChange={setFemale}>Every guest in the female deluxe dorm is female.</Ack>}
             {needsSky && <Ack id="ack-sky" checked={sky} onChange={setSky}>I understand the suite’s sky view depends on the weather and is not guaranteed.</Ack>}
-            <BotCheck onToken={setBotToken} onRequired={setBotRequired} />
+            {!enquiry && <BotCheck onToken={setBotToken} onRequired={setBotRequired} />}
             <button type="submit" className="mt-2 flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-xt-crimson font-bold text-white hover:bg-[#B52B4E] disabled:cursor-not-allowed disabled:opacity-40" disabled={busy || !quote || !ready}>
-              <ShieldCheck className="h-4 w-4" aria-hidden />
-              {busy ? 'Opening payment…' : quote ? `Confirm & pay ${formatInr(quote.advanceCharge.payable)}` : 'Confirm & pay'}
+              {enquiry ? <MessageCircle className="h-4 w-4" aria-hidden /> : <ShieldCheck className="h-4 w-4" aria-hidden />}
+              {enquiry ? 'Send enquiry on WhatsApp' : busy ? 'Opening payment…' : quote ? `Confirm & pay ${formatInr(quote.advanceCharge.payable)}` : 'Confirm & pay'}
             </button>
+            {sentRef && (
+              <p className="rounded-2xl bg-xt-slate p-3 text-sm" role="status">
+                Enquiry {sentRef} is ready in WhatsApp. Press send there to reach the desk; they confirm availability and share the payment link for the {HOSTEL_POLICIES.advancePercent}% advance.
+              </p>
+            )}
             {msg && <p className="rounded-2xl bg-xt-blush p-3 text-sm text-xt-crimson-dark" role="alert">{msg}</p>}
-            <button type="button" onClick={whatsapp} className="flex min-h-11 w-full items-center justify-center gap-2 text-sm text-xt-fog hover:text-white">
+            {!enquiry && <button type="button" onClick={whatsapp} className="flex min-h-11 w-full items-center justify-center gap-2 text-sm text-xt-fog hover:text-white">
               <MessageCircle className="h-4 w-4" aria-hidden /> Prefer to talk? WhatsApp the desk
-            </button>
+            </button>}
           </div>
         </div>
       </aside>
