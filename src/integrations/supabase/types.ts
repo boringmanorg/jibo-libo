@@ -773,6 +773,531 @@ export type Database = {
           },
         ]
       }
+      be_audit_log: {
+        Row: {
+          action: string
+          actor_email: string | null
+          created_at: string
+          details: Json
+          id: string
+        }
+        Insert: {
+          action: string
+          actor_email?: string | null
+          created_at?: string
+          details?: Json
+          id?: string
+        }
+        Update: {
+          action?: string
+          actor_email?: string | null
+          created_at?: string
+          details?: Json
+          id?: string
+        }
+        Relationships: []
+      }
+      be_booking_lines: {
+        Row: {
+          booking_id: string
+          gst_bps: number
+          gst_paise: number
+          guests: number
+          id: string
+          room_type_id: string
+          taxable_paise: number
+          units: number
+        }
+        Insert: {
+          booking_id: string
+          gst_bps: number
+          gst_paise: number
+          guests: number
+          id?: string
+          room_type_id: string
+          taxable_paise: number
+          units: number
+        }
+        Update: {
+          booking_id?: string
+          gst_bps?: number
+          gst_paise?: number
+          guests?: number
+          id?: string
+          room_type_id?: string
+          taxable_paise?: number
+          units?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "be_booking_lines_booking_id_fkey"
+            columns: ["booking_id"]
+            isOneToOne: false
+            referencedRelation: "be_bookings"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      be_bookings: {
+        Row: {
+          advance_paise: number
+          balance_paise: number
+          cancel_reason: string | null
+          channel_id: string | null
+          channel_status: string
+          check_in: string
+          check_out: string
+          created_at: string
+          date_changes_used: number
+          gst_paise: number
+          guest_email: string | null
+          guest_name: string
+          guest_phone: string
+          guests: number
+          id: string
+          nationality: string | null
+          policy_accepted_at: string | null
+          policy_version: string
+          reference: string
+          source: string
+          stargazing_ack_at: string | null
+          status: string
+          taxable_paise: number
+          total_paise: number
+          updated_at: string
+        }
+        Insert: {
+          advance_paise: number
+          balance_paise: number
+          cancel_reason?: string | null
+          channel_id?: string | null
+          channel_status?: string
+          check_in: string
+          check_out: string
+          created_at?: string
+          date_changes_used?: number
+          gst_paise: number
+          guest_email?: string | null
+          guest_name: string
+          guest_phone: string
+          guests: number
+          id?: string
+          nationality?: string | null
+          policy_accepted_at?: string | null
+          policy_version: string
+          reference: string
+          source?: string
+          stargazing_ack_at?: string | null
+          status?: string
+          taxable_paise: number
+          total_paise: number
+          updated_at?: string
+        }
+        Update: {
+          advance_paise?: number
+          balance_paise?: number
+          cancel_reason?: string | null
+          channel_id?: string | null
+          channel_status?: string
+          check_in?: string
+          check_out?: string
+          created_at?: string
+          date_changes_used?: number
+          gst_paise?: number
+          guest_email?: string | null
+          guest_name?: string
+          guest_phone?: string
+          guests?: number
+          id?: string
+          nationality?: string | null
+          policy_accepted_at?: string | null
+          policy_version?: string
+          reference?: string
+          source?: string
+          stargazing_ack_at?: string | null
+          status?: string
+          taxable_paise?: number
+          total_paise?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      be_channel_log: {
+        Row: {
+          attempts: number
+          booking_id: string | null
+          created_at: string
+          detail: string | null
+          direction: string
+          id: string
+          message_type: string
+          status: string
+        }
+        Insert: {
+          attempts?: number
+          booking_id?: string | null
+          created_at?: string
+          detail?: string | null
+          direction: string
+          id?: string
+          message_type: string
+          status: string
+        }
+        Update: {
+          attempts?: number
+          booking_id?: string | null
+          created_at?: string
+          detail?: string | null
+          direction?: string
+          id?: string
+          message_type?: string
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "be_channel_log_booking_id_fkey"
+            columns: ["booking_id"]
+            isOneToOne: false
+            referencedRelation: "be_bookings"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      be_guests: {
+        Row: {
+          booking_id: string
+          form_c_number: string | null
+          form_c_status: string
+          form_c_submitted_at: string | null
+          full_name: string
+          gender: string | null
+          id: string
+          nationality: string | null
+          passport_expiry: string | null
+          passport_number: string | null
+          visa_number: string | null
+          visa_type: string | null
+        }
+        Insert: {
+          booking_id: string
+          form_c_number?: string | null
+          form_c_status?: string
+          form_c_submitted_at?: string | null
+          full_name: string
+          gender?: string | null
+          id?: string
+          nationality?: string | null
+          passport_expiry?: string | null
+          passport_number?: string | null
+          visa_number?: string | null
+          visa_type?: string | null
+        }
+        Update: {
+          booking_id?: string
+          form_c_number?: string | null
+          form_c_status?: string
+          form_c_submitted_at?: string | null
+          full_name?: string
+          gender?: string | null
+          id?: string
+          nationality?: string | null
+          passport_expiry?: string | null
+          passport_number?: string | null
+          visa_number?: string | null
+          visa_type?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "be_guests_booking_id_fkey"
+            columns: ["booking_id"]
+            isOneToOne: false
+            referencedRelation: "be_bookings"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      be_holds: {
+        Row: {
+          booking_id: string | null
+          expires_at: string
+          id: string
+          nights: string[]
+          room_type_id: string
+          units: number
+        }
+        Insert: {
+          booking_id?: string | null
+          expires_at: string
+          id?: string
+          nights: string[]
+          room_type_id: string
+          units: number
+        }
+        Update: {
+          booking_id?: string | null
+          expires_at?: string
+          id?: string
+          nights?: string[]
+          room_type_id?: string
+          units?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "be_holds_booking_id_fkey"
+            columns: ["booking_id"]
+            isOneToOne: false
+            referencedRelation: "be_bookings"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      be_invoice_counters: {
+        Row: {
+          fy: string
+          kind: string
+          last_seq: number
+        }
+        Insert: {
+          fy: string
+          kind: string
+          last_seq?: number
+        }
+        Update: {
+          fy?: string
+          kind?: string
+          last_seq?: number
+        }
+        Relationships: []
+      }
+      be_invoices: {
+        Row: {
+          booking_id: string
+          fy: string
+          gst_paise: number
+          id: string
+          issued_at: string
+          kind: string
+          number: string
+          seq: number
+          taxable_paise: number
+        }
+        Insert: {
+          booking_id: string
+          fy: string
+          gst_paise: number
+          id?: string
+          issued_at?: string
+          kind: string
+          number: string
+          seq: number
+          taxable_paise: number
+        }
+        Update: {
+          booking_id?: string
+          fy?: string
+          gst_paise?: number
+          id?: string
+          issued_at?: string
+          kind?: string
+          number?: string
+          seq?: number
+          taxable_paise?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "be_invoices_booking_id_fkey"
+            columns: ["booking_id"]
+            isOneToOne: false
+            referencedRelation: "be_bookings"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      be_payments: {
+        Row: {
+          amount_paise: number
+          booking_id: string
+          created_at: string
+          gateway: string
+          gateway_charge_paise: number
+          id: string
+          kind: string
+          link_id: string | null
+          link_url: string | null
+          method_actual: string | null
+          method_declared: string | null
+          payment_id: string | null
+          session_id: string | null
+          settled_paise: number | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          amount_paise: number
+          booking_id: string
+          created_at?: string
+          gateway: string
+          gateway_charge_paise?: number
+          id?: string
+          kind: string
+          link_id?: string | null
+          link_url?: string | null
+          method_actual?: string | null
+          method_declared?: string | null
+          payment_id?: string | null
+          session_id?: string | null
+          settled_paise?: number | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          amount_paise?: number
+          booking_id?: string
+          created_at?: string
+          gateway?: string
+          gateway_charge_paise?: number
+          id?: string
+          kind?: string
+          link_id?: string | null
+          link_url?: string | null
+          method_actual?: string | null
+          method_declared?: string | null
+          payment_id?: string | null
+          session_id?: string | null
+          settled_paise?: number | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "be_payments_booking_id_fkey"
+            columns: ["booking_id"]
+            isOneToOne: false
+            referencedRelation: "be_bookings"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      be_room_mapping: {
+        Row: {
+          room_type_id: string
+          staah_rate_code: string
+          staah_room_code: string
+          updated_at: string
+        }
+        Insert: {
+          room_type_id: string
+          staah_rate_code?: string
+          staah_room_code?: string
+          updated_at?: string
+        }
+        Update: {
+          room_type_id?: string
+          staah_rate_code?: string
+          staah_room_code?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      be_room_photos: {
+        Row: {
+          alt: string
+          created_at: string
+          id: string
+          path: string
+          room_type_id: string
+          sort: number
+        }
+        Insert: {
+          alt?: string
+          created_at?: string
+          id?: string
+          path: string
+          room_type_id: string
+          sort?: number
+        }
+        Update: {
+          alt?: string
+          created_at?: string
+          id?: string
+          path?: string
+          room_type_id?: string
+          sort?: number
+        }
+        Relationships: []
+      }
+      be_settings: {
+        Row: {
+          active_gateway: string
+          breakfast_gst: Json
+          business_address: string
+          engine_switched_on: boolean
+          fee_table: Json
+          gst_slabs: Json
+          gstin: string
+          hold_minutes: number
+          id: number
+          legal_name: string
+          policy_version: string
+          sac_code: string
+          state_code: string
+          updated_at: string
+        }
+        Insert: {
+          active_gateway?: string
+          breakfast_gst?: Json
+          business_address?: string
+          engine_switched_on?: boolean
+          fee_table?: Json
+          gst_slabs?: Json
+          gstin?: string
+          hold_minutes?: number
+          id?: number
+          legal_name?: string
+          policy_version?: string
+          sac_code?: string
+          state_code?: string
+          updated_at?: string
+        }
+        Update: {
+          active_gateway?: string
+          breakfast_gst?: Json
+          business_address?: string
+          engine_switched_on?: boolean
+          fee_table?: Json
+          gst_slabs?: Json
+          gstin?: string
+          hold_minutes?: number
+          id?: number
+          legal_name?: string
+          policy_version?: string
+          sac_code?: string
+          state_code?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      be_webhook_events: {
+        Row: {
+          gateway: string
+          key: string
+          processed: boolean
+          received_at: string
+        }
+        Insert: {
+          gateway: string
+          key: string
+          processed?: boolean
+          received_at?: string
+        }
+        Update: {
+          gateway?: string
+          key?: string
+          processed?: boolean
+          received_at?: string
+        }
+        Relationships: []
+      }
       bistro_google_sync_state: {
         Row: {
           callback_token: string
@@ -5947,6 +6472,11 @@ export type Database = {
           booking_id: string
           invoice_number: string
         }[]
+      }
+      be_is_console_admin: { Args: never; Returns: boolean }
+      be_next_invoice_seq: {
+        Args: { p_fy: string; p_kind: string }
+        Returns: number
       }
       calculate_onboarding_readiness: {
         Args: { checklist: Json }

@@ -306,14 +306,8 @@ Deno.serve(async (req) => {
       disabledProfiles.upsert(profileUpdate, { onConflict: 'visitor_id' }),
     ];
 
-    if (endpoint === 'pageview') {
-      parallelOps.push(
-        supabase.rpc('increment_traveller_stats', {
-          p_visitor_id: visitorId,
-          p_is_new_session: data.is_entrance || false
-        }).then(() => {}).catch(() => {})
-      );
-    }
+    // Visitor totals are no longer incremented from this public endpoint: the visitor ID
+    // is caller-supplied, so a privileged counter update would let anyone alter others' stats.
 
     // Fire all in parallel, don't block on results
     await Promise.allSettled(parallelOps);

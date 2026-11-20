@@ -113,6 +113,13 @@
       "when": 1795158729150,
       "tag": "0015_room_photos_formc_invoices",
       "breakpoints": true
+    },
+    {
+      "idx": 16,
+      "version": "7",
+      "when": 1795164686841,
+      "tag": "0016_lock_public_counter_functions",
+      "breakpoints": true
     }
   ]
 }
