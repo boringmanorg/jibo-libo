@@ -1,6 +1,6 @@
 /**
  * Plain facts shown under the date picker on /book, so guests (and search engines) see the
- * rooms, prices and policies before choosing dates. Prices are the owner-approved, all-inclusive
+ * rooms, prices and policies before choosing dates. Prices are the owner-approved rates before GST,
  * rates; keep them in sync with the room data if they ever change.
  */
 import { inr, roomPrice } from '@/components/v2/pricing';
@@ -25,7 +25,7 @@ export default function BookingFacts() {
           <h2 id="booking-facts" className="text-lg font-semibold text-white">Before you book</h2>
           <p className="mt-2 text-sm">
             XTSY Travellers Hostel is on Mawdiangdiang Road, New Shillong Township, near NIFT and IIM Shillong.
-            Every price below is an indicative live-inventory rate, all inclusive. Final availability and total are calculated for your selected dates before you submit the enquiry.
+            Every price below is a nightly rate before GST; breakfast and payment gateway charges are extra. Final availability and total are calculated for your selected dates before you submit the enquiry.
           </p>
         </div>
 

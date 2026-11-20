@@ -10,7 +10,7 @@ export const Route = createFileRoute("/(company)/about/faq")({
       path: "/about/faq",
       title: "Hostel FAQs — Shillong Rates, Safety & Booking | XTSY",
       description:
-        "Shillong dorms ₹399/₹499/₹599, GST included. XTSY FAQs on solo-women safety, New Shillong Township, check-in and WhatsApp enquiries.",
+        "Shillong dorms ₹400/₹500/₹600 plus GST. XTSY FAQs on solo-women safety, New Shillong Township, check-in and WhatsApp enquiries.",
       image: new URL(COVERS.home, 'https://xtsy.one').href,
       jsonLd: [faqSchema()],
       keywords: "XTSY FAQ, hostel Shillong questions, Experience by XTSY FAQ, booking help XTSY",

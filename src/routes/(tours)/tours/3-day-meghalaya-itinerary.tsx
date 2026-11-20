@@ -7,10 +7,10 @@ export const Route = createFileRoute("/(tours)/tours/3-day-meghalaya-itinerary")
   head: () =>
     buildRouteHead({
       path: "/tours/3-day-meghalaya-itinerary",
-      jsonLd: [articleSchema({ path: "/tours/3-day-meghalaya-itinerary", headline: "3 Day Meghalaya Itinerary from Shillong | XTSY", description: "A tested 3 day Meghalaya itinerary: Shillong, Cherrapunji waterfalls and Dawki's Umngot river, with travel times, costs and hostel stays from Rs 399." })],
+      jsonLd: [articleSchema({ path: "/tours/3-day-meghalaya-itinerary", headline: "3 Day Meghalaya Itinerary from Shillong | XTSY", description: "A tested 3 day Meghalaya itinerary: Shillong, Cherrapunji waterfalls and Dawki's Umngot river, with travel times, costs and hostel stays from Rs 400." })],
       title: "3 Day Meghalaya Itinerary from Shillong | XTSY",
       description:
-        "A tested 3 day Meghalaya itinerary: Shillong, Cherrapunji waterfalls and Dawki's Umngot river, with travel times, costs and hostel stays from Rs 399.",
+        "A tested 3 day Meghalaya itinerary: Shillong, Cherrapunji waterfalls and Dawki's Umngot river, with travel times, costs and hostel stays from Rs 400.",
     }),
   component: BlogItinerary3Day,
 });

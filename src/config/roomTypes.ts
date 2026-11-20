@@ -5,6 +5,7 @@
  * Used across: booking flow, admin dashboard, inventory management, calendar blocking
  */
 import { cdnMany } from '@/data/cdnImages';
+import { publicRate, publicUnits } from '@/data/publicRates';
 
 export type RoomCategory = 'luxury' | 'hostel';
 export type UnitType = 'bed' | 'room';
@@ -105,6 +106,9 @@ export const ROOM_IMAGES: Record<string, string[]> = {
   ]),
   // No dedicated 8-bed photos exist yet (same bunks as the 6-bed dorm): lead with a
   // different bunk shot than the 6-bed card so the two cards never show the same photo.
+  // Until its own photos are uploaded, the triple room shows the King room's (owner, 20 Nov 2026).
+  get 'triple-room'() { return ROOM_IMAGES['king-double-room']; },
+  get '6-bed-standard-dorm'() { return ROOM_IMAGES['6-bed-mixed-dorm']; },
   '8-bed-mixed-dorm': cdnMany([
     'xtsy/6 Bed Mixed Dormitory 2.JPG',
     'xtsy/6 Bed Mixed Dormitory 3.jpg',
@@ -157,10 +161,10 @@ export const ROOM_TYPES: Record<string, RoomTypeConfig> = {
     category: 'luxury',
     unitType: 'room',
     capacity: 2,
-    totalUnits: 1,
+    totalUnits: publicUnits('xtsy-270'),
     propertyType: 'Experience by XTSY',
     isBookable: true,
-    basePrice: 4999,
+    basePrice: publicRate('xtsy-270'),
     displayOrder: 1,
     tags: ['luxury_couple'],
     image: ROOM_IMAGES['xtsy-270'][0],
@@ -176,15 +180,32 @@ export const ROOM_TYPES: Record<string, RoomTypeConfig> = {
     category: 'hostel',
     unitType: 'room',
     capacity: 2,
-    totalUnits: 3,
+    totalUnits: publicUnits('king-double-room'),
     propertyType: 'XTSY Travellers Hostel',
     isBookable: true,
-    basePrice: 2399,
+    basePrice: publicRate('king-double-room'),
     displayOrder: 10,
     tags: ['preferred_by_couple'],
     image: ROOM_IMAGES['king-double-room'][0],
     images: ROOM_IMAGES['king-double-room'],
   },
+  'triple-room': {
+    id: 'triple-room',
+    name: 'Triple Room with Mountain View',
+    shortName: 'Triple Room',
+    category: 'hostel',
+    unitType: 'room',
+    capacity: 3,
+    totalUnits: publicUnits('triple-room'),
+    propertyType: 'XTSY Travellers Hostel',
+    isBookable: true,
+    basePrice: publicRate('triple-room'),
+    displayOrder: 25,
+    tags: ['preferred_by_group'],
+    image: ROOM_IMAGES['triple-room'][0],
+    images: ROOM_IMAGES['triple-room'],
+  },
+
 
   // 4-Bed Female Dorm (Preferred by Female)
   '4-bed-female-only-dorm': {
@@ -194,10 +215,10 @@ export const ROOM_TYPES: Record<string, RoomTypeConfig> = {
     category: 'hostel',
     unitType: 'bed',
     capacity: 4,
-    totalUnits: 4,
+    totalUnits: publicUnits('4-bed-female-only-dorm'),
     propertyType: 'XTSY Travellers Hostel',
     isBookable: true,
-    basePrice: 599,
+    basePrice: publicRate('4-bed-female-only-dorm'),
     displayOrder: 20,
     tags: ['preferred_by_female'],
     image: ROOM_IMAGES['4-bed-female-only-dorm'][0],
@@ -212,10 +233,10 @@ export const ROOM_TYPES: Record<string, RoomTypeConfig> = {
     category: 'hostel',
     unitType: 'bed',
     capacity: 6,
-    totalUnits: 18,
+    totalUnits: publicUnits('6-bed-mixed-dorm'),
     propertyType: 'XTSY Travellers Hostel',
     isBookable: true,
-    basePrice: 499,
+    basePrice: publicRate('6-bed-mixed-dorm'),
     displayOrder: 50,
     tags: ['recommended'],
     image: ROOM_IMAGES['6-bed-mixed-dorm'][0],
@@ -223,6 +244,22 @@ export const ROOM_TYPES: Record<string, RoomTypeConfig> = {
   },
 
   // 8-Bed Mixed Dorm (Bestseller)
+  '6-bed-standard-dorm': {
+    id: '6-bed-standard-dorm',
+    name: 'Bed in 6-Bed Standard Dormitory',
+    shortName: '6-Bed Standard Dorm',
+    category: 'hostel',
+    unitType: 'bed',
+    capacity: 6,
+    totalUnits: publicUnits('6-bed-standard-dorm'),
+    propertyType: 'XTSY Travellers Hostel',
+    isBookable: true,
+    basePrice: publicRate('6-bed-standard-dorm'),
+    displayOrder: 55,
+    image: ROOM_IMAGES['6-bed-standard-dorm'][0],
+    images: ROOM_IMAGES['6-bed-standard-dorm'],
+  },
+
   '8-bed-mixed-dorm': {
     id: '8-bed-mixed-dorm',
     name: 'Bed in 8-Bed Mixed Dormitory',
@@ -230,10 +267,10 @@ export const ROOM_TYPES: Record<string, RoomTypeConfig> = {
     category: 'hostel',
     unitType: 'bed',
     capacity: 8,
-    totalUnits: 24,
+    totalUnits: publicUnits('8-bed-mixed-dorm'),
     propertyType: 'XTSY Travellers Hostel',
     isBookable: true,
-    basePrice: 399,
+    basePrice: publicRate('8-bed-mixed-dorm'),
     displayOrder: 60,
     tags: ['bestseller'],
     image: ROOM_IMAGES['8-bed-mixed-dorm'][0],

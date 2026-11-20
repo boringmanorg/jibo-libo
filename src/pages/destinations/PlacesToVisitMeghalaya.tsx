@@ -35,7 +35,7 @@ const FAQS = [
   },
   {
     q: 'Where should I stay to visit these places?',
-    a: 'Shillong is the ideal base \u2014 it is central to Cherrapunji, Dawki and Mawlynnong. XTSY Travellers Hostel in Shillong offers dorm beds from \u20b9399, private rooms and glamping.',
+    a: 'Shillong is the ideal base \u2014 it is central to Cherrapunji, Dawki and Mawlynnong. XTSY Travellers Hostel in Shillong offers dorm beds from \u20b9400, private rooms and glamping.',
   },
 ];
 
@@ -138,7 +138,7 @@ const PlacesToVisitMeghalaya = () => {
           <PlanTripLinks
             source="places-to-visit-in-meghalaya"
             heading="Ready to see these places? Book your Shillong base"
-            bookingAnchor="Stay central in Shillong to reach Cherrapunji, Dawki & Mawlynnong — dorm beds from ₹399, private rooms & glamping"
+            bookingAnchor="Stay central in Shillong to reach Cherrapunji, Dawki & Mawlynnong — dorm beds from ₹400, private rooms & glamping"
             slugs={['dawki-umngot-river', 'double-decker-living-root-bridge', 'nohkalikai-falls', 'mawlynnong-village']}
           />
 

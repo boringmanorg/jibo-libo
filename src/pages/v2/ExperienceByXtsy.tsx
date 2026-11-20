@@ -128,7 +128,7 @@ export default function ExperienceByXtsy() {
           <H2 eyebrow="Packages">Choose your night</H2>
           <PriceCards
             cards={[
-              { t: 'Stay only', price: inr(now), hot: true, text: `One night in the glass suite for two, taxes included, without breakfast. Add à la carte breakfast from TAB Bistro by XTSY at ${inr(PANORAMA_BREAKFAST_PER_PERSON)} per person + 5% GST (${inr(PANORAMA_BREAKFAST_PER_PERSON * 2)} + GST for two).${suite.was > now ? ` Regular ${inr(suite.was)}.` : ''}`, cta: <Btn to={wa} kind="outline" className="w-full">Reserve</Btn> },
+              { t: 'Stay only', price: inr(now), hot: true, text: `One night in the glass suite for two, plus GST, without breakfast. Add à la carte breakfast from TAB Bistro by XTSY at ${inr(PANORAMA_BREAKFAST_PER_PERSON)} per person + 5% GST (${inr(PANORAMA_BREAKFAST_PER_PERSON * 2)} + GST for two).${suite.was > now ? ` Regular ${inr(suite.was)}.` : ''}`, cta: <Btn to={wa} kind="outline" className="w-full">Reserve</Btn> },
               { t: 'Decoration add-on', price: `+${inr(PANORAMA_DECORATION)}`, text: 'For anniversaries, proposals, honeymoons and birthdays. Book 48 hours ahead.', cta: <Btn to={waLink('Hi XTSY! I want to add the decoration package to my Experience by XTSY stay.', 'experience-by-xtsy')} kind="outline" className="w-full">Add to my stay</Btn> },
             ]}
           />

@@ -21,11 +21,11 @@ const HostelBookingShillong = memo(() => {
     '@id': 'https://xtsy.one/stays/hostel-booking#hostel',
     name: 'XTSY Travellers Hostel — Online Hostel Booking, Shillong',
     description:
-      'Send a direct hostel booking enquiry in Shillong, Meghalaya. Choose dates and a room, then confirm availability with the XTSY desk on WhatsApp. Dorm beds from ₹399.',
+      'Send a direct hostel booking enquiry in Shillong, Meghalaya. Choose dates and a room, then confirm availability with the XTSY desk on WhatsApp. Dorm beds from ₹400.',
     url: 'https://xtsy.one/stays/hostel-booking',
     telephone: '+918837317070',
     email: 'booking@xtsy.one',
-    priceRange: '₹399 - ₹9,999',
+    priceRange: '₹400 - ₹9,999',
     currenciesAccepted: 'INR',
     address: {
       '@type': 'PostalAddress',
@@ -82,7 +82,7 @@ const HostelBookingShillong = memo(() => {
     },
     {
       q: 'What is the best budget-friendly hostel booking in Shillong?',
-      a: 'XTSY 8-bed mixed dorm beds start at ₹399/night — one of the best budget-friendly, verified hostel booking rates in Shillong with 4.7★ reviews, WiFi, hot shower and 24/7 security included.',
+      a: 'XTSY 8-bed mixed dorm beds start at ₹400/night — one of the best budget-friendly, verified hostel booking rates in Shillong with 4.7★ reviews, WiFi, hot shower and 24/7 security included.',
     },
     {
       q: 'Is same-day hostel booking possible?',
@@ -110,10 +110,10 @@ const HostelBookingShillong = memo(() => {
   };
 
   const rooms = [
-    { name: '8-Bed Mixed Dorm', price: '₹399', per: 'per bed / night', tag: 'Best budget-friendly' },
-    { name: '6-Bed Mixed Dorm', price: '₹499', per: 'per bed / night', tag: 'Popular' },
-    { name: 'Female-only Dorm', price: '₹599', per: 'per bed / night', tag: 'Solo-safe' },
-    { name: 'Private Double Room', price: '₹2,399', per: 'per room / night', tag: 'Couples' },
+    { name: '8-Bed Mixed Dorm', price: '₹400', per: 'per bed / night', tag: 'Best budget-friendly' },
+    { name: '6-Bed Mixed Dorm', price: '₹500', per: 'per bed / night', tag: 'Popular' },
+    { name: 'Female-only Dorm', price: '₹600', per: 'per bed / night', tag: 'Solo-safe' },
+    { name: 'Private Double Room', price: '₹2,400', per: 'per room / night', tag: 'Couples' },
     { name: 'Experience by XTSY', price: '₹4,999', per: 'stay only / night', tag: 'Signature' },
   ];
 
@@ -122,7 +122,7 @@ const HostelBookingShillong = memo(() => {
       <Helmet>
         <meta
           name="description"
-          content="Enquire about XTSY hostel stays in New Shillong Township, Shillong. Dorm beds from ₹399. Choose dates and a room, then confirm with the desk on WhatsApp."
+          content="Enquire about XTSY hostel stays in New Shillong Township, Shillong. Dorm beds from ₹400. Choose dates and a room, then confirm with the desk on WhatsApp."
         />
         <script type="application/ld+json">{JSON.stringify(hostelSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumb)}</script>
@@ -142,7 +142,7 @@ const HostelBookingShillong = memo(() => {
               </span>
             </div>
             <h1 className="text-3xl sm:text-5xl font-bold text-foreground font-playfair mb-4">
-              Hostel Booking in Shillong — Direct from ₹399
+              Hostel Booking in Shillong — Direct from ₹400
             </h1>
             <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
               Enquire with XTSY Travellers Hostel direct. The desk confirms availability on WhatsApp;
@@ -198,7 +198,7 @@ const HostelBookingShillong = memo(() => {
               Rooms Available for Booking
             </h2>
             <p className="text-center text-sm text-muted-foreground mb-8">
-              Transparent nightly rates. All taxes included. Book any room in under 60 seconds.
+              Transparent nightly rates. GST is shown before you pay. Book any room in under 60 seconds.
             </p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {rooms.map((r) => (

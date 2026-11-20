@@ -27,11 +27,11 @@ const HostelNearMe = memo(() => {
     name: 'XTSY Travellers Hostel — New Shillong Township',
     alternateName: ['XTSY Hostel Shillong', 'XTSY New Shillong Township'],
     description:
-      'Backpacker hostel on Mawdiangdiang Road, New Shillong Township, near NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University — dorm beds from ₹399, 4.7★ from 252 Google reviews.',
+      'Backpacker hostel on Mawdiangdiang Road, New Shillong Township, near NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University — dorm beds from ₹400, 4.7★ from 252 Google reviews.',
     url: 'https://xtsy.one/hostel-near-me',
     telephone: '+918837317070',
     email: 'booking@xtsy.one',
-    priceRange: '₹399 - ₹9,999',
+    priceRange: '₹400 - ₹9,999',
     currenciesAccepted: 'INR',
     paymentAccepted: 'Cash, UPI, Credit Card, Debit Card, Net Banking',
     image: [
@@ -145,7 +145,7 @@ const HostelNearMe = memo(() => {
       <Helmet>
         <meta
           name="description"
-          content="Looking for a hostel near you in Shillong? XTSY Travellers Hostel is on Mawdiangdiang Road, New Shillong Township, near NIFT and IIM Shillong — dorm beds from ₹399, rated 4.7★ from 252 Google reviews."
+          content="Looking for a hostel near you in Shillong? XTSY Travellers Hostel is on Mawdiangdiang Road, New Shillong Township, near NIFT and IIM Shillong — dorm beds from ₹400, rated 4.7★ from 252 Google reviews."
         />
         <meta
           name="keywords"
@@ -171,7 +171,7 @@ const HostelNearMe = memo(() => {
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-6">
               XTSY Travellers Hostel is on <strong>Mawdiangdiang Road, New Shillong Township</strong>, near
               NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University —
-              a quiet, green base with TAB Bistro on site. Dorm beds from <strong>₹399</strong>, 4.7★ from 252 Google reviews.
+              a quiet, green base with TAB Bistro on site. Dorm beds from <strong>₹400</strong>, 4.7★ from 252 Google reviews.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <Button size="lg" asChild>

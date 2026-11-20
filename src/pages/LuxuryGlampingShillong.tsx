@@ -55,7 +55,7 @@ const LuxuryGlampingShillong = memo(() => {
         name: 'How much does glamping cost in Shillong?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: `Experience by XTSY is ${GLAMP_NIGHT}/night, all inclusive (stay only). WiFi and all amenities are included.`,
+          text: `Experience by XTSY is ${GLAMP_NIGHT}/night plus GST (stay only). WiFi and all amenities are included.`,
         },
       },
       {
