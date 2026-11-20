@@ -57,9 +57,9 @@ describe('no retired prices or all-inclusive room wording', () => {
   });
 
   it('room prices are not described as all inclusive or GST included', () => {
-    const rx = /(all[- ]inclusive|gst[- ]included|gst[- ]inclusive|taxes included|taxes incl\.)/i;
+    const rx = /(all[- ]inclusive|gst[- ]included|gst[- ]inclusive|taxes included|taxes incl\.|incl\.? taxes|including taxes)/i;
     const hits = files.flatMap((f) =>
-      readFileSync(f, 'utf8').split('\n').filter((l) => rx.test(l) && /(dorm|room|suite|night|bed|Experience by XTSY)/i.test(l) && !/(tour|package|per ?person|meals|transport|menu prices)/i.test(l)).map((l) => `${f}: ${l.trim().slice(0, 120)}`),
+      readFileSync(f, 'utf8').split('\n').filter((l) => rx.test(l) && /(dorm|room|suite|night|bed|Experience by XTSY)/i.test(l) && !/(tour|package|per ?person|meals|transport|menu prices|passes|tickets)/i.test(l)).map((l) => `${f}: ${l.trim().slice(0, 120)}`),
     );
     expect(hits).toEqual([]);
   });

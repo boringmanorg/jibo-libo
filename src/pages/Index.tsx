@@ -13,6 +13,7 @@ import {
   PrimeRail, GlampFeature, BistroFeature, ToursRow, TonightDeals, ExpeditionsBanner, Reviews,
   SeoLinks,
 } from "@/components/v2/home/HomeSections";
+import { BrandStory } from "@/components/booking/engine/BookExtras";
 
 const Index = memo(() => {
   // Track scroll depth milestones (25%, 50%, 75%, 100%)
@@ -49,6 +50,7 @@ const Index = memo(() => {
           <HomeHero />
           <StatsStrip />
           <PromiseMarquee />
+          <BrandStory />
           <Trending />
           <PrimeRail />
           <Stays />
