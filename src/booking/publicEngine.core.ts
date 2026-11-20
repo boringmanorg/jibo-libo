@@ -1,0 +1,511 @@
+/**
+ * The guest-facing booking engine: search, checkout and payment confirmation.
+ *
+ * Flow (modelled on Zostel's stay page): pick dates → each room type shows its price per bed or
+ * room, how many are left for the whole stay and a 7-night strip → choose units → guest details,
+ * policy acceptance and payment method → pay the 25% advance on Zoho's hosted checkout → the
+ * verified webhook (or the return page) confirms the booking.
+ *
+ * Every function takes its dependencies (service-role database, gateway, channel manager, clock)
+ * so the logic is tested without a live database. Checkout is refused unless launchGate allows
+ * live bookings; search works in preview so the owner can review the page first.
+ */
+import { BOOKING_ROOM_TYPES, findRoomType, type BookingRoomType } from './catalogue';
+import { ariBlocksStay, unmappedRoomTypes, type ChannelManager, type ChannelMapping, type NightAri } from './channel/channelManager';
+import { staahNotConnected } from './channel/staah.server';
+import { addDays, daysBetween, isIsoDate, stayNights, todayInIndia, type IsoDate } from './dates';
+import { freeUnitsPerNight, type Hold, type NightLoad } from './availability';
+import { canTakeLiveBookings, launchBlockers, type LaunchState } from './launchGate';
+import { settingsFromRow, type BookingSettings } from './consoleSettings';
+import { quoteStay, chargeFor, type Quote } from './pricing';
+import { validateFeeTable, type PaymentMethod } from './payments/fees';
+import { webhookKey, type PaymentGateway } from './payments/gateway';
+import { createZohoGateway, zohoConfigFromEnv } from './payments/zoho.server';
+import { financialYear, invoiceNumber } from './invoiceNumber';
+import { HOSTEL_POLICIES } from '@/data/hostelPolicies';
+import type { Paise } from './money';
+import { isIndian } from './guestRules';
+
+type Db = any;
+export interface EngineDeps {
+  db: Db | null;
+  env: Record<string, string | undefined>;
+  now: Date;
+  channel?: ChannelManager;
+  gateway?: PaymentGateway | null;
+}
+
+export class EngineError extends Error {}
+
+/** Nights shown in each room's availability strip, from the chosen check-in. */
+export const STRIP_NIGHTS = 7;
+/** How far ahead guests can book. */
+export const BOOKING_WINDOW_DAYS = 365;
+/** Per checkout: stops one visitor from holding the whole hostel. */
+export const MAX_BEDS_PER_BOOKING = 8;
+export const MAX_ROOMS_PER_BOOKING = 3;
+/** Zoho payment sessions last at most 15 minutes. */
+const MAX_CHECKOUT_SECONDS = 900;
+
+const LIVE_STATUSES = ['confirmed', 'checked_in'];
+const REF_ALPHABET = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+
+const channelOf = (d: EngineDeps) => d.channel ?? staahNotConnected();
+const gatewayOf = (d: EngineDeps): PaymentGateway | null => {
+  if (d.gateway !== undefined) return d.gateway;
+  const cfg = zohoConfigFromEnv(d.env);
+  return cfg ? createZohoGateway(cfg) : null;
+};
+
+const isMissingTable = (e: { code?: string; message?: string } | null | undefined) =>
+  !!e && (['42P01', '42883', 'PGRST205', 'PGRST202'].includes(e.code ?? '') || /does not exist|could not find the (table|function)/i.test(e.message ?? ''));
+
+export function newReference(random: (n: number) => Uint8Array = (n) => crypto.getRandomValues(new Uint8Array(n))): string {
+  return 'XTSY-' + Array.from(random(6), (b) => REF_ALPHABET[b % REF_ALPHABET.length]).join('');
+}
+
+// ---------------------------------------------------------------- state
+
+interface EngineState {
+  dbReady: boolean;
+  settings: BookingSettings;
+  launch: LaunchState;
+  live: boolean;
+}
+
+async function loadState(d: EngineDeps): Promise<EngineState> {
+  const fallback = settingsFromRow(null);
+  const base: LaunchState = {
+    switchedOn: false, gatewayConfigured: gatewayOf(d) !== null, channelConnected: channelOf(d).connected,
+    unmappedRoomTypes: BOOKING_ROOM_TYPES.map((r) => r.id), feeTableProblems: [], databaseReady: false,
+  };
+  if (!d.db) return { dbReady: false, settings: fallback, launch: base, live: false };
+  const s = await d.db.from('be_settings').select('*').eq('id', 1).maybeSingle();
+  if (s.error) return { dbReady: false, settings: fallback, launch: base, live: false };
+  const settings = settingsFromRow(s.data);
+  const m = await d.db.from('be_room_mapping').select('*');
+  const mapping: ChannelMapping[] = (m.data ?? []).map((r: any) => ({ roomTypeId: r.room_type_id, roomCode: r.staah_room_code ?? '', rateCode: r.staah_rate_code ?? '' }));
+  const launch: LaunchState = {
+    ...base,
+    switchedOn: settings.engineSwitchedOn,
+    unmappedRoomTypes: unmappedRoomTypes(BOOKING_ROOM_TYPES.map((r) => r.id), mapping),
+    feeTableProblems: validateFeeTable(settings.feeTable),
+    databaseReady: true,
+  };
+  return { dbReady: true, settings, launch, live: canTakeLiveBookings(launch) };
+}
+
+/** What /book needs to decide between the live engine and the WhatsApp enquiry flow. */
+export async function engineStatus(d: EngineDeps): Promise<{ live: boolean }> {
+  return { live: (await loadState(d)).live };
+}
+
+// ---------------------------------------------------------------- availability
+
+interface Loads { confirmed: NightLoad[]; holds: Hold[] }
+
+async function loadLoads(d: EngineDeps, from: IsoDate, to: IsoDate, channelSynced: boolean): Promise<Loads> {
+  if (!d.db) return { confirmed: [], holds: [] };
+  const b = await d.db
+    .from('be_bookings')
+    .select('check_in,check_out,status,channel_status,be_booking_lines(room_type_id,units)')
+    .in('status', LIVE_STATUSES)
+    .lt('check_in', to)
+    .gt('check_out', from);
+  if (b.error && !isMissingTable(b.error)) throw new EngineError('Could not read bookings');
+  const confirmed: NightLoad[] = [];
+  for (const row of b.data ?? []) {
+    // With STAAH connected, its counts already include bookings it has acknowledged.
+    if (channelSynced && row.channel_status === 'synced') continue;
+    for (const line of row.be_booking_lines ?? []) {
+      for (const night of stayNights(row.check_in, row.check_out)) {
+        confirmed.push({ roomTypeId: line.room_type_id, night, units: Number(line.units) });
+      }
+    }
+  }
+  const h = await d.db.from('be_holds').select('room_type_id,units,nights,expires_at').gt('expires_at', d.now.toISOString());
+  if (h.error && !isMissingTable(h.error)) throw new EngineError('Could not read holds');
+  const holds: Hold[] = (h.data ?? []).map((x: any) => ({ roomTypeId: x.room_type_id, units: Number(x.units), nights: x.nights, expiresAt: new Date(x.expires_at) }));
+  return { confirmed, holds };
+}
+
+export interface NightCell { night: IsoDate; free: number; rate: Paise; closed: boolean }
+export interface RoomResult {
+  id: string;
+  name: string;
+  descriptor?: string;
+  soldAs: BookingRoomType['soldAs'];
+  femaleOnly: boolean;
+  maxGuestsPerUnit: number;
+  /** Lowest nightly rate across the stay, per bed or room, before GST. */
+  fromRate: Paise;
+  /** Units free on every night of the stay; 0 means sold out for these dates. */
+  freeForStay: number;
+  strip: NightCell[];
+}
+export interface SearchResult {
+  live: boolean;
+  /** True when counts come from the channel manager, so they include OTA sales. */
+  inventorySynced: boolean;
+  checkIn: IsoDate;
+  checkOut: IsoDate;
+  nights: number;
+  rooms: RoomResult[];
+  /** Lowest rate among room types with space, for the "From ₹…" summary. */
+  fromRate: Paise | null;
+}
+
+export function validateDates(checkIn: string, checkOut: string, now: Date): { checkIn: IsoDate; checkOut: IsoDate } {
+  if (!isIsoDate(checkIn) || !isIsoDate(checkOut)) throw new EngineError('Choose valid check-in and check-out dates.');
+  const today = todayInIndia(now);
+  if (daysBetween(today, checkIn) < 0) throw new EngineError('Check-in cannot be in the past.');
+  if (daysBetween(today, checkIn) > BOOKING_WINDOW_DAYS) throw new EngineError('Bookings open up to one year ahead.');
+  const n = daysBetween(checkIn, checkOut);
+  if (n < 1) throw new EngineError('Check-out must be after check-in.');
+  if (n > 30) throw new EngineError('Stays longer than 30 nights are booked through the desk.');
+  return { checkIn, checkOut };
+}
+
+export async function searchStays(d: EngineDeps, q: { checkIn: string; checkOut: string }): Promise<SearchResult> {
+  const { checkIn, checkOut } = validateDates(q.checkIn, q.checkOut, d.now);
+  const state = await loadState(d);
+  const stayLen = daysBetween(checkIn, checkOut);
+  const span = Math.max(stayLen, STRIP_NIGHTS);
+  const rangeEnd = addDays(checkIn, span);
+  const channel = channelOf(d);
+  const ari: NightAri[] = channel.connected ? await channel.getAri(BOOKING_ROOM_TYPES.map((r) => r.id), checkIn, rangeEnd) : [];
+  const loads = await loadLoads(d, checkIn, rangeEnd, channel.connected);
+  const ariFor = (id: string, night: IsoDate) => ari.find((a) => a.roomTypeId === id && a.night === night);
+
+  const rooms: RoomResult[] = BOOKING_ROOM_TYPES.map((room) => {
+    const nightsInSpan = stayNights(checkIn, rangeEnd);
+    const closedNight = (night: IsoDate) => {
+      const a = ariFor(room.id, night);
+      if (!a) return channel.connected; // no ARI for a night = not sellable once STAAH is the master
+      const isStay = night < checkOut;
+      return isStay
+        ? ariBlocksStay(a, { isArrival: night === checkIn, isDeparture: false, stayNights: stayLen })
+        : Boolean(a.stopSell);
+    };
+    const blocked = new Set(nightsInSpan.filter(closedNight));
+    const free = freeUnitsPerNight({
+      roomTypeId: room.id, checkIn, checkOut: rangeEnd,
+      capacity: (night) => (channel.connected ? ariFor(room.id, night)?.available ?? 0 : room.units),
+      confirmed: loads.confirmed, holds: loads.holds, blockedNights: blocked, now: d.now,
+    });
+    const strip: NightCell[] = free.slice(0, STRIP_NIGHTS).map(({ night, free: f }) => ({
+      night, free: f, rate: ariFor(room.id, night)?.rate ?? room.rate, closed: blocked.has(night),
+    }));
+    const stay = free.slice(0, stayLen);
+    const rates = stay.map(({ night }) => ariFor(room.id, night)?.rate ?? room.rate);
+    return {
+      id: room.id, name: room.name, descriptor: room.descriptor, soldAs: room.soldAs, femaleOnly: room.femaleOnly,
+      maxGuestsPerUnit: room.maxGuestsPerUnit,
+      fromRate: Math.min(...rates),
+      freeForStay: stay.length ? Math.min(...stay.map((n) => n.free)) : 0,
+      strip,
+    };
+  });
+  const open = rooms.filter((r) => r.freeForStay > 0);
+  return {
+    live: state.live, inventorySynced: channel.connected, checkIn, checkOut, nights: stayLen, rooms,
+    fromRate: open.length ? Math.min(...open.map((r) => r.fromRate)) : null,
+  };
+}
+
+// ---------------------------------------------------------------- checkout
+
+export interface CheckoutInput {
+  checkIn: string;
+  checkOut: string;
+  rooms: { roomTypeId: string; units: number; guests: number }[];
+  breakfastGuests: number;
+  /** The lead guest. Gender is checked against female-only dorms; nationality decides Form C. */
+  guest: { name: string; phone: string; email: string; gender: 'female' | 'male' | 'other'; nationality: string };
+  method: PaymentMethod;
+  policyAccepted: boolean;
+  /** With more than one female-dorm bed: the other guests in it are female too. */
+  femaleOnlyAck?: boolean;
+  skyViewAck?: boolean;
+}
+
+/** The quote and the advance the guest will pay, shown before they leave for the gateway. */
+export function quoteCheckout(input: Pick<CheckoutInput, 'checkIn' | 'checkOut' | 'rooms' | 'breakfastGuests' | 'method'>, settings: BookingSettings) {
+  const quote = quoteStay({
+    checkIn: input.checkIn, checkOut: input.checkOut, rooms: input.rooms, breakfastGuests: input.breakfastGuests,
+    gstSlabFor: (id) => settings.gstSlabs[id], breakfastGstSlab: settings.breakfastGst,
+  });
+  return { quote, advanceCharge: chargeFor(quote.advance, input.method, settings.feeTable) };
+}
+
+export function checkoutProblems(input: CheckoutInput): string[] {
+  const out: string[] = [];
+  if (!input.policyAccepted) out.push('Please accept the booking policy.');
+  if (input.rooms.length === 0) out.push('Choose at least one bed or room.');
+  const ids = new Set<string>();
+  let beds = 0, rooms = 0;
+  for (const r of input.rooms) {
+    const room = findRoomType(r.roomTypeId);
+    if (!room) { out.push(`Unknown room type: ${r.roomTypeId}`); continue; }
+    if (ids.has(r.roomTypeId)) out.push(`${room.name} is listed twice.`);
+    ids.add(r.roomTypeId);
+    if (room.soldAs === 'bed') beds += r.units; else rooms += r.units;
+    if (room.femaleOnly && input.guest.gender !== 'female') out.push(`Gender mismatch: ${room.name} is for female guests only. Check the lead guest’s gender or choose another room.`);
+    if (room.femaleOnly && r.units > 1 && !input.femaleOnlyAck) out.push(`Please confirm every guest in ${room.name} is female.`);
+    if (room.id === 'experience-by-xtsy' && !input.skyViewAck) out.push('Please confirm you understand the suite’s sky view depends on the weather.');
+  }
+  if (beds > MAX_BEDS_PER_BOOKING) out.push(`Up to ${MAX_BEDS_PER_BOOKING} beds per online booking; for groups, message the desk.`);
+  if (rooms > MAX_ROOMS_PER_BOOKING) out.push(`Up to ${MAX_ROOMS_PER_BOOKING} rooms per online booking; for groups, message the desk.`);
+  const totalGuests = input.rooms.reduce((s, r) => s + r.guests, 0);
+  if (input.breakfastGuests < 0 || input.breakfastGuests > totalGuests) out.push('Breakfast guests cannot exceed guests staying.');
+  if (!/^\+?[0-9 ]{10,15}$/.test(input.guest.phone.trim())) out.push('Enter a valid phone number.');
+  if (input.guest.name.trim().length < 2) out.push('Enter the guest’s full name.');
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(input.guest.email.trim())) out.push('Enter a valid email for your receipt.');
+  if (!['female', 'male', 'other'].includes(input.guest.gender)) out.push('Choose the lead guest’s gender.');
+  if (input.guest.nationality.trim().length < 2) out.push('Choose a nationality.');
+  return out;
+}
+
+const normalisePhone = (p: string) => p.replace(/[^0-9+]/g, '');
+
+async function freeForStay(d: EngineDeps, roomTypeId: string, checkIn: IsoDate, checkOut: IsoDate): Promise<number> {
+  const res = await searchStays({ ...d }, { checkIn, checkOut });
+  return res.rooms.find((r) => r.id === roomTypeId)?.freeForStay ?? 0;
+}
+
+export async function startCheckout(d: EngineDeps, input: CheckoutInput, origin: string): Promise<{ reference: string; redirectUrl: string }> {
+  const { checkIn, checkOut } = validateDates(input.checkIn, input.checkOut, d.now);
+  const problems = checkoutProblems(input);
+  if (problems.length) throw new EngineError(problems.join(' '));
+  const state = await loadState(d);
+  if (!state.live) throw new EngineError(`Online booking is not open yet. ${launchBlockers(state.launch).join(' ')}`.trim());
+  const gateway = gatewayOf(d);
+  if (!gateway || !d.db) throw new EngineError('Online payment is not available right now.');
+  const db = d.db;
+  const phone = normalisePhone(input.guest.phone);
+
+  // One unpaid booking at a time per phone number.
+  const open = await db.from('be_bookings').select('id').eq('guest_phone', phone).eq('status', 'held').gt('created_at', new Date(d.now.getTime() - state.settings.holdMinutes * 60_000).toISOString());
+  if ((open.data ?? []).length) throw new EngineError('You already have a booking waiting for payment. Finish it or wait a few minutes.');
+
+  for (const r of input.rooms) {
+    if ((await freeForStay(d, r.roomTypeId, checkIn, checkOut)) < r.units) {
+      throw new EngineError(`${findRoomType(r.roomTypeId)!.name} no longer has ${r.units} free for these dates.`);
+    }
+  }
+  const { quote } = quoteCheckout({ ...input, checkIn, checkOut }, state.settings);
+  const reference = newReference();
+  const nights = stayNights(checkIn, checkOut);
+  const holdMinutes = Math.min(state.settings.holdMinutes, MAX_CHECKOUT_SECONDS / 60);
+  const expiresAt = new Date(d.now.getTime() + holdMinutes * 60_000);
+  const guests = input.rooms.reduce((s, r) => s + r.guests, 0);
+
+  const ins = await db.from('be_bookings').insert({
+    reference, status: 'held', source: 'website', check_in: checkIn, check_out: checkOut,
+    guest_name: input.guest.name.trim(), guest_email: input.guest.email.trim(), guest_phone: phone,
+    nationality: input.guest.nationality.trim(), guests,
+    taxable_paise: quote.taxable, gst_paise: quote.gst, total_paise: quote.total,
+    advance_paise: quote.advance, balance_paise: quote.balance,
+    policy_version: state.settings.policyVersion, policy_accepted_at: d.now.toISOString(),
+    stargazing_ack_at: input.skyViewAck ? d.now.toISOString() : null,
+    channel_status: 'pending',
+  }).select('id').single();
+  if (ins.error || !ins.data) throw new EngineError('Could not start the booking. Please try again.');
+  const bookingId: string = ins.data.id;
+  const fail = async (msg: string): Promise<never> => {
+    await db.from('be_holds').delete().eq('booking_id', bookingId);
+    await db.from('be_bookings').update({ status: 'expired', updated_at: d.now.toISOString() }).eq('id', bookingId);
+    throw new EngineError(msg);
+  };
+
+  const roomLines = quote.lines.filter((l) => !l.label.startsWith('Breakfast'));
+  await db.from('be_booking_lines').insert(input.rooms.map((r, i) => ({
+    booking_id: bookingId, room_type_id: r.roomTypeId, units: r.units, guests: r.guests,
+    taxable_paise: roomLines[i].taxable, gst_bps: roomLines[i].gstBps, gst_paise: roomLines[i].gst,
+  })));
+  await db.from('be_guests').insert({
+    booking_id: bookingId, full_name: input.guest.name.trim(), gender: input.guest.gender,
+    nationality: input.guest.nationality.trim(),
+    // Foreign nationals need a Form C within 24 hours of arrival.
+    form_c_status: isIndian(input.guest.nationality) ? 'not_required' : 'due',
+  });
+  await db.from('be_holds').insert(input.rooms.map((r) => ({
+    booking_id: bookingId, room_type_id: r.roomTypeId, units: r.units, nights, expires_at: expiresAt.toISOString(),
+  })));
+
+  // Two guests can pass the first check at the same moment; re-check with every live hold
+  // (ours included) counted, and back out if any night is now over capacity.
+  if (await oversold(d, input.rooms, checkIn, checkOut)) await fail('Those beds were just taken. Please choose again.');
+
+  let checkout;
+  try {
+    checkout = await gateway.createCheckout({
+      reference, amount: quote.advance,
+      description: `XTSY ${reference}: ${HOSTEL_POLICIES.advancePercent}% advance`,
+      method: input.method,
+      successUrl: `${origin}/book/confirmation?ref=${reference}`,
+      failureUrl: `${origin}/book/confirmation?ref=${reference}&failed=1`,
+      expiresInSeconds: holdMinutes * 60,
+    });
+  } catch {
+    return fail('The payment page could not be opened. Please try again.');
+  }
+  await db.from('be_payments').insert({
+    booking_id: bookingId, kind: 'advance', gateway: gateway.id, session_id: checkout.sessionId,
+    method_declared: input.method, amount_paise: quote.advance, status: 'created',
+  });
+  return { reference, redirectUrl: checkout.redirectUrl };
+}
+
+/** True when confirmed bookings plus live holds exceed what any night can sell. */
+async function oversold(d: EngineDeps, rooms: CheckoutInput['rooms'], checkIn: IsoDate, checkOut: IsoDate): Promise<boolean> {
+  const channel = channelOf(d);
+  const loads = await loadLoads(d, checkIn, checkOut, channel.connected);
+  const ari = channel.connected ? await channel.getAri(rooms.map((r) => r.roomTypeId), checkIn, checkOut) : [];
+  return rooms.some((r) => {
+    const room = findRoomType(r.roomTypeId)!;
+    return stayNights(checkIn, checkOut).some((night) => {
+      const cap = channel.connected ? ari.find((a) => a.roomTypeId === room.id && a.night === night)?.available ?? 0 : room.units;
+      const used = [...loads.confirmed.filter((l) => l.roomTypeId === room.id && l.night === night).map((l) => l.units),
+        ...loads.holds.filter((h) => h.roomTypeId === room.id && h.expiresAt > d.now && h.nights.includes(night)).map((h) => h.units)]
+        .reduce((s, u) => s + u, 0);
+      return used > cap;
+    });
+  });
+}
+
+// ---------------------------------------------------------------- confirmation
+
+/**
+ * Re-reads the session from the gateway and applies it once. Called by the verified webhook and
+ * by the confirmation page, so a booking confirms even if the webhook is late.
+ */
+export async function settleSession(d: EngineDeps, sessionId: string): Promise<'confirmed' | 'pending' | 'failed' | 'unknown'> {
+  const gateway = gatewayOf(d);
+  if (!gateway || !d.db) return 'unknown';
+  const db = d.db;
+  const p = await db.from('be_payments').select('id,booking_id,amount_paise,status,kind').eq('session_id', sessionId).maybeSingle();
+  if (!p.data) return 'unknown';
+  if (p.data.status === 'succeeded') return 'confirmed';
+  const s = await gateway.getSession(sessionId);
+  const at = d.now.toISOString();
+  if (s.status === 'succeeded' && s.amount >= Number(p.data.amount_paise)) {
+    await db.from('be_payments').update({ status: 'succeeded', payment_id: s.paymentIds[0] ?? null, updated_at: at }).eq('id', p.data.id);
+    const b = await db.from('be_bookings').select('id,reference,status,check_in').eq('id', p.data.booking_id).single();
+    if (b.data && ['held', 'expired'].includes(b.data.status)) {
+      await db.from('be_bookings').update({ status: 'confirmed', updated_at: at }).eq('id', b.data.id);
+      await db.from('be_holds').delete().eq('booking_id', b.data.id);
+      const fy = financialYear(todayInIndia(d.now));
+      const seq = await db.rpc('be_next_invoice_seq', { p_fy: fy, p_kind: 'advance_receipt' });
+      if (!seq.error && typeof seq.data === 'number') {
+        const bk = await db.from('be_bookings').select('advance_paise,gst_paise,total_paise').eq('id', b.data.id).single();
+        const share = bk.data && Number(bk.data.total_paise) > 0 ? Number(bk.data.advance_paise) / Number(bk.data.total_paise) : 0;
+        const gst = Math.round(Number(bk.data?.gst_paise ?? 0) * share);
+        await db.from('be_invoices').insert({
+          booking_id: b.data.id, kind: 'advance_receipt', fy, seq: seq.data, number: invoiceNumber('advance_receipt', fy, seq.data),
+          taxable_paise: Number(bk.data?.advance_paise ?? 0) - gst, gst_paise: gst,
+        });
+      }
+      await pushToChannel(d, b.data.id);
+    }
+    return 'confirmed';
+  }
+  if (s.status === 'failed' || s.status === 'expired') {
+    await db.from('be_payments').update({ status: s.status, updated_at: at }).eq('id', p.data.id);
+    await db.from('be_holds').delete().eq('booking_id', p.data.booking_id);
+    await db.from('be_bookings').update({ status: 'expired', updated_at: at }).eq('id', p.data.booking_id).eq('status', 'held');
+    return 'failed';
+  }
+  return 'pending';
+}
+
+async function pushToChannel(d: EngineDeps, bookingId: string) {
+  const db = d.db;
+  const channel = channelOf(d);
+  if (!channel.connected) {
+    await db.from('be_channel_log').insert({ booking_id: bookingId, direction: 'out', message_type: 'reservation', status: 'pending', detail: 'STAAH not connected; send when connected.' });
+    return;
+  }
+  const b = await db.from('be_bookings').select('reference,check_in,check_out,guest_name,total_paise,advance_paise,be_booking_lines(room_type_id,units,guests,taxable_paise)').eq('id', bookingId).single();
+  if (!b.data) return;
+  const nights = daysBetween(b.data.check_in, b.data.check_out);
+  try {
+    const r = await channel.pushReservation({
+      reference: b.data.reference, status: 'confirmed', checkIn: b.data.check_in, checkOut: b.data.check_out,
+      rooms: (b.data.be_booking_lines ?? []).map((l: any) => ({
+        roomTypeId: l.room_type_id, units: Number(l.units), guests: Number(l.guests),
+        nightlyRates: Array(nights).fill(Math.round(Number(l.taxable_paise) / nights / Number(l.units))),
+      })),
+      guestName: b.data.guest_name, total: Number(b.data.total_paise), paid: Number(b.data.advance_paise),
+    });
+    await db.from('be_bookings').update({ channel_status: r.acknowledged ? 'synced' : 'failed', channel_id: r.channelId ?? null }).eq('id', bookingId);
+    await db.from('be_channel_log').insert({ booking_id: bookingId, direction: 'out', message_type: 'reservation', status: r.acknowledged ? 'ok' : 'failed' });
+  } catch (e) {
+    await db.from('be_bookings').update({ channel_status: 'failed' }).eq('id', bookingId);
+    await db.from('be_channel_log').insert({ booking_id: bookingId, direction: 'out', message_type: 'reservation', status: 'failed', detail: e instanceof Error ? e.message.slice(0, 300) : 'push failed' });
+  }
+}
+
+/** Verified gateway webhook → settle once. Unverified requests are ignored without detail. */
+export async function handlePaymentWebhook(d: EngineDeps, rawBody: string, headers: Headers): Promise<{ status: number; body: string }> {
+  const gateway = gatewayOf(d);
+  if (!gateway || !d.db) return { status: 503, body: 'not configured' };
+  const pointer = await gateway.verifyWebhook(rawBody, headers);
+  if (!pointer) return { status: 401, body: 'invalid signature' };
+  const key = webhookKey(gateway.id, pointer);
+  const seen = await d.db.from('be_webhook_events').insert({ key, gateway: gateway.id });
+  if (seen.error) {
+    if (seen.error.code === '23505') return { status: 200, body: 'duplicate' };
+    return { status: 500, body: 'could not record event' };
+  }
+  let sessionId = pointer.sessionId;
+  if (!sessionId && pointer.paymentId) {
+    const p = await d.db.from('be_payments').select('session_id').eq('payment_id', pointer.paymentId).maybeSingle();
+    sessionId = p.data?.session_id ?? undefined;
+  }
+  if (sessionId) await settleSession(d, sessionId);
+  await d.db.from('be_webhook_events').update({ processed: true }).eq('key', key);
+  return { status: 200, body: 'ok' };
+}
+
+export interface PublicBooking {
+  reference: string;
+  status: 'confirmed' | 'pending' | 'failed' | 'cancelled';
+  checkIn: IsoDate;
+  checkOut: IsoDate;
+  nights: number;
+  rooms: { name: string; units: number; unit: 'bed' | 'room' }[];
+  total: Paise;
+  advance: Paise;
+  balance: Paise;
+  lastChangeDate: IsoDate;
+}
+
+/** Confirmation page data. No name, phone or email: the reference alone must not reveal a guest. */
+export async function publicBooking(d: EngineDeps, reference: string): Promise<PublicBooking | null> {
+  if (!d.db || !/^XTSY-[A-Z0-9]{6}$/.test(reference)) return null;
+  const b = await d.db.from('be_bookings').select('id,reference,status,check_in,check_out,total_paise,advance_paise,balance_paise,be_booking_lines(room_type_id,units)').eq('reference', reference).maybeSingle();
+  if (!b.data) return null;
+  let status: PublicBooking['status'] = LIVE_STATUSES.includes(b.data.status) || b.data.status === 'settled' ? 'confirmed'
+    : b.data.status.startsWith('cancelled') ? 'cancelled' : b.data.status === 'expired' ? 'failed' : 'pending';
+  if (status === 'pending' || status === 'failed') {
+    const p = await d.db.from('be_payments').select('session_id').eq('booking_id', b.data.id).eq('kind', 'advance').order('created_at', { ascending: false }).limit(1).maybeSingle();
+    if (p.data?.session_id) {
+      const r = await settleSession(d, p.data.session_id);
+      if (r === 'confirmed') status = 'confirmed';
+      else if (r === 'failed') status = 'failed';
+    }
+  }
+  return {
+    reference: b.data.reference, status, checkIn: b.data.check_in, checkOut: b.data.check_out,
+    nights: daysBetween(b.data.check_in, b.data.check_out),
+    rooms: (b.data.be_booking_lines ?? []).map((l: any) => {
+      const room = findRoomType(l.room_type_id);
+      return { name: room?.name ?? l.room_type_id, units: Number(l.units), unit: room?.soldAs ?? 'room' };
+    }),
+    total: Number(b.data.total_paise), advance: Number(b.data.advance_paise), balance: Number(b.data.balance_paise),
+    lastChangeDate: addDays(b.data.check_in, -HOSTEL_POLICIES.modificationCutoffDays),
+  };
+}
+
+export type { Quote };
