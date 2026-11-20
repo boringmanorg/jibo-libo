@@ -25,7 +25,7 @@ const ready = {
   settings: { ...settingsFromRow(null) },
   mapping: [{ roomTypeId: 'experience-by-xtsy', roomCode: 'R7', rateCode: 'RO' }],
   state: { switchedOn: false, gatewayConfigured: false, botProtection: false, channelConnected: false, unmappedRoomTypes: BOOKING_ROOM_TYPES.slice(0, 6).map((r) => r.id), feeTableProblems: [], databaseReady: true },
-  blockers: ['STAAH is not connected.', 'Payment gateway keys are not saved.', 'Live booking is switched off in the admin console.'],
+  blockers: ['No channel manager or PMS is connected.', 'Payment gateway keys are not saved.', 'Live booking is switched off in the admin console.'],
 };
 
 async function render(page: string, data: Record<string, unknown>) {
@@ -39,9 +39,7 @@ async function render(page: string, data: Record<string, unknown>) {
 describe('console screens before the database exists', () => {
   it.each([
     ['booking-engine', { '["engine","status"]': notReady }],
-    ['staah', { '["engine","status"]': notReady }],
     ['bookings', { '["engine","bookings",{}]': { dbReady: false, rows: [] } }],
-    ['night-audit', { '["engine","audit-log"]': { dbReady: false, rows: [] } }],
   ])('%s explains that the database is not set up', async (page, data) => {
     expect(await render(page, data)).toContain('The booking database is not set up yet.');
   });
@@ -68,16 +66,6 @@ describe('Booking engine page', () => {
   });
 });
 
-describe('STAAH page', () => {
-  it('shows the three tests and a code row per room, marking which are mapped', async () => {
-    const html = await render('staah', { '["engine","status"]': ready, '["engine","staah-log"]': { dbReady: true, rows: [] } });
-    for (const label of ['Check connection', 'Pull rates and availability (14 days)', 'Send a test booking']) expect(html).toContain(label);
-    for (const r of BOOKING_ROOM_TYPES) expect(html).toContain(r.id);
-    expect(html.match(/not mapped/g)?.length).toBe(6);
-    expect(html).toContain('No STAAH messages yet.');
-  });
-});
-
 describe('Bookings page', () => {
   it('says there are no bookings until live booking starts', async () => {
     expect(await render('bookings', { '["engine","bookings",{}]': { dbReady: true, rows: [] } })).toContain('No bookings yet');
@@ -86,14 +74,5 @@ describe('Bookings page', () => {
     const row = { id: '6f1c5a8e-0000-4000-8000-000000000001', reference: 'XTSY-7KQ2M', status: 'confirmed', check_in: '2026-12-10', check_out: '2026-12-12', guest_name: 'Asha', total_paise: 210000, balance_paise: 157500, channel_status: 'synced' };
     const html = await render('bookings', { '["engine","bookings",{}]': { dbReady: true, rows: [row] } });
     for (const s of ['XTSY-7KQ2M', 'Asha', '2026-12-10 → 2026-12-12', 'Confirmed', '₹2,100', '₹1,575', 'synced']) expect(html).toContain(s);
-  });
-});
-
-describe('Night audit page', () => {
-  it('shows the run button and the console activity', async () => {
-    const html = await render('night-audit', { '["engine","audit-log"]': { dbReady: true, rows: [{ id: 'a1', action: 'settings.save', details: {}, actor_email: 'admin@xtsy.one', created_at: '2026-11-19T10:00:00Z' }] } });
-    expect(html).toContain('Run night audit');
-    expect(html).toContain('settings.save');
-    expect(html).toContain('admin@xtsy.one');
   });
 });

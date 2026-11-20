@@ -14,6 +14,7 @@ import { bookingPageSource, openWhatsAppDirectly } from '@/utils/privacyComplian
 import { trackBookingStart } from '@/utils/dataLayerService';
 import { CAMP, CAMP_GST_NOTE, CAMP_MEALS, CAMP_PHOTOS, CAMP_PLANS, CAMP_TENTS, CAMP_UNIT_ID, campGuests, campProblem, campQuote, tentsUsed, type CampMealId } from '@/data/shnonpedengCamp';
 import { PhotoStrip } from './BookExtras';
+import { recordEnquiryFn } from '@/booking/publicEngine.functions';
 
 const inr = (n: number) => `₹${n.toLocaleString('en-IN')}`;
 const dayFmt = new Intl.DateTimeFormat('en-IN', { weekday: 'short', timeZone: 'UTC' });
@@ -100,6 +101,12 @@ export default function CampBooking({ onBack, closures = [] }: { onBack?: () => 
     try { trackBookingStart(CAMP.name, quote.total, checkIn, checkOut, tents + beds); } catch { /* analytics is optional */ }
     openWhatsAppDirectly(text);
     setSent(ref);
+    // Copy to the console inbox after WhatsApp has opened; never waits on or reports to the guest.
+    void recordEnquiryFn({ data: {
+      reference: ref, kind: 'camp', name: name.trim(), phone: phone.trim(), checkIn, checkOut, guests: Math.max(1, guests),
+      summary: [`${CAMP.name}`, ...quote.lines.map((l) => `${l.label}: ${inr(l.amount)}`), notes.trim() && `Requests: ${notes.trim()}`].filter(Boolean).join(' | ').slice(0, 1500),
+      estimate: quote.total,
+    } }).catch(() => undefined);
   };
 
   return (

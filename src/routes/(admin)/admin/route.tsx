@@ -1,4 +1,7 @@
-import { createFileRoute, Link, Outlet } from '@tanstack/react-router';
+import { createFileRoute, Link, Outlet, useRouterState } from '@tanstack/react-router';
+import { PageHead } from '@/admin/components/ConsoleBits';
+import { Ban, CalendarDays, CreditCard, ExternalLink, ImageIcon, Inbox, LogOut, Menu, PlugZap, ReceiptText, Sun, UtensilsCrossed, Wallet, X } from 'lucide-react';
+import xtsyLogo from '@/assets/xtsy-color-logo.webp';
 import { useEffect, useState, type FormEvent } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -10,7 +13,7 @@ export const Route = createFileRoute('/(admin)/admin')({
   ssr: false,
   head: () => ({
     meta: [
-      { title: 'XTSY Super Admin Console' },
+      { title: 'XTSY Console' },
       { name: 'description', content: 'Private console for XTSY booking engine, PMS and POS.' },
       { name: 'robots', content: 'noindex, nofollow' },
       { property: 'og:title', content: 'XTSY Super Admin Console' },
@@ -66,34 +69,125 @@ function AdminLayout() {
   const signOut = async () => { await (await getAdminSupabase()).auth.signOut(); setStatus('out'); };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="xt-console">
       {status === 'loading' && <p className="p-10 text-center text-muted-foreground">Checking access…</p>}
       {status === 'out' && <SignIn configError={configError} />}
       {status === 'recovery' && <SetPassword onDone={() => setStatus('loading')} />}
       {status === 'denied' && (
         <div className="mx-auto max-w-md p-10 text-center">
-          <h1 className="text-xl font-semibold">Access denied</h1>
+          <h1 className="xt-display text-4xl">Access denied</h1>
           <p className="mt-2 text-muted-foreground">{deniedMessage(reason, email)}</p>
           <Button className="mt-6 min-h-12" onClick={signOut}>Sign out</Button>
         </div>
       )}
-      {status === 'in' && (
-        <div className="mx-auto max-w-6xl p-4 md:p-8">
-          <header className="mb-6 flex flex-wrap items-center justify-between gap-3 border-b border-border pb-4 print:hidden">
-            <div>
-              <p className="text-xs uppercase tracking-widest text-muted-foreground">XTSY</p>
-              <h1 className="text-2xl font-semibold">Super admin console</h1>
-            </div>
-            <nav className="flex flex-wrap gap-2">
-              {[['/admin', 'Overview'], ['/admin/bookings', 'Bookings'], ['/admin/booking-engine', 'Booking engine'], ['/admin/booking-preview', 'Booking page'], ['/admin/room-photos', 'Room photos'], ['/admin/staah', 'STAAH'], ['/admin/night-audit', 'Night audit'], ['/admin/form-c', 'Form C'], ['/admin/invoices', 'Invoices'], ['/admin/stays', 'Stays'], ['/admin/restaurants', 'Restaurants'], ['/admin/settings', 'Integrations']].map(([to, label]) => (
-                <Link key={to} to={to} activeOptions={{ exact: true }} className="inline-flex min-h-12 items-center rounded-md px-4 text-sm hover:bg-muted [&.active]:bg-primary [&.active]:text-primary-foreground">{label}</Link>
-              ))}
-              <Button variant="outline" className="min-h-12" onClick={signOut}>Sign out</Button>
-            </nav>
-          </header>
-          <Outlet />
+      {status === 'in' && <Shell email={email} onSignOut={signOut} />}
+    </div>
+  );
+}
+
+const NAV: { group: string; items: { to: string; label: string; icon: typeof CalendarDays; exact?: boolean }[] }[] = [
+  { group: 'Run the hostel', items: [
+    { to: '/admin', label: 'Today', icon: Sun, exact: true },
+    { to: '/admin/inventory', label: 'Inventory', icon: CalendarDays },
+    { to: '/admin/inbox', label: 'Inbox', icon: Inbox },
+    { to: '/admin/stays', label: 'Blocks', icon: Ban },
+  ] },
+  { group: 'Set up', items: [
+    { to: '/admin/room-photos', label: 'Room photos', icon: ImageIcon },
+    { to: '/admin/booking-engine', label: 'Online booking', icon: CreditCard },
+    { to: '/admin/settings', label: 'Connections', icon: PlugZap },
+    { to: '/admin/restaurants', label: 'TAB Bistro', icon: UtensilsCrossed },
+  ] },
+  { group: 'Money', items: [
+    { to: '/admin/bookings', label: 'Paid bookings', icon: Wallet },
+    { to: '/admin/invoices', label: 'Invoices', icon: ReceiptText },
+  ] },
+];
+
+/** Titles for the older screens that don't draw their own heading. */
+const OLD_SCREEN_TITLES: Record<string, [string, string]> = {
+  '/admin/stays': ['Blocks', 'Close or reopen beds, rooms and tents on /book for a range of dates.'],
+  '/admin/room-photos': ['Room photos', 'The photos /book shows for each room.'],
+  '/admin/booking-engine': ['Online booking', 'Card and UPI payment on /book, fees and GST.'],
+  '/admin/bookings': ['Paid bookings', 'Bookings paid online through /book.'],
+  '/admin/invoices': ['Invoices', 'Advance receipts and tax invoices.'],
+  '/admin/restaurants': ['TAB Bistro', 'Table slots and the live tables shown on the Bistro page.'],
+};
+
+function Shell({ email, onSignOut }: { email: string; onSignOut: () => void }) {
+  const [open, setOpen] = useState(false);
+  const path = useRouterState({ select: (st) => st.location.pathname.replace(/\/$/, '') });
+  const oldTitle = OLD_SCREEN_TITLES[path];
+  const nav = (
+    <nav aria-label="Console" className="space-y-6">
+      {NAV.map((g) => (
+        <div key={g.group}>
+          <p className="px-3 pb-1.5 text-xs font-semibold text-muted-foreground">{g.group}</p>
+          <ul className="space-y-0.5">
+            {g.items.map(({ to, label, icon: Icon, exact }) => (
+              <li key={to}>
+                <Link to={to} activeOptions={{ exact: !!exact }} onClick={() => setOpen(false)}
+                  className="flex min-h-11 items-center gap-3 rounded-xl px-3 text-[15px] font-semibold text-xt-mute transition-colors hover:bg-xt-cream hover:text-xt-ink [&.active]:bg-xt-ink [&.active]:text-xt-sand">
+                  <Icon className="h-[18px] w-[18px] shrink-0" aria-hidden />{label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+      <div className="border-t border-xt-line pt-4">
+        <a href="/book" target="_blank" rel="noreferrer" className="flex min-h-11 items-center gap-3 rounded-xl px-3 text-[15px] font-semibold text-xt-mute hover:bg-xt-cream hover:text-xt-ink">
+          <ExternalLink className="h-[18px] w-[18px]" aria-hidden />Open /book
+        </a>
+      </div>
+    </nav>
+  );
+  return (
+    <div className="lg:grid lg:min-h-screen lg:grid-cols-[256px_1fr]">
+      <aside className="hidden border-r border-xt-line bg-white/70 px-4 py-6 lg:flex lg:flex-col print:hidden">
+        <Brand />
+        <div className="mt-8 flex-1">{nav}</div>
+        <Account email={email} onSignOut={onSignOut} />
+      </aside>
+      <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-xt-line bg-xt-sand/95 px-4 backdrop-blur lg:hidden print:hidden">
+        <Brand />
+        <button type="button" onClick={() => setOpen((v) => !v)} aria-expanded={open} aria-controls="console-nav"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-xt-line bg-white" aria-label={open ? 'Close menu' : 'Open menu'}>
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
+      </header>
+      {open && (
+        <div id="console-nav" className="fixed inset-x-0 top-16 z-30 max-h-[calc(100vh-4rem)] overflow-y-auto border-b border-xt-line bg-xt-sand px-4 py-5 shadow-lg lg:hidden">
+          {nav}
+          <div className="mt-4"><Account email={email} onSignOut={onSignOut} /></div>
         </div>
       )}
+      <main className="min-w-0 px-4 py-6 sm:px-6 lg:px-10 lg:py-10">
+        <div className="mx-auto max-w-6xl">
+          {oldTitle && <PageHead title={oldTitle[0]} sub={oldTitle[1]} />}
+          <Outlet />
+        </div>
+      </main>
+    </div>
+  );
+}
+
+function Brand() {
+  return (
+    <Link to="/admin" className="flex items-center gap-2.5" aria-label="XTSY console home">
+      <img src={xtsyLogo} alt="XTSY" width={120} height={28} className="h-7 w-auto" />
+      <span className="rounded-full bg-xt-ink px-2.5 py-0.5 text-xs font-bold text-xt-sand">Console</span>
+    </Link>
+  );
+}
+
+function Account({ email, onSignOut }: { email: string; onSignOut: () => void }) {
+  return (
+    <div className="flex items-center justify-between gap-2 rounded-2xl bg-xt-cream p-3">
+      <p className="min-w-0 truncate text-sm text-xt-mute" title={email}>{email}</p>
+      <button type="button" onClick={onSignOut} className="flex min-h-10 shrink-0 items-center gap-1.5 rounded-full px-3 text-sm font-semibold text-xt-ink hover:bg-white">
+        <LogOut className="h-4 w-4" aria-hidden />Sign out
+      </button>
     </div>
   );
 }
@@ -120,8 +214,9 @@ function SignIn({ configError = '' }: { configError?: string }) {
     setMsg(error ? 'Could not send reset email.' : 'Password reset email sent.');
   };
   return (
-    <form onSubmit={submit} className="mx-auto mt-16 max-w-sm space-y-4 rounded-xl border border-border bg-card p-6">
-      <h1 className="text-xl font-semibold">Super admin sign-in</h1>
+    <form onSubmit={submit} className="mx-auto mt-16 max-w-sm space-y-4 rounded-[28px] border border-border bg-card p-7 shadow-sm">
+      <img src={xtsyLogo} alt="XTSY" width={120} height={28} className="h-7 w-auto" />
+      <h1 className="xt-display text-4xl leading-none">Console sign-in</h1>
       <div className="space-y-1"><Label htmlFor="em">Email</Label><Input id="em" type="email" className="text-base" value={email} onChange={(e) => setEmail(e.target.value)} required /></div>
       <div className="space-y-1"><Label htmlFor="pw">Password</Label><Input id="pw" type="password" className="text-base" value={password} onChange={(e) => setPassword(e.target.value)} required /></div>
       <Button type="submit" className="min-h-12 w-full" disabled={busy}>{busy ? 'Signing in…' : 'Sign in'}</Button>
@@ -141,8 +236,8 @@ function SetPassword({ onDone }: { onDone: () => void }) {
     onDone();
   };
   return (
-    <form onSubmit={submit} className="mx-auto mt-16 max-w-sm space-y-4 rounded-xl border border-border bg-card p-6">
-      <h1 className="text-xl font-semibold">Set a new password</h1>
+    <form onSubmit={submit} className="mx-auto mt-16 max-w-sm space-y-4 rounded-[28px] border border-border bg-card p-7 shadow-sm">
+      <h1 className="xt-display text-4xl leading-none">Set a new password</h1>
       <Input type="password" minLength={10} className="text-base" value={pw} onChange={(e) => setPw(e.target.value)} required />
       <Button type="submit" className="min-h-12 w-full">Save password</Button>
       {msg && <p className="text-sm text-destructive">{msg}</p>}

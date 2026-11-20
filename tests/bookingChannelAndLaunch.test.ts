@@ -40,7 +40,7 @@ describe('launch gate', () => {
   });
   it('stays on WhatsApp enquiries while STAAH is not connected, even with the switch on', () => {
     expect(canTakeLiveBookings({ ...ready, channelConnected: false })).toBe(false);
-    expect(launchBlockers({ ...ready, channelConnected: false })).toEqual(['STAAH is not connected.']);
+    expect(launchBlockers({ ...ready, channelConnected: false })).toEqual(['No channel manager or PMS is connected.']);
   });
   it('names every blocker today', () => {
     expect(launchBlockers({ switchedOn: false, gatewayConfigured: false, botProtection: false, channelConnected: false, unmappedRoomTypes: ids, feeTableProblems: [], databaseReady: false })).toHaveLength(6);
