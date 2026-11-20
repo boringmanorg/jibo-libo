@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as adminAdminRouteRouteImport } from './routes/(admin)/admin/route'
 import { Route as adminAdminIndexRouteImport } from './routes/(admin)/admin/index'
 import { Route as adminAdminBookingEngineRouteImport } from './routes/(admin)/admin/booking-engine'
+import { Route as adminAdminBookingPreviewRouteImport } from './routes/(admin)/admin/booking-preview'
 import { Route as adminAdminBookingsRouteImport } from './routes/(admin)/admin/bookings'
 import { Route as adminAdminNightAuditRouteImport } from './routes/(admin)/admin/night-audit'
 import { Route as adminAdminRestaurantsRouteImport } from './routes/(admin)/admin/restaurants'
@@ -53,6 +54,7 @@ import { Route as restaurantTabBistroIndexRouteImport } from './routes/(restaura
 import { Route as restaurantTabBistroCateringRouteImport } from './routes/(restaurant)/tab-bistro/catering'
 import { Route as staysBookIndexRouteImport } from './routes/(stays)/book/index'
 import { Route as staysBookCampsiteRouteImport } from './routes/(stays)/book/campsite'
+import { Route as staysBookConfirmationRouteImport } from './routes/(stays)/book/confirmation'
 import { Route as staysBookSelectRouteImport } from './routes/(stays)/book/select'
 import { Route as staysStaysBestHostelInShillongRouteImport } from './routes/(stays)/stays/best-hostel-in-shillong'
 import { Route as staysStaysBudgetHostelsShillongRouteImport } from './routes/(stays)/stays/budget-hostels-shillong'
@@ -90,6 +92,7 @@ import { Route as toursToursXtsyRentalsRouteImport } from './routes/(tours)/tour
 import { Route as guidesDestinationsStateIndexRouteImport } from './routes/(guides)/destinations/$state/index'
 import { Route as toursExpeditionsTypeRouteRouteImport } from './routes/(tours)/expeditions/$type/$route'
 import { Route as ApiPublicHooksBistroGoogleSyncRouteImport } from './routes/api/public/hooks/bistro-google-sync'
+import { Route as ApiPublicHooksZohoPaymentsRouteImport } from './routes/api/public/hooks/zoho-payments'
 import { Route as guidesDestinationsStateCityIndexRouteImport } from './routes/(guides)/destinations/$state/$city/index'
 import { Route as guidesDestinationsStateCityAttractionRouteImport } from './routes/(guides)/destinations/$state/$city/$attraction'
 
@@ -113,6 +116,12 @@ const adminAdminBookingEngineRoute = adminAdminBookingEngineRouteImport.update({
   path: '/booking-engine',
   getParentRoute: () => adminAdminRouteRoute,
 } as any)
+const adminAdminBookingPreviewRoute =
+  adminAdminBookingPreviewRouteImport.update({
+    id: '/booking-preview',
+    path: '/booking-preview',
+    getParentRoute: () => adminAdminRouteRoute,
+  } as any)
 const adminAdminBookingsRoute = adminAdminBookingsRouteImport.update({
   id: '/bookings',
   path: '/bookings',
@@ -333,6 +342,11 @@ const staysBookCampsiteRoute = staysBookCampsiteRouteImport.update({
   path: '/book/campsite',
   getParentRoute: () => rootRouteImport,
 } as any)
+const staysBookConfirmationRoute = staysBookConfirmationRouteImport.update({
+  id: '/(stays)/book/confirmation',
+  path: '/book/confirmation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const staysBookSelectRoute = staysBookSelectRouteImport.update({
   id: '/(stays)/book/select',
   path: '/book/select',
@@ -542,6 +556,12 @@ const ApiPublicHooksBistroGoogleSyncRoute =
     path: '/api/public/hooks/bistro-google-sync',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ApiPublicHooksZohoPaymentsRoute =
+  ApiPublicHooksZohoPaymentsRouteImport.update({
+    id: '/api/public/hooks/zoho-payments',
+    path: '/api/public/hooks/zoho-payments',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const guidesDestinationsStateCityIndexRoute =
   guidesDestinationsStateCityIndexRouteImport.update({
     id: '/(guides)/destinations/$state/$city/',
@@ -559,6 +579,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof adminAdminRouteRouteWithChildren
   '/admin/booking-engine': typeof adminAdminBookingEngineRoute
+  '/admin/booking-preview': typeof adminAdminBookingPreviewRoute
   '/admin/bookings': typeof adminAdminBookingsRoute
   '/admin/night-audit': typeof adminAdminNightAuditRoute
   '/admin/restaurants': typeof adminAdminRestaurantsRoute
@@ -594,6 +615,7 @@ export interface FileRoutesByFullPath {
   '/travel-guide/meghalaya-for-international-tourists': typeof guidesTravelGuideMeghalayaForInternationalTouristsRoute
   '/tab-bistro/catering': typeof restaurantTabBistroCateringRoute
   '/book/campsite': typeof staysBookCampsiteRoute
+  '/book/confirmation': typeof staysBookConfirmationRoute
   '/book/select': typeof staysBookSelectRoute
   '/stays/best-hostel-in-shillong': typeof staysStaysBestHostelInShillongRoute
   '/stays/budget-hostels-shillong': typeof staysStaysBudgetHostelsShillongRoute
@@ -636,6 +658,7 @@ export interface FileRoutesByFullPath {
   '/tours/': typeof toursToursIndexRoute
   '/expeditions/$type/$route': typeof toursExpeditionsTypeRouteRoute
   '/api/public/hooks/bistro-google-sync': typeof ApiPublicHooksBistroGoogleSyncRoute
+  '/api/public/hooks/zoho-payments': typeof ApiPublicHooksZohoPaymentsRoute
   '/destinations/$state/': typeof guidesDestinationsStateIndexRoute
   '/destinations/$state/$city/$attraction': typeof guidesDestinationsStateCityAttractionRoute
   '/destinations/$state/$city/': typeof guidesDestinationsStateCityIndexRoute
@@ -643,6 +666,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin/booking-engine': typeof adminAdminBookingEngineRoute
+  '/admin/booking-preview': typeof adminAdminBookingPreviewRoute
   '/admin/bookings': typeof adminAdminBookingsRoute
   '/admin/night-audit': typeof adminAdminNightAuditRoute
   '/admin/restaurants': typeof adminAdminRestaurantsRoute
@@ -678,6 +702,7 @@ export interface FileRoutesByTo {
   '/travel-guide/meghalaya-for-international-tourists': typeof guidesTravelGuideMeghalayaForInternationalTouristsRoute
   '/tab-bistro/catering': typeof restaurantTabBistroCateringRoute
   '/book/campsite': typeof staysBookCampsiteRoute
+  '/book/confirmation': typeof staysBookConfirmationRoute
   '/book/select': typeof staysBookSelectRoute
   '/stays/best-hostel-in-shillong': typeof staysStaysBestHostelInShillongRoute
   '/stays/budget-hostels-shillong': typeof staysStaysBudgetHostelsShillongRoute
@@ -720,6 +745,7 @@ export interface FileRoutesByTo {
   '/tours': typeof toursToursIndexRoute
   '/expeditions/$type/$route': typeof toursExpeditionsTypeRouteRoute
   '/api/public/hooks/bistro-google-sync': typeof ApiPublicHooksBistroGoogleSyncRoute
+  '/api/public/hooks/zoho-payments': typeof ApiPublicHooksZohoPaymentsRoute
   '/destinations/$state': typeof guidesDestinationsStateIndexRoute
   '/destinations/$state/$city/$attraction': typeof guidesDestinationsStateCityAttractionRoute
   '/destinations/$state/$city': typeof guidesDestinationsStateCityIndexRoute
@@ -729,6 +755,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/(admin)/admin': typeof adminAdminRouteRouteWithChildren
   '/(admin)/admin/booking-engine': typeof adminAdminBookingEngineRoute
+  '/(admin)/admin/booking-preview': typeof adminAdminBookingPreviewRoute
   '/(admin)/admin/bookings': typeof adminAdminBookingsRoute
   '/(admin)/admin/night-audit': typeof adminAdminNightAuditRoute
   '/(admin)/admin/restaurants': typeof adminAdminRestaurantsRoute
@@ -764,6 +791,7 @@ export interface FileRoutesById {
   '/(guides)/travel-guide/meghalaya-for-international-tourists': typeof guidesTravelGuideMeghalayaForInternationalTouristsRoute
   '/(restaurant)/tab-bistro/catering': typeof restaurantTabBistroCateringRoute
   '/(stays)/book/campsite': typeof staysBookCampsiteRoute
+  '/(stays)/book/confirmation': typeof staysBookConfirmationRoute
   '/(stays)/book/select': typeof staysBookSelectRoute
   '/(stays)/stays/best-hostel-in-shillong': typeof staysStaysBestHostelInShillongRoute
   '/(stays)/stays/budget-hostels-shillong': typeof staysStaysBudgetHostelsShillongRoute
@@ -806,6 +834,7 @@ export interface FileRoutesById {
   '/(tours)/tours/': typeof toursToursIndexRoute
   '/(tours)/expeditions/$type/$route': typeof toursExpeditionsTypeRouteRoute
   '/api/public/hooks/bistro-google-sync': typeof ApiPublicHooksBistroGoogleSyncRoute
+  '/api/public/hooks/zoho-payments': typeof ApiPublicHooksZohoPaymentsRoute
   '/(guides)/destinations/$state/': typeof guidesDestinationsStateIndexRoute
   '/(guides)/destinations/$state/$city/$attraction': typeof guidesDestinationsStateCityAttractionRoute
   '/(guides)/destinations/$state/$city/': typeof guidesDestinationsStateCityIndexRoute
@@ -816,6 +845,7 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/admin/booking-engine'
+    | '/admin/booking-preview'
     | '/admin/bookings'
     | '/admin/night-audit'
     | '/admin/restaurants'
@@ -851,6 +881,7 @@ export interface FileRouteTypes {
     | '/travel-guide/meghalaya-for-international-tourists'
     | '/tab-bistro/catering'
     | '/book/campsite'
+    | '/book/confirmation'
     | '/book/select'
     | '/stays/best-hostel-in-shillong'
     | '/stays/budget-hostels-shillong'
@@ -893,6 +924,7 @@ export interface FileRouteTypes {
     | '/tours/'
     | '/expeditions/$type/$route'
     | '/api/public/hooks/bistro-google-sync'
+    | '/api/public/hooks/zoho-payments'
     | '/destinations/$state/'
     | '/destinations/$state/$city/$attraction'
     | '/destinations/$state/$city/'
@@ -900,6 +932,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/admin/booking-engine'
+    | '/admin/booking-preview'
     | '/admin/bookings'
     | '/admin/night-audit'
     | '/admin/restaurants'
@@ -935,6 +968,7 @@ export interface FileRouteTypes {
     | '/travel-guide/meghalaya-for-international-tourists'
     | '/tab-bistro/catering'
     | '/book/campsite'
+    | '/book/confirmation'
     | '/book/select'
     | '/stays/best-hostel-in-shillong'
     | '/stays/budget-hostels-shillong'
@@ -977,6 +1011,7 @@ export interface FileRouteTypes {
     | '/tours'
     | '/expeditions/$type/$route'
     | '/api/public/hooks/bistro-google-sync'
+    | '/api/public/hooks/zoho-payments'
     | '/destinations/$state'
     | '/destinations/$state/$city/$attraction'
     | '/destinations/$state/$city'
@@ -985,6 +1020,7 @@ export interface FileRouteTypes {
     | '/'
     | '/(admin)/admin'
     | '/(admin)/admin/booking-engine'
+    | '/(admin)/admin/booking-preview'
     | '/(admin)/admin/bookings'
     | '/(admin)/admin/night-audit'
     | '/(admin)/admin/restaurants'
@@ -1020,6 +1056,7 @@ export interface FileRouteTypes {
     | '/(guides)/travel-guide/meghalaya-for-international-tourists'
     | '/(restaurant)/tab-bistro/catering'
     | '/(stays)/book/campsite'
+    | '/(stays)/book/confirmation'
     | '/(stays)/book/select'
     | '/(stays)/stays/best-hostel-in-shillong'
     | '/(stays)/stays/budget-hostels-shillong'
@@ -1062,6 +1099,7 @@ export interface FileRouteTypes {
     | '/(tours)/tours/'
     | '/(tours)/expeditions/$type/$route'
     | '/api/public/hooks/bistro-google-sync'
+    | '/api/public/hooks/zoho-payments'
     | '/(guides)/destinations/$state/'
     | '/(guides)/destinations/$state/$city/$attraction'
     | '/(guides)/destinations/$state/$city/'
@@ -1099,6 +1137,7 @@ export interface RootRouteChildren {
   guidesTravelGuideMeghalayaForInternationalTouristsRoute: typeof guidesTravelGuideMeghalayaForInternationalTouristsRoute
   restaurantTabBistroCateringRoute: typeof restaurantTabBistroCateringRoute
   staysBookCampsiteRoute: typeof staysBookCampsiteRoute
+  staysBookConfirmationRoute: typeof staysBookConfirmationRoute
   staysBookSelectRoute: typeof staysBookSelectRoute
   staysStaysBestHostelInShillongRoute: typeof staysStaysBestHostelInShillongRoute
   staysStaysBudgetHostelsShillongRoute: typeof staysStaysBudgetHostelsShillongRoute
@@ -1140,6 +1179,7 @@ export interface RootRouteChildren {
   toursToursIndexRoute: typeof toursToursIndexRoute
   toursExpeditionsTypeRouteRoute: typeof toursExpeditionsTypeRouteRoute
   ApiPublicHooksBistroGoogleSyncRoute: typeof ApiPublicHooksBistroGoogleSyncRoute
+  ApiPublicHooksZohoPaymentsRoute: typeof ApiPublicHooksZohoPaymentsRoute
   guidesDestinationsStateIndexRoute: typeof guidesDestinationsStateIndexRoute
   guidesDestinationsStateCityAttractionRoute: typeof guidesDestinationsStateCityAttractionRoute
   guidesDestinationsStateCityIndexRoute: typeof guidesDestinationsStateCityIndexRoute
@@ -1173,6 +1213,13 @@ declare module '@tanstack/react-router' {
       path: '/booking-engine'
       fullPath: '/admin/booking-engine'
       preLoaderRoute: typeof adminAdminBookingEngineRouteImport
+      parentRoute: typeof adminAdminRouteRoute
+    }
+    '/(admin)/admin/booking-preview': {
+      id: '/(admin)/admin/booking-preview'
+      path: '/booking-preview'
+      fullPath: '/admin/booking-preview'
+      preLoaderRoute: typeof adminAdminBookingPreviewRouteImport
       parentRoute: typeof adminAdminRouteRoute
     }
     '/(admin)/admin/bookings': {
@@ -1455,6 +1502,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof staysBookCampsiteRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/(stays)/book/confirmation': {
+      id: '/(stays)/book/confirmation'
+      path: '/book/confirmation'
+      fullPath: '/book/confirmation'
+      preLoaderRoute: typeof staysBookConfirmationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/(stays)/book/select': {
       id: '/(stays)/book/select'
       path: '/book/select'
@@ -1714,6 +1768,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicHooksBistroGoogleSyncRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/hooks/zoho-payments': {
+      id: '/api/public/hooks/zoho-payments'
+      path: '/api/public/hooks/zoho-payments'
+      fullPath: '/api/public/hooks/zoho-payments'
+      preLoaderRoute: typeof ApiPublicHooksZohoPaymentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/(guides)/destinations/$state/$city/': {
       id: '/(guides)/destinations/$state/$city/'
       path: '/destinations/$state/$city'
@@ -1733,6 +1794,7 @@ declare module '@tanstack/react-router' {
 
 interface adminAdminRouteRouteChildren {
   adminAdminBookingEngineRoute: typeof adminAdminBookingEngineRoute
+  adminAdminBookingPreviewRoute: typeof adminAdminBookingPreviewRoute
   adminAdminBookingsRoute: typeof adminAdminBookingsRoute
   adminAdminNightAuditRoute: typeof adminAdminNightAuditRoute
   adminAdminRestaurantsRoute: typeof adminAdminRestaurantsRoute
@@ -1744,6 +1806,7 @@ interface adminAdminRouteRouteChildren {
 
 const adminAdminRouteRouteChildren: adminAdminRouteRouteChildren = {
   adminAdminBookingEngineRoute: adminAdminBookingEngineRoute,
+  adminAdminBookingPreviewRoute: adminAdminBookingPreviewRoute,
   adminAdminBookingsRoute: adminAdminBookingsRoute,
   adminAdminNightAuditRoute: adminAdminNightAuditRoute,
   adminAdminRestaurantsRoute: adminAdminRestaurantsRoute,
@@ -1799,6 +1862,7 @@ const rootRouteChildren: RootRouteChildren = {
     guidesTravelGuideMeghalayaForInternationalTouristsRoute,
   restaurantTabBistroCateringRoute: restaurantTabBistroCateringRoute,
   staysBookCampsiteRoute: staysBookCampsiteRoute,
+  staysBookConfirmationRoute: staysBookConfirmationRoute,
   staysBookSelectRoute: staysBookSelectRoute,
   staysStaysBestHostelInShillongRoute: staysStaysBestHostelInShillongRoute,
   staysStaysBudgetHostelsShillongRoute: staysStaysBudgetHostelsShillongRoute,
@@ -1844,6 +1908,7 @@ const rootRouteChildren: RootRouteChildren = {
   toursToursIndexRoute: toursToursIndexRoute,
   toursExpeditionsTypeRouteRoute: toursExpeditionsTypeRouteRoute,
   ApiPublicHooksBistroGoogleSyncRoute: ApiPublicHooksBistroGoogleSyncRoute,
+  ApiPublicHooksZohoPaymentsRoute: ApiPublicHooksZohoPaymentsRoute,
   guidesDestinationsStateIndexRoute: guidesDestinationsStateIndexRoute,
   guidesDestinationsStateCityAttractionRoute:
     guidesDestinationsStateCityAttractionRoute,
