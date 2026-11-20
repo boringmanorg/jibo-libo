@@ -1,0 +1,41 @@
+{
+  "results": [
+    {
+      "bundleName": ".output/public/assets/HomeReviews-_dK7r01f.js",
+      "totalBytes": 159096,
+      "mappedBytes": 118345,
+      "unmappedBytes": 40308,
+      "eolBytes": 443,
+      "sourceMapCommentBytes": 0,
+      "files": {
+        "[no source]": {
+          "size": 420
+        },
+        "../../../src/data/featuredGoogleReviews.ts": {
+          "size": 2366
+        },
+        "../../../src/data/hostelGoogleReviewSnapshot.ts": {
+          "size": 98630
+        },
+        "../../../src/data/bistroGoogleReviews.ts": {
+          "size": 7149
+        },
+        "../../../src/data/hostelOtaReviews.ts": {
+          "size": 3116
+        },
+        "../../../src/components/v2/home/HomeReviews.tsx": {
+          "size": 6664
+        },
+        "[sourceMappingURL]": {
+          "size": 0
+        },
+        "[unmapped]": {
+          "size": 40308
+        },
+        "[EOLs]": {
+          "size": 443
+        }
+      }
+    }
+  ]
+}
