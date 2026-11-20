@@ -4,7 +4,6 @@
  * schema, FAQs, booking CTAs and analytics as before.
  */
 import type { ReactNode } from 'react';
-import { photoCredit } from '@/data/tourPhotos';
 import { Helmet } from '@/lib/seo/helmet';
 import { useParams, Link } from '@/lib/router-compat';
 import NotFound from '@/pages/NotFound';
@@ -19,7 +18,7 @@ import { getDestinationBySlug, getDestinationImages, meghalayaDestinations, type
 import { destinationPath, getCitySlugForDestination, getCityBySlug } from '@/data/neTaxonomy';
 import { inr, lowestDormPrice } from '@/components/v2/pricing';
 import { PageShell, Breadcrumbs, PAD } from '@/components/v2/blocks';
-import { Photo } from '@/components/v2/primitives';
+import { Photo, PhotoCaption } from '@/components/v2/primitives';
 import { rankedQuestionsFor } from '@/data/rankedPageQuestions';
 import StayAndTourCTA from '@/components/seo/StayAndTourCTA';
 import { quickFactsFor, DESTINATION_GUIDE_UPDATED } from '@/data/destinationQuickFacts';
@@ -64,7 +63,6 @@ export default function DestinationV2() {
 
   const images = getDestinationImages(destination.slug, 6);
   const realImages = images.filter((i) => !i.src.endsWith('placeholder.svg'));
-  const destCredit = photoCredit(`dest-${destination.slug}`);
   const nearby = destination.nearbyAttractions.map((name) => meghalayaDestinations.find((d) => d.name === name)).filter(Boolean) as MeghalayaDestination[];
   const showShillongHostelLink = SHILLONG_HOSTEL_LINK_SLUGS.has(destination.slug);
 
@@ -221,7 +219,7 @@ export default function DestinationV2() {
             </div>
             <div className="lg:col-span-5">
               <Photo src={realImages[0]?.src} alt={realImages[0]?.alt ?? destination.name} eager tone="pine" className="xt-in xt-d2 aspect-[520/420] rounded-[28px]" />
-              {destCredit && realImages.length > 0 && <p className="m-0 mt-1.5 text-[12px] text-[#C8D6CC]">Photo: <a href={destCredit.url} target="_blank" rel="noopener noreferrer nofollow" className="underline">{destCredit.name}</a> on <a href={destCredit.pexelsUrl} target="_blank" rel="noopener noreferrer nofollow" className="underline">Pexels</a></p>}
+              <PhotoCaption src={realImages[0]?.src} className="mt-1.5" color="text-[#C8D6CC]" />
             </div>
           </div>
         </section>

@@ -1,31 +1,29 @@
-/** Reviewed licensed regional scenes, never claimed to show an unverified landmark. */
+/**
+ * Credited photos for tours, rentals and destination guides that have no photo of their own.
+ * TRAVEL_PHOTOS / RENTAL_VEHICLE_PHOTO come from the reviewed site-photo set (Wikimedia Commons and
+ * Pexels, credited on the page); an entry is simply absent until its photo has been reviewed.
+ * (The earlier uncredited files stored on Lovable were removed on 21 Nov 2026.)
+ */
 import { PEXELS_MEGHALAYA } from './meghalayaPhotos';
-import munnar from '@/assets/travel/munnar-tea-hills.jpg.asset.json';
-import varkala from '@/assets/travel/varkala-cliffs-beach.jpg.asset.json';
-import temple from '@/assets/travel/kerala-temple-pond.jpg.asset.json';
-import spiti from '@/assets/travel/spiti-valley.jpg.asset.json';
-import train from '@/assets/travel/nilgiri-blue-train.jpg.asset.json';
-import tamilTemple from '@/assets/travel/tamil-nadu-temple-street.jpg.asset.json';
-import winterSpiti from '@/assets/travel/spiti-key-monastery-winter.jpg.asset.json';
-import suv from '@/assets/travel/mountain-road-suv.jpg.asset.json';
+import { SITE_PHOTOS } from './sitePhotos';
 
-export const RENTAL_VEHICLE_PHOTO = { src: suv.url, alt: 'SUV on a mountain road in India; representative vehicle photograph, not XTSY fleet inventory' };
-
-export const TRAVEL_PHOTOS: Record<string, { src: string; alt: string }> = {
-  'tour-74': { src: munnar.url, alt: 'Tea plantations and hills in Munnar, Kerala' },
-  'tour-77': { src: varkala.url, alt: 'Varkala cliffs overlooking the beach in Kerala' },
-  'tour-93': { src: temple.url, alt: 'Temple architecture beside a pond in Kerala' },
-  'tour-65': { src: spiti.url, alt: 'Rugged mountains in Spiti Valley, Himachal Pradesh' },
-  'tour-67': { src: winterSpiti.url, alt: 'Key Monastery in a snow-covered Spiti Valley' },
-  'tour-86': { src: train.url, alt: 'Blue train at Ooty station in the Nilgiris' },
-  'tour-90': { src: tamilTemple.url, alt: 'Temple street in Tamil Nadu, India' },
-  'tour-704': { src: PEXELS_MEGHALAYA.hills, alt: 'Green Meghalaya hills, Northeast India' },
+const site = (key: string) => {
+  const p = SITE_PHOTOS[key];
+  return p ? { src: p.srcs.find(([w]) => w >= 1280)?.[1] ?? p.srcs[p.srcs.length - 1][1], alt: p.alt } : null;
 };
+
+/** A photo of one of the fleet's cars; '' until reviewed. */
+export const RENTAL_VEHICLE_PHOTO = site('car-ertiga') ?? site('car-innova-crysta') ?? { src: '', alt: 'XTSY self-drive rental car' };
+
+export const TRAVEL_PHOTOS: Record<string, { src: string; alt: string }> = Object.fromEntries(
+  ['tour-74', 'tour-75', 'tour-76', 'tour-77', 'tour-93', 'tour-65', 'tour-67', 'tour-66', 'tour-85', 'tour-86', 'tour-87', 'tour-90', 'tour-91', 'tour-92', 'tour-704', 'tour-204', 'tour-7', 'sig-5d-meghalaya-trip-package']
+    .flatMap((k) => { const p = site(k); return p ? [[k, p]] : []; }),
+);
 
 export function regionalDestinationPhoto(slug: string): { src: string; alt: string } {
   if (/sohra|kynrem|dainthlen|wei-sawdong|garden-of-caves|arwah|mawmluh/.test(slug))
-    return { src: PEXELS_MEGHALAYA.hills, alt: 'Green Khasi Hills landscape in Meghalaya; regional scene, not a photograph of the named attraction' };
+    return { src: PEXELS_MEGHALAYA.hills, alt: 'Khasi Hills landscape in Meghalaya; regional scene, not a photograph of the named attraction' };
   if (/nongkhnum|mawthadraishan|ranikor|jakrem/.test(slug))
-    return { src: PEXELS_MEGHALAYA.windingRoad, alt: 'Valleys and a winding road in the West Khasi Hills, Meghalaya; regional landscape' };
+    return { src: PEXELS_MEGHALAYA.windingRoad, alt: 'Meghalaya hills and valleys; regional scene, not a photograph of the named attraction' };
   return { src: PEXELS_MEGHALAYA.hills, alt: 'Meghalaya hill landscape; regional scene, not a photograph of the named attraction' };
 }

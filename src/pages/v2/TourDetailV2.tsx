@@ -14,9 +14,9 @@ import { getSignaturePackageBySlug, signaturePackageToTourPackage, upcomingDepar
 import { partnerStaysFor } from '@/data/partnerStays';
 import { useApp } from '@/contexts/AppContext';
 import { photoFor } from '@/data/v2TourImages';
-import { reviewedPhoto, reviewedAlt, photoCredit } from '@/data/tourPhotos';
+import { reviewedPhoto, reviewedAlt } from '@/data/tourPhotos';
 import { PageShell, Breadcrumbs, PAD } from '@/components/v2/blocks';
-import { Photo, waLink } from '@/components/v2/primitives';
+import { Photo, PhotoCaption, waLink } from '@/components/v2/primitives';
 import { GOOGLE_RATING } from '@/data/brandFacts';
 
 const toSlug = (title: string) => title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
@@ -44,7 +44,6 @@ export default function TourDetailV2() {
 
   const photoKey = slug && getSignaturePackageBySlug(slug) ? `sig-${slug}` : `tour-${tour.id}`;
   const photo = reviewedPhoto(photoKey) || photoFor(tour.title, tour.location);
-  const credit = photoCredit(photoKey);
   const schemaImages = tour.images?.length ? [tour.image, ...tour.images] : [tour.image];
   const basePrice = parseInt(tour.price.replace(/[^\d]/g, ''));
   // Tours quoted per trip carry price "On request" (no digits): no per-person figure, no booking calculator.
@@ -158,7 +157,7 @@ export default function TourDetailV2() {
           </div>
           <figure className="m-0 flex flex-col gap-1.5 lg:col-span-5">
             <Photo src={photo} alt={reviewedAlt(photoKey) ?? tour.title} eager tone="pine" className="xt-in xt-d2 aspect-[560/380] rounded-[28px]" />
-            {credit && <figcaption className="text-[12px] text-xt-mute">Photo: <a href={credit.url} target="_blank" rel="noopener noreferrer nofollow" className="underline">{credit.name}</a> on <a href={credit.pexelsUrl} target="_blank" rel="noopener noreferrer nofollow" className="underline">Pexels</a></figcaption>}
+            <PhotoCaption src={photo} />
           </figure>
         </section>
 

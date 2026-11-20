@@ -9,6 +9,7 @@
 import { CDN_IMAGE_MAP } from './cdnImageMap';
 import { OPTIMIZED_IMAGES } from './optimizedImages';
 import { PEXELS_PHOTOS } from './pexelsPhotos';
+import { SITE_PHOTOS } from './sitePhotos';
 
 const PLACEHOLDER = '/placeholder.svg';
 
@@ -19,6 +20,8 @@ const BY_ANY: Record<string, Opt> = Object.create(null);
 for (const [p, o] of Object.entries(OPTIMIZED_IMAGES)) { if (o.srcs.length) { BY_ANY[p] = o; BY_ANY[defaultSrc(o)] = o; } }
 // Reviewed Pexels photos (tours, expeditions, destination guides) get the same srcset treatment.
 for (const o of Object.values(PEXELS_PHOTOS)) if (o?.srcs?.length) BY_ANY[defaultSrc(o)] = o;
+// Reviewed site photos: any of their sizes resolves to the full responsive set.
+for (const o of Object.values(SITE_PHOTOS)) if (o?.srcs?.length) for (const [, u] of o.srcs) BY_ANY[u] = o;
 
 /**
  * The CDN serves the original phone photos (often 2–7 MB). When the optimiser
@@ -51,7 +54,7 @@ export function hasCdn(key: string): boolean {
 
 export { CDN_IMAGE_MAP };
 
-const OURS = /^\/img\/(?:o|px)\/[^\s,]+\.webp$/;
+const OURS = /^\/img\/(?:o|px|sp)\/[^\s,]+\.webp$/;
 /**
  * AVIF twin of one of our optimised WebP srcsets (every /img/o and /img/px WebP has an .avif
  * next to it — enforced in CI by scripts/audit/check-avif.sh). Null when any entry isn't ours.
