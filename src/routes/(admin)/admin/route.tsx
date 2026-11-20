@@ -79,13 +79,13 @@ function AdminLayout() {
       )}
       {status === 'in' && (
         <div className="mx-auto max-w-6xl p-4 md:p-8">
-          <header className="mb-6 flex flex-wrap items-center justify-between gap-3 border-b border-border pb-4">
+          <header className="mb-6 flex flex-wrap items-center justify-between gap-3 border-b border-border pb-4 print:hidden">
             <div>
               <p className="text-xs uppercase tracking-widest text-muted-foreground">XTSY</p>
               <h1 className="text-2xl font-semibold">Super admin console</h1>
             </div>
             <nav className="flex flex-wrap gap-2">
-              {[['/admin', 'Overview'], ['/admin/bookings', 'Bookings'], ['/admin/booking-engine', 'Booking engine'], ['/admin/booking-preview', 'Booking page'], ['/admin/staah', 'STAAH'], ['/admin/night-audit', 'Night audit'], ['/admin/stays', 'Stays'], ['/admin/restaurants', 'Restaurants'], ['/admin/settings', 'Integrations']].map(([to, label]) => (
+              {[['/admin', 'Overview'], ['/admin/bookings', 'Bookings'], ['/admin/booking-engine', 'Booking engine'], ['/admin/booking-preview', 'Booking page'], ['/admin/room-photos', 'Room photos'], ['/admin/staah', 'STAAH'], ['/admin/night-audit', 'Night audit'], ['/admin/form-c', 'Form C'], ['/admin/invoices', 'Invoices'], ['/admin/stays', 'Stays'], ['/admin/restaurants', 'Restaurants'], ['/admin/settings', 'Integrations']].map(([to, label]) => (
                 <Link key={to} to={to} activeOptions={{ exact: true }} className="inline-flex min-h-12 items-center rounded-md px-4 text-sm hover:bg-muted [&.active]:bg-primary [&.active]:text-primary-foreground">{label}</Link>
               ))}
               <Button variant="outline" className="min-h-12" onClick={signOut}>Sign out</Button>

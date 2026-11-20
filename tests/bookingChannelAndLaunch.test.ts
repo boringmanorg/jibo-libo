@@ -5,7 +5,7 @@ import { staahNotConnected } from '@/booking/channel/staah.server';
 import { canTakeLiveBookings, launchBlockers, type LaunchState } from '@/booking/launchGate';
 
 const ids = BOOKING_ROOM_TYPES.map((r) => r.id);
-const ready: LaunchState = { switchedOn: true, gatewayConfigured: true, channelConnected: true, unmappedRoomTypes: [], feeTableProblems: [], databaseReady: true };
+const ready: LaunchState = { switchedOn: true, gatewayConfigured: true, botProtection: true, channelConnected: true, unmappedRoomTypes: [], feeTableProblems: [], databaseReady: true };
 
 describe('STAAH mapping', () => {
   it('lists every room type with no STAAH room or rate code', () => {
@@ -43,6 +43,6 @@ describe('launch gate', () => {
     expect(launchBlockers({ ...ready, channelConnected: false })).toEqual(['STAAH is not connected.']);
   });
   it('names every blocker today', () => {
-    expect(launchBlockers({ switchedOn: false, gatewayConfigured: false, channelConnected: false, unmappedRoomTypes: ids, feeTableProblems: [], databaseReady: false })).toHaveLength(5);
+    expect(launchBlockers({ switchedOn: false, gatewayConfigured: false, botProtection: false, channelConnected: false, unmappedRoomTypes: ids, feeTableProblems: [], databaseReady: false })).toHaveLength(6);
   });
 });

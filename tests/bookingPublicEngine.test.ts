@@ -104,11 +104,13 @@ const connectedChannel = (available = 99): ChannelManager & { pushed: any[] } =>
 };
 
 const NOW = new Date('2026-11-20T06:00:00Z'); // 11:30 IST
-const deps = (over: Partial<EngineDeps> = {}): EngineDeps => ({ db: fakeDb(), env: {}, now: NOW, gateway: null, ...over });
+const BOT_ENV = { TURNSTILE_SITE_KEY: 'site', TURNSTILE_SECRET_KEY: 'test-value' };
+const humanFetch = async (_url: string, init?: RequestInit) => new Response(JSON.stringify({ success: String(init?.body).includes('response=human') }), { status: 200 });
+const deps = (over: Partial<EngineDeps> = {}): EngineDeps => ({ db: fakeDb(), env: BOT_ENV, now: NOW, gateway: null, fetch: humanFetch, ...over });
 const input = (over: Partial<CheckoutInput> = {}): CheckoutInput => ({
   checkIn: '2026-12-01', checkOut: '2026-12-03',
   rooms: [{ roomTypeId: 'king-room-with-mountain-view', units: 1, guests: 2 }],
-  breakfastGuests: 0, guest: { name: 'Test Guest', phone: '+91 98765 43210', email: 'guest@example.com', gender: 'male', nationality: 'India' }, method: 'upi', policyAccepted: true, ...over,
+  breakfastGuests: 0, botToken: 'human', guest: { name: 'Test Guest', phone: '+91 98765 43210', email: 'guest@example.com', gender: 'male', nationality: 'India' }, method: 'upi', policyAccepted: true, ...over,
 });
 
 describe('dates', () => {
@@ -275,6 +277,18 @@ describe('guest checks', () => {
     expect(db.t.be_guests[0]).toMatchObject({ full_name: 'Lena', gender: 'female', nationality: 'Germany', form_c_status: 'due' });
     await startCheckout(d, input({ guest: { name: 'Ravi', phone: '+91 90000 11111', email: 'r@example.com', gender: 'male', nationality: 'India' }, rooms: [{ roomTypeId: 'triple-room-with-mountain-view', units: 1, guests: 3 }] }), 'https://xtsy.one');
     expect(db.t.be_guests[1].form_c_status).toBe('not_required');
+  });
+});
+
+describe('bot check', () => {
+  it('checkout is refused without a passed Turnstile check', async () => {
+    const d = deps({ db: fakeDb(liveSeed()), gateway: fakeGateway({ status: 'pending' }), channel: connectedChannel() });
+    await expect(startCheckout(d, input({ botToken: 'bot' }), 'https://xtsy.one')).rejects.toThrow(/human/);
+    await expect(startCheckout(d, input({ botToken: undefined }), 'https://xtsy.one')).rejects.toThrow(/human/);
+    await expect(startCheckout({ ...d, env: {} }, input(), 'https://xtsy.one')).rejects.toThrow(/not open yet|human/);
+  });
+  it('without Turnstile keys the engine cannot go live', async () => {
+    expect(await engineStatus(deps({ db: fakeDb(liveSeed()), gateway: fakeGateway(), channel: connectedChannel(), env: {} }))).toEqual({ live: false });
   });
 });
 

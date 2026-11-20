@@ -1,7 +1,7 @@
 /**
  * What the booking page shows for each room type: photos and one factual line.
- * Photos reuse the site's existing room galleries. The triple room has no photos yet, so it shows
- * none rather than another room's picture. Lines describe only what the catalogue states.
+ * Photos reuse the site's existing room galleries; photos uploaded in the admin console replace
+ * them (see be_room_photos). Lines describe only what the catalogue states.
  */
 import { ROOM_IMAGES } from '@/config/roomTypes';
 
@@ -31,7 +31,8 @@ export const ROOM_CONTENT: Record<string, RoomContent> = {
     blurb: 'Private room with a king bed and a mountain view, for up to 2 guests.',
   },
   'triple-room-with-mountain-view': {
-    images: [],
+    // The King room's photos until the admin uploads the triple room's own (owner, 20 Nov 2026).
+    images: gallery('king-double-room'),
     blurb: 'Private room with a mountain view, for up to 3 guests.',
   },
   'experience-by-xtsy': {

@@ -24,7 +24,7 @@ const ready = {
   dbReady: true,
   settings: { ...settingsFromRow(null) },
   mapping: [{ roomTypeId: 'experience-by-xtsy', roomCode: 'R7', rateCode: 'RO' }],
-  state: { switchedOn: false, gatewayConfigured: false, channelConnected: false, unmappedRoomTypes: BOOKING_ROOM_TYPES.slice(0, 6).map((r) => r.id), feeTableProblems: [], databaseReady: true },
+  state: { switchedOn: false, gatewayConfigured: false, botProtection: false, channelConnected: false, unmappedRoomTypes: BOOKING_ROOM_TYPES.slice(0, 6).map((r) => r.id), feeTableProblems: [], databaseReady: true },
   blockers: ['STAAH is not connected.', 'Payment gateway keys are not saved.', 'Live booking is switched off in the admin console.'],
 };
 

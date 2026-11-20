@@ -7,7 +7,7 @@
  * mode="live": guests can pay. mode="preview": the owner reviews the page from the console;
  * search works, payment is switched off.
  */
-import { useEffect, useMemo, useState, type FormEvent, type ReactNode } from 'react';
+import { useEffect, useMemo, useRef, useState, type FormEvent, type ReactNode } from 'react';
 import { CalendarDays, ChevronDown, ChevronLeft, ChevronRight, Minus, Plus, Users, X, MessageCircle, ArrowLeft, ShieldCheck, Trash2, Flame, Coffee, PawPrint, Clock } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -20,7 +20,7 @@ import { HOUSE_RULES } from '@/booking/houseRules';
 import { roomContent } from '@/booking/roomContent';
 import type { RoomResult, SearchResult } from '@/booking/publicEngine.core';
 import { isIndian } from '@/booking/guestRules';
-import { quoteFn, searchStaysFn, startCheckoutFn } from '@/booking/publicEngine.functions';
+import { getBotCheckConfigFn, quoteFn, searchStaysFn, startCheckoutFn } from '@/booking/publicEngine.functions';
 import { openWhatsAppDirectly } from '@/utils/privacyCompliantWhatsApp';
 
 type Cart = Record<string, { units: number; guests: number }>;
@@ -219,6 +219,7 @@ function PhotoCarousel({ images, alt, dim }: { images: string[]; alt: string; di
 function RoomCard({ room, picked, onPick }: { room: RoomResult; picked?: { units: number; guests: number }; onPick: (v: { units: number; guests: number } | null) => void }) {
   const [open, setOpen] = useState(false);
   const content = roomContent(room.id);
+  const images = room.photos?.length ? room.photos.map((p) => p.src) : content.images;
   const soldOut = room.freeForStay === 0;
   const maxUnits = Math.min(room.freeForStay, room.soldAs === 'bed' ? 8 : 3);
   const setUnits = (u: number) => {
@@ -231,7 +232,7 @@ function RoomCard({ room, picked, onPick }: { room: RoomResult; picked?: { units
     <article className={cn('overflow-hidden rounded-[28px] border bg-[#FBF8F3] transition-shadow', picked ? 'border-xt-crimson shadow-[0_0_0_1px_#A12444]' : 'border-xt-line')} aria-label={room.name}>
       <div className="grid sm:grid-cols-[280px_1fr]">
         <div className="relative aspect-[4/3] sm:aspect-auto">
-          <PhotoCarousel images={content.images} alt={room.name} dim={soldOut} />
+          <PhotoCarousel images={images} alt={room.name} dim={soldOut} />
           {room.femaleOnly && <span className="absolute left-3 top-3 rounded-full bg-xt-rose px-3 py-1 text-xs font-bold text-white">Female only</span>}
         </div>
         <div className="flex flex-col gap-3 p-5 sm:p-6">
@@ -451,6 +452,8 @@ function Details({ mode, result, cart, lines, onBack }: { mode: 'live' | 'previe
   const [msg, setMsg] = useState('');
   const [busy, setBusy] = useState(false);
   const [mismatch, setMismatch] = useState(false);
+  const [botToken, setBotToken] = useState('');
+  const [botRequired, setBotRequired] = useState(false);
   const rooms = Object.entries(cart).map(([roomTypeId, v]) => ({ roomTypeId, ...v }));
   const femaleBeds = lines.filter((l) => l.room?.femaleOnly).reduce((s, l) => s + l.units, 0);
   const needsSky = lines.some((l) => l.room?.id === 'experience-by-xtsy');
@@ -465,7 +468,7 @@ function Details({ mode, result, cart, lines, onBack }: { mode: 'live' | 'previe
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [breakfast, method, result.checkIn, result.checkOut, JSON.stringify(cart)]);
 
-  const ready = policy && guest.gender !== '' && (!needsSky || sky) && (femaleBeds <= 1 || female);
+  const ready = policy && guest.gender !== '' && (!needsSky || sky) && (femaleBeds <= 1 || female) && (!botRequired || botToken !== '');
 
   const submit = async (e: FormEvent) => {
     e.preventDefault();
@@ -476,11 +479,13 @@ function Details({ mode, result, cart, lines, onBack }: { mode: 'live' | 'previe
     const r = await startCheckoutFn({ data: {
       checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfastGuests: breakfast, method,
       guest: { name: guest.name, phone: guest.phone, email: guest.email, gender: guest.gender as 'female' | 'male' | 'other', nationality },
-      policyAccepted: policy, femaleOnlyAck: female, skyViewAck: sky,
+      policyAccepted: policy, femaleOnlyAck: female, skyViewAck: sky, botToken: botToken || undefined,
     } }).catch(() => ({ ok: false as const, error: 'The booking service did not respond. Check your connection and try again.' }));
     if (r.ok) { window.location.assign(r.data.redirectUrl); return; }
     setBusy(false);
     setMsg(r.error);
+    setBotToken('');
+    resetBotCheck();
   };
 
   const whatsapp = () => openWhatsAppDirectly(
@@ -566,7 +571,7 @@ function Details({ mode, result, cart, lines, onBack }: { mode: 'live' | 'previe
             <p className="text-sm text-xt-fog">{nightsLabel(result.nights)} from {longDate(result.checkIn)}, {totalGuests} guest{totalGuests === 1 ? '' : 's'}</p>
             <ul className="mt-5 space-y-3">
               {lines.map((l) => {
-                const img = roomContent(l.room!.id).images[0];
+                const img = l.room!.photos?.[0]?.src ?? roomContent(l.room!.id).images[0];
                 return (
                   <li key={l.room!.id} className="flex gap-3">
                     {img ? <img src={img} alt="" className="h-14 w-14 shrink-0 rounded-2xl object-cover" /> : <div className="h-14 w-14 shrink-0 rounded-2xl bg-xt-slate" />}
@@ -601,6 +606,7 @@ function Details({ mode, result, cart, lines, onBack }: { mode: 'live' | 'previe
             <Ack id="ack-policy" checked={policy} onChange={setPolicy}>I accept the cancellation and property policies.</Ack>
             {femaleBeds > 1 && <Ack id="ack-female" checked={female} onChange={setFemale}>Every guest in the female deluxe dorm is female.</Ack>}
             {needsSky && <Ack id="ack-sky" checked={sky} onChange={setSky}>I understand the suite’s sky view depends on the weather and is not guaranteed.</Ack>}
+            <BotCheck onToken={setBotToken} onRequired={setBotRequired} />
             <button type="submit" className="mt-2 flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-xt-crimson font-bold text-white hover:bg-[#B52B4E] disabled:cursor-not-allowed disabled:opacity-40" disabled={busy || !quote || !ready}>
               <ShieldCheck className="h-4 w-4" aria-hidden />
               {busy ? 'Opening payment…' : quote ? `Confirm & pay ${formatInr(quote.advanceCharge.payable)}` : 'Confirm & pay'}
@@ -624,6 +630,45 @@ function Details({ mode, result, cart, lines, onBack }: { mode: 'live' | 'previe
       </XtDialog>
     </form>
   );
+}
+
+type TurnstileApi = { render: (el: HTMLElement, o: Record<string, unknown>) => string; remove: (id: string) => void; reset: (id?: string) => void };
+const turnstile = () => (window as unknown as { turnstile?: TurnstileApi }).turnstile;
+const resetBotCheck = () => { try { turnstile()?.reset(); } catch { /* widget not shown */ } };
+
+/** Cloudflare Turnstile widget; renders nothing when the bot check is not set up on the server. */
+function BotCheck({ onToken, onRequired }: { onToken: (t: string) => void; onRequired: (r: boolean) => void }) {
+  const box = useRef<HTMLDivElement>(null);
+  const [siteKey, setSiteKey] = useState<string | null>(null);
+  useEffect(() => {
+    getBotCheckConfigFn().then((r) => { setSiteKey(r.siteKey); onRequired(Boolean(r.siteKey)); }).catch(() => onRequired(false));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  useEffect(() => {
+    if (!siteKey || !box.current) return;
+    let id: string | undefined;
+    const render = () => {
+      const t = turnstile();
+      if (!t || !box.current || id) return;
+      id = t.render(box.current, { sitekey: siteKey, theme: 'dark', size: 'flexible', callback: (tok: string) => onToken(tok), 'expired-callback': () => onToken(''), 'error-callback': () => onToken('') });
+    };
+    if (turnstile()) render();
+    else {
+      let s = document.querySelector<HTMLScriptElement>('script[data-turnstile]');
+      if (!s) {
+        s = document.createElement('script');
+        s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+        s.async = true;
+        s.dataset.turnstile = '1';
+        document.head.appendChild(s);
+      }
+      s.addEventListener('load', render);
+    }
+    return () => { if (id) turnstile()?.remove(id); };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [siteKey]);
+  if (!siteKey) return null;
+  return <div ref={box} className="min-h-[65px]" aria-label="Security check" />;
 }
 
 function Panel({ title, children }: { title: string; children: ReactNode }) {

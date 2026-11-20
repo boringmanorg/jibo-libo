@@ -6,7 +6,7 @@ import { consumeLastCapturedError } from "./lib/error-capture";
 import { GONE_SLUGS } from "./data/seoGoneSlugs";
 import { renderErrorPage } from "./lib/error-page";
 import { withPageCache, cacheKey } from "./lib/pageCache";
-import { isAdminPath, serverOnlySecurityHeaders, withAdminConnectSources } from "./utils/productionSecurityHeaders";
+import { isAdminPath, isBookingPath, serverOnlySecurityHeaders, withAdminConnectSources, withBotCheckSources } from "./utils/productionSecurityHeaders";
 
 type ServerEntry = {
   fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
@@ -54,18 +54,22 @@ function isH3SwallowedErrorBody(body: string): boolean {
 const FRAME_HEADERS = serverOnlySecurityHeaders({ isDevelopment: false });
 const ADMIN_FRAME_HEADERS = {
   ...FRAME_HEADERS,
-  "Content-Security-Policy": withAdminConnectSources(FRAME_HEADERS["Content-Security-Policy"]),
+  "Content-Security-Policy": withBotCheckSources(withAdminConnectSources(FRAME_HEADERS["Content-Security-Policy"])),
+};
+const BOOKING_FRAME_HEADERS = {
+  ...FRAME_HEADERS,
+  "Content-Security-Policy": withBotCheckSources(FRAME_HEADERS["Content-Security-Policy"]),
 };
 function withFrameProtection(request: Request, response: Response): Response {
   const type = response.headers.get("content-type") ?? "";
   if (!type.includes("text/html")) return response;
-  let admin = false;
+  let path = "";
   try {
-    admin = isAdminPath(new URL(request.url).pathname);
+    path = new URL(request.url).pathname;
   } catch {
     /* keep the guest policy */
   }
-  const headers = admin ? ADMIN_FRAME_HEADERS : FRAME_HEADERS;
+  const headers = isAdminPath(path) ? ADMIN_FRAME_HEADERS : isBookingPath(path) ? BOOKING_FRAME_HEADERS : FRAME_HEADERS;
   let out = response;
   try {
     for (const [k, v] of Object.entries(headers)) out.headers.set(k, v);

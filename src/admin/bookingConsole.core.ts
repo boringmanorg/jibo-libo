@@ -8,6 +8,7 @@ import { unmappedRoomTypes, type ChannelManager, type ChannelMapping } from '@/b
 import { staahNotConnected } from '@/booking/channel/staah.server';
 import { addDays, stayNights, todayInIndia, type IsoDate } from '@/booking/dates';
 import { launchBlockers } from '@/booking/launchGate';
+import { botCheckConfigured } from '@/booking/botCheck';
 import { canChangeDates, refundOnCancel, type BookingStatus } from '@/booking/policy';
 import { quoteStay } from '@/booking/pricing';
 import { nightAudit, type AuditBooking, type AuditPayment } from '@/booking/reconcile';
@@ -55,6 +56,7 @@ export async function loadStatus(d: ConsoleDeps) {
   const state = {
     switchedOn: settings.engineSwitchedOn,
     gatewayConfigured: gatewayOf(d) !== null,
+    botProtection: botCheckConfigured(d.env),
     channelConnected: channelOf(d).connected,
     unmappedRoomTypes: unmappedRoomTypes(ids, mapping),
     feeTableProblems: validateFeeTable(settings.feeTable),

@@ -15,8 +15,11 @@ import { Route as adminAdminIndexRouteImport } from './routes/(admin)/admin/inde
 import { Route as adminAdminBookingEngineRouteImport } from './routes/(admin)/admin/booking-engine'
 import { Route as adminAdminBookingPreviewRouteImport } from './routes/(admin)/admin/booking-preview'
 import { Route as adminAdminBookingsRouteImport } from './routes/(admin)/admin/bookings'
+import { Route as adminAdminFormCRouteImport } from './routes/(admin)/admin/form-c'
+import { Route as adminAdminInvoicesRouteImport } from './routes/(admin)/admin/invoices'
 import { Route as adminAdminNightAuditRouteImport } from './routes/(admin)/admin/night-audit'
 import { Route as adminAdminRestaurantsRouteImport } from './routes/(admin)/admin/restaurants'
+import { Route as adminAdminRoomPhotosRouteImport } from './routes/(admin)/admin/room-photos'
 import { Route as adminAdminSettingsRouteImport } from './routes/(admin)/admin/settings'
 import { Route as adminAdminStaahRouteImport } from './routes/(admin)/admin/staah'
 import { Route as adminAdminStaysRouteImport } from './routes/(admin)/admin/stays'
@@ -89,6 +92,7 @@ import { Route as toursToursPlanTripWithAiRouteImport } from './routes/(tours)/t
 import { Route as toursToursShillongTourPackageRouteImport } from './routes/(tours)/tours/shillong-tour-package'
 import { Route as toursToursTravelRouteImport } from './routes/(tours)/tours/travel'
 import { Route as toursToursXtsyRentalsRouteImport } from './routes/(tours)/tours/xtsy-rentals'
+import { Route as adminAdminInvoicesIdRouteImport } from './routes/(admin)/admin/invoices.$id'
 import { Route as guidesDestinationsStateIndexRouteImport } from './routes/(guides)/destinations/$state/index'
 import { Route as toursExpeditionsTypeRouteRouteImport } from './routes/(tours)/expeditions/$type/$route'
 import { Route as ApiPublicHooksBistroGoogleSyncRouteImport } from './routes/api/public/hooks/bistro-google-sync'
@@ -127,6 +131,16 @@ const adminAdminBookingsRoute = adminAdminBookingsRouteImport.update({
   path: '/bookings',
   getParentRoute: () => adminAdminRouteRoute,
 } as any)
+const adminAdminFormCRoute = adminAdminFormCRouteImport.update({
+  id: '/form-c',
+  path: '/form-c',
+  getParentRoute: () => adminAdminRouteRoute,
+} as any)
+const adminAdminInvoicesRoute = adminAdminInvoicesRouteImport.update({
+  id: '/invoices',
+  path: '/invoices',
+  getParentRoute: () => adminAdminRouteRoute,
+} as any)
 const adminAdminNightAuditRoute = adminAdminNightAuditRouteImport.update({
   id: '/night-audit',
   path: '/night-audit',
@@ -135,6 +149,11 @@ const adminAdminNightAuditRoute = adminAdminNightAuditRouteImport.update({
 const adminAdminRestaurantsRoute = adminAdminRestaurantsRouteImport.update({
   id: '/restaurants',
   path: '/restaurants',
+  getParentRoute: () => adminAdminRouteRoute,
+} as any)
+const adminAdminRoomPhotosRoute = adminAdminRoomPhotosRouteImport.update({
+  id: '/room-photos',
+  path: '/room-photos',
   getParentRoute: () => adminAdminRouteRoute,
 } as any)
 const adminAdminSettingsRoute = adminAdminSettingsRouteImport.update({
@@ -538,6 +557,11 @@ const toursToursXtsyRentalsRoute = toursToursXtsyRentalsRouteImport.update({
   path: '/tours/xtsy-rentals',
   getParentRoute: () => rootRouteImport,
 } as any)
+const adminAdminInvoicesIdRoute = adminAdminInvoicesIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => adminAdminInvoicesRoute,
+} as any)
 const guidesDestinationsStateIndexRoute =
   guidesDestinationsStateIndexRouteImport.update({
     id: '/(guides)/destinations/$state/',
@@ -581,8 +605,11 @@ export interface FileRoutesByFullPath {
   '/admin/booking-engine': typeof adminAdminBookingEngineRoute
   '/admin/booking-preview': typeof adminAdminBookingPreviewRoute
   '/admin/bookings': typeof adminAdminBookingsRoute
+  '/admin/form-c': typeof adminAdminFormCRoute
+  '/admin/invoices': typeof adminAdminInvoicesRouteWithChildren
   '/admin/night-audit': typeof adminAdminNightAuditRoute
   '/admin/restaurants': typeof adminAdminRestaurantsRoute
+  '/admin/room-photos': typeof adminAdminRoomPhotosRoute
   '/admin/settings': typeof adminAdminSettingsRoute
   '/admin/staah': typeof adminAdminStaahRoute
   '/admin/stays': typeof adminAdminStaysRoute
@@ -656,6 +683,7 @@ export interface FileRoutesByFullPath {
   '/book/': typeof staysBookIndexRoute
   '/expeditions/': typeof toursExpeditionsIndexRoute
   '/tours/': typeof toursToursIndexRoute
+  '/admin/invoices/$id': typeof adminAdminInvoicesIdRoute
   '/expeditions/$type/$route': typeof toursExpeditionsTypeRouteRoute
   '/api/public/hooks/bistro-google-sync': typeof ApiPublicHooksBistroGoogleSyncRoute
   '/api/public/hooks/zoho-payments': typeof ApiPublicHooksZohoPaymentsRoute
@@ -668,8 +696,11 @@ export interface FileRoutesByTo {
   '/admin/booking-engine': typeof adminAdminBookingEngineRoute
   '/admin/booking-preview': typeof adminAdminBookingPreviewRoute
   '/admin/bookings': typeof adminAdminBookingsRoute
+  '/admin/form-c': typeof adminAdminFormCRoute
+  '/admin/invoices': typeof adminAdminInvoicesRouteWithChildren
   '/admin/night-audit': typeof adminAdminNightAuditRoute
   '/admin/restaurants': typeof adminAdminRestaurantsRoute
+  '/admin/room-photos': typeof adminAdminRoomPhotosRoute
   '/admin/settings': typeof adminAdminSettingsRoute
   '/admin/staah': typeof adminAdminStaahRoute
   '/admin/stays': typeof adminAdminStaysRoute
@@ -743,6 +774,7 @@ export interface FileRoutesByTo {
   '/book': typeof staysBookIndexRoute
   '/expeditions': typeof toursExpeditionsIndexRoute
   '/tours': typeof toursToursIndexRoute
+  '/admin/invoices/$id': typeof adminAdminInvoicesIdRoute
   '/expeditions/$type/$route': typeof toursExpeditionsTypeRouteRoute
   '/api/public/hooks/bistro-google-sync': typeof ApiPublicHooksBistroGoogleSyncRoute
   '/api/public/hooks/zoho-payments': typeof ApiPublicHooksZohoPaymentsRoute
@@ -757,8 +789,11 @@ export interface FileRoutesById {
   '/(admin)/admin/booking-engine': typeof adminAdminBookingEngineRoute
   '/(admin)/admin/booking-preview': typeof adminAdminBookingPreviewRoute
   '/(admin)/admin/bookings': typeof adminAdminBookingsRoute
+  '/(admin)/admin/form-c': typeof adminAdminFormCRoute
+  '/(admin)/admin/invoices': typeof adminAdminInvoicesRouteWithChildren
   '/(admin)/admin/night-audit': typeof adminAdminNightAuditRoute
   '/(admin)/admin/restaurants': typeof adminAdminRestaurantsRoute
+  '/(admin)/admin/room-photos': typeof adminAdminRoomPhotosRoute
   '/(admin)/admin/settings': typeof adminAdminSettingsRoute
   '/(admin)/admin/staah': typeof adminAdminStaahRoute
   '/(admin)/admin/stays': typeof adminAdminStaysRoute
@@ -832,6 +867,7 @@ export interface FileRoutesById {
   '/(stays)/book/': typeof staysBookIndexRoute
   '/(tours)/expeditions/': typeof toursExpeditionsIndexRoute
   '/(tours)/tours/': typeof toursToursIndexRoute
+  '/(admin)/admin/invoices/$id': typeof adminAdminInvoicesIdRoute
   '/(tours)/expeditions/$type/$route': typeof toursExpeditionsTypeRouteRoute
   '/api/public/hooks/bistro-google-sync': typeof ApiPublicHooksBistroGoogleSyncRoute
   '/api/public/hooks/zoho-payments': typeof ApiPublicHooksZohoPaymentsRoute
@@ -847,8 +883,11 @@ export interface FileRouteTypes {
     | '/admin/booking-engine'
     | '/admin/booking-preview'
     | '/admin/bookings'
+    | '/admin/form-c'
+    | '/admin/invoices'
     | '/admin/night-audit'
     | '/admin/restaurants'
+    | '/admin/room-photos'
     | '/admin/settings'
     | '/admin/staah'
     | '/admin/stays'
@@ -922,6 +961,7 @@ export interface FileRouteTypes {
     | '/book/'
     | '/expeditions/'
     | '/tours/'
+    | '/admin/invoices/$id'
     | '/expeditions/$type/$route'
     | '/api/public/hooks/bistro-google-sync'
     | '/api/public/hooks/zoho-payments'
@@ -934,8 +974,11 @@ export interface FileRouteTypes {
     | '/admin/booking-engine'
     | '/admin/booking-preview'
     | '/admin/bookings'
+    | '/admin/form-c'
+    | '/admin/invoices'
     | '/admin/night-audit'
     | '/admin/restaurants'
+    | '/admin/room-photos'
     | '/admin/settings'
     | '/admin/staah'
     | '/admin/stays'
@@ -1009,6 +1052,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/expeditions'
     | '/tours'
+    | '/admin/invoices/$id'
     | '/expeditions/$type/$route'
     | '/api/public/hooks/bistro-google-sync'
     | '/api/public/hooks/zoho-payments'
@@ -1022,8 +1066,11 @@ export interface FileRouteTypes {
     | '/(admin)/admin/booking-engine'
     | '/(admin)/admin/booking-preview'
     | '/(admin)/admin/bookings'
+    | '/(admin)/admin/form-c'
+    | '/(admin)/admin/invoices'
     | '/(admin)/admin/night-audit'
     | '/(admin)/admin/restaurants'
+    | '/(admin)/admin/room-photos'
     | '/(admin)/admin/settings'
     | '/(admin)/admin/staah'
     | '/(admin)/admin/stays'
@@ -1097,6 +1144,7 @@ export interface FileRouteTypes {
     | '/(stays)/book/'
     | '/(tours)/expeditions/'
     | '/(tours)/tours/'
+    | '/(admin)/admin/invoices/$id'
     | '/(tours)/expeditions/$type/$route'
     | '/api/public/hooks/bistro-google-sync'
     | '/api/public/hooks/zoho-payments'
@@ -1229,6 +1277,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof adminAdminBookingsRouteImport
       parentRoute: typeof adminAdminRouteRoute
     }
+    '/(admin)/admin/form-c': {
+      id: '/(admin)/admin/form-c'
+      path: '/form-c'
+      fullPath: '/admin/form-c'
+      preLoaderRoute: typeof adminAdminFormCRouteImport
+      parentRoute: typeof adminAdminRouteRoute
+    }
+    '/(admin)/admin/invoices': {
+      id: '/(admin)/admin/invoices'
+      path: '/invoices'
+      fullPath: '/admin/invoices'
+      preLoaderRoute: typeof adminAdminInvoicesRouteImport
+      parentRoute: typeof adminAdminRouteRoute
+    }
     '/(admin)/admin/night-audit': {
       id: '/(admin)/admin/night-audit'
       path: '/night-audit'
@@ -1241,6 +1303,13 @@ declare module '@tanstack/react-router' {
       path: '/restaurants'
       fullPath: '/admin/restaurants'
       preLoaderRoute: typeof adminAdminRestaurantsRouteImport
+      parentRoute: typeof adminAdminRouteRoute
+    }
+    '/(admin)/admin/room-photos': {
+      id: '/(admin)/admin/room-photos'
+      path: '/room-photos'
+      fullPath: '/admin/room-photos'
+      preLoaderRoute: typeof adminAdminRoomPhotosRouteImport
       parentRoute: typeof adminAdminRouteRoute
     }
     '/(admin)/admin/settings': {
@@ -1747,6 +1816,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof toursToursXtsyRentalsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/(admin)/admin/invoices/$id': {
+      id: '/(admin)/admin/invoices/$id'
+      path: '/$id'
+      fullPath: '/admin/invoices/$id'
+      preLoaderRoute: typeof adminAdminInvoicesIdRouteImport
+      parentRoute: typeof adminAdminInvoicesRoute
+    }
     '/(guides)/destinations/$state/': {
       id: '/(guides)/destinations/$state/'
       path: '/destinations/$state'
@@ -1792,12 +1868,26 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface adminAdminInvoicesRouteChildren {
+  adminAdminInvoicesIdRoute: typeof adminAdminInvoicesIdRoute
+}
+
+const adminAdminInvoicesRouteChildren: adminAdminInvoicesRouteChildren = {
+  adminAdminInvoicesIdRoute: adminAdminInvoicesIdRoute,
+}
+
+const adminAdminInvoicesRouteWithChildren =
+  adminAdminInvoicesRoute._addFileChildren(adminAdminInvoicesRouteChildren)
+
 interface adminAdminRouteRouteChildren {
   adminAdminBookingEngineRoute: typeof adminAdminBookingEngineRoute
   adminAdminBookingPreviewRoute: typeof adminAdminBookingPreviewRoute
   adminAdminBookingsRoute: typeof adminAdminBookingsRoute
+  adminAdminFormCRoute: typeof adminAdminFormCRoute
+  adminAdminInvoicesRoute: typeof adminAdminInvoicesRouteWithChildren
   adminAdminNightAuditRoute: typeof adminAdminNightAuditRoute
   adminAdminRestaurantsRoute: typeof adminAdminRestaurantsRoute
+  adminAdminRoomPhotosRoute: typeof adminAdminRoomPhotosRoute
   adminAdminSettingsRoute: typeof adminAdminSettingsRoute
   adminAdminStaahRoute: typeof adminAdminStaahRoute
   adminAdminStaysRoute: typeof adminAdminStaysRoute
@@ -1808,8 +1898,11 @@ const adminAdminRouteRouteChildren: adminAdminRouteRouteChildren = {
   adminAdminBookingEngineRoute: adminAdminBookingEngineRoute,
   adminAdminBookingPreviewRoute: adminAdminBookingPreviewRoute,
   adminAdminBookingsRoute: adminAdminBookingsRoute,
+  adminAdminFormCRoute: adminAdminFormCRoute,
+  adminAdminInvoicesRoute: adminAdminInvoicesRouteWithChildren,
   adminAdminNightAuditRoute: adminAdminNightAuditRoute,
   adminAdminRestaurantsRoute: adminAdminRestaurantsRoute,
+  adminAdminRoomPhotosRoute: adminAdminRoomPhotosRoute,
   adminAdminSettingsRoute: adminAdminSettingsRoute,
   adminAdminStaahRoute: adminAdminStaahRoute,
   adminAdminStaysRoute: adminAdminStaysRoute,
