@@ -17,8 +17,8 @@ export interface LaunchState {
 export function launchBlockers(s: LaunchState): string[] {
   const out: string[] = [];
   if (!s.databaseReady) out.push('Booking database is not set up yet.');
-  if (!s.channelConnected) out.push('No channel manager or PMS is connected.');
-  if (s.unmappedRoomTypes.length) out.push(`Room types not mapped to the channel manager: ${s.unmappedRoomTypes.join(', ')}.`);
+  if (!s.channelConnected) out.push('STAAH is not connected.');
+  if (s.unmappedRoomTypes.length) out.push(`Room types not mapped to STAAH: ${s.unmappedRoomTypes.join(', ')}.`);
   if (!s.gatewayConfigured) out.push('Payment gateway keys are not saved.');
   if (!s.botProtection) out.push('Bot protection keys (Cloudflare Turnstile) are not saved.');
   if (s.feeTableProblems.length) out.push(...s.feeTableProblems);

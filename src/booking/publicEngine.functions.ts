@@ -100,30 +100,3 @@ export const getBotCheckConfigFn = createServerFn({ method: 'GET' }).handler(asy
   const { botCheckSiteKey } = await import('./botCheck');
   return { siteKey: botCheckSiteKey(process.env) };
 });
-
-/**
- * Copies a guest's enquiry into the console inbox. The guest has already been sent to WhatsApp;
- * this never blocks them and never reports an error to them.
- */
-export const recordEnquiryFn = createServerFn({ method: 'POST' })
-  .inputValidator(z.object({
-    reference: z.string().regex(/^XTSY-[A-Z0-9]{5}$/),
-    kind: z.enum(['stay', 'camp']),
-    name: z.string().trim().min(2).max(120),
-    phone: z.string().trim().min(10).max(20),
-    checkIn: date, checkOut: date,
-    guests: z.number().int().min(1).max(60),
-    summary: z.string().trim().min(1).max(1500),
-    estimate: z.number().min(0).max(10_000_000),
-  }))
-  .handler(async ({ data }) => {
-    const { recordEnquiry } = await import('./enquiryInbox.server');
-    const req = getRequest();
-    const ip = req?.headers.get('cf-connecting-ip') ?? req?.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? undefined;
-    try {
-      return await recordEnquiry((await deps()).db, data, ip);
-    } catch {
-      return { saved: false, reason: 'error' };
-    }
-  });
-

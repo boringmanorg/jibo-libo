@@ -138,7 +138,7 @@ export async function changeDates(d: ConsoleDeps, id: string, checkIn: IsoDate, 
   const { booking, lines } = await getBooking(d, id);
   const decision = canChangeDates({ status: booking.status, checkIn: booking.check_in, dateChangesUsed: booking.date_changes_used }, d.now);
   if (!decision.allowed) throw new ConsoleError(decision.reason);
-  if (!channelOf(d).connected) throw new ConsoleError('No channel manager or PMS is connected, so the new dates cannot be checked against OTA bookings.');
+  if (!channelOf(d).connected) throw new ConsoleError('STAAH is not connected, so the new dates cannot be checked against OTA bookings.');
   if (stayNights(checkIn, checkOut).length === 0) throw new ConsoleError('Check-out must be after check-in.');
   const q = quoteStay({ checkIn, checkOut, breakfast: [], rooms: lines.map((l: any) => ({ roomTypeId: l.room_type_id, units: l.units, guests: l.guests })) });
   const extra = Math.max(0, q.total - booking.total_paise);

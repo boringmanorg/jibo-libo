@@ -312,8 +312,7 @@ function RootComponent() {
                 <TrafficAnalyticsProvider>
                   <ConversionSignalsProvider>
                     <EnhancedAnalyticsProvider>
-                      {/* Guest pages only: the private console sets no analytics or ad cookies, and the banner covered its buttons. */}
-                      {isGuestPage && <ConsentModal />}
+                      <ConsentModal />
                       <ClientOnly fallback={null}>
                         <Suspense fallback={null}>
                           <OptionalConsentDebugPanel />

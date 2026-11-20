@@ -84,7 +84,7 @@ function BookingEngine() {
           <div><p className="text-sm font-medium">Live booking cannot start until:</p>
             <ul className="mt-1 list-disc space-y-1 pl-5 text-sm text-muted-foreground">{data.blockers.map((b) => <li key={b}>{b}</li>)}</ul></div>
         )}
-        <p className="text-xs text-muted-foreground">Without a channel manager or PMS, an OTA and the website could sell the same bed, so the switch stays locked until one is connected and every room is mapped.</p>
+        <p className="text-xs text-muted-foreground">Without STAAH, an OTA and the website could sell the same bed, so the switch stays locked until STAAH is connected and every room is mapped.</p>
       </CardContent></Card>
 
       <Card><CardHeader><CardTitle>GST slab per room type</CardTitle></CardHeader><CardContent className="space-y-4">

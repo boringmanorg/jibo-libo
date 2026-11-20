@@ -123,7 +123,7 @@ function BookingDetail({ id }: { id: string }) {
           <Button variant="destructive" className="min-h-12" disabled={cancelM.isPending} onClick={() => { if (window.confirm(`Cancel ${b.reference}? This cannot be undone.`)) cancelM.mutate(); }}>Cancel booking</Button></div>
       </>}
 
-      <div className="border-t border-border pt-4"><p className="font-medium">Channel manager messages</p>{data.channelLog.length === 0 ? <p className="text-muted-foreground">None yet.</p> : (
+      <div className="border-t border-border pt-4"><p className="font-medium">STAAH messages</p>{data.channelLog.length === 0 ? <p className="text-muted-foreground">None yet.</p> : (
         <ul className="divide-y divide-border">{data.channelLog.map((c: any) => <li key={c.id} className="flex justify-between gap-2 py-2"><span>{c.message_type} · {c.detail}</span><Badge variant={c.status === 'ok' ? 'default' : 'destructive'}>{c.status}</Badge></li>)}</ul>)}</div>
     </CardContent></Card>
   );
