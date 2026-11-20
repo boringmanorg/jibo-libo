@@ -1,10 +1,10 @@
 {
   "results": [
     {
-      "bundleName": ".output/public/assets/index-D1i3r1AP.js",
-      "totalBytes": 559394,
-      "mappedBytes": 547315,
-      "unmappedBytes": 12036,
+      "bundleName": ".output/public/assets/index-DMrqf9Ja.js",
+      "totalBytes": 559463,
+      "mappedBytes": 547383,
+      "unmappedBytes": 12037,
       "eolBytes": 43,
       "sourceMapCommentBytes": 0,
       "files": {
@@ -12,13 +12,13 @@
           "size": 3476
         },
         "[no source]": {
-          "size": 14275
+          "size": 14344
         },
         "../../../node_modules/scheduler/index.js": {
           "size": 14
         },
         "../../../node_modules/react-dom/cjs/react-dom-client.production.js": {
-          "size": 203137
+          "size": 203116
         },
         "../../../node_modules/react-dom/client.js": {
           "size": 210
@@ -168,7 +168,7 @@
           "size": 360
         },
         "../../../node_modules/@radix-ui/react-toast/dist/index.mjs": {
-          "size": 11166
+          "size": 11161
         },
         "../../../node_modules/lucide-react/dist/esm/icons/bath.js": {
           "size": 272
@@ -375,7 +375,7 @@
           "size": 309
         },
         "../../../src/pages/v2/faqData.ts": {
-          "size": 7600
+          "size": 7609
         },
         "../../../src/routes/(company)/about/faq.tsx": {
           "size": 460
@@ -486,7 +486,7 @@
           "size": 632
         },
         "../../../src/routes/(stays)/book/index.tsx": {
-          "size": 779
+          "size": 782
         },
         "../../../src/routes/(stays)/book/campsite.tsx": {
           "size": 377
@@ -498,7 +498,7 @@
           "size": 308
         },
         "../../../src/data/stayHub.ts": {
-          "size": 6687
+          "size": 6697
         },
         "../../../src/routes/(stays)/stays/best-hostel-in-shillong.tsx": {
           "size": 372
@@ -609,7 +609,7 @@
           "size": 735
         },
         "../../../src/pages/v2/planTripData.ts": {
-          "size": 2243
+          "size": 2246
         },
         "../../../src/routes/(tours)/tours/plan-trip-with-ai.tsx": {
           "size": 469
@@ -669,7 +669,7 @@
           "size": 0
         },
         "[unmapped]": {
-          "size": 12036
+          "size": 12037
         },
         "[EOLs]": {
           "size": 43

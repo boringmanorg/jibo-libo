@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-11-20T21:13:12.063Z",
+ "checkedAt": "2026-11-20T21:36:40.454Z",
  "site": "http://localhost:4174",
  "sitemaps": [
   {
@@ -57,8 +57,8 @@
  "healthy": 633,
  "withIssues": 0,
  "byIssue": {},
- "medianMs": 40,
- "p95Ms": 87,
+ "medianMs": 36,
+ "p95Ms": 78,
  "withStructuredData": 633,
  "withQuickAnswer": 443,
  "extra": {

@@ -1,18 +1,18 @@
 {
   "results": [
     {
-      "bundleName": ".output/public/assets/guidePageData-DSRJpyLT.js",
-      "totalBytes": 909323,
-      "mappedBytes": 909323,
+      "bundleName": ".output/public/assets/guidePageData-CWJwpcPk.js",
+      "totalBytes": 909334,
+      "mappedBytes": 909334,
       "unmappedBytes": 0,
       "eolBytes": 0,
       "sourceMapCommentBytes": 0,
       "files": {
         "[no source]": {
-          "size": 718
+          "size": 717
         },
         "../../../src/data/seoPagesExpansion.ts": {
-          "size": 88447
+          "size": 88445
         },
         "../../../src/data/seoPillarPages.ts": {
           "size": 57179
@@ -27,7 +27,7 @@
           "size": 79
         },
         "../../../src/data/seoPageFactory.ts": {
-          "size": 33502
+          "size": 33514
         },
         "../../../scripts/generate-seo-slugs.ts": {
           "size": 6264
@@ -81,7 +81,7 @@
           "size": 156471
         },
         "../../../src/data/seoNormalize.ts": {
-          "size": 10582
+          "size": 10576
         },
         "../../../src/data/seoServiceCoverage.ts": {
           "size": 1904
@@ -96,7 +96,7 @@
           "size": 14756
         },
         "../../../src/lib/seo/programmaticSeo.ts": {
-          "size": 9994
+          "size": 10002
         },
         "../../../src/data/seoLinkingWheel.ts": {
           "size": 4781

@@ -367,7 +367,20 @@
   "status": 200,
   "title": "TAB Bistro New Shillong: Tandoor, Biryani & Indo-Chinese",
   "design": "v2",
-  "axe": [],
+  "axe": [
+   {
+    "id": "color-contrast",
+    "impact": "serious",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "count": 1,
+    "examples": [
+     ".mt-1\\.5"
+    ],
+    "detail": [
+     "Fix any of the following:\n  Element has insufficient color contrast of 1.32 (foreground color: #4f566a, background color: #2f4a3f, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+    ]
+   }
+  ],
   "ui": {
    "firstTab": "Skip to content",
    "focusVisible": true,
@@ -1056,7 +1069,20 @@
   "status": 200,
   "title": "TAB Bistro New Shillong: Tandoor, Biryani & Indo-Chinese",
   "design": "v2",
-  "axe": [],
+  "axe": [
+   {
+    "id": "color-contrast",
+    "impact": "serious",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "count": 1,
+    "examples": [
+     ".mt-1\\.5"
+    ],
+    "detail": [
+     "Fix any of the following:\n  Element has insufficient color contrast of 1.32 (foreground color: #4f566a, background color: #2f4a3f, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+    ]
+   }
+  ],
   "ui": {
    "firstTab": "Skip to content",
    "focusVisible": true,

@@ -2,11 +2,11 @@
  {
   "route": "/",
   "status": 200,
-  "wallMs": 9978,
+  "wallMs": 9936,
   "ttfb": 156,
-  "fcp": 1436,
+  "fcp": 1424,
   "lcp": {
-   "t": 1436,
+   "t": 1424,
    "size": 249600,
    "url": "http://localhost:4174/img/o/xtsy-hostel-front-portrait-828.avif",
    "tag": "IMG",
@@ -15,7 +15,7 @@
   },
   "lcpCandidates": [
    {
-    "t": 1436,
+    "t": 1424,
     "size": 249600,
     "url": "http://localhost:4174/img/o/xtsy-hostel-front-portrait-828.avif",
     "tag": "IMG",
@@ -23,24 +23,11 @@
     "text": ""
    }
   ],
-  "cls": 0.009,
+  "cls": 0.008,
   "shifts": [
    {
-    "v": 0.0007,
-    "t": 3235,
-    "nodes": [
-     "#text."
-    ],
-    "rects": [
-     "18,444 355x171 -> 18,441 355x171"
-    ],
-    "text": [
-     "XTSY Travellers Hostel"
-    ]
-   },
-   {
     "v": 0.008,
-    "t": 3375,
+    "t": 3237,
     "nodes": [
      "DIV.max-w-5xl"
     ],
@@ -52,26 +39,23 @@
     ]
    },
    {
-    "v": 0.0004,
-    "t": 3475,
+    "v": 0.0003,
+    "t": 3351,
     "nodes": [
      "A.xt-btn flex h-14 items-center gap-2.5 rounded-full bg-xt-paper pl-4 pr-6 text-[1",
-     "DIV.flex items-center gap-2",
-     "A.flex h-full items-center whitespace-nowrap text-xt-paper underline-offset-2 hove"
+     "DIV.flex items-center gap-2"
     ],
     "rects": [
      "160,650 187x49 -> 165,650 199x49",
-     "177,43 199x44 -> 172,43 204x44",
-     "121,0 149x32 -> 118,0 155x32"
+     "177,43 199x44 -> 172,43 204x44"
     ],
     "text": [
      "Plan a trip with AI",
-     "Plan with AIBook now",
-     "Dorm beds from ₹400/night"
+     "Plan with AIBook now"
     ]
    }
   ],
-  "requests": 87,
+  "requests": 86,
   "byType": {
    "document": {
     "n": 1,
@@ -83,29 +67,33 @@
    },
    "script": {
     "n": 77,
-    "kb": 1245
+    "kb": 1265
    },
    "stylesheet": {
-    "n": 2,
-    "kb": 207
+    "n": 1,
+    "kb": 199
    },
    "font": {
-    "n": 5,
-    "kb": 92
+    "n": 4,
+    "kb": 64
+   },
+   "other": {
+    "n": 1,
+    "kb": 0
    }
   },
   "biggest": [
    {
-    "url": "http://localhost:4174/assets/index-D1i3r1AP.js",
+    "url": "http://localhost:4174/assets/index-DMrqf9Ja.js",
     "type": "script",
-    "bytes": 559394,
+    "bytes": 559463,
     "kb": 546
    },
    {
-    "url": "http://localhost:4174/assets/styles-DhZ-7Ekf.css",
+    "url": "http://localhost:4174/assets/styles-DDluiq7C.css",
     "type": "stylesheet",
-    "bytes": 202127,
-    "kb": 197
+    "bytes": 204087,
+    "kb": 199
    },
    {
     "url": "http://localhost:4174/",
@@ -114,31 +102,31 @@
     "kb": 141
    },
    {
+    "url": "http://localhost:4174/assets/cdnImages-D0pCtSPH.js",
+    "type": "script",
+    "bytes": 89962,
+    "kb": 88
+   },
+   {
     "url": "http://localhost:4174/assets/schemas-CwwHbnMK.js",
     "type": "script",
     "bytes": 89591,
     "kb": 87
    },
    {
-    "url": "http://localhost:4174/assets/cdnImages-CZVXN04k.js",
-    "type": "script",
-    "bytes": 69189,
-    "kb": 68
-   },
-   {
-    "url": "http://localhost:4174/assets/meghalayaDestinations-DA1snOaj.js",
+    "url": "http://localhost:4174/assets/meghalayaDestinations-BEt3j6c2.js",
     "type": "script",
     "bytes": 69022,
     "kb": 67
    },
    {
-    "url": "http://localhost:4174/assets/routes-CNHVKrQM.js",
+    "url": "http://localhost:4174/assets/routes-Dt9jPH_X.js",
     "type": "script",
     "bytes": 44853,
     "kb": 44
    },
    {
-    "url": "http://localhost:4174/assets/TripChat-DevluZ-F.js",
+    "url": "http://localhost:4174/assets/TripChat-BCg5AdGx.js",
     "type": "script",
     "bytes": 41476,
     "kb": 41
@@ -156,24 +144,24 @@
     "kb": 29
    },
    {
-    "url": "https://fonts.gstatic.com/s/josefinsans/v34/Qw3aZQNVED7rKGKxtqIqX5EUDXx4.woff2",
-    "type": "font",
-    "bytes": 28528,
-    "kb": 28
-   },
-   {
     "url": "http://localhost:4174/assets/utils-D0T3A-kS.js",
     "type": "script",
     "bytes": 27564,
     "kb": 27
+   },
+   {
+    "url": "http://localhost:4174/img/o/xtsy-hostel-front-portrait-828.avif",
+    "type": "image",
+    "bytes": 26629,
+    "kb": 26
    }
   ]
  },
  {
   "route": "/best-hostel-in-shillong",
   "status": 200,
-  "wallMs": 9808,
-  "ttfb": 315,
+  "wallMs": 9634,
+  "ttfb": 314,
   "fcp": 1416,
   "lcp": {
    "t": 1416,
@@ -197,7 +185,7 @@
   "shifts": [
    {
     "v": 0.0197,
-    "t": 2828,
+    "t": 2799,
     "nodes": [
      "DIV.rounded-[22px] bg-xt-blush p-5",
      "#text.",
@@ -222,7 +210,7 @@
    },
    {
     "v": 0.0005,
-    "t": 3170,
+    "t": 3118,
     "nodes": [
      "DIV.flex items-center gap-2",
      "BUTTON.xt-btn flex h-12 items-center rounded-full border-[1.5px] border-xt-ink px-6 tex",
@@ -247,7 +235,7 @@
    },
    {
     "v": 0,
-    "t": 3201,
+    "t": 3168,
     "nodes": [
      "SUP.ml-0.5 text-[10px] font-bold"
     ],
@@ -259,7 +247,7 @@
     ]
    }
   ],
-  "requests": 84,
+  "requests": 82,
   "byType": {
    "document": {
     "n": 2,
@@ -271,32 +259,32 @@
    },
    "script": {
     "n": 71,
-    "kb": 1300
+    "kb": 1321
    },
    "stylesheet": {
-    "n": 2,
-    "kb": 207
+    "n": 1,
+    "kb": 199
    },
    "font": {
-    "n": 5,
-    "kb": 92
+    "n": 4,
+    "kb": 64
    }
   },
   "biggest": [
    {
-    "url": "http://localhost:4174/assets/index-D1i3r1AP.js",
+    "url": "http://localhost:4174/assets/index-DMrqf9Ja.js",
     "type": "script",
-    "bytes": 559394,
+    "bytes": 559463,
     "kb": 546
    },
    {
-    "url": "http://localhost:4174/assets/styles-DhZ-7Ekf.css",
+    "url": "http://localhost:4174/assets/styles-DDluiq7C.css",
     "type": "stylesheet",
-    "bytes": 202127,
-    "kb": 197
+    "bytes": 204087,
+    "kb": 199
    },
    {
-    "url": "http://localhost:4174/assets/HomeReviews-ChC5UCot.js",
+    "url": "http://localhost:4174/assets/HomeReviews-CQ6tQwwo.js",
     "type": "script",
     "bytes": 159096,
     "kb": 155
@@ -304,8 +292,14 @@
    {
     "url": "http://localhost:4174/stays/best-hostel-in-shillong",
     "type": "document",
-    "bytes": 100572,
+    "bytes": 100717,
     "kb": 98
+   },
+   {
+    "url": "http://localhost:4174/assets/cdnImages-D0pCtSPH.js",
+    "type": "script",
+    "bytes": 89962,
+    "kb": 88
    },
    {
     "url": "http://localhost:4174/assets/schemas-CwwHbnMK.js",
@@ -314,13 +308,7 @@
     "kb": 87
    },
    {
-    "url": "http://localhost:4174/assets/cdnImages-CZVXN04k.js",
-    "type": "script",
-    "bytes": 69189,
-    "kb": 68
-   },
-   {
-    "url": "http://localhost:4174/assets/meghalayaDestinations-DA1snOaj.js",
+    "url": "http://localhost:4174/assets/meghalayaDestinations-BEt3j6c2.js",
     "type": "script",
     "bytes": 69022,
     "kb": 67
@@ -338,12 +326,6 @@
     "kb": 29
    },
    {
-    "url": "https://fonts.gstatic.com/s/josefinsans/v34/Qw3aZQNVED7rKGKxtqIqX5EUDXx4.woff2",
-    "type": "font",
-    "bytes": 28528,
-    "kb": 28
-   },
-   {
     "url": "http://localhost:4174/assets/utils-D0T3A-kS.js",
     "type": "script",
     "bytes": 27564,
@@ -354,17 +336,23 @@
     "type": "font",
     "bytes": 24836,
     "kb": 24
+   },
+   {
+    "url": "http://localhost:4174/assets/SiteFooter-B-5PSIJK.js",
+    "type": "script",
+    "bytes": 20973,
+    "kb": 20
    }
   ]
  },
  {
   "route": "/cheap-hostels-shillong",
   "status": 200,
-  "wallMs": 9716,
-  "ttfb": 310,
-  "fcp": 1368,
+  "wallMs": 9608,
+  "ttfb": 315,
+  "fcp": 1348,
   "lcp": {
-   "t": 1368,
+   "t": 1348,
    "size": 65892,
    "url": "",
    "tag": "P",
@@ -373,7 +361,7 @@
   },
   "lcpCandidates": [
    {
-    "t": 1368,
+    "t": 1348,
     "size": 65892,
     "url": "",
     "tag": "P",
@@ -385,7 +373,7 @@
   "shifts": [
    {
     "v": 0.0417,
-    "t": 2812,
+    "t": 2769,
     "nodes": [
      "DIV.rounded-[22px] bg-xt-blush p-5",
      "#text.",
@@ -410,7 +398,7 @@
    },
    {
     "v": 0.0006,
-    "t": 3160,
+    "t": 3119,
     "nodes": [
      "DIV.flex items-center gap-2",
      "BUTTON.xt-btn flex h-12 items-center rounded-full border-[1.5px] border-xt-ink px-6 tex",
@@ -432,9 +420,22 @@
      "Budget-friendly hostels in Shillong",
      "/"
     ]
+   },
+   {
+    "v": 0,
+    "t": 3186,
+    "nodes": [
+     "SUP.ml-0.5 text-[10px] font-bold"
+    ],
+    "rects": [
+     "106,53 9x14 -> 74,53 9x14"
+    ],
+    "text": [
+     "™"
+    ]
    }
   ],
-  "requests": 84,
+  "requests": 82,
   "byType": {
    "document": {
     "n": 2,
@@ -446,32 +447,32 @@
    },
    "script": {
     "n": 71,
-    "kb": 1300
+    "kb": 1321
    },
    "stylesheet": {
-    "n": 2,
-    "kb": 207
+    "n": 1,
+    "kb": 199
    },
    "font": {
-    "n": 5,
-    "kb": 92
+    "n": 4,
+    "kb": 64
    }
   },
   "biggest": [
    {
-    "url": "http://localhost:4174/assets/index-D1i3r1AP.js",
+    "url": "http://localhost:4174/assets/index-DMrqf9Ja.js",
     "type": "script",
-    "bytes": 559394,
+    "bytes": 559463,
     "kb": 546
    },
    {
-    "url": "http://localhost:4174/assets/styles-DhZ-7Ekf.css",
+    "url": "http://localhost:4174/assets/styles-DDluiq7C.css",
     "type": "stylesheet",
-    "bytes": 202127,
-    "kb": 197
+    "bytes": 204087,
+    "kb": 199
    },
    {
-    "url": "http://localhost:4174/assets/HomeReviews-ChC5UCot.js",
+    "url": "http://localhost:4174/assets/HomeReviews-CQ6tQwwo.js",
     "type": "script",
     "bytes": 159096,
     "kb": 155
@@ -479,8 +480,14 @@
    {
     "url": "http://localhost:4174/stays/budget-hostels-shillong",
     "type": "document",
-    "bytes": 94800,
+    "bytes": 94945,
     "kb": 93
+   },
+   {
+    "url": "http://localhost:4174/assets/cdnImages-D0pCtSPH.js",
+    "type": "script",
+    "bytes": 89962,
+    "kb": 88
    },
    {
     "url": "http://localhost:4174/assets/schemas-CwwHbnMK.js",
@@ -489,13 +496,7 @@
     "kb": 87
    },
    {
-    "url": "http://localhost:4174/assets/cdnImages-CZVXN04k.js",
-    "type": "script",
-    "bytes": 69189,
-    "kb": 68
-   },
-   {
-    "url": "http://localhost:4174/assets/meghalayaDestinations-DA1snOaj.js",
+    "url": "http://localhost:4174/assets/meghalayaDestinations-BEt3j6c2.js",
     "type": "script",
     "bytes": 69022,
     "kb": 67
@@ -513,12 +514,6 @@
     "kb": 29
    },
    {
-    "url": "https://fonts.gstatic.com/s/josefinsans/v34/Qw3aZQNVED7rKGKxtqIqX5EUDXx4.woff2",
-    "type": "font",
-    "bytes": 28528,
-    "kb": 28
-   },
-   {
     "url": "http://localhost:4174/assets/utils-D0T3A-kS.js",
     "type": "script",
     "bytes": 27564,
@@ -529,17 +524,23 @@
     "type": "font",
     "bytes": 24836,
     "kb": 24
+   },
+   {
+    "url": "http://localhost:4174/assets/SiteFooter-B-5PSIJK.js",
+    "type": "script",
+    "bytes": 20973,
+    "kb": 20
    }
   ]
  },
  {
   "route": "/shillong-dormitory",
   "status": 200,
-  "wallMs": 9849,
-  "ttfb": 312,
-  "fcp": 1364,
+  "wallMs": 9770,
+  "ttfb": 308,
+  "fcp": 1316,
   "lcp": {
-   "t": 1364,
+   "t": 1316,
    "size": 81295,
    "url": "",
    "tag": "P",
@@ -548,7 +549,7 @@
   },
   "lcpCandidates": [
    {
-    "t": 1364,
+    "t": 1316,
     "size": 81295,
     "url": "",
     "tag": "P",
@@ -560,7 +561,7 @@
   "shifts": [
    {
     "v": 0.0005,
-    "t": 3129,
+    "t": 3069,
     "nodes": [
      "#text."
     ],
@@ -573,7 +574,7 @@
    },
    {
     "v": 0.0004,
-    "t": 3199,
+    "t": 3137,
     "nodes": [
      "#text."
     ],
@@ -586,7 +587,7 @@
    },
    {
     "v": 0.0012,
-    "t": 3277,
+    "t": 3211,
     "nodes": [
      "DIV.flex items-center gap-2",
      "BUTTON.xt-btn flex h-11 items-center rounded-full border-[1.5px] border-xt-ink px-5 tex",
@@ -608,9 +609,22 @@
      "Dorm beds from ₹400/night",
      "Hostels/"
     ]
+   },
+   {
+    "v": 0,
+    "t": 3296,
+    "nodes": [
+     "SUP.ml-0.5 text-[10px] font-bold"
+    ],
+    "rects": [
+     "106,53 9x14 -> 74,53 9x14"
+    ],
+    "text": [
+     "™"
+    ]
    }
   ],
-  "requests": 81,
+  "requests": 79,
   "byType": {
    "document": {
     "n": 2,
@@ -622,15 +636,15 @@
    },
    "script": {
     "n": 68,
-    "kb": 1125
+    "kb": 1145
    },
    "stylesheet": {
-    "n": 2,
-    "kb": 207
+    "n": 1,
+    "kb": 199
    },
    "font": {
-    "n": 5,
-    "kb": 92
+    "n": 4,
+    "kb": 64
    },
    "other": {
     "n": 2,
@@ -639,16 +653,22 @@
   },
   "biggest": [
    {
-    "url": "http://localhost:4174/assets/index-D1i3r1AP.js",
+    "url": "http://localhost:4174/assets/index-DMrqf9Ja.js",
     "type": "script",
-    "bytes": 559394,
+    "bytes": 559463,
     "kb": 546
    },
    {
-    "url": "http://localhost:4174/assets/styles-DhZ-7Ekf.css",
+    "url": "http://localhost:4174/assets/styles-DDluiq7C.css",
     "type": "stylesheet",
-    "bytes": 202127,
-    "kb": 197
+    "bytes": 204087,
+    "kb": 199
+   },
+   {
+    "url": "http://localhost:4174/assets/cdnImages-D0pCtSPH.js",
+    "type": "script",
+    "bytes": 89962,
+    "kb": 88
    },
    {
     "url": "http://localhost:4174/assets/schemas-CwwHbnMK.js",
@@ -659,17 +679,11 @@
    {
     "url": "http://localhost:4174/guides/shillong-dormitory",
     "type": "document",
-    "bytes": 81662,
+    "bytes": 81807,
     "kb": 80
    },
    {
-    "url": "http://localhost:4174/assets/cdnImages-CZVXN04k.js",
-    "type": "script",
-    "bytes": 69189,
-    "kb": 68
-   },
-   {
-    "url": "http://localhost:4174/assets/meghalayaDestinations-DA1snOaj.js",
+    "url": "http://localhost:4174/assets/meghalayaDestinations-BEt3j6c2.js",
     "type": "script",
     "bytes": 69022,
     "kb": 67
@@ -687,12 +701,6 @@
     "kb": 29
    },
    {
-    "url": "https://fonts.gstatic.com/s/josefinsans/v34/Qw3aZQNVED7rKGKxtqIqX5EUDXx4.woff2",
-    "type": "font",
-    "bytes": 28528,
-    "kb": 28
-   },
-   {
     "url": "http://localhost:4174/assets/utils-D0T3A-kS.js",
     "type": "script",
     "bytes": 27564,
@@ -705,6 +713,12 @@
     "kb": 24
    },
    {
+    "url": "http://localhost:4174/assets/SiteFooter-B-5PSIJK.js",
+    "type": "script",
+    "bytes": 20973,
+    "kb": 20
+   },
+   {
     "url": "http://localhost:4174/img/o/xtsy-hostel-front-828.avif",
     "type": "image",
     "bytes": 18074,
@@ -715,11 +729,11 @@
  {
   "route": "/xtsy-270",
   "status": 200,
-  "wallMs": 11280,
-  "ttfb": 308,
-  "fcp": 1416,
+  "wallMs": 11165,
+  "ttfb": 307,
+  "fcp": 1276,
   "lcp": {
-   "t": 1416,
+   "t": 1276,
    "size": 62486,
    "url": "",
    "tag": "H1",
@@ -728,7 +742,7 @@
   },
   "lcpCandidates": [
    {
-    "t": 1416,
+    "t": 1276,
     "size": 62486,
     "url": "",
     "tag": "H1",
@@ -739,8 +753,8 @@
   "cls": 0.228,
   "shifts": [
    {
-    "v": 0.219,
-    "t": 3502,
+    "v": 0.2191,
+    "t": 3297,
     "nodes": [
      "DIV.overflow-hidden relative mt-4 h-[280px] w-full sm:h-[580px]",
      "P.xt-in xt-d2 m-0 max-w-[620px] text-[17px] leading-relaxed sm:text-[20px]",
@@ -765,7 +779,7 @@
    },
    {
     "v": 0.0088,
-    "t": 3761,
+    "t": 3601,
     "nodes": [
      "#text.",
      "DIV.xt-in xt-d2 flex items-end gap-4",
@@ -787,46 +801,59 @@
      "Booked direct only · 1 suite a night",
      "Plan with AIBook now"
     ]
+   },
+   {
+    "v": 0,
+    "t": 4684,
+    "nodes": [
+     "SUP.ml-0.5 text-[10px] font-bold"
+    ],
+    "rects": [
+     "106,53 9x14 -> 74,53 9x14"
+    ],
+    "text": [
+     "™"
+    ]
    }
   ],
-  "requests": 104,
+  "requests": 102,
   "byType": {
    "document": {
     "n": 2,
     "kb": 117
    },
+   "script": {
+    "n": 81,
+    "kb": 1388
+   },
+   "stylesheet": {
+    "n": 1,
+    "kb": 199
+   },
    "image": {
     "n": 14,
     "kb": 460
    },
-   "script": {
-    "n": 81,
-    "kb": 1368
-   },
-   "stylesheet": {
-    "n": 2,
-    "kb": 207
-   },
    "font": {
-    "n": 5,
-    "kb": 92
+    "n": 4,
+    "kb": 64
    }
   },
   "biggest": [
    {
-    "url": "http://localhost:4174/assets/index-D1i3r1AP.js",
+    "url": "http://localhost:4174/assets/index-DMrqf9Ja.js",
     "type": "script",
-    "bytes": 559394,
+    "bytes": 559463,
     "kb": 546
    },
    {
-    "url": "http://localhost:4174/assets/styles-DhZ-7Ekf.css",
+    "url": "http://localhost:4174/assets/styles-DDluiq7C.css",
     "type": "stylesheet",
-    "bytes": 202127,
-    "kb": 197
+    "bytes": 204087,
+    "kb": 199
    },
    {
-    "url": "http://localhost:4174/assets/HomeReviews-ChC5UCot.js",
+    "url": "http://localhost:4174/assets/HomeReviews-CQ6tQwwo.js",
     "type": "script",
     "bytes": 159096,
     "kb": 155
@@ -838,19 +865,19 @@
     "kb": 117
    },
    {
+    "url": "http://localhost:4174/assets/cdnImages-D0pCtSPH.js",
+    "type": "script",
+    "bytes": 89962,
+    "kb": 88
+   },
+   {
     "url": "http://localhost:4174/assets/schemas-CwwHbnMK.js",
     "type": "script",
     "bytes": 89591,
     "kb": 87
    },
    {
-    "url": "http://localhost:4174/assets/cdnImages-CZVXN04k.js",
-    "type": "script",
-    "bytes": 69189,
-    "kb": 68
-   },
-   {
-    "url": "http://localhost:4174/assets/meghalayaDestinations-DA1snOaj.js",
+    "url": "http://localhost:4174/assets/meghalayaDestinations-BEt3j6c2.js",
     "type": "script",
     "bytes": 69022,
     "kb": 67
@@ -890,11 +917,11 @@
  {
   "route": "https://xtsy.one/",
   "status": 200,
-  "wallMs": 10370,
-  "ttfb": 459,
-  "fcp": 2736,
+  "wallMs": 10583,
+  "ttfb": 803,
+  "fcp": 3108,
   "lcp": {
-   "t": 3076,
+   "t": 3440,
    "size": 249600,
    "url": "https://xtsy.one/img/o/xtsy-property-images-8-portrait-828.avif",
    "tag": "IMG",
@@ -903,7 +930,7 @@
   },
   "lcpCandidates": [
    {
-    "t": 2736,
+    "t": 3108,
     "size": 2652,
     "url": "",
     "tag": "A",
@@ -911,7 +938,7 @@
     "text": "Dorm beds from ₹400/night"
    },
    {
-    "t": 2992,
+    "t": 3380,
     "size": 38232,
     "url": "",
     "tag": "H1",
@@ -919,7 +946,7 @@
     "text": "XTSY Travellers Hostel"
    },
    {
-    "t": 3076,
+    "t": 3440,
     "size": 249600,
     "url": "https://xtsy.one/img/o/xtsy-property-images-8-portrait-828.avif",
     "tag": "IMG",
@@ -929,7 +956,7 @@
   ],
   "cls": 0,
   "shifts": [],
-  "requests": 87,
+  "requests": 85,
   "byType": {
    "document": {
     "n": 1,
@@ -944,12 +971,12 @@
     "kb": 53
    },
    "font": {
-    "n": 5,
-    "kb": 92
+    "n": 4,
+    "kb": 64
    },
    "stylesheet": {
-    "n": 2,
-    "kb": 208
+    "n": 1,
+    "kb": 199
    },
    "fetch": {
     "n": 1,

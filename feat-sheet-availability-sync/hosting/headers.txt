@@ -17,11 +17,11 @@
 # Preload the hero AVIF as the LCP resource so Cloudflare's HTTP/2 push
 # and 103 Early Hints can start the fetch before HTML parse.
 /
-  Link: </img/o/xtsy-property-images-8-portrait-828.avif>; rel=preload; as=image; type=image/avif; fetchpriority=high
+  Link: </img/o/xtsy-hostel-front-portrait-828.avif>; rel=preload; as=image; type=image/avif; fetchpriority=high
   Cache-Control: public, max-age=0, must-revalidate
 
 /index.html
-  Link: </img/o/xtsy-property-images-8-portrait-828.avif>; rel=preload; as=image; type=image/avif; fetchpriority=high
+  Link: </img/o/xtsy-hostel-front-portrait-828.avif>; rel=preload; as=image; type=image/avif; fetchpriority=high
 
 # ── Immutable hashed assets ──────────────────────────────────────────
 /assets/*
@@ -43,18 +43,18 @@
 /assets/*
   cache-control: public, max-age=31536000, immutable
 == server config files
-_attraction-qudPEWol.mjs
+_attraction-Dyiz0yOw.mjs
 _chunks
-_city-CeZVuw0d.mjs
+_city-DHWu-Fwi.mjs
 _libs
-_route-CODnXMBa.mjs
+_route-Cq0Fz9Yr.mjs
 _runtime.mjs
-_slug-DDMoaekY.mjs
-_slug-DO53OKMO.mjs
-_slug-g6zdULzf.mjs
+_slug-BMZLlfGT.mjs
+_slug-BNWJvXX2.mjs
+_slug-Cq2z3QMN.mjs
 _ssr
-_state-CBYSTuQw.mjs
-_tanstack-start-manifest_v-xOEdVKWU.mjs
+_state-BEX7-XLQ.mjs
+_tanstack-start-manifest_v-CGRwROgz.mjs
 index.mjs
 wrangler.json
 == .output/server/wrangler.json
@@ -82,7 +82,7 @@ wrangler.json
 }
 == .output/nitro.json
 {
-  "date": "2026-11-20T21:10:49.308Z",
+  "date": "2026-11-20T21:34:24.613Z",
   "preset": "cloudflare-module",
   "framework": {
     "name": "nitro",
