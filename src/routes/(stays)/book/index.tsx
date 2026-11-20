@@ -8,7 +8,8 @@ import { inr, roomPrice } from "@/components/v2/pricing";
 import { PANORAMA_STAY_ONLY } from "@/data/panoramaPricing";
 
 export const Route = createFileRoute("/(stays)/book/")({
-  validateSearch: z.object({ location: z.enum(["new-shillong", "dawki"]).optional() }),
+  // "dawki" is kept as an alias so older links land on the Shnonpedeng camp.
+  validateSearch: z.object({ location: z.enum(["new-shillong", "shnonpedeng", "dawki"]).optional().transform((l) => (l === "dawki" ? "shnonpedeng" : l)) }),
   head: () =>
     buildRouteHead({
       path: "/book",

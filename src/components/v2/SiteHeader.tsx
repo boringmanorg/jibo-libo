@@ -29,7 +29,7 @@ const MENU_GROUPS = [
     links: [
       { to: '/book', label: 'Book a room' },
       { to: '/stays/experience-by-xtsy', label: 'Experience by XTSY' },
-      { to: '/stays/campsite-dawki', label: 'Dawki camping (partner)' },
+      { to: '/stays/campsite-dawki', label: 'Shnonpedeng camping (partner)' },
       { to: '/stays/pet-friendly', label: 'Pet-friendly stays' },
       { to: '/stays/female-travellers', label: 'Women safe stays' },
       { to: '/stays/workation', label: 'Workation' },

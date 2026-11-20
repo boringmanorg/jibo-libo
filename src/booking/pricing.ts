@@ -2,9 +2,10 @@
  * Price build-up, in this order (owner, 19 Nov 2026):
  * room rates and add-ons → GST per line → gateway charge on the amount being paid now.
  */
-import { BREAKFAST_RATE, findRoomType } from './catalogue';
+import { findRoomType } from './catalogue';
+import { breakfastItem, MAX_BREAKFAST_QTY, type BreakfastPick } from '@/data/breakfastMenu';
 import { stayNights, type IsoDate } from './dates';
-import { applyBps, type Paise } from './money';
+import { applyBps, rupees, type Paise } from './money';
 import { splitPayment } from './policy';
 import { slabBps, suggestAccommodationSlab, type GstSlab } from './tax';
 import { GST_ON_FEE_BPS, type FeeTable, type PaymentMethod } from './payments/fees';
@@ -13,8 +14,8 @@ export interface QuoteRequest {
   checkIn: IsoDate;
   checkOut: IsoDate;
   rooms: { roomTypeId: string; units: number; guests: number }[];
-  /** Guests taking breakfast each morning; 0 for none. */
-  breakfastGuests: number;
+  /** TAB Bistro breakfast dishes and beverages, each served every morning of the stay; empty for none. */
+  breakfast: BreakfastPick[];
   /** Nightly rate per unit, when STAAH supplies one; otherwise the catalogue rate. */
   rateFor?: (roomTypeId: string, night: IsoDate) => Paise;
   gstSlabFor?: (roomTypeId: string) => GstSlab;
@@ -55,11 +56,18 @@ export function quoteStay(req: QuoteRequest): Quote {
     lines.push({ label: `${room.name} × ${r.units} × ${nights.length} night(s)`, taxable, gstBps, gst: applyBps(taxable, gstBps) });
   }
 
-  if (req.breakfastGuests > 0) {
-    const mornings = nights.length;
-    const taxable = BREAKFAST_RATE * req.breakfastGuests * mornings;
+  const mornings = nights.length;
+  const seen = new Set<string>();
+  for (const pick of req.breakfast) {
+    const item = breakfastItem(pick.item);
+    if (!item) throw new Error('That breakfast item is not on the TAB Bistro menu.');
+    if (seen.has(item.id)) throw new Error(`${item.name} is listed twice.`);
+    seen.add(item.id);
+    if (!Number.isInteger(pick.qty) || pick.qty < 1 || pick.qty > MAX_BREAKFAST_QTY) throw new Error(`Choose 1 to ${MAX_BREAKFAST_QTY} of ${item.name}.`);
+    const taxable = rupees(item.price) * pick.qty * mornings;
     const gstBps = slabBps(req.breakfastGstSlab ?? { kind: '5' });
-    lines.push({ label: `Breakfast × ${req.breakfastGuests} guest(s) × ${mornings} morning(s)`, taxable, gstBps, gst: applyBps(taxable, gstBps) });
+    // Labels start with "Breakfast" so invoices and the summary group them as breakfast.
+    lines.push({ label: `Breakfast: ${item.name} × ${pick.qty} × ${mornings} morning(s)`, taxable, gstBps, gst: applyBps(taxable, gstBps) });
   }
 
   const taxable = lines.reduce((s, l) => s + l.taxable, 0);

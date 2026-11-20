@@ -110,7 +110,7 @@ const deps = (over: Partial<EngineDeps> = {}): EngineDeps => ({ db: fakeDb(), en
 const input = (over: Partial<CheckoutInput> = {}): CheckoutInput => ({
   checkIn: '2026-12-01', checkOut: '2026-12-03',
   rooms: [{ roomTypeId: 'king-room-with-mountain-view', units: 1, guests: 2 }],
-  breakfastGuests: 0, botToken: 'human', guest: { name: 'Test Guest', phone: '+91 98765 43210', email: 'guest@example.com', gender: 'male', nationality: 'India' }, method: 'upi', policyAccepted: true, ...over,
+  breakfast: [], botToken: 'human', guest: { name: 'Test Guest', phone: '+91 98765 43210', email: 'guest@example.com', gender: 'male', nationality: 'India' }, method: 'upi', policyAccepted: true, ...over,
 });
 
 describe('dates', () => {
@@ -164,13 +164,13 @@ describe('checkout', () => {
     const p = checkoutProblems(input({
       policyAccepted: false, guest: { name: 'A', phone: '12', email: 'bad', gender: 'male', nationality: 'India' },
       rooms: [{ roomTypeId: 'bed-in-4-bed-female-deluxe-dormitory', units: 1, guests: 1 }, { roomTypeId: 'experience-by-xtsy', units: 1, guests: 2 }],
-      breakfastGuests: 5,
+      breakfast: [{ item: 'caviar', qty: 1 }],
     }));
     expect(p.join(' ')).toMatch(/policy/);
     expect(p.join(' ')).toMatch(/Gender mismatch/);
     expect(p.join(' ')).toMatch(/valid email/);
     expect(p.join(' ')).toMatch(/sky view/);
-    expect(p.join(' ')).toMatch(/Breakfast guests/);
+    expect(p.join(' ')).toMatch(/breakfast item is not on the TAB Bistro menu/);
     expect(p.join(' ')).toMatch(/phone/);
     expect(p.join(' ')).toMatch(/full name/);
   });

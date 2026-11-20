@@ -22,7 +22,7 @@ describe('/book before online booking is live', () => {
   });
 
   it('quotes with GST and the 25% advance, same as the live engine', () => {
-    const q = staticQuote({ checkIn: '2026-12-01', checkOut: '2026-12-02', rooms: [{ roomTypeId: 'king-room-with-mountain-view', units: 1, guests: 2 }], breakfastGuests: 0, method: 'upi' });
+    const q = staticQuote({ checkIn: '2026-12-01', checkOut: '2026-12-02', rooms: [{ roomTypeId: 'king-room-with-mountain-view', units: 1, guests: 2 }], breakfast: [], method: 'upi' });
     expect(q.quote.total).toBe(252000);
     expect(q.quote.advance).toBe(63000);
   });

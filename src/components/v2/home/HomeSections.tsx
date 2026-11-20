@@ -126,16 +126,16 @@ export function CampsiteBanner() {
   return (
     <section className={`${PAD} pb-20 pt-10`}>
       <Link to="/stays/campsite-dawki" className="xt-reveal xt-lift grid overflow-hidden rounded-[32px] bg-xt-pine text-[#EAF0EA] hover:text-[#EAF0EA] lg:grid-cols-2">
-        <Photo afterLoad src={first(IMG.campsite)} alt="Tents beside the Umngot river at the Dawki partner campsite" tone="slate" className="aspect-[664/440] lg:aspect-auto lg:min-h-[440px]" />
+        <Photo afterLoad src={first(IMG.campsite)} alt="Tents beside the Umngot river at the Shnonpedeng partner camp" tone="slate" className="aspect-[664/440] lg:aspect-auto lg:min-h-[440px]" />
         <div className="flex flex-col justify-center gap-4 p-7 sm:p-[52px]">
-          <span className="xt-eyebrow text-[15px] text-[#F2B8C2]! sm:text-[18px]">New · Dawki riverside camping, via a trusted partner</span>
-          <h2 className="xt-display m-0 text-[44px] leading-[0.95] sm:text-[64px]">Sleep beside the clearest river.</h2>
+          <span className="xt-eyebrow text-[15px] text-[#F2B8C2]! sm:text-[18px]">New · Shnonpedeng riverside camping, an XTSY franchise partner</span>
+          <h2 className="xt-display m-0 text-[44px] leading-[0.95] sm:text-[64px]">Sleep beside the Umngot.</h2>
           <p className="m-0 text-[16px] leading-relaxed text-[#C8D6CC] sm:text-[17px]">
-            Pre-pitched riverside tents on the Umngot, welcome chai and bonfire nights, a 2-minute walk from the India–Bangladesh border viewpoint. Run by our partner camp; XTSY books it and sorts your ride from New Shillong.
+            Riverside tents at Shnonpedeng with a bonfire in the evening, and breakfast or dinner on request. Run by an XTSY franchise accommodation partner; the XTSY desk takes your booking.
           </p>
           <div className="flex flex-wrap items-end gap-7">
-            <span className="flex flex-col"><span className="font-display text-[44px] leading-none">₹1,000</span><span className="text-[13px] text-[#C8D6CC]">camping + breakfast</span></span>
-            <span className="flex flex-col"><span className="font-display text-[44px] leading-none">₹800</span><span className="text-[13px] text-[#C8D6CC]">camping only</span></span>
+            <span className="flex flex-col"><span className="font-display text-[44px] leading-none">₹1,400</span><span className="text-[13px] text-[#C8D6CC]">full tent for two</span></span>
+            <span className="flex flex-col"><span className="font-display text-[44px] leading-none">₹750</span><span className="text-[13px] text-[#C8D6CC]">one bed space</span></span>
             <span className="ml-auto text-[15px] font-extrabold">Book a tent →</span>
           </div>
         </div>

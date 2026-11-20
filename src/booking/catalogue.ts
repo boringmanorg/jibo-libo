@@ -60,8 +60,7 @@ export const BOOKING_ROOM_TYPES: readonly BookingRoomType[] = [
   },
 ] as const;
 
-/** Breakfast from TAB Bistro, per person per morning, before GST. */
-export const BREAKFAST_RATE: Paise = rupees(280);
+/* Breakfast is chosen item by item from the TAB Bistro menu: see src/data/breakfastMenu.ts. */
 
 export function findRoomType(id: string): BookingRoomType | undefined {
   return BOOKING_ROOM_TYPES.find((r) => r.id === id);

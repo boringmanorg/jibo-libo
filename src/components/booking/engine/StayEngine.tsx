@@ -27,7 +27,10 @@ import { localEnquiryRef } from '@/lib/localEnquiry';
 import { generateBookingMessage, bookingPageSource } from '@/utils/privacyCompliantWhatsApp';
 import { trackBookingStart } from '@/utils/dataLayerService';
 import { openWhatsAppDirectly } from '@/utils/privacyCompliantWhatsApp';
-import { BrandStory, DawkiPanel, LocationPicker, NEW_SHILLONG_PHOTOS, PhotoStrip, Promotions, type BookLocation } from './BookExtras';
+import { BrandStory, LocationPicker, NEW_SHILLONG_PHOTOS, PhotoStrip, Promotions, type BookLocation } from './BookExtras';
+import CampBooking from './CampBooking';
+import BreakfastPicker, { picksToList } from './BreakfastPicker';
+import { breakfastItem } from '@/data/breakfastMenu';
 
 type Cart = Record<string, { units: number; guests: number }>;
 type QuoteData = Awaited<ReturnType<typeof import('@/booking/publicEngine.core').quoteCheckout>>;
@@ -124,9 +127,9 @@ export default function StayEngine({ mode, photos, initialLocation }: { mode: En
           <LocationPicker onPick={pickLocation} />
           <BrandStory />
         </>
-      ) : location === 'dawki' ? (
+      ) : location === 'shnonpedeng' ? (
         <>
-          <DawkiPanel onBack={() => pickLocation(null)} />
+          <CampBooking onBack={() => pickLocation(null)} />
           <Promotions step={1} />
           <BrandStory />
         </>
@@ -356,9 +359,9 @@ function useRoomQuote(result: SearchResult | null, cart: Cart, enquiry: boolean)
   useEffect(() => {
     const rooms = Object.entries(cart).map(([roomTypeId, v]) => ({ roomTypeId, ...v }));
     if (!result || rooms.length === 0) { setQ(null); return; }
-    if (enquiry) { setQ(staticQuote({ checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfastGuests: 0, method: 'upi' })); return; }
+    if (enquiry) { setQ(staticQuote({ checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfast: [], method: 'upi' })); return; }
     let stale = false;
-    quoteFn({ data: { checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfastGuests: 0, method: 'upi' } })
+    quoteFn({ data: { checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfast: [], method: 'upi' } })
       .then((r) => !stale && setQ(r.ok ? r.data : null))
       .catch(() => !stale && setQ(null));
     return () => { stale = true; };
@@ -474,7 +477,8 @@ const inputCls = 'min-h-12 w-full rounded-2xl border border-xt-line bg-white px-
 
 function Details({ mode, result, cart, lines, onBack }: { mode: EngineMode; result: SearchResult; cart: Cart; lines: Line[]; onBack: () => void }) {
   const totalGuests = lines.reduce((s, l) => s + l.guests, 0);
-  const [breakfast, setBreakfast] = useState(0);
+  const [picks, setPicks] = useState<Record<string, number>>({});
+  const breakfast = picksToList(picks);
   const [method, setMethod] = useState<PaymentMethod>('upi');
   const [guest, setGuest] = useState({ name: '', phone: '', email: '', gender: '' as '' | 'female' | 'male' | 'other', nationality: 'India', otherNationality: '' });
   const [policy, setPolicy] = useState(false);
@@ -495,13 +499,13 @@ function Details({ mode, result, cart, lines, onBack }: { mode: EngineMode; resu
   const [sentRef, setSentRef] = useState('');
 
   useEffect(() => {
-    if (enquiry) { setQuote(staticQuote({ checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfastGuests: breakfast, method })); return; }
+    if (enquiry) { setQuote(staticQuote({ checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfast, method })); return; }
     let stale = false;
-    quoteFn({ data: { checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfastGuests: breakfast, method } })
+    quoteFn({ data: { checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfast, method } })
       .then((r) => !stale && (r.ok ? setQuote(r.data) : setMsg(r.error)));
     return () => { stale = true; };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [breakfast, method, result.checkIn, result.checkOut, JSON.stringify(cart)]);
+  }, [JSON.stringify(breakfast), method, result.checkIn, result.checkOut, JSON.stringify(cart)]);
 
   const ready = policy && guest.gender !== '' && (!needsSky || sky) && (femaleBeds <= 1 || female) && (enquiry || !botRequired || botToken !== '');
 
@@ -513,7 +517,7 @@ function Details({ mode, result, cart, lines, onBack }: { mode: EngineMode; resu
     setBusy(true);
     setMsg('');
     const r = await startCheckoutFn({ data: {
-      checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfastGuests: breakfast, method,
+      checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfast, method,
       guest: { name: guest.name, phone: guest.phone, email: guest.email, gender: guest.gender as 'female' | 'male' | 'other', nationality },
       policyAccepted: policy, femaleOnlyAck: female, skyViewAck: sky, botToken: botToken || undefined,
     } }).catch(() => ({ ok: false as const, error: 'The booking service did not respond. Check your connection and try again.' }));
@@ -533,7 +537,7 @@ function Details({ mode, result, cart, lines, onBack }: { mode: EngineMode; resu
     const roomsText = lines.map((l) => `${l.units}× ${l.room!.name} (${formatInr(l.room!.fromRate)}/night plus GST)`).join(', ');
     const extras = [
       `Lead guest: ${guest.gender}, ${nationality}`,
-      breakfast > 0 && `Breakfast for ${breakfast} guest${breakfast > 1 ? 's' : ''}`,
+      breakfast.length > 0 && `TAB Bistro breakfast each morning: ${breakfast.map((b) => `${b.qty} × ${breakfastItem(b.item)?.name ?? b.item}`).join(', ')}`,
       `Advance (${HOSTEL_POLICIES.advancePercent}%) after confirmation: ${formatInr(quote.quote.advance)}`,
       needsSky && 'Understood: sky view depends on the weather and is not guaranteed',
       'Accepted the cancellation and property policies',
@@ -590,10 +594,7 @@ function Details({ mode, result, cart, lines, onBack }: { mode: EngineMode; resu
         </Panel>
 
         <Panel title="Breakfast at TAB Bistro">
-          <p className="mb-3 text-sm text-xt-mute">₹280 per person per morning, plus GST.</p>
-          <select className={cn(inputCls, 'sm:w-64')} value={breakfast} onChange={(e) => setBreakfast(Number(e.target.value))} aria-label="Guests taking breakfast">
-            {Array.from({ length: totalGuests + 1 }, (_, i) => <option key={i} value={i}>{i === 0 ? 'No breakfast' : `${i} guest${i > 1 ? 's' : ''}`}</option>)}
-          </select>
+          <BreakfastPicker picks={picks} onChange={setPicks} mornings={result.nights} />
         </Panel>
 
         {!enquiry && <Panel title="Pay the advance with">
@@ -651,7 +652,7 @@ function Details({ mode, result, cart, lines, onBack }: { mode: EngineMode; resu
             {quote ? (
               <dl className="space-y-2 text-sm">
                 {quote.quote.lines.filter((l) => l.label.startsWith('Breakfast')).map((l) => (
-                  <div key={l.label} className="flex justify-between gap-3 text-xt-fog"><dt>Breakfast</dt><dd>{formatInr(l.taxable)}</dd></div>
+                  <div key={l.label} className="flex justify-between gap-3 text-xt-fog"><dt>{l.label.replace(/^Breakfast: /, 'Breakfast, ')}</dt><dd className="shrink-0">{formatInr(l.taxable)}</dd></div>
                 ))}
                 <div className="flex justify-between gap-3 text-xt-fog"><dt>Stay total</dt><dd>{formatInr(quote.quote.taxable)}</dd></div>
                 <div className="flex justify-between gap-3 text-xt-fog"><dt>GST</dt><dd>{formatInr(quote.quote.gst)}</dd></div>

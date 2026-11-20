@@ -9,11 +9,9 @@
 import { publicRate } from '@/data/publicRates';
 
 export const PANORAMA_STAY_ONLY = publicRate('xtsy-270');
-/** Optional à la carte breakfast from TAB Bistro by XTSY, per person (₹560 for two). */
-export const PANORAMA_BREAKFAST_PER_PERSON = 280;
-/** Breakfast follows TAB Bistro menu pricing: 5% GST is charged on top of ₹280. */
-export const PANORAMA_BREAKFAST_GST_PERCENT = 5;
-export const breakfastGst = (net: number) => Math.round((net * PANORAMA_BREAKFAST_GST_PERCENT) / 100);
+/* Breakfast is no longer a fixed per-person price: guests pick items from the TAB Bistro menu
+   (src/data/breakfastMenu.ts), at menu prices plus 5% GST. */
+const breakfastGst = (net: number) => Math.round((net * 5) / 100);
 
 /** The name guests see for the glass suite. */
 export const PANORAMA_DISPLAY_NAME = 'Experience by XTSY';
@@ -30,10 +28,6 @@ export function displayRoomName(name: string): string {
 /** The enquiry catalogue is static now, so the catalogue rate is the current rate. */
 export function currentRoomRate(_roomId: string, basePrice: number): number {
   return Number(basePrice);
-}
-/** Optional suite breakfast: per person per morning, for up to two guests (₹560 for two). */
-export function panoramaBreakfastTotal(guests: number, nights: number): number {
-  return PANORAMA_BREAKFAST_PER_PERSON * Math.min(Math.max(guests, 1), 2) * Math.max(nights, 1);
 }
 export const PANORAMA_DECORATION = 2500;
 export const PANORAMA_DECORATION_GST = 450;

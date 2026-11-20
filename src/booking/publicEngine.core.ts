@@ -10,6 +10,7 @@
  * so the logic is tested without a live database. Checkout is refused unless launchGate allows
  * live bookings; search works in preview so the owner can review the page first.
  */
+import { breakfastItem, type BreakfastPick } from '@/data/breakfastMenu';
 import { BOOKING_ROOM_TYPES, findRoomType, type BookingRoomType } from './catalogue';
 import { ariBlocksStay, unmappedRoomTypes, type ChannelManager, type ChannelMapping, type NightAri } from './channel/channelManager';
 import { staahNotConnected } from './channel/staah.server';
@@ -254,7 +255,8 @@ export interface CheckoutInput {
   checkIn: string;
   checkOut: string;
   rooms: { roomTypeId: string; units: number; guests: number }[];
-  breakfastGuests: number;
+  /** TAB Bistro breakfast picks, each served every morning. */
+  breakfast: BreakfastPick[];
   /** The lead guest. Gender is checked against female-only dorms; nationality decides Form C. */
   guest: { name: string; phone: string; email: string; gender: 'female' | 'male' | 'other'; nationality: string };
   method: PaymentMethod;
@@ -267,9 +269,9 @@ export interface CheckoutInput {
 }
 
 /** The quote and the advance the guest will pay, shown before they leave for the gateway. */
-export function quoteCheckout(input: Pick<CheckoutInput, 'checkIn' | 'checkOut' | 'rooms' | 'breakfastGuests' | 'method'>, settings: BookingSettings) {
+export function quoteCheckout(input: Pick<CheckoutInput, 'checkIn' | 'checkOut' | 'rooms' | 'breakfast' | 'method'>, settings: BookingSettings) {
   const quote = quoteStay({
-    checkIn: input.checkIn, checkOut: input.checkOut, rooms: input.rooms, breakfastGuests: input.breakfastGuests,
+    checkIn: input.checkIn, checkOut: input.checkOut, rooms: input.rooms, breakfast: input.breakfast,
     gstSlabFor: (id) => settings.gstSlabs[id], breakfastGstSlab: settings.breakfastGst,
   });
   return { quote, advanceCharge: chargeFor(quote.advance, input.method, settings.feeTable) };
@@ -293,8 +295,8 @@ export function checkoutProblems(input: CheckoutInput): string[] {
   }
   if (beds > MAX_BEDS_PER_BOOKING) out.push(`Up to ${MAX_BEDS_PER_BOOKING} beds per online booking; for groups, message the desk.`);
   if (rooms > MAX_ROOMS_PER_BOOKING) out.push(`Up to ${MAX_ROOMS_PER_BOOKING} rooms per online booking; for groups, message the desk.`);
-  const totalGuests = input.rooms.reduce((s, r) => s + r.guests, 0);
-  if (input.breakfastGuests < 0 || input.breakfastGuests > totalGuests) out.push('Breakfast guests cannot exceed guests staying.');
+  if (input.breakfast.length > 30) out.push('Choose up to 30 breakfast items.');
+  for (const b of input.breakfast) if (!breakfastItem(b.item)) out.push('A breakfast item is not on the TAB Bistro menu.');
   if (!/^\+?[0-9 ]{10,15}$/.test(input.guest.phone.trim())) out.push('Enter a valid phone number.');
   if (input.guest.name.trim().length < 2) out.push('Enter the guest’s full name.');
   if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(input.guest.email.trim())) out.push('Enter a valid email for your receipt.');

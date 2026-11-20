@@ -1,5 +1,5 @@
 /**
- * /book extras around the booking engine: where-to-stay picker, the full property gallery, the
+ * /book extras around the booking engine: where-to-stay picker (New Shillong hostel, Shnonpedeng partner camp), the full property gallery, the
  * XTSY brand story and cross-promotions (tours and rentals; different on each step).
  * Copy uses only owner-stated facts and the site's existing tour and rental prices.
  */
@@ -12,10 +12,11 @@ import { ROOM_IMAGES } from '@/config/roomTypes';
 import { SATURDAY_GROUP_TOUR } from '@/data/saturdayGroupTour';
 import { openTripChat } from '@/components/v2/tripChatEvents';
 import { cn } from '@/lib/utils';
+import { CAMP, CAMP_FROM, CAMP_PHOTOS } from '@/data/shnonpedengCamp';
 
 const inr = (n: number) => `₹${n.toLocaleString('en-IN')}`;
 
-export type BookLocation = 'new-shillong' | 'dawki';
+export type BookLocation = 'new-shillong' | 'shnonpedeng';
 
 /** Every XTSY Travellers Hostel photo: property first, then each room's gallery, without repeats. */
 export const NEW_SHILLONG_PHOTOS: { src: string; alt: string }[] = (() => {
@@ -34,8 +35,6 @@ export const NEW_SHILLONG_PHOTOS: { src: string; alt: string }[] = (() => {
   return out;
 })();
 
-export const DAWKI_PHOTOS = IMG.campsite.map((src) => ({ src, alt: 'XTSY Adventure Campsite by the Umngot river, Dawki' }));
-
 const LOCATIONS: { id: BookLocation; place: string; name: string; line: string; photo: string; stays: string }[] = [
   {
     id: 'new-shillong', place: 'New Shillong', name: 'XTSY Travellers Hostel', photo: IMG.property[0] ?? NEW_SHILLONG_PHOTOS[0]?.src,
@@ -43,9 +42,9 @@ const LOCATIONS: { id: BookLocation; place: string; name: string; line: string; 
     stays: 'Dorms from ₹400, rooms from ₹2,400, plus GST',
   },
   {
-    id: 'dawki', place: 'Dawki', name: 'XTSY Adventure Campsite', photo: IMG.campsite[0],
-    line: 'Riverside tents by the Umngot river, with bonfire and kayaking add-ons.',
-    stays: `Camping from ${inr(800)} per person a night`,
+    id: 'shnonpedeng', place: 'Shnonpedeng', name: CAMP.name, photo: CAMP_PHOTOS[3]?.src ?? CAMP_PHOTOS[0]?.src,
+    line: `Riverside tents by the Umngot. ${CAMP.partnerLine}, with breakfast and dinner on request.`,
+    stays: `Tents from ${inr(CAMP_FROM)} a person a night`,
   },
 ];
 
@@ -53,7 +52,7 @@ export function LocationPicker({ onPick }: { onPick: (l: BookLocation) => void }
   return (
     <section className="mx-auto max-w-6xl px-4 pt-8" aria-labelledby="where">
       <h1 id="where" className="xt-display text-[clamp(2.75rem,8vw,5.5rem)] leading-[0.9] text-xt-ink">Where would you like to stay?</h1>
-      <p className="mt-3 max-w-2xl text-base text-xt-mute">Two XTSY stays in Meghalaya. Pick one to see rooms and prices.</p>
+      <p className="mt-3 max-w-2xl text-base text-xt-mute">The XTSY hostel in New Shillong, or riverside camping with an XTSY partner. Pick one to see prices.</p>
       <div className="mt-8 grid gap-5 md:grid-cols-2">
         {LOCATIONS.map((l) => (
           <button key={l.id} type="button" onClick={() => onPick(l.id)}
@@ -199,27 +198,6 @@ export function Promotions({ step }: { step: 1 | 2 }) {
           );
         })}
       </div>
-    </section>
-  );
-}
-
-export function DawkiPanel({ onBack }: { onBack: () => void }) {
-  return (
-    <section className="mx-auto max-w-6xl px-4 pt-8">
-      <button type="button" onClick={onBack} className="mb-4 flex min-h-11 items-center gap-2 text-sm font-semibold text-xt-mute hover:text-xt-ink">← Change location</button>
-      <h1 className="xt-display text-[clamp(3rem,9vw,6rem)] leading-[0.88] text-xt-ink">XTSY Adventure Campsite</h1>
-      <p className="mt-3 text-base text-xt-mute">By the Umngot river, Dawki, Meghalaya</p>
-      <PhotoStrip photos={DAWKI_PHOTOS} />
-      <div className="mt-8 grid gap-5 md:grid-cols-2">
-        {[{ t: 'Only camping', p: 800, l: 'A riverside tent, bonfire evenings.' }, { t: 'Camping + breakfast', p: 1000, l: 'A riverside tent with breakfast the next morning.' }].map((x) => (
-          <div key={x.t} className="rounded-[28px] border border-xt-line bg-[#FBF8F3] p-6">
-            <p className="xt-display text-3xl text-xt-ink">{x.t}</p>
-            <p className="mt-1 text-[15px] text-xt-mute">{x.l}</p>
-            <p className="mt-4"><span className="text-2xl font-extrabold text-xt-ink">{inr(x.p)}</span><span className="text-sm text-xt-mute"> per person a night</span></p>
-          </div>
-        ))}
-      </div>
-      <Link to="/book/campsite" className="mt-6 flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-xt-crimson font-bold text-white sm:w-fit sm:px-8">Check dates for the campsite <ArrowRight className="h-4 w-4" aria-hidden /></Link>
     </section>
   );
 }

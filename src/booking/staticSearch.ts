@@ -3,6 +3,7 @@
  * Same shapes as the live engine (searchStays / quoteCheckout) but from the static catalogue:
  * no database, no availability counts. The desk confirms availability on WhatsApp.
  */
+import type { BreakfastPick } from '@/data/breakfastMenu';
 import { BOOKING_ROOM_TYPES } from './catalogue';
 import { settingsFromRow } from './consoleSettings';
 import { addDays, daysBetween, stayNights, todayInIndia, type IsoDate } from './dates';
@@ -36,10 +37,10 @@ export function staticSearch(checkIn: IsoDate, checkOut: IsoDate, photos: Record
 }
 
 /** Quote with the default console settings (owner's GST slabs and Zoho fee table). */
-export function staticQuote(input: { checkIn: IsoDate; checkOut: IsoDate; rooms: { roomTypeId: string; units: number; guests: number }[]; breakfastGuests: number; method: PaymentMethod }) {
+export function staticQuote(input: { checkIn: IsoDate; checkOut: IsoDate; rooms: { roomTypeId: string; units: number; guests: number }[]; breakfast: BreakfastPick[]; method: PaymentMethod }) {
   const settings = settingsFromRow(null);
   const quote = quoteStay({
-    checkIn: input.checkIn, checkOut: input.checkOut, rooms: input.rooms, breakfastGuests: input.breakfastGuests,
+    checkIn: input.checkIn, checkOut: input.checkOut, rooms: input.rooms, breakfast: input.breakfast,
     gstSlabFor: (id) => settings.gstSlabs[id], breakfastGstSlab: settings.breakfastGst,
   });
   return { quote, advanceCharge: chargeFor(quote.advance, input.method, settings.feeTable) };

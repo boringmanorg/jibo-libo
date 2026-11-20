@@ -14,7 +14,7 @@ import { IMG } from '@/data/v2Images';
 import { PageShell, Btn, Section, H2, FeatureCards, PriceCards, FaqList, PAD } from '@/components/v2/blocks';
 import { Photo, waLink } from '@/components/v2/primitives';
 import { inr, roomPrice } from '@/components/v2/pricing';
-import { PANORAMA_DECORATION, PANORAMA_BREAKFAST_PER_PERSON } from '@/data/panoramaPricing';
+import { PANORAMA_DECORATION } from '@/data/panoramaPricing';
 import { TiltedGridHero } from '@/components/ui/tilted-grid-hero';
 
 // Smaller AVIF copies for the moving strip (~900 px instead of 1280 px WebP), so slow connections load it faster.
@@ -128,7 +128,7 @@ export default function ExperienceByXtsy() {
           <H2 eyebrow="Packages">Choose your night</H2>
           <PriceCards
             cards={[
-              { t: 'Stay only', price: inr(now), hot: true, text: `One night in the glass suite for two, plus GST, without breakfast. Add à la carte breakfast from TAB Bistro by XTSY at ${inr(PANORAMA_BREAKFAST_PER_PERSON)} per person + 5% GST (${inr(PANORAMA_BREAKFAST_PER_PERSON * 2)} + GST for two).${suite.was > now ? ` Regular ${inr(suite.was)}.` : ''}`, cta: <Btn to={wa} kind="outline" className="w-full">Reserve</Btn> },
+              { t: 'Stay only', price: inr(now), hot: true, text: `One night in the glass suite for two, plus GST, without breakfast. Add breakfast when you book: pick dishes and drinks from the TAB Bistro menu, at menu prices plus 5% GST.${suite.was > now ? ` Regular ${inr(suite.was)}.` : ''}`, cta: <Btn to={wa} kind="outline" className="w-full">Reserve</Btn> },
               { t: 'Decoration add-on', price: `+${inr(PANORAMA_DECORATION)}`, text: 'For anniversaries, proposals, honeymoons and birthdays. Book 48 hours ahead.', cta: <Btn to={waLink('Hi XTSY! I want to add the decoration package to my Experience by XTSY stay.', 'experience-by-xtsy')} kind="outline" className="w-full">Add to my stay</Btn> },
             ]}
           />

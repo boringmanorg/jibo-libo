@@ -62,7 +62,7 @@ export const LOCATIONS: Record<string, Location> = {
   },
   'dawki': {
     id: 'dawki',
-    name: 'Dawki',
+    name: 'Shnonpedeng',
     state: 'Meghalaya',
     country: 'India',
     isActive: true,
@@ -130,17 +130,17 @@ export const PROPERTIES: Record<string, Property> = {
   'xtsy-adventure-campsite-dawki': {
     id: 'xtsy-adventure-campsite-dawki',
     slug: 'xtsy-adventure-campsite-dawki',
-    name: 'XTSY Adventure Campsite',
-    shortName: 'Campsite',
+    name: 'Shnonpedeng Riverside Camping',
+    shortName: 'Partner camp',
     locationId: 'dawki',
-    description: 'Riverside camping in Dawki on the crystal-clear Umngot — bonfires, kayaking and starlit skies for 80+ guests.',
+    description: 'Riverside tents on the Umngot at Shnonpedeng, an XTSY franchise accommodation partner. Full tent for two or a single bed space; breakfast and dinner on request.',
     // Hero = suspension-bridge photo (Dawki Campsite 4) per brand reference.
     heroImage: cdn('xtsy-adventure-campsite/Dawki Campsite 4.jpeg'),
     images: DAWKI_CAMPING_IMAGES.slice(0, 8),
-    amenities: ['Riverside Pitches', 'Shared Washrooms', 'Bonfire (chargeable)', 'Water Activities (chargeable)', 'Dinner On Request'],
-    priceRange: { min: 800, max: 1000 },
+    amenities: ['Riverside tents', 'Bonfire', 'Breakfast on request', 'Dinner on request'],
+    priceRange: { min: 750, max: 1400 },
     rating: 4.7,
-    reviewCount: 252, // XTSY Google reviews (campsite is booked via XTSY)
+    reviewCount: 252, // XTSY Google reviews (the partner camp is booked via XTSY)
     category: 'budget',
     roomTypeIds: [], // experience-based; no room cards
     isActive: true,

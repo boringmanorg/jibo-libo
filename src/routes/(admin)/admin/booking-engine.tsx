@@ -101,7 +101,7 @@ function BookingEngine() {
           );
         })}
         <div className="grid gap-2 border-t border-border pt-3 md:grid-cols-[1.2fr_2fr] md:items-center">
-          <Label htmlFor="gst-breakfast">Breakfast (TAB Bistro)<span className="block text-xs font-normal text-muted-foreground">₹280 per person per morning</span></Label>
+          <Label htmlFor="gst-breakfast">Breakfast (TAB Bistro)<span className="block text-xs font-normal text-muted-foreground">Items picked from the TAB Bistro menu</span></Label>
           <SlabPicker id="gst-breakfast" value={form.breakfastGst} onChange={(s) => setForm({ ...form, breakfastGst: s })} />
         </div>
       </CardContent></Card>
