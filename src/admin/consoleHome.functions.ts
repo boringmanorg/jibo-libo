@@ -17,11 +17,13 @@ type Ctx = { supabase: any; userId: string };
 async function loadSheet(ctx: Ctx, from: IsoDate, to: IsoDate) {
   const out: SheetAvailability = {};
   let active = false;
-  const any = await ctx.supabase.from('be_sheet_availability').select('synced_at').order('synced_at', { ascending: false }).limit(1);
-  const syncedAt: string | null = any.data?.[0]?.synced_at ?? null;
-  if (!any.error && syncedAt) active = true;
+  // The snapshot guests see right now: the newest published minute that has started.
+  const cur = await ctx.supabase.from('be_sheet_availability').select('version,synced_at').lte('version', Math.floor(Date.now() / 60_000)).order('version', { ascending: false }).limit(1);
+  const version: number | undefined = cur.data?.[0]?.version;
+  const syncedAt: string | null = cur.data?.[0]?.synced_at ?? null;
+  if (!cur.error && version !== undefined) active = true;
   for (let page = 0; active && page < 10; page++) {
-    const r = await ctx.supabase.from('be_sheet_availability').select('room_type_id,night,free').gte('night', from).lt('night', to).range(page * 1000, page * 1000 + 999);
+    const r = await ctx.supabase.from('be_sheet_availability').select('room_type_id,night,free').eq('version', version).gte('night', from).lt('night', to).order('night').range(page * 1000, page * 1000 + 999);
     if (r.error) break;
     for (const row of r.data ?? []) (out[row.room_type_id] ??= {})[String(row.night).slice(0, 10) as IsoDate] = row.free;
     if ((r.data ?? []).length < 1000) break;
