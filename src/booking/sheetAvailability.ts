@@ -46,6 +46,14 @@ export function aggregateSheet(cells: SheetCell[]): { availability: SheetAvailab
   return { availability, unknownRooms: [...unknown].sort() };
 }
 
-/** Starting count for a room type on a night: the sheet's number when it has one, else the catalogue's. */
+/** True once the sheet has sent anything: from then on the sheet is the only source of availability. */
+export const sheetActive = (sheet: SheetAvailability | undefined) => !!sheet && Object.keys(sheet).length > 0;
+
+/**
+ * Starting count for a room type on a night.
+ * - Sheet connected: the sheet's number; a night it doesn't cover (past its last month, or a blank
+ *   cell) is not bookable, so the website never offers more than the sheet says.
+ * - Sheet never connected: the catalogue's full count, as before.
+ */
 export const sheetCapacity = (sheet: SheetAvailability | undefined, roomTypeId: string, night: IsoDate, catalogueUnits: number) =>
-  sheet?.[roomTypeId]?.[night] ?? catalogueUnits;
+  sheetActive(sheet) ? sheet![roomTypeId]?.[night] ?? 0 : catalogueUnits;

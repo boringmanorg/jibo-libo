@@ -6,7 +6,7 @@ import { BOOKING_ROOM_TYPES } from '@/booking/catalogue';
 
 // The Apps Script's parser, loaded from the .gs file the owner pastes into the sheet.
 const gs = readFileSync('scripts/google-sheet/availability-sync.gs', 'utf8');
-const parseRoomManagement = new Function(`${gs}; return parseRoomManagement;`)() as (v: string[][], today: string, n: number) => { roomNo: string; night: string; free: number }[];
+const parseRoomManagement = new Function(`${gs}; return parseRoomManagement;`)() as (v: string[][], today: string) => { roomNo: string; night: string; free: number }[];
 
 /** One month block laid out like the owner's sheet: [free, note] pairs after "Current AVL" / "MM/DD". */
 function block(label: string, mm: string, days: number, rooms: [string, string, (day: number) => number][]) {
@@ -50,7 +50,7 @@ const FEB = block('February 2027', '02', 28, [
 const OLD = [['February '], ['XTSY Travellers Hostel', 'Room Number', '', 'Current AVL', '02/01'], ['8 Bed Dorm', '8', '', '3', '']];
 
 describe('Google Sheet availability (Room Management tab)', () => {
-  const cells = parseRoomManagement([...OLD, [], ...DEC, ...FEB], '2026-11-21', 240);
+  const cells = parseRoomManagement([...OLD, [], ...DEC, ...FEB], '2026-11-21');
   const { availability, unknownRooms } = aggregateSheet(cells as never);
 
   it('reads the count to the left of each MM/DD date, only from today, never notes', () => {
@@ -86,8 +86,21 @@ describe('Google Sheet availability (Room Management tab)', () => {
     expect(r.rooms.find((x) => x.id === 'bed-in-8-bed-mixed-dormitory')!.freeForStay).toBe(0);
   });
 
-  it('nights the sheet has not sent fall back to the full room count; console blocks still apply on top', () => {
-    expect(sheetCapacity(availability, 'bed-in-8-bed-mixed-dormitory', '2027-12-01', 8)).toBe(8);
+  it('the website follows the sheet calendar: past its last month nothing is bookable; before any sync, full counts', () => {
+    expect(cells.some((c) => c.night === '2027-02-28')).toBe(true);
+    expect(sheetCapacity(availability, 'bed-in-8-bed-mixed-dormitory', '2027-03-01', 8)).toBe(0);
+    expect(staticSearch('2027-03-01', '2027-03-02', {}, [], availability).rooms.every((x) => x.freeForStay === 0)).toBe(true);
+    expect(sheetCapacity({}, 'bed-in-8-bed-mixed-dormitory', '2027-03-01', 8)).toBe(8);
+  });
+
+  it('a new month added to the sheet (March 2027) is picked up with no change on the website', () => {
+    const MAR = block('March 2027', '03', 31, [['Bed in 8 Bed Mixed Dormitory', '8', (d) => (d === 5 ? 3 : 8)]]);
+    const more = aggregateSheet(parseRoomManagement([...DEC, ...FEB, ...MAR], '2026-11-21') as never).availability;
+    expect(more['bed-in-8-bed-mixed-dormitory']['2027-03-05']).toBe(3);
+    expect(more['bed-in-8-bed-mixed-dormitory']['2027-03-31']).toBe(8);
+  });
+
+  it('console blocks still apply on top of the sheet', () => {
     const blocked = staticSearch('2027-02-02', '2027-02-03', {}, [{ unit: '8-bed-mixed-dorm', start: '2027-02-02', end: '2027-02-02', state: 'blocked', units: 3, at: 'a' }], availability);
     expect(blocked.rooms.find((x) => x.id === 'bed-in-8-bed-mixed-dormitory')!.freeForStay).toBe(5);
   });

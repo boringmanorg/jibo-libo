@@ -1,9 +1,15 @@
 /**
+ * @OnlyCurrentDoc
+ *
  * XTSY Room Management → xtsy.one availability sync (Google Apps Script).
  *
+ * READ-ONLY by design: it reads the "Room Management" tab and nothing else (not "Tours", "Rates" or
+ * "Raw Data"), and it never writes to the spreadsheet. @OnlyCurrentDoc limits Google's permission
+ * to this one file.
+ *
  * Paste this whole file into the sheet: Extensions → Apps Script → Code.gs, then follow
- * scripts/google-sheet/README.md. It reads the "Room Management" tab and sends ONLY room numbers,
- * dates and the free count for each date. Guest names and notes never leave the sheet.
+ * scripts/google-sheet/README.md. It sends ONLY room numbers, dates and the free count for each date,
+ * from today to the last month in the sheet. Guest names and notes never leave the sheet.
  *
  * Sheet format it understands (as kept by the owner):
  *   - a month label in column A, e.g. "December 2026";
@@ -13,12 +19,13 @@
  */
 
 var TAB = 'Room Management';
-var WINDOW_NIGHTS = 240;
 var MONTHS = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
 
-/** Pure parser (tested in the website repo): sheet display values → [{ roomNo, night, free }]. */
-function parseRoomManagement(values, todayIso, windowNights) {
-  var end = addDaysIso(todayIso, windowNights);
+/**
+ * Pure parser (tested in the website repo): sheet display values → [{ roomNo, night, free }].
+ * Every night from today to the end of the last month block is included; no cut-off.
+ */
+function parseRoomManagement(values, todayIso) {
   var cells = [];
   var year = null, month = null, dateCols = null;
   for (var r = 0; r < values.length; r++) {
@@ -49,7 +56,7 @@ function parseRoomManagement(values, todayIso, windowNights) {
       var raw = String(row[dateCols[i].col - 1] || '').trim();
       if (!/^\d+$/.test(raw)) continue;
       var night = year + '-' + pad(month) + '-' + pad(dateCols[i].day);
-      if (night < todayIso || night >= end) continue;
+      if (night < todayIso) continue;
       cells.push({ roomNo: roomNo, night: night, free: Number(raw) });
     }
   }
@@ -57,47 +64,61 @@ function parseRoomManagement(values, todayIso, windowNights) {
 }
 
 function pad(n) { return (n < 10 ? '0' : '') + n; }
-function addDaysIso(iso, n) {
-  var d = new Date(iso + 'T00:00:00Z'); d.setUTCDate(d.getUTCDate() + n);
-  return d.toISOString().slice(0, 10);
-}
 function todayIndia() { return Utilities.formatDate(new Date(), 'Asia/Kolkata', 'yyyy-MM-dd'); }
 
-/** Sends the next WINDOW_NIGHTS nights to the website. Runs from the menu, on edit and every 10 minutes. */
+/**
+ * Sends the sheet's availability to the website: on every saved edit, on structural changes
+ * (rows or columns added), every 5 minutes as a backup, and from the XTSY menu.
+ * If an edit arrives while a sync is running, one more sync runs straight after, so the website
+ * always ends on the latest numbers.
+ */
 function syncAvailability() {
+  var props = PropertiesService.getScriptProperties();
   var lock = LockService.getScriptLock();
-  if (!lock.tryLock(20000)) return;
+  if (!lock.tryLock(500)) { props.setProperty('PENDING', '1'); return 'Another sync is running; your change follows straight after it.'; }
+  var msg = '';
   try {
-    var props = PropertiesService.getScriptProperties();
-    var secret = props.getProperty('SHEET_SYNC_SECRET');
-    var site = props.getProperty('SITE_URL') || 'https://www.xtsy.one';
-    if (!secret) throw new Error('Add SHEET_SYNC_SECRET in Project Settings → Script Properties.');
-    var sheet = SpreadsheetApp.getActive().getSheetByName(TAB);
-    if (!sheet) throw new Error('No "' + TAB + '" tab.');
-    var cells = parseRoomManagement(sheet.getDataRange().getDisplayValues(), todayIndia(), WINDOW_NIGHTS);
-    var res = UrlFetchApp.fetch(site + '/api/public/hooks/sheet-availability', {
-      method: 'post', contentType: 'application/json', muteHttpExceptions: true,
-      headers: { Authorization: 'Bearer ' + secret },
-      payload: JSON.stringify({ cells: cells }),
-    });
-    var msg = 'Sent ' + cells.length + ' room-nights → ' + res.getResponseCode() + ' ' + res.getContentText().slice(0, 300);
-    props.setProperty('LAST_SYNC', new Date().toISOString() + ' ' + msg);
-    console.log(msg);
-    return msg;
+    for (var round = 0; round < 3; round++) {
+      props.deleteProperty('PENDING');
+      msg = sendOnce(props);
+      if (props.getProperty('PENDING') !== '1') break;
+    }
   } finally {
     lock.releaseLock();
   }
+  return msg;
 }
 
-/** Edits sync at most once every 30 seconds; the 10-minute timer catches anything in between. */
-function onEditSync() {
-  var cache = CacheService.getScriptCache();
-  if (cache.get('recent')) return;
-  cache.put('recent', '1', 30);
+function sendOnce(props) {
+  var secret = props.getProperty('SHEET_SYNC_SECRET');
+  var site = props.getProperty('SITE_URL') || 'https://www.xtsy.one';
+  if (!secret) throw new Error('Add SHEET_SYNC_SECRET in Project Settings → Script Properties.');
+  // Reads ONLY the Room Management tab, display values (as you see them), never writes.
+  var sheet = SpreadsheetApp.getActive().getSheetByName(TAB);
+  if (!sheet) throw new Error('No "' + TAB + '" tab.');
+  var today = todayIndia();
+  var cells = parseRoomManagement(sheet.getDataRange().getDisplayValues(), today);
+  var res = UrlFetchApp.fetch(site + '/api/public/hooks/sheet-availability', {
+    method: 'post', contentType: 'application/json', muteHttpExceptions: true,
+    headers: { Authorization: 'Bearer ' + secret },
+    payload: JSON.stringify({ from: today, cells: cells }),
+  });
+  var msg = 'Sent ' + cells.length + ' room-nights → ' + res.getResponseCode() + ' ' + res.getContentText().slice(0, 300);
+  props.setProperty('LAST_SYNC', new Date().toISOString() + ' ' + msg);
+  console.log(msg);
+  return msg;
+}
+
+/** Installable on-edit trigger: syncs straight away when a cell on the Room Management tab is saved. */
+function onSheetEdit(e) {
+  if (e && e.range && e.range.getSheet().getName() !== TAB) return; // edits on other tabs are ignored
   syncAvailability();
 }
 
-/** Adds an "XTSY" menu to the sheet. */
+/** Installable on-change trigger: rows or columns added or removed, pasted blocks, a new month. */
+function onSheetChange() { syncAvailability(); }
+
+/** Adds an "XTSY" menu to the sheet (menus are not edits; nothing in the sheet changes). */
 function onOpen() {
   SpreadsheetApp.getUi().createMenu('XTSY')
     .addItem('Send availability to xtsy.one now', 'syncNowFromMenu')
@@ -105,12 +126,14 @@ function onOpen() {
     .addToUi();
 }
 
-function syncNowFromMenu() { SpreadsheetApp.getUi().alert(syncAvailability() || 'Another sync is running; try again in a moment.'); }
+function syncNowFromMenu() { SpreadsheetApp.getUi().alert(syncAvailability()); }
 
-/** Run once: sync on every edit (throttled) and every 10 minutes. */
+/** Run once: sync on every saved edit, on structural changes, and every 5 minutes as a backup. */
 function setUpTriggers() {
   ScriptApp.getProjectTriggers().forEach(function (t) { ScriptApp.deleteTrigger(t); });
-  ScriptApp.newTrigger('onEditSync').forSpreadsheet(SpreadsheetApp.getActive()).onEdit().create();
-  ScriptApp.newTrigger('syncAvailability').timeBased().everyMinutes(10).create();
-  SpreadsheetApp.getUi().alert('Automatic sync is on: after edits and every 10 minutes.');
+  var ss = SpreadsheetApp.getActive();
+  ScriptApp.newTrigger('onSheetEdit').forSpreadsheet(ss).onEdit().create();
+  ScriptApp.newTrigger('onSheetChange').forSpreadsheet(ss).onChange().create();
+  ScriptApp.newTrigger('syncAvailability').timeBased().everyMinutes(5).create();
+  SpreadsheetApp.getUi().alert('Automatic sync is on: every saved edit, plus every 5 minutes as a backup. ' + syncAvailability());
 }

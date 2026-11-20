@@ -112,17 +112,13 @@ export async function bookPageData(d: EngineDeps): Promise<{ live: boolean; phot
   return { live: status.live, photos: Object.fromEntries(photos), closures, sheet };
 }
 
-/** Nights ahead the booking page reads from the Google Sheet. */
-export const SHEET_WINDOW_NIGHTS = 240;
-
-/** Date-wise availability the owner's Google Sheet last sent, from today for SHEET_WINDOW_NIGHTS nights. */
+/** Date-wise availability the owner's Google Sheet last sent, from today to its last month. */
 export async function loadSheetAvailability(d: EngineDeps): Promise<SheetAvailability> {
   if (!d.db) return {};
   const from = todayInIndia(d.now);
-  const to = addDays(from, SHEET_WINDOW_NIGHTS);
   const out: SheetAvailability = {};
-  for (let page = 0; page < 10; page++) {
-    const r = await d.db.from('be_sheet_availability').select('room_type_id,night,free').gte('night', from).lt('night', to).order('night').range(page * 1000, page * 1000 + 999);
+  for (let page = 0; page < 20; page++) {
+    const r = await d.db.from('be_sheet_availability').select('room_type_id,night,free').gte('night', from).order('night').range(page * 1000, page * 1000 + 999);
     if (r.error) return out;
     for (const row of (r.data ?? []) as { room_type_id: string; night: string; free: number }[]) (out[row.room_type_id] ??= {})[row.night.slice(0, 10) as IsoDate] = row.free;
     if ((r.data ?? []).length < 1000) break;

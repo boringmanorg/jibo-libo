@@ -1,4 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useRouter } from "@tanstack/react-router";
+import { useEffect } from "react";
 import StayEngine from "@/components/booking/engine/StayEngine";
 import { PageShell } from "@/components/v2/blocks";
 import { z } from "zod";
@@ -32,6 +33,16 @@ export const Route = createFileRoute("/(stays)/book/")({
 
 function BookPage() {
   const { live, photos, closures, sheet } = Route.useLoaderData();
+  // Keep availability current while the page is open: refresh when the guest comes back to the tab
+  // and every minute while it is visible, so a change saved in the Google Sheet shows without a reload.
+  const router = useRouter();
+  useEffect(() => {
+    const refresh = () => { if (document.visibilityState === 'visible') void router.invalidate(); };
+    const timer = window.setInterval(refresh, 60_000);
+    window.addEventListener('focus', refresh);
+    document.addEventListener('visibilitychange', refresh);
+    return () => { window.clearInterval(timer); window.removeEventListener('focus', refresh); document.removeEventListener('visibilitychange', refresh); };
+  }, [router]);
   const { location } = Route.useSearch();
   // Site header (logo, menu) and footer around the booking page; the page has its own bottom bar.
   return (

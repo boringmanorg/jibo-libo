@@ -1,8 +1,12 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 const upserts: unknown[][] = [];
+const deletes: string[] = [];
 vi.mock('@/admin/serviceClient.server', () => ({
-  getServiceClient: () => ({ from: () => ({ upsert: async (rows: unknown[]) => { upserts.push(rows); return { error: null }; } }) }),
+  getServiceClient: () => ({ from: () => ({
+    upsert: async (rows: unknown[]) => { upserts.push(rows); return { error: null }; },
+    delete: () => ({ gte: (_c: string, from: string) => ({ lt: async () => { deletes.push(from); return { error: null, count: 2 }; } }) }),
+  }) }),
 }));
 
 const { handleSheetAvailability } = await import('@/booking/sheetSync.server');
@@ -10,7 +14,7 @@ const SIGN = 'test-sheet-sync-value';
 const req = (body: unknown, auth = `Bearer ${SIGN}`) => new Request('https://x/api/public/hooks/sheet-availability', { method: 'POST', headers: { authorization: auth, 'content-type': 'application/json' }, body: JSON.stringify(body) });
 
 describe('POST /api/public/hooks/sheet-availability', () => {
-  beforeEach(() => { upserts.length = 0; process.env['SHEET_SYNC_SECRET'] = SIGN; });
+  beforeEach(() => { upserts.length = 0; deletes.length = 0; process.env['SHEET_SYNC_SECRET'] = SIGN; });
 
   it('refuses without the shared secret', async () => {
     expect((await handleSheetAvailability(req({ cells: [] }, 'Bearer nope'))).status).toBe(401);
@@ -32,5 +36,13 @@ describe('POST /api/public/hooks/sheet-availability', () => {
     const out = await res.json();
     expect(out.unknownRooms).toEqual(['99']);
     expect(upserts.flat()).toMatchObject([{ room_type_id: 'bed-in-6-bed-standard-dormitory', night: '2027-02-02', free: 14 }]);
+  });
+
+  it('removes nights the sheet no longer sends, from today on, but never wipes on an empty send', async () => {
+    const ok = await (await handleSheetAvailability(req({ from: '2026-11-21', cells: [{ roomNo: '8', night: '2026-12-13', free: 0 }] }))).json();
+    expect([ok.removed, deletes]).toEqual([2, ['2026-11-21']]);
+    deletes.length = 0;
+    const empty = await (await handleSheetAvailability(req({ from: '2026-11-21', cells: [] }))).json();
+    expect([empty.status, deletes]).toEqual(['nothing-to-save', []]);
   });
 });
