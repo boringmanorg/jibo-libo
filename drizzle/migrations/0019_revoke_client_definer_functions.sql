@@ -1,0 +1,10 @@
+REVOKE EXECUTE ON FUNCTION public.create_whatsapp_enquiry(text,text,text,date,date,int4,text[],int4[],bool,bool,numeric,numeric,numeric,text) FROM PUBLIC, anon, authenticated;
+REVOKE EXECUTE ON FUNCTION public.create_booking_secure(text,text,text,date,date,int4,text,text,int4,int4,int4,int4,text,text,text,text,text,text) FROM PUBLIC, anon, authenticated;
+REVOKE EXECUTE ON FUNCTION public.create_enquiry(text,text,text,text,text,text,text,int4,int4,numeric,numeric,numeric,numeric,numeric,text,text,text,text,text,uuid) FROM PUBLIC, anon, authenticated;
+REVOKE EXECUTE ON FUNCTION public.get_single_booking_secure(text) FROM PUBLIC, anon, authenticated;
+REVOKE EXECUTE ON FUNCTION public.increment_happy_guests() FROM PUBLIC, anon, authenticated;
+GRANT EXECUTE ON FUNCTION public.create_whatsapp_enquiry(text,text,text,date,date,int4,text[],int4[],bool,bool,numeric,numeric,numeric,text) TO service_role;
+GRANT EXECUTE ON FUNCTION public.create_booking_secure(text,text,text,date,date,int4,text,text,int4,int4,int4,int4,text,text,text,text,text,text) TO service_role;
+GRANT EXECUTE ON FUNCTION public.create_enquiry(text,text,text,text,text,text,text,int4,int4,numeric,numeric,numeric,numeric,numeric,text,text,text,text,text,uuid) TO service_role;
+GRANT EXECUTE ON FUNCTION public.get_single_booking_secure(text) TO service_role;
+GRANT EXECUTE ON FUNCTION public.increment_happy_guests() TO service_role;
