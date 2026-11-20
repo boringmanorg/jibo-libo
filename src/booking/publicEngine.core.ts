@@ -25,6 +25,7 @@ import { financialYear, invoiceNumber } from './invoiceNumber';
 import { HOSTEL_POLICIES } from '@/data/hostelPolicies';
 import type { Paise } from './money';
 import { isIndian } from './guestRules';
+import { botCheckConfigured, verifyBotCheck } from './botCheck';
 
 type Db = any;
 export interface EngineDeps {
@@ -33,6 +34,8 @@ export interface EngineDeps {
   now: Date;
   channel?: ChannelManager;
   gateway?: PaymentGateway | null;
+  /** For the bot check; defaults to global fetch. */
+  fetch?: (input: string, init?: RequestInit) => Promise<Response>;
 }
 
 export class EngineError extends Error {}
@@ -76,7 +79,7 @@ interface EngineState {
 async function loadState(d: EngineDeps): Promise<EngineState> {
   const fallback = settingsFromRow(null);
   const base: LaunchState = {
-    switchedOn: false, gatewayConfigured: gatewayOf(d) !== null, channelConnected: channelOf(d).connected,
+    switchedOn: false, gatewayConfigured: gatewayOf(d) !== null, botProtection: botCheckConfigured(d.env), channelConnected: channelOf(d).connected,
     unmappedRoomTypes: BOOKING_ROOM_TYPES.map((r) => r.id), feeTableProblems: [], databaseReady: false,
   };
   if (!d.db) return { dbReady: false, settings: fallback, launch: base, live: false };
@@ -129,6 +132,28 @@ async function loadLoads(d: EngineDeps, from: IsoDate, to: IsoDate, channelSynce
   return { confirmed, holds };
 }
 
+export const ROOM_PHOTO_BUCKET = 'room-photos';
+
+/** Public URL of an uploaded room photo. */
+export function roomPhotoUrl(supabaseUrl: string, path: string): string {
+  return `${supabaseUrl.replace(/\/$/, '')}/storage/v1/object/public/${ROOM_PHOTO_BUCKET}/${path.split('/').map(encodeURIComponent).join('/')}`;
+}
+
+/** Console-managed photos by room type. Any failure falls back to the built-in galleries. */
+async function loadRoomPhotos(d: EngineDeps): Promise<Map<string, { src: string; alt: string }[]>> {
+  const out = new Map<string, { src: string; alt: string }[]>();
+  const base = d.env['SUPABASE_URL'];
+  if (!d.db || !base) return out;
+  const r = await d.db.from('be_room_photos').select('room_type_id,path,alt,sort').order('sort', { ascending: true });
+  if (r.error) return out;
+  for (const row of r.data ?? []) {
+    const list = out.get(row.room_type_id) ?? [];
+    list.push({ src: roomPhotoUrl(base, row.path), alt: row.alt ?? '' });
+    out.set(row.room_type_id, list);
+  }
+  return out;
+}
+
 export interface NightCell { night: IsoDate; free: number; rate: Paise; closed: boolean }
 export interface RoomResult {
   id: string;
@@ -142,6 +167,8 @@ export interface RoomResult {
   /** Units free on every night of the stay; 0 means sold out for these dates. */
   freeForStay: number;
   strip: NightCell[];
+  /** Photos the admin uploaded in the console, in order; empty means use the built-in gallery. */
+  photos: { src: string; alt: string }[];
 }
 export interface SearchResult {
   live: boolean;
@@ -175,6 +202,7 @@ export async function searchStays(d: EngineDeps, q: { checkIn: string; checkOut:
   const channel = channelOf(d);
   const ari: NightAri[] = channel.connected ? await channel.getAri(BOOKING_ROOM_TYPES.map((r) => r.id), checkIn, rangeEnd) : [];
   const loads = await loadLoads(d, checkIn, rangeEnd, channel.connected);
+  const photos = await loadRoomPhotos(d);
   const ariFor = (id: string, night: IsoDate) => ari.find((a) => a.roomTypeId === id && a.night === night);
 
   const rooms: RoomResult[] = BOOKING_ROOM_TYPES.map((room) => {
@@ -204,6 +232,7 @@ export async function searchStays(d: EngineDeps, q: { checkIn: string; checkOut:
       fromRate: Math.min(...rates),
       freeForStay: stay.length ? Math.min(...stay.map((n) => n.free)) : 0,
       strip,
+      photos: photos.get(room.id) ?? [],
     };
   });
   const open = rooms.filter((r) => r.freeForStay > 0);
@@ -226,6 +255,8 @@ export interface CheckoutInput {
   policyAccepted: boolean;
   /** With more than one female-dorm bed: the other guests in it are female too. */
   femaleOnlyAck?: boolean;
+  /** Cloudflare Turnstile token from the browser. */
+  botToken?: string;
   skyViewAck?: boolean;
 }
 
@@ -273,12 +304,13 @@ async function freeForStay(d: EngineDeps, roomTypeId: string, checkIn: IsoDate, 
   return res.rooms.find((r) => r.id === roomTypeId)?.freeForStay ?? 0;
 }
 
-export async function startCheckout(d: EngineDeps, input: CheckoutInput, origin: string): Promise<{ reference: string; redirectUrl: string }> {
+export async function startCheckout(d: EngineDeps, input: CheckoutInput, origin: string, remoteIp?: string): Promise<{ reference: string; redirectUrl: string }> {
   const { checkIn, checkOut } = validateDates(input.checkIn, input.checkOut, d.now);
   const problems = checkoutProblems(input);
   if (problems.length) throw new EngineError(problems.join(' '));
   const state = await loadState(d);
   if (!state.live) throw new EngineError(`Online booking is not open yet. ${launchBlockers(state.launch).join(' ')}`.trim());
+  if (!(await verifyBotCheck(d.env, input.botToken, remoteIp, d.fetch))) throw new EngineError('Please complete the “I am human” check and try again.');
   const gateway = gatewayOf(d);
   if (!gateway || !d.db) throw new EngineError('Online payment is not available right now.');
   const db = d.db;

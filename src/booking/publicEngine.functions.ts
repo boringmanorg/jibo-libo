@@ -72,10 +72,13 @@ export const startCheckoutFn = createServerFn({ method: 'POST' })
       nationality: z.string().trim().max(60),
     }),
     policyAccepted: z.boolean(), femaleOnlyAck: z.boolean().optional(), skyViewAck: z.boolean().optional(),
+    botToken: z.string().max(2048).optional(),
   }))
   .handler(async ({ data }) => {
     const core = await import('./publicEngine.core');
-    return asResult(async () => core.startCheckout(await deps(), data, trustedOrigin(getRequest()?.url)));
+    const req = getRequest();
+    const ip = req?.headers.get('cf-connecting-ip') ?? req?.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? undefined;
+    return asResult(async () => core.startCheckout(await deps(), data, trustedOrigin(req?.url), ip));
   });
 
 export const getPublicBookingFn = createServerFn({ method: 'GET' })
@@ -84,3 +87,9 @@ export const getPublicBookingFn = createServerFn({ method: 'GET' })
     const core = await import('./publicEngine.core');
     return core.publicBooking(await deps(), data.ref.toUpperCase());
   });
+
+/** Public half of the bot check, or null when it is not set up. */
+export const getBotCheckConfigFn = createServerFn({ method: 'GET' }).handler(async () => {
+  const { botCheckSiteKey } = await import('./botCheck');
+  return { siteKey: botCheckSiteKey(process.env) };
+});

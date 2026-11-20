@@ -62,12 +62,13 @@ describe('console before the database exists', () => {
 });
 
 describe('launch switch', () => {
-  it('lists today\'s blockers: STAAH, mapping, gateway keys and the switch', async () => {
+  it('lists today\'s blockers: STAAH, mapping, gateway keys, bot check and the switch', async () => {
     const s = await core.loadStatus(deps({ be_settings: [{ id: 1 }], be_room_mapping: [] }));
     expect(s.dbReady && s.blockers).toEqual([
       'STAAH is not connected.',
       `Room types not mapped to STAAH: ${BOOKING_ROOM_TYPES.map((r) => r.id).join(', ')}.`,
       'Payment gateway keys are not saved.',
+      'Bot protection keys (Cloudflare Turnstile) are not saved.',
       'Live booking is switched off in the admin console.',
     ]);
   });
@@ -79,7 +80,7 @@ describe('launch switch', () => {
   });
   it('switches on when everything is ready, and off at any time', async () => {
     const t = { be_settings: [{ id: 1 }], be_room_mapping: mappedAll, be_audit_log: [] as any[] };
-    const d = deps(t, { gateway: fakeGateway, channel: connected });
+    const d = deps(t, { gateway: fakeGateway, channel: connected, env: { TURNSTILE_SITE_KEY: 'site', TURNSTILE_SECRET_KEY: 'test-value' } });
     await core.setLaunchSwitch(d, true);
     expect(t.be_settings[0].engine_switched_on).toBe(true);
     await core.setLaunchSwitch(deps(t), false);

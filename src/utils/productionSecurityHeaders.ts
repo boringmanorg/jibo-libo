@@ -169,3 +169,17 @@ export function withAdminConnectSources(csp: string): string {
     return `connect-src ${[list.trim(), ...extra].join(' ')}`;
   });
 }
+
+/** Cloudflare Turnstile (bot check on checkout) needs its script, frame and API on booking pages. */
+export const BOT_CHECK_ORIGIN = 'https://challenges.cloudflare.com';
+
+export function isBookingPath(pathname: string): boolean {
+  return pathname === '/book' || pathname.startsWith('/book/');
+}
+
+export function withBotCheckSources(csp: string): string {
+  const add = (directive: string, policy: string) =>
+    policy.replace(new RegExp(`${directive} ([^;]*)`), (_m, list: string) =>
+      list.split(/\s+/).includes(BOT_CHECK_ORIGIN) ? `${directive} ${list}` : `${directive} ${list.trim()} ${BOT_CHECK_ORIGIN}`);
+  return ['script-src', 'frame-src', 'connect-src'].reduce((acc, d) => add(d, acc), csp);
+}
