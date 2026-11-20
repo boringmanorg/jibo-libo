@@ -17,7 +17,7 @@ export const HOSTEL_SCHEMA: Record<string, unknown> = {
     "Backpacker hostel in New Shillong Township, Shillong, Meghalaya (near IIM Shillong and NIFT Shillong): mixed and women-only dorms, King Double rooms, Experience by XTSY glass suite, TAB Bistro restaurant on site, pet-friendly (cats and birds; dogs by breed and size), 24/7 arrival support.",
   url: "https://xtsy.one",
   image: [
-    "https://xtsy.one/img/o/xtsy-property-images-8-1920.webp",
+    "https://xtsy.one/img/o/xtsy-hostel-front-1280.webp",
     "https://xtsy.one/img/o/xtsy-property-images-6-1920.webp",
     "https://xtsy.one/img/o/xtsy-6-bed-mixed-dormitory-1-1280.webp",
   ],

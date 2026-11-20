@@ -5,6 +5,7 @@
  * Uses the image CDN only (no API calls).
  */
 import fs from 'fs';
+import { spawnSync } from 'child_process';
 import sharp from 'sharp';
 
 type Cand = { n: number; id: number; alt: string; url: string; photographer: string; photographerUrl: string; src: string };
@@ -14,6 +15,15 @@ const OUT = 'public/img/px';
 const WIDTHS = [640, 1280];
 
 async function main() {
+  // Pending site-photo picks (Commons + Pexels, scripts/images/site-photos.ts) are applied instead:
+  // the reviewed-photo workflow on main runs this file, and only workflows on main can be dispatched.
+  const sitePicks = fs.existsSync('scripts/images/site-picks.json') ? JSON.parse(fs.readFileSync('scripts/images/site-picks.json', 'utf8')) : {};
+  if (Object.keys(sitePicks).length) {
+    const r = spawnSync('bun', ['scripts/images/site-photos.ts'], { stdio: 'inherit', env: { ...process.env, MODE: 'apply' } });
+    if (r.status !== 0) process.exit(r.status ?? 1);
+    spawnSync('git', ['add', 'public/img/sp', 'src/data/sitePhotos.ts'], { stdio: 'inherit' });
+    return;
+  }
   fs.mkdirSync(OUT, { recursive: true });
   const used = new Set<number>();
   const manifest: Record<string, unknown> = {};

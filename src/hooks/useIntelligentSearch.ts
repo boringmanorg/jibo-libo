@@ -1,19 +1,13 @@
 /**
- * useIntelligentSearch — Fuse.js powered fuzzy search hook
- * Searches the centralized XTSY index with synonym expansion and categorized results.
- *
- * v3 (2026-07): Fuse.js and the search index are now dynamically imported on the
- * first search call so the homepage bundle no longer pays for them upfront. This
- * shaves ~40 KB gz off the initial JS graph.
+ * useIntelligentSearch — instant search as the guest types.
+ * Every page on the site (curated entries plus public/search-pages.json) is searched on each
+ * keystroke with a small token index (src/lib/search/quickSearch.ts); results are grouped by
+ * section, best section first. The index loads once, when the search opens.
  */
 
-import { useState, useCallback, useRef, useEffect } from 'react';
-import type {
-  SearchEntry,
-  SearchCategory,
-} from '@/data/searchIndex';
-
-type FuseType = import('fuse.js').default<SearchEntry>;
+import { useState, useCallback, useEffect, useMemo, useDeferredValue } from 'react';
+import type { SearchEntry, SearchCategory } from '@/data/searchIndex';
+import { loadQuickIndex, quickSearch, type QuickIndex } from '@/lib/search/quickSearch';
 
 // ---- Intent routing: known SEO slugs we want to surface as the top hit
 const INTENT_ROUTES: Array<{ match: RegExp; entry: Omit<SearchEntry, 'id'> }> = [
@@ -100,131 +94,46 @@ export interface CategorizedResults {
   items: SearchEntry[];
 }
 
-const FUSE_OPTIONS = {
-  keys: [
-    { name: 'title' as const, weight: 0.35 },
-    { name: 'keywords' as const, weight: 0.3 },
-    { name: 'description' as const, weight: 0.15 },
-    { name: 'location' as const, weight: 0.1 },
-    { name: 'synonyms' as const, weight: 0.1 },
-  ],
-  threshold: 0.35,
-  distance: 120,
-  includeScore: true,
-  minMatchCharLength: 2,
-  ignoreLocation: true,
-};
-
-// Module-level singletons — resolved lazily, shared across hook instances.
-let fusePromise: Promise<{ fuse: FuseType; expand: (q: string) => string; order: readonly SearchCategory[] }> | null = null;
-const getFuse = () => {
-  if (!fusePromise) {
-    fusePromise = Promise.all([
-      import('fuse.js'),
-      import('@/data/searchIndex'),
-    ]).then(([{ default: Fuse }, mod]) => ({
-      fuse: new Fuse(mod.getSearchIndex(), FUSE_OPTIONS) as FuseType,
-      expand: mod.expandWithSynonyms,
-      order: mod.CATEGORY_ORDER,
-    }));
-  }
-  return fusePromise;
-};
-
-export function useIntelligentSearch() {
-  const [query, setQuery] = useState('');
-  const [results, setResults] = useState<SearchEntry[]>([]);
-  const [categorizedResults, setCategorizedResults] = useState<CategorizedResults[]>([]);
-  const [isSearching, setIsSearching] = useState(false);
-  const debounceRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
-
-  const search = useCallback(
-    async (q: string) => {
-      if (!q.trim() || q.trim().length < 2) {
-        setResults([]);
-        setCategorizedResults([]);
-        setIsSearching(false);
-        return;
-      }
-
-      setIsSearching(true);
-
-      const intentHits = resolveIntent(q);
-      const { fuse, expand, order } = await getFuse();
-      const expanded = expand(q);
-      const fuseResults = fuse.search(expanded, { limit: 20 });
-      const fuzzyItems = fuseResults.map((r) => r.item);
-
-      const propertyItems = fuzzyItems.filter(
-        (i) => i.id.startsWith('property-') || i.id === 'exp-dawki-campsite',
-      );
-      const otherItems = fuzzyItems.filter(
-        (i) => !i.id.startsWith('property-') && i.id !== 'exp-dawki-campsite',
-      );
-
-      const seen = new Set<string>();
-      const items: SearchEntry[] = [];
-      [...intentHits, ...propertyItems, ...otherItems].forEach((it) => {
-        if (!seen.has(it.url)) {
-          seen.add(it.url);
-          items.push(it);
-        }
-      });
-
-      const grouped: Record<SearchCategory, SearchEntry[]> = {
-        stays: [],
-        experiences: [],
-        locations: [],
-        tours: [],
-        pages: [],
-      };
-      items.forEach((item) => {
-        grouped[item.category].push(item);
-      });
-
-      const categorized = order
-        .filter((cat) => grouped[cat].length > 0)
-        .map((cat) => ({ category: cat, items: grouped[cat] }));
-
-      setResults(items);
-      setCategorizedResults(categorized);
-      setIsSearching(false);
-    },
-    [],
-  );
-
-  const debouncedSearch = useCallback(
-    (q: string) => {
-      setQuery(q);
-      if (debounceRef.current) clearTimeout(debounceRef.current);
-      debounceRef.current = setTimeout(() => search(q), 120);
-    },
-    [search],
-  );
-
+export function useIntelligentSearch(limit = 40) {
+  const [query, setQueryState] = useState('');
+  const [index, setIndex] = useState<QuickIndex | null>(null);
   useEffect(() => {
-    return () => {
-      if (debounceRef.current) clearTimeout(debounceRef.current);
-    };
+    let live = true;
+    loadQuickIndex().then((i) => { if (live) setIndex(i); }).catch(() => {});
+    return () => { live = false; };
   }, []);
 
-  const totalResults = results.length;
-  const hasResults = totalResults > 0;
-  const isEmptyQuery = !query.trim() || query.trim().length < 2;
+  // Typing stays responsive even on slow phones: React renders results at lower priority.
+  const deferred = useDeferredValue(query);
+  const { results, categorizedResults } = useMemo(() => {
+    const q = deferred.trim();
+    if (q.length < 2 || !index) return { results: [] as SearchEntry[], categorizedResults: [] as CategorizedResults[] };
+    const seen = new Set<string>();
+    const items: SearchEntry[] = [];
+    [...resolveIntent(q), ...quickSearch(index, q, limit).map((h) => h.entry)].forEach((it) => {
+      if (!seen.has(it.url)) { seen.add(it.url); items.push(it); }
+    });
+    // Sections appear in the order of their best match, so the top hit is always first.
+    const groups = new Map<SearchCategory, SearchEntry[]>();
+    items.forEach((it) => { const g = groups.get(it.category) ?? []; g.push(it); groups.set(it.category, g); });
+    const categorized = [...groups].map(([category, list]) => ({ category, items: list }));
+    return { results: categorized.flatMap((c) => c.items), categorizedResults: categorized };
+  }, [deferred, index, limit]);
+
+  const isEmptyQuery = query.trim().length < 2;
+  const setQuery = useCallback((q: string) => setQueryState(q), []);
+  const clearSearch = useCallback(() => setQueryState(''), []);
 
   return {
     query,
-    setQuery: debouncedSearch,
+    setQuery,
     results,
     categorizedResults,
-    isSearching,
-    totalResults,
-    hasResults,
+    isSearching: !isEmptyQuery && (!index || deferred !== query),
+    isReady: !!index,
+    totalResults: results.length,
+    hasResults: results.length > 0,
     isEmptyQuery,
-    clearSearch: () => {
-      setQuery('');
-      setResults([]);
-      setCategorizedResults([]);
-    },
+    clearSearch,
   };
 }

@@ -70,7 +70,7 @@ export default function HomeHero() {
     try {
       sessionStorage.setItem('xtsy_search_params', JSON.stringify({ location: 'shillong', checkIn, checkOut, guests: g }));
     } catch { /* storage may be blocked */ }
-    navigate(`/book/select?${new URLSearchParams({ location: 'shillong', checkIn, checkOut, guests: String(g) }).toString()}`);
+    navigate(`/book?${new URLSearchParams({ location: 'new-shillong', checkIn, checkOut }).toString()}`);
   };
 
   const hero = responsive(HERO_IMAGE.src);

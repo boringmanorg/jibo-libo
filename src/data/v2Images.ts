@@ -59,14 +59,15 @@ export const COVERS = {
 
 export const HERO_IMAGE = {
   src: COVERS.home,
-  alt: 'XTSY Travellers Hostel among the pines of New Shillong Township',
-  position: '50% 40%',
-  /** Phones: a portrait crop of the same framing (about half the bytes of the landscape 1280). */
+  // Owner's photo (21 Nov 2026): the hostel front with the bamboo entrance and XTSY sign, New Shillong.
+  alt: 'XTSY Travellers Hostel entrance with its bamboo walkway and lit XTSY sign, New Shillong Township',
+  position: '60% 50%',
+  /** Phones: a portrait crop of the entrance and sign. */
   mobile: {
     /** AVIF first (about 35% smaller); WebP for browsers without AVIF. */
-    avifSrc: '/img/o/xtsy-property-images-8-portrait-828.avif',
-    avifSrcSet: '/img/o/xtsy-property-images-8-portrait-640.avif 640w, /img/o/xtsy-property-images-8-portrait-828.avif 828w, /img/o/xtsy-property-images-8-portrait-1080.avif 1080w',
-    src: '/img/o/xtsy-property-images-8-portrait-828.webp',
-    srcSet: '/img/o/xtsy-property-images-8-portrait-828.webp 828w, /img/o/xtsy-property-images-8-portrait-1080.webp 1080w',
+    avifSrc: '/img/o/xtsy-hostel-front-portrait-828.avif',
+    avifSrcSet: '/img/o/xtsy-hostel-front-portrait-640.avif 640w, /img/o/xtsy-hostel-front-portrait-828.avif 828w',
+    src: '/img/o/xtsy-hostel-front-portrait-828.webp',
+    srcSet: '/img/o/xtsy-hostel-front-portrait-640.webp 640w, /img/o/xtsy-hostel-front-portrait-828.webp 828w',
   },
 };

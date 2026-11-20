@@ -68,9 +68,10 @@ function todayIndia() { return Utilities.formatDate(new Date(), 'Asia/Kolkata', 
 
 /**
  * Sends the sheet's availability to the website: on every saved edit, on structural changes
- * (rows or columns added), every 5 minutes as a backup, and from the XTSY menu.
+ * (rows or columns added), every minute as a backup, and from the XTSY menu.
  * If an edit arrives while a sync is running, one more sync runs straight after, so the website
- * always ends on the latest numbers.
+ * always ends on the latest numbers. The website publishes each sync at the next minute boundary,
+ * when every open booking page switches to it together.
  */
 function syncAvailability() {
   var props = PropertiesService.getScriptProperties();
@@ -89,24 +90,45 @@ function syncAvailability() {
   return msg;
 }
 
+function siteUrl(props) { return props.getProperty('SITE_URL') || 'https://www.xtsy.one'; }
+
 function sendOnce(props) {
-  var secret = props.getProperty('SHEET_SYNC_SECRET');
-  var site = props.getProperty('SITE_URL') || 'https://www.xtsy.one';
-  if (!secret) throw new Error('Add SHEET_SYNC_SECRET in Project Settings → Script Properties.');
+  var token = props.getProperty('LINK_TOKEN');
+  if (!token) return 'Not connected yet. Use XTSY → Connect to xtsy.one.';
   // Reads ONLY the Room Management tab, display values (as you see them), never writes.
   var sheet = SpreadsheetApp.getActive().getSheetByName(TAB);
   if (!sheet) throw new Error('No "' + TAB + '" tab.');
   var today = todayIndia();
   var cells = parseRoomManagement(sheet.getDataRange().getDisplayValues(), today);
-  var res = UrlFetchApp.fetch(site + '/api/public/hooks/sheet-availability', {
+  var res = UrlFetchApp.fetch(siteUrl(props) + '/api/public/hooks/sheet-availability', {
     method: 'post', contentType: 'application/json', muteHttpExceptions: true,
-    headers: { Authorization: 'Bearer ' + secret },
+    headers: { Authorization: 'Bearer ' + token },
     payload: JSON.stringify({ from: today, cells: cells }),
   });
-  var msg = 'Sent ' + cells.length + ' room-nights → ' + res.getResponseCode() + ' ' + res.getContentText().slice(0, 300);
+  var code = res.getResponseCode();
+  var msg = code === 403 ? 'Waiting for approval: approve pairing code ' + (props.getProperty('PAIR_CODE') || '') + ' in the XTSY console (Stays).'
+    : 'Sent ' + cells.length + ' room-nights → ' + code + ' ' + res.getContentText().slice(0, 300);
   props.setProperty('LAST_SYNC', new Date().toISOString() + ' ' + msg);
   console.log(msg);
   return msg;
+}
+
+/** Asks xtsy.one to accept this sheet. No password: the owner approves the code in the console. */
+function connectToSite() {
+  var props = PropertiesService.getScriptProperties();
+  var res = UrlFetchApp.fetch(siteUrl(props) + '/api/public/hooks/sheet-pair', {
+    method: 'post', contentType: 'application/json', muteHttpExceptions: true,
+    payload: JSON.stringify({ label: SpreadsheetApp.getActive().getName().slice(0, 80) }),
+  });
+  var body = {};
+  try { body = JSON.parse(res.getContentText()); } catch (e) { /* not JSON */ }
+  if (res.getResponseCode() !== 200 || !body.token) {
+    SpreadsheetApp.getUi().alert('Could not start pairing: ' + (body.error || res.getResponseCode()));
+    return;
+  }
+  props.setProperty('LINK_TOKEN', body.token);
+  props.setProperty('PAIR_CODE', body.code);
+  SpreadsheetApp.getUi().alert('Pairing code: ' + body.code + '\n\nOpen the XTSY console → Stays → Google Sheet, check the code matches and press Approve (within 30 minutes). Then choose XTSY → Set up automatic sync.');
 }
 
 /** Installable on-edit trigger: syncs straight away when a cell on the Room Management tab is saved. */
@@ -121,19 +143,20 @@ function onSheetChange() { syncAvailability(); }
 /** Adds an "XTSY" menu to the sheet (menus are not edits; nothing in the sheet changes). */
 function onOpen() {
   SpreadsheetApp.getUi().createMenu('XTSY')
+    .addItem('Connect to xtsy.one (once)', 'connectToSite')
+    .addItem('Set up automatic sync (once, after approval)', 'setUpTriggers')
     .addItem('Send availability to xtsy.one now', 'syncNowFromMenu')
-    .addItem('Set up automatic sync (run once)', 'setUpTriggers')
     .addToUi();
 }
 
 function syncNowFromMenu() { SpreadsheetApp.getUi().alert(syncAvailability()); }
 
-/** Run once: sync on every saved edit, on structural changes, and every 5 minutes as a backup. */
+/** Run once: sync on every saved edit, on structural changes, and every minute as a backup. */
 function setUpTriggers() {
   ScriptApp.getProjectTriggers().forEach(function (t) { ScriptApp.deleteTrigger(t); });
   var ss = SpreadsheetApp.getActive();
   ScriptApp.newTrigger('onSheetEdit').forSpreadsheet(ss).onEdit().create();
   ScriptApp.newTrigger('onSheetChange').forSpreadsheet(ss).onChange().create();
-  ScriptApp.newTrigger('syncAvailability').timeBased().everyMinutes(5).create();
-  SpreadsheetApp.getUi().alert('Automatic sync is on: every saved edit, plus every 5 minutes as a backup. ' + syncAvailability());
+  ScriptApp.newTrigger('syncAvailability').timeBased().everyMinutes(1).create();
+  SpreadsheetApp.getUi().alert('Automatic sync is on: every saved edit, plus every minute. ' + syncAvailability());
 }

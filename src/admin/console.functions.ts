@@ -258,3 +258,34 @@ export const setTableSlot = createServerFn({ method: 'POST' })
     await audit(ctx, `tables.${data.state}`, { ...data, posStatus });
     return { posStatus };
   });
+
+/** Google Sheets that asked to send availability, newest first (pending ones expire after 30 minutes). */
+export const listSheetLinks = createServerFn({ method: 'GET' })
+  .middleware([requireSuperAdmin])
+  .handler(async ({ context }) => {
+    const ctx = context as Ctx;
+    const { data, error } = await ctx.supabase.from('be_sheet_links')
+      .select('id,pair_code,label,status,created_at,approved_at,last_sync_at,last_sync_rows').neq('status', 'revoked').order('created_at', { ascending: false }).limit(20);
+    const cutoff = Date.now() - 30 * 60_000;
+    return { ready: !error, links: (data ?? []).filter((l: any) => l.status !== 'pending' || new Date(l.created_at).getTime() > cutoff) };
+  });
+
+/** Approve a sheet's pairing code (only one sheet is active at a time), or reject/disconnect it. */
+export const setSheetLink = createServerFn({ method: 'POST' })
+  .middleware([requireSuperAdmin])
+  .inputValidator(z.object({ id: z.string().uuid(), action: z.enum(['approve', 'revoke']) }))
+  .handler(async ({ data, context }) => {
+    const ctx = context as Ctx;
+    if (data.action === 'approve') {
+      const { data: row } = await ctx.supabase.from('be_sheet_links').select('status,created_at').eq('id', data.id).maybeSingle();
+      if (!row || row.status !== 'pending' || Date.now() - new Date(row.created_at).getTime() > 30 * 60_000) throw new Error('This pairing request has expired. Connect again from the sheet.');
+      await ctx.supabase.from('be_sheet_links').update({ status: 'revoked' }).eq('status', 'active');
+      const { error } = await ctx.supabase.from('be_sheet_links').update({ status: 'active', approved_at: new Date().toISOString() }).eq('id', data.id);
+      if (error) throw new Error('Could not approve');
+    } else {
+      const { error } = await ctx.supabase.from('be_sheet_links').update({ status: 'revoked' }).eq('id', data.id);
+      if (error) throw new Error('Could not disconnect');
+    }
+    await audit(ctx, `sheet.${data.action}`, { id: data.id });
+    return { ok: true };
+  });

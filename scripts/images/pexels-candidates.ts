@@ -10,6 +10,7 @@
  * MERGE them into the existing candidates file, so candidate numbers behind earlier picks never change.
  */
 import fs from 'fs';
+import { spawnSync } from 'child_process';
 import sharp from 'sharp';
 import { PHOTO_TARGETS } from './photoTargets';
 
@@ -32,7 +33,24 @@ async function search(q: string) {
 
 const esc = (s: string) => s.replace(/[<>&"]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' }[c]!));
 
+/**
+ * ONLY_KEYS="site" or "site:key1,key2" runs the Commons + Pexels site-photo search instead
+ * (scripts/images/site-photos.ts): GitHub only dispatches workflows that exist on main, so the
+ * reviewed-photo workflow on main is reused to run the branch's site-photo script.
+ */
+function runSite(): boolean {
+  const m = /^site(?::(.*))?$/.exec((process.env.ONLY_KEYS || '').trim());
+  if (!m) return false;
+  const r = spawnSync('bun', ['scripts/images/site-photos.ts'], { stdio: 'inherit', env: { ...process.env, MODE: 'candidates', ONLY_KEYS: m[1] ?? '' } });
+  if (r.status !== 0) process.exit(r.status ?? 1);
+  fs.mkdirSync(OUT, { recursive: true });
+  for (const f of fs.existsSync('shots/site') ? fs.readdirSync('shots/site') : []) fs.copyFileSync(`shots/site/${f}`, `${OUT}/site-${f}`);
+  spawnSync('git', ['add', 'scripts/images/site-candidates.json'], { stdio: 'inherit' });
+  return true;
+}
+
 async function main() {
+  if (runSite()) return;
   if (!KEY) { console.log('::error::PEXELS_API_KEY secret is not set'); process.exit(1); }
   fs.mkdirSync(OUT, { recursive: true });
   const only = (process.env.ONLY_KEYS || '').split(',').map((k) => k.trim()).filter(Boolean);

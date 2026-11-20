@@ -1,5 +1,5 @@
 /**
- * /tours/xtsy-rentals — car & bike rentals from Shillong (redesign). Rates unchanged.
+ * /tours/xtsy-rentals — car & bike rentals from Shillong. Fleet and rates: src/data/rentalFleet.ts.
  */
 import { useState } from 'react';
 import { Helmet } from '@/lib/seo/helmet';
@@ -9,35 +9,7 @@ import { inr } from '@/components/v2/pricing';
 import { PageShell, PageHero, Btn, Section, H2, FeatureCards, FaqList } from '@/components/v2/blocks';
 import { Photo, waLink } from '@/components/v2/primitives';
 
-type Vehicle = {
-  name: string;
-  /** Per-day rate in INR. Omit for vehicles quoted on enquiry. */
-  price?: number;
-  tag: string;
-  specs: string[];
-  badge?: string;
-  /** Shown in place of a rate when the vehicle is quoted per trip. */
-  note?: string;
-};
-
-const CARS: Vehicle[] = [
-  { name: 'Hyundai i20', price: 2000, tag: 'Premium Hatchback', specs: ['Manual', '5 seats', '400 km/day'] },
-  { name: 'Maruti Baleno', price: 2000, tag: 'Premium Hatchback', specs: ['Automatic', '5 seats', '400 km/day'] },
-  { name: 'Hyundai Venue', price: 2600, tag: 'Compact SUV', specs: ['Manual', '5 seats', '400 km/day'] },
-  { name: 'Kia Sonet', price: 2800, tag: 'Compact SUV', specs: ['Automatic', '5 seats', '400 km/day'] },
-  { name: 'Hyundai Creta', price: 3000, tag: 'Mid-size SUV', specs: ['Automatic', '5 seats', '400 km/day'] },
-  { name: 'Maruti Grand Vitara', price: 3000, tag: 'Mid-size SUV', specs: ['5 seats', '400 km/day'] },
-  { name: 'Mahindra Scorpio-N', price: 3800, tag: 'Hill SUV', specs: ['7 seats', '400 km/day'] },
-  { name: 'Toyota Innova Crysta', price: 3800, tag: 'Family MPV', specs: ['7 seats', '400 km/day'] },
-  { name: 'Mahindra XUV700', price: 4000, tag: 'Premium SUV', specs: ['7 seats', '400 km/day'], badge: 'Top end' },
-];
-
-const BIKES: Vehicle[] = [
-  { name: 'RE Meteor 350', price: 1300, tag: 'Cruiser', specs: ['350cc', '42 km/l'] },
-  { name: 'RE Himalayan 411', price: 1300, tag: 'Adventure', specs: ['411cc', '35 km/l'] },
-  { name: 'RE Hunter 350', price: 1600, tag: 'Roadster', specs: ['350cc', '40 km/l'] },
-  { name: 'RE Himalayan 450', price: 1800, tag: 'Adventure', specs: ['450cc', '30 km/l'], badge: 'New 2024' },
-];
+import { BIKES, CARS, CAR_FROM, BIKE_FROM, type Vehicle } from '@/data/rentalFleet';
 
 const FAQS = [
   { q: 'What documents are required for renting?', a: 'Valid driving license, government ID proof (Aadhaar/Passport), and a security deposit. For bikes, a motorcycle endorsement on your license is required.' },
@@ -97,7 +69,7 @@ export default function RentalsV2() {
           eyebrowColor="#E07A8B"
           eyebrow="XTSY Rentals · Self-drive cars, bikes, caravan & Urbania"
           title="XTSY Rentals — Assam & Meghalaya."
-          text={`Self-drive cars from ${inr(2000)} a day with 400 km included, Royal Enfields from ${inr(1300)}, a 17-seat Force Urbania from ${inr(13000)} and a caravan from ${inr(18000)}. Fully insured, 24/7 roadside support, driver on request. Pick up at XTSY in New Shillong Township.`}
+          text={`Self-drive cars from ${inr(CAR_FROM)} a day with 400 km included (petrol; Innova Crysta diesel), Royal Enfields from ${inr(BIKE_FROM)}, a 17-seat Force Urbania from ${inr(13000)} and a caravan from ${inr(18000)}. Fully insured, 24/7 roadside support, driver on request. Pick up at XTSY in New Shillong Township.`}
           actions={<><Btn to="#fleet">See the fleet</Btn><Btn to={waLink('Hi XTSY! I want to rent a vehicle. Dates: …', 'xtsy-rentals')} kind="outline-light">Ask on WhatsApp</Btn></>}
           media={<Photo src={IMG.bumla} alt="Royal Enfield on a Northeast expedition" eager tone="night" className="aspect-[628/520] rounded-[32px]" />}
         />

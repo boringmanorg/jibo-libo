@@ -8,7 +8,7 @@ import { getBookPageDataFn } from './publicEngine.functions';
 import type { ClosureRow } from './consoleClosures';
 import type { SheetAvailability } from './sheetAvailability';
 
-export type BookPageData = { live: boolean; photos: Record<string, { src: string; alt: string }[]>; closures: ClosureRow[]; sheet: SheetAvailability };
+export type BookPageData = { live: boolean; photos: Record<string, { src: string; alt: string }[]>; closures: ClosureRow[]; sheet: SheetAvailability; refreshAt?: number };
 
 /** Last data that arrived in time: a slow refresh keeps showing it instead of dropping the sheet's numbers. */
 let lastGood: BookPageData | null = null;
