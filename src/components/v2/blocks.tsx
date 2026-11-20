@@ -2,14 +2,14 @@ import { WaAnchor } from '@/components/WaAnchor';
 /**
  * Page-building blocks for inner pages of the 2026 redesign.
  */
-import { useEffect, useState, type CSSProperties, type ReactNode } from 'react';
+import { isValidElement, useEffect, useState, type CSSProperties, type ReactNode } from 'react';
 import { Helmet } from '@/lib/seo/helmet';
 import { Link } from '@/lib/router-compat';
 import { cn } from '@/lib/utils';
 import SiteHeader from './SiteHeader';
 import SiteFooter from './SiteFooter';
 import CtaBand from './CtaBand';
-import { Eyebrow, Photo, XtsyMark, waLink } from './primitives';
+import { Eyebrow, Photo, PhotoCaption, XtsyMark, waLink } from './primitives';
 import { inr, lowestDormPrice } from './pricing';
 import RankedPageQuestions from '@/components/seo/RankedPageQuestions';
 import { rankedQuestionsFor } from '@/data/rankedPageQuestions';
@@ -136,7 +136,13 @@ export function PageHero({
           : <div className="xt-in xt-d2 m-0 max-w-[560px] text-[17px] leading-relaxed sm:text-[20px]" style={{ color: muted }}>{text}</div>)}
         {actions && <div className="xt-in xt-d3 flex flex-wrap gap-3">{actions}</div>}
       </div>
-      {media && <div className="xt-in xt-d2 relative">{media}</div>}
+      {media && (
+        <div className="xt-in xt-d2 relative flex flex-col gap-1.5">
+          {media}
+          {/* Credit line for a single hero photo (src/data/photoCredits.ts). */}
+          {isValidElement<{ src?: unknown }>(media) && typeof media.props.src === 'string' && <PhotoCaption src={media.props.src} color={fg === '#1F2230' ? 'text-xt-mute' : 'text-white/80'} />}
+        </div>
+      )}
     </section>
   );
 }

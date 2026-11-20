@@ -23,7 +23,7 @@ const TOPIC_PHOTO: Record<string, string> = {
   Hostels: first(IMG.mixedDorm) || COVERS.home, Stays: COVERS.home, 'Tour packages': PX.dawkiBoat,
   Destinations: PX.mawphanlur, Attractions: PX.nohkalikai, Activities: PX.krangShuri,
   Glamping: first(IMG.suite) || COVERS.terrace, Hotels: COVERS.about, Homestays: COVERS.terrace,
-  Rentals: RENTAL_VEHICLE_PHOTO.src, 'Road & bike trips': IMG.bumla, Transport: PX.windingRoad,
+  Rentals: RENTAL_VEHICLE_PHOTO.src || IMG.bumla, 'Road & bike trips': IMG.bumla, Transport: PX.windingRoad,
   Workation: COVERS.workation, 'Weddings & events': COVERS.wedding, Events: PX.umiamBoats,
   'Corporate offsites': COVERS.commonRoom, 'Stays near hospitals': COVERS.contact,
   'Hostel comparison': COVERS.commonRoom, 'Travel agency': IMG.sikkim, 'XTSY pages': COVERS.home,

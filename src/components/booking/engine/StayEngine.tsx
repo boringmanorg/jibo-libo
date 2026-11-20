@@ -57,7 +57,7 @@ const FACTS: { icon: typeof Clock; text: string }[] = [
   { icon: PawPrint, text: 'Cats and birds welcome' },
 ];
 
-export default function StayEngine({ mode, photos, closures, sheet, initialLocation }: { mode: EngineMode; photos?: Record<string, { src: string; alt: string }[]>; closures?: ClosureRow[]; sheet?: SheetAvailability; initialLocation?: BookLocation }) {
+export default function StayEngine({ mode, photos, closures, sheet, initialLocation, initialDates }: { mode: EngineMode; photos?: Record<string, { src: string; alt: string }[]>; closures?: ClosureRow[]; sheet?: SheetAvailability; initialLocation?: BookLocation; initialDates?: { checkIn: IsoDate; checkOut: IsoDate } }) {
   const [location, setLocation] = useState<BookLocation | null>(initialLocation ?? (mode === 'preview' ? 'new-shillong' : null));
   const pickLocation = (l: BookLocation | null) => {
     setLocation(l);
@@ -70,8 +70,10 @@ export default function StayEngine({ mode, photos, closures, sheet, initialLocat
   };
   const enquiry = mode === 'enquiry';
   const today = todayInIndia(new Date());
-  const [checkIn, setCheckIn] = useState<IsoDate>(today);
-  const [checkOut, setCheckOut] = useState<IsoDate>(addDays(today, 1));
+  // Dates from the home page's search (if valid and not in the past), else tonight.
+  const startDates = initialDates && initialDates.checkIn >= today && initialDates.checkOut > initialDates.checkIn ? initialDates : null;
+  const [checkIn, setCheckIn] = useState<IsoDate>(startDates?.checkIn ?? today);
+  const [checkOut, setCheckOut] = useState<IsoDate>(startDates?.checkOut ?? addDays(today, 1));
   const [result, setResult] = useState<SearchResult | null>(null);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);

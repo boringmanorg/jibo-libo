@@ -8,6 +8,7 @@
  * start over.
  */
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react';
+import { useServerFn } from '@tanstack/react-start';
 import { toast } from 'sonner';
 import { Link, useNavigate } from '@/lib/router-compat';
 import { cn } from '@/lib/utils';
@@ -16,6 +17,12 @@ import { INITIAL_STATE, WELCOME, respond, type ChatAction, type ChatState, type 
 import { planToText, type Plan } from '@/lib/travel/planner';
 import { waLink } from './primitives';
 import { STARGAZING_NOTICE, STARGAZING_ACK_LABEL } from '@/data/stargazingPolicy';
+import { askTripAssistantFn } from '@/lib/travel/tripAssistant.functions';
+
+/** Claude answers when the site has its key; otherwise (or on any error) the built-in planner does. */
+let claudeOn = true;
+const withTimeout = <T,>(p: Promise<T>, ms: number) =>
+  Promise.race([p, new Promise<null>((r) => setTimeout(() => r(null), ms))]).catch(() => null);
 
 interface Msg { from: 'you' | 'xtsy'; text: string; plan?: Plan; chips?: string[]; actions?: ChatAction[] }
 // Session-storage slot for the in-progress chat. Deliberately not named
@@ -32,8 +39,22 @@ function save(msgs: Msg[], state: ChatState) {
   try { sessionStorage.setItem(CHAT_STORE, JSON.stringify({ msgs: msgs.slice(-40), state })); } catch { /* storage blocked */ }
 }
 
-/** Minimal formatting: **bold**, paragraphs and line breaks. */
-function Rich({ text }: { text: string }) {
+/** **bold** and [links](/our-own-pages) inside a line. */
+function Inline({ line, onNav }: { line: string; onNav?: (to: string) => void }) {
+  return (
+    <>
+      {line.split(/(\*\*[^*]+\*\*|\[[^\]]+\]\(\/[^)\s]*\))/g).map((part, k) => {
+        if (part.startsWith('**') && part.endsWith('**')) return <strong key={k}>{part.slice(2, -2)}</strong>;
+        const link = /^\[([^\]]+)\]\((\/[^)\s]*)\)$/.exec(part);
+        if (link) return <a key={k} href={link[2]} onClick={(e) => { if (onNav) { e.preventDefault(); onNav(link[2]); } }} className="font-bold underline decoration-xt-rose underline-offset-2">{link[1]}</a>;
+        return <span key={k}>{part}</span>;
+      })}
+    </>
+  );
+}
+
+/** Minimal formatting: **bold**, site links, paragraphs and line breaks. */
+function Rich({ text, onNav }: { text: string; onNav?: (to: string) => void }) {
   return (
     <>
       {text.split(/\n{2,}/).map((para, i) => (
@@ -41,7 +62,7 @@ function Rich({ text }: { text: string }) {
           {para.split('\n').map((line, j) => (
             <span key={j}>
               {j > 0 && <br />}
-              {line.split(/(\*\*[^*]+\*\*)/g).map((part, k) => (part.startsWith('**') ? <strong key={k}>{part.slice(2, -2)}</strong> : <span key={k}>{part}</span>))}
+              <Inline line={line} onNav={onNav} />
             </span>
           ))}
         </p>
@@ -79,6 +100,7 @@ function PlanCard({ plan }: { plan: Plan }) {
 
 export default function TripChat({ variant = 'embedded', className, onClose, initialPrompt, title }: { variant?: 'embedded' | 'panel'; className?: string; onClose?: () => void; initialPrompt?: string; title?: ReactNode }) {
   const navigate = useNavigate();
+  const askTrip = useServerFn(askTripAssistantFn);
   const [msgs, setMsgs] = useState<Msg[]>(() => [{ from: 'xtsy', ...WELCOME }]);
   const [state, setState] = useState<ChatState>(INITIAL_STATE);
   const [input, setInput] = useState('');
@@ -87,6 +109,7 @@ export default function TripChat({ variant = 'embedded', className, onClose, ini
   const [lead, setLead] = useState({ name: '', phone: '', email: '', dates: '' });
   const [sending, setSending] = useState(false);
   const [starAck, setStarAck] = useState(false);
+  const [aiUsed, setAiUsed] = useState(false);
   const listRef = useRef<HTMLDivElement>(null);
   const started = useRef(false);
 
@@ -99,21 +122,33 @@ export default function TripChat({ variant = 'embedded', className, onClose, ini
 
   const lastPlan = [...msgs].reverse().find((m) => m.plan)?.plan;
 
-  const ask = (text: string) => {
-    const q = text.trim();
-    if (!q) return;
+  const ask = async (text: string) => {
+    const q = text.trim().slice(0, 2000);
+    if (!q || typing) return;
     setInput('');
     setSendFor(null);
-    setMsgs((m) => [...m, { from: 'you', text: q }]);
+    const history = [...msgs, { from: 'you' as const, text: q }];
+    setMsgs(history);
     setTyping(true);
-    window.setTimeout(() => {
-      let reply: Reply;
-      let next = state;
-      try { const r = respond(q, state); reply = r.reply; next = r.state; } catch { reply = { text: 'Sorry, something went wrong on my side. Please try again, or message the XTSY desk on WhatsApp.', chips: [], actions: ['whatsapp'] }; }
-      setState(next);
-      setMsgs((m) => [...m, { from: 'xtsy', ...reply }]);
-      setTyping(false);
-    }, 420);
+    // The built-in planner always runs first: it keeps the trip state and works out real drive times.
+    let reply: Reply;
+    let next = state;
+    try { const r = respond(q, state); reply = r.reply; next = r.state; } catch { reply = { text: 'Sorry, something went wrong on my side. Please try again, or message the XTSY desk on WhatsApp.', chips: [], actions: ['whatsapp'] }; }
+    if (claudeOn) {
+      const draft = [reply.text, reply.plan ? planToText(reply.plan) : ''].filter(Boolean).join('\n\n').slice(0, 4000);
+      const ai = await withTimeout(askTrip({ data: {
+        history: history.slice(-12).map((m) => ({ role: m.from === 'you' ? 'user' as const : 'assistant' as const, text: m.text.slice(0, 2000) })),
+        draft,
+        page: typeof window !== 'undefined' ? window.location.pathname.slice(0, 200) : undefined,
+      } }), 60_000);
+      if (ai?.ok) { reply = { ...reply, text: ai.text }; setAiUsed(true); }
+      else if (ai && ai.reason === 'off') claudeOn = false;
+    } else {
+      await new Promise((r) => setTimeout(r, 420));
+    }
+    setState(next);
+    setMsgs((m) => [...m, { from: 'xtsy', ...reply }]);
+    setTyping(false);
   };
 
   useEffect(() => {
@@ -136,8 +171,7 @@ export default function TripChat({ variant = 'embedded', className, onClose, ini
     if (a === 'reset') { try { sessionStorage.removeItem(CHAT_STORE); } catch { /* ignore */ } setState(INITIAL_STATE); setMsgs([{ from: 'xtsy', ...WELCOME }]); setSendFor(null); return; }
     if (a === 'whatsapp') { window.open(waLink(p ? `Hi XTSY! Please help me book this trip:\n${planToText(p)}` : 'Hi XTSY! Please help me plan a trip.', 'trip-planner'), '_blank', 'noopener'); return; }
     if (a === 'book') {
-      const guests = String(p?.input.travellers ?? 2);
-      navigate(`/book/select?${new URLSearchParams({ location: 'shillong', guests }).toString()}`);
+      navigate('/book?location=new-shillong');
       return;
     }
     if (a === 'copy' && p) {
@@ -223,7 +257,7 @@ export default function TripChat({ variant = 'embedded', className, onClose, ini
         {msgs.map((m, i) => (
           <div key={i} className={cn('flex flex-col gap-2', m.from === 'you' ? 'items-end' : 'items-start')}>
             <div className={cn('max-w-[92%] rounded-2xl px-4 py-3 text-[14.5px] leading-relaxed', m.from === 'you' ? 'rounded-br-md bg-xt-crimson text-white' : 'rounded-bl-md bg-[#2A2F42] text-xt-paper')}>
-              <Rich text={m.text} />
+              <Rich text={m.text} onNav={(to) => { onClose?.(); navigate(to); }} />
               {m.plan && <PlanCard plan={m.plan} />}
             </div>
             {m.from === 'xtsy' && i === msgs.length - 1 && !typing && (
@@ -302,7 +336,7 @@ export default function TripChat({ variant = 'embedded', className, onClose, ini
         </button>
       </form>
       <p className="m-0 px-5 pb-3 text-[12px] text-[#8D94AA]">
-        Drive times are estimates; the XTSY desk confirms every plan before you pay. XTSY’s own stay is in New Shillong Township — elsewhere we book trusted partners. <Link to="/tours/plan-trip-with-ai" className="font-bold text-xt-fog underline">How it works</Link>
+        {aiUsed && 'Answers by Claude (AI) from XTSY’s own prices and policies. '}Drive times are estimates; the XTSY desk confirms every plan before you pay. XTSY’s own stay is in New Shillong Township — elsewhere we book trusted partners. <Link to="/tours/plan-trip-with-ai" className="font-bold text-xt-fog underline">How it works</Link>
       </p>
     </section>
   );

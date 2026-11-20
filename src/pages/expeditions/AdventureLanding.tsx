@@ -2,6 +2,7 @@ import { Link } from '@/lib/router-compat';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { IMG } from '@/data/v2Images';
+import { PhotoCaption } from '@/components/v2/primitives';
 
 export const adventureGuides = {
   'adventure-tours-northeast-india': {
@@ -79,6 +80,7 @@ export default function AdventureLanding({ guide }: { guide: AdventureGuideKey }
     <main className="pt-20 pb-20">
       <div className="relative h-64 sm:h-96 overflow-hidden">
         <img src={content.image} alt={content.title} className="h-full w-full object-cover" />
+        <span className="absolute bottom-2 right-3 rounded-full bg-black/45 px-3 py-1"><PhotoCaption src={content.image} color="text-white" className="[&_a]:text-white" /></span>
       </div>
       <div className="container mx-auto max-w-4xl px-4 pt-10">
         <Link to="/expeditions" className="text-sm text-primary underline">All expeditions</Link>

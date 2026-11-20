@@ -16,11 +16,11 @@
 # Preload the hero AVIF as the LCP resource so Cloudflare's HTTP/2 push
 # and 103 Early Hints can start the fetch before HTML parse.
 /
-  Link: </img/o/xtsy-property-images-8-portrait-828.avif>; rel=preload; as=image; type=image/avif; fetchpriority=high
+  Link: </img/o/xtsy-hostel-front-portrait-828.avif>; rel=preload; as=image; type=image/avif; fetchpriority=high
   Cache-Control: public, max-age=0, must-revalidate
 
 /index.html
-  Link: </img/o/xtsy-property-images-8-portrait-828.avif>; rel=preload; as=image; type=image/avif; fetchpriority=high
+  Link: </img/o/xtsy-hostel-front-portrait-828.avif>; rel=preload; as=image; type=image/avif; fetchpriority=high
 
 # ── Immutable hashed assets ──────────────────────────────────────────
 /assets/*

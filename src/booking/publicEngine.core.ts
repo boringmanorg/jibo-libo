@@ -107,18 +107,26 @@ export async function engineStatus(d: EngineDeps): Promise<{ live: boolean }> {
 }
 
 /** /book on load: whether payment is live, plus console-uploaded photos by room type. */
-export async function bookPageData(d: EngineDeps): Promise<{ live: boolean; photos: Record<string, { src: string; alt: string }[]>; closures: ClosureRow[]; sheet: SheetAvailability }> {
+export async function bookPageData(d: EngineDeps): Promise<{ live: boolean; photos: Record<string, { src: string; alt: string }[]>; closures: ClosureRow[]; sheet: SheetAvailability; refreshAt: number }> {
   const [status, photos, closures, sheet] = await Promise.all([engineStatus(d), loadRoomPhotos(d).catch(() => new Map()), loadClosures(d).catch(() => []), loadSheetAvailability(d).catch(() => ({}))]);
-  return { live: status.live, photos: Object.fromEntries(photos), closures, sheet };
+  // Next minute boundary: when the next published snapshot (if any) becomes visible to everyone.
+  return { live: status.live, photos: Object.fromEntries(photos), closures, sheet, refreshAt: (Math.floor(d.now.getTime() / 60_000) + 1) * 60_000 };
 }
 
-/** Date-wise availability the owner's Google Sheet last sent, from today to its last month. */
+/**
+ * The Google Sheet snapshot published for the current minute (from today to its last month).
+ * Snapshots are versioned by minute and a new one only becomes visible at a minute boundary, so
+ * every guest on the site sees the same numbers at the same time.
+ */
 export async function loadSheetAvailability(d: EngineDeps): Promise<SheetAvailability> {
   if (!d.db) return {};
   const from = todayInIndia(d.now);
   const out: SheetAvailability = {};
+  const current = await d.db.from('be_sheet_availability').select('version').lte('version', Math.floor(d.now.getTime() / 60_000)).order('version', { ascending: false }).limit(1);
+  const version = current.data?.[0]?.version;
+  if (current.error || version === undefined) return out;
   for (let page = 0; page < 20; page++) {
-    const r = await d.db.from('be_sheet_availability').select('room_type_id,night,free').gte('night', from).order('night').range(page * 1000, page * 1000 + 999);
+    const r = await d.db.from('be_sheet_availability').select('room_type_id,night,free').eq('version', version).gte('night', from).order('night').range(page * 1000, page * 1000 + 999);
     if (r.error) return out;
     for (const row of (r.data ?? []) as { room_type_id: string; night: string; free: number }[]) (out[row.room_type_id] ??= {})[row.night.slice(0, 10) as IsoDate] = row.free;
     if ((r.data ?? []).length < 1000) break;

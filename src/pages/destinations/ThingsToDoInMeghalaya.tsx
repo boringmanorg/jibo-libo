@@ -1,7 +1,10 @@
 import { guidePath } from '@/lib/guidePath';
 import { destinationPath } from '@/data/neTaxonomy';
 import { useState } from 'react';
-import heroImage from '@/assets/northeast-ecological-education-authentic.jpg';
+import { IMG } from '@/data/v2Images';
+import { PhotoCaption } from '@/components/v2/primitives';
+
+const heroImage = IMG.nohkalikai;
 import { Link, useNavigate } from '@/lib/router-compat';
 import { Helmet } from '@/lib/seo/helmet';
 import Header from '@/components/Header';
@@ -102,12 +105,13 @@ const ThingsToDoInMeghalaya = () => {
           <div className="absolute inset-0">
             <img
               src={heroImage}
-              alt="Meghalaya landscape — lush green hills and waterfalls"
+              alt="Nohkalikai Falls, Cherrapunji, Meghalaya"
               className="w-full h-full object-cover"
               fetchPriority="high"
               loading="eager"
             />
             <div className="absolute inset-0 bg-black/65" />
+            <PhotoCaption src={heroImage} color="text-white/85" className="absolute bottom-2 right-4 [&_a]:text-white/85" />
           </div>
           <div className="relative container mx-auto px-4 max-w-5xl">
             <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Things to Do in Meghalaya' }]} />

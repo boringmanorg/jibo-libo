@@ -1,20 +1,23 @@
 /**
- * Meghalaya landscape photos from Pexels (free to use under the Pexels licence,
- * no attribution required), checked by eye against the topic each one illustrates.
+ * Meghalaya scenes used by guides and SEO pages. All are credited photographs: XTSY Voyage's own,
+ * or a reviewed Pexels photo with its photographer credited (src/data/photoCredits.ts).
+ * (Until 21 Nov 2026 these were uncredited files stored on Lovable; replaced at the owner's request
+ * for real, credited images only.)
  */
-import hills from '@/assets/meghalaya/meghalaya-green-hills.jpg.asset.json';
-import rootBridge from '@/assets/meghalaya/living-root-bridge-riwai.jpg.asset.json';
-import windingRoad from '@/assets/meghalaya/khasi-hills-winding-road.jpg.asset.json';
-import monsoonMist from '@/assets/meghalaya/cherrapunji-monsoon-mist.jpg.asset.json';
-import umiamBoats from '@/assets/meghalaya/umiam-lake-boats.jpg.asset.json';
-import dawkiBoat from '@/assets/meghalaya/dawki-clear-river-boat.jpg.asset.json';
-import mawphanlur from '@/assets/meghalaya/mawphanlur-rolling-hills.jpg.asset.json';
-import nohkalikai from '@/assets/meghalaya/nohkalikai-falls.jpg.asset.json';
-import krangShuri from '@/assets/meghalaya/krang-shuri-waterfall.jpg.asset.json';
-import khasiLake from '@/assets/meghalaya/east-khasi-hills-lake.jpg.asset.json';
+import { IMG } from './v2Images';
+import { PEXELS_PHOTOS } from './pexelsPhotos';
+
+const px = (key: string, fallback: string) => PEXELS_PHOTOS[key]?.srcs.find(([w]) => w >= 1280)?.[1] ?? fallback;
 
 export const PEXELS_MEGHALAYA = {
-  hills: hills.url, rootBridge: rootBridge.url, windingRoad: windingRoad.url,
-  monsoonMist: monsoonMist.url, umiamBoats: umiamBoats.url, dawkiBoat: dawkiBoat.url,
-  mawphanlur: mawphanlur.url, nohkalikai: nohkalikai.url, krangShuri: krangShuri.url, khasiLake: khasiLake.url,
+  hills: IMG.meghalaya,
+  rootBridge: IMG.rootBridge,
+  windingRoad: px('exp-meghalaya-loop', IMG.laitlum),
+  monsoonMist: IMG.sevenSisters,
+  umiamBoats: IMG.umiam,
+  dawkiBoat: IMG.dawki,
+  mawphanlur: IMG.laitlum,
+  nohkalikai: IMG.nohkalikai,
+  krangShuri: IMG.krangSuri,
+  khasiLake: IMG.umiam,
 };

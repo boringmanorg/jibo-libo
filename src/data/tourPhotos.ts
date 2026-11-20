@@ -6,6 +6,7 @@
 import { PEXELS_PHOTOS, type PexelsPhoto } from './pexelsPhotos';
 import { IMG } from './v2Images';
 import { TRAVEL_PHOTOS } from './relevantTravelPhotos';
+import { SITE_PHOTOS } from './sitePhotos';
 
 const main = (p: PexelsPhoto): string => (p.srcs?.find(([w]) => w >= 1280) ?? p.srcs?.[p.srcs.length - 1])?.[1] ?? '';
 
@@ -28,6 +29,7 @@ const SHARED_PHOTOS: Record<string, string> = {
 
 /** Photo URL for a target key (e.g. "tour-29", "sig-5n-6d-tawang-tour", "exp-guwahati-to-tawang", "dest-siju-cave"), or ''. */
 export function reviewedPhoto(key: string): string {
+  if (SITE_PHOTOS[key]) return main(SITE_PHOTOS[key] as unknown as PexelsPhoto);
   if (TRAVEL_PHOTOS[key]) return TRAVEL_PHOTOS[key].src;
   const p = PEXELS_PHOTOS[key] ?? PEXELS_PHOTOS[SHARED_PHOTOS[key] ?? ''];
   if (p) return main(p);
@@ -36,10 +38,4 @@ export function reviewedPhoto(key: string): string {
 }
 
 /** Alt text for a reviewed photo (the photographer's own description), if any. */
-export const reviewedAlt = (key: string): string | undefined => TRAVEL_PHOTOS[key]?.alt ?? ((PEXELS_PHOTOS[key] ?? PEXELS_PHOTOS[SHARED_PHOTOS[key] ?? ''])?.alt || undefined);
-
-/** Credit for a Pexels photo shown on the page, or null for XTSY's own photos. */
-export function photoCredit(key: string): { name: string; url: string; pexelsUrl: string } | null {
-  const p = PEXELS_PHOTOS[key] ?? PEXELS_PHOTOS[SHARED_PHOTOS[key] ?? ''];
-  return p ? { name: p.photographer, url: `${p.photographerUrl.replace(/\/+$/, '')}/`, pexelsUrl: p.pexelsUrl } : null;
-}
+export const reviewedAlt = (key: string): string | undefined => SITE_PHOTOS[key]?.alt ?? TRAVEL_PHOTOS[key]?.alt ?? ((PEXELS_PHOTOS[key] ?? PEXELS_PHOTOS[SHARED_PHOTOS[key] ?? ''])?.alt || undefined);

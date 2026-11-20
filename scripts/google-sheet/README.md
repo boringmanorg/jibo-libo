@@ -11,24 +11,27 @@ and never writes anything to the spreadsheet. `@OnlyCurrentDoc` limits Google's 
 When a channel manager or PMS is connected later, any rule for writing back to the sheet will be agreed
 with the owner first; this script has none.
 
-## One-time setup (about 5 minutes)
+## One-time setup (no password)
 
-1. **Make a sync password.** Any long random text, e.g. from a password manager (32+ characters).
-   Don't paste it into chat or email.
-2. **Website side:** in Lovable → Cloud → Secrets, add `SHEET_SYNC_SECRET` with that value. Publish.
-3. **Sheet side:** open the sheet → Extensions → Apps Script.
-   - Replace everything in `Code.gs` with the contents of `availability-sync.gs`, then Save.
-   - Project Settings (gear) → Script Properties → add `SHEET_SYNC_SECRET` with the same value.
-   - (Optional) add `SITE_URL` if the site is not `https://www.xtsy.one`.
-4. Reload the sheet. A new **XTSY** menu appears.
-   - **XTSY → Set up automatic sync (run once)**: Google asks for permission the first time
-     (the script reads this spreadsheet and sends data to xtsy.one). After that **every saved edit
-     syncs straight away** (usually within a few seconds), adding rows, columns or a new month syncs
-     too, and a 5-minute backup run catches anything missed. If you edit while a sync is running, one
-     more sync runs right after, so the website always ends on your latest numbers.
-   - **XTSY → Send availability to xtsy.one now** sends immediately and shows the result,
-     e.g. `Sent 2,880 room-nights → 200 {"status":"ok",...}`.
-5. Check the console: Stays → "Availability from your Google Sheet" shows the last time it arrived.
+1. **Website:** merge and publish. Nothing to configure.
+2. **Sheet:** Extensions → Apps Script → replace everything in `Code.gs` with `availability-sync.gs` → Save.
+   Reload the sheet; an **XTSY** menu appears.
+3. **XTSY → Connect to xtsy.one (once).** Google asks for permission the first time. The sheet shows a
+   pairing code such as `4831-2297`.
+4. **Console → Stays → Availability from your Google Sheet:** the same code appears there. Check it
+   matches and press **Approve** (within 30 minutes). Anyone else's request can be rejected there.
+5. **XTSY → Set up automatic sync (once, after approval).** From then on every saved edit syncs straight
+   away, structural changes (rows, columns, a new month) sync too, and a one-minute backup run catches
+   anything missed.
+
+**How outsiders are kept out:** the website accepts numbers only from a sheet whose pairing code a console
+admin approved. The sheet's token is random (256-bit) and only its SHA-256 hash is stored; Disconnect in
+the console revokes it instantly. Pairing requests are limited to 5 an hour per visitor and 10 pending in
+total, and expire after 30 minutes. Only JSON under 1 MB is read; an empty send is never published.
+
+**When guests see a change:** each sync is published as the next minute's snapshot. At the start of that
+minute every open booking page refreshes together; new and returning visitors always load the last
+published snapshot. So a change saved at 10:00:20 shows for everyone from about 10:01.
 
 ## How the sheet is read
 
@@ -45,4 +48,4 @@ with the owner first; this script has none.
   number changes on the website too.
 - Once the sheet has synced, it is the only source: nights after its last month (or a blank count cell)
   are not bookable on the website. Console blocks are still taken off on top.
-- /book refreshes its numbers every minute while open and whenever the guest returns to the tab.
+- /book refreshes just after each minute boundary while open (and when the guest returns to the tab).

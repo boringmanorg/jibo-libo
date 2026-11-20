@@ -12,6 +12,7 @@ import { ROOM_IMAGES } from '@/config/roomTypes';
 import { SATURDAY_GROUP_TOUR } from '@/data/saturdayGroupTour';
 import { openTripChat } from '@/components/v2/tripChatEvents';
 import { cn } from '@/lib/utils';
+import { BIKE_FROM, CAR_FROM } from '@/data/rentalFleet';
 import { CAMP, CAMP_FROM, CAMP_PHOTOS } from '@/data/shnonpedengCamp';
 
 const inr = (n: number) => `₹${n.toLocaleString('en-IN')}`;
@@ -152,7 +153,7 @@ const STEP_ONE_PROMOS: Promo[] = [
   {
     kicker: 'Self-drive', title: 'Drive Meghalaya yourself', img: IMG.laitlum,
     line: 'Self-drive cars for Assam and Meghalaya, fully insured with 24/7 roadside support. Driver on request.',
-    price: `From ${inr(2000)} a day, 400 km included`, cta: 'See cars', to: '/tours/xtsy-rentals',
+    price: `From ${inr(CAR_FROM)} a day, 400 km included`, cta: 'See cars', to: '/tours/xtsy-rentals',
   },
 ];
 
@@ -160,7 +161,7 @@ const STEP_TWO_PROMOS: Promo[] = [
   {
     kicker: 'Bike rental', title: 'Ride a Royal Enfield', img: IMG.bumla,
     line: 'Pick up a Royal Enfield for Meghalaya’s hill roads, with roadside support across Assam and Meghalaya.',
-    price: `From ${inr(1300)} a day`, cta: 'See bikes', to: '/tours/xtsy-rentals',
+    price: `From ${inr(BIKE_FROM)} a day`, cta: 'See bikes', to: '/tours/xtsy-rentals',
   },
   {
     kicker: 'Custom trip', title: 'Plan the days around your stay', img: IMG.rootBridge,

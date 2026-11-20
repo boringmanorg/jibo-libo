@@ -72,7 +72,7 @@ function buildSearchIndex(): SearchEntry[] {
       category: 'stays',
       icon: room.kind === 'dorm' ? '🛏️' : room.category === 'luxury' ? '✨' : '👫',
       image: room.image,
-      url: room.id === 'xtsy-270' ? '/stays/experience-by-xtsy' : '/search?location=shillong',
+      url: room.id === 'xtsy-270' ? '/stays/experience-by-xtsy' : '/book?location=new-shillong',
       price: `₹${room.discountedPrice}`,
       location: 'Shillong, Meghalaya',
       keywords: [
@@ -102,7 +102,7 @@ function buildSearchIndex(): SearchEntry[] {
       category: 'stays',
       icon: prop.category === 'luxury' ? '💎' : '🏠',
       image: prop.heroImage,
-      url: prop.slug === 'xtsy-luxury' ? '/stays/experience-by-xtsy' : '/properties',
+      url: prop.slug === 'xtsy-luxury' ? '/stays/experience-by-xtsy' : '/book?location=new-shillong',
       price: `₹${prop.priceRange.min}–₹${prop.priceRange.max}`,
       location: 'Shillong, Meghalaya',
       keywords: [
@@ -204,7 +204,7 @@ function buildSearchIndex(): SearchEntry[] {
       description: `${loc.state}, ${loc.country} — Explore stays & tours`,
       category: 'locations',
       icon: '📍',
-      url: `/search?location=${loc.id}`,
+      url: loc.id === 'dawki' ? '/stays/campsite-dawki' : '/book?location=new-shillong',
       location: `${loc.state}, ${loc.country}`,
       keywords: [
         loc.name, loc.state, loc.country,

@@ -13,7 +13,7 @@ import { featuredBistroReviews } from '@/data/featuredGoogleReviews';
 import { buildRestaurantSchema, buildMenuSchema } from '@/data/tabBistroSchema';
 import { IMG, first } from '@/data/v2Images';
 import { PageShell, PageHero, Btn, Section, H2, FaqList, PAD } from '@/components/v2/blocks';
-import { Photo, Marquee, Eyebrow, waLink } from '@/components/v2/primitives';
+import { Photo, Marquee, Eyebrow, waLink, PhotoCaption } from '@/components/v2/primitives';
 import { TableBookingForm } from '@/components/v2/TableBookingForm';
 import { LiveTables } from '@/components/v2/LiveTables';
 import { BISTRO_BREAKFAST, BISTRO_EVENING, BISTRO_HOURS_SENTENCE, BISTRO_LUNCH_DETAILS } from '@/data/tabBistroHours';
@@ -83,6 +83,7 @@ export default function BistroV2() {
             <div className="relative">
               <Photo src={first(IMG.bistro)} alt="TAB Bistro by XTSY" eager tone="sand" className="aspect-[628/600] rounded-[32px]" />
               <div className="xt-float absolute right-6 top-6 rounded-xl bg-xt-ink px-4 py-3 font-display text-[18px] tracking-[0.1em] text-xt-paper">Rooftop terrace · café coming soon</div>
+              <PhotoCaption src={first(IMG.bistro)} className="mt-1.5" />
             </div>
           }
         />
