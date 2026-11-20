@@ -103,7 +103,7 @@ async function candidates() {
 async function apply() {
   const cands: Record<string, Cand[]> = JSON.parse(fs.readFileSync(CANDS, 'utf8'));
   const picks: Record<string, number> = JSON.parse(fs.readFileSync(PICKS, 'utf8'));
-  const existing = fs.existsSync(DATA) ? JSON.parse(/= (\{[\s\S]*\});\s*$/.exec(fs.readFileSync(DATA, 'utf8'))?.[1] ?? '{}') : {};
+  const existing = fs.existsSync(DATA) ? JSON.parse(/SITE_PHOTOS: Record<string, SitePhoto> = (\{[\s\S]*\});\s*$/.exec(fs.readFileSync(DATA, 'utf8'))?.[1] ?? '{}') : {};
   fs.mkdirSync('public/img/sp', { recursive: true });
   for (const [key, n] of Object.entries(picks)) {
     const c = cands[key]?.find((x) => x.n === n);
