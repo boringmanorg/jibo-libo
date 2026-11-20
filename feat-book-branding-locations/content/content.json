@@ -2,7 +2,7 @@
  {
   "url": "/",
   "status": 200,
-  "words": 2263,
+  "words": 2259,
   "findings": [
    {
     "rule": "seo:og:image missing",
@@ -693,7 +693,7 @@
  {
   "url": "/book",
   "status": 200,
-  "words": 452,
+  "words": 463,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -701,7 +701,7 @@
    },
    {
     "rule": "price:dorm \"from\" price",
-    "detail": "₹400 — \" and Experience by XTSY, with TAB Bistro on the property. Dorms from ₹400, rooms from ₹2,400, plus GST See stays Dawki\""
+    "detail": "₹400 — \" and Experience by XTSY, with TAB Bistro on the property. Dorms from ₹400, rooms from ₹2,400, plus GST See stays Shnon\""
    },
    {
     "rule": "schema:address",
@@ -731,7 +731,7 @@
    ],
    "faqSchemaQuestions": 0,
    "questionHeadings": 0,
-   "firstParagraphWords": 12,
+   "firstParagraphWords": 18,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": false
@@ -741,7 +741,7 @@
  {
   "url": "/book/campsite",
   "status": 200,
-  "words": 298,
+  "words": 422,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -753,17 +753,17 @@
    }
   ],
   "seo": {
-   "title": "Book the Dawki Riverside Campsite | XTSY",
-   "titleLen": 40,
-   "desc": "Check dates and book riverside tents at the XTSY Dawki campsite on the Umngot river, with meals, bonfire and kayaking add-ons at direct rates.",
-   "descLen": 142,
+   "title": "Book Shnonpedeng Riverside Camping | XTSY",
+   "titleLen": 41,
+   "desc": "Book riverside tents at Shnonpedeng on the Umngot, an XTSY franchise partner camp: full tent for two ₹1,400 a night, bed space ₹750, breakfast and dinner on request.",
+   "descLen": 165,
    "canonical": "https://xtsy.one/book/campsite",
    "robots": "noindex, follow",
    "h1": [
-    "XTSY Adventure Campsite"
+    "Shnonpedeng Riverside Camping"
    ],
-   "ogImage": true,
-   "imgs": 1,
+   "ogImage": false,
+   "imgs": 7,
    "imgsNoAlt": 0
   },
   "aeo": {
@@ -775,7 +775,7 @@
    ],
    "faqSchemaQuestions": 0,
    "questionHeadings": 0,
-   "firstParagraphWords": 5,
+   "firstParagraphWords": 6,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": false
@@ -799,8 +799,8 @@
   "seo": {
    "title": "Choose Your XTSY Property to Book",
    "titleLen": 33,
-   "desc": "Pick between XTSY Travellers Hostel Shillong, Experience by XTSY and the Dawki adventure campsite, then check availability and book direct.",
-   "descLen": 139,
+   "desc": "Pick between XTSY Travellers Hostel Shillong, Experience by XTSY and Shnonpedeng riverside camping (an XTSY partner camp), then check availability and book direct.",
+   "descLen": 163,
    "canonical": "https://xtsy.one/book/select",
    "robots": "noindex, follow",
    "h1": [
@@ -40142,6 +40142,10 @@
   "words": 593,
   "findings": [
    {
+    "rule": "seo:description > 160 chars",
+    "detail": "172: Riverside tents on the Umngot at Shnonpedeng, an XTSY franchise partner camp: full tent fo…"
+   },
+   {
     "rule": "price:dorm \"from\" price",
     "detail": "₹400 — \"Skip to content Book direct with the XTSY desk · Dorm beds from ₹400 /night · New Shillong Township, near IIM & N\""
    },
@@ -40151,14 +40155,14 @@
    }
   ],
   "seo": {
-   "title": "Dawki Campsite by the Umngot River | XTSY",
-   "titleLen": 41,
-   "desc": "Camp beside the Umngot river at XTSY's Dawki adventure campsite: riverside tents, kayaking, bonfires and meals, with rates and how to reach from Shillong.",
-   "descLen": 154,
+   "title": "Shnonpedeng Riverside Camping by the Umngot | XTSY",
+   "titleLen": 50,
+   "desc": "Riverside tents on the Umngot at Shnonpedeng, an XTSY franchise partner camp: full tent for two ₹1,400 a night, bed space ₹750, bonfire, and breakfast or dinner on request.",
+   "descLen": 172,
    "canonical": "https://xtsy.one/stays/campsite-dawki",
    "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
    "h1": [
-    "Sleep beside the clearest river."
+    "Sleep beside the Umngot."
    ],
    "ogImage": true,
    "imgs": 9,
@@ -40171,14 +40175,13 @@
     "PostalAddress",
     "ContactPoint",
     "Campground",
-    "GeoCoordinates",
     "FAQPage",
     "Question",
     "Answer"
    ],
-   "faqSchemaQuestions": 6,
-   "questionHeadings": 5,
-   "firstParagraphWords": 49,
+   "faqSchemaQuestions": 5,
+   "questionHeadings": 4,
+   "firstParagraphWords": 38,
    "mentionsBrand": true,
    "mentionsLocation": true,
    "updatedDate": false
@@ -40188,7 +40191,7 @@
  {
   "url": "/stays/experience-by-xtsy",
   "status": 200,
-  "words": 1221,
+  "words": 1219,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -45698,7 +45701,7 @@
  {
   "url": "/xtsy-270",
   "status": 200,
-  "words": 1221,
+  "words": 1219,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",

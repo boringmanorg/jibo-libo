@@ -96,9 +96,22 @@
   "viewport": "phone",
   "route": "/book/campsite",
   "status": 200,
-  "title": "Book the Dawki Riverside Campsite | XTSY",
+  "title": "Book Shnonpedeng Riverside Camping | XTSY",
   "design": "v2",
-  "axe": [],
+  "axe": [
+   {
+    "id": "scrollable-region-focusable",
+    "impact": "serious",
+    "help": "Scrollable region must have keyboard access",
+    "count": 1,
+    "examples": [
+     ".-mx-4"
+    ],
+    "detail": [
+     "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+    ]
+   }
+  ],
   "ui": {
    "firstTab": "Skip to content",
    "focusVisible": true,
@@ -756,9 +769,22 @@
   "viewport": "desktop",
   "route": "/book/campsite",
   "status": 200,
-  "title": "Book the Dawki Riverside Campsite | XTSY",
+  "title": "Book Shnonpedeng Riverside Camping | XTSY",
   "design": "v2",
-  "axe": [],
+  "axe": [
+   {
+    "id": "scrollable-region-focusable",
+    "impact": "serious",
+    "help": "Scrollable region must have keyboard access",
+    "count": 1,
+    "examples": [
+     ".-mx-4"
+    ],
+    "detail": [
+     "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+    ]
+   }
+  ],
   "ui": {
    "firstTab": "Skip to content",
    "focusVisible": true,

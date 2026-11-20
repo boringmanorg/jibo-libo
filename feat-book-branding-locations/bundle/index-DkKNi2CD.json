@@ -1,10 +1,10 @@
 {
   "results": [
     {
-      "bundleName": ".output/public/assets/index-CQmDIZ2u.js",
-      "totalBytes": 559191,
-      "mappedBytes": 547160,
-      "unmappedBytes": 11988,
+      "bundleName": ".output/public/assets/index-DkKNi2CD.js",
+      "totalBytes": 559462,
+      "mappedBytes": 547354,
+      "unmappedBytes": 12065,
       "eolBytes": 43,
       "sourceMapCommentBytes": 0,
       "files": {
@@ -12,7 +12,7 @@
           "size": 3476
         },
         "[no source]": {
-          "size": 14255
+          "size": 14310
         },
         "../../../node_modules/scheduler/index.js": {
           "size": 14
@@ -486,16 +486,16 @@
           "size": 632
         },
         "../../../src/routes/(stays)/book/index.tsx": {
-          "size": 712
+          "size": 768
         },
         "../../../src/routes/(stays)/book/campsite.tsx": {
-          "size": 333
+          "size": 361
         },
         "../../../src/routes/(stays)/book/confirmation.tsx": {
           "size": 260
         },
         "../../../src/routes/(stays)/book/select.tsx": {
-          "size": 319
+          "size": 343
         },
         "../../../src/data/stayHub.ts": {
           "size": 6687
@@ -507,7 +507,7 @@
           "size": 375
         },
         "../../../src/routes/(stays)/stays/campsite-dawki.tsx": {
-          "size": 332
+          "size": 363
         },
         "../../../src/assets/xtsy-270-stargazing.jpeg": {
           "size": 47
@@ -669,7 +669,7 @@
           "size": 0
         },
         "[unmapped]": {
-          "size": 11988
+          "size": 12065
         },
         "[EOLs]": {
           "size": 43
