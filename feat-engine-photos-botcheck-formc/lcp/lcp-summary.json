@@ -1,0 +1,1857 @@
+{
+ "base": "http://localhost:4174",
+ "profile": "Slow 4G (150ms, 1.6Mbps) + 4x CPU, 412x823 @1.75x, cold cache",
+ "routes": [
+  {
+   "route": "/",
+   "lcp": 1232,
+   "fcp": 1208,
+   "cls": 0.009,
+   "el": "IMG xtsy-property-images-8-portrait-828.avif",
+   "breakdown": {
+    "ttfb": 152,
+    "loadDelay": 41,
+    "loadDuration": 1008,
+    "renderDelay": 31
+   },
+   "image": {
+    "file": "xtsy-property-images-8-portrait-828.avif",
+    "inServerHtml": true,
+    "preloaded": true
+   },
+   "longTasks": 166,
+   "before": {
+    "jsKb": 348,
+    "cssKb": 28,
+    "imgKb": 53,
+    "thirdPartyKb": 0,
+    "requests": 61,
+    "images": [
+     {
+      "url": "/img/o/xtsy-property-images-8-portrait-828.avif",
+      "kb": 48,
+      "start": 193
+     },
+     {
+      "url": "/assets/xtsy-color-logo-DLbAB-SC.webp",
+      "kb": 6,
+      "start": 193
+     }
+    ],
+    "scripts": [
+     {
+      "url": "/assets/index-DtkaonKS.js",
+      "kb": 156,
+      "start": 194,
+      "end": 2244
+     },
+     {
+      "url": "/assets/jsx-runtime-B4UN2VIk.js",
+      "kb": 4,
+      "start": 194,
+      "end": 449
+     },
+     {
+      "url": "/assets/react-dom-gWqXm1NC.js",
+      "kb": 2,
+      "start": 194,
+      "end": 506
+     },
+     {
+      "url": "/assets/createServerFn-BCO2Xlzw.js",
+      "kb": 13,
+      "start": 194,
+      "end": 893
+     },
+     {
+      "url": "/assets/redirect-D2YulXhr.js",
+      "kb": 1,
+      "start": 195,
+      "end": 672
+     },
+     {
+      "url": "/assets/link-b82KqvVK.js",
+      "kb": 5,
+      "start": 195,
+      "end": 808
+     },
+     {
+      "url": "/assets/invariant-DEEwAagU.js",
+      "kb": 0,
+      "start": 195,
+      "end": 857
+     },
+     {
+      "url": "/assets/root-DLTE-HSj.js",
+      "kb": 0,
+      "start": 196,
+      "end": 979
+     },
+     {
+      "url": "/assets/query-Dy-DD5Y_.js",
+      "kb": 5,
+      "start": 196,
+      "end": 1107
+     },
+     {
+      "url": "/assets/dataLayerService-BfBty7hs.js",
+      "kb": 2,
+      "start": 196,
+      "end": 1093
+     },
+     {
+      "url": "/assets/route-b3voNKpA.js",
+      "kb": 1,
+      "start": 196,
+      "end": 1129
+     },
+     {
+      "url": "/assets/useRouter-BsG9fRJS.js",
+      "kb": 0,
+      "start": 197,
+      "end": 1150
+     },
+     {
+      "url": "/assets/matchContext-VpDvYkLy.js",
+      "kb": 0,
+      "start": 197,
+      "end": 1251
+     },
+     {
+      "url": "/assets/router-compat-Dvq9BDKs.js",
+      "kb": 2,
+      "start": 197,
+      "end": 1279
+     },
+     {
+      "url": "/assets/consent-BxHGynN8.js",
+      "kb": 2,
+      "start": 197,
+      "end": 1307
+     },
+     {
+      "url": "/assets/helmet-Co_7mHeO.js",
+      "kb": 6,
+      "start": 197,
+      "end": 1386
+     },
+     {
+      "url": "/assets/dist-BsIiesyF.js",
+      "kb": 2,
+      "start": 198,
+      "end": 1393
+     },
+     {
+      "url": "/assets/dist-DFc3gDaP.js",
+      "kb": 2,
+      "start": 198,
+      "end": 1422
+     },
+     {
+      "url": "/assets/dist-MB1QKl4x.js",
+      "kb": 5,
+      "start": 198,
+      "end": 1486
+     },
+     {
+      "url": "/assets/dist-CHpcj0at.js",
+      "kb": 1,
+      "start": 199,
+      "end": 1472
+     },
+     {
+      "url": "/assets/dist-NilkmuZg.js",
+      "kb": 1,
+      "start": 199,
+      "end": 1544
+     },
+     {
+      "url": "/assets/createLucideIcon-CFLhf0yt.js",
+      "kb": 1,
+      "start": 199,
+      "end": 1558
+     },
+     {
+      "url": "/assets/utils-D0T3A-kS.js",
+      "kb": 8,
+      "start": 200,
+      "end": 1680
+     },
+     {
+      "url": "/assets/AppContext-CRta89UJ.js",
+      "kb": 11,
+      "start": 200,
+      "end": 1801
+     },
+     {
+      "url": "/assets/dist-mYMNlRkg.js",
+      "kb": 1,
+      "start": 200,
+      "end": 1723
+     },
+     {
+      "url": "/assets/SiteFooter-BkHr9e0C.js",
+      "kb": 5,
+      "start": 200,
+      "end": 1737
+     },
+     {
+      "url": "/assets/analyticsFilters-DmyFCvLb.js",
+      "kb": 1,
+      "start": 200,
+      "end": 1744
+     },
+     {
+      "url": "/assets/primitives-BSf9tNpF.js",
+      "kb": 2,
+      "start": 200,
+      "end": 1851
+     },
+     {
+      "url": "/assets/preload-helper-7y9sWmk5.js",
+      "kb": 1,
+      "start": 200,
+      "end": 1887
+     },
+     {
+      "url": "/assets/neTaxonomy-zatgM2n6.js",
+      "kb": 5,
+      "start": 202,
+      "end": 1966
+     }
+    ]
+   },
+   "blocking": [
+    {
+     "url": "/assets/styles-COEmEUrQ.css",
+     "kb": 28,
+     "end": 950
+    }
+   ]
+  },
+  {
+   "route": "/stays/best-hostel-in-shillong",
+   "lcp": 1164,
+   "fcp": 1164,
+   "cls": 0.021,
+   "el": "P \"For most travellers a top pick in Shillong is XTSY Traveller\"",
+   "breakdown": {
+    "ttfb": 152,
+    "loadDelay": 0,
+    "loadDuration": 0,
+    "renderDelay": 1012
+   },
+   "image": null,
+   "longTasks": 94,
+   "before": {
+    "jsKb": 312,
+    "cssKb": 28,
+    "imgKb": 55,
+    "thirdPartyKb": 0,
+    "requests": 56,
+    "images": [
+     {
+      "url": "/img/o/xtsy-property-images-8-828.avif",
+      "kb": 33,
+      "start": 195
+     },
+     {
+      "url": "/img/o/xtsy-6-bed-mixed-dormitory-1-828.avif",
+      "kb": 9,
+      "start": 1158
+     },
+     {
+      "url": "/img/o/xtsy-6-bed-mixed-dormitory-2-828.avif",
+      "kb": 8,
+      "start": 1157
+     },
+     {
+      "url": "/assets/xtsy-color-logo-DLbAB-SC.webp",
+      "kb": 6,
+      "start": 196
+     }
+    ],
+    "scripts": [
+     {
+      "url": "/assets/index-DtkaonKS.js",
+      "kb": 156,
+      "start": 196,
+      "end": 2152
+     },
+     {
+      "url": "/assets/jsx-runtime-B4UN2VIk.js",
+      "kb": 4,
+      "start": 197,
+      "end": 456
+     },
+     {
+      "url": "/assets/react-dom-gWqXm1NC.js",
+      "kb": 2,
+      "start": 197,
+      "end": 414
+     },
+     {
+      "url": "/assets/redirect-D2YulXhr.js",
+      "kb": 1,
+      "start": 197,
+      "end": 593
+     },
+     {
+      "url": "/assets/createServerFn-BCO2Xlzw.js",
+      "kb": 13,
+      "start": 197,
+      "end": 714
+     },
+     {
+      "url": "/assets/link-b82KqvVK.js",
+      "kb": 5,
+      "start": 197,
+      "end": 743
+     },
+     {
+      "url": "/assets/invariant-DEEwAagU.js",
+      "kb": 0,
+      "start": 199,
+      "end": 772
+     },
+     {
+      "url": "/assets/root-DLTE-HSj.js",
+      "kb": 0,
+      "start": 199,
+      "end": 894
+     },
+     {
+      "url": "/assets/query-Dy-DD5Y_.js",
+      "kb": 5,
+      "start": 199,
+      "end": 1007
+     },
+     {
+      "url": "/assets/dataLayerService-BfBty7hs.js",
+      "kb": 2,
+      "start": 199,
+      "end": 986
+     },
+     {
+      "url": "/assets/route-b3voNKpA.js",
+      "kb": 1,
+      "start": 199,
+      "end": 1058
+     },
+     {
+      "url": "/assets/useRouter-BsG9fRJS.js",
+      "kb": 0,
+      "start": 199,
+      "end": 1108
+     },
+     {
+      "url": "/assets/matchContext-VpDvYkLy.js",
+      "kb": 0,
+      "start": 199,
+      "end": 1143
+     },
+     {
+      "url": "/assets/router-compat-Dvq9BDKs.js",
+      "kb": 2,
+      "start": 199,
+      "end": 1193
+     },
+     {
+      "url": "/assets/consent-BxHGynN8.js",
+      "kb": 2,
+      "start": 199,
+      "end": 1207
+     },
+     {
+      "url": "/assets/helmet-Co_7mHeO.js",
+      "kb": 6,
+      "start": 199,
+      "end": 1287
+     },
+     {
+      "url": "/assets/dist-BsIiesyF.js",
+      "kb": 2,
+      "start": 201,
+      "end": 1300
+     },
+     {
+      "url": "/assets/dist-DFc3gDaP.js",
+      "kb": 2,
+      "start": 201,
+      "end": 1329
+     },
+     {
+      "url": "/assets/dist-CHpcj0at.js",
+      "kb": 1,
+      "start": 202,
+      "end": 1372
+     },
+     {
+      "url": "/assets/dist-MB1QKl4x.js",
+      "kb": 5,
+      "start": 202,
+      "end": 1401
+     },
+     {
+      "url": "/assets/dist-NilkmuZg.js",
+      "kb": 1,
+      "start": 202,
+      "end": 1451
+     },
+     {
+      "url": "/assets/createLucideIcon-CFLhf0yt.js",
+      "kb": 1,
+      "start": 203,
+      "end": 1465
+     },
+     {
+      "url": "/assets/utils-D0T3A-kS.js",
+      "kb": 8,
+      "start": 203,
+      "end": 1573
+     },
+     {
+      "url": "/assets/SiteFooter-BkHr9e0C.js",
+      "kb": 5,
+      "start": 203,
+      "end": 1658
+     },
+     {
+      "url": "/assets/AppContext-CRta89UJ.js",
+      "kb": 11,
+      "start": 203,
+      "end": 1701
+     },
+     {
+      "url": "/assets/dist-mYMNlRkg.js",
+      "kb": 1,
+      "start": 203,
+      "end": 1630
+     },
+     {
+      "url": "/assets/analyticsFilters-DmyFCvLb.js",
+      "kb": 1,
+      "start": 203,
+      "end": 1644
+     },
+     {
+      "url": "/assets/primitives-BSf9tNpF.js",
+      "kb": 2,
+      "start": 204,
+      "end": 1751
+     },
+     {
+      "url": "/assets/preload-helper-7y9sWmk5.js",
+      "kb": 1,
+      "start": 204,
+      "end": 1795
+     },
+     {
+      "url": "/assets/neTaxonomy-zatgM2n6.js",
+      "kb": 5,
+      "start": 204,
+      "end": 1873
+     }
+    ]
+   },
+   "blocking": [
+    {
+     "url": "/assets/styles-COEmEUrQ.css",
+     "kb": 28,
+     "end": 943
+    }
+   ]
+  },
+  {
+   "route": "/stays/experience-by-xtsy",
+   "lcp": 1116,
+   "fcp": 1116,
+   "cls": 0.243,
+   "el": "H1 \"Experience by XTSY: The Romantic Couple Stay in India is now\"",
+   "breakdown": {
+    "ttfb": 153,
+    "loadDelay": 0,
+    "loadDuration": 0,
+    "renderDelay": 963
+   },
+   "image": null,
+   "longTasks": 98,
+   "before": {
+    "jsKb": 408,
+    "cssKb": 28,
+    "imgKb": 310,
+    "thirdPartyKb": 0,
+    "requests": 72,
+    "images": [
+     {
+      "url": "/img/o/xtsy-270-xtsy270-900.avif",
+      "kb": 54,
+      "start": 185
+     },
+     {
+      "url": "/img/o/xtsy-270-xtsy270-6-1280.avif",
+      "kb": 42,
+      "start": 185
+     },
+     {
+      "url": "/img/emoji/shooting_star_3d.png",
+      "kb": 40,
+      "start": 185
+     },
+     {
+      "url": "/img/emoji/heart_with_ribbon_3d.png",
+      "kb": 33,
+      "start": 185
+     },
+     {
+      "url": "/img/o/xtsy-270-xtsy270-2-900.avif",
+      "kb": 32,
+      "start": 185
+     },
+     {
+      "url": "/img/emoji/two_hearts_3d.png",
+      "kb": 30,
+      "start": 185
+     },
+     {
+      "url": "/img/emoji/glowing_star_3d.png",
+      "kb": 28,
+      "start": 184
+     },
+     {
+      "url": "/img/emoji/crescent_moon_3d.png",
+      "kb": 24,
+      "start": 185
+     },
+     {
+      "url": "/img/emoji/sparkles_3d.png",
+      "kb": 22,
+      "start": 185
+     },
+     {
+      "url": "/assets/xtsy-color-logo-DLbAB-SC.webp",
+      "kb": 6,
+      "start": 183
+     }
+    ],
+    "scripts": [
+     {
+      "url": "/assets/index-DtkaonKS.js",
+      "kb": 156,
+      "start": 186,
+      "end": 2129
+     },
+     {
+      "url": "/assets/jsx-runtime-B4UN2VIk.js",
+      "kb": 4,
+      "start": 186,
+      "end": 469
+     },
+     {
+      "url": "/assets/react-dom-gWqXm1NC.js",
+      "kb": 2,
+      "start": 186,
+      "end": 484
+     },
+     {
+      "url": "/assets/createServerFn-BCO2Xlzw.js",
+      "kb": 13,
+      "start": 186,
+      "end": 913
+     },
+     {
+      "url": "/assets/redirect-D2YulXhr.js",
+      "kb": 1,
+      "start": 187,
+      "end": 656
+     },
+     {
+      "url": "/assets/link-b82KqvVK.js",
+      "kb": 5,
+      "start": 187,
+      "end": 777
+     },
+     {
+      "url": "/assets/invariant-DEEwAagU.js",
+      "kb": 0,
+      "start": 187,
+      "end": 841
+     },
+     {
+      "url": "/assets/root-DLTE-HSj.js",
+      "kb": 0,
+      "start": 188,
+      "end": 949
+     },
+     {
+      "url": "/assets/query-Dy-DD5Y_.js",
+      "kb": 5,
+      "start": 188,
+      "end": 1049
+     },
+     {
+      "url": "/assets/dataLayerService-BfBty7hs.js",
+      "kb": 2,
+      "start": 188,
+      "end": 1091
+     },
+     {
+      "url": "/assets/route-b3voNKpA.js",
+      "kb": 1,
+      "start": 188,
+      "end": 1085
+     },
+     {
+      "url": "/assets/useRouter-BsG9fRJS.js",
+      "kb": 0,
+      "start": 189,
+      "end": 1106
+     },
+     {
+      "url": "/assets/matchContext-VpDvYkLy.js",
+      "kb": 0,
+      "start": 189,
+      "end": 1113
+     },
+     {
+      "url": "/assets/router-compat-Dvq9BDKs.js",
+      "kb": 2,
+      "start": 189,
+      "end": 1227
+     },
+     {
+      "url": "/assets/consent-BxHGynN8.js",
+      "kb": 2,
+      "start": 190,
+      "end": 1271
+     },
+     {
+      "url": "/assets/helmet-Co_7mHeO.js",
+      "kb": 6,
+      "start": 190,
+      "end": 1356
+     },
+     {
+      "url": "/assets/dist-BsIiesyF.js",
+      "kb": 2,
+      "start": 190,
+      "end": 1313
+     },
+     {
+      "url": "/assets/dist-DFc3gDaP.js",
+      "kb": 2,
+      "start": 190,
+      "end": 1320
+     },
+     {
+      "url": "/assets/dist-MB1QKl4x.js",
+      "kb": 5,
+      "start": 191,
+      "end": 1428
+     },
+     {
+      "url": "/assets/dist-CHpcj0at.js",
+      "kb": 1,
+      "start": 191,
+      "end": 1443
+     },
+     {
+      "url": "/assets/dist-NilkmuZg.js",
+      "kb": 1,
+      "start": 191,
+      "end": 1471
+     },
+     {
+      "url": "/assets/createLucideIcon-CFLhf0yt.js",
+      "kb": 1,
+      "start": 192,
+      "end": 1485
+     },
+     {
+      "url": "/assets/utils-D0T3A-kS.js",
+      "kb": 8,
+      "start": 192,
+      "end": 1585
+     },
+     {
+      "url": "/assets/AppContext-CRta89UJ.js",
+      "kb": 11,
+      "start": 192,
+      "end": 1736
+     },
+     {
+      "url": "/assets/dist-mYMNlRkg.js",
+      "kb": 1,
+      "start": 193,
+      "end": 1649
+     },
+     {
+      "url": "/assets/SiteFooter-BkHr9e0C.js",
+      "kb": 5,
+      "start": 193,
+      "end": 1685
+     },
+     {
+      "url": "/assets/analyticsFilters-DmyFCvLb.js",
+      "kb": 1,
+      "start": 193,
+      "end": 1664
+     },
+     {
+      "url": "/assets/primitives-BSf9tNpF.js",
+      "kb": 2,
+      "start": 193,
+      "end": 1764
+     },
+     {
+      "url": "/assets/preload-helper-7y9sWmk5.js",
+      "kb": 1,
+      "start": 193,
+      "end": 1807
+     },
+     {
+      "url": "/assets/neTaxonomy-zatgM2n6.js",
+      "kb": 5,
+      "start": 193,
+      "end": 1885
+     }
+    ]
+   },
+   "blocking": [
+    {
+     "url": "/assets/styles-COEmEUrQ.css",
+     "kb": 28,
+     "end": 934
+    }
+   ]
+  },
+  {
+   "route": "/tours/5n-6d-tawang-tour",
+   "lcp": 1156,
+   "fcp": 1156,
+   "cls": 0.002,
+   "el": "IMG sig-5n-6d-tawang-tour-828.avif",
+   "breakdown": {
+    "ttfb": 152,
+    "loadDelay": 39,
+    "loadDuration": 780,
+    "renderDelay": 185
+   },
+   "image": {
+    "file": "sig-5n-6d-tawang-tour-828.avif",
+    "inServerHtml": true,
+    "preloaded": true
+   },
+   "longTasks": 71,
+   "before": {
+    "jsKb": 404,
+    "cssKb": 28,
+    "imgKb": 37,
+    "thirdPartyKb": 0,
+    "requests": 78,
+    "images": [
+     {
+      "url": "/img/px/sig-5n-6d-tawang-tour-828.avif",
+      "kb": 31,
+      "start": 191
+     },
+     {
+      "url": "/assets/xtsy-color-logo-DLbAB-SC.webp",
+      "kb": 6,
+      "start": 193
+     }
+    ],
+    "scripts": [
+     {
+      "url": "/assets/jsx-runtime-B4UN2VIk.js",
+      "kb": 4,
+      "start": 193,
+      "end": 456
+     },
+     {
+      "url": "/assets/index-DtkaonKS.js",
+      "kb": 156,
+      "start": 193,
+      "end": 2137
+     },
+     {
+      "url": "/assets/react-dom-gWqXm1NC.js",
+      "kb": 2,
+      "start": 194,
+      "end": 428
+     },
+     {
+      "url": "/assets/redirect-D2YulXhr.js",
+      "kb": 1,
+      "start": 194,
+      "end": 613
+     },
+     {
+      "url": "/assets/createServerFn-BCO2Xlzw.js",
+      "kb": 13,
+      "start": 194,
+      "end": 692
+     },
+     {
+      "url": "/assets/link-b82KqvVK.js",
+      "kb": 5,
+      "start": 194,
+      "end": 742
+     },
+     {
+      "url": "/assets/invariant-DEEwAagU.js",
+      "kb": 0,
+      "start": 194,
+      "end": 785
+     },
+     {
+      "url": "/assets/root-DLTE-HSj.js",
+      "kb": 0,
+      "start": 194,
+      "end": 864
+     },
+     {
+      "url": "/assets/dataLayerService-BfBty7hs.js",
+      "kb": 2,
+      "start": 194,
+      "end": 993
+     },
+     {
+      "url": "/assets/query-Dy-DD5Y_.js",
+      "kb": 5,
+      "start": 194,
+      "end": 1000
+     },
+     {
+      "url": "/assets/route-b3voNKpA.js",
+      "kb": 1,
+      "start": 195,
+      "end": 1029
+     },
+     {
+      "url": "/assets/useRouter-BsG9fRJS.js",
+      "kb": 0,
+      "start": 195,
+      "end": 1115
+     },
+     {
+      "url": "/assets/matchContext-VpDvYkLy.js",
+      "kb": 0,
+      "start": 195,
+      "end": 1136
+     },
+     {
+      "url": "/assets/router-compat-Dvq9BDKs.js",
+      "kb": 2,
+      "start": 195,
+      "end": 1172
+     },
+     {
+      "url": "/assets/consent-BxHGynN8.js",
+      "kb": 2,
+      "start": 195,
+      "end": 1186
+     },
+     {
+      "url": "/assets/helmet-Co_7mHeO.js",
+      "kb": 6,
+      "start": 195,
+      "end": 1257
+     },
+     {
+      "url": "/assets/dist-BsIiesyF.js",
+      "kb": 2,
+      "start": 195,
+      "end": 1293
+     },
+     {
+      "url": "/assets/dist-DFc3gDaP.js",
+      "kb": 2,
+      "start": 195,
+      "end": 1322
+     },
+     {
+      "url": "/assets/dist-MB1QKl4x.js",
+      "kb": 5,
+      "start": 195,
+      "end": 1386
+     },
+     {
+      "url": "/assets/dist-CHpcj0at.js",
+      "kb": 1,
+      "start": 195,
+      "end": 1351
+     },
+     {
+      "url": "/assets/dist-NilkmuZg.js",
+      "kb": 1,
+      "start": 195,
+      "end": 1422
+     },
+     {
+      "url": "/assets/createLucideIcon-CFLhf0yt.js",
+      "kb": 1,
+      "start": 195,
+      "end": 1458
+     },
+     {
+      "url": "/assets/utils-D0T3A-kS.js",
+      "kb": 8,
+      "start": 195,
+      "end": 1593
+     },
+     {
+      "url": "/assets/SiteFooter-BkHr9e0C.js",
+      "kb": 5,
+      "start": 195,
+      "end": 1650
+     },
+     {
+      "url": "/assets/AppContext-CRta89UJ.js",
+      "kb": 11,
+      "start": 195,
+      "end": 1686
+     },
+     {
+      "url": "/assets/dist-mYMNlRkg.js",
+      "kb": 1,
+      "start": 196,
+      "end": 1608
+     },
+     {
+      "url": "/assets/analyticsFilters-DmyFCvLb.js",
+      "kb": 1,
+      "start": 196,
+      "end": 1637
+     },
+     {
+      "url": "/assets/primitives-BSf9tNpF.js",
+      "kb": 2,
+      "start": 196,
+      "end": 1765
+     },
+     {
+      "url": "/assets/preload-helper-7y9sWmk5.js",
+      "kb": 1,
+      "start": 196,
+      "end": 1772
+     },
+     {
+      "url": "/assets/neTaxonomy-zatgM2n6.js",
+      "kb": 5,
+      "start": 196,
+      "end": 1865
+     }
+    ]
+   },
+   "blocking": [
+    {
+     "url": "/assets/styles-COEmEUrQ.css",
+     "kb": 28,
+     "end": 950
+    }
+   ]
+  },
+  {
+   "route": "/destinations/meghalaya/shillong",
+   "lcp": 1000,
+   "fcp": 1000,
+   "cls": 0.218,
+   "el": "P \"Searching for adventures near me while in Shillong? These ne\"",
+   "breakdown": {
+    "ttfb": 153,
+    "loadDelay": 0,
+    "loadDuration": 0,
+    "renderDelay": 847
+   },
+   "image": null,
+   "longTasks": 0,
+   "before": {
+    "jsKb": 310,
+    "cssKb": 28,
+    "imgKb": 231,
+    "thirdPartyKb": 0,
+    "requests": 55,
+    "images": [
+     {
+      "url": "/img/o/xtsyvoyage-elephant-falls-736.webp",
+      "kb": 154,
+      "start": 993
+     },
+     {
+      "url": "/img/o/xtsyvoyage-umiam-lake-736.webp",
+      "kb": 71,
+      "start": 993
+     },
+     {
+      "url": "/assets/xtsy-color-logo-DLbAB-SC.webp",
+      "kb": 6,
+      "start": 185
+     }
+    ],
+    "scripts": [
+     {
+      "url": "/assets/jsx-runtime-B4UN2VIk.js",
+      "kb": 4,
+      "start": 186,
+      "end": 443
+     },
+     {
+      "url": "/assets/index-DtkaonKS.js",
+      "kb": 156,
+      "start": 186,
+      "end": 2001
+     },
+     {
+      "url": "/assets/react-dom-gWqXm1NC.js",
+      "kb": 2,
+      "start": 187,
+      "end": 407
+     },
+     {
+      "url": "/assets/redirect-D2YulXhr.js",
+      "kb": 1,
+      "start": 187,
+      "end": 579
+     },
+     {
+      "url": "/assets/createServerFn-BCO2Xlzw.js",
+      "kb": 13,
+      "start": 187,
+      "end": 628
+     },
+     {
+      "url": "/assets/link-b82KqvVK.js",
+      "kb": 5,
+      "start": 187,
+      "end": 700
+     },
+     {
+      "url": "/assets/invariant-DEEwAagU.js",
+      "kb": 0,
+      "start": 188,
+      "end": 650
+     },
+     {
+      "url": "/assets/root-DLTE-HSj.js",
+      "kb": 0,
+      "start": 189,
+      "end": 750
+     },
+     {
+      "url": "/assets/query-Dy-DD5Y_.js",
+      "kb": 5,
+      "start": 189,
+      "end": 865
+     },
+     {
+      "url": "/assets/dataLayerService-BfBty7hs.js",
+      "kb": 2,
+      "start": 189,
+      "end": 850
+     },
+     {
+      "url": "/assets/route-b3voNKpA.js",
+      "kb": 1,
+      "start": 189,
+      "end": 872
+     },
+     {
+      "url": "/assets/useRouter-BsG9fRJS.js",
+      "kb": 0,
+      "start": 190,
+      "end": 914
+     },
+     {
+      "url": "/assets/matchContext-VpDvYkLy.js",
+      "kb": 0,
+      "start": 190,
+      "end": 987
+     },
+     {
+      "url": "/assets/router-compat-Dvq9BDKs.js",
+      "kb": 2,
+      "start": 190,
+      "end": 1021
+     },
+     {
+      "url": "/assets/consent-BxHGynN8.js",
+      "kb": 2,
+      "start": 191,
+      "end": 1058
+     },
+     {
+      "url": "/assets/dist-BsIiesyF.js",
+      "kb": 2,
+      "start": 191,
+      "end": 1100
+     },
+     {
+      "url": "/assets/helmet-Co_7mHeO.js",
+      "kb": 6,
+      "start": 191,
+      "end": 1122
+     },
+     {
+      "url": "/assets/dist-DFc3gDaP.js",
+      "kb": 2,
+      "start": 191,
+      "end": 1165
+     },
+     {
+      "url": "/assets/dist-MB1QKl4x.js",
+      "kb": 5,
+      "start": 191,
+      "end": 1229
+     },
+     {
+      "url": "/assets/dist-CHpcj0at.js",
+      "kb": 1,
+      "start": 192,
+      "end": 1222
+     },
+     {
+      "url": "/assets/dist-NilkmuZg.js",
+      "kb": 1,
+      "start": 192,
+      "end": 1258
+     },
+     {
+      "url": "/assets/createLucideIcon-CFLhf0yt.js",
+      "kb": 1,
+      "start": 192,
+      "end": 1279
+     },
+     {
+      "url": "/assets/utils-D0T3A-kS.js",
+      "kb": 8,
+      "start": 192,
+      "end": 1422
+     },
+     {
+      "url": "/assets/AppContext-CRta89UJ.js",
+      "kb": 11,
+      "start": 192,
+      "end": 1543
+     },
+     {
+      "url": "/assets/SiteFooter-BkHr9e0C.js",
+      "kb": 5,
+      "start": 193,
+      "end": 1486
+     },
+     {
+      "url": "/assets/dist-mYMNlRkg.js",
+      "kb": 1,
+      "start": 193,
+      "end": 1444
+     },
+     {
+      "url": "/assets/analyticsFilters-DmyFCvLb.js",
+      "kb": 1,
+      "start": 194,
+      "end": 1458
+     },
+     {
+      "url": "/assets/primitives-BSf9tNpF.js",
+      "kb": 2,
+      "start": 194,
+      "end": 1601
+     },
+     {
+      "url": "/assets/preload-helper-7y9sWmk5.js",
+      "kb": 1,
+      "start": 194,
+      "end": 1615
+     },
+     {
+      "url": "/assets/neTaxonomy-zatgM2n6.js",
+      "kb": 5,
+      "start": 194,
+      "end": 1687
+     }
+    ]
+   },
+   "blocking": [
+    {
+     "url": "/assets/styles-COEmEUrQ.css",
+     "kb": 28,
+     "end": 829
+    }
+   ]
+  },
+  {
+   "route": "/guides/living-root-bridges-meghalaya",
+   "lcp": 1164,
+   "fcp": 1164,
+   "cls": 0.035,
+   "el": "H1 \"A Guide to Meghalaya's Living Root Bridges (2026)\"",
+   "breakdown": {
+    "ttfb": 152,
+    "loadDelay": 0,
+    "loadDuration": 0,
+    "renderDelay": 1012
+   },
+   "image": null,
+   "longTasks": 79,
+   "before": {
+    "jsKb": 334,
+    "cssKb": 28,
+    "imgKb": 81,
+    "thirdPartyKb": 0,
+    "requests": 57,
+    "images": [
+     {
+      "url": "/img/o/xtsyvoyage-nongriat-double-decker-root-bridge-736.avif",
+      "kb": 75,
+      "start": 192
+     },
+     {
+      "url": "/assets/xtsy-color-logo-DLbAB-SC.webp",
+      "kb": 6,
+      "start": 193
+     }
+    ],
+    "scripts": [
+     {
+      "url": "/assets/index-DtkaonKS.js",
+      "kb": 156,
+      "start": 194,
+      "end": 2380
+     },
+     {
+      "url": "/assets/jsx-runtime-B4UN2VIk.js",
+      "kb": 4,
+      "start": 194,
+      "end": 471
+     },
+     {
+      "url": "/assets/react-dom-gWqXm1NC.js",
+      "kb": 2,
+      "start": 194,
+      "end": 500
+     },
+     {
+      "url": "/assets/createServerFn-BCO2Xlzw.js",
+      "kb": 13,
+      "start": 195,
+      "end": 922
+     },
+     {
+      "url": "/assets/redirect-D2YulXhr.js",
+      "kb": 1,
+      "start": 195,
+      "end": 671
+     },
+     {
+      "url": "/assets/link-b82KqvVK.js",
+      "kb": 5,
+      "start": 195,
+      "end": 792
+     },
+     {
+      "url": "/assets/invariant-DEEwAagU.js",
+      "kb": 0,
+      "start": 195,
+      "end": 858
+     },
+     {
+      "url": "/assets/root-DLTE-HSj.js",
+      "kb": 0,
+      "start": 195,
+      "end": 965
+     },
+     {
+      "url": "/assets/query-Dy-DD5Y_.js",
+      "kb": 5,
+      "start": 195,
+      "end": 1100
+     },
+     {
+      "url": "/assets/dataLayerService-BfBty7hs.js",
+      "kb": 2,
+      "start": 196,
+      "end": 1122
+     },
+     {
+      "url": "/assets/route-b3voNKpA.js",
+      "kb": 1,
+      "start": 196,
+      "end": 1130
+     },
+     {
+      "url": "/assets/useRouter-BsG9fRJS.js",
+      "kb": 0,
+      "start": 197,
+      "end": 1151
+     },
+     {
+      "url": "/assets/matchContext-VpDvYkLy.js",
+      "kb": 0,
+      "start": 197,
+      "end": 1265
+     },
+     {
+      "url": "/assets/router-compat-Dvq9BDKs.js",
+      "kb": 2,
+      "start": 197,
+      "end": 1322
+     },
+     {
+      "url": "/assets/consent-BxHGynN8.js",
+      "kb": 2,
+      "start": 198,
+      "end": 1344
+     },
+     {
+      "url": "/assets/helmet-Co_7mHeO.js",
+      "kb": 6,
+      "start": 198,
+      "end": 1430
+     },
+     {
+      "url": "/assets/dist-BsIiesyF.js",
+      "kb": 2,
+      "start": 198,
+      "end": 1458
+     },
+     {
+      "url": "/assets/dist-DFc3gDaP.js",
+      "kb": 2,
+      "start": 199,
+      "end": 1523
+     },
+     {
+      "url": "/assets/dist-MB1QKl4x.js",
+      "kb": 5,
+      "start": 199,
+      "end": 1587
+     },
+     {
+      "url": "/assets/dist-CHpcj0at.js",
+      "kb": 1,
+      "start": 199,
+      "end": 1608
+     },
+     {
+      "url": "/assets/dist-NilkmuZg.js",
+      "kb": 1,
+      "start": 199,
+      "end": 1623
+     },
+     {
+      "url": "/assets/createLucideIcon-CFLhf0yt.js",
+      "kb": 1,
+      "start": 200,
+      "end": 1687
+     },
+     {
+      "url": "/assets/utils-D0T3A-kS.js",
+      "kb": 8,
+      "start": 200,
+      "end": 1881
+     },
+     {
+      "url": "/assets/AppContext-CRta89UJ.js",
+      "kb": 11,
+      "start": 200,
+      "end": 1945
+     },
+     {
+      "url": "/assets/SiteFooter-BkHr9e0C.js",
+      "kb": 5,
+      "start": 201,
+      "end": 1887
+     },
+     {
+      "url": "/assets/dist-mYMNlRkg.js",
+      "kb": 1,
+      "start": 201,
+      "end": 1809
+     },
+     {
+      "url": "/assets/analyticsFilters-DmyFCvLb.js",
+      "kb": 1,
+      "start": 201,
+      "end": 1873
+     },
+     {
+      "url": "/assets/primitives-BSf9tNpF.js",
+      "kb": 2,
+      "start": 201,
+      "end": 1980
+     },
+     {
+      "url": "/assets/preload-helper-7y9sWmk5.js",
+      "kb": 1,
+      "start": 201,
+      "end": 2031
+     },
+     {
+      "url": "/assets/neTaxonomy-zatgM2n6.js",
+      "kb": 5,
+      "start": 201,
+      "end": 2109
+     }
+    ]
+   },
+   "blocking": [
+    {
+     "url": "/assets/styles-COEmEUrQ.css",
+     "kb": 28,
+     "end": 951
+    }
+   ]
+  },
+  {
+   "route": "/tab-bistro",
+   "lcp": 1072,
+   "fcp": 1072,
+   "cls": 0.083,
+   "el": "P \"Looking for restaurants in Shillong? TAB Bistro by XTSY brin\"",
+   "breakdown": {
+    "ttfb": 152,
+    "loadDelay": 0,
+    "loadDuration": 0,
+    "renderDelay": 920
+   },
+   "image": null,
+   "longTasks": 112,
+   "before": {
+    "jsKb": 383,
+    "cssKb": 28,
+    "imgKb": 25,
+    "thirdPartyKb": 0,
+    "requests": 59,
+    "images": [
+     {
+      "url": "/img/o/xtsy-tab-bistro-by-xtsy-1-828.avif",
+      "kb": 19,
+      "start": 189
+     },
+     {
+      "url": "/assets/xtsy-color-logo-DLbAB-SC.webp",
+      "kb": 6,
+      "start": 189
+     }
+    ],
+    "scripts": [
+     {
+      "url": "/assets/index-DtkaonKS.js",
+      "kb": 156,
+      "start": 190,
+      "end": 2073
+     },
+     {
+      "url": "/assets/react-dom-gWqXm1NC.js",
+      "kb": 2,
+      "start": 190,
+      "end": 429
+     },
+     {
+      "url": "/assets/jsx-runtime-B4UN2VIk.js",
+      "kb": 4,
+      "start": 190,
+      "end": 443
+     },
+     {
+      "url": "/assets/createServerFn-BCO2Xlzw.js",
+      "kb": 13,
+      "start": 191,
+      "end": 707
+     },
+     {
+      "url": "/assets/redirect-D2YulXhr.js",
+      "kb": 1,
+      "start": 191,
+      "end": 607
+     },
+     {
+      "url": "/assets/link-b82KqvVK.js",
+      "kb": 5,
+      "start": 192,
+      "end": 736
+     },
+     {
+      "url": "/assets/invariant-DEEwAagU.js",
+      "kb": 0,
+      "start": 192,
+      "end": 779
+     },
+     {
+      "url": "/assets/root-DLTE-HSj.js",
+      "kb": 0,
+      "start": 192,
+      "end": 872
+     },
+     {
+      "url": "/assets/query-Dy-DD5Y_.js",
+      "kb": 5,
+      "start": 192,
+      "end": 943
+     },
+     {
+      "url": "/assets/dataLayerService-BfBty7hs.js",
+      "kb": 2,
+      "start": 192,
+      "end": 951
+     },
+     {
+      "url": "/assets/route-b3voNKpA.js",
+      "kb": 1,
+      "start": 193,
+      "end": 958
+     },
+     {
+      "url": "/assets/useRouter-BsG9fRJS.js",
+      "kb": 0,
+      "start": 193,
+      "end": 1030
+     },
+     {
+      "url": "/assets/matchContext-VpDvYkLy.js",
+      "kb": 0,
+      "start": 193,
+      "end": 1044
+     },
+     {
+      "url": "/assets/router-compat-Dvq9BDKs.js",
+      "kb": 2,
+      "start": 194,
+      "end": 1130
+     },
+     {
+      "url": "/assets/consent-BxHGynN8.js",
+      "kb": 2,
+      "start": 194,
+      "end": 1151
+     },
+     {
+      "url": "/assets/helmet-Co_7mHeO.js",
+      "kb": 6,
+      "start": 194,
+      "end": 1209
+     },
+     {
+      "url": "/assets/dist-BsIiesyF.js",
+      "kb": 2,
+      "start": 195,
+      "end": 1230
+     },
+     {
+      "url": "/assets/dist-DFc3gDaP.js",
+      "kb": 2,
+      "start": 195,
+      "end": 1244
+     },
+     {
+      "url": "/assets/dist-CHpcj0at.js",
+      "kb": 1,
+      "start": 195,
+      "end": 1323
+     },
+     {
+      "url": "/assets/dist-MB1QKl4x.js",
+      "kb": 5,
+      "start": 195,
+      "end": 1337
+     },
+     {
+      "url": "/assets/dist-NilkmuZg.js",
+      "kb": 1,
+      "start": 196,
+      "end": 1373
+     },
+     {
+      "url": "/assets/createLucideIcon-CFLhf0yt.js",
+      "kb": 1,
+      "start": 196,
+      "end": 1394
+     },
+     {
+      "url": "/assets/utils-D0T3A-kS.js",
+      "kb": 8,
+      "start": 196,
+      "end": 1479
+     },
+     {
+      "url": "/assets/AppContext-CRta89UJ.js",
+      "kb": 11,
+      "start": 196,
+      "end": 1637
+     },
+     {
+      "url": "/assets/SiteFooter-BkHr9e0C.js",
+      "kb": 5,
+      "start": 196,
+      "end": 1580
+     },
+     {
+      "url": "/assets/dist-mYMNlRkg.js",
+      "kb": 1,
+      "start": 197,
+      "end": 1552
+     },
+     {
+      "url": "/assets/analyticsFilters-DmyFCvLb.js",
+      "kb": 1,
+      "start": 197,
+      "end": 1574
+     },
+     {
+      "url": "/assets/primitives-BSf9tNpF.js",
+      "kb": 2,
+      "start": 198,
+      "end": 1659
+     },
+     {
+      "url": "/assets/preload-helper-7y9sWmk5.js",
+      "kb": 1,
+      "start": 198,
+      "end": 1717
+     },
+     {
+      "url": "/assets/neTaxonomy-zatgM2n6.js",
+      "kb": 5,
+      "start": 198,
+      "end": 1802
+     }
+    ]
+   },
+   "blocking": [
+    {
+     "url": "/assets/styles-COEmEUrQ.css",
+     "kb": 28,
+     "end": 880
+    }
+   ]
+  },
+  {
+   "route": "/about/faq",
+   "lcp": 1136,
+   "fcp": 1136,
+   "cls": 0.143,
+   "el": "IMG xtsy-property-images-8-828.avif",
+   "breakdown": {
+    "ttfb": 153,
+    "loadDelay": 41,
+    "loadDuration": 813,
+    "renderDelay": 129
+   },
+   "image": {
+    "file": "xtsy-property-images-8-828.avif",
+    "inServerHtml": true,
+    "preloaded": false
+   },
+   "longTasks": 50,
+   "before": {
+    "jsKb": 312,
+    "cssKb": 28,
+    "imgKb": 38,
+    "thirdPartyKb": 0,
+    "requests": 54,
+    "images": [
+     {
+      "url": "/img/o/xtsy-property-images-8-828.avif",
+      "kb": 33,
+      "start": 194
+     },
+     {
+      "url": "/assets/xtsy-color-logo-DLbAB-SC.webp",
+      "kb": 6,
+      "start": 194
+     }
+    ],
+    "scripts": [
+     {
+      "url": "/assets/index-DtkaonKS.js",
+      "kb": 156,
+      "start": 195,
+      "end": 2180
+     },
+     {
+      "url": "/assets/react-dom-gWqXm1NC.js",
+      "kb": 2,
+      "start": 195,
+      "end": 471
+     },
+     {
+      "url": "/assets/jsx-runtime-B4UN2VIk.js",
+      "kb": 4,
+      "start": 195,
+      "end": 492
+     },
+     {
+      "url": "/assets/createServerFn-BCO2Xlzw.js",
+      "kb": 13,
+      "start": 196,
+      "end": 915
+     },
+     {
+      "url": "/assets/redirect-D2YulXhr.js",
+      "kb": 1,
+      "start": 197,
+      "end": 672
+     },
+     {
+      "url": "/assets/link-b82KqvVK.js",
+      "kb": 5,
+      "start": 197,
+      "end": 800
+     },
+     {
+      "url": "/assets/invariant-DEEwAagU.js",
+      "kb": 0,
+      "start": 197,
+      "end": 858
+     },
+     {
+      "url": "/assets/root-DLTE-HSj.js",
+      "kb": 0,
+      "start": 198,
+      "end": 972
+     },
+     {
+      "url": "/assets/query-Dy-DD5Y_.js",
+      "kb": 5,
+      "start": 198,
+      "end": 1065
+     },
+     {
+      "url": "/assets/dataLayerService-BfBty7hs.js",
+      "kb": 2,
+      "start": 198,
+      "end": 1093
+     },
+     {
+      "url": "/assets/route-b3voNKpA.js",
+      "kb": 1,
+      "start": 198,
+      "end": 1108
+     },
+     {
+      "url": "/assets/useRouter-BsG9fRJS.js",
+      "kb": 0,
+      "start": 198,
+      "end": 1129
+     },
+     {
+      "url": "/assets/matchContext-VpDvYkLy.js",
+      "kb": 0,
+      "start": 198,
+      "end": 1165
+     },
+     {
+      "url": "/assets/router-compat-Dvq9BDKs.js",
+      "kb": 2,
+      "start": 200,
+      "end": 1244
+     },
+     {
+      "url": "/assets/consent-BxHGynN8.js",
+      "kb": 2,
+      "start": 200,
+      "end": 1272
+     },
+     {
+      "url": "/assets/helmet-Co_7mHeO.js",
+      "kb": 6,
+      "start": 200,
+      "end": 1358
+     },
+     {
+      "url": "/assets/dist-BsIiesyF.js",
+      "kb": 2,
+      "start": 200,
+      "end": 1322
+     },
+     {
+      "url": "/assets/dist-DFc3gDaP.js",
+      "kb": 2,
+      "start": 201,
+      "end": 1365
+     },
+     {
+      "url": "/assets/dist-CHpcj0at.js",
+      "kb": 1,
+      "start": 201,
+      "end": 1444
+     },
+     {
+      "url": "/assets/dist-MB1QKl4x.js",
+      "kb": 5,
+      "start": 201,
+      "end": 1451
+     },
+     {
+      "url": "/assets/dist-NilkmuZg.js",
+      "kb": 1,
+      "start": 202,
+      "end": 1480
+     },
+     {
+      "url": "/assets/createLucideIcon-CFLhf0yt.js",
+      "kb": 1,
+      "start": 202,
+      "end": 1516
+     },
+     {
+      "url": "/assets/utils-D0T3A-kS.js",
+      "kb": 8,
+      "start": 202,
+      "end": 1602
+     },
+     {
+      "url": "/assets/AppContext-CRta89UJ.js",
+      "kb": 11,
+      "start": 203,
+      "end": 1751
+     },
+     {
+      "url": "/assets/SiteFooter-BkHr9e0C.js",
+      "kb": 5,
+      "start": 203,
+      "end": 1701
+     },
+     {
+      "url": "/assets/dist-mYMNlRkg.js",
+      "kb": 1,
+      "start": 203,
+      "end": 1659
+     },
+     {
+      "url": "/assets/analyticsFilters-DmyFCvLb.js",
+      "kb": 1,
+      "start": 203,
+      "end": 1694
+     },
+     {
+      "url": "/assets/primitives-BSf9tNpF.js",
+      "kb": 2,
+      "start": 203,
+      "end": 1780
+     },
+     {
+      "url": "/assets/preload-helper-7y9sWmk5.js",
+      "kb": 1,
+      "start": 204,
+      "end": 1823
+     },
+     {
+      "url": "/assets/neTaxonomy-zatgM2n6.js",
+      "kb": 5,
+      "start": 204,
+      "end": 1916
+     }
+    ]
+   },
+   "blocking": [
+    {
+     "url": "/assets/styles-COEmEUrQ.css",
+     "kb": 28,
+     "end": 950
+    }
+   ]
+  }
+ ]
+}
