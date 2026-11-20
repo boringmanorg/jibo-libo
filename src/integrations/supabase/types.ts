@@ -1277,6 +1277,69 @@ export type Database = {
         }
         Relationships: []
       }
+      be_sheet_availability: {
+        Row: {
+          free: number
+          night: string
+          room_type_id: string
+          synced_at: string
+          version: number
+        }
+        Insert: {
+          free: number
+          night: string
+          room_type_id: string
+          synced_at?: string
+          version: number
+        }
+        Update: {
+          free?: number
+          night?: string
+          room_type_id?: string
+          synced_at?: string
+          version?: number
+        }
+        Relationships: []
+      }
+      be_sheet_links: {
+        Row: {
+          approved_at: string | null
+          created_at: string
+          id: string
+          label: string
+          last_sync_at: string | null
+          last_sync_rows: number | null
+          pair_code: string
+          requester_hash: string | null
+          status: string
+          token_hash: string
+        }
+        Insert: {
+          approved_at?: string | null
+          created_at?: string
+          id?: string
+          label: string
+          last_sync_at?: string | null
+          last_sync_rows?: number | null
+          pair_code: string
+          requester_hash?: string | null
+          status?: string
+          token_hash: string
+        }
+        Update: {
+          approved_at?: string | null
+          created_at?: string
+          id?: string
+          label?: string
+          last_sync_at?: string | null
+          last_sync_rows?: number | null
+          pair_code?: string
+          requester_hash?: string | null
+          status?: string
+          token_hash?: string
+        }
+        Relationships: []
+      }
       be_webhook_events: {
         Row: {
           gateway: string
@@ -2194,6 +2257,7 @@ export type Database = {
           start_date: string
           state: string
           unit_type_id: string
+          units: number | null
         }
         Insert: {
           created_at?: string
@@ -2207,6 +2271,7 @@ export type Database = {
           start_date: string
           state: string
           unit_type_id: string
+          units?: number | null
         }
         Update: {
           created_at?: string
@@ -2220,6 +2285,7 @@ export type Database = {
           start_date?: string
           state?: string
           unit_type_id?: string
+          units?: number | null
         }
         Relationships: []
       }
@@ -6476,6 +6542,10 @@ export type Database = {
       be_is_console_admin: { Args: never; Returns: boolean }
       be_next_invoice_seq: {
         Args: { p_fy: string; p_kind: string }
+        Returns: number
+      }
+      be_sheet_publish: {
+        Args: { p_rows: Json; p_version: number }
         Returns: number
       }
       calculate_onboarding_readiness: {
