@@ -37,6 +37,8 @@ describe('/book before online booking is live', () => {
     const route = readFileSync('src/routes/(stays)/book/index.tsx', 'utf8');
     expect(route).toMatch(/<StayEngine mode=\{live \? "live" : "enquiry"\}/);
     expect(route).not.toMatch(/SimplifiedBookingFlow/);
-    expect(route).toMatch(/setTimeout\(\(\) => resolve\(fallback\), 1500\)/);
+    expect(route).toMatch(/loader: \(\) => loadBookPageData\(\)/);
+    // A paused database must not hold the page.
+    expect(readFileSync('src/booking/bookPageLoader.ts', 'utf8')).toMatch(/setTimeout\(\(\) => resolve\(fallback\), 1500\)/);
   });
 });

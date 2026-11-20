@@ -76,8 +76,8 @@ function Stays() {
         <p className="text-sm text-muted-foreground">Blocks show on the guest booking page (/book) straight away: blocked nights read “Full”, and guests can’t pick more beds or rooms than are left.</p>
         <div className="grid gap-3 md:grid-cols-5">
           <div><Label htmlFor="unit">Room</Label><select id="unit" className={selectCls} value={chosen} onChange={(e) => { setUnit(e.target.value); setCount(''); }}>
-            <option value={WHOLE_PROPERTY}>Whole property: every room at {property.name}</option>
-            <option value={ALL_STAYS}>All XTSY stays: hostel and Experience by XTSY</option>
+            <option value={WHOLE_PROPERTY}>Whole property: every {property.propertyId === 'XTSY-SHL-HOSTEL' ? 'room, including Experience by XTSY,' : 'tent'} at {property.name}</option>
+            <option value={ALL_STAYS}>Every property: {data.properties.map((p) => p.name).join(' and ')}</option>
             {property.units.map((u) => <option key={u.id} value={u.id}>{u.name}</option>)}</select></div>
           <div><Label htmlFor="bn">How many to close</Label><Input id="bn" type="number" min={1} max={chosenUnit?.totalUnits ?? 1} inputMode="numeric" className="h-12 text-base" disabled={!single}
             placeholder={single ? `All ${chosenUnit?.totalUnits ?? ''}` : 'All'} value={count} onChange={(e) => setCount(e.target.value)} />

@@ -35,7 +35,7 @@ export interface PmsProperty {
   propertyId: string;
   slug: string;
   name: string;
-  brand: 'xtsy-hostel' | 'experience-by-xtsy';
+  brand: 'xtsy-hostel' | 'experience-by-xtsy' | 'xtsy-partner-camp';
   status: 'active' | 'coming-soon' | 'paused';
   /** Site path for this property's page. */
   path: string;

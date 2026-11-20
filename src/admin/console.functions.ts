@@ -5,8 +5,7 @@
  */
 import { createServerFn } from '@tanstack/react-start';
 import { z } from 'zod';
-import { ROOM_TYPES } from '@/config/roomTypes';
-import { PMS_PROPERTIES, POS_OUTLETS, findOutlet, findProperty } from '@/integrations/xtsy-saas/catalogue';
+import { PMS_PROPERTIES, POS_OUTLETS, canonicalPropertyId, findOutlet, findProperty, unitInfo } from '@/integrations/xtsy-saas/catalogue';
 import { requireSuperAdmin } from './adminAuth';
 import { staticTableSlots } from './slots';
 import { closedUnits, closureFromRow, type ClosureRow } from '@/booking/consoleClosures';
@@ -43,10 +42,11 @@ export const getConsoleOverview = createServerFn({ method: 'GET' })
       secretsConfigured: Boolean(cfg),
       properties: PMS_PROPERTIES.map((p) => ({
         propertyId: p.propertyId, name: p.name, path: p.path,
-        units: p.unitTypeIds.map((id) => ({ id, name: ROOM_TYPES[id].name, rate: ROOM_TYPES[id].basePrice, totalUnits: ROOM_TYPES[id].totalUnits })),
+        units: p.unitTypeIds.map((id) => ({ id, ...unitInfo(id)! })),
       })),
       outlets: POS_OUTLETS.map((o) => ({ outletId: o.outletId, name: o.name, path: o.path })),
-      inventoryOverrides: inv.data ?? [],
+      // Rows saved under the old separate Experience by XTSY property show with the hostel.
+      inventoryOverrides: (inv.data ?? []).map((o: any) => ({ ...o, property_id: canonicalPropertyId(o.property_id) })),
       tableOverrides: tables.data ?? [],
       audit: log.data ?? [],
     };
@@ -92,20 +92,20 @@ export const consoleCheckAvailability = createServerFn({ method: 'POST' })
       return { source: 'pms' as const, units: live.units.map((u) => ({ ...u, blocked: false })) };
     }
     // Same rules as the guest booking page: partial blocks add up, a later opening cancels a block.
-    const { data: rows } = await ctx.supabase.from('console_inventory_overrides').select('*').eq('property_id', property.propertyId).order('created_at');
+    const { data: rows } = await ctx.supabase.from('console_inventory_overrides').select('*').in('property_id', [property.propertyId, ...(property.propertyId === 'XTSY-SHL-HOSTEL' ? ['XTSY-SHL-SUITE'] : [])]).order('created_at');
     const closures = (rows ?? []).map(closureFromRow).filter((x: ClosureRow | null): x is ClosureRow => x !== null);
     const nights = stayNights(data.checkIn, data.checkOut);
     return {
       source: 'static' as const,
       units: property.unitTypeIds.map((id) => {
-        const total = ROOM_TYPES[id].totalUnits;
+        const total = unitInfo(id)!.totalUnits;
         const available = Math.min(...nights.map((n) => Math.max(0, total - closedUnits(closures, id, n))));
-        return { unitTypeId: id, available, nightlyRate: ROOM_TYPES[id].basePrice, currency: property.currency, blocked: available === 0 };
+        return { unitTypeId: id, available, nightlyRate: unitInfo(id)!.rate, currency: property.currency, blocked: available === 0 };
       }),
     };
   });
 
-/** Room choices beyond a single room type: every room of the chosen property, or of every XTSY stay. */
+/** Room choices beyond a single room type: every room of the chosen property, or of every property. */
 export const WHOLE_PROPERTY = '__property__';
 export const ALL_STAYS = '__all_stays__';
 
@@ -128,7 +128,7 @@ export const saveInventoryOverride = createServerFn({ method: 'POST' })
       : property.unitTypeIds.includes(data.unitTypeId) ? [{ propertyId: property.propertyId, unitTypeId: data.unitTypeId }]
       : [];
     if (!targets.length) throw new Error('Unknown room');
-    const units = targets.length === 1 && data.units ? Math.min(data.units, ROOM_TYPES[targets[0].unitTypeId]?.totalUnits ?? data.units) : undefined;
+    const units = targets.length === 1 && data.units ? Math.min(data.units, unitInfo(targets[0].unitTypeId)?.totalUnits ?? data.units) : undefined;
     // `units` is sent only when set, so saving still works before the units column exists.
     const { data: rows, error } = await ctx.supabase.from('console_inventory_overrides').insert(targets.map((t) => ({
       property_id: t.propertyId, unit_type_id: t.unitTypeId, start_date: data.startDate, end_date: data.endDate, state: data.state,

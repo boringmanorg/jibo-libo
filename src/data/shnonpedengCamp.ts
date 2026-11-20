@@ -29,6 +29,14 @@ export type CampMealId = keyof typeof CAMP_MEALS;
 
 export const CAMP_FROM = CAMP_PLANS.bed.price;
 
+/** Tents the camp sells a night (owner, 20 Nov 2026). Bed spaces come out of the same tents, two per tent. */
+export const CAMP_TENTS = 10;
+/** Room-type id the console uses for the camp's tents. */
+export const CAMP_UNIT_ID = 'shnonpedeng-tent';
+
+/** Tents a request uses: one per full tent, one per two bed spaces. */
+export const tentsUsed = (r: { tents: number; beds: number }) => r.tents + Math.ceil(r.beds / 2);
+
 /** Partner's own photos (owner, 20 Nov 2026), WebP in public/img/o. Order: hero first. */
 export const CAMP_PHOTOS: { src: string; alt: string }[] = [
   { n: 1, alt: 'Tents on the sandy bank of the Umngot at Shnonpedeng, with kayaks and the suspension bridge' },

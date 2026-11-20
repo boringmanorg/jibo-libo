@@ -130,7 +130,7 @@ export default function StayEngine({ mode, photos, closures, initialLocation }: 
         </>
       ) : location === 'shnonpedeng' ? (
         <>
-          <CampBooking onBack={() => pickLocation(null)} />
+          <CampBooking onBack={() => pickLocation(null)} closures={closures} />
           <Promotions step={1} />
           <BrandStory />
         </>

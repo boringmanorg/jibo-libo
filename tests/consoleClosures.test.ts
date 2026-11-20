@@ -50,3 +50,19 @@ describe('console blocks on the booking page', () => {
     expect(staticSearch('2026-12-01', '2026-12-02').rooms.every((x) => x.freeForStay === x.totalUnits)).toBe(true);
   });
 });
+
+describe('Shnonpedeng tents in the console', () => {
+  it('10 tents; bed spaces use half a tent; partial and full blocks apply', async () => {
+    const { CAMP_TENTS, CAMP_UNIT_ID, tentsUsed } = await import('@/data/shnonpedengCamp');
+    expect(CAMP_TENTS).toBe(10);
+    expect(tentsUsed({ tents: 2, beds: 3 })).toBe(4);
+    const rows = [block(CAMP_UNIT_ID, '2026-12-24', '2026-12-25', 'a', 7), block(CAMP_UNIT_ID, '2026-12-31', '2026-12-31', 'b')];
+    expect(freeAfterClosures(rows, CAMP_UNIT_ID, '2026-12-24', CAMP_TENTS)).toBe(3);
+    expect(freeAfterClosures(rows, CAMP_UNIT_ID, '2026-12-31', CAMP_TENTS)).toBe(0);
+    expect(freeAfterClosures(rows, CAMP_UNIT_ID, '2026-12-26', CAMP_TENTS)).toBe(10);
+  });
+  it('a whole-hostel block includes Experience by XTSY, saved under the hostel', () => {
+    const r = staticSearch('2026-11-20', '2026-11-21', {}, [block('xtsy-270', '2026-11-20', '2026-11-21', 'z')]);
+    expect(r.rooms.find((x) => x.id === 'experience-by-xtsy')!.freeForStay).toBe(0);
+  });
+});

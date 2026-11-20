@@ -4,9 +4,8 @@
  */
 import { createServerFn } from '@tanstack/react-start';
 import { z } from 'zod';
-import { ROOM_TYPES } from '@/config/roomTypes';
 import { BISTRO_SLOT_RANGES } from '@/data/tabBistroHours';
-import { findOutlet, findProperty } from './catalogue';
+import { findOutlet, findProperty, unitInfo } from './catalogue';
 import type { PmsAvailabilityResponse, PosTableSlotsResponse, SaasWriteResult } from './types';
 
 const date = z.string().regex(/^\d{4}-\d{2}-\d{2}$/);
@@ -28,8 +27,8 @@ export const getStayAvailability = createServerFn({ method: 'GET' })
       source: 'static',
       units: property.unitTypeIds.map((id) => ({
         unitTypeId: id,
-        available: ROOM_TYPES[id].totalUnits,
-        nightlyRate: ROOM_TYPES[id].basePrice,
+        available: unitInfo(id)?.totalUnits ?? 0,
+        nightlyRate: unitInfo(id)?.rate ?? 0,
         currency: property.currency,
       })),
     };
