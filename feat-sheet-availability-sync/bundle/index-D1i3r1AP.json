@@ -1,10 +1,10 @@
 {
   "results": [
     {
-      "bundleName": ".output/public/assets/index-DKqnczGs.js",
-      "totalBytes": 559340,
-      "mappedBytes": 547240,
-      "unmappedBytes": 12057,
+      "bundleName": ".output/public/assets/index-D1i3r1AP.js",
+      "totalBytes": 559394,
+      "mappedBytes": 547315,
+      "unmappedBytes": 12036,
       "eolBytes": 43,
       "sourceMapCommentBytes": 0,
       "files": {
@@ -12,7 +12,7 @@
           "size": 3476
         },
         "[no source]": {
-          "size": 14304
+          "size": 14275
         },
         "../../../node_modules/scheduler/index.js": {
           "size": 14
@@ -276,7 +276,7 @@
           "size": 1700
         },
         "../../../src/components/v2/ChatLauncher.tsx": {
-          "size": 2148
+          "size": 2157
         },
         "../../../src/data/seoGoneSlugs.ts": {
           "size": 79
@@ -321,7 +321,7 @@
           "size": 9549
         },
         "../../../src/data/siteSchemas.ts": {
-          "size": 3050
+          "size": 3045
         },
         "../../../src/routes/index.tsx": {
           "size": 692
@@ -486,7 +486,7 @@
           "size": 632
         },
         "../../../src/routes/(stays)/book/index.tsx": {
-          "size": 644
+          "size": 779
         },
         "../../../src/routes/(stays)/book/campsite.tsx": {
           "size": 377
@@ -495,7 +495,7 @@
           "size": 260
         },
         "../../../src/routes/(stays)/book/select.tsx": {
-          "size": 343
+          "size": 308
         },
         "../../../src/data/stayHub.ts": {
           "size": 6687
@@ -669,7 +669,7 @@
           "size": 0
         },
         "[unmapped]": {
-          "size": 12057
+          "size": 12036
         },
         "[EOLs]": {
           "size": 43
