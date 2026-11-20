@@ -16,6 +16,7 @@ import { ariBlocksStay, unmappedRoomTypes, type ChannelManager, type ChannelMapp
 import { staahNotConnected } from './channel/staah.server';
 import { addDays, daysBetween, isIsoDate, stayNights, todayInIndia, type IsoDate } from './dates';
 import { freeUnitsPerNight, type Hold, type NightLoad } from './availability';
+import { closureFromRow, freeAfterClosures, type ClosureRow } from './consoleClosures';
 import { canTakeLiveBookings, launchBlockers, type LaunchState } from './launchGate';
 import { settingsFromRow, type BookingSettings } from './consoleSettings';
 import { quoteStay, chargeFor, type Quote } from './pricing';
@@ -105,9 +106,20 @@ export async function engineStatus(d: EngineDeps): Promise<{ live: boolean }> {
 }
 
 /** /book on load: whether payment is live, plus console-uploaded photos by room type. */
-export async function bookPageData(d: EngineDeps): Promise<{ live: boolean; photos: Record<string, { src: string; alt: string }[]> }> {
-  const [status, photos] = await Promise.all([engineStatus(d), loadRoomPhotos(d).catch(() => new Map())]);
-  return { live: status.live, photos: Object.fromEntries(photos) };
+export async function bookPageData(d: EngineDeps): Promise<{ live: boolean; photos: Record<string, { src: string; alt: string }[]>; closures: ClosureRow[] }> {
+  const [status, photos, closures] = await Promise.all([engineStatus(d), loadRoomPhotos(d).catch(() => new Map()), loadClosures(d).catch(() => [])]);
+  return { live: status.live, photos: Object.fromEntries(photos), closures };
+}
+
+/**
+ * Blocks and openings from the console (Stays → Block or open dates) that end today or later.
+ * The /book page applies them to every room count, so a blocked night shows as full.
+ */
+export async function loadClosures(d: EngineDeps): Promise<ClosureRow[]> {
+  if (!d.db) return [];
+  const r = await d.db.from('console_inventory_overrides').select('*').gte('end_date', todayInIndia(d.now)).order('created_at', { ascending: true });
+  if (r.error) return [];
+  return (r.data ?? []).map((row: Record<string, unknown>) => closureFromRow(row)).filter((x: ClosureRow | null): x is ClosureRow => x !== null);
 }
 
 // ---------------------------------------------------------------- availability
@@ -176,6 +188,8 @@ export interface RoomResult {
   strip: NightCell[];
   /** Photos the admin uploaded in the console, in order; empty means use the built-in gallery. */
   photos: { src: string; alt: string }[];
+  /** Beds or rooms of this type in total (enquiry mode shows "N left" only when the console has closed some). */
+  totalUnits?: number;
 }
 export interface SearchResult {
   live: boolean;
@@ -210,6 +224,7 @@ export async function searchStays(d: EngineDeps, q: { checkIn: string; checkOut:
   const ari: NightAri[] = channel.connected ? await channel.getAri(BOOKING_ROOM_TYPES.map((r) => r.id), checkIn, rangeEnd) : [];
   const loads = await loadLoads(d, checkIn, rangeEnd, channel.connected);
   const photos = await loadRoomPhotos(d);
+  const closures = await loadClosures(d).catch(() => [] as ClosureRow[]);
   const ariFor = (id: string, night: IsoDate) => ari.find((a) => a.roomTypeId === id && a.night === night);
 
   const rooms: RoomResult[] = BOOKING_ROOM_TYPES.map((room) => {
@@ -225,7 +240,7 @@ export async function searchStays(d: EngineDeps, q: { checkIn: string; checkOut:
     const blocked = new Set(nightsInSpan.filter(closedNight));
     const free = freeUnitsPerNight({
       roomTypeId: room.id, checkIn, checkOut: rangeEnd,
-      capacity: (night) => (channel.connected ? ariFor(room.id, night)?.available ?? 0 : room.units),
+      capacity: (night) => freeAfterClosures(closures, room.id, night, channel.connected ? ariFor(room.id, night)?.available ?? 0 : room.units),
       confirmed: loads.confirmed, holds: loads.holds, blockedNights: blocked, now: d.now,
     });
     const strip: NightCell[] = free.slice(0, STRIP_NIGHTS).map(({ night, free: f }) => ({
@@ -402,10 +417,11 @@ async function oversold(d: EngineDeps, rooms: CheckoutInput['rooms'], checkIn: I
   const channel = channelOf(d);
   const loads = await loadLoads(d, checkIn, checkOut, channel.connected);
   const ari = channel.connected ? await channel.getAri(rooms.map((r) => r.roomTypeId), checkIn, checkOut) : [];
+  const closures = await loadClosures(d).catch(() => [] as ClosureRow[]);
   return rooms.some((r) => {
     const room = findRoomType(r.roomTypeId)!;
     return stayNights(checkIn, checkOut).some((night) => {
-      const cap = channel.connected ? ari.find((a) => a.roomTypeId === room.id && a.night === night)?.available ?? 0 : room.units;
+      const cap = freeAfterClosures(closures, room.id, night, channel.connected ? ari.find((a) => a.roomTypeId === room.id && a.night === night)?.available ?? 0 : room.units);
       const used = [...loads.confirmed.filter((l) => l.roomTypeId === room.id && l.night === night).map((l) => l.units),
         ...loads.holds.filter((h) => h.roomTypeId === room.id && h.expiresAt > d.now && h.nights.includes(night)).map((h) => h.units)]
         .reduce((s, u) => s + u, 0);
