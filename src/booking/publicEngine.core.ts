@@ -103,6 +103,12 @@ export async function engineStatus(d: EngineDeps): Promise<{ live: boolean }> {
   return { live: (await loadState(d)).live };
 }
 
+/** /book on load: whether payment is live, plus console-uploaded photos by room type. */
+export async function bookPageData(d: EngineDeps): Promise<{ live: boolean; photos: Record<string, { src: string; alt: string }[]> }> {
+  const [status, photos] = await Promise.all([engineStatus(d), loadRoomPhotos(d).catch(() => new Map())]);
+  return { live: status.live, photos: Object.fromEntries(photos) };
+}
+
 // ---------------------------------------------------------------- availability
 
 interface Loads { confirmed: NightLoad[]; holds: Hold[] }
@@ -140,7 +146,7 @@ export function roomPhotoUrl(supabaseUrl: string, path: string): string {
 }
 
 /** Console-managed photos by room type. Any failure falls back to the built-in galleries. */
-async function loadRoomPhotos(d: EngineDeps): Promise<Map<string, { src: string; alt: string }[]>> {
+export async function loadRoomPhotos(d: EngineDeps): Promise<Map<string, { src: string; alt: string }[]>> {
   const out = new Map<string, { src: string; alt: string }[]>();
   const base = d.env['SUPABASE_URL'];
   if (!d.db || !base) return out;
