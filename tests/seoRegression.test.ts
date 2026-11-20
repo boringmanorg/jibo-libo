@@ -18,7 +18,7 @@ const ROOT = path.resolve(__dirname, '..');
 // amount cannot tell those apart from a stale room rate, so matching on it only produced noise.
 // Room rates are guarded properly below, by comparing the live sources against each other.
 const STALE_PRICE_TOKENS = ['₹269', '₹2,099', '₹8,500', '499 - ₹4,999', '450 - ₹8,500'];
-const CANONICAL_PRICE_RANGE = '₹399 - ₹4,999';
+const CANONICAL_PRICE_RANGE = '₹400 - ₹4,999';
 
 function readSrcFiles(): { file: string; content: string }[] {
   const out: { file: string; content: string }[] = [];
@@ -152,12 +152,14 @@ describe('SEO regression: page volume', () => {
 describe('SEO regression: rateSanityCheck integrity', () => {
   it('exposes the canonical Shillong rates', async () => {
     const mod: any = await import('../src/utils/rateSanityCheck');
-    // Owner-approved rates. The old 4999 / 329 figures here contradicted the live table.
+    // Owner-approved rates before GST (20 Nov 2026), read from the booking-engine catalogue.
     expect(mod.SHILLONG_CANONICAL_RATES['xtsy-270']).toBe(4999);
-    expect(mod.SHILLONG_CANONICAL_RATES['king-double-room']).toBe(2399);
-    expect(mod.SHILLONG_CANONICAL_RATES['8-bed-mixed-dorm']).toBe(399);
-    expect(mod.SHILLONG_CANONICAL_RATES['6-bed-mixed-dorm']).toBe(499);
-    expect(mod.SHILLONG_CANONICAL_RATES['4-bed-female-only-dorm']).toBe(599);
+    expect(mod.SHILLONG_CANONICAL_RATES['king-double-room']).toBe(2400);
+    expect(mod.SHILLONG_CANONICAL_RATES['triple-room']).toBe(3000);
+    expect(mod.SHILLONG_CANONICAL_RATES['8-bed-mixed-dorm']).toBe(400);
+    expect(mod.SHILLONG_CANONICAL_RATES['6-bed-standard-dorm']).toBe(450);
+    expect(mod.SHILLONG_CANONICAL_RATES['6-bed-mixed-dorm']).toBe(500);
+    expect(mod.SHILLONG_CANONICAL_RATES['4-bed-female-only-dorm']).toBe(600);
   });
 });
 

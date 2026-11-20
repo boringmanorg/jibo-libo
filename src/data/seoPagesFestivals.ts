@@ -21,10 +21,10 @@ export const FESTIVAL_SEO_PAGES: SEOPageData[] = [
     schemaType: 'TravelGuide',
     title: 'Shillong Cherry Blossom Festival 2026: Dates & Stay',
     metaDescription:
-      'Shillong Cherry Blossom Festival 2026 runs 20-21 November at New Shillong Highland Grounds. Dates, tickets, getting there, and where to stay nearby from ₹399.',
+      'Shillong Cherry Blossom Festival 2026 runs 20-21 November at New Shillong Highland Grounds. Dates, tickets, getting there, and where to stay nearby from ₹400.',
     h1: 'Shillong Cherry Blossom Festival 2026',
     intro:
-      'India’s only cherry blossom festival takes place on 20 and 21 November 2026 at its new permanent home, New Shillong Highland Grounds. XTSY Travellers Hostel is in the same township, New Shillong, so you are minutes from the ground rather than driving in from the city. Dorm beds start at ₹399 a night, all inclusive.',
+      'India’s only cherry blossom festival takes place on 20 and 21 November 2026 at its new permanent home, New Shillong Highland Grounds. XTSY Travellers Hostel is in the same township, New Shillong, so you are minutes from the ground rather than driving in from the city. Dorm beds start at ₹400 a night plus GST.',
     sections: [
       {
         heading: 'Dates, venue and tickets',
@@ -44,7 +44,7 @@ export const FESTIVAL_SEO_PAGES: SEOPageData[] = [
           'On festival nights, central Shillong traffic backs up and cabs become scarce and expensive after the last set. XTSY is in New Shillong Township, the same side of the city as the Highland Grounds, near NIFT and IIM Shillong, so getting back after the show is short and simple.',
         listItems: [
           'Same township as the festival ground',
-          'Dorm beds ₹399, 6-bed ₹499, women-only 4-bed ₹599, King Double ₹2,399, all inclusive',
+          'Dorm beds ₹400, 6-bed ₹500, women-only 4-bed ₹600, King Double ₹2,400, all plus GST',
           'TAB Bistro on site for late dinner after the music',
           'Check-in from 11 AM, check-out strictly 10 AM',
           'Book early: festival week is the busiest of the Shillong year',
@@ -87,7 +87,7 @@ export const FESTIVAL_SEO_PAGES: SEOPageData[] = [
       {
         question: 'Where should I stay for the Shillong Cherry Blossom Festival?',
         answer:
-          'Stay in New Shillong if you can, because it is the same township as the Highland Grounds venue and avoids late-night traffic back into the city. XTSY Travellers Hostel has dorm beds from ₹399 a night and a King Double at ₹2,399, all inclusive, with TAB Bistro on site.',
+          'Stay in New Shillong if you can, because it is the same township as the Highland Grounds venue and avoids late-night traffic back into the city. XTSY Travellers Hostel has dorm beds from ₹400 a night and a King Double at ₹2,400, plus GST, with TAB Bistro on site.',
       },
       {
         question: 'Do the cherry blossoms actually bloom during the festival?',

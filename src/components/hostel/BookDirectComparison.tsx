@@ -13,7 +13,7 @@ interface Row {
 }
 
 const rows: Row[] = [
-  { feature: 'Price per dorm bed', direct: 'From ₹399 — base rate', ota: '₹460–₹470 after 15–18% commission', directWins: true },
+  { feature: 'Price per dorm bed', direct: 'From ₹400 — base rate', ota: '₹460–₹470 after 15–18% commission', directWins: true },
   { feature: 'Commission added to your rate', direct: 'None', ota: '15–18% built into the price', directWins: true },
   { feature: 'Cancellation', direct: BOOKING_POLICY_TEXT.short, ota: 'OTA policy — often non-refundable rates', directWins: false },
   { feature: 'Prepayment', direct: 'Most dorms pay on arrival', ota: 'Card hold or full prepayment', directWins: true },

@@ -28,11 +28,11 @@ export const PAGE_FAQS: Record<string, PageFaq[]> = {
     { q: 'Is it worth visiting Meghalaya during the monsoon?', a: 'Yes, if waterfalls are your reason for coming. June to September is when Nohkalikai, Seven Sisters and Wei Sawdong are at their most powerful, and the hills are greenest. Expect rain most days, leeches on forest trails, and mist that can hide viewpoints by midday. Roads to Sohra and Dawki stay open, but plan loose days.' },
     { q: 'When is the Umngot River at Dawki clearest?', a: 'November to April. After the monsoon silt settles, the water turns glass-clear and boats appear to float. During and just after heavy rain the river runs brown and boating can be suspended.' },
     { q: 'What is the weather like in Shillong through the year?', a: 'Shillong sits at about 1,500 m, so it is mild year-round: roughly 15-24\\u00b0C in summer and 4-15\\u00b0C in winter, with cold nights from December to February. Carry a jacket in every season and a rain layer from May to September.' },
-    { q: 'Which months are cheapest to travel in Meghalaya?', a: 'June to September, the monsoon, is the low season, and stays and cabs are at their cheapest. At XTSY, dorm beds start at \\u20b9399 a night all year, with a women-only dorm at \\u20b9599 and the King Double at \\u20b92,399.' },
+    { q: 'Which months are cheapest to travel in Meghalaya?', a: 'June to September, the monsoon, is the low season, and stays and cabs are at their cheapest. At XTSY, dorm beds start at \\u20b9400 a night all year, with a women-only dorm at \\u20b9600 and the King Double at \\u20b92,400.' },
     { q: 'How many days do you need for Meghalaya?', a: 'Five days covers Shillong, Sohra and Dawki comfortably. Seven days adds the Double Decker root-bridge trek and the Jaintia Hills without rushing.' },
   ],
   '/tours/budget-trip-to-meghalaya': [
-    { q: 'What is the best-value place to stay in Shillong?', a: 'At XTSY Travellers Hostel, an 8-bed dorm bed costs ₹399 a night and a 6-bed dorm ₹499, all inclusive. A 4-bed women-only dorm is ₹599.' },
+    { q: 'What is the best-value place to stay in Shillong?', a: 'At XTSY Travellers Hostel, an 8-bed dorm bed costs ₹400 a night and a 6-bed dorm ₹500, plus GST. A 4-bed women-only dorm is ₹600.' },
     { q: 'How can I save on transport?', a: 'Use shared taxis between Guwahati and Shillong and for the main routes, travel in a group to split a cab for day trips, and plan Sohra and Dawki on separate days to avoid long return drives.' },
     { q: 'Is it cheaper to book the hostel direct?', a: 'Yes. Booking sites add their commission to the price you see; booking on xtsy.one gives you the base rate.' },
     { q: 'Is there a budget group trip?', a: TOUR_OPTIONS },
@@ -54,7 +54,7 @@ export const PAGE_FAQS: Record<string, PageFaq[]> = {
     { q: 'Where does the trip start?', a: 'Pick-up and drop are in Guwahati, at the airport or railway station.' },
     { q: 'Can the itinerary be changed?', a: 'Yes. Dates, pace and stays can be adjusted; message the XTSY desk with what you have in mind.' },
     { q: 'What is included in the Meghalaya couple tour package?', a: 'The 6-day honeymoon package at \\u20b926,000 per person covers stays, private transport with a driver-guide, daily breakfast, and the couple-friendly circuit through Shillong, Sohra, Mawlynnong and Dawki. Flights and trains to Guwahati are not included.' },
-    { q: 'Is there a private stay for couples at XTSY?', a: 'Yes. The King Double room is \\u20b92,399 a night, all inclusive. Experience by XTSY, a glass sky room with a queen-size bed, is \\u20b94,999 a night for the stay (regular \\u20b99,999), without breakfast, with an optional decoration add-on at \\u20b92,500 plus \\u20b9450 GST.' },
+    { q: 'Is there a private stay for couples at XTSY?', a: 'Yes. The King Double room is \\u20b92,400 a night plus GST. Experience by XTSY, a glass sky room with a queen-size bed, is \\u20b94,999 a night for the stay (regular \\u20b99,999), without breakfast, with an optional decoration add-on at \\u20b92,500 plus \\u20b9450 GST.' },
     { q: 'When is the best time for a honeymoon in Meghalaya?', a: 'October to April. Skies are clearest, the Umngot River at Dawki runs glass-clear, and evenings are cool rather than cold. The monsoon from June to September is dramatic and green, but rain can shorten viewpoint days.' },
     { q: 'How many days do couples need in Meghalaya?', a: 'Five to six days is comfortable: two nights in or near Shillong, one or two near Sohra, and a night by the river at Dawki or Shnongpdeng, with time left for slow mornings.' },
     { q: 'Can you arrange a surprise or celebration?', a: 'Yes. Tell the XTSY desk before you arrive and the Experience by XTSY decoration add-on can be arranged for an anniversary, proposal or birthday, at \\u20b92,500 plus \\u20b9450 GST, once per stay.' },
@@ -87,8 +87,8 @@ export const PAGE_FAQS: Record<string, PageFaq[]> = {
   ],
   '/stays/xtsy-vs-zostel': [
     { q: 'Where is each hostel in Shillong?', a: 'XTSY Travellers Hostel is in New Shillong Township, near IIM and NIFT, about 30 minutes by road from Police Bazaar. Zostel Shillong is in the Golf Club area, about 2 km from the city centre.' },
-    { q: 'Which is cheaper?', a: 'XTSY publishes all-inclusive dorm prices from ₹399 a night. Zostel does not publish its Shillong dorm prices on its own website, so check its listing for your dates.' },
-    { q: 'Which has a women-only dorm?', a: 'XTSY has a 4-bed women-only dorm at ₹599 a night.' },
+    { q: 'Which is cheaper?', a: 'XTSY publishes its dorm prices: from ₹400 a night plus GST. Zostel does not publish its Shillong dorm prices on its own website, so check its listing for your dates.' },
+    { q: 'Which has a women-only dorm?', a: 'XTSY has a 4-bed women-only dorm at ₹600 a night.' },
     { q: 'Which is better for groups and pets?', a: 'XTSY takes groups of 6 to 60 and welcomes cats and birds (dogs depending on breed and size). Zostel Shillong lists an 18+ rule, groups of up to 6 and no pets.' },
     { q: 'Does XTSY arrange trips for groups?', a: 'Yes. XTSY offers private itineraries for your group. Check each package for its minimum group size and ask the desk to confirm availability for your dates.' },
   ],
@@ -101,7 +101,7 @@ export const PAGE_FAQS: Record<string, PageFaq[]> = {
   '/about/pricing-cancellation-policy': [
     { q: 'Can I cancel and get a refund?', a: 'No. There is no free cancellation: the booking amount is non-refundable, and no-shows are treated as cancellations.' },
     { q: 'Can I change my dates instead?', a: `Yes, once per booking, if you ask at least ${HOSTEL_POLICIES.modificationCutoffDays} days before check-in. It is subject to availability, and any rate difference is paid at the time of change. Within ${HOSTEL_POLICIES.modificationCutoffDays} days of check-in, dates cannot be changed.` },
-    { q: 'Are prices all inclusive?', a: 'Room prices shown on xtsy.one are all inclusive: dorm beds from ₹399, King Double ₹2,399 and Experience by XTSY ₹4,999 (stay only).' },
+    { q: 'Do prices include GST?', a: 'No. Room prices on xtsy.one are nightly rates before GST: dorm beds from ₹400, King Double ₹2,400 and Experience by XTSY ₹4,999 (stay only). GST is added at 5%, and breakfast and payment gateway charges are extra.' },
     { q: 'Who do I contact about a booking?', a: 'Email booking@xtsy.one for bookings, or admin@xtsy.one for policy questions.' },
   ],
 };

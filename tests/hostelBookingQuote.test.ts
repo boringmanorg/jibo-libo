@@ -3,13 +3,13 @@ import { resolveBookingQuote } from '../src/utils/bookingCatalogue';
 import { HOSTEL_POLICIES } from '../src/data/hostelPolicies';
 
 describe('approved dorm quotes', () => {
-  for (const [beds, rate] of [[8, 399], [6, 499], [4, 599]]) {
+  for (const [beds, rate] of [[8, 400], [6, 500], [4, 600]]) {
     const gender = beds === 4 ? 'Female' : 'Mixed';
-    it(`${beds}-bed ${gender} stays at ₹${rate}, including GST`, () => {
+    it(`${beds}-bed ${gender} stays at ₹${rate} a night plus 5% GST`, () => {
       const quote = resolveBookingQuote([{ id: `dorm-${beds}`, name: `${beds}-Bed ${gender} Dorm`, base_price: rate, is_active: true }],
         [{ name: `Bed in ${beds}-Bed ${gender} Dormitory`, quantity: 2, kind: 'dorm', capacity: beds }], 3);
-      expect(quote.total).toBe(rate * 6);
-      expect(quote.taxes).toBe(Math.round(rate * 6 * 5 / 105));
+      expect(quote.subtotal).toBe(rate * 6);
+      expect(quote.taxes).toBe(Math.round(rate * 6 * 5 / 100));
       expect(quote.subtotal + quote.taxes).toBe(quote.total);
       expect(quote.guests).toBe(2);
     });
@@ -19,8 +19,8 @@ describe('approved dorm quotes', () => {
       [{ name: 'Bed in 4-Bed Mixed Dormitory', quantity: 1, kind: 'dorm', capacity: 4 }], 1)).toThrow('not currently available');
   });
   it('uses the catalogue rate instead of a stale cached quote', () => {
-    expect(resolveBookingQuote([{ id: 'eight', name: '8-Bed Mixed Dorm', base_price: 399, is_active: true }],
-      [{ name: 'Bed in 8-Bed Mixed Dormitory', quantity: 1, kind: 'dorm', capacity: 8 }], 1).total).toBe(399);
+    expect(resolveBookingQuote([{ id: 'eight', name: '8-Bed Mixed Dorm', base_price: 400, is_active: true }],
+      [{ name: 'Bed in 8-Bed Mixed Dormitory', quantity: 1, kind: 'dorm', capacity: 8 }], 1).total).toBe(420);
   });
 });
 describe('published hostel times', () => {

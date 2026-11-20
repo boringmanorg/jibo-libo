@@ -1,14 +1,14 @@
 /**
- * Experience by XTSY and the shared booking quote.
+ * Experience by XTSY and the shared enquiry quote.
  *
- * Room rates are ALL INCLUSIVE (GST included) from Oct 2026: the price a guest sees is the price
- * they pay for the room. The GST inside it is shown for the invoice only. The breakfast plan for
- * Experience by XTSY was withdrawn; the decoration add-on stays at ₹2,500 + 18% GST, once per stay.
- *
- * quoteStay() mirrors the database function public.create_whatsapp_enquiry exactly (same
- * rounding), so the subtotal / taxes / total the site sends always match the server's check.
+ * Room rates EXCLUDE GST from 20 Nov 2026 (owner): the nightly rate is the room price, and GST is
+ * added on top at the hotel slab for that rate (5% up to ₹7,500 a night, 18% above). Breakfast from
+ * TAB Bistro carries 5% GST; the decoration add-on stays at ₹2,500 + 18% GST, once per stay.
+ * Rates come from the booking-engine catalogue through src/data/publicRates.ts.
  */
-export const PANORAMA_STAY_ONLY = 4999;
+import { publicRate } from '@/data/publicRates';
+
+export const PANORAMA_STAY_ONLY = publicRate('xtsy-270');
 /** Optional à la carte breakfast from TAB Bistro by XTSY, per person (₹560 for two). */
 export const PANORAMA_BREAKFAST_PER_PERSON = 280;
 /** Breakfast follows TAB Bistro menu pricing: 5% GST is charged on top of ₹280. */
@@ -27,18 +27,9 @@ export function displayRoomName(name: string): string {
   return /panorama\s*glass\s*ensuite|270\s*°?\s*glass\s*suite/i.test(name) ? PANORAMA_DISPLAY_NAME : name;
 }
 
-/**
- * Same rule as the database function public.current_room_rate: the room price table cannot be
- * edited right now, so the two rooms whose prices changed on 5 Oct 2026 are mapped here — only
- * while the table still holds the old value. Once room_types is updated, this passes it through.
- */
-const RATE_FIXES: Record<string, { from: number; to: number }> = {
-  '3746fd14-8fa7-4b27-b285-38855b447964': { from: 2200, to: 2399 }, // King Double Room
-  '3b10c81d-ad5f-441f-9b56-5ab9a7a00544': { from: 5399, to: 4999 }, // Experience by XTSY
-};
-export function currentRoomRate(roomId: string, basePrice: number): number {
-  const fix = RATE_FIXES[roomId];
-  return fix && Number(basePrice) === fix.from ? fix.to : Number(basePrice);
+/** The enquiry catalogue is static now, so the catalogue rate is the current rate. */
+export function currentRoomRate(_roomId: string, basePrice: number): number {
+  return Number(basePrice);
 }
 /** Optional suite breakfast: per person per morning, for up to two guests (₹560 for two). */
 export function panoramaBreakfastTotal(guests: number, nights: number): number {
@@ -50,35 +41,35 @@ export const PANORAMA_DECORATION_GST = 450;
 /** GST percentage for a room at this nightly rate (Indian hotel GST slabs used by XTSY). */
 export const gstPercentFor = (nightlyRate: number) => (nightlyRate >= 7500 ? 18 : 5);
 
-/** GST already contained in an all-inclusive amount (integer maths, same as the database). */
-export const includedGst = (inclusiveAmount: number, percent: number) => Math.round((inclusiveAmount * percent) / (100 + percent));
+/** GST added on top of a room amount at its slab (integer rupees). */
+export const gstOn = (amount: number, percent: number) => Math.round((amount * percent) / 100);
 
 export interface QuoteLine { nightlyRate: number; quantity: number }
 
 /**
- * subtotal = room charges before GST (+ decoration), taxes = GST inside the rooms + decoration GST,
- * total = what the guest pays (all-inclusive rooms + decoration with its GST).
+ * subtotal = rooms + decoration + breakfast before GST; taxes = GST on each of them;
+ * total = what the guest pays (before any payment gateway charge).
  */
 export function quoteStay(lines: QuoteLine[], nights: number, decoration = false, breakfastAmount = 0) {
-  let roomsInclusive = 0;
+  let roomsNet = 0;
   let roomsGst = 0;
   for (const l of lines) {
-    const gross = l.nightlyRate * l.quantity * nights;
-    roomsInclusive += gross;
-    roomsGst += includedGst(gross, gstPercentFor(l.nightlyRate));
+    const net = l.nightlyRate * l.quantity * nights;
+    roomsNet += net;
+    roomsGst += gstOn(net, gstPercentFor(l.nightlyRate));
   }
   const decorationNet = decoration ? PANORAMA_DECORATION : 0;
   const decorationGst = decoration ? PANORAMA_DECORATION_GST : 0;
   return {
-    roomsInclusive,
+    roomsNet,
     roomsGst,
     decorationNet,
     decorationGst,
     breakfastAmount,
     breakfastGst: breakfastGst(breakfastAmount),
-    subtotal: roomsInclusive - roomsGst + decorationNet + breakfastAmount,
+    subtotal: roomsNet + decorationNet + breakfastAmount,
     taxes: roomsGst + decorationGst + breakfastGst(breakfastAmount),
-    total: roomsInclusive + decorationNet + decorationGst + breakfastAmount + breakfastGst(breakfastAmount),
+    total: roomsNet + roomsGst + decorationNet + decorationGst + breakfastAmount + breakfastGst(breakfastAmount),
   };
 }
 

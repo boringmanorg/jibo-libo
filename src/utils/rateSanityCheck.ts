@@ -8,15 +8,12 @@
  */
 
 import { ROOM_INVENTORY } from '@/data/roomInventory';
+import { ENGINE_ROOM_ID, publicRate } from '@/data/publicRates';
 
-// Canonical published rates for Shillong (incl. GST where applicable)
-export const SHILLONG_CANONICAL_RATES: Record<string, number> = {
-  'xtsy-270': 4999,
-  'king-double-room': 2399,
-  '4-bed-female-only-dorm': 599,
-  '6-bed-mixed-dorm': 499,
-  '8-bed-mixed-dorm': 399,
-};
+// Canonical published rates for Shillong: nightly, before GST (booking-engine catalogue).
+export const SHILLONG_CANONICAL_RATES: Record<string, number> = Object.fromEntries(
+  Object.keys(ENGINE_ROOM_ID).map((id) => [id, publicRate(id)]),
+);
 
 /**
  * Returns the canonical price for a room. If inventory has drifted,

@@ -325,14 +325,14 @@ const WhatsAppBookingForm = ({ isOpen, onClose }: WhatsAppBookingFormProps) => {
   const getFinalAmount = () => {
     return getTotalAmount() - getWelcomeDiscount() + getGst();
   };
-  // Room rates are all inclusive (GST inside); only the decoration add-on carries GST on top.
+  // Room rates exclude GST: GST is added on top of rooms (hotel slab), breakfast (5%) and decoration (18%).
   const getQuote = () => quoteStay(
     selectedRooms.map(room => ({ nightlyRate: isXtsy270Room(room.roomTypeName) ? PANORAMA_STAY_ONLY : room.price, quantity: room.quantity })),
     nights,
     selectedRooms.some(room => isXtsy270Room(room.roomTypeName)) && panoramaDecoration,
     getBreakfastAmount(),
   );
-  const getGst = () => getQuote().decorationGst;
+  const getGst = () => getQuote().taxes;
 
   const handleBookNow = async () => {
     // Validate all required fields
@@ -370,7 +370,7 @@ const WhatsAppBookingForm = ({ isOpen, onClose }: WhatsAppBookingFormProps) => {
 
     // Build warm, branded WhatsApp message for XTSY Travellers Hostel
     const roomsText = selectedRooms.length > 0 
-      ? selectedRooms.map(room => `   • ${displayRoomName(room.roomTypeName)} × ${room.quantity}${isXtsy270Room(room.roomTypeName) ? ` — Stay only (₹${PANORAMA_STAY_ONLY.toLocaleString('en-IN')}/night, all inclusive)${panoramaDecoration ? '; Decoration +₹2,500 once (rose petals, scented candles, bouquet, cake)' : ''}${panoramaBreakfast ? `; Breakfast from TAB Bistro by XTSY +₹${getBreakfastAmount().toLocaleString('en-IN')} + 5% GST ₹${breakfastGst(getBreakfastAmount()).toLocaleString('en-IN')} (₹280/person/morning + GST)` : ''}` : ` (₹${room.price.toLocaleString('en-IN')}/night)`}`).join('\n')
+      ? selectedRooms.map(room => `   • ${displayRoomName(room.roomTypeName)} × ${room.quantity}${isXtsy270Room(room.roomTypeName) ? ` — Stay only (₹${PANORAMA_STAY_ONLY.toLocaleString('en-IN')}/night plus GST)${panoramaDecoration ? '; Decoration +₹2,500 once (rose petals, scented candles, bouquet, cake)' : ''}${panoramaBreakfast ? `; Breakfast from TAB Bistro by XTSY +₹${getBreakfastAmount().toLocaleString('en-IN')} + 5% GST ₹${breakfastGst(getBreakfastAmount()).toLocaleString('en-IN')} (₹280/person/morning + GST)` : ''}` : ` (₹${room.price.toLocaleString('en-IN')}/night)`}`).join('\n')
       : '   • To be decided';
 
     const addOnsText = [];
@@ -380,7 +380,7 @@ const WhatsAppBookingForm = ({ isOpen, onClose }: WhatsAppBookingFormProps) => {
     if (formData.itinerary) addOnsText.push(`   • Custom Itinerary Planning`);
 
     // Build pricing text with discount if applicable
-    const pricingText = finalAmount > 0 ? `\n💰 *Pricing (room rates all inclusive):*\n   Rooms and add-ons: ${formatPrice(subtotalAmount)}${discountAmount ? `\n   XTSY Welcome Discount (5%): -${formatPrice(discountAmount)}` : ''}${getGst() ? `\n   GST on decoration (18%): ${formatPrice(getGst())}` : ''}\n   *Total: ${formatPrice(finalAmount)}*${currency.code !== 'INR' ? ` (${currency.code})` : ''}` : '';
+    const pricingText = finalAmount > 0 ? `\n💰 *Pricing (rates plus GST):*\n   Rooms and add-ons: ${formatPrice(subtotalAmount)}${discountAmount ? `\n   XTSY Welcome Discount (5%): -${formatPrice(discountAmount)}` : ''}${getGst() ? `\n   GST: ${formatPrice(getGst())}` : ''}\n   *Total: ${formatPrice(finalAmount)}*${currency.code !== 'INR' ? ` (${currency.code})` : ''}` : '';
 
     const message = `🏠 *XTSY Travellers Hostel - Booking Inquiry*
 
@@ -765,7 +765,7 @@ Looking forward to hearing from you. Thank you! 🌟`;
                 {/* Selected Rooms Display */}
                 {selectedRooms.length > 0 && (
                   <div className="space-y-2 mt-4">
-                    {selectedRooms.some(room => isXtsy270Room(room.roomTypeName)) && <fieldset className="space-y-3 border border-primary/20 p-3"><legend className="font-semibold">Panorama package</legend><p className="text-sm">Stay only · ₹4,999/night, taxes included, without breakfast.</p><label className="flex items-center gap-2"><Checkbox checked={panoramaDecoration} onCheckedChange={checked => setPanoramaDecoration(checked === true)} /> Decoration +₹2,500 once — rose petals, scented candles, bouquet and cake</label><label className="flex min-h-12 items-center gap-2"><Checkbox checked={panoramaBreakfast} onCheckedChange={checked => setPanoramaBreakfast(checked === true)} /> Breakfast from TAB Bistro by XTSY +₹{PANORAMA_BREAKFAST_PER_PERSON} per person per morning + 5% GST (₹{PANORAMA_BREAKFAST_PER_PERSON * 2} + GST for two)</label></fieldset>}
+                    {selectedRooms.some(room => isXtsy270Room(room.roomTypeName)) && <fieldset className="space-y-3 border border-primary/20 p-3"><legend className="font-semibold">Panorama package</legend><p className="text-sm">Stay only · ₹{PANORAMA_STAY_ONLY.toLocaleString('en-IN')}/night plus GST, without breakfast.</p><label className="flex items-center gap-2"><Checkbox checked={panoramaDecoration} onCheckedChange={checked => setPanoramaDecoration(checked === true)} /> Decoration +₹2,500 once — rose petals, scented candles, bouquet and cake</label><label className="flex min-h-12 items-center gap-2"><Checkbox checked={panoramaBreakfast} onCheckedChange={checked => setPanoramaBreakfast(checked === true)} /> Breakfast from TAB Bistro by XTSY +₹{PANORAMA_BREAKFAST_PER_PERSON} per person per morning + 5% GST (₹{PANORAMA_BREAKFAST_PER_PERSON * 2} + GST for two)</label></fieldset>}
                     <div className="flex items-center justify-between">
                       <Label className="text-sm font-medium text-muted-foreground">Selected Rooms:</Label>
                       <span className="text-xs text-muted-foreground">
@@ -858,7 +858,7 @@ Looking forward to hearing from you. Thank you! 🌟`;
                             <span className="text-green-600">-{formatPrice(getWelcomeDiscount())}</span>
                           </div>
                         )}
-                        <p className="text-xs text-muted-foreground">Room rates include GST.</p>{getGst() > 0 && <div className="flex justify-between text-sm"><span>GST on decoration (18%):</span><span>{formatPrice(getGst())}</span></div>}
+                        <p className="text-xs text-muted-foreground">Room rates exclude GST, added below.</p>{getGst() > 0 && <div className="flex justify-between text-sm"><span>GST:</span><span>{formatPrice(getGst())}</span></div>}
                         
                         <div className="border-t border-primary/20 pt-2">
                           <p className="text-primary font-bold text-lg text-right">

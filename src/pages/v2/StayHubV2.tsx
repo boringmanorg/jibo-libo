@@ -149,8 +149,8 @@ export default function StayHubV2({ variant }: { variant: StayHubVariant }) {
 /** Side-by-side of the two branded hostels in Shillong. Facts as publicly listed, October 2026. */
 const COMPARE: { label: string; xtsy: string; zostel: string }[] = [
   { label: 'Area', xtsy: 'New Shillong Township, in the pines near IIM and NIFT; about 30 minutes by road from Police Bazaar', zostel: 'Golf Club area (Pine Villa, LumShyiap), about 2 km from the city centre' },
-  { label: 'Dorm beds', xtsy: '₹399 (8-bed), ₹499 (6-bed), ₹599 (4-bed women-only), all inclusive', zostel: 'Mixed dorms; prices not published on its own website' },
-  { label: 'Private room', xtsy: 'King Double ₹2,399, all inclusive', zostel: 'Private rooms; deluxe room listed around ₹2,993 plus taxes on booking sites' },
+  { label: 'Dorm beds', xtsy: '₹400 (8-bed), ₹500 (6-bed), ₹600 (4-bed women-only), plus GST', zostel: 'Mixed dorms; prices not published on its own website' },
+  { label: 'Private room', xtsy: 'King Double ₹2,400 plus GST', zostel: 'Private rooms; deluxe room listed around ₹2,993 plus taxes on booking sites' },
   { label: 'Women-only dorm', xtsy: 'Yes, 4 beds', zostel: 'Female dorm available' },
   { label: 'Food', xtsy: 'TAB Bistro on site', zostel: 'In-house café; breakfast extra' },
   { label: 'Check-in / check-out', xtsy: '11 AM / 10 AM', zostel: '1 PM / 10 AM' },

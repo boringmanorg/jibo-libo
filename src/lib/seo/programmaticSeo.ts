@@ -133,7 +133,7 @@ export function factsFor(page: SEOPageData): Fact[] {
       { k: 'Where', v: 'Mawdiangdiang Road, New Shillong Township, Shillong 793018 (near IIM & NIFT Shillong)' },
       { k: 'Dorm beds', v: `from ${inr(lowestDormPrice())} / night` },
       { k: 'Private room', v: `King Double ${inr(roomPrice('king-double-room').now)} / night` },
-      { k: 'Glass suite', v: `Experience by XTSY ${inr(PANORAMA_STAY_ONLY)}, all inclusive` },
+      { k: 'Glass suite', v: `Experience by XTSY ${inr(PANORAMA_STAY_ONLY)} plus GST` },
       { k: 'Check-in / out', v: '11 AM / 10 AM (strict)' },
       { k: 'Pets', v: 'Cats & birds welcome; dogs by breed and size' },
       { k: 'Cancellation', v: BOOKING_POLICY_TEXT.short },

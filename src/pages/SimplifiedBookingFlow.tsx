@@ -441,12 +441,12 @@ const SummaryStep = ({
         <h4 className="font-semibold text-white mb-3">Price Breakdown</h4>
         <div className="space-y-2 text-sm">
           <div className="flex justify-between">
-            <span className="text-white/80">Room charges ({nights} night{nights > 1 ? 's' : ''}), all inclusive</span>
-            <span className="text-white">₹{total.toLocaleString()}</span>
+            <span className="text-white/80">Room charges ({nights} night{nights > 1 ? 's' : ''})</span>
+            <span className="text-white">₹{subtotal.toLocaleString()}</span>
           </div>
           {gstAmount > 0 && (
             <div className="flex justify-between">
-              <span className="text-white/60">Includes GST</span>
+              <span className="text-white/60">GST</span>
               <span className="text-white/60">₹{gstAmount.toLocaleString()}</span>
             </div>
           )}
@@ -989,8 +989,7 @@ export default function SimplifiedBookingFlow() {
     return 0;
   }, [checkIn, checkOut]);
 
-  // Room rates are all inclusive: the total is the sum of the room prices; the GST inside it is
-  // shown for information. Same maths as the database's enquiry check (quoteStay).
+  // Room rates exclude GST: GST is added on top at the hotel slab (quoteStay).
   const { subtotal, gstAmount, total } = useMemo(() => {
     const q = quoteStay(selectedRooms.map(({ room, quantity }) => ({ nightlyRate: room.discountedPrice, quantity })), nights);
     return { subtotal: q.subtotal, gstAmount: q.taxes, total: q.total };
@@ -1084,7 +1083,7 @@ export default function SimplifiedBookingFlow() {
       const saved = { enquiry_id: localEnquiryRef() };
       setBookingId(saved.enquiry_id);
       const message = generateBookingMessage({
-        roomType: rooms.map(r => `${r.quantity}× ${displayRoomName(r.name)} (₹${r.nightlyRate.toLocaleString('en-IN')}/night, GST included)`).join(', '),
+        roomType: rooms.map(r => `${r.quantity}× ${displayRoomName(r.name)} (₹${r.nightlyRate.toLocaleString('en-IN')}/night plus GST)`).join(', '),
         guests, checkIn: format(checkIn, 'yyyy-MM-dd'), checkOut: format(checkOut, 'yyyy-MM-dd'), nights,
         totalPrice: quote.total, guestName: guestDetails.name, email: guestDetails.email, phone: guestDetails.phone,
         address: guestDetails.address, city: guestDetails.city, state: guestDetails.state,

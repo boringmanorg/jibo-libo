@@ -23,7 +23,7 @@ export default function FaqV2() {
           <div className="relative flex max-w-3xl flex-col gap-5">
             <div className="xt-eyebrow text-[15px]">Your stay, answered</div>
             <h1 className="xt-display m-0 text-[52px] leading-none sm:text-[80px]">XTSY Travellers Hostel FAQs</h1>
-            <p className="max-w-xl text-[17px] leading-relaxed">Dorms from ₹399, GST included. New Shillong Township. Check-in 11 AM · check-out strictly 10 AM.</p>
+            <p className="max-w-xl text-[17px] leading-relaxed">Dorms from ₹400 plus GST. New Shillong Township. Check-in 11 AM · check-out strictly 10 AM.</p>
             <div className="flex flex-wrap gap-3"><Btn to="/book">Choose your stay</Btn><Btn to="/about/safety-house-rules" kind="light">Safety & house rules</Btn></div>
           </div>
         </section>

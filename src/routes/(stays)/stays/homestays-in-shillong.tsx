@@ -8,7 +8,7 @@ export const Route = createFileRoute("/(stays)/stays/homestays-in-shillong")({
       path: "/stays/homestays-in-shillong",
       title: "Homestays in Shillong: Options & Prices | XTSY",
       description:
-        "Compare homestays in Shillong with hostel and hotel stays on price, privacy and location, plus what a Rs 399 dorm bed at XTSY includes for solo travellers.",
+        "Compare homestays in Shillong with hostel and hotel stays on price, privacy and location, plus what a Rs 400 dorm bed at XTSY includes for solo travellers.",
     }),
   component: HomestaysInShillong,
 });

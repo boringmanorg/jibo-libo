@@ -32,7 +32,7 @@ const DEFAULT_DESCRIPTION = "Stay at XTSY Travellers Hostel in New Shillong Town
 const DEFAULT_OG_IMAGE = "https://storage.googleapis.com/gpt-engineer-file-uploads/1WJsBBRRZpg9MH8fICqqeJ2sC6q1/social-images/social-1765259372136-with_padding.png";
 const SEO_CONFIG: Record<string, { title: string; description: string; keywords?: string }> = {
   home: {
-    title: "Best Hostel in Shillong from ₹399/night | XTSY",
+    title: "Best Hostel in Shillong from ₹400/night | XTSY",
     description: "XTSY Travellers Hostel in New Shillong Township, Shillong — dorm beds, private rooms, Experience by XTSY and curated Meghalaya travel experiences. Check live rates and book direct.",
     keywords: "best hostel Shillong, biggest hostel northeast India, Shillong hostel, Meghalaya accommodation, budget stay Shillong",
   },
@@ -52,7 +52,7 @@ const SEO_CONFIG: Record<string, { title: string; description: string; keywords?
     keywords: "XTSY about, biggest hostel northeast, Shillong hostel story, NEITA 2025",
   },
   booking: {
-    title: "Book Shillong Hostel — Dorms ₹399+ | XTSY",
+    title: "Book Shillong Hostel — Dorms ₹400+ | XTSY",
     description: "Check availability for XTSY dorm beds, private rooms and Experience by XTSY in New Shillong Township. Review your stay details and submit a direct booking enquiry.",
     keywords: "book hostel Shillong, hostel booking Meghalaya, Shillong room booking",
   },

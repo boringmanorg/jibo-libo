@@ -3,13 +3,13 @@ import { BISTRO_HOURS_META } from './tabBistroHours';
 export const STATIC_PAGE_DIRECTORY = [
   {
     "path": "/",
-    "title": "Best Hostel in Shillong | XTSY Travellers Hostel, from ₹399",
-    "description": "XTSY Travellers Hostel, New Shillong Township: dorms from ₹399, women-only dorm, King Double ₹2,399, glass suite ₹4,999 and TAB Bistro on site."
+    "title": "Best Hostel in Shillong | XTSY Travellers Hostel, from ₹400",
+    "description": "XTSY Travellers Hostel, New Shillong Township: dorms from ₹400, women-only dorm, King Double ₹2,400, glass suite ₹4,999 and TAB Bistro on site."
   },
   {
     "path": "/tours/3-day-meghalaya-itinerary",
     "title": "3 Day Meghalaya Itinerary from Shillong | XTSY",
-    "description": "A tested 3 day Meghalaya itinerary: Shillong, Cherrapunji waterfalls and Dawki's Umngot river, with travel times, costs and hostel stays from Rs 399."
+    "description": "A tested 3 day Meghalaya itinerary: Shillong, Cherrapunji waterfalls and Dawki's Umngot river, with travel times, costs and hostel stays from Rs 400."
   },
   {
     "path": "/tours/4x4-expedition-meghalaya",
@@ -43,8 +43,8 @@ export const STATIC_PAGE_DIRECTORY = [
   },
   {
     "path": "/stays/best-hostel-in-shillong",
-    "title": "Hostels in Shillong from ₹399: Women-Only Dorm, 4.7★ | XTSY",
-    "description": "Stay among the pines of New Shillong Township at XTSY (4.7★, 252 Google reviews). Dorms from ₹399, a 4-bed women-only dorm, private rooms and TAB Bistro."
+    "title": "Hostels in Shillong from ₹400: Women-Only Dorm, 4.7★ | XTSY",
+    "description": "Stay among the pines of New Shillong Township at XTSY (4.7★, 252 Google reviews). Dorms from ₹400, a 4-bed women-only dorm, private rooms and TAB Bistro."
   },
   {
     "path": "/guides/best-time-to-visit-meghalaya",
@@ -53,13 +53,13 @@ export const STATIC_PAGE_DIRECTORY = [
   },
   {
     "path": "/stays/budget-hostels-shillong",
-    "title": "Budget-Friendly Hostels in Shillong from ₹399 | XTSY",
-    "description": "XTSY dorm beds from ₹399, women-only dorm, lockers, Wi-Fi and TAB Bistro on site in New Shillong Township. Book direct, no OTA mark-up."
+    "title": "Budget-Friendly Hostels in Shillong from ₹400 | XTSY",
+    "description": "XTSY dorm beds from ₹400, women-only dorm, lockers, Wi-Fi and TAB Bistro on site in New Shillong Township. Book direct, no OTA mark-up."
   },
   {
     "path": "/tours/budget-trip-to-meghalaya",
     "title": "Budget Trip to Meghalaya: Costs & Plan | XTSY",
-    "description": "What a Meghalaya trip really costs: transport, permits, food, entry fees and dorm beds from Rs 399, with a sample low-budget route from Guwahati."
+    "description": "What a Meghalaya trip really costs: transport, permits, food, entry fees and dorm beds from Rs 400, with a sample low-budget route from Guwahati."
   },
   {
     "path": "/tab-bistro/catering",
@@ -89,7 +89,7 @@ export const STATIC_PAGE_DIRECTORY = [
   {
     "path": "/about/faq",
     "title": "Hostel FAQs — Shillong Rates, Safety & Booking | XTSY",
-    "description": "Shillong dorms ₹399/₹499/₹599, GST included. XTSY FAQs on solo-women safety, New Shillong Township, check-in and WhatsApp enquiries."
+    "description": "Shillong dorms ₹400/₹500/₹600 plus GST. XTSY FAQs on solo-women safety, New Shillong Township, check-in and WhatsApp enquiries."
   },
   {
     "path": "/stays/female-travellers",
@@ -109,12 +109,12 @@ export const STATIC_PAGE_DIRECTORY = [
   {
     "path": "/stays/homestays-in-shillong",
     "title": "Homestays in Shillong: Options & Prices | XTSY",
-    "description": "Compare homestays in Shillong with hostel and hotel stays on price, privacy and location, plus what a Rs 399 dorm bed at XTSY includes for solo travellers."
+    "description": "Compare homestays in Shillong with hostel and hotel stays on price, privacy and location, plus what a Rs 400 dorm bed at XTSY includes for solo travellers."
   },
   {
     "path": "/stays/hostel-near-me",
     "title": "Hostel Near Me in Shillong — XTSY, New Shillong Township",
-    "description": "Hostel near you in Shillong? XTSY is on Mawdiangdiang Road, New Shillong Township, near NIFT and IIM: dorms from ₹399, 4.7★ from 252 Google reviews."
+    "description": "Hostel near you in Shillong? XTSY is on Mawdiangdiang Road, New Shillong Township, near NIFT and IIM: dorms from ₹400, 4.7★ from 252 Google reviews."
   },
   {
     "path": "/stays/hotels-in-shillong",

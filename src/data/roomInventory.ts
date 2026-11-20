@@ -6,6 +6,7 @@
 
 import { generateStandardizedFeatures } from '@/utils/roomFeatures';
 import { TAG_LABELS, TAG_COLORS, ROOM_IMAGES, type RoomTag } from '@/config/roomTypes';
+import { publicRate, publicUnits } from '@/data/publicRates';
 
 export type RoomCategory = 'luxury' | 'hostel';
 export type RoomKind = 'private' | 'dorm';
@@ -29,34 +30,29 @@ interface SeasonalPrice {
   originalMay: number;
 }
 
-/** All-inclusive nightly rates (GST included), set by the owner on 5 Oct 2026. */
-const SEASONAL_PRICES: Record<string, SeasonalPrice> = {
-  'xtsy-270':              { april: 4999, may: 4999, originalApril: 9999, originalMay: 9999 },
-  'king-double-room':      { april: 2399, may: 2399, originalApril: 3499,  originalMay: 3499 },
-  '4-bed-female-only-dorm':{ april: 599,  may: 599,  originalApril: 679,   originalMay: 679 },
-  '6-bed-mixed-dorm':      { april: 499, may: 499,  originalApril: 699,   originalMay: 699 },
-  '8-bed-mixed-dorm':      { april: 399, may: 399,  originalApril: 550,   originalMay: 550 },
+/**
+ * Nightly rates come from the booking engine's catalogue (owner-confirmed 19 Nov 2026) and EXCLUDE
+ * GST, breakfast and gateway charges. "Original" prices are the earlier list prices shown struck
+ * through; rooms without one show no strike-through.
+ */
+const ORIGINAL_PRICES: Record<string, number> = {
+  'xtsy-270': 9999,
+  'king-double-room': 3499,
+  '4-bed-female-only-dorm': 679,
+  '6-bed-mixed-dorm': 699,
+  '8-bed-mixed-dorm': 550,
 };
 
 function getSeasonalPrice(roomId: string): { discounted: number; original: number } {
-  const prices = SEASONAL_PRICES[roomId];
-  if (!prices) return { discounted: 0, original: 0 };
-  const isMay = isMayPricingActive();
-  return {
-    discounted: isMay ? prices.may : prices.april,
-    original: isMay ? prices.originalMay : prices.originalApril,
-  };
+  const now = publicRate(roomId);
+  return { discounted: now, original: Math.max(ORIGINAL_PRICES[roomId] ?? now, now) };
 }
 
 /**
  * Get April price-hike urgency message (returns null after May 1)
  */
-export function getPriceHikeMessage(roomId: string): string | null {
-  if (isMayPricingActive()) return null;
-  const prices = SEASONAL_PRICES[roomId];
-  if (!prices || prices.may <= prices.april) return null;
-  const increase = prices.may - prices.april;
-  return `Price increases by ₹${increase} from May 1`;
+export function getPriceHikeMessage(_roomId: string): string | null {
+  return null;
 }
 
 /**
@@ -141,7 +137,7 @@ export const ROOM_INVENTORY: Record<string, RoomType> = {
     discountedPrice: getSeasonalPrice('xtsy-270').discounted,
     originalPrice: getSeasonalPrice('xtsy-270').original,
     capacity: 2,
-    totalUnits: 1,
+    totalUnits: publicUnits('xtsy-270'),
     description: "India's pioneering 270° panoramic glass house offering unparalleled luxury and breathtaking mountain vistas.",
     features: [
       'Stay Only',
@@ -177,7 +173,7 @@ export const ROOM_INVENTORY: Record<string, RoomType> = {
     discountedPrice: getSeasonalPrice('king-double-room').discounted,
     originalPrice: getSeasonalPrice('king-double-room').original,
     capacity: 2,
-    totalUnits: 3,
+    totalUnits: publicUnits('king-double-room'),
     description: 'Spacious private room with king bed for two guests',
     features: generateStandardizedFeatures('hostel', 'King Double Room', 'private'),
     image: ROOM_IMAGES['king-double-room'][0],
@@ -187,6 +183,30 @@ export const ROOM_INVENTORY: Record<string, RoomType> = {
     displayOrder: 10,
     tags: ['preferred_by_couple'],
   },
+  // Triple Room with Mountain View (photos: King room's until its own are uploaded)
+  'triple-room': {
+    id: 'triple-room',
+    name: 'Triple Room with Mountain View',
+    shortName: 'Triple Room',
+    category: 'hostel',
+    kind: 'private',
+    basePrice: getSeasonalPrice('triple-room').discounted,
+    weekdayPrice: getSeasonalPrice('triple-room').discounted,
+    weekendPrice: getSeasonalPrice('triple-room').discounted,
+    discountedPrice: getSeasonalPrice('triple-room').discounted,
+    originalPrice: getSeasonalPrice('triple-room').original,
+    capacity: 3,
+    totalUnits: publicUnits('triple-room'),
+    description: 'Private room with a mountain view for up to 3 guests',
+    features: generateStandardizedFeatures('hostel', 'Triple Room with Mountain View', 'private'),
+    image: ROOM_IMAGES['triple-room'][0],
+    images: ROOM_IMAGES['triple-room'],
+    isBookable: true,
+    propertyType: 'XTSY Travellers Hostel',
+    displayOrder: 25,
+    tags: ['preferred_by_group'],
+  },
+
 
   // 4-Bed Female Dorm (Preferred by Female)
   '4-bed-female-only-dorm': {
@@ -201,7 +221,7 @@ export const ROOM_INVENTORY: Record<string, RoomType> = {
     discountedPrice: getSeasonalPrice('4-bed-female-only-dorm').discounted,
     originalPrice: getSeasonalPrice('4-bed-female-only-dorm').original,
     capacity: 4,
-    totalUnits: 4,
+    totalUnits: publicUnits('4-bed-female-only-dorm'),
     description: 'Female-only dormitory with modern amenities and comfortable beds',
     features: generateStandardizedFeatures('hostel', 'Bed in 4-Bed Female Dormitory', 'dorm'),
     image: ROOM_IMAGES['4-bed-female-only-dorm'][0],
@@ -224,8 +244,8 @@ export const ROOM_INVENTORY: Record<string, RoomType> = {
     discountedPrice: getSeasonalPrice('6-bed-mixed-dorm').discounted,
     originalPrice: getSeasonalPrice('6-bed-mixed-dorm').original,
     capacity: 6,
-    totalUnits: 18,
-    description: 'Budget-friendly mixed dormitory with essential amenities',
+    totalUnits: publicUnits('6-bed-mixed-dorm'),
+    description: 'One bed in a six-bed mixed dormitory',
     features: generateStandardizedFeatures('hostel', 'Bed in 6-Bed Mixed Dormitory', 'dorm'),
     image: ROOM_IMAGES['6-bed-mixed-dorm'][0],
     images: ROOM_IMAGES['6-bed-mixed-dorm'],
@@ -233,6 +253,30 @@ export const ROOM_INVENTORY: Record<string, RoomType> = {
     propertyType: 'XTSY Travellers Hostel',
     displayOrder: 50,
     tags: ['recommended'],
+  },
+
+  // 6-Bed Standard Dorm (no lockers)
+  '6-bed-standard-dorm': {
+    id: '6-bed-standard-dorm',
+    name: 'Bed in 6-Bed Standard Dormitory',
+    shortName: '6-Bed Standard Dorm',
+    category: 'hostel',
+    kind: 'dorm',
+    basePrice: getSeasonalPrice('6-bed-standard-dorm').discounted,
+    weekdayPrice: getSeasonalPrice('6-bed-standard-dorm').discounted,
+    weekendPrice: getSeasonalPrice('6-bed-standard-dorm').discounted,
+    discountedPrice: getSeasonalPrice('6-bed-standard-dorm').discounted,
+    originalPrice: getSeasonalPrice('6-bed-standard-dorm').original,
+    capacity: 6,
+    totalUnits: publicUnits('6-bed-standard-dorm'),
+    description: 'One bed in a six-bed dormitory without lockers',
+    features: generateStandardizedFeatures('hostel', 'Bed in 6-Bed Standard Dormitory', 'dorm'),
+    image: ROOM_IMAGES['6-bed-standard-dorm'][0],
+    images: ROOM_IMAGES['6-bed-standard-dorm'],
+    isBookable: true,
+    propertyType: 'XTSY Travellers Hostel',
+    displayOrder: 55,
+    tags: [],
   },
 
   // 8-Bed Mixed Dorm (Bestseller)
@@ -248,8 +292,8 @@ export const ROOM_INVENTORY: Record<string, RoomType> = {
     discountedPrice: getSeasonalPrice('8-bed-mixed-dorm').discounted,
     originalPrice: getSeasonalPrice('8-bed-mixed-dorm').original,
     capacity: 8,
-    totalUnits: 24,
-    description: 'Best value mixed dormitory for budget-conscious backpackers',
+    totalUnits: publicUnits('8-bed-mixed-dorm'),
+    description: 'One bed in an eight-bed mixed dormitory',
     features: generateStandardizedFeatures('hostel', 'Bed in 8-Bed Mixed Dormitory', 'dorm'),
     image: ROOM_IMAGES['8-bed-mixed-dorm'][0],
     images: ROOM_IMAGES['8-bed-mixed-dorm'],
