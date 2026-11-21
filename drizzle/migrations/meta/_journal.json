@@ -169,6 +169,13 @@
       "when": 1795270000003,
       "tag": "0023_lock_legacy_room_availability_fn",
       "breakpoints": true
+    },
+    {
+      "idx": 24,
+      "version": "7",
+      "when": 1795270000004,
+      "tag": "0024_sheet_sync_doorbell",
+      "breakpoints": true
     }
   ]
 }

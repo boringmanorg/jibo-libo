@@ -1,5 +1,6 @@
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { useEffect } from "react";
+import { useSheetDoorbell } from "@/hooks/useSheetDoorbell";
 import StayEngine from "@/components/booking/engine/StayEngine";
 import { PageShell } from "@/components/v2/blocks";
 import { z } from "zod";
@@ -38,20 +39,14 @@ export const Route = createFileRoute("/(stays)/book/")({
 
 function BookPage() {
   const { live, photos, closures, sheet } = Route.useLoaderData();
-  // Live availability follows the Google Sheet on a shared one-minute clock: a sync is published as
-  // the next minute's snapshot, and every open page refreshes just after that minute starts, so all
-  // current guests switch together. New and returning guests load the last published snapshot.
+  // Live availability refreshes only when the Google Sheet actually syncs (backend doorbell),
+  // and when a guest returns to the tab. No timers run while nothing changes.
   const router = useRouter();
+  useSheetDoorbell(() => { if (document.visibilityState === 'visible') void router.invalidate(); });
   useEffect(() => {
-    let timer = 0;
-    const schedule = () => {
-      const wait = 60_000 - (Date.now() % 60_000) + 1_500 + Math.floor(Math.random() * 1_500);
-      timer = window.setTimeout(() => { if (document.visibilityState === 'visible') void router.invalidate(); schedule(); }, wait);
-    };
-    schedule();
     const back = () => { if (document.visibilityState === 'visible') void router.invalidate(); };
     document.addEventListener('visibilitychange', back);
-    return () => { window.clearTimeout(timer); document.removeEventListener('visibilitychange', back); };
+    return () => document.removeEventListener('visibilitychange', back);
   }, [router]);
   const { location, checkIn, checkOut } = Route.useSearch();
   // Site header (logo, menu) and footer around the booking page; the page has its own bottom bar.

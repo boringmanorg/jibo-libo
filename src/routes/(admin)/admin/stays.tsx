@@ -1,3 +1,4 @@
+import { useSheetDoorbell } from '@/hooks/useSheetDoorbell';
 import { createFileRoute } from '@tanstack/react-router';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useServerFn } from '@tanstack/react-start';
@@ -21,7 +22,8 @@ const selectCls = 'h-12 w-full rounded-md border border-input bg-background px-3
 function Stays() {
   const qc = useQueryClient();
   const overview = useServerFn(getConsoleOverview);
-  const { data } = useQuery({ queryKey: ['console', 'overview'], queryFn: () => overview(), refetchInterval: 5_000 });
+  const { data } = useQuery({ queryKey: ['console', 'overview'], queryFn: () => overview() });
+  useSheetDoorbell(() => { void qc.invalidateQueries({ queryKey: ['console'] }); });
   const fetchEnq = useServerFn(listPmsEnquiries);
   const enquiries = useQuery({ queryKey: ['console', 'enquiries'], queryFn: () => fetchEnq() });
   const save = useServerFn(saveInventoryOverride);
