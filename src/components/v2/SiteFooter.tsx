@@ -2,6 +2,8 @@
  * SiteFooter (v2) — crimson word marquee + ink footer with the real address,
  * the partner-facilitation note and every key link.
  */
+import { PlatformLogoStrip } from '@/components/v2/PlatformLogoStrip';
+import { LISTING_LOGOS, SOCIAL_LOGOS } from '@/data/platformLogos';
 import { Link } from '@/lib/router-compat';
 import { Marquee, XtsyMark, WHATSAPP_DISPLAY } from './primitives';
 
@@ -95,12 +97,10 @@ export default function SiteFooter() {
               {' · '}
               <a href="mailto:booking@xtsy.one" className="inline-block py-1.5 text-xt-paper hover:text-xt-rose">booking@xtsy.one</a>
               <br />
-              <a href="https://www.instagram.com/xtsy.one?utm_source=xtsy.one&utm_medium=referral&utm_campaign=footer" target="_blank" rel="noopener noreferrer" className="inline-block py-1.5 text-xt-paper hover:text-xt-rose">Instagram</a>
-              {' · '}
-              <a href="https://www.youtube.com/@voyagebyxtsy" target="_blank" rel="noopener noreferrer" className="inline-block py-1.5 text-xt-paper hover:text-xt-rose">YouTube</a>
-              {' · '}
               <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" className="inline-block py-1.5 text-xt-paper hover:text-xt-rose">Get directions</a>
             </p>
+            <PlatformLogoStrip logos={SOCIAL_LOGOS} size={28} label="Follow us" showNames className="text-xt-paper" />
+            <PlatformLogoStrip logos={LISTING_LOGOS} size={28} label="Find us on" className="text-xt-paper" />
           </div>
           {COLS.map((col) => (
             <nav key={col.title} aria-label={col.title} className="flex flex-col gap-2.5">

@@ -2,6 +2,8 @@
  * Homepage hero (v2): photographic headline, live booking search, the
  * "Plan a trip with AI" assistant (embedded) and the pet-friendly promo.
  */
+import { PlatformLogoStrip } from '@/components/v2/PlatformLogoStrip';
+import { LISTING_LOGOS } from '@/data/platformLogos';
 import { lazy, Suspense, useEffect, useState, type FormEvent, type MouseEvent as ReactMouseEvent } from 'react';
 import { Link, useNavigate } from '@/lib/router-compat';
 import { formatLocalDateString } from '@/lib/date-utils';
@@ -107,6 +109,7 @@ export default function HomeHero() {
             </a>
             <Link to="/tours" className="xt-btn flex h-14 items-center rounded-full border-[1.5px] border-xt-paper px-7 text-[16px] font-extrabold text-xt-paper hover:text-xt-paper">Explore Northeast India</Link>
           </div>
+          <PlatformLogoStrip logos={LISTING_LOGOS} size={26} compact label="Reviewed on" className="mt-5 gap-x-3 text-xt-paper" />
         </div>
       </section>
       <section className="border-b border-xt-line bg-xt-paper px-5 py-8 sm:px-8 lg:px-14">
