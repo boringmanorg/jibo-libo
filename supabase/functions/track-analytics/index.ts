@@ -362,6 +362,8 @@ Deno.serve(async (req) => {
               date: new Date().toISOString().split('T')[0],
             }, {
               onConflict: 'country_code,date',
+              // Never overwrite an existing day's aggregated totals from a public call.
+              ignoreDuplicates: true,
             });
 
             if (geoError) {

@@ -176,6 +176,13 @@
       "when": 1795270000004,
       "tag": "0024_sheet_sync_doorbell",
       "breakpoints": true
+    },
+    {
+      "idx": 25,
+      "version": "7",
+      "when": 1795270000005,
+      "tag": "0025_lock_invoice_seq_fn",
+      "breakpoints": true
     }
   ]
 }
