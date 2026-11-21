@@ -45,7 +45,7 @@ const HostelBookingShillong = memo(() => {
       bestRating: '5',
     },
     makesOffer: [
-      { '@type': 'Offer', name: '8-Bed Mixed Dorm Bed', price: '399', priceCurrency: 'INR', availability: 'https://schema.org/InStock', url: 'https://xtsy.one/book' },
+      { '@type': 'Offer', name: '8-Bed Mixed Dorm Bed', price: '400', priceCurrency: 'INR', availability: 'https://schema.org/InStock', url: 'https://xtsy.one/book' },
       { '@type': 'Offer', name: '6-Bed Mixed Dorm Bed', price: '499', priceCurrency: 'INR', availability: 'https://schema.org/InStock', url: 'https://xtsy.one/book' },
       { '@type': 'Offer', name: 'Female-only Dorm Bed', price: '550', priceCurrency: 'INR', availability: 'https://schema.org/InStock', url: 'https://xtsy.one/book' },
       { '@type': 'Offer', name: 'Private Double Room', price: '2500', priceCurrency: 'INR', availability: 'https://schema.org/InStock', url: 'https://xtsy.one/book' },

@@ -20,6 +20,26 @@ export const HOME_FEATURED_REVIEWS: R[] = [
     "source": "Agoda"
   },
   {
+    "reviewId": "AbFvOqkQ-9E5oGi37birI3GEDyjybw2X_ayoW9IGtAm80tKYTPuRMIRz6C4PS7L3wrEGHj0_SJeJ1w",
+    "name": "Arth Vaishnav",
+    "rating": 5,
+    "comment": "Had an amazing stay at XTSY Travellers Hostel in New Shillong! Tucked away in the peaceful hills and pines, it's the kind of place where you instantly feel at ease—and a huge part of that is the staff. Everyone on the team was genuinely warm, attentive, and always ready to help with local recommendations or anything we needed, making the whole stay feel effortless.\n\nThe absolute highlight, though, was the 270° sky view room. Waking up surrounded by panoramic views of the hills and watching the sky change right from bed is something you don't get everywhere—it completely made the trip. Between the views, the chill vibe, and the hospitality, I'd easily recommend XTSY to anyone visiting Shillong.\n\nThey also helped me with the best car rental from Guwahati and I'm loving my long drives through the natural landscapes as I write this down!!",
+    "date": "2026-11-19",
+    "property": "XTSY Travellers Hostel",
+    "source": "Google",
+    "ownerReply": "Dear Vaishnav, \n\nThanks you for your valuable feedback!\nWe would love to host you again at XTSY.❤️😍"
+  },
+  {
+    "reviewId": "AbFvOqkLEVv_zDcieYFb80f-3PVhSVIub5PitEOpjLJRrAZgC9zFEp_DGs6bOlN_FE-uOe4BpiDl",
+    "name": "Tenzing Drema Changmutsapa",
+    "rating": 5,
+    "comment": "Their rooms are very good and very clean, and the staff members here are also very nice and friendly. What we liked the most here are their rooms, and the bathroom are very clean. If you also come to visit shillong,  definitely book their hostel it is really great.🫶🏻😊",
+    "date": "2026-11-18",
+    "property": "XTSY Travellers Hostel",
+    "source": "Google",
+    "ownerReply": "Dear Tenzing, \n\nThanks for your valuable feedback ❤️😍"
+  },
+  {
     "reviewId": "AbFvOqnca1Es-twoHLeTkHQVomptcPGW6yaoAcpyuudMICnCXHljgOVBKiTFYALnbMnOvISEfW3N9Q",
     "name": "Nupur Kothari",
     "rating": 5,
@@ -38,26 +58,6 @@ export const HOME_FEATURED_REVIEWS: R[] = [
     "property": "XTSY Travellers Hostel",
     "source": "Google",
     "ownerReply": "Thanks for your valuable feedback! ❤️😍"
-  },
-  {
-    "reviewId": "AbFvOqnsgZGGF1KF6DcI13CcBIqtEpAjgjTNrGb21JOK1VFyf9AN2LId2F1TE9hTLHKHV-gevT0z",
-    "name": "IFTIKAR HUSSAIN",
-    "rating": 5,
-    "comment": "Food is very delicious and staff is too good",
-    "date": "2026-10-24",
-    "property": "XTSY Travellers Hostel",
-    "source": "Google",
-    "ownerReply": "Thanks for your amazing feedback! 😍"
-  },
-  {
-    "reviewId": "AbFvOqk-_zMkabjYiNUD6vqh_5gJVyTUmw17myrr5VqRsd_qKSXn3Rw6g3LW6GeRF1iwpsjGE6kojw",
-    "name": "Archita Bharadwaj",
-    "rating": 5,
-    "comment": "Amazing staff, super helpful and kind. And there are some delightful items on their food menu too :)",
-    "date": "2026-10-24",
-    "property": "XTSY Travellers Hostel",
-    "source": "Google",
-    "ownerReply": "Thanks for your amazing feedback 😍❤️"
   },
   {
     "name": "Daiamonlang Khardewsaw",

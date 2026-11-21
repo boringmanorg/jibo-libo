@@ -1,7 +1,37 @@
-/** Complete managed hostel Google review feed, read 18 November 2026. No runtime fetching. */
+/** Complete managed hostel Google review feed, read 21 November 2026. No runtime fetching. */
 export const hostelGoogleReviewSnapshot = {
-  "total": 253,
+  "total": 256,
   "reviews": [
+    {
+      "reviewId": "AbFvOqkQ-9E5oGi37birI3GEDyjybw2X_ayoW9IGtAm80tKYTPuRMIRz6C4PS7L3wrEGHj0_SJeJ1w",
+      "name": "Arth Vaishnav",
+      "rating": 5,
+      "comment": "Had an amazing stay at XTSY Travellers Hostel in New Shillong! Tucked away in the peaceful hills and pines, it's the kind of place where you instantly feel at ease—and a huge part of that is the staff. Everyone on the team was genuinely warm, attentive, and always ready to help with local recommendations or anything we needed, making the whole stay feel effortless.\n\nThe absolute highlight, though, was the 270° sky view room. Waking up surrounded by panoramic views of the hills and watching the sky change right from bed is something you don't get everywhere—it completely made the trip. Between the views, the chill vibe, and the hospitality, I'd easily recommend XTSY to anyone visiting Shillong.\n\nThey also helped me with the best car rental from Guwahati and I'm loving my long drives through the natural landscapes as I write this down!!",
+      "date": "2026-11-19",
+      "property": "XTSY Travellers Hostel",
+      "source": "Google",
+      "ownerReply": "Dear Vaishnav, \n\nThanks you for your valuable feedback!\nWe would love to host you again at XTSY.❤️😍"
+    },
+    {
+      "reviewId": "AbFvOqkLEVv_zDcieYFb80f-3PVhSVIub5PitEOpjLJRrAZgC9zFEp_DGs6bOlN_FE-uOe4BpiDl",
+      "name": "Tenzing Drema Changmutsapa",
+      "rating": 5,
+      "comment": "Their rooms are very good and very clean, and the staff members here are also very nice and friendly. What we liked the most here are their rooms, and the bathroom are very clean. If you also come to visit shillong,  definitely book their hostel it is really great.🫶🏻😊",
+      "date": "2026-11-18",
+      "property": "XTSY Travellers Hostel",
+      "source": "Google",
+      "ownerReply": "Dear Tenzing, \n\nThanks for your valuable feedback ❤️😍"
+    },
+    {
+      "reviewId": "AbFvOqn3opeJh7QF_j5h7za6LN4gLPi8-yl_HrgE8KnjZpCfrdFr0RratPuZN1uSv2hNBrmGKB780w",
+      "name": "Lobsang Yeton Gengla Gengla",
+      "rating": 5,
+      "comment": "Fantastic",
+      "date": "2026-11-18",
+      "property": "XTSY Travellers Hostel",
+      "source": "Google",
+      "ownerReply": "Thanks for your valuable feedback 😍"
+    },
     {
       "reviewId": "AbFvOqnocKBO6jk6GY-lssXG429y6ZkaXVL71TuL78Q-NxLPBBOGTKTEhkWmcpQ9KHg79PQ3f9P5Vw",
       "name": "Anju Subba",

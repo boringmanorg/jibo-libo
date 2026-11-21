@@ -77,7 +77,7 @@ export function Reviews({ extra = [], match, bistro, hostel, badge = 'Guest revi
   const [all, setAll] = useState(initialAll);
   const [tab, setTab] = useState<'all' | 'hostel' | 'bistro'>(bistro ? 'bistro' : 'all');
   const [source, setSource] = useState('All platforms');
-  const list = reviews.filter((r) => (tab === 'all' || (tab === 'bistro') === (r.property === 'TAB Bistro by XTSY')) && (source === 'All platforms' || r.source === source));
+  const list = reviews.filter((r) => (tab === 'all' || (tab === 'bistro') === (r.property === 'TAB Bistro by XTSY')) && (source === 'All platforms' || r.source === source)).sort((a, z) => z.rating / (z.ratingScale ?? 5) - a.rating / (a.ratingScale ?? 5));
   const rating = bistro ? BISTRO_GOOGLE_RATING : GOOGLE_RATING;
 
   const dialogs = (<>
