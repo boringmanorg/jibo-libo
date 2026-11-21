@@ -1,18 +1,25 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useSheetDoorbell } from '@/hooks/useSheetDoorbell';
+import { buildRouteHead } from '@/lib/seo-head';
 import { useServerFn } from '@tanstack/react-start';
 import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { getTodaySummary } from '@/admin/consoleHome.functions';
 import { PageHead, Panel, SheetChip, STATUS_LABEL, STATUS_STYLE, ago, dayMonth, freeTone, inrWhole, weekday } from '@/admin/components/ConsoleBits';
 
-export const Route = createFileRoute('/(admin)/admin/')({ component: Today });
+export const Route = createFileRoute('/(admin)/admin/')({
+  head: () => buildRouteHead({ path: '/admin', title: 'Today — XTSY Console', description: 'XTSY console: current room availability, Google Sheet sync status and desk activity.', noIndex: true }),
+  component: Today,
+});
 
 const longDate = new Intl.DateTimeFormat('en-IN', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' });
 
 function Today() {
   const fetchToday = useServerFn(getTodaySummary);
-  const { data, error } = useQuery({ queryKey: ['console', 'today'], queryFn: () => fetchToday(), refetchInterval: 60_000 });
+  const { data, error } = useQuery({ queryKey: ['console', 'today'], queryFn: () => fetchToday() });
+  const qc = useQueryClient();
+  useSheetDoorbell(() => { void qc.invalidateQueries({ queryKey: ['console'] }); });
   if (error) return <p className="text-destructive">Could not load today’s summary. {(error as Error).message}</p>;
   if (!data) return <p className="text-muted-foreground">Loading…</p>;
   const t = data.tonight;

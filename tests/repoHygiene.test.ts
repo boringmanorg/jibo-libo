@@ -77,6 +77,8 @@ describe('database cutoff', () => {
     'src/admin/adminSupabase.ts',
     'src/admin/adminAuth.ts',
     'src/admin/serviceClient.server.ts',
+    // Notification-only broadcast listener; no database reads/writes or persisted auth.
+    'src/booking/sheetDoorbell.client.ts',
   ]);
 
   const walk = (dir: string, out: string[] = []): string[] => {

@@ -58,7 +58,7 @@ const ADMIN_FRAME_HEADERS = {
 };
 const BOOKING_FRAME_HEADERS = {
   ...FRAME_HEADERS,
-  "Content-Security-Policy": withBotCheckSources(FRAME_HEADERS["Content-Security-Policy"]),
+  "Content-Security-Policy": withBotCheckSources(withAdminConnectSources(FRAME_HEADERS["Content-Security-Policy"])),
 };
 function withFrameProtection(request: Request, response: Response): Response {
   const type = response.headers.get("content-type") ?? "";

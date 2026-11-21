@@ -11,14 +11,12 @@ export function useSheetDoorbell(onRing: () => void) {
   useEffect(() => {
     let cancelled = false;
     let cleanup: (() => void) | undefined;
-    import('@/integrations/supabase/client')
-      .then(({ supabase }) => {
+    import('@/booking/sheetDoorbell.client')
+      .then(async ({ createSheetDoorbellClient, subscribeSheetDoorbell }) => {
         if (cancelled) return;
-        const channel = supabase
-          .channel('sheet-availability')
-          .on('broadcast', { event: 'synced' }, () => ring.current())
-          .subscribe();
-        cleanup = () => { void supabase.removeChannel(channel); };
+        const client = await createSheetDoorbellClient();
+        if (cancelled) return;
+        cleanup = subscribeSheetDoorbell(client, () => ring.current());
       })
       .catch(() => {});
     return () => { cancelled = true; cleanup?.(); };
