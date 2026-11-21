@@ -63,10 +63,11 @@ describe('booking function execution boundaries', () => {
     expect(result.status).toBe(401);
     expect(result.data.code).toBe('42501');
   });
-  live('booking validation runs instead of failing at auth schema access', async () => {
+  // create_booking_secure is server-only since the definer-function lockdown.
+  live('guests cannot call the server-only booking function', async () => {
     const result = await rpc('create_booking_secure', { p_guest_name: '', p_email: 'ownership-check@example.invalid', p_whatsapp_number: '+919999999999', p_check_in: '2027-01-01', p_check_out: '2027-01-02', p_guests: 1, p_room_type: 'Dorm', p_room_type_id: null, p_quantity: 1, p_subtotal: 399, p_taxes: 0, p_total_amount: 399 });
-    expect(result.status).toBe(200);
-    expect(result.data).toMatchObject({ success: false, error: 'Invalid guest name' });
+    expect(result.status).toBe(401);
+    expect(result.data.code).toBe('42501');
   });
   liveSignedIn('signed-in role checks can access auth', async () => {
     const result = await rpc('get_user_role', {}, true);

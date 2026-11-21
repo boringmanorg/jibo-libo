@@ -963,6 +963,60 @@ export type Database = {
           },
         ]
       }
+      be_enquiries: {
+        Row: {
+          check_in: string
+          check_out: string
+          created_at: string
+          desk_note: string | null
+          estimate_rupees: number
+          guest_name: string
+          guest_phone: string
+          guests: number
+          id: string
+          kind: string
+          reference: string
+          status: string
+          summary: string
+          updated_at: string
+          visitor_hash: string | null
+        }
+        Insert: {
+          check_in: string
+          check_out: string
+          created_at?: string
+          desk_note?: string | null
+          estimate_rupees: number
+          guest_name: string
+          guest_phone: string
+          guests: number
+          id?: string
+          kind: string
+          reference: string
+          status?: string
+          summary: string
+          updated_at?: string
+          visitor_hash?: string | null
+        }
+        Update: {
+          check_in?: string
+          check_out?: string
+          created_at?: string
+          desk_note?: string | null
+          estimate_rupees?: number
+          guest_name?: string
+          guest_phone?: string
+          guests?: number
+          id?: string
+          kind?: string
+          reference?: string
+          status?: string
+          summary?: string
+          updated_at?: string
+          visitor_hash?: string | null
+        }
+        Relationships: []
+      }
       be_guests: {
         Row: {
           booking_id: string
