@@ -15,6 +15,7 @@ import { CANONICAL_TWIN, isIndexableSEOSlug } from '@/data/seoIndexPolicy';
 import { excludedFoodListing, serviceCoverageReason } from '@/data/seoServiceCoverage';
 import { getWheelLinks } from '@/data/seoLinkingWheel';
 import { rankedQuestionsFor } from '@/data/rankedPageQuestions';
+import { regionHubFor } from '@/data/destinationGeography';
 
 // ---------- Guide pages (/$slug) ----------
 
@@ -36,6 +37,9 @@ export type ProgrammaticPayload =
 
 export function programmaticPayload(slug: string): ProgrammaticPayload {
   if (excludedFoodListing(slug)) return { status: 'redirect', to: '/tab-bistro' };
+  // Honeymoon and group-tour offers outside Meghalaya are not sold: retire them to the state guide.
+  const scope = serviceCoverageReason({ slug, category: /group-tour|school-tour|college-tour/.test(slug) ? 'group-tours' : undefined });
+  if (scope === 'Honeymoons are Meghalaya-only' || scope === 'Group tours are Meghalaya-only') return { status: 'redirect', to: regionHubFor(slug) };
   const model = programmaticModel(slug);
   if (!model) {
     const to = RECOVERY_REDIRECTS[slug];

@@ -42,8 +42,6 @@ describe('owner-defined SEO service coverage', () => {
     const excluded = ALL_SEO_PAGES.filter(page => serviceCoverageReason(page));
     expect(excluded.length).toBeGreaterThan(50);
     expect(excluded.filter(page => listed.has(page.slug)).map(page => page.slug)).toEqual([]);
-    expect(programmaticPayload('honeymoon-package-tawang').status).toBe('ok');
-    const payload = programmaticPayload('honeymoon-package-tawang');
-    if (payload.status === 'ok') expect(payload.head.noIndex).toBe(true);
+    expect(programmaticPayload('honeymoon-package-tawang')).toEqual({ status: 'redirect', to: '/destinations/arunachal-pradesh' });
   });
 });

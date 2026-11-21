@@ -9,6 +9,7 @@
 import type { SEOPageData, SEOPageCategory, SchemaType, SEOSection, SEOFaq } from './seoPages';
 import { BRAND_OPENER, whyXTSYSection } from './brandFacts';
 import { SEO_YEAR } from '@/utils/seoDate';
+import { regionFor } from './destinationGeography';
 
 // =============================================================
 // Display label helpers
@@ -63,7 +64,19 @@ const seoTitle = (core: string, withYear = true): string => {
 // Section builders
 // =============================================================
 
-const howToReachSection = (destination: string, fromOrigin?: string): SEOSection => ({
+const howToReachSection = (destination: string, fromOrigin?: string): SEOSection => {
+  const region = regionFor(destination);
+  if (region) {
+    return {
+      heading: `How to Reach ${slugToLabel(destination)}${fromOrigin ? ` from ${slugToLabel(fromOrigin)}` : ''}`,
+      content: `${slugToLabel(destination)} is in ${region.state}. ${region.reach.content}`,
+      listItems: region.reach.list,
+    };
+  }
+  return meghalayaReach(destination, fromOrigin);
+};
+
+const meghalayaReach = (destination: string, fromOrigin?: string): SEOSection => ({
   heading: `How to Reach ${slugToLabel(destination)}${fromOrigin ? ` from ${slugToLabel(fromOrigin)}` : ''}`,
   content: `${slugToLabel(destination)} is well-connected to major Indian cities via road, rail and air. The nearest major airport is Lokpriya Gopinath Bordoloi International Airport in Guwahati (GAU)${fromOrigin ? `, with multiple daily flights from ${slugToLabel(fromOrigin)}` : ''}. From Guwahati, prepaid taxis and shared cabs reach ${slugToLabel(destination)} in 3–4 hours along NH-6.`,
   listItems: [
@@ -75,7 +88,24 @@ const howToReachSection = (destination: string, fromOrigin?: string): SEOSection
   ],
 });
 
-const bestTimeSection = (destination: string): SEOSection => ({
+const bestTimeSection = (destination: string): SEOSection => {
+  const region = regionFor(destination);
+  if (region) {
+    return {
+      heading: `Best Time to Visit ${slugToLabel(destination)}`,
+      content: `October to April is the driest and most reliable window for ${slugToLabel(destination)}, ${region.state}. The monsoon (June–September) brings heavy rain and can close hill roads, so keep buffer days.`,
+      listItems: [
+        'October–March: Dry and clear, the best sightseeing window',
+        'April–May: Warmer, with pre-monsoon showers',
+        'June–September: Monsoon — green landscapes, but slow and unreliable roads',
+        ...(region.permit ? [`Permits: ${region.permit}`] : []),
+      ],
+    };
+  }
+  return meghalayaBestTime(destination);
+};
+
+const meghalayaBestTime = (destination: string): SEOSection => ({
   heading: `Best Time to Visit ${slugToLabel(destination)}`,
   content: `${slugToLabel(destination)} is a year-round destination, but October to April delivers the clearest skies, comfortable temperatures (8°C–22°C) and the best photography conditions. Monsoon (June–September) transforms waterfalls and the landscape but can bring landslides on hill roads.`,
   listItems: [
@@ -92,16 +122,24 @@ const thingsToDoSection = (destination: string, activity?: string): SEOSection =
       heading: `Top ${slugToLabel(activity)} Experiences in ${slugToLabel(destination)}`,
       content: `${slugToLabel(destination)} is one of the best places in Northeast India for ${slugToLabel(activity).toLowerCase()}. Below are operator-vetted experiences popular with XTSY guests in ${YEAR}.`,
       listItems: [
-        `Guided ${slugToLabel(activity).toLowerCase()} expeditions with local Khasi guides`,
+        `Guided ${slugToLabel(activity).toLowerCase()} with ${regionFor(destination)?.guides ?? 'local Khasi guides'}`,
         `Half-day and full-day options available`,
         `Equipment rental and transport included`,
-        `Bookable directly from XTSY Travellers Hostel`,
+        regionFor(destination) ? `Arranged by the XTSY desk with trusted local partners` : `Bookable directly from XTSY Travellers Hostel`,
       ],
+    };
+  }
+  const region = regionFor(destination);
+  if (region) {
+    return {
+      heading: `Things to Do in ${slugToLabel(destination)}`,
+      content: `${slugToLabel(destination)} is in ${region.state}. These are the region's best-known experiences; the XTSY desk arranges partner stays, cabs and local guides for them on WhatsApp.`,
+      listItems: region.highlights,
     };
   }
   return {
     heading: `Things to Do in ${slugToLabel(destination)}`,
-    content: `${slugToLabel(destination)} offers a layered mix of natural wonders and cultural experiences. From living root bridges and crystalline rivers to sacred forests and limestone caves, here are the top experiences travellers book through XTSY.`,
+    content: /^(meghalaya|shillong)$/.test(destination) ? `Meghalaya mixes living root bridges, clear rivers, sacred forests and limestone caves. These are the experiences travellers most often book through XTSY.` : `Most travellers combine ${slugToLabel(destination)} with these Meghalaya highlights, planned from XTSY in New Shillong Township.`,
     listItems: [
       'Visit Asia\'s cleanest village — Mawlynnong',
       'Trek to the Double-Decker Living Root Bridge',
@@ -119,7 +157,7 @@ const travelTipsSection = (): SEOSection => ({
   listItems: [
     'Carry cash — many remote spots have no UPI/card support',
     'Layer your clothing — temperatures swing 10°C in a day',
-    'Inner-line permits required for Arunachal, Mizoram, Nagaland',
+    'Inner Line Permits required for Arunachal Pradesh, Mizoram, Nagaland and Manipur',
     'Respect local customs — ask before photographing villagers',
     'Network: Jio and Airtel work best in the hills',
     'Book stays 2–3 weeks ahead in peak season (Oct–Mar)',
@@ -141,14 +179,19 @@ const faqsForDestination = (destination: string): SEOFaq[] => {
   return [
     { question: `What is the best time to visit ${label}?`, answer: `October to April offers the clearest weather. Monsoon (Jun–Sep) is dramatic for waterfalls but expect heavy rain.` },
     { question: `How many days are enough for ${label}?`, answer: `Most travellers spend 3–5 days exploring ${label} and surrounding attractions. XTSY can craft a custom itinerary on WhatsApp.` },
-    { question: `Is ${label} safe for solo and female travellers?`, answer: `Yes. Northeast India is among the safest regions in the country, and XTSY runs dedicated female-only dorms with 24/7 reception. Solo and female guests consistently rate their stays 5/5 for safety and a peaceful atmosphere.` },
-    { question: `How do I book a stay near ${label}?`, answer: `Message us on WhatsApp at +91 88373 17070 for instant availability and the best direct rate. Our Shillong base offers 24/7 check-in.` },
-    { question: `What do guests say about staying with XTSY near ${label}?`, answer: `XTSY Travellers Hostel is rated highly across Google, MakeMyTrip, Goibibo, Agoda and Hostelworld. Guests repeatedly praise the spotless dorms, friendly staff, great food at TAB Bistro and a genuine international backpacker vibe — "one of the best dormitories near Shillong".` },
-    { question: `Where will I sleep — what rooms are available near ${label}?`, answer: `Choose 4, 6 and 8-bed mixed dorms, female-only dorms, private rooms, or Experience by XTSY, India's Most Romantic Couple En-suite. Every bed has a locker, reading light and charging point. Dorms from ₹400, glass suite for couples and content creators.` },
+    { question: `Is ${label} safe for solo and female travellers?`, answer: `${label} is generally welcoming to solo and female travellers; take normal precautions and check local advisories before travel. In Shillong, XTSY has a women-only dorm and 24/7 reception.` },
+    { question: `How do I book a stay near ${label}?`, answer: regionFor(destination) ? `XTSY's own hostel is in New Shillong Township, Meghalaya. For ${label}, message the XTSY desk on WhatsApp at +91 88373 17070 and we book a trusted partner stay for you.` : `Message us on WhatsApp at +91 88373 17070 for availability and the direct rate. XTSY Travellers Hostel in New Shillong Township has 24/7 check-in.` },
+    ...(regionFor(destination) ? [] : [{ question: `What do guests say about staying with XTSY near ${label}?`, answer: `XTSY Travellers Hostel is rated highly across Google, MakeMyTrip, Goibibo and Agoda. Guests repeatedly praise the spotless dorms, friendly staff, great food at TAB Bistro and a genuine international backpacker vibe — "one of the best dormitories near Shillong".` },
+    { question: `Where will I sleep — what rooms does XTSY have near ${label}?`, answer: `Choose 4, 6 and 8-bed mixed dorms, female-only dorms, private rooms, or Experience by XTSY, India's Most Romantic Couple En-suite. Every bed has a locker, reading light and charging point. Dorms from ₹400, glass suite for couples and content creators.` }]),
   ];
 };
 
-const faqsForRoute = (from: string, to: string): SEOFaq[] => [
+const faqsForRoute = (from: string, to: string): SEOFaq[] => regionFor(to) ? [
+  { question: `How do I get from ${slugToLabel(from)} to ${slugToLabel(to)}?`, answer: `${slugToLabel(to)} is in ${regionFor(to)!.state}. ${regionFor(to)!.reach.content}` },
+  { question: `Is ${slugToLabel(to)} reached via Guwahati and Shillong?`, answer: `Not usually. ${regionFor(to)!.reach.list[0]}. Shillong is only on the way if you are combining ${slugToLabel(to)} with a Meghalaya trip.` },
+  { question: `Do I need a permit for ${slugToLabel(to)}?`, answer: regionFor(to)!.permit ?? `Indian visitors do not need an inner-line permit for ${slugToLabel(to)}.` },
+  { question: `Can XTSY arrange the trip to ${slugToLabel(to)}?`, answer: `Yes. XTSY's own hostel is in New Shillong Township, Meghalaya; for ${slugToLabel(to)} the XTSY desk books trusted partner stays and cabs on WhatsApp +91 88373 17070.` },
+] : [
   { question: `What is the best budget-friendly way from ${slugToLabel(from)} to ${slugToLabel(to)}?`, answer: `The most cost-effective combo is a flight to Guwahati followed by a shared sumo (₹400–₹600/seat) from Paltan Bazaar to ${slugToLabel(to)}.` },
   { question: `How long does the journey from ${slugToLabel(from)} to ${slugToLabel(to)} take?`, answer: `Total travel time is typically 5–8 hours: a 2–3 hour flight to Guwahati, then 3–4 hours by road to ${slugToLabel(to)}.` },
   { question: `Are there direct flights from ${slugToLabel(from)} to ${slugToLabel(to)}?`, answer: `Most travellers route via Guwahati (GAU). Direct flights are rare; we recommend booking your stay at XTSY first and we'll coordinate ground transport.` },
@@ -165,7 +208,10 @@ const faqsForInstitution = (instSlug: string, instName: string, type: 'medical' 
   ];
 };
 
-const faqsForLastMinute = (city: string): SEOFaq[] => [
+const faqsForLastMinute = (city: string): SEOFaq[] => city !== 'shillong' ? [
+  { question: `Does XTSY have its own stay in ${slugToLabel(city)}?`, answer: `No. XTSY's only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. For ${slugToLabel(city)}, the XTSY desk can look for a partner stay on WhatsApp +91 88373 17070, subject to availability.` },
+  { question: `Can I book a same-day stay in ${slugToLabel(city)} through XTSY?`, answer: `Message the desk with your arrival time. Partner availability and rates are confirmed on WhatsApp before you travel.` },
+] : [
   { question: `Can I book a stay in ${slugToLabel(city)} for tonight?`, answer: `Yes — XTSY accepts same-day bookings via WhatsApp at +91 88373 17070. Subject to availability.` },
   { question: `What's the best budget-friendly last-minute stay in ${slugToLabel(city)}?`, answer: `Dorm beds at XTSY start at ₹400/night plus GST. Private rooms from ₹2,400.` },
   { question: `Do you have 24/7 check-in?`, answer: `Yes — our Shillong reception is staffed 24/7 for late arrivals.` },
@@ -237,7 +283,7 @@ export function buildRoutePage(slug: string): SEOPageData {
     title,
     metaDescription,
     h1: `${fromLabel} to ${toLabel}: ${YEAR} Travel Guide`,
-    intro: `Looking for the easiest, fastest and most cost-effective way to travel from ${fromLabel} to ${toLabel}? This XTSY-curated guide covers every viable route — flights, trains, road combos and pricing — plus a verified ${toLabel} stay option with 24/7 check-in.`,
+    intro: `Looking for the easiest, fastest and most cost-effective way to travel from ${fromLabel} to ${toLabel}? This XTSY-curated guide covers every viable route — flights, trains, road combos and pricing — plus how the XTSY desk can arrange your stay.`,
     sections: [
       howToReachSection(to, from),
       bestTimeSection(to),
@@ -250,7 +296,7 @@ export function buildRoutePage(slug: string): SEOPageData {
     ctaText: 'Book Stay on Arrival',
     ctaLink: '/book',
     keywords: [`${fromLabel} to ${toLabel}`, `how to reach ${toLabel}`, `${toLabel} travel`, 'northeast india travel'],
-    quickAnswer: `Fastest route: Fly to Guwahati (GAU), then drive 3–4 hrs to ${toLabel}. Total time ~5–8 hrs. Book your ${toLabel} stay at XTSY and share your arrival time with the desk.`,
+    quickAnswer: regionFor(to) ? `${toLabel} is in ${regionFor(to)!.state}. ${regionFor(to)!.reach.list[0]}. The XTSY desk can book partner stays and cabs on WhatsApp.` : `Fastest route: Fly to Guwahati (GAU), then drive 3–4 hrs to ${toLabel}. Total time ~5–8 hrs. Book your ${toLabel} stay at XTSY and share your arrival time with the desk.`,
   });
 }
 
@@ -320,7 +366,8 @@ export function buildIntentStayPage(slug: string): SEOPageData {
 }
 
 // ---- Institutions (NEIGRIHMS, IIM, etc.) ----
-export function buildInstitutionPage(slug: string, inst: { slug: string; name: string; type: 'medical' | 'education' }): SEOPageData {
+export function buildInstitutionPage(slug: string, inst: { slug: string; name: string; type: 'medical' | 'education'; city?: string }): SEOPageData {
+  const away = !!inst.city && inst.city !== 'shillong';
   const intent = slug.replace(`-${inst.slug}`, '').replace(/-near$/, '');
   const intentLabel = slugToLabel(intent);
   const title = seoTitle(`${intentLabel} ${inst.name}`);
@@ -332,11 +379,11 @@ export function buildInstitutionPage(slug: string, inst: { slug: string; name: s
     title,
     metaDescription,
     h1: `${intentLabel} ${inst.name}`,
-    intro: `Visiting ${inst.name}? XTSY Travellers Hostel is the most trusted budget-friendly stay nearby — with 24/7 check-in, female-safe dorms, and instant WhatsApp confirmations for ${inst.type === 'medical' ? 'patient attendants and family members' : 'students, parents and visiting faculty'}.`,
+    intro: away ? `Visiting ${inst.name} in ${slugToLabel(inst.city!)}? XTSY does not have its own stay there — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. The XTSY desk can book a trusted partner stay near ${inst.name} on WhatsApp.` : `Visiting ${inst.name}? XTSY Travellers Hostel is the most trusted budget-friendly stay nearby — with 24/7 check-in, female-safe dorms, and instant WhatsApp confirmations for ${inst.type === 'medical' ? 'patient attendants and family members' : 'students, parents and visiting faculty'}.`,
     sections: [
       {
-        heading: `Distance & Transport from XTSY to ${inst.name}`,
-        content: `XTSY is on Mawdiangdiang Road, New Shillong Township, with easy taxi/cab access to ${inst.name}. Local rates: ₹150–₹300 one-way. The XTSY desk can book a cab.`,
+        heading: away ? `Getting to ${inst.name}` : `Distance & Transport from XTSY to ${inst.name}`,
+        content: away ? `${inst.name} is in ${slugToLabel(inst.city!)}, not Shillong. The XTSY desk can arrange a partner stay and cab near the campus.` : `XTSY is on Mawdiangdiang Road, New Shillong Township, with easy taxi/cab access to ${inst.name}. Local rates: ₹150–₹300 one-way. The XTSY desk can book a cab.`,
         listItems: [
           'Shared taxis run frequently to all major Shillong landmarks',
           'Reception staff can pre-book a cab with prior notice',
@@ -344,7 +391,7 @@ export function buildInstitutionPage(slug: string, inst: { slug: string; name: s
           'Long-stay/weekly rates available on request',
         ],
       },
-      thingsToDoSection('shillong'),
+      thingsToDoSection(inst.city ?? 'shillong'),
       travelTipsSection(),
     ],
     faqs: faqsForInstitution(inst.slug, inst.name, inst.type),
@@ -353,7 +400,7 @@ export function buildInstitutionPage(slug: string, inst: { slug: string; name: s
     ctaText: 'Book on WhatsApp',
     ctaLink: `https://wa.me/918837317070?text=Hi, I need a stay near ${inst.name}`,
     keywords: [`stay near ${inst.name}`, `${inst.name} accommodation`, `hostel near ${inst.name}`, inst.type === 'medical' ? 'patient attendant stay shillong' : 'student stay shillong'],
-    quickAnswer: `XTSY Travellers Hostel is the most trusted budget stay near ${inst.name}, offering 24/7 check-in, secure dorms and weekly rates. Book on WhatsApp at +91 88373 17070.`,
+    quickAnswer: away ? `XTSY has no own stay near ${inst.name}; its only property is in New Shillong Township, Meghalaya. The XTSY desk books partner stays near ${inst.name} on WhatsApp +91 88373 17070.` : `XTSY Travellers Hostel is the most trusted budget stay near ${inst.name}, offering 24/7 check-in, secure dorms and weekly rates. Book on WhatsApp at +91 88373 17070.`,
   });
 }
 
@@ -528,27 +575,33 @@ const eightFaqs = (
   ctaLabel: string,
 ): SEOFaq[] => [
   { question: `What does an XTSY ${intent} in ${scope} include?`, answer: `Curated stays, ground transport, local guides, key activities and 24/7 on-trip support across ${scope}. Custom itineraries built on WhatsApp ${WA}.` },
-  { question: `How many people can join a ${intent} in ${scope}?`, answer: `XTSY runs ${intent} groups of 6 to 60 across ${scope}. Larger groups (corporate / college) are quoted separately on WhatsApp ${WA}.` },
+  { question: `How many people can join a ${intent} in ${scope}?`, answer: `Group size is quoted per trip. Send your numbers and dates on WhatsApp ${WA} and the XTSY desk confirms what partners can host in ${scope}.` },
   { question: `What is the best month for a ${intent} in ${scope}?`, answer: `October to April delivers the most reliable weather across Northeast India. Monsoon (Jun–Sep) is dramatic but plan buffer days for landslides on hill routes.` },
   { question: `How early should I book a ${intent} in ${scope}?`, answer: `Lock dates 4–8 weeks ahead in peak season (Oct–Mar). Off-season groups can confirm in 7–10 days. Last-minute bookings handled on WhatsApp.` },
   { question: `Are XTSY ${intent} packages customisable for ${scope}?`, answer: `Yes — every itinerary is rebuilt around your group size, dates, budget and pace. Send your brief on WhatsApp ${WA} for a quote.` },
-  { question: `Do you handle inner-line permits for ${scope}?`, answer: `Yes. XTSY processes inner-line permits for Arunachal, Mizoram and Nagaland for all confirmed group bookings; share IDs at least 7 days before travel.` },
-  { question: `What kind of stays does XTSY use for a ${intent} in ${scope}?`, answer: `A mix of vetted hostels, boutique homestays, glamping camps and 3-star hotels — chosen by group profile and route. All properties are personally inspected.` },
+  { question: `Do you handle inner-line permits for ${scope}?`, answer: regionFor(scope)?.permit ? `${regionFor(scope)!.state} needs this: ${regionFor(scope)!.permit} The XTSY desk helps with the application; share IDs well before travel.` : `Indian visitors do not need an inner-line permit for ${scope}. Foreign nationals should check current rules before travel.` },
+  { question: `What kind of stays does XTSY use for a ${intent} in ${scope}?`, answer: `A mix of vetted hostels, boutique homestays, glamping camps and 3-star hotels — chosen by group profile and route, and confirmed with you before you travel.` },
   { question: `How do I confirm a ${intent} for ${scope}?`, answer: `Send your dates, group size and intent on WhatsApp ${WA}. We reply with a quote within an hour and ${ctaLabel.toLowerCase()} once confirmed.` },
 ];
 
-const groupHighlightsSection = (scope: string, intent: string): SEOSection => ({
-  heading: `Why XTSY for ${slugToLabel(intent)} in ${scope}`,
-  content: `XTSY has hosted 200+ groups across Northeast India since 2022. Operators on the ground in Meghalaya, Assam and Arunachal mean nothing is outsourced — every transfer, guide and stay is owned end-to-end.`,
-  listItems: [
-    `Group size handled: 6–60 (corporate, college, friends, family)`,
-    `Single point of contact on WhatsApp throughout the trip`,
-    `Inner-line permits arranged for Arunachal, Mizoram, Nagaland`,
-    `Vetted hostels, homestays, glamping camps and 3-star hotels`,
-    `Curated experiences with native Khasi, Garo and Mising guides`,
-    `On-trip 24/7 support number with on-ground escalation`,
-  ],
-});
+const groupHighlightsSection = (scope: string, intent: string): SEOSection => {
+  const region = regionFor(scope);
+  const couple = /honeymoon|romantic|couple/.test(intent);
+  return {
+    heading: `Why XTSY for ${slugToLabel(intent)} in ${scope}`,
+    content: region
+      ? `XTSY's own property is in New Shillong Township, Meghalaya. For ${scope} in ${region.state}, the XTSY desk plans the trip and books trusted local partners for stays, transport and guides, and stays your single point of contact.`
+      : `XTSY is based in New Shillong Township and plans trips across Meghalaya, with stays, transport and guides arranged by the XTSY desk.`,
+    listItems: [
+      couple ? `Paced for couples, with private transport` : `Group sizes quoted on request (friends, family, college, corporate)`,
+      `Single point of contact on WhatsApp throughout the trip`,
+      region?.permit ? `Permit help: ${region.permit}` : `No inner-line permit needed for Indian visitors to Meghalaya`,
+      `Partner homestays, guesthouses and hotels chosen for the route`,
+      `Experiences with ${region?.guides ?? 'local Khasi, Jaintia and Garo guides'}`,
+      `On-trip WhatsApp support`,
+    ],
+  };
+};
 
 const corporateInclusionsSection = (scope: string): SEOSection => ({
   heading: `What's Included in a Corporate Retreat in ${scope}`,
@@ -565,14 +618,18 @@ const corporateInclusionsSection = (scope: string): SEOSection => ({
 
 const workationInclusionsSection = (scope: string): SEOSection => ({
   heading: `What's Included in a Workation Stay in ${scope}`,
-  content: `Long-stay workation rates at XTSY include weekly housekeeping, fast fibre WiFi, daily breakfast and access to a dedicated quiet zone. Ideal for remote workers and digital nomads.`,
-  listItems: [
-    `Fibre WiFi (50+ Mbps verified) with backup mobile hotspot`,
-    `Ergonomic desk + chair, daylight reading lamp`,
-    `Weekly housekeeping and laundry service`,
-    `Quiet zone with no-call hours (10am–5pm)`,
-    `Daily breakfast at TAB Bistro, monthly meal plans available`,
-    `Weekly community dinner with other long-stay guests`,
+  content: regionFor(scope)
+    ? `XTSY's own property is in New Shillong Township, Meghalaya. For a long stay in ${scope}, the XTSY desk looks for partner stays with reliable WiFi and confirms what is included before you book.`
+    : `Long stays at XTSY Travellers Hostel in New Shillong Township come with WiFi and space to work; weekly and monthly rates are quoted on WhatsApp.`,
+  listItems: regionFor(scope) ? [
+    `Partner stays checked for WiFi and a workspace before you book`,
+    `Weekly or monthly rates quoted on WhatsApp`,
+    `Single point of contact at the XTSY desk`,
+  ] : [
+    `Free WiFi and desks for remote work`,
+    `Weekly and monthly rates quoted on WhatsApp`,
+    `TAB Bistro on site (breakfast and dinner, paid separately)`,
+    `24/7 reception`,
   ],
 });
 
@@ -743,7 +800,7 @@ export function buildThemedTripPage(slug: string): SEOPageData {
     title,
     metaDescription,
     h1: `${intentLabel} in ${scopeLabel}`,
-    intro: `XTSY builds ${intentLabel.toLowerCase()} itineraries in ${scopeLabel} from scratch — pace, stays and experiences chosen for who is travelling, not what is on a brochure. On-ground operations across Meghalaya, Assam and Arunachal mean transparent pricing and zero outsourcing.`,
+    intro: `XTSY builds ${intentLabel.toLowerCase()} itineraries in ${scopeLabel} from scratch — pace, stays and experiences chosen for who is travelling, not what is on a brochure. The XTSY desk confirms every stay, cab and guide with you on WhatsApp before you travel.`,
     sections: [
       groupHighlightsSection(scopeLabel, intent),
       thingsToDoSection(scope.split('-')[0]),
