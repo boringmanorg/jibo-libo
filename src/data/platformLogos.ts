@@ -12,8 +12,8 @@ import makemytrip from '@/assets/platforms/makemytrip-logo.webp.asset.json';
 import agoda from '@/assets/platforms/agoda-logo.webp.asset.json';
 import hostelworld from '@/assets/platforms/hostelworld-logo.webp.asset.json';
 import booking from '@/assets/platforms/booking-logo.webp.asset.json';
-import goibibo from '@/assets/platforms/goibibo-logo.webp.asset.json';
-import airbnb from '@/assets/platforms/airbnb-logo.webp.asset.json';
+import goibibo from '@/assets/platforms/goibibo-logo-icon.webp.asset.json';
+import airbnb from '@/assets/platforms/airbnb-logo-icon.webp.asset.json';
 import { XTSY_MAPS_URL } from '@/data/siteSchemas';
 
 export type PlatformLogo = { name: string; src: string; ratio: number; href?: string };
@@ -31,8 +31,8 @@ export const LISTING_LOGOS: PlatformLogo[] = [
   { name: 'Expedia', src: expedia.url, ratio: 1, href: 'https://www.expedia.com/Shillong-Hotels-XTSY-Travellers-Hostel.h118331713.Hotel-Information' },
   { name: 'Agoda', src: agoda.url, ratio: 1 },
   { name: 'MakeMyTrip', src: makemytrip.url, ratio: 1 },
-  { name: 'Goibibo', src: goibibo.url, ratio: 318 / 94 },
-  { name: 'Airbnb', src: airbnb.url, ratio: 318 / 100 },
+  { name: 'Goibibo', src: goibibo.url, ratio: 1 },
+  { name: 'Airbnb', src: airbnb.url, ratio: 318 / 343 },
 ];
 
 export const logoFor = (platform: string) =>
