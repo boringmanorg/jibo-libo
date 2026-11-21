@@ -46,6 +46,7 @@ import { reportLovableError } from "@/lib/lovable-error-reporting";
 import OptionalConsentDebugPanel from "@/components/debug/OptionalConsentDebugPanel";
 import { CONSENT_BOOTSTRAP_SCRIPT, GTM_CONSENT_LOADER_SCRIPT } from "@/lib/consent";
 import { BRAND } from '@/data/brandFacts';
+import { useSheetDoorbell } from "@/hooks/useSheetDoorbell";
 
 // ---------------------------------------------------------------------------
 // Inline head scripts ported verbatim from index.html
@@ -282,6 +283,16 @@ function RootComponent() {
   // Recover from stale hashed chunks after a deploy (blank screen +
   // "Importing a module script failed"). Must run before anything lazy-loads.
   installChunkRecovery();
+
+  // Live availability on every guest page: when the sheet or console changes, the backend sends a
+  // data-free signal and the open page re-runs its loaders (no timers, no browser refresh).
+  // Console pages refresh their own queries.
+  const liveRouter = useRouter();
+  useSheetDoorbell(() => {
+    if (!isGuestPage || document.visibilityState !== "visible") return;
+    void liveRouter.invalidate();
+    void queryClient.invalidateQueries();
+  });
 
   // Label AI-assistant referrals (ChatGPT / Perplexity / Gemini …) for the
   // GA4 "AI assistant traffic" segment. Diagnostic only — never a conversion.

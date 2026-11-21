@@ -51,7 +51,9 @@ function isH3SwallowedErrorBody(body: string): boolean {
 
 // Framing protection must be an HTTP header: browsers ignore frame-ancestors and X-Frame-Options
 // in <meta> tags (the 22 Oct 2026 error sweep found both ignored, and logged, on every page).
-const FRAME_HEADERS = serverOnlySecurityHeaders({ isDevelopment: false });
+const BASE_FRAME_HEADERS = serverOnlySecurityHeaders({ isDevelopment: false });
+// Every page listens for live availability signals, so the backend connection is allowed sitewide.
+const FRAME_HEADERS = { ...BASE_FRAME_HEADERS, "Content-Security-Policy": withAdminConnectSources(BASE_FRAME_HEADERS["Content-Security-Policy"]) };
 const ADMIN_FRAME_HEADERS = {
   ...FRAME_HEADERS,
   "Content-Security-Policy": withBotCheckSources(withAdminConnectSources(FRAME_HEADERS["Content-Security-Policy"])),
