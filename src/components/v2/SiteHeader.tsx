@@ -98,9 +98,9 @@ export default function SiteHeader() {
         <span aria-hidden="true" className="hidden opacity-50 lg:inline">·</span>
         <span className="hidden whitespace-nowrap lg:inline">New Shillong Township, near IIM &amp; NIFT Shillong</span>
       </div>
-      <header className="flex h-[68px] items-center justify-between gap-4 border-b border-xt-line bg-xt-sand/95 px-4 backdrop-blur sm:h-[84px] sm:px-8 lg:px-14">
-        <Link to="/" aria-label="XTSY home" className="flex min-h-[44px] shrink-0 items-center">
-          <img src={xtsyLogo} alt="XTSY" width={120} height={28} className="h-6 w-auto sm:h-7" />
+      <header className="flex h-[68px] items-center justify-between gap-2 border-b border-xt-line bg-xt-sand/95 px-4 backdrop-blur sm:h-[84px] sm:gap-4 sm:px-8 lg:px-14">
+        <Link to="/" aria-label="XTSY home" className="flex min-h-[48px] shrink-0 items-center">
+          <img src={xtsyLogo} alt="XTSY" width={264} height={96} className="h-9 w-auto sm:h-12" />
           <sup aria-label="trademark" className="ml-0.5 text-[10px] font-bold">™</sup>
         </Link>
         <nav aria-label="Main" className="hidden items-center gap-6 text-[14px] font-bold xl:flex">
