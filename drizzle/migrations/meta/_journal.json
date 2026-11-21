@@ -135,11 +135,18 @@
       "tag": "0018_sheet_availability",
       "breakpoints": true
     },
-    {
+        {
       "idx": 19,
       "version": "7",
       "when": 1795260000001,
       "tag": "0019_revoke_client_definer_functions",
+      "breakpoints": true
+    },
+    {
+      "idx": 20,
+      "version": "7",
+      "when": 1795270000000,
+      "tag": "0019_enquiry_inbox",
       "breakpoints": true
     }
   ]

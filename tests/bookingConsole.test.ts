@@ -65,8 +65,8 @@ describe('launch switch', () => {
   it('lists today\'s blockers: STAAH, mapping, gateway keys, bot check and the switch', async () => {
     const s = await core.loadStatus(deps({ be_settings: [{ id: 1 }], be_room_mapping: [] }));
     expect(s.dbReady && s.blockers).toEqual([
-      'STAAH is not connected.',
-      `Room types not mapped to STAAH: ${BOOKING_ROOM_TYPES.map((r) => r.id).join(', ')}.`,
+      'No channel manager or PMS is connected.',
+      `Room types not mapped to the channel manager: ${BOOKING_ROOM_TYPES.map((r) => r.id).join(', ')}.`,
       'Payment gateway keys are not saved.',
       'Bot protection keys (Cloudflare Turnstile) are not saved.',
       'Live booking is switched off in the admin console.',
@@ -74,7 +74,7 @@ describe('launch switch', () => {
   });
   it('refuses to switch on while STAAH is not connected, and logs nothing', async () => {
     const t = { be_settings: [{ id: 1 }], be_room_mapping: mappedAll, be_audit_log: [] as any[] };
-    await expect(core.setLaunchSwitch(deps(t, { gateway: fakeGateway }), true)).rejects.toThrow(/STAAH is not connected/);
+    await expect(core.setLaunchSwitch(deps(t, { gateway: fakeGateway }), true)).rejects.toThrow(/No channel manager or PMS is connected/);
     expect(t.be_settings[0].engine_switched_on).toBeUndefined();
     expect(t.be_audit_log).toHaveLength(0);
   });
@@ -128,7 +128,7 @@ describe('booking actions', () => {
     const lines = [{ booking_id: 'b1', room_type_id: 'bed-in-6-bed-mixed-dormitory', units: 1, guests: 1 }];
     await expect(core.changeDates(deps({ be_bookings: [booking({ check_in: '2026-11-25' })], be_booking_lines: lines }, { channel: connected }), 'b1', '2026-12-20', '2026-12-21')).rejects.toThrow(/14 days/);
     await expect(core.changeDates(deps({ be_bookings: [booking({ date_changes_used: 1 })], be_booking_lines: lines }, { channel: connected }), 'b1', '2026-12-20', '2026-12-21')).rejects.toThrow(/already used/);
-    await expect(core.changeDates(deps({ be_bookings: [booking()], be_booking_lines: lines }), 'b1', '2026-12-20', '2026-12-21')).rejects.toThrow(/STAAH is not connected/);
+    await expect(core.changeDates(deps({ be_bookings: [booking()], be_booking_lines: lines }), 'b1', '2026-12-20', '2026-12-21')).rejects.toThrow(/No channel manager or PMS is connected/);
   });
   it('keeps everything on a guest cancellation and refunds everything when XTSY cancels', async () => {
     const pays = [{ booking_id: 'b1', kind: 'advance', status: 'succeeded', amount_paise: 52500 }];

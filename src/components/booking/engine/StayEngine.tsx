@@ -21,7 +21,7 @@ import { HOUSE_RULES } from '@/booking/houseRules';
 import { roomContent } from '@/booking/roomContent';
 import type { RoomResult, SearchResult } from '@/booking/publicEngine.core';
 import { isIndian } from '@/booking/guestRules';
-import { getBotCheckConfigFn, quoteFn, searchStaysFn, startCheckoutFn } from '@/booking/publicEngine.functions';
+import { getBotCheckConfigFn, quoteFn, recordEnquiryFn, searchStaysFn, startCheckoutFn } from '@/booking/publicEngine.functions';
 import { staticDateProblem, staticQuote, staticSearch } from '@/booking/staticSearch';
 import type { ClosureRow } from '@/booking/consoleClosures';
 import type { SheetAvailability } from '@/booking/sheetAvailability';
@@ -122,7 +122,7 @@ export default function StayEngine({ mode, photos, closures, sheet, initialLocat
         <p className="mx-auto max-w-6xl px-4 pt-4 text-sm text-xt-mute" role="note">
           <span className="rounded-full bg-xt-ink px-2.5 py-1 text-xs font-semibold text-xt-sand">Preview</span>{' '}
           Guests see this page at /book once the launch switch is on; payment is off here.
-          {result && !result.inventorySynced && ' Counts are XTSY’s own bookings only until STAAH is connected.'}
+          {result && !result.inventorySynced && ' Counts come from the Google Sheet and console blocks until a channel manager or PMS is connected.'}
         </p>
       )}
 
@@ -559,6 +559,11 @@ function Details({ mode, result, cart, lines, onBack }: { mode: EngineMode; resu
     const url = `https://wa.me/918837317070?text=${encodeURIComponent(message)}`;
     if (tab && !tab.closed) { tab.opener = null; tab.location.href = url; } else openWhatsAppDirectly(message);
     setSentRef(reference);
+    // Copy to the console inbox after WhatsApp has opened; never waits on or reports to the guest.
+    void recordEnquiryFn({ data: {
+      reference, kind: 'stay', name: guest.name.trim(), phone: guest.phone.trim(), checkIn: result.checkIn, checkOut: result.checkOut,
+      guests: totalGuests, summary: [roomsText, extras].join(' | ').slice(0, 1500), estimate: Math.round(quote.quote.total / 100),
+    } }).catch(() => undefined);
   };
 
   const whatsapp = () => openWhatsAppDirectly(
