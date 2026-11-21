@@ -9,6 +9,10 @@ import type { IsoDate } from "@/booking/dates";
 import { buildRouteHead } from "@/lib/seo-head";
 import { inr, roomPrice } from "@/components/v2/pricing";
 import { PANORAMA_STAY_ONLY } from "@/data/panoramaPricing";
+import { IMG } from "@/data/v2Images";
+import { responsiveImage } from "@/data/cdnImages";
+
+const bookHero = responsiveImage(IMG.property[0]);
 
 export const Route = createFileRoute("/(stays)/book/")({
   // "dawki" is kept as an alias so older links land on the Shnonpedeng camp.
@@ -27,6 +31,8 @@ export const Route = createFileRoute("/(stays)/book/")({
         `Book XTSY in New Shillong Township: dorms from ${inr(roomPrice("8-bed-mixed-dorm").now)}, King Double ${inr(roomPrice("king-double-room").now)}, Experience by XTSY ${inr(PANORAMA_STAY_ONLY)}. Check-in 11 AM, check-out 10 AM.`,
       keywords:
         "hostel booking, online hostel booking, book hostel shillong, dorm booking shillong, hostel booking meghalaya",
+      // Start the first property photo during HTML parse, sized for the phone.
+      ...(bookHero ? { preloadImage: bookHero.src, preloadImageSrcSet: bookHero.srcSet, preloadImageSizes: "(max-width: 768px) 100vw, 50vw" } : {}),
     }),
   // Online payment appears only when the console's launch gate allows it (STAAH connected,
   // rooms mapped, payment and bot-check keys saved, switch on). Until then, and on any error,

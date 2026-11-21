@@ -14,6 +14,20 @@ import { openTripChat } from '@/components/v2/tripChatEvents';
 import { cn } from '@/lib/utils';
 import { BIKE_FROM, CAR_FROM } from '@/data/rentalFleet';
 import { CAMP, CAMP_FROM, CAMP_PHOTOS } from '@/data/shnonpedengCamp';
+import { responsiveImage, avifSrcSet } from '@/data/cdnImages';
+
+/** Phone-sized versions of an optimised photo (AVIF first, WebP fallback); plain <img> otherwise. */
+function SizedImg({ src, alt, sizes, className, eager }: { src?: string; alt: string; sizes: string; className?: string; eager?: boolean }) {
+  const opt = responsiveImage(src);
+  const avif = avifSrcSet(opt?.srcSet);
+  return (
+    <picture className="contents">
+      {avif && <source type="image/avif" srcSet={avif} sizes={sizes} />}
+      <img src={opt?.src ?? src} srcSet={opt?.srcSet} sizes={opt ? sizes : undefined} width={opt?.w} height={opt?.h} alt={alt}
+        loading={eager ? 'eager' : 'lazy'} fetchPriority={eager ? 'high' : undefined} decoding="async" className={className} />
+    </picture>
+  );
+}
 
 const inr = (n: number) => `₹${n.toLocaleString('en-IN')}`;
 
@@ -55,11 +69,11 @@ export function LocationPicker({ onPick }: { onPick: (l: BookLocation) => void }
       <h1 id="where" className="xt-display text-[clamp(2.75rem,8vw,5.5rem)] leading-[0.9] text-xt-ink">Where would you like to stay?</h1>
       <p className="mt-3 max-w-2xl text-base text-xt-mute">The XTSY hostel in New Shillong, or riverside camping with an XTSY partner. Pick one to see prices.</p>
       <div className="mt-8 grid gap-5 md:grid-cols-2">
-        {LOCATIONS.map((l) => (
+        {LOCATIONS.map((l, li) => (
           <button key={l.id} type="button" onClick={() => onPick(l.id)}
             className="group overflow-hidden rounded-[28px] border border-xt-line bg-[#FBF8F3] text-left transition-shadow hover:shadow-[0_18px_40px_-20px_rgba(31,34,48,.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-xt-ink">
             <div className="relative aspect-[16/10] overflow-hidden">
-              <img src={l.photo} alt={`${l.name}, ${l.place}`} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
+              <SizedImg src={l.photo} alt={`${l.name}, ${l.place}`} sizes="(max-width: 768px) 100vw, 50vw" eager={li === 0} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
               <span className="absolute left-4 top-4 flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1.5 text-sm font-bold text-xt-ink"><MapPin className="h-4 w-4 text-xt-crimson" aria-hidden />{l.place}</span>
             </div>
             <div className="space-y-2 p-6">
@@ -84,7 +98,7 @@ export function PhotoStrip({ photos }: { photos: { src: string; alt: string }[] 
     <div className="relative">
       <div className="-mx-4 mt-6 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" aria-label="Photos">
         {photos.slice(0, 12).map((p, i) => (
-          <img key={p.src} src={p.src} alt={p.alt} loading={i < 3 ? 'eager' : 'lazy'}
+          <SizedImg key={p.src} src={p.src} alt={p.alt} eager={i === 0} sizes={i === 0 ? '(max-width: 640px) 82vw, 46vw' : '(max-width: 640px) 72vw, 34vw'}
             className={cn('h-60 shrink-0 snap-start rounded-[28px] object-cover sm:h-80', i === 0 ? 'w-[82%] sm:w-[46%]' : i % 2 ? 'w-[64%] sm:w-[26%]' : 'w-[72%] sm:w-[34%]')} />
         ))}
       </div>
