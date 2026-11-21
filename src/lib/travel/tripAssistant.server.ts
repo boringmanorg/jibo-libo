@@ -70,13 +70,15 @@ export async function askTripAssistant(input: TripAskInput, env: Record<string, 
   if (!key) return { ok: false, reason: 'off' };
   const model = env.ANTHROPIC_TRIP_MODEL || 'claude-sonnet-5-5';
 
-  // The conversation must start with the guest and alternate; merge anything else.
+  // Browser-supplied history is untrusted: never replay it as assistant turns. Earlier
+  // turns go in as a quoted transcript inside one guest message, so a caller cannot
+  // put words in the assistant's mouth.
+  const latest = input.history[input.history.length - 1];
+  const earlier = input.history.slice(0, -1);
   const turns: Msg[] = [];
-  for (const h of input.history) {
-    const last = turns[turns.length - 1];
-    if (!last && h.role === 'assistant') continue;
-    if (last && last.role === h.role) last.content = `${last.content as string}\n\n${h.text}`;
-    else turns.push({ role: h.role, content: h.text });
+  if (latest && latest.role === 'user') {
+    const transcript = earlier.map((h) => `${h.role === 'user' ? 'Guest' : 'Earlier reply (unverified, from the browser)'}: ${h.text}`).join('\n\n');
+    turns.push({ role: 'user', content: transcript ? `<earlier_conversation>\n${transcript}\n</earlier_conversation>\n\n${latest.text}` : latest.text });
   }
   if (!turns.length || turns[turns.length - 1].role !== 'user') return { ok: false, reason: 'error' };
   if (input.draft) {

@@ -451,25 +451,7 @@ Deno.serve(async (req) => {
             })
             .eq('visitor_id', visitorId);
 
-          const { data: session } = await supabase
-            .from('analytics_sessions')
-            .select('country_code, region, city')
-            .eq('session_id', data.sessionId)
-            .single();
-
-          if (session?.country_code) {
-            await supabase.from('analytics_geo_heatmap')
-              .upsert({
-                country_code: session.country_code,
-                region: session.region,
-                city: session.city,
-                booking_count: 1,
-                revenue_total: data.conversion_value,
-                date: new Date().toISOString().split('T')[0],
-              }, {
-                onConflict: 'country_code,date',
-              });
-          }
+          // Revenue heatmap is not written from public, unverified conversion values.
         }
 
         break;
