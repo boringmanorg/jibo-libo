@@ -9,6 +9,7 @@ import { GOOGLE_RATING } from '@/data/brandFacts';
 import { PlatformScores } from '@/components/reviews/PlatformScores';
 import { HOME_FEATURED_REVIEWS } from '@/data/homeFeaturedReviews';
 import { Card, type R } from './ReviewCard';
+import { TripadvisorWidget } from '@/components/reviews/TripadvisorWidget';
 
 const FullReviews = lazy(() => import('./HomeReviews').then((m) => ({ default: m.Reviews })));
 
@@ -36,6 +37,7 @@ export function HomeReviewsLite() {
             </div>
           ))}
         </div>
+        <div className="relative mt-14 flex justify-center"><TripadvisorWidget /></div>
       </div>
       {req && (
         <Suspense fallback={null}>

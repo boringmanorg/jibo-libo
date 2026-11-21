@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { TripadvisorWidget } from '@/components/reviews/TripadvisorWidget';
 import { Link } from '@/lib/router-compat';
 import { Helmet } from '@/lib/seo/helmet';
 import Header from '@/components/Header';
@@ -165,6 +166,8 @@ const HostelBookingShillong = memo(() => {
             </p>
           </div>
         </section>
+
+        <section className="px-4 pb-6"><div className="container mx-auto flex max-w-5xl justify-center"><TripadvisorWidget /></div></section>
 
         {/* Why book direct */}
         <section className="py-14 px-4">
