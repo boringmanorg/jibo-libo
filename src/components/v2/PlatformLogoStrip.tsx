@@ -1,7 +1,7 @@
 import type { PlatformLogo } from '@/data/platformLogos';
 import { cn } from '@/lib/utils';
 
-/** Row of platform logos; linked logos open the verified listing in a new tab. */
+/** Row of platform logos; only logos that carry a verified href are links, the rest are static marks. */
 export function PlatformLogoStrip({ logos, size = 32, label, className, showNames = false, compact = false }: { logos: PlatformLogo[]; size?: number; label?: string; className?: string; showNames?: boolean; compact?: boolean }) {
   return (
     <div className={cn('flex flex-wrap items-center gap-x-4 gap-y-2', className)}>
