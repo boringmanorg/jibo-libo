@@ -21,7 +21,7 @@ const selectCls = 'h-12 w-full rounded-md border border-input bg-background px-3
 function Stays() {
   const qc = useQueryClient();
   const overview = useServerFn(getConsoleOverview);
-  const { data } = useQuery({ queryKey: ['console', 'overview'], queryFn: () => overview() });
+  const { data } = useQuery({ queryKey: ['console', 'overview'], queryFn: () => overview(), refetchInterval: 5_000 });
   const fetchEnq = useServerFn(listPmsEnquiries);
   const enquiries = useQuery({ queryKey: ['console', 'enquiries'], queryFn: () => fetchEnq() });
   const save = useServerFn(saveInventoryOverride);

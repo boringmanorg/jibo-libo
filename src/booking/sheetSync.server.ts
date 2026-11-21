@@ -73,7 +73,7 @@ export async function handleSheetAvailability(request: Request, now = Date.now()
   // An empty send is more likely a broken sheet layout than a hostel with no rooms: never publish it.
   if (rows.length === 0) return json({ status: 'nothing-to-publish', unknownRooms }, 422);
 
-  const version = minuteVersion(now) + 1;
+  const version = minuteVersion(now); // readable immediately; no next-minute staging
   const pub = await client.rpc('be_sheet_publish', { p_version: version, p_rows: rows });
   if (pub.error) return json({ error: 'Could not publish availability' }, 500);
   await client.from('be_sheet_links').update({ last_sync_at: new Date(now).toISOString(), last_sync_rows: rows.length }).eq('id', link.data.id);

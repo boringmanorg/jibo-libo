@@ -30,7 +30,7 @@ function Inventory() {
   const { data, error, isFetching } = useQuery({
     queryKey: ['console', 'calendar', month],
     queryFn: () => fetchCal({ data: { start: `${month}-01`, days: daysIn(month) } }),
-    refetchInterval: 60_000,
+    refetchInterval: 5_000,
   });
   const [picked, setPicked] = useState<{ row: CalendarRow; cell: CalendarCell } | null>(null);
   // Start the grid at today (a couple of days back for context) instead of the 1st.

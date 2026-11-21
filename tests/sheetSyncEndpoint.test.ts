@@ -74,8 +74,8 @@ describe('Google Sheet sync: passwordless pairing approved in the console', () =
     tables.be_sheet_links[0].status = 'active';
     const t = Date.UTC(2026, 10, 21, 4, 30, 59);
     const res = await (await handleSheetAvailability(post('sheet-availability', cells, pair.token), t)).json();
-    expect(published[0]).toEqual({ version: minuteVersion(t) + 1, rows: [{ room_type_id: 'bed-in-6-bed-standard-dormitory', night: '2027-02-02', free: 14 }] });
-    expect(res.visibleFrom).toBe('2026-11-21T04:31:00.000Z');
+    expect(published[0]).toEqual({ version: minuteVersion(t), rows: [{ room_type_id: 'bed-in-6-bed-standard-dormitory', night: '2027-02-02', free: 14 }] });
+    expect(res.visibleFrom).toBe('2026-11-21T04:30:00.000Z');
     expect((await handleSheetAvailability(post('sheet-availability', { from: '2026-11-21', cells: [] }, pair.token))).status).toBe(422);
     expect(published).toHaveLength(1);
   });

@@ -90,7 +90,7 @@ function syncAvailability() {
   return msg;
 }
 
-function siteUrl(props) { return props.getProperty('SITE_URL') || 'https://www.xtsy.one'; }
+function siteUrl(props) { return props.getProperty('SITE_URL') || 'https://xtsy.one'; }
 
 function sendOnce(props) {
   var token = props.getProperty('LINK_TOKEN');
