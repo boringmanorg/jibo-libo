@@ -32,7 +32,7 @@ export const LISTING_LOGOS: PlatformLogo[] = [
   { name: 'Agoda', src: agoda.url, ratio: 1 },
   { name: 'MakeMyTrip', src: makemytrip.url, ratio: 1 },
   { name: 'Goibibo', src: goibibo.url, ratio: 1 },
-  { name: 'Airbnb', src: airbnb.url, ratio: 318 / 343 },
+  { name: 'Airbnb', src: airbnb.url, ratio: 1 },
 ];
 
 export const logoFor = (platform: string) =>
