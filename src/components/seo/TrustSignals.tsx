@@ -4,7 +4,7 @@ import { HAPPY_GUESTS } from '@/data/brandFacts';
 const TrustSignals = () => (
   <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3">
     {[
-      { icon: Award, label: '4.7★ Google Rating', sub: '252 Google reviews' },
+      { icon: Award, label: '4.7★ Google Rating', sub: '256 Google reviews' },
       { icon: Users, label: `${HAPPY_GUESTS.display} Guests`, sub: 'Hosted since 2024' },
       { icon: MapPin, label: 'Local Experts', sub: 'Based in Shillong' },
       { icon: Shield, label: 'Verified Business', sub: 'GST registered' },

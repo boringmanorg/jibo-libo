@@ -22,7 +22,7 @@ const HOSTEL_INFO = {
   ],
   awards: [
     "Nominated: Best Budget-Friendly Accommodation, Northeast India Tourism Awards (NEITA 2025)",
-    "Rated 4.7★ on Google from 252 reviews",
+    "Rated 4.7★ on Google from 256 reviews",
     "India's Most Romantic Couple En-suite (Experience by XTSY)",
   ],
 };

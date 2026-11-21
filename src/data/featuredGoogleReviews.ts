@@ -2,7 +2,7 @@
  * Curated best Google reviews, pinned at the top of the review showcases.
  * Source: Google Business Profile (fetched 6 Nov 2026). Comments and owner
  * replies are verbatim; do not edit wording, only the selection.
- * Hostel listing: 4.7★ from 252 reviews (see brandFacts.ts).
+ * Hostel listing: 4.7★ from 256 reviews (see brandFacts.ts).
  */
 
 export interface FeaturedGoogleReview {

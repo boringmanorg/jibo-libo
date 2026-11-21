@@ -159,7 +159,7 @@ const TabBistroReviews = memo(({ reviews, stats, submitReview, onSubmitted }: Pr
   // Bistro's real Google rating and breaches Google's structured-data policy, which
   // requires an aggregate to reflect all reviews rather than a hand-picked subset.
   // To show a rating here, add TAB Bistro's actual Google figures (it has its own
-  // Business Profile, separate from the hostel's 4.7/252 in brandFacts.ts) and use
+  // Business Profile, separate from the hostel's 4.7/256 in brandFacts.ts) and use
   // those instead of anything derived from this selection.
 
   return (

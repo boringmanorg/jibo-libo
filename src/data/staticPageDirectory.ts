@@ -44,7 +44,7 @@ export const STATIC_PAGE_DIRECTORY = [
   {
     "path": "/stays/best-hostel-in-shillong",
     "title": "Hostels in Shillong from ₹400: Women-Only Dorm, 4.7★ | XTSY",
-    "description": "Stay among the pines of New Shillong Township at XTSY (4.7★, 252 Google reviews). Dorms from ₹400, a 4-bed women-only dorm, private rooms and TAB Bistro."
+    "description": "Stay among the pines of New Shillong Township at XTSY (4.7★, 256 Google reviews). Dorms from ₹400, a 4-bed women-only dorm, private rooms and TAB Bistro."
   },
   {
     "path": "/guides/best-time-to-visit-meghalaya",
@@ -114,7 +114,7 @@ export const STATIC_PAGE_DIRECTORY = [
   {
     "path": "/stays/hostel-near-me",
     "title": "Hostel Near Me in Shillong — XTSY, New Shillong Township",
-    "description": "Hostel near you in Shillong? XTSY is on Mawdiangdiang Road, New Shillong Township, near NIFT and IIM: dorms from ₹400, 4.7★ from 252 Google reviews."
+    "description": "Hostel near you in Shillong? XTSY is on Mawdiangdiang Road, New Shillong Township, near NIFT and IIM: dorms from ₹400, 4.7★ from 256 Google reviews."
   },
   {
     "path": "/stays/hotels-in-shillong",

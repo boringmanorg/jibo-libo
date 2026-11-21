@@ -6,7 +6,7 @@ import { bistroGoogleReviews } from '../src/data/bistroGoogleReviews';
 
 describe('Separate listing scores', () => {
   it('retains the hostel Google score and total', () => {
-    expect([GOOGLE_RATING.value, GOOGLE_RATING.count]).toEqual(['4.7', 252]);
+    expect([GOOGLE_RATING.value, GOOGLE_RATING.count]).toEqual(['4.7', 256]);
   });
   it('uses Bistro Google figures rather than its featured-review average', () => {
     expect([BISTRO_GOOGLE_RATING.value, BISTRO_GOOGLE_RATING.count]).toEqual(['4.7', 34]);

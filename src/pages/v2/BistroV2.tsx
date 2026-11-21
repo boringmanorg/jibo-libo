@@ -29,7 +29,7 @@ export default function BistroV2() {
     // (all 5-star by selection), so emitting it would publish a 5.0 aggregate that
     // misrepresents TAB Bistro's real Google rating. buildRestaurantSchema omits the
     // block when these are undefined. Supply TAB Bistro's actual Google figures here
-    // (its own Business Profile, not the hostel's 4.7/252) to show a rating again.
+    // (its own Business Profile, not the hostel's 4.7/256) to show a rating again.
     reviews: reviews.map((r) => ({ name: r.name, rating: r.rating, comment: r.comment, date: r.isoDate.slice(0, 10) })),
   });
   // Best Google reviews pin first; approved diner reviews fill the rest.
