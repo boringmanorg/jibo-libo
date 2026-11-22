@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import StayEngine from "@/components/booking/engine/StayEngine";
 import { PageShell } from "@/components/v2/blocks";
 import { z } from "zod";
-import { loadBookPageData } from "@/booking/bookPageLoader";
+import { loadBookPageData, rememberBookPageData } from "@/booking/bookPageLoader";
 import type { IsoDate } from "@/booking/dates";
 import { buildRouteHead } from "@/lib/seo-head";
 import { inr, roomPrice } from "@/components/v2/pricing";
@@ -36,14 +36,16 @@ export const Route = createFileRoute("/(stays)/book/")({
   // Online payment appears only when the console's launch gate allows it (STAAH connected,
   // rooms mapped, payment and bot-check keys saved, switch on). Until then, and on any error,
   // the same page runs from the static catalogue and ends in a WhatsApp enquiry.
-  // A paused Cloud database must not hold the page: after 1.5 s guests get the enquiry page with
+  // A paused Cloud database must not hold the page: after 4.5 s guests get the enquiry page with
   // the built-in photos.
   loader: () => loadBookPageData(),
   component: BookPage,
 });
 
 function BookPage() {
-  const { live, photos, closures, sheet } = Route.useLoaderData();
+  const data = Route.useLoaderData();
+  const { live, photos, closures, sheet } = data;
+  useEffect(() => { rememberBookPageData(data); }, [data]);
   // Live updates come from the sitewide listener in the root layout; this also refreshes
   // when a guest returns to the tab. No timers run while nothing changes.
   const router = useRouter();

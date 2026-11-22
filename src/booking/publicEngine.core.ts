@@ -125,11 +125,20 @@ export async function loadSheetAvailability(d: EngineDeps): Promise<SheetAvailab
   const current = await d.db.from('be_sheet_availability').select('version').lte('version', Math.floor(d.now.getTime() / 60_000)).order('version', { ascending: false }).limit(1);
   const version = current.data?.[0]?.version;
   if (current.error || version === undefined) return out;
-  for (let page = 0; page < 20; page++) {
-    const r = await d.db.from('be_sheet_availability').select('room_type_id,night,free').eq('version', version).gte('night', from).order('night').range(page * 1000, page * 1000 + 999);
-    if (r.error) return out;
-    for (const row of (r.data ?? []) as { room_type_id: string; night: string; free: number }[]) (out[row.room_type_id] ??= {})[row.night.slice(0, 10) as IsoDate] = row.free;
-    if ((r.data ?? []).length < 1000) break;
+  // Pages are fetched in parallel batches (one round trip for typical sheets) instead of one by one.
+  const add = (rows: { room_type_id: string; night: string; free: number }[]) => { for (const row of rows) (out[row.room_type_id] ??= {})[row.night.slice(0, 10) as IsoDate] = row.free; };
+  const BATCH = 6;
+  for (let start = 0; start < 20; start += BATCH) {
+    const pages = await Promise.all(Array.from({ length: Math.min(BATCH, 20 - start) }, (_, i) =>
+      d.db!.from('be_sheet_availability').select('room_type_id,night,free').eq('version', version).gte('night', from).order('night').order('room_type_id').range((start + i) * 1000, (start + i) * 1000 + 999)));
+    let done = false;
+    for (const r of pages) {
+      if (r.error) return out;
+      const rows = (r.data ?? []) as { room_type_id: string; night: string; free: number }[];
+      add(rows);
+      if (rows.length < 1000) { done = true; break; }
+    }
+    if (done) break;
   }
   return out;
 }
