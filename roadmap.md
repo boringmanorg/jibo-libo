@@ -1,5 +1,10 @@
 # Roadmap — Master SEO prompt (xtsy.one)
 
+## Requested photo repairs — 23 November 2026
+- [ ] Replace the irrelevant Merch cover with the existing merchandise concepts, clearly labelled as mockups.
+- [ ] Use a clearer destination cover on /tours and repair the missing guide-card photos through the existing authentic/regional image selector.
+- [ ] Verify all three pages on desktop and phone, run relevant checks, and save without publishing.
+
 ## Company, dining, database and tour-rate checks — 18 November 2026
 - [x] Identified eight failing unit checks: stale canonical company-domain expectation, restaurant/SEO registry timeouts, generated database-helper existence checks, and obsolete seven-day tour-rate expectation.
 - [x] Match checks to the approved canonical domains and ₹16,800 seven-day rate; keep generated backend files untouched while enforcing no application wiring.
