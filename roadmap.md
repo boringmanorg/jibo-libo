@@ -2,7 +2,7 @@
 
 ## Selected trip-assistant security findings — 24 November 2026
 - [x] Removed caller-controlled page context from model instructions; passed it only as untrusted user data. Regression test confirms malicious and normal page values produce identical system instructions; seven focused tests pass, preview build OK.
-- [ ] Paid-model access still needs owner approval: requiring sign-in or disabling paid calls for guests changes the current public chat experience. No access settings changed; only the instruction finding marked fixed.
+- [x] Disabled all paid guest answers, including direct requests to the retired endpoint. Guest chat stays local; dining, camping and rentals use shared website facts, other topics link to the public page index. Browser-verified five-day plans, lunch policy, merch discovery and direct off response; regression checks pass and preview build OK. Only the paid-access finding resolved; publishing not requested.
 
 ## Rental number-plate privacy — 24 November 2026
 - [x] Blurred ten foreground/background plates across eight rental photos; remaining fleet images and the cover have no visible registration numbers. Original vehicles, scenery and attribution preserved.

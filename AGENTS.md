@@ -48,3 +48,5 @@
 - Live availability refreshes on a data-free Realtime broadcast ('sheet-availability') fired by a trigger when a sheet sync lands, never on timers; use the dedicated session-free notification client, not the inert offline client, and catch up on subscription/reconnection. Every guest page listens through the root layout (lazily) and refetches through its existing loaders; console pages refresh their own queries; console blocks ring the same signal.
 - Wrap lazy imports of browser-only notification modules in createClientOnlyFn; useEffect alone does not remove their imports from the SSR build graph.
 - Rental plate edits are baked into master pixels before rebuilding every WebP/AVIF size; CDN variants use explicit format URLs so no browser fallback can expose an unredacted thumbnail.
+
+- Keep guest chat entirely local, using canonical browser-safe facts and the public search index for page discovery; retain the retired paid endpoint as an unconditional off response so direct requests cannot spend credits.

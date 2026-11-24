@@ -10,6 +10,7 @@
  * Stay advice starts with the guest's location and room needs; XTSY is offered
  * only when its New Shillong location and available room types fit.
  */
+import { websiteFactAnswer, websitePageAnswer } from './websiteAnswers';
 import { STARGAZING_NOTICE, STARGAZING_SHORT } from '@/data/stargazingPolicy';
 import { CLUSTERS, PLACES, PLACE_BY_ID, XTSY, type ClusterId, type Place } from './places';
 import { XTSY_POINT, pointOfHub, pointOfPlace, travel } from './routing';
@@ -340,8 +341,15 @@ export function respond(message: string, prev: ChatState): { reply: Reply; state
   const bt = bestTimeAnswer(places, t);
   if (bt && !parseDays(t)) return { reply: { text: bt, chips: ['Plan 5 days in December', 'Plan a monsoon trip'], actions: [] }, state };
   if (!(mentionsTrip && (parseDays(t) || places.length))) {
+    const websiteAnswer = websiteFactAnswer(message);
+    if (websiteAnswer) return { reply: { text: websiteAnswer, chips: ['Plan a 5-day trip'], actions: [] }, state };
     for (const [re, answer, chips] of FACTS) if (re.test(t)) return { reply: { text: answer(), chips, actions: [] }, state };
     for (const [re, answer, chips] of GENERAL) if (re.test(t)) return { reply: { text: answer(), chips, actions: [] }, state };
+  }
+
+  if (!mentionsTrip && !parseDays(t) && !/\b(add|remove|include|skip|drop|longer|shorter)\b/.test(t)) {
+    const pageAnswer = websitePageAnswer(message);
+    if (pageAnswer) return { reply: { text: pageAnswer, chips: ['Plan a 5-day trip'], actions: [] }, state };
   }
 
   // Trip edits and requests.
