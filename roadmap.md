@@ -1,9 +1,5 @@
 # Roadmap — Master SEO prompt (xtsy.one)
 
-## Remaining tour and guide card photos — 24 November 2026
-- [ ] Inspect tour, category, directory and related-guide cards for missing images or missing recovery photos.
-- [ ] Fill affected slots with existing reviewed Meghalaya photographs, label regional substitutes accurately, and verify desktop and phone rendering.
-
 ## Selected trip-assistant security findings — 24 November 2026
 - [x] Removed caller-controlled page context from model instructions; passed it only as untrusted user data. Regression test confirms malicious and normal page values produce identical system instructions; seven focused tests pass, preview build OK.
 - [x] Disabled all paid guest answers, including direct requests to the retired endpoint. Guest chat stays local; dining, camping and rentals use shared website facts, other topics link to the public page index. Browser-verified five-day plans, lunch policy, merch discovery and direct off response; regression checks pass and preview build OK. Only the paid-access finding resolved; publishing not requested.
