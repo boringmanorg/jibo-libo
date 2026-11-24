@@ -50,3 +50,4 @@
 - Rental plate edits are baked into master pixels before rebuilding every WebP/AVIF size; CDN variants use explicit format URLs so no browser fallback can expose an unredacted thumbnail.
 
 - Keep guest chat entirely local, using canonical browser-safe facts and the public search index for page discovery; retain the retired paid endpoint as an unconditional off response so direct requests cannot spend credits.
+- Keep bundled font preloads production-only; preview hydration replaces CSS and cannot reuse them, while production still needs first-paint font discovery.

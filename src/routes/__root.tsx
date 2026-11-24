@@ -146,14 +146,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      // Brand fonts are bundled (hashed /assets URLs, cached for a year; their @font-face rules are
-      // in the main stylesheet) and preloaded so headlines render in Staatliches from the first paint.
-      { rel: "preload", as: "font", type: "font/woff2", href: staatlichesLatin, crossOrigin: "anonymous" },
-      { rel: "preload", as: "font", type: "font/woff2", href: manropeLatin, crossOrigin: "anonymous" },
-      // ₹ (U+20B9) lives in the latin-ext subset; every page shows prices, so
-      // preload it too or the late swap shifts the layout (CLS).
-      { rel: "preload", as: "font", type: "font/woff2", href: manropeLatinExt, crossOrigin: "anonymous" },
-      { rel: "preload", as: "font", type: "font/woff2", href: staatlichesLatinExt, crossOrigin: "anonymous" },
+      // Production uses stable hashed font URLs; preserve its first-paint preloads.
+      // Preview injects/replaces CSS during hydration and doesn't reuse these preloads;
+      // let its existing @font-face rules load the fonts without duplicate requests.
+      ...(import.meta.env.PROD ? [
+        { rel: "preload", as: "font", type: "font/woff2", href: staatlichesLatin, crossOrigin: "anonymous" },
+        { rel: "preload", as: "font", type: "font/woff2", href: manropeLatin, crossOrigin: "anonymous" },
+        // ₹ (U+20B9) lives in latin-ext; preload it to prevent a late price-glyph swap.
+        { rel: "preload", as: "font", type: "font/woff2", href: manropeLatinExt, crossOrigin: "anonymous" },
+        { rel: "preload", as: "font", type: "font/woff2", href: staatlichesLatinExt, crossOrigin: "anonymous" },
+      ] as const : []),
       // Legacy Playfair/Josefin fonts load after the page, and only on older pages that use them:
       // see LEGACY_FONTS_SCRIPT.
       { rel: "icon", type: "image/png", href: "/favicon.png" },

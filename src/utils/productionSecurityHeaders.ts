@@ -53,8 +53,7 @@ export function generateProductionSecurityHeaders(config: SecurityHeadersConfig 
       'microphone=()',
       'camera=()',
       'payment=()',
-      'usb=()',
-      'bluetooth=()'
+      'usb=()'
     ].join(', '),
 
     // Content Type Options
@@ -138,7 +137,7 @@ export function serverOnlySecurityHeaders(config: SecurityHeadersConfig = {}): R
     'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
     'Referrer-Policy': 'strict-origin-when-cross-origin',
     'Permissions-Policy':
-      'geolocation=(), microphone=(), camera=(), payment=(), usb=(), bluetooth=(), interest-cohort=()',
+      'geolocation=(), microphone=(), camera=(), payment=(), usb=(), interest-cohort=()',
   };
 }
 

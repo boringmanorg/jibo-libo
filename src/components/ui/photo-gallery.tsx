@@ -26,7 +26,7 @@ function getRandomNumberInRange(min: number, max: number): number {
   return Math.random() * (max - min) + min;
 }
 
-const MotionImg = motion(
+const MotionImg = motion.create(
   forwardRef(function MotionImg(
     props: React.ImgHTMLAttributes<HTMLImageElement>,
     ref: Ref<HTMLImageElement>

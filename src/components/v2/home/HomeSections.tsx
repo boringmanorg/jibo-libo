@@ -379,7 +379,7 @@ export function SeoLinks() {
         <nav key={col.t} aria-label={col.t} className="flex flex-col gap-2.5">
           <span className="font-display text-[18px] tracking-[0.18em] text-xt-crimson">{col.t}</span>
           {col.links.map(([label, to]) => (
-            <Link key={to} to={to} className="text-[14px] font-semibold text-xt-ink hover:text-xt-crimson">{label}</Link>
+            <Link key={`${col.t}-${label}-${to}`} to={to} className="text-[14px] font-semibold text-xt-ink hover:text-xt-crimson">{label}</Link>
           ))}
         </nav>
       ))}

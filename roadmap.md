@@ -1,5 +1,8 @@
 # Roadmap — Master SEO prompt (xtsy.one)
 
+## Preview startup warnings — 24 November 2026
+- [x] Removed unsupported Bluetooth header directives, duplicate homepage link keys and deprecated gallery motion usage; unused preview font preloads are now production-only. Recovered stale preview server markup; seven pages return 200 on phone/desktop with no browser warnings or errors. All 665 tests pass (four skipped). A harmless platform-managed path-resolution advisory remains in startup logs; guest policies and URLs unchanged, not published.
+
 ## Remaining tour and guide card photos — 24 November 2026
 - [x] Checked main tour/destination lists, category guides, guide topics, nearby attractions and expedition cards. Existing main-list photos load; secondary cards lacked recovery or labelled regional photos as named attractions.
 - [x] Reused gallery-selected photos with distinct regional backups on category/nearby cards; guide topics use relevant labelled property, Bistro, fleet or landscape photos and matching backups; expedition cards use photographer descriptions and geographic backups. All 132 main/topic/category/expedition photos verified on desktop and phone, plus forced cave/Bistro/nearby-image failure recovery. 665 tests pass (four skipped); preview build OK. No publishing, URL, price or booking changes.
