@@ -1,5 +1,9 @@
 # Roadmap — Master SEO prompt (xtsy.one)
 
+## Rental number-plate privacy — 24 November 2026
+- [x] Blurred ten foreground/background plates across eight rental photos; remaining fleet images and the cover have no visible registration numbers. Original vehicles, scenery and attribution preserved.
+- [x] Rebuilt 480/640/828/1280px WebP and AVIF variants from eight edited masters, saved to image storage and wired both formats into the shared catalogue. Both fleet tabs verified on desktop/phone; 663 tests pass (four skipped), preview build OK. Not published.
+
 ## Requested photo repairs — 23 November 2026
 - [x] Removed the unrelated Merch photo band; the existing backpack illustration is now the cover, labelled Design preview.
 - [x] Replaced the /tours hills cover with the reviewed Dawki river photo; guide cards use the shared authentic/regional selector, and photos retry their original source before a supplied fallback. Regional substitutes are visibly labelled.

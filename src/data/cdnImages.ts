@@ -13,7 +13,7 @@ import { SITE_PHOTOS } from './sitePhotos';
 
 const PLACEHOLDER = '/placeholder.svg';
 
-type Opt = { w: number; h: number; srcs: [number, string][] };
+type Opt = { w: number; h: number; srcs: [number, string][]; avifSrcs?: [number, string][] };
 const defaultSrc = (o: Opt): string => (o.srcs.find(([w]) => w >= 1280) ?? o.srcs[o.srcs.length - 1])?.[1] ?? '';
 /** Look-up by CDN path or by the default WebP path. */
 const BY_ANY: Record<string, Opt> = Object.create(null);
@@ -41,10 +41,10 @@ export function cdnMany(keys: string[]): string[] {
 }
 
 /** srcset data for an image URL returned by cdn(), or null if it has no WebP versions. */
-export function responsiveImage(src?: string): { src: string; srcSet: string; w: number; h: number } | null {
+export function responsiveImage(src?: string): { src: string; srcSet: string; avifSrcSet?: string; w: number; h: number } | null {
   const o = src ? BY_ANY[src] : undefined;
   if (!o || !Array.isArray(o.srcs) || !o.srcs.length) return null;
-  return { src: defaultSrc(o), srcSet: o.srcs.map(([w, u]) => `${u} ${w}w`).join(', '), w: o.w, h: o.h };
+  return { src: defaultSrc(o), srcSet: o.srcs.map(([w, u]) => `${u} ${w}w`).join(', '), ...(o.avifSrcs?.length ? { avifSrcSet: o.avifSrcs.map(([w, u]) => `${u} ${w}w`).join(', ') } : {}), w: o.w, h: o.h };
 }
 
 /** True when a key resolves to a real uploaded asset. */

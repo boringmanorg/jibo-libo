@@ -25,8 +25,14 @@ describe('real, credited photos', () => {
     for (const v of [...CARS, ...BIKES]) {
       const p = SITE_PHOTOS[v.photo ?? ''];
       expect(p, v.name).toBeDefined();
-      expect(creditFor(p!.srcs[0][1])?.by, v.name).toBeTruthy();
-      for (const [, src] of p!.srcs) {
+      if (!p) throw new Error(`Missing photo for ${v.name}`);
+      const first = p.srcs[0];
+      expect(creditFor(first?.[1])?.by, v.name).toBeTruthy();
+      for (const [, src] of p.srcs) {
+        if (src.startsWith('/__l5e/assets-v1/')) {
+          expect(p.avifSrcs?.length, v.name).toBe(p.srcs.length);
+          continue;
+        }
         expect(fs.existsSync(`public${src}`), src).toBe(true);
         expect(fs.existsSync(`public${src.replace(/\.webp$/, '.avif')}`), src).toBe(true);
       }

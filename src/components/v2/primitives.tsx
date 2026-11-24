@@ -132,7 +132,7 @@ export function Photo({
   }, [afterLoad]);
   const activeSrc = substituted ? fallbackSrc : src;
   const opt = original ? undefined : responsive(activeSrc);
-  const avif = avifSrcSet(opt?.srcSet);
+  const avif = opt?.avifSrcSet ?? avifSrcSet(opt?.srcSet);
   const bg = { sand: '#E6DACA', slate: '#45506A', crimson: '#8A1D3A', pine: '#2F4A3F', night: '#1F2438' }[tone];
   return (
     <div className={cn('relative overflow-hidden', className)} style={{ background: bg }}>
