@@ -1,5 +1,9 @@
 # Roadmap — Master SEO prompt (xtsy.one)
 
+## Remaining tour and guide card photos — 24 November 2026
+- [x] Checked main tour/destination lists, category guides, guide topics, nearby attractions and expedition cards. Existing main-list photos load; secondary cards lacked recovery or labelled regional photos as named attractions.
+- [x] Reused gallery-selected photos with distinct regional backups on category/nearby cards; guide topics use relevant labelled property, Bistro, fleet or landscape photos and matching backups; expedition cards use photographer descriptions and geographic backups. All 132 main/topic/category/expedition photos verified on desktop and phone, plus forced cave/Bistro/nearby-image failure recovery. 665 tests pass (four skipped); preview build OK. No publishing, URL, price or booking changes.
+
 ## Selected trip-assistant security findings — 24 November 2026
 - [x] Removed caller-controlled page context from model instructions; passed it only as untrusted user data. Regression test confirms malicious and normal page values produce identical system instructions; seven focused tests pass, preview build OK.
 - [x] Disabled all paid guest answers, including direct requests to the retired endpoint. Guest chat stays local; dining, camping and rentals use shared website facts, other topics link to the public page index. Browser-verified five-day plans, lunch policy, merch discovery and direct off response; regression checks pass and preview build OK. Only the paid-access finding resolved; publishing not requested.

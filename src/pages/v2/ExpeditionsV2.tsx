@@ -5,20 +5,27 @@ import { Link, useParams } from '@/lib/router-compat';
 import NotFound from '@/pages/NotFound';
 import { EXPEDITION_ROUTES, EXPEDITION_TYPES, getExpeditionRoute, type ExpeditionType, type ExpeditionRouteStub } from '@/data/neTaxonomy';
 import { photoFor } from '@/data/v2TourImages';
-import { reviewedPhoto } from '@/data/tourPhotos';
+import { reviewedPhoto, reviewedAlt } from '@/data/tourPhotos';
 import { IMG } from '@/data/v2Images';
 import { inr, lowestDormPrice } from '@/components/v2/pricing';
 import { PageShell, PageHero, Btn, Section, H2, Breadcrumbs, PAD } from '@/components/v2/blocks';
 import { Photo, waLink } from '@/components/v2/primitives';
+import { TravelCardPhoto } from '@/components/v2/TravelCardPhoto';
 
 const typeLabel = (t: string) => (t === '4x4' ? '4x4' : 'Motorbike');
 const PARTNER_NOTE = 'XTSY’s own stay is in New Shillong Township. Vehicles, stays and support further along each route are arranged through trusted travel partners, with the XTSY desk as your single point of contact.';
 
 function RouteCard({ r, type }: { r: ExpeditionRouteStub; type: ExpeditionType }) {
   const d = r.byType[type];
+  const region = r.slug.includes('tawang') ? 'Arunachal Pradesh' : r.slug.includes('kohima') ? 'Nagaland' : 'Meghalaya';
+  const fallback = region === 'Arunachal Pradesh' ? IMG.arunachal : region === 'Nagaland' ? IMG.nagaland : IMG.dawki;
   return (
     <Link to={`/expeditions/${type}/${r.slug}`} className="xt-reveal xt-lift flex flex-col overflow-hidden rounded-3xl bg-white text-xt-ink hover:text-xt-ink">
-      <Photo src={reviewedPhoto(`exp-${r.slug}`) || photoFor(r.name, r.highlights.join(' '))} alt={r.name} tone="slate" className="aspect-[421/220]" />
+      <TravelCardPhoto src={reviewedPhoto(`exp-${r.slug}`) || photoFor(r.name, r.highlights.join(' '))}
+        alt={reviewedAlt(`exp-${r.slug}`) ?? `${region} travel scene`}
+        caption="Route illustration" fallbackSrc={fallback}
+        fallbackAlt={region === 'Meghalaya' ? 'Dawki river in Meghalaya, a regional route illustration' : `${region} landscape, a regional route illustration`}
+        fallbackCaption={`${region} · regional route photo`} className="aspect-[421/220]" />
       <div className="flex flex-col gap-2 p-6">
         <span className="text-[20px] font-extrabold leading-tight">{r.name}</span>
         <span className="text-[14px] text-xt-mute">{r.distanceKm} km · {r.difficulty} · {d?.duration}</span>

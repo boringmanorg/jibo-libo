@@ -5,6 +5,7 @@ import { Helmet } from '@/lib/seo/helmet';
 import { inr, lowestDormPrice } from '@/components/v2/pricing';
 import { PageShell, PageHero, Breadcrumbs, Btn, PAD } from '@/components/v2/blocks';
 import { Photo } from '@/components/v2/primitives';
+import { DestinationCardPhoto } from '@/components/v2/TravelCardPhoto';
 import {
   destinationCategories,
   getDestinationsByCategory,
@@ -138,10 +139,9 @@ const CategoryV2 = () => {
 
         <section id="list" className={`${PAD} grid scroll-mt-28 gap-6 pb-16 sm:grid-cols-2 lg:grid-cols-3`}>
           {destinations.map((d) => {
-            const img = getDestinationImages(d.slug, 1)[0];
             return (
               <Link key={d.slug} to={destinationPath(d.slug)} className="xt-reveal xt-lift flex flex-col overflow-hidden rounded-3xl bg-white text-xt-ink hover:text-xt-ink">
-                <Photo src={img && !img.src.endsWith('placeholder.svg') ? img.src : ''} alt={d.name} tone="pine" className="aspect-[421/260]" />
+                <DestinationCardPhoto slug={d.slug} name={d.name} className="aspect-[421/260]" />
                 <div className="flex flex-col gap-2 p-6">
                   <span className="text-[13px] font-extrabold uppercase tracking-wider text-xt-crimson">{d.region}</span>
                   <span className="text-[20px] font-extrabold leading-tight">{d.name}</span>

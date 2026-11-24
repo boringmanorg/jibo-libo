@@ -19,6 +19,7 @@ import { destinationPath, getCitySlugForDestination, getCityBySlug } from '@/dat
 import { inr, lowestDormPrice } from '@/components/v2/pricing';
 import { PageShell, Breadcrumbs, PAD } from '@/components/v2/blocks';
 import { Photo, PhotoCaption } from '@/components/v2/primitives';
+import { DestinationCardPhoto } from '@/components/v2/TravelCardPhoto';
 import { rankedQuestionsFor } from '@/data/rankedPageQuestions';
 import StayAndTourCTA from '@/components/seo/StayAndTourCTA';
 import { quickFactsFor, DESTINATION_GUIDE_UPDATED } from '@/data/destinationQuickFacts';
@@ -330,10 +331,9 @@ export default function DestinationV2() {
             <H2>Nearby</H2>
             <div className="grid gap-6 md:grid-cols-3">
               {nearby.map((n) => {
-                const img = getDestinationImages(n.slug, 1)[0];
                 return (
                   <Link key={n.slug} to={destinationPath(n.slug)} className="xt-reveal xt-lift flex flex-col gap-3 rounded-[22px] text-xt-ink hover:text-xt-ink">
-                    <Photo src={img && !img.src.endsWith('placeholder.svg') ? img.src : ''} alt={n.name} tone="slate" className="aspect-[421/260] rounded-[22px]" />
+                    <DestinationCardPhoto slug={n.slug} name={n.name} className="aspect-[421/260] rounded-[22px]" />
                     <span className="px-1 text-[20px] font-extrabold">{n.name}</span>
                     <span className="px-1 text-[15px] text-xt-mute">{n.shortDescription}</span>
                   </Link>

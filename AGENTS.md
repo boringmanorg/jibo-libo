@@ -36,7 +36,7 @@
 - Historical sitemap recovery checks must apply the shared indexing policy and still fail for missing indexable pages; omit generation-date URL lastmod values because they are not content-change timestamps.
 - Reuse company identity from brandFacts for visible facts and Organization schema, keeping corporate headquarters separate from guest-property addresses.
 - Missing landmark photos may use reviewed regional landscapes with truthful regional alt text; never relabel another landmark or generate a documentary travel photo.
-- Destination cards use the shared gallery selector, including reviewed regional photos; Photo retries the original before an explicitly supplied regional fallback so a missing optimised image cannot leave a blank card.
+- Destination cards, category guides and nearby cards share the gallery selector and labelled travel-photo wrapper; topic and expedition cards also supply distinct geographic backups so missing optimised photos cannot leave blank cards or mislabel regional scenes as attractions.
 - Route stay questions and itinerary introductions through the browser-safe guest-needs recommendation helper; offer the property only for matching room and location needs, and label fixed-base itineraries as proposals so advice does not imply a confirmed stay.
 - Keep suite photo-strip keyframes global and parameterise geometry with CSS variables; preserve spaced static tile transforms when motion is disabled so preview and accessibility settings cannot stack the photos.
 - Use a single translated photo track at tablet widths instead of cylindrical projection; shared movement preserves constant gaps and full photo framing through resizing and reduced-motion settings.

@@ -6,6 +6,8 @@ import { reviewedPhoto } from '@/data/tourPhotos';
 import { photoFor } from '@/data/v2TourImages';
 import { getAllTours } from '@/data/travelData';
 import { SIGNATURE_PACKAGES } from '@/data/signaturePackages';
+import { destinationCardPhotos } from '@/data/destinationCardPhotos';
+import { guideTopicPhoto, guideTopicBackup } from '@/data/guideTopicPhotos';
 
 function checkPhoto(src: string) {
   expect(src).toBeTruthy();
@@ -29,5 +31,24 @@ describe('requested guide and tour photo coverage', () => {
   it('every tour and signature package resolves to a real photo', () => {
     for (const tour of getAllTours()) checkPhoto(reviewedPhoto(`tour-${tour.id}`) || photoFor(tour.title, tour.location));
     for (const tour of SIGNATURE_PACKAGES) checkPhoto(reviewedPhoto(`sig-${tour.slug}`) || photoFor(tour.title, tour.highlights.join(' '), tour.region));
+  });
+
+  it('secondary attraction cards have a distinct real regional backup', () => {
+    for (const destination of meghalayaDestinations) {
+      const { primary, fallback } = destinationCardPhotos(destination.slug, destination.name);
+      checkPhoto(primary.src);
+      checkPhoto(fallback.src);
+      expect(fallback.src, destination.slug).not.toBe(primary.src);
+    }
+  });
+
+  it('guide topic photos and their backups are real and distinct', () => {
+    for (const topic of ['Travel guides', 'Food & dining', 'Themed trips', 'Itineraries', 'Seasonal guides', 'Group trips', 'Hostels', 'Stays', 'Tour packages', 'Destinations', 'Attractions', 'Activities', 'Glamping', 'Hotels', 'Homestays', 'Rentals', 'Road & bike trips', 'Transport', 'Workation', 'Weddings & events', 'Events', 'Corporate offsites', 'Stays near hospitals', 'Hostel comparison', 'Travel agency', 'XTSY pages']) {
+      const photo = guideTopicPhoto(topic);
+      const backup = guideTopicBackup(photo);
+      checkPhoto(photo.src);
+      checkPhoto(backup.src);
+      expect(backup.src, topic).not.toBe(photo.src);
+    }
   });
 });
