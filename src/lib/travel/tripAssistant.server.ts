@@ -26,8 +26,17 @@ export function allow(visitor: string, now = Date.now()): boolean {
   return true;
 }
 
+/** Only our own pages may call the assistant: browsers always send these headers on fetch. */
+export function fromOwnSite(req: Request | undefined): boolean {
+  const site = req?.headers.get('sec-fetch-site');
+  if (site && site !== 'same-origin') return false;
+  const origin = req?.headers.get('origin');
+  if (!origin) return !!site;
+  try { const h = new URL(origin).host; return h === new URL(req!.url).host || h === 'xtsy.one' || h.endsWith('.lovable.app'); } catch { return false; }
+}
+
 export const visitorOf = (req: Request | undefined) =>
-  createHash('sha256').update(`${req?.headers.get('cf-connecting-ip') ?? req?.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown'}|trip`).digest('hex').slice(0, 24);
+  createHash('sha256').update(`${req?.headers.get('cf-connecting-ip') ?? req?.headers.get('x-forwarded-for')?.split(',').pop()?.trim() ?? 'unknown'}|trip`).digest('hex').slice(0, 24);
 
 let pageIndex: ReturnType<typeof buildIndex> | null = null;
 export function searchSite(query: string) {

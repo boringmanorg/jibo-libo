@@ -6,8 +6,10 @@ import { tripAskInput, type TripAskResult } from './tripAssistant.shared';
 export const askTripAssistantFn = createServerFn({ method: 'POST' })
   .inputValidator(tripAskInput)
   .handler(async ({ data }): Promise<TripAskResult> => {
-    const { askTripAssistant, allow, visitorOf } = await import('./tripAssistant.server');
+    const { askTripAssistant, allow, visitorOf, fromOwnSite } = await import('./tripAssistant.server');
     if (!process.env.ANTHROPIC_API_KEY) return { ok: false, reason: 'off' };
-    if (!allow(visitorOf(getRequest()))) return { ok: false, reason: 'busy' };
+    const req = getRequest();
+    if (!fromOwnSite(req)) return { ok: false, reason: 'busy' };
+    if (!allow(visitorOf(req))) return { ok: false, reason: 'busy' };
     return askTripAssistant(data, process.env);
   });

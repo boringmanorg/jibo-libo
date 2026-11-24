@@ -122,7 +122,7 @@ async function getGeoFromIP(ip: string): Promise<{
       return cached.data;
     }
 
-    const response = await fetch(`https://ipapi.co/${ip}/json/`, {
+    const response = await fetch(`https://ipapi.co/${encodeURIComponent(ip)}/json/`, {
       signal: AbortSignal.timeout(1000), // Reduced from 2s to 1s
     });
 
@@ -185,8 +185,11 @@ Deno.serve(async (req) => {
     const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
-    const clientIP = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 
-                     req.headers.get('x-real-ip') || '';
+    // Only trust addresses set by the platform proxy: the edge network's connecting IP, or the
+    // last x-forwarded-for hop (the one our proxy appended). Earlier hops are caller-controlled.
+    const rawIP = req.headers.get('cf-connecting-ip')?.trim() ||
+                  req.headers.get('x-forwarded-for')?.split(',').pop()?.trim() || '';
+    const clientIP = /^(?:\d{1,3}\.){3}\d{1,3}$|^[0-9a-fA-F:]{2,39}$/.test(rawIP) ? rawIP : '';
 
     let body;
     try {
