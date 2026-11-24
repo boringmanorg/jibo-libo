@@ -1,9 +1,9 @@
 # Roadmap — Master SEO prompt (xtsy.one)
 
 ## Requested photo repairs — 23 November 2026
-- [ ] Replace the irrelevant Merch cover with the existing merchandise concepts, clearly labelled as mockups.
-- [ ] Use a clearer destination cover on /tours and repair the missing guide-card photos through the existing authentic/regional image selector.
-- [ ] Verify all three pages on desktop and phone, run relevant checks, and save without publishing.
+- [x] Removed the unrelated Merch photo band; the existing backpack illustration is now the cover, labelled Design preview.
+- [x] Replaced the /tours hills cover with the reviewed Dawki river photo; guide cards use the shared authentic/regional selector, and photos retry their original source before a supplied fallback. Regional substitutes are visibly labelled.
+- [x] Verified all cards on phone and desktop, the international tour filter, and a deliberately failed Mawsmai image recovering to a labelled landscape; six focused tests pass. Preview build OK. Fresh preview HTML still serves older server markup and causes hydration warnings while the current client renders the repaired pages; no unrelated server changes or publishing performed.
 
 ## Company, dining, database and tour-rate checks — 18 November 2026
 - [x] Identified eight failing unit checks: stale canonical company-domain expectation, restaurant/SEO registry timeouts, generated database-helper existence checks, and obsolete seven-day tour-rate expectation.

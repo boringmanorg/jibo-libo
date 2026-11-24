@@ -1,9 +1,10 @@
 import { destinationPath } from '@/data/neTaxonomy';
-import { useState, useCallback, useMemo } from 'react';
+import { useState } from 'react';
 import { Link } from '@/lib/router-compat';
 import { MapPin, ArrowRight } from 'lucide-react';
-import { getDestinationImageUrl, getFirstValidImageIndex, knownImageIndices, type MeghalayaDestination } from '@/data/meghalayaDestinations';
-import { Skeleton } from '@/components/ui/skeleton';
+import { getDestinationImages, type MeghalayaDestination } from '@/data/meghalayaDestinations';
+import { regionalDestinationPhoto } from '@/data/relevantTravelPhotos';
+import { Photo } from '@/components/v2/primitives';
 
 interface DestinationCardProps {
   destination: MeghalayaDestination;
@@ -11,27 +12,10 @@ interface DestinationCardProps {
 }
 
 const DestinationCard = ({ destination, className = '' }: DestinationCardProps) => {
-  const firstIndex = useMemo(() => getFirstValidImageIndex(destination.slug), [destination.slug]);
-  const hasImage = firstIndex !== null;
-  
-  const [imgState, setImgState] = useState<'loading' | 'loaded' | 'error'>(
-    hasImage ? 'loading' : 'error'
-  );
-  const [currentIndexPos, setCurrentIndexPos] = useState(0);
-  
-  const availableIndices = useMemo(() => knownImageIndices[destination.slug] || [], [destination.slug]);
-
-  const handleError = useCallback(() => {
-    const nextPos = currentIndexPos + 1;
-    if (nextPos < availableIndices.length) {
-      setCurrentIndexPos(nextPos);
-    } else {
-      setImgState('error');
-    }
-  }, [currentIndexPos, availableIndices.length]);
-
-  const currentImageIndex = availableIndices[currentIndexPos] ?? 1;
-  const showFallback = imgState === 'error' || !hasImage;
+  const photo = getDestinationImages(destination.slug)[0] ?? regionalDestinationPhoto(destination.slug);
+  const fallback = regionalDestinationPhoto(destination.slug);
+  const [substituted, setSubstituted] = useState(false);
+  const regional = substituted || photo.alt.includes('regional scene');
 
   return (
     <Link
@@ -39,33 +23,20 @@ const DestinationCard = ({ destination, className = '' }: DestinationCardProps) 
       className={`group block rounded-xl overflow-hidden bg-card border border-border hover:border-primary/30 transition-all duration-300 hover:shadow-lg ${className}`}
     >
       <div className="relative aspect-[4/3] overflow-hidden bg-muted">
-        {imgState === 'loading' && hasImage && (
-          <div className="absolute inset-0 bg-muted animate-pulse">
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-shimmer" />
-          </div>
-        )}
-        {showFallback ? (
-          <div className="absolute inset-0 flex flex-col items-center justify-center bg-muted gap-2">
-            <MapPin className="h-8 w-8 text-muted-foreground" aria-hidden />
-            <span className="text-xs text-muted-foreground capitalize">{destination.category}</span>
-          </div>
-        ) : (
-          <img
-            src={getDestinationImageUrl(destination.slug, currentImageIndex)}
-            alt={`${destination.name} Meghalaya`}
-            loading="lazy"
-            className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-105 ${imgState === 'loading' ? 'opacity-0' : 'opacity-100'}`}
-            onLoad={() => setImgState('loaded')}
-            onError={handleError}
-          />
-        )}
-        {imgState === 'loaded' && (
-          <div className="absolute top-3 left-3">
-            <span className="px-2.5 py-1 text-xs font-medium bg-black/60 backdrop-blur-xs text-white rounded-full capitalize">
-              {destination.category}
-            </span>
-          </div>
-        )}
+        <Photo
+          key={destination.slug}
+          src={photo.src}
+          alt={photo.alt}
+          fallbackSrc={fallback.src}
+          fallbackAlt={fallback.alt}
+          onFallback={() => setSubstituted(true)}
+          className="h-full w-full transition-transform duration-500 group-hover:scale-105"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        />
+        <span className="absolute left-3 top-3 rounded-full bg-background/90 px-2.5 py-1 text-xs font-medium capitalize text-foreground">
+          {destination.category}
+        </span>
+        {regional && <span className="absolute bottom-2 left-2 rounded bg-background/90 px-2 py-1 text-xs text-foreground">Meghalaya landscape · regional photo</span>}
       </div>
 
       <div className="p-4">

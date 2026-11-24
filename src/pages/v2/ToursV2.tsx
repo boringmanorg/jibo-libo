@@ -11,7 +11,7 @@ import { Link, useSearchParams } from '@/lib/router-compat';
 import { getAllTours, isTempleCircuit, type TourPackage } from '@/data/travelData';
 import { SIGNATURE_PACKAGES, formatPackagePrice } from '@/data/signaturePackages';
 import { photoFor } from '@/data/v2TourImages';
-import { reviewedPhoto } from '@/data/tourPhotos';
+import { reviewedPhoto, reviewedAlt } from '@/data/tourPhotos';
 import { PageShell, PAD, Section, H2 } from '@/components/v2/blocks';
 import { Photo, SpinningMark, waLink } from '@/components/v2/primitives';
 
@@ -33,12 +33,17 @@ const GROUPS: { id: string; label: string; test: (t: TourPackage) => boolean }[]
   { id: 'learn', label: 'Learn & wellness', test: (t) => t.category === 'educational' || /yoga/i.test(t.title) },
 ];
 
-function TourCard({ to, title, duration, badge, text, price, img, enquire }: { to: string; title: string; duration: string; badge?: string; text: string; price: string; img: string; enquire: string }) {
+function TourCard({ to, title, duration, badge, text, price, img, alt, fallback, enquire }: { to: string; title: string; duration: string; badge?: string; text: string; price: string; img: string; alt: string; fallback: string; enquire: string }) {
   // Tours without a fixed price ("On request") are quoted per trip.
   const onRequest = !/\d/.test(price);
+  const [substituted, setSubstituted] = useState(false);
   return (
     <article className="xt-reveal xt-lift flex flex-col overflow-hidden rounded-3xl bg-white">
-      <Link to={to} aria-label={title}><Photo src={img} alt={title} tone="pine" className="aspect-[421/220]" /></Link>
+      <Link to={to} aria-label={title}>
+        <Photo src={img || fallback} alt={alt} fallbackSrc={fallback} fallbackAlt={`Regional travel scene for ${badge ?? title}`} onFallback={() => setSubstituted(true)} tone="pine" className="aspect-[421/220]">
+          {substituted && <span className="absolute bottom-2 left-2 rounded bg-background/90 px-2 py-1 text-xs text-foreground">Regional travel photo</span>}
+        </Photo>
+      </Link>
       <div className="flex flex-grow flex-col gap-2.5 p-6">
         <div className="flex flex-wrap gap-1.5">
           <span className="rounded-full bg-xt-sand px-3 py-1.5 text-[13px] font-extrabold">{duration}</span>
@@ -112,6 +117,8 @@ export default function ToursV2() {
                 text={p.shortDescription}
                 price={formatPackagePrice(p.pricePerPerson)}
                 img={reviewedPhoto(`sig-${p.slug}`) || photoFor(p.title, p.highlights.join(' '), p.region)}
+                alt={reviewedAlt(`sig-${p.slug}`) ?? p.title}
+                fallback={photoFor(p.region, p.highlights.join(' '))}
                 enquire={waLink(`Hi XTSY! I'm interested in the ${p.title}. Dates: … Travellers: …`, 'tours')}
               />
             ))}
@@ -142,6 +149,8 @@ export default function ToursV2() {
                 text={t.description}
                 price={t.price}
                 img={reviewedPhoto(`tour-${t.id}`) || photoFor(t.title, t.location)}
+                alt={reviewedAlt(`tour-${t.id}`) ?? t.title}
+                fallback={photoFor(t.location)}
                 enquire={waLink(`Hi XTSY! I'm interested in ${t.title}. Dates: … Travellers: …`, 'tours')}
               />
             ))}

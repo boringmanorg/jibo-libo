@@ -96,6 +96,9 @@ export function Photo({
   sizes = '(max-width: 768px) 100vw, 50vw',
   position,
   afterLoad,
+  fallbackSrc,
+  fallbackAlt,
+  onFallback,
 }: {
   src?: string;
   alt: string;
@@ -112,8 +115,13 @@ export function Photo({
    * would otherwise compete with the hero image (LCP). The slot keeps its size and colour.
    */
   afterLoad?: boolean;
+  fallbackSrc?: string;
+  fallbackAlt?: string;
+  onFallback?: () => void;
 }) {
   const [failed, setFailed] = useState(false);
+  const [original, setOriginal] = useState(false);
+  const [substituted, setSubstituted] = useState(false);
   const [ready, setReady] = useState(!afterLoad);
   useEffect(() => {
     if (!afterLoad) return;
@@ -122,27 +130,37 @@ export function Photo({
     window.addEventListener('load', go, { once: true });
     return () => window.removeEventListener('load', go);
   }, [afterLoad]);
-  const opt = responsive(src);
+  const activeSrc = substituted ? fallbackSrc : src;
+  const opt = original ? undefined : responsive(activeSrc);
   const avif = avifSrcSet(opt?.srcSet);
   const bg = { sand: '#E6DACA', slate: '#45506A', crimson: '#8A1D3A', pine: '#2F4A3F', night: '#1F2438' }[tone];
   return (
     <div className={cn('relative overflow-hidden', className)} style={{ background: bg }}>
       <XtsyMark className="absolute -right-[12%] -top-[14%] h-[70%] w-[70%] opacity-[0.12]" fill="#F4EFE8" />
-      {src && !failed && ready && (
+      {activeSrc && !failed && ready && (
         <picture>
         {/* AVIF first (about a third smaller), WebP fallback. */}
         {avif && <source type="image/avif" srcSet={avif} sizes={sizes} />}
         <img
-          src={opt?.src ?? src}
+          src={opt?.src ?? activeSrc}
           srcSet={opt?.srcSet}
           sizes={opt ? sizes : undefined}
           width={opt?.w}
           height={opt?.h}
-          alt={alt}
+          alt={substituted ? fallbackAlt ?? alt : alt}
           loading={eager ? 'eager' : 'lazy'}
           fetchPriority={eager ? 'high' : undefined}
           decoding="async"
-          onError={() => setFailed(true)}
+          onError={() => {
+            if (opt && !original) { setOriginal(true); return; }
+            if (!substituted && fallbackSrc && fallbackSrc !== src) {
+              setSubstituted(true);
+              setOriginal(false);
+              onFallback?.();
+              return;
+            }
+            setFailed(true);
+          }}
           className="absolute inset-0 h-full w-full object-cover"
           style={position ? { objectPosition: position } : undefined}
         />

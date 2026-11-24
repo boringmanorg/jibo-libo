@@ -12,7 +12,7 @@ export interface RouteHero { src: string; alt: string; position?: string }
 
 /** Addresses that get the band (their own layout starts with text only). */
 const NEEDS_HERO: RegExp[] = [
-  /^\/about\/(contact|contact-us|pricing-cancellation-policy|refund-cancellation-policy|merch|privacy-policy|privacy|xtsy-facts|terms-of-service)$/,
+  /^\/about\/(contact|contact-us|pricing-cancellation-policy|refund-cancellation-policy|privacy-policy|privacy|xtsy-facts|terms-of-service)$/,
   /^\/destinations$/,
   /^\/destinations\/[a-z0-9-]+$/,
   /^\/destinations\/[a-z0-9-]+\/[a-z0-9-]+$/,
@@ -68,12 +68,11 @@ const RULES: [RegExp, () => string, string][] = [
   [/3-day-meghalaya|shillong-tour-package/, () => pick(px('sig-4n-5d-shillong-meghalaya-tour'), IMG.umiam), 'Umiam Lake near Shillong'],
   [/5-day-meghalaya|meghalaya-tour-packages/, () => pick(sp('sig-5d-meghalaya-trip-package'), px('tour-1'), IMG.rootBridge), 'Double-decker living root bridge, Nongriat'],
   [/plan-trip-with-ai/, () => pick(px('exp-meghalaya-loop'), IMG.laitlum), 'Hills and valleys of Meghalaya'],
-  [/^\/tours$/, () => pick(px('sig-6n-7d-meghalaya-tour'), IMG.meghalaya), 'Meghalaya hills'],
+  [/^\/tours$/, () => pick(px('tour-4'), IMG.dawki), 'Clear water of the Umngot River at Dawki, Meghalaya'],
   [/how-to-reach|international-tourists/, () => pick(px('exp-guwahati-to-shillong'), IMG.umiam), 'The road from Guwahati to Shillong'],
   // Stays and company pages: XTSY Travellers Hostel itself
   [/homestays|hotels-in-shillong|partner-stays/, () => COVERS.terrace, 'XTSY Travellers Hostel, New Shillong Township'],
   [/xtsy-vs-zostel/, () => COVERS.commonRoom, 'Common room at XTSY Travellers Hostel'],
-  [/\/about\/merch/, () => COVERS.workation, 'XTSY Travellers Hostel'],
   [/\/about\/contact/, () => COVERS.contact, 'XTSY Travellers Hostel, New Shillong Township'],
   [/\/about\//, () => COVERS.about, 'XTSY Travellers Hostel, New Shillong Township'],
 ];

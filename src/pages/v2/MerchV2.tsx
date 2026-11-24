@@ -77,7 +77,7 @@ export default function MerchV2() {
             <SpinningMark className="-left-10 -top-8 h-[640px] w-[640px] opacity-[0.07]" />
             <div className="xt-float relative w-[300px] sm:w-[460px]"><Mockup kind="backpack" bg="transparent" className="aspect-square" /></div>
             <div className="absolute bottom-6 left-6 flex items-center gap-2.5 rounded-full bg-white px-4 py-3 text-[14px] font-bold">
-              <span className="h-2.5 w-2.5 rounded-full bg-xt-crimson" />Trail Laptop Backpack
+              <span className="h-2.5 w-2.5 rounded-full bg-xt-crimson" />Trail Laptop Backpack · Design preview
             </div>
             <div className="absolute right-4 top-4 rounded-xl bg-xt-slate px-3 py-2 font-display text-[13px] tracking-[3px] text-xt-paper sm:right-6 sm:top-6 sm:px-4 sm:py-2.5 sm:text-[18px]">Drop 01 · New Shillong</div>
           </div>
