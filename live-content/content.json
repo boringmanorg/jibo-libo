@@ -323,7 +323,7 @@
  {
   "url": "/about/merch",
   "status": 200,
-  "words": 865,
+  "words": 864,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -353,7 +353,7 @@
     "Pack light. Work anywhere."
    ],
    "ogImage": true,
-   "imgs": 14,
+   "imgs": 13,
    "imgsNoAlt": 0
   },
   "aeo": {
@@ -1570,7 +1570,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji",
   "status": 200,
-  "words": 745,
+  "words": 771,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -1592,7 +1592,7 @@
     "Places to Visit in Cherrapunji (Sohra) , Meghalaya"
    ],
    "ogImage": true,
-   "imgs": 20,
+   "imgs": 27,
    "imgsNoAlt": 0
   },
   "aeo": {
@@ -2492,7 +2492,7 @@
  {
   "url": "/destinations/meghalaya/dawki",
   "status": 200,
-  "words": 522,
+  "words": 524,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -2514,7 +2514,7 @@
     "Places to Visit in Dawki , Meghalaya"
    ],
    "ogImage": true,
-   "imgs": 16,
+   "imgs": 17,
    "imgsNoAlt": 0
   },
   "aeo": {
@@ -2738,7 +2738,7 @@
  {
   "url": "/destinations/meghalaya/jowai",
   "status": 200,
-  "words": 571,
+  "words": 582,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -2760,7 +2760,7 @@
     "Places to Visit in Jowai (Jaintia Hills) , Meghalaya"
    ],
    "ogImage": true,
-   "imgs": 15,
+   "imgs": 19,
    "imgsNoAlt": 0
   },
   "aeo": {
@@ -3124,7 +3124,7 @@
  {
   "url": "/destinations/meghalaya/mawlynnong",
   "status": 200,
-  "words": 476,
+  "words": 477,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -3256,7 +3256,7 @@
     "Places to Visit in Mawsynram , Meghalaya"
    ],
    "ogImage": true,
-   "imgs": 14,
+   "imgs": 15,
    "imgsNoAlt": 0
   },
   "aeo": {
@@ -3344,7 +3344,7 @@
  {
   "url": "/destinations/meghalaya/nongstoin",
   "status": 200,
-  "words": 591,
+  "words": 616,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -3366,7 +3366,7 @@
     "Places to Visit in Nongstoin (West Khasi Hills) , Meghalaya"
    ],
    "ogImage": true,
-   "imgs": 14,
+   "imgs": 19,
    "imgsNoAlt": 0
   },
   "aeo": {
@@ -3718,7 +3718,7 @@
  {
   "url": "/destinations/meghalaya/shillong",
   "status": 200,
-  "words": 708,
+  "words": 746,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -3740,7 +3740,7 @@
     "Places to Visit in Shillong , Meghalaya"
    ],
    "ogImage": true,
-   "imgs": 17,
+   "imgs": 25,
    "imgsNoAlt": 0
   },
   "aeo": {
@@ -4532,7 +4532,7 @@
  {
   "url": "/destinations/meghalaya/tura",
   "status": 200,
-  "words": 560,
+  "words": 565,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -4554,7 +4554,7 @@
     "Places to Visit in Tura (Garo Hills) , Meghalaya"
    ],
    "ogImage": true,
-   "imgs": 14,
+   "imgs": 18,
    "imgsNoAlt": 0
   },
   "aeo": {
@@ -21275,7 +21275,7 @@
  {
   "url": "/guides/hidden-places-in-meghalaya",
   "status": 200,
-  "words": 927,
+  "words": 957,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -21301,7 +21301,7 @@
     "Hidden Places in Meghalaya: 8 Secret Destinations"
    ],
    "ogImage": true,
-   "imgs": 14,
+   "imgs": 22,
    "imgsNoAlt": 0
   },
   "aeo": {
@@ -38405,7 +38405,7 @@
  {
   "url": "/guides/things-to-do-in-meghalaya",
   "status": 200,
-  "words": 1893,
+  "words": 1975,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -38431,7 +38431,7 @@
     "Things to Do in Meghalaya: 50 Most Beautiful Places to Visit"
    ],
    "ogImage": true,
-   "imgs": 41,
+   "imgs": 59,
    "imgsNoAlt": 0
   },
   "aeo": {
@@ -42176,7 +42176,7 @@
  {
   "url": "/tours",
   "status": 200,
-  "words": 3925,
+  "words": 3926,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -45668,7 +45668,7 @@
  {
   "url": "/tours/shillong-tour-package",
   "status": 200,
-  "words": 804,
+  "words": 817,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -45690,7 +45690,7 @@
     "Shillong Tour Package 2026"
    ],
    "ogImage": true,
-   "imgs": 17,
+   "imgs": 20,
    "imgsNoAlt": 0
   },
   "aeo": {
