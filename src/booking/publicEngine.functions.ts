@@ -84,7 +84,7 @@ export const startCheckoutFn = createServerFn({ method: 'POST' })
   .handler(async ({ data }) => {
     const core = await import('./publicEngine.core');
     const req = getRequest();
-    const ip = req?.headers.get('cf-connecting-ip') ?? req?.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? undefined;
+    const ip = req?.headers.get('cf-connecting-ip') ?? req?.headers.get('x-forwarded-for')?.split(',').pop()?.trim() ?? undefined;
     return asResult(async () => core.startCheckout(await deps(), data, trustedOrigin(req?.url), ip));
   });
 
@@ -119,7 +119,7 @@ export const recordEnquiryFn = createServerFn({ method: 'POST' })
   .handler(async ({ data }) => {
     const { recordEnquiry } = await import('./enquiryInbox.server');
     const req = getRequest();
-    const ip = req?.headers.get('cf-connecting-ip') ?? req?.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? undefined;
+    const ip = req?.headers.get('cf-connecting-ip') ?? req?.headers.get('x-forwarded-for')?.split(',').pop()?.trim() ?? undefined;
     try {
       return await recordEnquiry((await deps()).db, data, ip);
     } catch {

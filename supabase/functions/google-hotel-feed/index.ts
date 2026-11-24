@@ -50,9 +50,7 @@ class PersistentCache {
 
 // ── Inline Rate Limiter ──
 function getClientIp(req: Request): string {
-  return req.headers.get('x-forwarded-for')?.split(',')[0].trim()
-    || req.headers.get('x-real-ip')
-    || 'unknown';
+  return (req.headers.get('cf-connecting-ip')?.trim() || req.headers.get('x-forwarded-for')?.split(',').pop()?.trim() || 'unknown');
 }
 
 // deno-lint-ignore no-explicit-any

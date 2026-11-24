@@ -44,7 +44,7 @@ async function readJson(request: Request): Promise<unknown | Response> {
 }
 
 const visitor = (request: Request) =>
-  sha256(`${request.headers.get('cf-connecting-ip') ?? request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown'}|${new Date().toISOString().slice(0, 10)}|sheet`).slice(0, 32);
+  sha256(`${request.headers.get('cf-connecting-ip') ?? request.headers.get('x-forwarded-for')?.split(',').pop()?.trim() ?? 'unknown'}|${new Date().toISOString().slice(0, 10)}|sheet`).slice(0, 32);
 
 async function db() {
   const { getServiceClient } = await import('@/admin/serviceClient.server');

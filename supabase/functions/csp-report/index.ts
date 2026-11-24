@@ -104,9 +104,7 @@ Deno.serve(async (req) => {
             user_agent: req.headers.get('user-agent'),
             timestamp: new Date().toISOString()
           },
-          ip_address: req.headers.get('x-forwarded-for') || 
-                     req.headers.get('x-real-ip') || 
-                     'unknown'
+          ip_address: (req.headers.get('cf-connecting-ip')?.trim() || req.headers.get('x-forwarded-for')?.split(',').pop()?.trim() || 'unknown')
         });
 
       // Log high-severity violations immediately

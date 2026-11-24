@@ -112,16 +112,7 @@ export function getRateLimitHeaders(result: RateLimitResult): Record<string, str
 }
 
 export function getClientIp(req: Request): string {
-  const forwardedFor = req.headers.get('x-forwarded-for');
-  const realIp = req.headers.get('x-real-ip');
-  
-  if (forwardedFor) {
-    return forwardedFor.split(',')[0].trim();
-  }
-  
-  if (realIp) {
-    return realIp;
-  }
-  
-  return 'unknown';
+  // Only proxy-set values: the edge network's connecting IP or the last forwarded hop.
+  // The first x-forwarded-for entry and x-real-ip can be supplied by the caller.
+  return (req.headers.get('cf-connecting-ip')?.trim() || req.headers.get('x-forwarded-for')?.split(',').pop()?.trim() || 'unknown');
 }

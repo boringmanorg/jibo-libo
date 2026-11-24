@@ -552,10 +552,7 @@ serve(async (req) => {
 
     // IP-based rate limiting to prevent booking spam (10 invoice requests / 5 min per IP)
     const ipAddress =
-      req.headers.get('cf-connecting-ip') ||
-      req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
-      req.headers.get('x-real-ip') ||
-      'unknown';
+      (req.headers.get('cf-connecting-ip')?.trim() || req.headers.get('x-forwarded-for')?.split(',').pop()?.trim() || 'unknown');
 
     const rl = await checkRateLimit(supabase, ipAddress, 'generate-invoice', {
       endpoint: 'generate-invoice',
