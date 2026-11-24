@@ -1,5 +1,9 @@
 # Roadmap — Master SEO prompt (xtsy.one)
 
+## Selected trip-assistant security findings — 24 November 2026
+- [x] Removed caller-controlled page context from model instructions; passed it only as untrusted user data. Regression test confirms malicious and normal page values produce identical system instructions; seven focused tests pass, preview build OK.
+- [ ] Paid-model access still needs owner approval: requiring sign-in or disabling paid calls for guests changes the current public chat experience. No access settings changed; only the instruction finding marked fixed.
+
 ## Rental number-plate privacy — 24 November 2026
 - [x] Blurred ten foreground/background plates across eight rental photos; remaining fleet images and the cover have no visible registration numbers. Original vehicles, scenery and attribution preserved.
 - [x] Rebuilt 480/640/828/1280px WebP and AVIF variants from eight edited masters, saved to image storage and wired both formats into the shared catalogue. Both fleet tabs verified on desktop/phone; 663 tests pass (four skipped), preview build OK. Not published.
