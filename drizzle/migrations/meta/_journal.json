@@ -197,6 +197,13 @@
       "when": 1795587165439,
       "tag": "0027_lock_email_queue_dispatch",
       "breakpoints": true
+    },
+    {
+      "idx": 28,
+      "version": "7",
+      "when": 1795587416174,
+      "tag": "0028_lock_email_queue_wake",
+      "breakpoints": true
     }
   ]
 }
