@@ -1,5 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-import { getCorsHeaders } from '../_shared/cors.ts';
+import { getCorsHeaders, rejectForeignOrigin } from '../_shared/cors.ts';
 import { createOptimizedClient } from '../_shared/supabaseClient.ts';
 import { checkRateLimit, getClientIp, getRateLimitHeaders } from '../_shared/rateLimiter.ts';
 import { getCacheHeaders } from '../_shared/cacheHeaders.ts';
@@ -38,6 +38,8 @@ async function fetchWithRetry(url: string, maxRetries = 3): Promise<Response> {
 serve(async (req) => {
   const monitor = new PerformanceMonitor('fetch-exchange-rates');
   const corsHeaders = getCorsHeaders(req);
+  const foreign = rejectForeignOrigin(req, corsHeaders);
+  if (foreign) return foreign;
   
   // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {

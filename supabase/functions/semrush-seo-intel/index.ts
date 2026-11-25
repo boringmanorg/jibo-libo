@@ -9,7 +9,7 @@
  * POST body: { action: 'competitor-benchmark', database?: string }
  */
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
-import { getCorsHeaders } from '../_shared/cors.ts';
+import { getCorsHeaders, rejectForeignOrigin } from '../_shared/cors.ts';
 import { capturePositions } from '../_shared/semrushPositions.ts';
 
 const GATEWAY = 'https://connector-gateway.lovable.dev/semrush';
@@ -181,6 +181,8 @@ async function competitorBenchmark(database: string) {
 
 Deno.serve(async (req) => {
   const corsHeaders = getCorsHeaders(req);
+  const foreign = rejectForeignOrigin(req, corsHeaders);
+  if (foreign) return foreign;
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
   }
