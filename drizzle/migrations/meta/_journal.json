@@ -204,6 +204,13 @@
       "when": 1795587416174,
       "tag": "0028_lock_email_queue_wake",
       "breakpoints": true
+    },
+    {
+      "idx": 29,
+      "version": "7",
+      "when": 1795590804592,
+      "tag": "0029_restrict_stored_secret_readers",
+      "breakpoints": true
     }
   ]
 }
