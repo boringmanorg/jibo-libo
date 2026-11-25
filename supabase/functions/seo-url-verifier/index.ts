@@ -13,16 +13,16 @@ const ALLOWED_HOSTS = new Set([
   "xtsy.one",
   "www.xtsy.one",
   "xtsy-one.lovable.app",
+  "id-preview--9a4a5e4b-f1f1-40f7-ba6f-5d944df4e08e.lovable.app",
+  "project--9a4a5e4b-f1f1-40f7-ba6f-5d944df4e08e.lovable.app",
 ]);
-const ALLOWED_HOST_SUFFIXES = [".lovable.app", ".lovableproject.com"];
 
 const MAX_BYTES = 2_000_000; // 2MB cap
 const FETCH_TIMEOUT_MS = 10_000;
 
 function isAllowedHost(hostname: string): boolean {
   const h = hostname.toLowerCase();
-  if (ALLOWED_HOSTS.has(h)) return true;
-  return ALLOWED_HOST_SUFFIXES.some((s) => h.endsWith(s));
+  return ALLOWED_HOSTS.has(h);
 }
 
 Deno.serve(async (req) => {

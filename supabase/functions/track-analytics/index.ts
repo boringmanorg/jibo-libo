@@ -1,5 +1,5 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
-import { getCorsHeaders } from '../_shared/cors.ts';
+import { getStrictCorsHeaders, isProjectOrigin } from '../_shared/cors.ts';
 import { isValidSessionId, signSessionToken, verifySessionToken } from '../_shared/sessionToken.ts';
 
 // ============= TRAFFIC FILTERING =============
@@ -174,8 +174,16 @@ function calculateIntentScore(events: { event_type: string; event_category?: str
 }
 
 Deno.serve(async (req) => {
-  const corsHeaders = getCorsHeaders(req);
-  
+  const corsHeaders = getStrictCorsHeaders(req);
+
+  // Only this site's own pages may record visits; other sites are refused outright.
+  if (!isProjectOrigin(req)) {
+    return new Response(JSON.stringify({ error: 'Forbidden' }), {
+      status: 403,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    });
+  }
+
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
   }
