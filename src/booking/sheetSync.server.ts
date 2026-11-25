@@ -91,11 +91,11 @@ export async function handleSheetPair(request: Request, now = Date.now()): Promi
 
   const requester = visitor(request);
   const cutoff = new Date(now - PAIR_TTL_MS).toISOString();
-  await client.from('be_sheet_links').delete().eq('status', 'pending').lt('created_at', cutoff);
+  // Expired requests are kept for the owner's review; they simply stop counting toward the pending cap.
   const mine = await client.from('be_sheet_links').select('id', { count: 'exact', head: true })
     .eq('requester_hash', requester).gte('created_at', new Date(now - 3600_000).toISOString());
   if ((mine.count ?? 0) >= PAIRS_PER_VISITOR_PER_HOUR) return json({ error: 'Too many requests; try again in an hour.' }, 429);
-  const pending = await client.from('be_sheet_links').select('id', { count: 'exact', head: true }).eq('status', 'pending');
+  const pending = await client.from('be_sheet_links').select('id', { count: 'exact', head: true }).eq('status', 'pending').gte('created_at', cutoff);
   if ((pending.count ?? 0) >= MAX_PENDING_PAIRS) return json({ error: 'Too many pending requests; ask the console admin to clear them.' }, 429);
 
   const token = randomBytes(32).toString('base64url');
