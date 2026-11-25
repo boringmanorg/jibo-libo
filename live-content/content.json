@@ -1570,7 +1570,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji",
   "status": 200,
-  "words": 771,
+  "words": 794,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -1614,7 +1614,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/arwah-cave",
   "status": 200,
-  "words": 1029,
+  "words": 1038,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -1680,7 +1680,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/dainthlen-falls",
   "status": 200,
-  "words": 1005,
+  "words": 1012,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -1746,7 +1746,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/double-decker-living-root-bridge",
   "status": 200,
-  "words": 1315,
+  "words": 1321,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -1816,7 +1816,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/eco-park-sohra",
   "status": 200,
-  "words": 1036,
+  "words": 1043,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -1882,7 +1882,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/garden-of-caves",
   "status": 200,
-  "words": 1033,
+  "words": 1040,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -1948,7 +1948,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/krem-mawmluh",
   "status": 200,
-  "words": 1009,
+  "words": 1015,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -2014,7 +2014,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/kynrem-falls",
   "status": 200,
-  "words": 1074,
+  "words": 1083,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -2080,7 +2080,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/mawsmai-cave",
   "status": 200,
-  "words": 1136,
+  "words": 1143,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -2150,7 +2150,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/nohkalikai-falls",
   "status": 200,
-  "words": 1760,
+  "words": 1770,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -2224,7 +2224,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/nongriat-village",
   "status": 200,
-  "words": 1014,
+  "words": 1023,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -2290,7 +2290,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/rainbow-falls",
   "status": 200,
-  "words": 1053,
+  "words": 1062,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -2356,7 +2356,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/seven-sisters-falls",
   "status": 200,
-  "words": 1098,
+  "words": 1107,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -2422,7 +2422,7 @@
  {
   "url": "/destinations/meghalaya/cherrapunji/wei-sawdong-falls",
   "status": 200,
-  "words": 1216,
+  "words": 1225,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -2492,7 +2492,7 @@
  {
   "url": "/destinations/meghalaya/dawki",
   "status": 200,
-  "words": 524,
+  "words": 533,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -2536,7 +2536,7 @@
  {
   "url": "/destinations/meghalaya/dawki/dawki-suspension-bridge",
   "status": 200,
-  "words": 967,
+  "words": 975,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -2598,7 +2598,7 @@
  {
   "url": "/destinations/meghalaya/dawki/dawki-umngot-river",
   "status": 200,
-  "words": 1231,
+  "words": 1238,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -2668,7 +2668,7 @@
  {
   "url": "/destinations/meghalaya/dawki/shnongpdeng",
   "status": 200,
-  "words": 1165,
+  "words": 1174,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -2738,7 +2738,7 @@
  {
   "url": "/destinations/meghalaya/jowai",
   "status": 200,
-  "words": 582,
+  "words": 590,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -2782,7 +2782,7 @@
  {
   "url": "/destinations/meghalaya/jowai/krang-suri-falls",
   "status": 200,
-  "words": 1194,
+  "words": 1201,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -2852,7 +2852,7 @@
  {
   "url": "/destinations/meghalaya/jowai/krem-liat-prah",
   "status": 200,
-  "words": 973,
+  "words": 981,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -2918,7 +2918,7 @@
  {
   "url": "/destinations/meghalaya/jowai/nartiang-monoliths",
   "status": 200,
-  "words": 1133,
+  "words": 1138,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -2988,7 +2988,7 @@
  {
   "url": "/destinations/meghalaya/jowai/phe-phe-falls",
   "status": 200,
-  "words": 1117,
+  "words": 1122,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -3058,7 +3058,7 @@
  {
   "url": "/destinations/meghalaya/jowai/thadlaskein-lake",
   "status": 200,
-  "words": 982,
+  "words": 990,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -3124,7 +3124,7 @@
  {
   "url": "/destinations/meghalaya/mawlynnong",
   "status": 200,
-  "words": 477,
+  "words": 479,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -3168,7 +3168,7 @@
  {
   "url": "/destinations/meghalaya/mawlynnong/mawlynnong-village",
   "status": 200,
-  "words": 1003,
+  "words": 1009,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -3234,7 +3234,7 @@
  {
   "url": "/destinations/meghalaya/mawsynram",
   "status": 200,
-  "words": 486,
+  "words": 488,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -3278,7 +3278,7 @@
  {
   "url": "/destinations/meghalaya/mawsynram/mawjymbuin-cave",
   "status": 200,
-  "words": 963,
+  "words": 965,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -3388,7 +3388,7 @@
  {
   "url": "/destinations/meghalaya/nongstoin/jakrem-hot-springs",
   "status": 200,
-  "words": 997,
+  "words": 1012,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -3454,7 +3454,7 @@
  {
   "url": "/destinations/meghalaya/nongstoin/langshiang-falls",
   "status": 200,
-  "words": 942,
+  "words": 952,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -3516,7 +3516,7 @@
  {
   "url": "/destinations/meghalaya/nongstoin/mawthadraishan-peak",
   "status": 200,
-  "words": 996,
+  "words": 1011,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -3582,7 +3582,7 @@
  {
   "url": "/destinations/meghalaya/nongstoin/nongkhnum-island",
   "status": 200,
-  "words": 1142,
+  "words": 1152,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -3652,7 +3652,7 @@
  {
   "url": "/destinations/meghalaya/nongstoin/ranikor",
   "status": 200,
-  "words": 976,
+  "words": 991,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -3718,7 +3718,7 @@
  {
   "url": "/destinations/meghalaya/shillong",
   "status": 200,
-  "words": 746,
+  "words": 755,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -3762,7 +3762,7 @@
  {
   "url": "/destinations/meghalaya/shillong/bishop-falls",
   "status": 200,
-  "words": 1123,
+  "words": 1133,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -3832,7 +3832,7 @@
  {
   "url": "/destinations/meghalaya/shillong/elephant-falls",
   "status": 200,
-  "words": 1910,
+  "words": 1917,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -3906,7 +3906,7 @@
  {
   "url": "/destinations/meghalaya/shillong/laitlum-canyons",
   "status": 200,
-  "words": 1173,
+  "words": 1181,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -3976,7 +3976,7 @@
  {
   "url": "/destinations/meghalaya/shillong/mawphlang-sacred-forest",
   "status": 200,
-  "words": 1171,
+  "words": 1178,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -4046,7 +4046,7 @@
  {
   "url": "/destinations/meghalaya/shillong/mawryngkhang-bamboo-trail",
   "status": 200,
-  "words": 1031,
+  "words": 1041,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -4112,7 +4112,7 @@
  {
   "url": "/destinations/meghalaya/shillong/nongjrong-sunrise-viewpoint",
   "status": 200,
-  "words": 1116,
+  "words": 1126,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -4178,7 +4178,7 @@
  {
   "url": "/destinations/meghalaya/shillong/shillong-peak",
   "status": 200,
-  "words": 1200,
+  "words": 1204,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -4248,7 +4248,7 @@
  {
   "url": "/destinations/meghalaya/shillong/spread-eagle-falls",
   "status": 200,
-  "words": 1145,
+  "words": 1160,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -4318,7 +4318,7 @@
  {
   "url": "/destinations/meghalaya/shillong/sweet-falls",
   "status": 200,
-  "words": 1124,
+  "words": 1134,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -4388,7 +4388,7 @@
  {
   "url": "/destinations/meghalaya/shillong/umiam-lake",
   "status": 200,
-  "words": 1842,
+  "words": 1849,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -4462,7 +4462,7 @@
  {
   "url": "/destinations/meghalaya/shillong/wah-rilang-viewpoint",
   "status": 200,
-  "words": 1146,
+  "words": 1158,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -4532,7 +4532,7 @@
  {
   "url": "/destinations/meghalaya/tura",
   "status": 200,
-  "words": 565,
+  "words": 573,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -4576,7 +4576,7 @@
  {
   "url": "/destinations/meghalaya/tura/balpakram-national-park",
   "status": 200,
-  "words": 1154,
+  "words": 1156,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -4646,7 +4646,7 @@
  {
   "url": "/destinations/meghalaya/tura/nokrek-biosphere-reserve",
   "status": 200,
-  "words": 1005,
+  "words": 1010,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -4712,7 +4712,7 @@
  {
   "url": "/destinations/meghalaya/tura/siju-cave",
   "status": 200,
-  "words": 968,
+  "words": 971,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -4778,7 +4778,7 @@
  {
   "url": "/destinations/meghalaya/tura/tura-peak",
   "status": 200,
-  "words": 975,
+  "words": 978,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -5399,7 +5399,7 @@
  {
   "url": "/expeditions",
   "status": 200,
-  "words": 581,
+  "words": 597,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -5448,7 +5448,7 @@
  {
   "url": "/expeditions/4x4/guwahati-to-kohima",
   "status": 200,
-  "words": 695,
+  "words": 701,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -5496,7 +5496,7 @@
  {
   "url": "/expeditions/4x4/guwahati-to-shillong",
   "status": 200,
-  "words": 650,
+  "words": 656,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -5544,7 +5544,7 @@
  {
   "url": "/expeditions/4x4/guwahati-to-tawang",
   "status": 200,
-  "words": 792,
+  "words": 798,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -5592,7 +5592,7 @@
  {
   "url": "/expeditions/4x4/meghalaya-loop",
   "status": 200,
-  "words": 674,
+  "words": 680,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -5640,7 +5640,7 @@
  {
   "url": "/expeditions/motorbike/guwahati-to-kohima",
   "status": 200,
-  "words": 698,
+  "words": 704,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -5688,7 +5688,7 @@
  {
   "url": "/expeditions/motorbike/guwahati-to-shillong",
   "status": 200,
-  "words": 646,
+  "words": 652,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -5736,7 +5736,7 @@
  {
   "url": "/expeditions/motorbike/guwahati-to-tawang",
   "status": 200,
-  "words": 791,
+  "words": 797,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -5784,7 +5784,7 @@
  {
   "url": "/expeditions/motorbike/meghalaya-loop",
   "status": 200,
-  "words": 675,
+  "words": 681,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -5832,7 +5832,7 @@
  {
   "url": "/guides",
   "status": 200,
-  "words": 5521,
+  "words": 5658,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -13345,9 +13345,6 @@
     "ImageObject",
     "SpeakableSpecification",
     "TouristTrip",
-    "Product",
-    "Brand",
-    "Offer",
     "BreadcrumbList",
     "ListItem",
     "FAQPage",
@@ -15889,9 +15886,6 @@
     "ImageObject",
     "SpeakableSpecification",
     "TouristTrip",
-    "Product",
-    "Brand",
-    "Offer",
     "BreadcrumbList",
     "ListItem",
     "FAQPage",
@@ -21275,7 +21269,7 @@
  {
   "url": "/guides/hidden-places-in-meghalaya",
   "status": 200,
-  "words": 957,
+  "words": 962,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -27508,9 +27502,6 @@
     "ImageObject",
     "SpeakableSpecification",
     "TouristTrip",
-    "Product",
-    "Brand",
-    "Offer",
     "BreadcrumbList",
     "ListItem",
     "FAQPage",
@@ -27614,7 +27605,7 @@
  {
   "url": "/guides/meghalaya-caves",
   "status": 200,
-  "words": 748,
+  "words": 771,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -27783,9 +27774,6 @@
     "ImageObject",
     "SpeakableSpecification",
     "TouristTrip",
-    "Product",
-    "Brand",
-    "Offer",
     "BreadcrumbList",
     "ListItem",
     "FAQPage",
@@ -29228,9 +29216,6 @@
     "ImageObject",
     "SpeakableSpecification",
     "TouristTrip",
-    "Product",
-    "Brand",
-    "Offer",
     "BreadcrumbList",
     "ListItem",
     "FAQPage",
@@ -29393,9 +29378,6 @@
     "ImageObject",
     "SpeakableSpecification",
     "TouristTrip",
-    "Product",
-    "Brand",
-    "Offer",
     "BreadcrumbList",
     "ListItem",
     "FAQPage",
@@ -29477,9 +29459,6 @@
     "ImageObject",
     "SpeakableSpecification",
     "TouristTrip",
-    "Product",
-    "Brand",
-    "Offer",
     "BreadcrumbList",
     "ListItem",
     "FAQPage",
@@ -29561,9 +29540,6 @@
     "ImageObject",
     "SpeakableSpecification",
     "TouristTrip",
-    "Product",
-    "Brand",
-    "Offer",
     "BreadcrumbList",
     "ListItem",
     "FAQPage",
@@ -29896,9 +29872,6 @@
     "ImageObject",
     "SpeakableSpecification",
     "TouristTrip",
-    "Product",
-    "Brand",
-    "Offer",
     "BreadcrumbList",
     "ListItem",
     "FAQPage",
@@ -29917,7 +29890,7 @@
  {
   "url": "/guides/meghalaya-viewpoints",
   "status": 200,
-  "words": 731,
+  "words": 758,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -29975,7 +29948,7 @@
  {
   "url": "/guides/meghalaya-villages",
   "status": 200,
-  "words": 645,
+  "words": 649,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -30033,7 +30006,7 @@
  {
   "url": "/guides/meghalaya-waterfalls",
   "status": 200,
-  "words": 1275,
+  "words": 1320,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -36335,9 +36308,6 @@
     "ImageObject",
     "SpeakableSpecification",
     "TouristTrip",
-    "Product",
-    "Brand",
-    "Offer",
     "BreadcrumbList",
     "ListItem",
     "FAQPage",
@@ -36589,9 +36559,6 @@
     "ImageObject",
     "SpeakableSpecification",
     "TouristTrip",
-    "Product",
-    "Brand",
-    "Offer",
     "BreadcrumbList",
     "ListItem",
     "FAQPage",
@@ -38405,7 +38372,7 @@
  {
   "url": "/guides/things-to-do-in-meghalaya",
   "status": 200,
-  "words": 1975,
+  "words": 2048,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
@@ -45668,7 +45635,7 @@
  {
   "url": "/tours/shillong-tour-package",
   "status": 200,
-  "words": 817,
+  "words": 826,
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
