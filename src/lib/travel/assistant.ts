@@ -347,7 +347,8 @@ export function respond(message: string, prev: ChatState): { reply: Reply; state
     for (const [re, answer, chips] of GENERAL) if (re.test(t)) return { reply: { text: answer(), chips, actions: [] }, state };
   }
 
-  if (!mentionsTrip && !parseDays(t) && !/\b(add|remove|include|skip|drop|longer|shorter)\b/.test(t)) {
+  const planSignal = places.length > 0 || !!parseTravellers(t) || parseMonth(t) !== undefined || /\b(camp|camping|tent)\b/.test(t) || STYLE_WORDS.some(([re]) => re.test(t));
+  if (!mentionsTrip && !planSignal && !parseDays(t) && !/\b(add|remove|include|skip|drop|longer|shorter)\b/.test(t)) {
     const pageAnswer = websitePageAnswer(message);
     if (pageAnswer) return { reply: { text: pageAnswer, chips: ['Plan a 5-day trip'], actions: [] }, state };
   }

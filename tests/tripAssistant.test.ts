@@ -42,3 +42,17 @@ describe('free website-informed trip planner', () => {
     expect(tripAskInput.safeParse({ history: [{ role: 'user', text: 'x'.repeat(2001) }] }).success).toBe(false);
   });
 });
+
+describe('plan requests are not diverted to page links', () => {
+  const initialState = () => structuredClone(INITIAL_STATE);
+  it('starter chip builds a plan', () => {
+    const r = respond('Dawki + Cherrapunji, 4 friends', initialState());
+    expect(r.state.hasPlan).toBe(true);
+    expect(r.state.travellers).toBe(4);
+  });
+  it('month chip updates the plan', () => {
+    const a = respond('Dawki + Cherrapunji, 4 friends', initialState());
+    const b = respond('We’re going in December', a.state);
+    expect(b.state.month).toBe(11);
+  });
+});
