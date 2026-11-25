@@ -91,12 +91,20 @@ function PlanCard({ plan }: { plan: Plan }) {
   );
 }
 
+const THINKING = [
+  'XTSY AI is reading your question…',
+  'Looking through XTSY curations…',
+  'Checking real drive times & routes…',
+  'Matching stays, food and local tips…',
+];
+
 export default function TripChat({ variant = 'embedded', className, onClose, initialPrompt, title }: { variant?: 'embedded' | 'panel'; className?: string; onClose?: () => void; initialPrompt?: string; title?: ReactNode }) {
   const navigate = useNavigate();
   const [msgs, setMsgs] = useState<Msg[]>(() => [{ from: 'xtsy', ...WELCOME }]);
   const [state, setState] = useState<ChatState>(INITIAL_STATE);
   const [input, setInput] = useState('');
   const [typing, setTyping] = useState(false);
+  const [thinkStep, setThinkStep] = useState(0);
   const [sendFor, setSendFor] = useState<Plan | null>(null);
   const [lead, setLead] = useState({ name: '', phone: '', email: '', dates: '' });
   const [sending, setSending] = useState(false);
@@ -121,6 +129,10 @@ export default function TripChat({ variant = 'embedded', className, onClose, ini
     const history = [...msgs, { from: 'you' as const, text: q }];
     setMsgs(history);
     setTyping(true);
+    setThinkStep(0);
+    // Short "thinking" phase so travellers can follow what XTSY AI is checking.
+    for (let s = 1; s < THINKING.length; s++) { await new Promise((r) => setTimeout(r, 520)); setThinkStep(s); }
+    await new Promise((r) => setTimeout(r, 420));
     // The built-in planner always runs first: it keeps the trip state and works out real drive times.
     let reply: Reply;
     let next = state;
@@ -211,7 +223,7 @@ export default function TripChat({ variant = 'embedded', className, onClose, ini
   const panel = variant === 'panel';
 
   return (
-    <section aria-label="XTSY trip assistant" className={cn('flex min-h-0 flex-col overflow-hidden bg-xt-ink text-xt-paper', panel ? 'h-full' : 'h-[640px] max-h-[82vh] rounded-[28px] shadow-[0_40px_80px_-40px_rgba(31,34,48,0.7)]', className)}>
+    <section aria-label="XTSY trip assistant" className={cn('flex min-h-0 flex-col overflow-hidden bg-xt-ink text-xt-paper', panel ? 'h-full' : 'h-[min(880px,calc(100vh-7rem))] min-h-[560px] rounded-[28px] shadow-[0_40px_80px_-40px_rgba(31,34,48,0.7)]', className)}>
       <header className="flex items-center justify-between gap-3 border-b border-white/10 px-5 py-4">
         <div className="flex min-w-0 items-center gap-3">
           <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-xt-crimson" aria-hidden="true">
@@ -261,8 +273,11 @@ export default function TripChat({ variant = 'embedded', className, onClose, ini
           </div>
         ))}
         {typing && (
-          <div className="flex items-center gap-1.5 self-start rounded-2xl rounded-bl-md bg-[#2A2F42] px-4 py-3" aria-label="Planning">
-            {[0, 1, 2].map((d) => <span key={d} className="xt-typing h-2 w-2 rounded-full bg-xt-rose" style={{ animationDelay: `${d * 0.15}s` }} />)}
+          <div className="flex items-center gap-3 self-start rounded-2xl rounded-bl-md bg-[#2A2F42] px-4 py-3" role="status" aria-label={THINKING[thinkStep]}>
+            <span className="flex gap-1.5" aria-hidden="true">
+              {[0, 1, 2].map((d) => <span key={d} className="xt-typing h-2 w-2 rounded-full bg-xt-rose" style={{ animationDelay: `${d * 0.15}s` }} />)}
+            </span>
+            <span key={thinkStep} className="animate-fade-in text-[13.5px] font-semibold text-xt-fog">{THINKING[thinkStep]}</span>
           </div>
         )}
         {sendFor && (() => {
