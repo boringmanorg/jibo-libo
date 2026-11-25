@@ -14,14 +14,18 @@ const SERVICE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
 
 // SECURITY: restrict outbound fetches to our own hosts to prevent SSRF /
 // anonymous fetch-proxy abuse via a caller-supplied sitemap_url.
-const ALLOWED_HOSTS = new Set(['xtsy.one', 'www.xtsy.one', 'xtsy-one.lovable.app']);
-const ALLOWED_HOST_SUFFIXES = ['.lovable.app', '.lovableproject.com'];
+const ALLOWED_HOSTS = new Set([
+  'xtsy.one',
+  'www.xtsy.one',
+  'xtsy-one.lovable.app',
+  'id-preview--9a4a5e4b-f1f1-40f7-ba6f-5d944df4e08e.lovable.app',
+  'project--9a4a5e4b-f1f1-40f7-ba6f-5d944df4e08e.lovable.app',
+]);
 const FETCH_TIMEOUT_MS = 10_000;
 
 function isAllowedHost(hostname: string): boolean {
   const h = hostname.toLowerCase();
-  if (ALLOWED_HOSTS.has(h)) return true;
-  return ALLOWED_HOST_SUFFIXES.some((s) => h.endsWith(s));
+  return ALLOWED_HOSTS.has(h);
 }
 
 interface ValidationResult {
