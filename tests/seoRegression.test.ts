@@ -81,6 +81,18 @@ describe('SEO regression: programmatic JSON-LD', () => {
     expect(offenders).toEqual([]);
   });
 
+  it('never marks a guide page as a Product with an Offer', async () => {
+    const { ALL_SEO_PAGES }: any = await import('../src/data/seoPages');
+    const { schemaFor }: any = await import('../src/lib/seo/programmaticSeo');
+    // Tours are WhatsApp enquiries, not products sold online. Product/Offer markup makes
+    // Google expect ratings, shipping and return-policy fields the site cannot truthfully
+    // provide, which is what the Search Console product-snippet warnings flagged.
+    const offenders = ALL_SEO_PAGES
+      .filter((p: any) => JSON.stringify(schemaFor(p)).includes('"Product"'))
+      .map((p: any) => p.slug);
+    expect(offenders).toEqual([]);
+  });
+
   it('publishes one consistent, non-stale priceRange across every programmatic page', async () => {
     const { ALL_SEO_PAGES }: any = await import('../src/data/seoPages');
     const { schemaFor }: any = await import('../src/lib/seo/programmaticSeo');

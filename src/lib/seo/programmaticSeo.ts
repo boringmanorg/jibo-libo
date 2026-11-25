@@ -184,16 +184,9 @@ function mainEntity(page: SEOPageData, url: string, hero: Hero): Record<string, 
     };
   }
   if (page.schemaType === 'TouristTrip') {
-    const trip = { ...base, provider: { '@id': `${SITE}/#organization` }, touristType: CATEGORY_LABELS[page.category] };
-    // Priced packages (price already stated in the page title) are also Products with an Offer.
-    const m = page.title.match(/₹\s?([\d,]+)/) ?? page.metaDescription.match(/₹\s?([\d,]+)/);
-    if (!m) return trip;
-    return {
-      ...trip,
-      '@type': ['TouristTrip', 'Product'],
-      brand: { '@type': 'Brand', name: 'XTSY' },
-      offers: { '@type': 'Offer', price: m[1].replace(/,/g, ''), priceCurrency: 'INR', availability: 'https://schema.org/InStock', url, seller: { '@id': `${SITE}/#organization` } },
-    };
+    // Trips are enquiries, not products sold online: no Product/Offer markup,
+    // so Google does not expect ratings, shipping or return fields.
+    return { ...base, provider: { '@id': `${SITE}/#organization` }, touristType: CATEGORY_LABELS[page.category] };
   }
   if (page.schemaType === 'Restaurant') return { ...base, '@id': `${SITE}/tab-bistro#restaurant`, name: 'TAB Bistro by XTSY', servesCuisine: ['North Indian', 'Tandoor', 'Indo-Chinese', 'Biryani', 'South Indian', 'Pasta'], telephone: '+91-8837317070', address: { '@type': 'PostalAddress', streetAddress: 'Mawdiangdiang Road, New Shillong Township', addressLocality: 'Shillong', addressRegion: 'Meghalaya', postalCode: '793018', addressCountry: 'IN' } };
   if (page.schemaType === 'TouristAttraction') {
