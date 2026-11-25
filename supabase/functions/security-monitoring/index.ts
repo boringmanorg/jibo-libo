@@ -172,15 +172,15 @@ serve(async (req) => {
         );
 
       case 'get_security_alerts':
-        const { data: alerts, error: alertsError } = await supabase
+        const { data: alerts, error: alertListError } = await supabase
           .from('security_alerts')
           .select('*')
           .order('created_at', { ascending: false })
           .limit(timeWindow || 50);
 
-        if (alertsError) {
-          console.error('Error fetching security alerts:', alertsError);
-          throw alertsError;
+        if (alertListError) {
+          console.error('Error fetching security alerts:', alertListError);
+          throw alertListError;
         }
 
         return new Response(
