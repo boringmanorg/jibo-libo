@@ -3,16 +3,14 @@
  *
  * From Zoho's developer docs (checked 19 Nov 2026):
  * - Payment sessions: POST /api/v1/paymentsessions, valid up to 900 s, can restrict payment methods;
- *   with hosted page parameters the response carries an access_key for
- *   https://payments.zoho.in/hostedcheckout/<access_key>.
+ *   with configurations.hosted_checkout_parameters the response carries an access_key for
+ *   https://payments.zoho.in/hostedpages/<access_key> (Zoho OpenAPI spec, 19 Nov 2026).
  * - Payment links (75% balance): POST /api/v1/paymentlinks.
  * - Webhooks: header X-Zoho-Webhook-Signature "t=<ms>,v=<hmac>", HMAC-SHA256 of "<t>.<raw body>".
  * - Redirects: HMAC-SHA256 of the dot-joined return parameters, compared with `signature`.
  * Zoho India accepts India-issued cards only, in INR, per its help page: foreign cards need a second gateway.
- * TO CONFIRM IN SANDBOX: the hosted-page object's key name (the API reference says
- * hosted_page_parameters; the hosted-checkout guide says hosted_checkout_parameters) and the
- * webhook payload's field names, which Zoho does not document. Webhooks are only a trigger here:
- * status is always re-read with getSession().
+ * The webhook payload's field names are not in the OpenAPI spec, so webhooks are only a trigger
+ * here: status is always re-read with getSession().
  */
 import type { Paise } from '../money';
 import { GATEWAY_METHOD } from './fees';
@@ -34,7 +32,8 @@ type Fetch = (input: string, init?: RequestInit) => Promise<Response>;
 
 const API = 'https://payments.zoho.in/api/v1';
 const ACCOUNTS = 'https://accounts.zoho.in/oauth/v2/token';
-export const HOSTED_PARAMS_FIELD = 'hosted_page_parameters';
+export const HOSTED_PARAMS_FIELD = 'hosted_checkout_parameters';
+export const HOSTED_PAGE_BASE = 'https://payments.zoho.in/hostedpages/';
 export const WEBHOOK_TOLERANCE_MS = 5 * 60_000;
 
 const toRupees = (p: Paise) => Math.round(p) / 100;
@@ -114,7 +113,7 @@ export function createZohoGateway(cfg: ZohoConfig, deps: { fetch: Fetch; now: ()
       });
       const s = out.payments_session;
       if (!s?.access_key) throw new Error('Zoho Payments did not return a hosted checkout');
-      return { sessionId: s.payments_session_id, redirectUrl: `https://payments.zoho.in/hostedcheckout/${s.access_key}` };
+      return { sessionId: s.payments_session_id, redirectUrl: `${HOSTED_PAGE_BASE}${encodeURIComponent(s.access_key)}` };
     },
 
     async createPaymentLink(req: PaymentLinkRequest): Promise<PaymentLink> {
@@ -126,7 +125,7 @@ export function createZohoGateway(cfg: ZohoConfig, deps: { fetch: Fetch; now: ()
           description: req.description,
           reference_id: req.reference,
           expires_at: req.expiresOn,
-          ...(req.method ? { configurations: { allowed_payment_methods: [GATEWAY_METHOD[req.method] === 'netbanking' ? 'net_banking' : GATEWAY_METHOD[req.method]] } } : {}),
+          ...(req.method ? { configurations: { allowed_payment_methods: [GATEWAY_METHOD[req.method]] } } : {}),
         },
       });
       return { linkId: out.payment_links.payment_link_id, url: out.payment_links.url };

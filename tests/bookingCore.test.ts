@@ -128,8 +128,8 @@ describe('pricing: rates, then GST, then the gateway charge', () => {
     expect(() => quoteStay({ checkIn: '2026-12-01', checkOut: '2027-01-15', rooms, breakfast: [] })).toThrow(/30 nights/);
   });
   it('adds the charge for the method the guest picks, plus 18% GST on that charge', () => {
-    // ₹525 advance by credit card at 1.99%: ₹10.45 charge, ₹1.88 GST on it.
-    expect(chargeFor(rupees(525), 'credit_card', DEFAULT_FEE_TABLE)).toEqual({ amount: 52500, gatewayCharge: 1045, gstOnCharge: 188, payable: 53733 });
+    // ₹525 advance by credit card at Zoho's 2% online rate: ₹10.50 charge, ₹1.89 GST on it.
+    expect(chargeFor(rupees(525), 'credit_card', DEFAULT_FEE_TABLE)).toEqual({ amount: 52500, gatewayCharge: 1050, gstOnCharge: 189, payable: 53739 });
     // UPI at 0.5%: ₹2.63 charge, ₹0.47 GST.
     expect(chargeFor(rupees(525), 'upi', DEFAULT_FEE_TABLE)).toMatchObject({ gatewayCharge: 263, gstOnCharge: 47 });
     expect(chargeFor(rupees(525), 'wallet', DEFAULT_FEE_TABLE).payable).toBe(52500);
@@ -150,7 +150,7 @@ describe('GST slab selection', () => {
 describe('gateway charge table (Zoho convenience fee)', () => {
   it('starts at Zoho\'s published fees, including 0.5% on UPI, with nothing on wallets', () => {
     expect(Object.fromEntries(Object.entries(DEFAULT_FEE_TABLE).map(([k, v]) => [k, v.bps]))).toEqual({
-      upi: 50, debit_card: 90, credit_card: 199, international_card: 300, net_banking: 200, wallet: 0,
+      upi: 50, debit_card: 200, credit_card: 200, international_card: 300, net_banking: 200, wallet: 0,
     });
     expect(validateFeeTable(DEFAULT_FEE_TABLE)).toEqual([]);
   });

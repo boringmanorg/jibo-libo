@@ -26,7 +26,8 @@ describe('Zoho Payments checkout', () => {
   it('opens a hosted checkout limited to the chosen method, in rupees, with no personal data', async () => {
     const { calls, gateway } = fakeZoho({ ...token, '/paymentsessions': { code: 0, payments_session: { payments_session_id: 'ps_1', access_key: 'ak_1' } } });
     const out = await gateway.createCheckout({ reference: 'XTSY-7KQ2M', amount: 131224, description: 'Advance for XTSY-7KQ2M', method: 'credit_card', successUrl: 'https://xtsy.one/book/paid', failureUrl: 'https://xtsy.one/book/failed', expiresInSeconds: 900 });
-    expect(out).toEqual({ sessionId: 'ps_1', redirectUrl: 'https://payments.zoho.in/hostedcheckout/ak_1' });
+    expect(out).toEqual({ sessionId: 'ps_1', redirectUrl: 'https://payments.zoho.in/hostedpages/ak_1' });
+    expect(JSON.parse(calls.find((c) => c.url.includes('/paymentsessions'))!.init!.body as string).configurations.hosted_checkout_parameters).toEqual({ description: 'Advance for XTSY-7KQ2M', success_url: 'https://xtsy.one/book/paid', failure_url: 'https://xtsy.one/book/failed' });
     const call = calls.find((c) => c.url.includes('/paymentsessions'))!;
     expect(call.url).toContain('account_id=acc1');
     expect((call.init!.headers as Record<string, string>).Authorization).toBe('Zoho-oauthtoken tok');

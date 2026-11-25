@@ -22,12 +22,12 @@ export const PAYMENT_METHODS: { id: PaymentMethod; label: string }[] = [
 export const GST_ON_FEE_BPS = 1800;
 
 /**
- * Zoho Payments India platform fees, from zoho.com/in/payments/pricing (checked 19 Nov 2026).
- * Debit cards: 0.4% up to ₹2,000, 0.9% above (the higher figure is used as the cap).
- * Credit cards: 1.99% for most merchants. UPI via RuPay debit is 0%.
+ * Zoho Payments India online platform fees, from zoho.com/in/payments/pricing (checked 25 Nov 2026):
+ * UPI 0.5%; domestic cards, net banking and wallets 2.0%; international cards 3.0%; 18% GST on top.
+ * (The 0.4%/0.9% debit and 1.99% credit figures on that page are in-person rates.)
  */
 export const ZOHO_PLATFORM_FEE_BPS: Record<PaymentMethod, number> = {
-  upi: 50, debit_card: 90, credit_card: 199, international_card: 300, net_banking: 200, wallet: 200,
+  upi: 50, debit_card: 200, credit_card: 200, international_card: 300, net_banking: 200, wallet: 200,
 };
 
 /** Methods Zoho's convenience-fee feature can charge. */
@@ -38,7 +38,7 @@ export type FeeTable = Record<PaymentMethod, FeeRule>;
 
 /** Starts at Zoho's published fees; set each to what Zoho actually enables on your account. Wallets carry none. */
 export const DEFAULT_FEE_TABLE: FeeTable = {
-  upi: { bps: 50 }, debit_card: { bps: 90 }, credit_card: { bps: 199 },
+  upi: { bps: 50 }, debit_card: { bps: 200 }, credit_card: { bps: 200 },
   international_card: { bps: 300 }, net_banking: { bps: 200 }, wallet: { bps: 0 },
 };
 
@@ -62,6 +62,6 @@ export function validateFeeTable(table: FeeTable): string[] {
 }
 
 /** How each method is offered at the gateway's checkout. Card types cannot be told apart before payment. */
-export const GATEWAY_METHOD: Record<PaymentMethod, 'card' | 'upi' | 'netbanking' | 'wallet'> = {
-  upi: 'upi', debit_card: 'card', credit_card: 'card', international_card: 'card', net_banking: 'netbanking', wallet: 'wallet',
+export const GATEWAY_METHOD: Record<PaymentMethod, 'card' | 'upi' | 'net_banking' | 'wallet'> = {
+  upi: 'upi', debit_card: 'card', credit_card: 'card', international_card: 'card', net_banking: 'net_banking', wallet: 'wallet',
 };

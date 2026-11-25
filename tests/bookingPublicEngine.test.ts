@@ -81,7 +81,7 @@ function fakeGateway(state: Partial<SessionState> = {}): PaymentGateway & { sess
   const sessions: any[] = [];
   return {
     id: 'zoho', sessions,
-    async createCheckout(req) { sessions.push(req); return { sessionId: `ps_${sessions.length}`, redirectUrl: `https://payments.zoho.in/hostedcheckout/x${sessions.length}` }; },
+    async createCheckout(req) { sessions.push(req); return { sessionId: `ps_${sessions.length}`, redirectUrl: `https://payments.zoho.in/hostedpages/x${sessions.length}` }; },
     async createPaymentLink() { throw new Error('unused'); },
     async getSession() { return { status: 'succeeded', paymentIds: ['pay_1'], amount: 1e9, ...state } as SessionState; },
     async verifyWebhook(body) { return body === 'good' ? { sessionId: 'ps_1' } : null; },
