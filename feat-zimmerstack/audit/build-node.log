@@ -1,0 +1,2150 @@
+$ tsx scripts/generateWorkerSlimMap.ts && bun run sitemaps:rebuild
+✅ seo-slim-map.json: 501 entries → 108.4 KB
+$ tsx scripts/generateProgrammaticSitemap.ts && tsx scripts/generateSitemaps.ts && tsx scripts/dedupeSitemapsCrossBranch.ts && tsx scripts/generate-image-sitemap.ts && tsx scripts/pruneNoindexFromSitemaps.ts && tsx scripts/writeSitemapIndex.ts
+✅ sitemap-programmatic.xml: 59 URLs (skipped 362 owned by curated branches)
+ ↳ Skipped (owned by other branch) : 396
+ ↳ Skipped (in-branch duplicate)   : 0
+ ↳ Skipped (legacy places redirect): 39
+═══════════════════════════════════════════════
+ SITEMAP GENERATION REPORT
+═══════════════════════════════════════════════
+ Static URLs        : 67
+ Priority URLs      : 0
+ GSC coverage slugs : 98
+ Policy exclusions  : 4
+ Missing from map   : 0
+───────────────────────────────────────────────
+ ✅ All indexable GSC coverage slugs present in sitemap.
+✔ sitemap-destinations.xml: removed 0 cross-branch dupes
+✔ sitemap-hostel.xml: removed 0 cross-branch dupes
+✔ sitemap-tours.xml: removed 0 cross-branch dupes
+✔ sitemap-dining.xml: removed 0 cross-branch dupes
+✔ sitemap-misc.xml: removed 0 cross-branch dupes
+✔ sitemap-guides.xml: removed 0 cross-branch dupes
+✔ sitemap-programmatic.xml: removed 0 cross-branch dupes
+🧹 sitemap-static.xml: removed 5 cross-branch dupes
+
+Total cross-branch dupes removed: 5
+Unique URLs across all branches:  565
+sitemap-images.xml written (2 pages, 40 image refs)
+pruned 5 noindex/redirect URLs from sitemaps
+✅ sitemap_index.xml: sitemap-static.xml, sitemap-hostel.xml, sitemap-tour-packages.xml, sitemap-tours.xml, sitemap-destinations.xml, sitemap-guides.xml, sitemap-programmatic.xml, sitemap-dining.xml, sitemap-misc.xml, sitemap-images.xml
+$ vite build
+[33mThe plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the [1mresolve.tsconfigPaths[22m option. You can remove the plugin and set [1mresolve.tsconfigPaths: true[22m in your Vite config instead.[39m
+[36mvite v8.3.6 [32mbuilding client environment for production...[36m[39m
+transforming...
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/admin/console.functions.ts:75:36 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/admin/console.functions.ts:86:31 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/admin/console.functions.ts:100:41 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/admin/console.functions.ts:132:38 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/admin/console.functions.ts:180:40 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/admin/console.functions.ts:228:30 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/admin/console.functions.ts:257:29 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/admin/console.functions.ts:294:29 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/admin/engineOps.functions.ts:31:31 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/admin/engineOps.functions.ts:35:37 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/admin/engineOps.functions.ts:39:36 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/admin/engineOps.functions.ts:43:34 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/admin/engineOps.functions.ts:48:28 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/admin/engineOps.functions.ts:52:28 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/admin/engineOps.functions.ts:63:31 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/admin/engineOps.functions.ts:73:34 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/admin/engineOps.functions.ts:77:32 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts:49:30 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts:58:24 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts:71:32 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts:91:35 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts:108:32 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/admin/consoleHome.functions.ts:51:37 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/admin/consoleHome.functions.ts:93:26 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/admin/consoleHome.functions.ts:114:30 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/admin/bookingConsole.functions.ts:20:36 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/admin/bookingConsole.functions.ts:25:39 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/admin/bookingConsole.functions.ts:30:35 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/admin/bookingConsole.functions.ts:35:33 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/admin/bookingConsole.functions.ts:40:41 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/admin/bookingConsole.functions.ts:45:36 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/admin/bookingConsole.functions.ts:50:40 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/admin/channel.functions.ts:51:35 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/admin/channel.functions.ts:67:32 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/admin/channel.functions.ts:77:33 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/admin/channel.functions.ts:89:33 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/admin/channel.functions.ts:109:35 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:client] /home/runner/work/jibo-libo/jibo-libo/src/admin/public.functions.ts:6:30 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+✓ 4417 modules transformed.
+rendering chunks...
+computing gzip size...
+.output/public/assets/xtsy-color-logo-DLbAB-SC.webp                          5.45 kB
+.output/public/assets/staatliches-latin-ext-DrUetcJP.woff2                   9.46 kB
+.output/public/assets/manrope-latin-ext-Ch3YOpNY.woff2                      15.12 kB
+.output/public/assets/staatliches-latin-CssKf2bH.woff2                      16.07 kB
+.output/public/assets/manrope-latin-DHIcAJRg.woff2                          24.83 kB
+.output/public/assets/nainital-lake-district-DxymWnJN.jpg                   60.13 kB
+.output/public/assets/wilderness-survival-authentic-BCQxFBnI.jpg            87.97 kB
+.output/public/assets/char-dham-yatra-CjqRoJfR.jpg                          91.06 kB
+.output/public/assets/re-himalayan-expedition-cover-vkitOxqR.jpg            93.18 kB
+.output/public/assets/krem-chympe-cave-expedition-B3-Hb7pT.jpg             102.47 kB
+.output/public/assets/arunachal-tribal-premium-yZIXLQlJ.jpg                115.85 kB
+.output/public/assets/assam-tea-gardens-premium-D8dogDNy.jpg               128.70 kB
+.output/public/assets/gurudongmar-lake-high-altitude-stock-BMtYUONt.jpg    136.00 kB
+.output/public/assets/neita-award-certificate-F-Gahi_g.jpeg                142.90 kB
+.output/public/assets/kullu-valley-adventure-stock-D2hoTqcl.jpg            146.73 kB
+.output/public/assets/wari-chora-authentic-DYZkiFyN.jpg                    152.95 kB
+.output/public/assets/shillong-cherry-blossom-DMwzfQrW.jpg                 161.45 kB
+.output/public/assets/xtsy-270-milkyway-BIwMbTWA.jpeg                      169.62 kB
+.output/public/assets/tripura-bamboo-heritage-wOfmCIoN.jpg                 176.96 kB
+.output/public/assets/mizoram-bamboo-premium-D4wI-hP1.jpg                  184.67 kB
+.output/public/assets/bumla-pass-bike-expedition-DC4X8bet.jpg              214.91 kB
+.output/public/assets/moopun-waterfall-Js0Kox5x.jpg                        242.23 kB
+.output/public/assets/motorcycle-mountain-road-Cj4I5OEy.jpg                242.44 kB
+.output/public/assets/phi-phi-waterfall-meghalaya-DrBiByvb.jpg             242.77 kB
+.output/public/assets/xtsy-270-aerial-CWWl7qpM.jpeg                        286.76 kB
+.output/public/assets/meghalaya-biodiversity-authentic-Bh60Dqvt.jpg        288.06 kB
+.output/public/assets/xtsy-270-stargazing-8YxgOSuv.jpeg                    320.59 kB
+.output/public/assets/dawki-crystal-clear-authentic-CBEXJGC0.jpg           430.63 kB
+.output/public/assets/xtsy-270-interior-7awwuAV8.jpeg                      870.44 kB
+.output/public/assets/hostel-hero-9068-Dd5VlcR1.jpeg                     3,631.34 kB
+.output/public/assets/styles-B5pNoVQP.css                                  208.91 kB │ gzip:  33.79 kB
+.output/public/assets/root-DLTE-HSj.js                                       0.03 kB │ gzip:   0.05 kB
+.output/public/assets/client-CtPUAzR1.js                                     0.05 kB │ gzip:   0.07 kB
+.output/public/assets/invariant-DEEwAagU.js                                  0.06 kB │ gzip:   0.08 kB
+.output/public/assets/xtsy-color-logo-DdUvSC-Y.js                            0.06 kB │ gzip:   0.08 kB
+.output/public/assets/meghalaya-caves-VUZI6my9.js                            0.07 kB │ gzip:   0.08 kB
+.output/public/assets/meghalaya-viewpoints-VUZI6my9.js                       0.07 kB │ gzip:   0.08 kB
+.output/public/assets/meghalaya-villages-VUZI6my9.js                         0.07 kB │ gzip:   0.08 kB
+.output/public/assets/meghalaya-waterfalls-VUZI6my9.js                       0.07 kB │ gzip:   0.08 kB
+.output/public/assets/_attraction-D0AQfoSE.js                                0.07 kB │ gzip:   0.09 kB
+.output/public/assets/_route-CSjjIIXq.js                                     0.07 kB │ gzip:   0.09 kB
+.output/public/assets/_slug-D0AQfoSE.js                                      0.07 kB │ gzip:   0.09 kB
+.output/public/assets/expeditions-CSTPJg03.js                                0.07 kB │ gzip:   0.09 kB
+.output/public/assets/check-62G2DHb8.js                                      0.12 kB │ gzip:   0.14 kB
+.output/public/assets/chevron-down-ClWyj8vQ.js                               0.12 kB │ gzip:   0.14 kB
+.output/public/assets/chevron-up--heqxnm0.js                                 0.12 kB │ gzip:   0.14 kB
+.output/public/assets/chevron-left-BHwmgOYV.js                               0.13 kB │ gzip:   0.14 kB
+.output/public/assets/chevron-right-CquUNMPh.js                              0.13 kB │ gzip:   0.14 kB
+.output/public/assets/mountain-DUKEC_he.js                                   0.13 kB │ gzip:   0.14 kB
+.output/public/assets/useRouter-BsG9fRJS.js                                  0.15 kB │ gzip:   0.14 kB
+.output/public/assets/localEnquiry-VuSDujVb.js                               0.15 kB │ gzip:   0.17 kB
+.output/public/assets/contact-us-BtB60Ujx.js                                 0.16 kB │ gzip:   0.15 kB
+.output/public/assets/privacy-BtB60Ujx.js                                    0.16 kB │ gzip:   0.15 kB
+.output/public/assets/refund-cancellation-policy-BtB60Ujx.js                 0.16 kB │ gzip:   0.15 kB
+.output/public/assets/travel-BtB60Ujx.js                                     0.16 kB │ gzip:   0.15 kB
+.output/public/assets/arrow-right-B0umJF1X.js                                0.16 kB │ gzip:   0.16 kB
+.output/public/assets/budget-hostels-shillong-BIcGZuWi.js                    0.16 kB │ gzip:   0.16 kB
+.output/public/assets/clock-D3k7sxQW.js                                      0.16 kB │ gzip:   0.16 kB
+.output/public/assets/best-hostel-in-shillong-tqdDk0Y1.js                    0.17 kB │ gzip:   0.16 kB
+.output/public/assets/search-ASjjLm1z.js                                     0.17 kB │ gzip:   0.16 kB
+.output/public/assets/circle-check-DsIJ5G5o.js                               0.17 kB │ gzip:   0.16 kB
+.output/public/assets/4x4-expedition-meghalaya-Cah7CdC3.js                   0.17 kB │ gzip:   0.16 kB
+.output/public/assets/meghalaya-adventure-tour-wwAY0kRj.js                   0.17 kB │ gzip:   0.16 kB
+.output/public/assets/money-CQ782uJU.js                                      0.18 kB │ gzip:   0.16 kB
+.output/public/assets/adventure-tours-northeast-india-BAm2uzj1.js            0.18 kB │ gzip:   0.16 kB
+.output/public/assets/motorbike-expedition-northeast-india-BYnwiywp.js       0.19 kB │ gzip:   0.17 kB
+.output/public/assets/info-BkA93SUh.js                                       0.20 kB │ gzip:   0.17 kB
+.output/public/assets/circle-x-BhhY2KTy.js                                   0.20 kB │ gzip:   0.17 kB
+.output/public/assets/credit-card--mmvlCDC.js                                0.20 kB │ gzip:   0.18 kB
+.output/public/assets/moon-C4eWyg-k.js                                       0.21 kB │ gzip:   0.19 kB
+.output/public/assets/plus-Cmiciew6.js                                       0.21 kB │ gzip:   0.16 kB
+.output/public/assets/useRouterState-DiIZRPLO.js                             0.23 kB │ gzip:   0.18 kB
+.output/public/assets/compass-W_HCjRU2.js                                    0.25 kB │ gzip:   0.20 kB
+.output/public/assets/external-link-BVrDnm6Y.js                              0.25 kB │ gzip:   0.19 kB
+.output/public/assets/offlineBackend-CWOtBE2D.js                             0.25 kB │ gzip:   0.19 kB
+.output/public/assets/calendar-Cezpliv8.js                                   0.25 kB │ gzip:   0.20 kB
+.output/public/assets/heart-CoO-vtSD.js                                      0.25 kB │ gzip:   0.21 kB
+.output/public/assets/wallet-C1lbLIH6.js                                     0.28 kB │ gzip:   0.20 kB
+.output/public/assets/indian-rupee-RuMhLkJT.js                               0.29 kB │ gzip:   0.21 kB
+.output/public/assets/bed-double-Lj-Rjum4.js                                 0.29 kB │ gzip:   0.20 kB
+.output/public/assets/date-utils-AY89d_Xj.js                                 0.30 kB │ gzip:   0.22 kB
+.output/public/assets/coffee-BjoRHgIg.js                                     0.30 kB │ gzip:   0.20 kB
+.output/public/assets/calendar-check-QN2VFnSb.js                             0.30 kB │ gzip:   0.22 kB
+.output/public/assets/plane-Cmm4yPnn.js                                      0.30 kB │ gzip:   0.24 kB
+.output/public/assets/users-Bvevs_5L.js                                      0.30 kB │ gzip:   0.22 kB
+.output/public/assets/shield-check-Dep7R9KV.js                               0.32 kB │ gzip:   0.24 kB
+.output/public/assets/phone-CBpYtI57.js                                      0.32 kB │ gzip:   0.23 kB
+.output/public/assets/trash-2-BtYUD5ab.js                                    0.32 kB │ gzip:   0.21 kB
+.output/public/assets/pricing-75Ibrv8l.js                                    0.33 kB │ gzip:   0.25 kB
+.output/public/assets/paw-print-0yGvip7m.js                                  0.34 kB │ gzip:   0.24 kB
+.output/public/assets/utensils-crossed-B3tC_dgo.js                           0.36 kB │ gzip:   0.25 kB
+.output/public/assets/campsite-Th9lPEkx.js                                   0.37 kB │ gzip:   0.26 kB
+.output/public/assets/tram-front-ahDSG8Hc.js                                 0.37 kB │ gzip:   0.24 kB
+.output/public/assets/car-DM3nRhgX.js                                        0.40 kB │ gzip:   0.28 kB
+.output/public/assets/bookPageLoader-DgWJhPSh.js                             0.41 kB │ gzip:   0.29 kB
+.output/public/assets/adminSupabase-Da28Nh_1.js                              0.42 kB │ gzip:   0.32 kB
+.output/public/assets/waves-cFVeb-2I.js                                      0.42 kB │ gzip:   0.21 kB
+.output/public/assets/tourBookingService-DChPcIYG.js                         0.43 kB │ gzip:   0.29 kB
+.output/public/assets/bus-0zOOzil8.js                                        0.45 kB │ gzip:   0.28 kB
+.output/public/assets/star-DKPYCGHs.js                                       0.47 kB │ gzip:   0.29 kB
+.output/public/assets/sun-DmvId98v.js                                        0.47 kB │ gzip:   0.25 kB
+.output/public/assets/useNavigate-BJhHPd0b.js                                0.48 kB │ gzip:   0.31 kB
+.output/public/assets/fees-J1vvW-Sn.js                                       0.48 kB │ gzip:   0.23 kB
+.output/public/assets/calendar-days-DgLVxeOw.js                              0.49 kB │ gzip:   0.26 kB
+.output/public/assets/sparkles-yFMY5p46.js                                   0.49 kB │ gzip:   0.28 kB
+.output/public/assets/sheetDoorbell.client-BTifQHVm.js                       0.49 kB │ gzip:   0.35 kB
+.output/public/assets/hotel-D5I-xyuf.js                                      0.50 kB │ gzip:   0.27 kB
+.output/public/assets/redirect-D2YulXhr.js                                   0.51 kB │ gzip:   0.29 kB
+.output/public/assets/textarea-Cy8csnyh.js                                   0.54 kB │ gzip:   0.35 kB
+.output/public/assets/consoleHome.functions-DV-mDu0q.js                      0.59 kB │ gzip:   0.37 kB
+.output/public/assets/panoramaPricing-D5XOfgah.js                            0.61 kB │ gzip:   0.42 kB
+.output/public/assets/useMatch-C81x8sPT.js                                   0.61 kB │ gzip:   0.38 kB
+.output/public/assets/dist-NilkmuZg.js                                       0.64 kB │ gzip:   0.39 kB
+.output/public/assets/input-BjcfyhDE.js                                      0.64 kB │ gzip:   0.39 kB
+.output/public/assets/tabBistroHours-CUIrTTTN.js                             0.65 kB │ gzip:   0.41 kB
+.output/public/assets/tourPhotos-CO3_vj_b.js                                 0.67 kB │ gzip:   0.40 kB
+.output/public/assets/dist-CHpcj0at.js                                       0.70 kB │ gzip:   0.48 kB
+.output/public/assets/lazyRouteComponent-CWoGpysj.js                         0.70 kB │ gzip:   0.44 kB
+.output/public/assets/label-CXduysSs.js                                      0.71 kB │ gzip:   0.46 kB
+.output/public/assets/tax-DDdJ3p0H.js                                        0.72 kB │ gzip:   0.45 kB
+.output/public/assets/adminAuth-DWg3YYB2.js                                  0.73 kB │ gzip:   0.45 kB
+.output/public/assets/dist-mYMNlRkg.js                                       0.74 kB │ gzip:   0.45 kB
+.output/public/assets/hostelPolicies-ydhHudoT.js                             0.76 kB │ gzip:   0.41 kB
+.output/public/assets/badge-CYYZoyZz.js                                      0.79 kB │ gzip:   0.41 kB
+.output/public/assets/analyticsSessionToken-DWxkKKi1.js                      0.79 kB │ gzip:   0.44 kB
+.output/public/assets/performanceEnhancer-CzzU38Kh.js                        0.91 kB │ gzip:   0.54 kB
+.output/public/assets/engineBits-BhfPP5js.js                                 1.01 kB │ gzip:   0.59 kB
+.output/public/assets/analyticsFilters-DmyFCvLb.js                           1.02 kB │ gzip:   0.50 kB
+.output/public/assets/RankedPageQuestions-DUilKM7M.js                        1.02 kB │ gzip:   0.54 kB
+.output/public/assets/unsubscribe-CpDGcp3G.js                                1.05 kB │ gzip:   0.62 kB
+.output/public/assets/card-BqrgpLx4.js                                       1.06 kB │ gzip:   0.42 kB
+.output/public/assets/tslib.es6-Tae09705.js                                  1.06 kB │ gzip:   0.52 kB
+.output/public/assets/channel.functions-BcAZX1C0.js                          1.08 kB │ gzip:   0.54 kB
+.output/public/assets/roomContent-DGkzwB0D.js                                1.09 kB │ gzip:   0.47 kB
+.output/public/assets/createLucideIcon-CFLhf0yt.js                           1.19 kB │ gzip:   0.69 kB
+.output/public/assets/locationDetection-BmpLleYw.js                          1.34 kB │ gzip:   0.73 kB
+.output/public/assets/catalogue-D27o71ME.js                                  1.35 kB │ gzip:   0.56 kB
+.output/public/assets/TravelCardPhoto-DtOisqYW.js                            1.36 kB │ gzip:   0.71 kB
+.output/public/assets/relevantTravelPhotos-u7S51Pnz.js                       1.36 kB │ gzip:   0.70 kB
+.output/public/assets/rentalFleet-DSUxTPYM.js                                1.36 kB │ gzip:   0.59 kB
+.output/public/assets/bookingConsole.functions-MAl_fisu.js                   1.42 kB │ gzip:   0.66 kB
+.output/public/assets/engineOps.functions-RZmFkDma.js                        1.55 kB │ gzip:   0.71 kB
+.output/public/assets/preload-helper-7y9sWmk5.js                             1.61 kB │ gzip:   0.82 kB
+.output/public/assets/console.functions-BMFotvBM.js                          1.62 kB │ gzip:   0.75 kB
+.output/public/assets/performanceOptimizer-DVw2HkSE.js                       1.62 kB │ gzip:   0.79 kB
+.output/public/assets/DestinationCard-B7Ed-c-A.js                            1.63 kB │ gzip:   0.75 kB
+.output/public/assets/v2TourImages-EKO6jqHu.js                               1.66 kB │ gzip:   0.94 kB
+.output/public/assets/StayAndTourCTA-BPS3Mmuy.js                             1.74 kB │ gzip:   0.96 kB
+.output/public/assets/CtaBand-DrPcMioA.js                                    1.83 kB │ gzip:   0.90 kB
+.output/public/assets/destinations-DJyr0QT1.js                               1.93 kB │ gzip:   0.84 kB
+.output/public/assets/saturdayGroupTour-DkX80v1i.js                          2.29 kB │ gzip:   1.09 kB
+.output/public/assets/useMutation-ALsVbaI1.js                                2.36 kB │ gzip:   0.99 kB
+.output/public/assets/Breadcrumbs-Z_otfR2R.js                                2.38 kB │ gzip:   0.99 kB
+.output/public/assets/ConsoleBits-CA5F61TS.js                                2.46 kB │ gzip:   1.08 kB
+.output/public/assets/tourPageData-l2UJPmNS.js                               2.46 kB │ gzip:   1.19 kB
+.output/public/assets/brandFacts-DlJxXjtg.js                                 2.54 kB │ gzip:   1.32 kB
+.output/public/assets/v2Images-ruReelNM.js                                   2.61 kB │ gzip:   0.97 kB
+.output/public/assets/shnonpedengCamp-BTniGJ0P.js                            2.61 kB │ gzip:   1.20 kB
+.output/public/assets/publicEngine.functions-CIwSOmXG.js                     2.69 kB │ gzip:   1.27 kB
+.output/public/assets/PlanTripLinks-BYK6wGxo.js                              2.77 kB │ gzip:   1.23 kB
+.output/public/assets/movedPages-D49a4qor.js                                 2.85 kB │ gzip:   0.75 kB
+.output/public/assets/ReviewCard-CP-CAwZ5.js                                 2.95 kB │ gzip:   1.25 kB
+.output/public/assets/DestinationGallery-CfW1pAhQ.js                         2.99 kB │ gzip:   1.33 kB
+.output/public/assets/dist-DFc3gDaP.js                                       3.14 kB │ gzip:   1.41 kB
+.output/public/assets/hidden-places-in-meghalaya-y_Ii5Yzx.js                 3.33 kB │ gzip:   1.45 kB
+.output/public/assets/faq-CrP9nt0R.js                                        3.37 kB │ gzip:   1.48 kB
+.output/public/assets/3-day-meghalaya-itinerary-DNwXCxsR.js                  3.39 kB │ gzip:   1.45 kB
+.output/public/assets/StayEatExplore-BAOnbX0-.js                             3.46 kB │ gzip:   1.70 kB
+.output/public/assets/restaurants-D7xbI8Cb.js                                3.62 kB │ gzip:   1.55 kB
+.output/public/assets/route-DcXe_dcU.js                                      3.77 kB │ gzip:   1.21 kB
+.output/public/assets/EnquiryForm-Bttl9f_4.js                                3.78 kB │ gzip:   1.61 kB
+.output/public/assets/react-dom-gWqXm1NC.js                                  3.86 kB │ gzip:   1.40 kB
+.output/public/assets/plan-trip-with-ai-PJFlsVm4.js                          3.86 kB │ gzip:   1.69 kB
+.output/public/assets/meghalaya-couple-tour-package-BCS4HjgU.js              3.94 kB │ gzip:   1.49 kB
+.output/public/assets/consent-BxHGynN8.js                                    4.01 kB │ gzip:   1.65 kB
+.output/public/assets/5-day-meghalaya-itinerary-e6AQvwVd.js                  4.28 kB │ gzip:   1.78 kB
+.output/public/assets/confirmation-C3Wc-F7t.js                               4.32 kB │ gzip:   1.58 kB
+.output/public/assets/dist-BsIiesyF.js                                       4.35 kB │ gzip:   1.79 kB
+.output/public/assets/shillong-tour-package-BntuTFBN.js                      4.36 kB │ gzip:   1.67 kB
+.output/public/assets/router-compat-NsAO6Y0w.js                              4.41 kB │ gzip:   1.54 kB
+.output/public/assets/workation-BCs7JtA7.js                                  4.58 kB │ gzip:   2.25 kB
+.output/public/assets/meghalaya-photo-gallery-pVr3eRBa.js                    4.60 kB │ gzip:   1.78 kB
+.output/public/assets/roomTypes--TGQsgZR.js                                  4.73 kB │ gzip:   1.11 kB
+.output/public/assets/xtsy-vs-zostel-DXGsOjs8.js                             4.77 kB │ gzip:   1.97 kB
+.output/public/assets/dataLayerService-BfBty7hs.js                           4.84 kB │ gzip:   1.97 kB
+.output/public/assets/checkbox-BCfgyFrX.js                                   4.88 kB │ gzip:   2.08 kB
+.output/public/assets/campsite-dawki-3pOdvsND.js                             5.01 kB │ gzip:   2.13 kB
+.output/public/assets/_city-O9Pm5cNr.js                                      5.12 kB │ gzip:   1.96 kB
+.output/public/assets/platformLogos-DmAaFVFw.js                              5.15 kB │ gzip:   1.10 kB
+.output/public/assets/tripChatEvents-Bs2cm15S.js                             5.27 kB │ gzip:   2.55 kB
+.output/public/assets/quickSearch-LU0i3bqk.js                                5.34 kB │ gzip:   2.74 kB
+.output/public/assets/useAnalytics-DN9e4VVO.js                               5.44 kB │ gzip:   2.03 kB
+.output/public/assets/invoices-DGn2z2cn.js                                   5.69 kB │ gzip:   1.86 kB
+.output/public/assets/admin-E9lPWjUo.js                                      5.74 kB │ gzip:   2.10 kB
+.output/public/assets/budget-trip-to-meghalaya-Bv6jFKul.js                   5.75 kB │ gzip:   1.96 kB
+.output/public/assets/contentsquareLoader-CN0bK0iL.js                        5.76 kB │ gzip:   2.54 kB
+.output/public/assets/invoices._id-DZ3i7kjM.js                               5.83 kB │ gzip:   1.99 kB
+.output/public/assets/roomInventory-DHtp8BWR.js                              6.03 kB │ gzip:   1.56 kB
+.output/public/assets/safety-house-rules-BLGevITT.js                         6.35 kB │ gzip:   2.54 kB
+.output/public/assets/catering-BCZ87Qr3.js                                   6.37 kB │ gzip:   2.35 kB
+.output/public/assets/xtsy-facts-BDuDNKRB.js                                 6.49 kB │ gzip:   2.74 kB
+.output/public/assets/room-photos-jRpWnh-L.js                                6.58 kB │ gzip:   2.80 kB
+.output/public/assets/best-time-to-visit-meghalaya-7hOXymEZ.js               6.67 kB │ gzip:   2.60 kB
+.output/public/assets/partner-stays-B9sGv-e-.js                              6.71 kB │ gzip:   2.48 kB
+.output/public/assets/hostelBookingFaqs-raRyhjcu.js                          6.79 kB │ gzip:   2.80 kB
+.output/public/assets/meghalaya-festivals-rsQ7BII8.js                        6.95 kB │ gzip:   2.66 kB
+.output/public/assets/xtsy-rentals-Cu-E94TM.js                               7.39 kB │ gzip:   3.30 kB
+.output/public/assets/meghalaya-tour-packages-DAaM8Mea.js                    7.62 kB │ gzip:   2.45 kB
+.output/public/assets/booking-engine-BfhON636.js                             7.84 kB │ gzip:   2.75 kB
+.output/public/assets/tabBistroMenu-DIxcZj-1.js                              7.89 kB │ gzip:   2.10 kB
+.output/public/assets/CategoryV2-Dorwu_qA.js                                 7.90 kB │ gzip:   3.07 kB
+.output/public/assets/places-to-visit-in-meghalaya-BggihuPD.js               7.93 kB │ gzip:   3.05 kB
+.output/public/assets/ConsentDebugPanel-_sY-IydC.js                          8.13 kB │ gzip:   2.78 kB
+.output/public/assets/destination-wedding-shillong-BcbLXEZF.js               8.19 kB │ gzip:   3.30 kB
+.output/public/assets/useQuery-D9Gt2-cL.js                                   8.29 kB │ gzip:   3.07 kB
+.output/public/assets/guides-B7sgHU98.js                                     8.41 kB │ gzip:   3.16 kB
+.output/public/assets/tours-Bvu50g4-.js                                      8.57 kB │ gzip:   3.45 kB
+.output/public/assets/group-bookings-meghalaya-EKhCr_OM.js                   8.58 kB │ gzip:   3.33 kB
+.output/public/assets/inbox-C0SDWT2E.js                                      8.65 kB │ gzip:   3.12 kB
+.output/public/assets/about.index-BEPtFqEW.js                                8.65 kB │ gzip:   3.35 kB
+.output/public/assets/SEOHead-CD2dVOpW.js                                    8.72 kB │ gzip:   3.02 kB
+.output/public/assets/jsx-runtime-B4UN2VIk.js                                9.09 kB │ gzip:   3.46 kB
+.output/public/assets/contact-xZuXTni9.js                                    9.30 kB │ gzip:   3.29 kB
+.output/public/assets/inventory-Cb3j4xNx.js                                  9.47 kB │ gzip:   3.45 kB
+.output/public/assets/luxury-glamping-shillong-B8cc9vJ2.js                   9.92 kB │ gzip:   3.19 kB
+.output/public/assets/meghalaya-for-international-tourists-CyWuoCmr.js      10.18 kB │ gzip:   2.95 kB
+.output/public/assets/blocks-BX-SqNw5.js                                    10.33 kB │ gzip:   3.60 kB
+.output/public/assets/hotels-in-shillong-D1fcL6-s.js                        10.37 kB │ gzip:   3.29 kB
+.output/public/assets/homestays-in-shillong-DZ5GmkU2.js                     10.50 kB │ gzip:   3.38 kB
+.output/public/assets/ExpeditionsV2-D6jKd9B-.js                             10.80 kB │ gzip:   3.86 kB
+.output/public/assets/bookings-499B0gLZ.js                                  10.94 kB │ gzip:   3.02 kB
+.output/public/assets/BookExtras-TBcUCAMX.js                                10.97 kB │ gzip:   4.11 kB
+.output/public/assets/sentryInit-0T78IB_j.js                                11.06 kB │ gzip:   3.61 kB
+.output/public/assets/link-b82KqvVK.js                                      11.22 kB │ gzip:   4.97 kB
+.output/public/assets/planner-BL7qIDIw.js                                   11.33 kB │ gzip:   4.68 kB
+.output/public/assets/CampBooking-D9dAIqlC.js                               11.55 kB │ gzip:   4.10 kB
+.output/public/assets/stays-DFaYnOZz.js                                     11.66 kB │ gzip:   3.71 kB
+.output/public/assets/route-Ca-dC6UC.js                                     12.11 kB │ gzip:   4.47 kB
+.output/public/assets/AdventureLanding-ResTWUGr.js                          13.08 kB │ gzip:   5.13 kB
+.output/public/assets/IntelligentSearchOverlay-BicOc2zK.js                  13.08 kB │ gzip:   4.58 kB
+.output/public/assets/how-to-reach-meghalaya-DlOsdu36.js                    13.09 kB │ gzip:   3.53 kB
+.output/public/assets/dist-MB1QKl4x.js                                      13.18 kB │ gzip:   4.60 kB
+.output/public/assets/_slug-YT3k_hdA.js                                     13.34 kB │ gzip:   4.48 kB
+.output/public/assets/neTaxonomy-BqqxJo_r.js                                13.58 kB │ gzip:   5.26 kB
+.output/public/assets/hostel-booking-DY5dbE50.js                            14.02 kB │ gzip:   4.16 kB
+.output/public/assets/StayHubV2-Cm8gd9rq.js                                 14.35 kB │ gzip:   4.66 kB
+.output/public/assets/query-Dy-DD5Y_.js                                     15.19 kB │ gzip:   5.27 kB
+.output/public/assets/hostel-near-me-DGzFyl-A.js                            15.76 kB │ gzip:   4.89 kB
+.output/public/assets/settings-eBFUJcFg.js                                  15.81 kB │ gzip:   5.34 kB
+.output/public/assets/guwahati-to-shillong-transport-B5kT86as.js            15.86 kB │ gzip:   5.71 kB
+.output/public/assets/routing-BilBYjWo.js                                   15.96 kB │ gzip:   5.77 kB
+.output/public/assets/rankedPageQuestions-Cm4cwSha.js                       16.39 kB │ gzip:   5.82 kB
+.output/public/assets/terms-of-service-CQeX5tNv.js                          16.70 kB │ gzip:   4.66 kB
+.output/public/assets/PageFaq-BzBn-JgZ.js                                   16.76 kB │ gzip:   6.48 kB
+.output/public/assets/helmet-BC2nTWjC.js                                    17.62 kB │ gzip:   6.31 kB
+.output/public/assets/privacy-policy-PYqG1UnR.js                            17.87 kB │ gzip:   4.47 kB
+.output/public/assets/searchIndex-0ouTb3bC.js                               18.07 kB │ gzip:   5.90 kB
+.output/public/assets/pricing-cancellation-policy-mW5pyASp.js               18.66 kB │ gzip:   4.51 kB
+.output/public/assets/backpacking-india-CV2IwrBa.js                         19.15 kB │ gzip:   5.88 kB
+.output/public/assets/dialog-D4vbijy9.js                                    19.70 kB │ gzip:   7.27 kB
+.output/public/assets/SiteFooter-k2Ch4ePD.js                                21.81 kB │ gzip:   6.94 kB
+.output/public/assets/signaturePackages-Dy4DKi2q.js                         22.59 kB │ gzip:   5.70 kB
+.output/public/assets/DestinationV2-CXWNburv.js                             22.71 kB │ gzip:   7.38 kB
+.output/public/assets/_state-C4VjjuIo.js                                    24.03 kB │ gzip:   7.69 kB
+.output/public/assets/tab-bistro-wdjCDimd.js                                25.33 kB │ gzip:   8.83 kB
+.output/public/assets/utils-D0T3A-kS.js                                     27.56 kB │ gzip:   8.73 kB
+.output/public/assets/experience-by-xtsy-CW9jld0V.js                        27.85 kB │ gzip:  10.74 kB
+.output/public/assets/AppContext-CRta89UJ.js                                29.37 kB │ gzip:  11.55 kB
+.output/public/assets/FoodAddonsSection-DRIZL6D6.js                         29.60 kB │ gzip:   9.15 kB
+.output/public/assets/merch-DIsnxD2d.js                                     34.54 kB │ gzip:   7.79 kB
+.output/public/assets/createServerFn-BCO2Xlzw.js                            37.96 kB │ gzip:  13.01 kB
+.output/public/assets/pet-friendly-BnxnNR33.js                              40.02 kB │ gzip:  12.75 kB
+.output/public/assets/female-travellers-BLFO7ELU.js                         42.67 kB │ gzip:  10.48 kB
+.output/public/assets/routes-ujVw0TfK.js                                    46.31 kB │ gzip:  14.93 kB
+.output/public/assets/book-kJwvShQ5.js                                      46.31 kB │ gzip:  13.72 kB
+.output/public/assets/meghalayaDestinations-B6KbhYf3.js                     68.96 kB │ gzip:  20.06 kB
+.output/public/assets/schemas-CwwHbnMK.js                                   89.59 kB │ gzip:  25.39 kB
+.output/public/assets/_slug-DAMmV8I9.js                                    111.48 kB │ gzip:  32.87 kB
+.output/public/assets/cdnImages-DVTsrnSm.js                                119.45 kB │ gzip:  20.32 kB
+.output/public/assets/travelData-D3-FRS2N.js                               138.65 kB │ gzip:  41.28 kB
+.output/public/assets/things-to-do-in-meghalaya-DFKhYiwr.js                145.07 kB │ gzip:  47.00 kB
+.output/public/assets/HomeReviews-DtUF1ysC.js                              161.17 kB │ gzip:  57.60 kB
+.output/public/assets/TripChat-4pFS3JHA.js                                 196.22 kB │ gzip:  48.70 kB
+.output/public/assets/adminAuthConfig.functions-BCVxQg0d.js                215.58 kB │ gzip:  55.58 kB
+.output/public/assets/index-DoGoHZQm.js                                    560.70 kB │ gzip: 171.70 kB
+.output/public/assets/guidePageData-CT5uLAJH.js                            919.01 kB │ gzip: 237.03 kB
+
+[33m[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+[32m✓ built in 2.14s[39m
+[36mvite v8.3.6 [32mbuilding ssr environment for production...[36m[39m
+transforming...
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/engineOps.functions.ts?tss-serverfn-split:31:31 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/engineOps.functions.ts?tss-serverfn-split:35:37 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/engineOps.functions.ts?tss-serverfn-split:39:36 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/engineOps.functions.ts?tss-serverfn-split:43:34 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/engineOps.functions.ts?tss-serverfn-split:48:28 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/engineOps.functions.ts?tss-serverfn-split:52:28 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/engineOps.functions.ts?tss-serverfn-split:63:31 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/engineOps.functions.ts?tss-serverfn-split:73:34 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/engineOps.functions.ts?tss-serverfn-split:77:32 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/public.functions.ts?tss-serverfn-split:6:30 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/console.functions.ts?tss-serverfn-split:75:36 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/console.functions.ts?tss-serverfn-split:86:31 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/console.functions.ts?tss-serverfn-split:100:41 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/console.functions.ts?tss-serverfn-split:132:38 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/console.functions.ts?tss-serverfn-split:180:40 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/console.functions.ts?tss-serverfn-split:228:30 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/console.functions.ts?tss-serverfn-split:257:29 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/console.functions.ts?tss-serverfn-split:294:29 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/channel.functions.ts?tss-serverfn-split:51:35 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/channel.functions.ts?tss-serverfn-split:67:32 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/channel.functions.ts?tss-serverfn-split:77:33 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/channel.functions.ts?tss-serverfn-split:89:33 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/channel.functions.ts?tss-serverfn-split:109:35 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/consoleHome.functions.ts?tss-serverfn-split:51:37 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/consoleHome.functions.ts?tss-serverfn-split:93:26 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/consoleHome.functions.ts?tss-serverfn-split:114:30 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts?tss-serverfn-split:49:30 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts?tss-serverfn-split:58:24 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts?tss-serverfn-split:71:32 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts?tss-serverfn-split:91:35 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts?tss-serverfn-split:108:32 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/bookingConsole.functions.ts?tss-serverfn-split:20:36 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/bookingConsole.functions.ts?tss-serverfn-split:25:39 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/bookingConsole.functions.ts?tss-serverfn-split:30:35 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/bookingConsole.functions.ts?tss-serverfn-split:35:33 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/bookingConsole.functions.ts?tss-serverfn-split:40:41 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/bookingConsole.functions.ts?tss-serverfn-split:45:36 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/bookingConsole.functions.ts?tss-serverfn-split:50:40 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/console.functions.ts:75:36 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/console.functions.ts:86:31 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/console.functions.ts:100:41 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/console.functions.ts:132:38 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/console.functions.ts:180:40 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/console.functions.ts:228:30 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/console.functions.ts:257:29 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/console.functions.ts:294:29 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/engineOps.functions.ts:31:31 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/engineOps.functions.ts:35:37 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/engineOps.functions.ts:39:36 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/engineOps.functions.ts:43:34 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/engineOps.functions.ts:48:28 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/engineOps.functions.ts:52:28 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/engineOps.functions.ts:63:31 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/engineOps.functions.ts:73:34 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/engineOps.functions.ts:77:32 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts:49:30 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts:58:24 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts:71:32 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts:91:35 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/booking/publicEngine.functions.ts:108:32 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/bookingConsole.functions.ts:20:36 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/bookingConsole.functions.ts:25:39 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/bookingConsole.functions.ts:30:35 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/bookingConsole.functions.ts:35:33 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/bookingConsole.functions.ts:40:41 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/bookingConsole.functions.ts:45:36 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/bookingConsole.functions.ts:50:40 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/consoleHome.functions.ts:51:37 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/consoleHome.functions.ts:93:26 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/consoleHome.functions.ts:114:30 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/channel.functions.ts:51:35 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/channel.functions.ts:67:32 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/channel.functions.ts:77:33 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/channel.functions.ts:89:33 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/channel.functions.ts:109:35 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+[33m[plugin tanstack-start-core::server-fn:ssr] /home/runner/work/jibo-libo/jibo-libo/src/admin/public.functions.ts:6:30 createServerFn().inputValidator() is deprecated. Use createServerFn().validator() instead.[39m
+✓ 707 modules transformed.
+rendering chunks...
+computing gzip size...
+node_modules/.nitro/vite/services/ssr/assets/xtsy-color-logo-DLbAB-SC.webp                          5.45 kB
+node_modules/.nitro/vite/services/ssr/assets/staatliches-latin-ext-DrUetcJP.woff2                   9.46 kB
+node_modules/.nitro/vite/services/ssr/assets/manrope-latin-ext-Ch3YOpNY.woff2                      15.12 kB
+node_modules/.nitro/vite/services/ssr/assets/staatliches-latin-CssKf2bH.woff2                      16.07 kB
+node_modules/.nitro/vite/services/ssr/assets/manrope-latin-DHIcAJRg.woff2                          24.83 kB
+node_modules/.nitro/vite/services/ssr/assets/nainital-lake-district-DxymWnJN.jpg                   60.13 kB
+node_modules/.nitro/vite/services/ssr/assets/wilderness-survival-authentic-BCQxFBnI.jpg            87.97 kB
+node_modules/.nitro/vite/services/ssr/assets/char-dham-yatra-CjqRoJfR.jpg                          91.06 kB
+node_modules/.nitro/vite/services/ssr/assets/re-himalayan-expedition-cover-vkitOxqR.jpg            93.18 kB
+node_modules/.nitro/vite/services/ssr/assets/krem-chympe-cave-expedition-B3-Hb7pT.jpg             102.47 kB
+node_modules/.nitro/vite/services/ssr/assets/arunachal-tribal-premium-yZIXLQlJ.jpg                115.85 kB
+node_modules/.nitro/vite/services/ssr/assets/assam-tea-gardens-premium-D8dogDNy.jpg               128.70 kB
+node_modules/.nitro/vite/services/ssr/assets/gurudongmar-lake-high-altitude-stock-BMtYUONt.jpg    136.00 kB
+node_modules/.nitro/vite/services/ssr/assets/neita-award-certificate-F-Gahi_g.jpeg                142.90 kB
+node_modules/.nitro/vite/services/ssr/assets/kullu-valley-adventure-stock-D2hoTqcl.jpg            146.73 kB
+node_modules/.nitro/vite/services/ssr/assets/wari-chora-authentic-DYZkiFyN.jpg                    152.95 kB
+node_modules/.nitro/vite/services/ssr/assets/shillong-cherry-blossom-DMwzfQrW.jpg                 161.45 kB
+node_modules/.nitro/vite/services/ssr/assets/xtsy-270-milkyway-BIwMbTWA.jpeg                      169.62 kB
+node_modules/.nitro/vite/services/ssr/assets/tripura-bamboo-heritage-wOfmCIoN.jpg                 176.96 kB
+node_modules/.nitro/vite/services/ssr/assets/mizoram-bamboo-premium-D4wI-hP1.jpg                  184.67 kB
+node_modules/.nitro/vite/services/ssr/assets/bumla-pass-bike-expedition-DC4X8bet.jpg              214.91 kB
+node_modules/.nitro/vite/services/ssr/assets/moopun-waterfall-Js0Kox5x.jpg                        242.23 kB
+node_modules/.nitro/vite/services/ssr/assets/motorcycle-mountain-road-Cj4I5OEy.jpg                242.44 kB
+node_modules/.nitro/vite/services/ssr/assets/phi-phi-waterfall-meghalaya-DrBiByvb.jpg             242.77 kB
+node_modules/.nitro/vite/services/ssr/assets/xtsy-270-aerial-CWWl7qpM.jpeg                        286.76 kB
+node_modules/.nitro/vite/services/ssr/assets/meghalaya-biodiversity-authentic-Bh60Dqvt.jpg        288.06 kB
+node_modules/.nitro/vite/services/ssr/assets/xtsy-270-stargazing-8YxgOSuv.jpeg                    320.59 kB
+node_modules/.nitro/vite/services/ssr/assets/dawki-crystal-clear-authentic-CBEXJGC0.jpg           430.63 kB
+node_modules/.nitro/vite/services/ssr/assets/xtsy-270-interior-7awwuAV8.jpeg                      870.44 kB
+node_modules/.nitro/vite/services/ssr/assets/hostel-hero-9068-Dd5VlcR1.jpeg                     3,631.34 kB
+node_modules/.nitro/vite/services/ssr/assets/styles-B5pNoVQP.css                                  208.91 kB │ gzip:  33.79 kB
+node_modules/.nitro/vite/services/ssr/assets/client-D3l2gq0v.js                                     0.06 kB │ gzip:   0.08 kB
+node_modules/.nitro/vite/services/ssr/assets/bistroGoogleProfile-BpsRd4SE.js                        0.08 kB │ gzip:   0.09 kB
+node_modules/.nitro/vite/services/ssr/assets/xtsy-color-logo-Dg0oXXBm.js                            0.14 kB │ gzip:   0.11 kB
+node_modules/.nitro/vite/services/ssr/assets/xtsy-270-stargazing-ExcyOFRF.js                        0.16 kB │ gzip:   0.11 kB
+node_modules/.nitro/vite/services/ssr/assets/utils-DWGjSd5x.js                                      0.16 kB │ gzip:   0.14 kB
+node_modules/.nitro/vite/services/ssr/assets/meghalaya-caves-B-xT7bSL.js                            0.20 kB │ gzip:   0.16 kB
+node_modules/.nitro/vite/services/ssr/assets/empty-plugin-adapters-CeyhLWeJ.js                      0.20 kB │ gzip:   0.14 kB
+node_modules/.nitro/vite/services/ssr/assets/meghalaya-villages-DdMm4iDE.js                         0.20 kB │ gzip:   0.16 kB
+node_modules/.nitro/vite/services/ssr/assets/guestRules-Duif2H6U.js                                 0.20 kB │ gzip:   0.17 kB
+node_modules/.nitro/vite/services/ssr/assets/meghalaya-viewpoints-XTTYLFPI.js                       0.20 kB │ gzip:   0.16 kB
+node_modules/.nitro/vite/services/ssr/assets/meghalaya-waterfalls-DVUetAVI.js                       0.20 kB │ gzip:   0.16 kB
+node_modules/.nitro/vite/services/ssr/assets/expeditions-DJnXgmKt.js                                0.21 kB │ gzip:   0.15 kB
+node_modules/.nitro/vite/services/ssr/assets/_route-BI98iV9t.js                                     0.22 kB │ gzip:   0.16 kB
+node_modules/.nitro/vite/services/ssr/assets/_attraction-D9LmxrHx.js                                0.22 kB │ gzip:   0.16 kB
+node_modules/.nitro/vite/services/ssr/assets/best-hostel-in-shillong-Dr99zChL.js                    0.30 kB │ gzip:   0.23 kB
+node_modules/.nitro/vite/services/ssr/assets/budget-hostels-shillong-CbcQjbg8.js                    0.31 kB │ gzip:   0.23 kB
+node_modules/.nitro/vite/services/ssr/assets/4x4-expedition-meghalaya-B-UI3J9H.js                   0.33 kB │ gzip:   0.22 kB
+node_modules/.nitro/vite/services/ssr/assets/meghalaya-adventure-tour-D2cW3SdD.js                   0.33 kB │ gzip:   0.22 kB
+node_modules/.nitro/vite/services/ssr/assets/rolldown-runtime-D8jQpDG7.js                           0.34 kB │ gzip:   0.24 kB
+node_modules/.nitro/vite/services/ssr/assets/adventure-tours-northeast-india-CuYE091K.js            0.34 kB │ gzip:   0.23 kB
+node_modules/.nitro/vite/services/ssr/assets/_slug-mR5HOmTK.js                                      0.35 kB │ gzip:   0.26 kB
+node_modules/.nitro/vite/services/ssr/assets/motorbike-expedition-northeast-india-AZErgmqj.js       0.35 kB │ gzip:   0.23 kB
+node_modules/.nitro/vite/services/ssr/assets/createServerRpc-BTxy2aJO.js                            0.37 kB │ gzip:   0.25 kB
+node_modules/.nitro/vite/services/ssr/assets/localEnquiry-fzayPios.js                               0.40 kB │ gzip:   0.32 kB
+node_modules/.nitro/vite/services/ssr/assets/serviceClient.server-DMtcEZLw.js                       0.46 kB │ gzip:   0.31 kB
+node_modules/.nitro/vite/services/ssr/assets/createSsrRpc-CjjhIT9i.js                               0.50 kB │ gzip:   0.32 kB
+node_modules/.nitro/vite/services/ssr/assets/offlineBackend-B2L4_zg0.js                             0.54 kB │ gzip:   0.30 kB
+node_modules/.nitro/vite/services/ssr/assets/sentryInit-Bz6hRvPl.js                                 0.56 kB │ gzip:   0.36 kB
+node_modules/.nitro/vite/services/ssr/assets/xtsy-270-interior-CyZ9pm_U.js                          0.58 kB │ gzip:   0.19 kB
+node_modules/.nitro/vite/services/ssr/assets/travel-BMjKv-jf.js                                     0.58 kB │ gzip:   0.41 kB
+node_modules/.nitro/vite/services/ssr/assets/privacy-CTgHIOta.js                                    0.58 kB │ gzip:   0.41 kB
+node_modules/.nitro/vite/services/ssr/assets/contact-us-D_eTNAi7.js                                 0.59 kB │ gzip:   0.41 kB
+node_modules/.nitro/vite/services/ssr/assets/refund-cancellation-policy-B-trcHJD.js                 0.60 kB │ gzip:   0.42 kB
+node_modules/.nitro/vite/services/ssr/assets/useServerFn-C4MBUhiH.js                                0.61 kB │ gzip:   0.34 kB
+node_modules/.nitro/vite/services/ssr/assets/label-BYIfJH-v.js                                      0.62 kB │ gzip:   0.38 kB
+node_modules/.nitro/vite/services/ssr/assets/textarea-C6snvmLv.js                                   0.67 kB │ gzip:   0.41 kB
+node_modules/.nitro/vite/services/ssr/assets/input-BmrB2C56.js                                      0.76 kB │ gzip:   0.45 kB
+node_modules/.nitro/vite/services/ssr/assets/createMiddleware-DM96WIuJ.js                           0.81 kB │ gzip:   0.31 kB
+node_modules/.nitro/vite/services/ssr/assets/campsite-D7kRb9It.js                                   0.85 kB │ gzip:   0.47 kB
+node_modules/.nitro/vite/services/ssr/assets/client.server-B-awhYc8.js                              0.87 kB │ gzip:   0.55 kB
+node_modules/.nitro/vite/services/ssr/assets/badge-BoCsKMAG.js                                      0.95 kB │ gzip:   0.49 kB
+node_modules/.nitro/vite/services/ssr/assets/tourBookingService-B3qKdgI-.js                         0.99 kB │ gzip:   0.56 kB
+node_modules/.nitro/vite/services/ssr/assets/checkbox-D9CPXEar.js                                   1.00 kB │ gzip:   0.51 kB
+node_modules/.nitro/vite/services/ssr/assets/date-utils-xi8hqsOM.js                                 1.10 kB │ gzip:   0.54 kB
+node_modules/.nitro/vite/services/ssr/assets/dates-CNxbRIF1.js                                      1.15 kB │ gzip:   0.62 kB
+node_modules/.nitro/vite/services/ssr/assets/enquiryInbox.server-85l-sg5A.js                        1.22 kB │ gzip:   0.63 kB
+node_modules/.nitro/vite/services/ssr/assets/bookPageLoader-Bh53JlTJ.js                             1.37 kB │ gzip:   0.72 kB
+node_modules/.nitro/vite/services/ssr/assets/hostelPolicies-CKPmrqSP.js                             1.42 kB │ gzip:   0.67 kB
+node_modules/.nitro/vite/services/ssr/assets/botCheck-CvA4obtg.js                                   1.45 kB │ gzip:   0.79 kB
+node_modules/.nitro/vite/services/ssr/assets/adminAuth-CxSB2QXZ.js                                  1.45 kB │ gzip:   0.70 kB
+node_modules/.nitro/vite/services/ssr/assets/unsubscribe-CwrExBhE.js                                1.47 kB │ gzip:   0.74 kB
+node_modules/.nitro/vite/services/ssr/assets/engineBits-tQg8CWal.js                                 1.48 kB │ gzip:   0.77 kB
+node_modules/.nitro/vite/services/ssr/assets/performanceEnhancer-Ij9IoBnr.js                        1.49 kB │ gzip:   0.67 kB
+node_modules/.nitro/vite/services/ssr/assets/adminAuthConfig.functions-Cfg9I9Ec.js                  1.49 kB │ gzip:   0.75 kB
+node_modules/.nitro/vite/services/ssr/assets/RankedPageQuestions-tRDrjOJP.js                        1.54 kB │ gzip:   0.70 kB
+node_modules/.nitro/vite/services/ssr/assets/publicRates-DcDBYzdj.js                                1.55 kB │ gzip:   0.77 kB
+node_modules/.nitro/vite/services/ssr/assets/card-AJRi2RAU.js                                       1.56 kB │ gzip:   0.49 kB
+node_modules/.nitro/vite/services/ssr/assets/start-C2jz5jv2.js                                      1.57 kB │ gzip:   0.71 kB
+node_modules/.nitro/vite/services/ssr/assets/analyticsSessionToken-CyYWusBh.js                      1.58 kB │ gzip:   0.72 kB
+node_modules/.nitro/vite/services/ssr/assets/roomContent-B8dyyzzN.js                                1.63 kB │ gzip:   0.71 kB
+node_modules/.nitro/vite/services/ssr/assets/adminSupabase-s6WNDgd0.js                              1.67 kB │ gzip:   0.88 kB
+node_modules/.nitro/vite/services/ssr/assets/client.server-Crc7fIyN.js                              1.71 kB │ gzip:   0.76 kB
+node_modules/.nitro/vite/services/ssr/assets/rentalFleet-3OAFNF5r.js                                1.77 kB │ gzip:   0.71 kB
+node_modules/.nitro/vite/services/ssr/assets/consoleHome.functions-CAsP_CG4.js                      1.78 kB │ gzip:   0.88 kB
+node_modules/.nitro/vite/services/ssr/assets/tourPhotos-CqGjB6sT.js                                 1.84 kB │ gzip:   0.91 kB
+node_modules/.nitro/vite/services/ssr/assets/sheetAvailability-Dk26AQsk.js                          1.84 kB │ gzip:   0.86 kB
+node_modules/.nitro/vite/services/ssr/assets/public.functions-Dr3f3dY1.js                           1.93 kB │ gzip:   0.95 kB
+node_modules/.nitro/vite/services/ssr/assets/tabBistroHours-Cu9A0HFh.js                             1.99 kB │ gzip:   0.97 kB
+node_modules/.nitro/vite/services/ssr/assets/consoleClosures-CaSSnm12.js                            2.13 kB │ gzip:   1.01 kB
+node_modules/.nitro/vite/services/ssr/assets/DestinationCard-CPptcV6A.js                            2.22 kB │ gzip:   0.88 kB
+node_modules/.nitro/vite/services/ssr/assets/locationDetection-DLVdw2xm.js                          2.32 kB │ gzip:   1.03 kB
+node_modules/.nitro/vite/services/ssr/assets/analyticsFilters-vBoc4eNu.js                           2.32 kB │ gzip:   0.97 kB
+node_modules/.nitro/vite/services/ssr/assets/TravelCardPhoto-CJnUQuZa.js                            2.33 kB │ gzip:   0.98 kB
+node_modules/.nitro/vite/services/ssr/assets/CtaBand-BzCTkI9l.js                                    2.48 kB │ gzip:   1.06 kB
+node_modules/.nitro/vite/services/ssr/assets/fees-BRscNRcf.js                                       2.54 kB │ gzip:   1.16 kB
+node_modules/.nitro/vite/services/ssr/assets/performanceOptimizer-q4mR5A2e.js                       2.54 kB │ gzip:   1.01 kB
+node_modules/.nitro/vite/services/ssr/assets/StayAndTourCTA-DbaZVV12.js                             2.58 kB │ gzip:   1.15 kB
+node_modules/.nitro/vite/services/ssr/assets/catalogue-BXvT2LDt.js                                  2.63 kB │ gzip:   1.08 kB
+node_modules/.nitro/vite/services/ssr/assets/v2TourImages-DGN4cQmD.js                               2.69 kB │ gzip:   1.35 kB
+node_modules/.nitro/vite/services/ssr/assets/destinations-CP03xP-E.js                               3.08 kB │ gzip:   1.07 kB
+node_modules/.nitro/vite/services/ssr/assets/StayEatExplore-DR8dPVYj.js                             3.14 kB │ gzip:   1.35 kB
+node_modules/.nitro/vite/services/ssr/assets/helmet-Cd1Kbkl9.js                                     3.20 kB │ gzip:   1.41 kB
+node_modules/.nitro/vite/services/ssr/assets/channel.functions-DWNnoN0x.js                          3.21 kB │ gzip:   1.39 kB
+node_modules/.nitro/vite/services/ssr/assets/dialog-CUk5G_Iw.js                                     3.36 kB │ gzip:   1.15 kB
+node_modules/.nitro/vite/services/ssr/assets/bookingConsole.functions-zRAOWOS-.js                   3.41 kB │ gzip:   1.27 kB
+node_modules/.nitro/vite/services/ssr/assets/brandFacts-DnSgKOiF.js                                 3.44 kB │ gzip:   1.69 kB
+node_modules/.nitro/vite/services/ssr/assets/ConsoleBits-BovUdwiB.js                                3.46 kB │ gzip:   1.38 kB
+node_modules/.nitro/vite/services/ssr/assets/engineOps.functions-jl2PotPb.js                        3.62 kB │ gzip:   1.25 kB
+node_modules/.nitro/vite/services/ssr/assets/catalogue-Cvr7AI0A.js                                  3.69 kB │ gzip:   1.62 kB
+node_modules/.nitro/vite/services/ssr/assets/PlanTripLinks-DVZMcm6g.js                              3.70 kB │ gzip:   1.43 kB
+node_modules/.nitro/vite/services/ssr/assets/Breadcrumbs-BDsq5RLP.js                                3.83 kB │ gzip:   1.17 kB
+node_modules/.nitro/vite/services/ssr/assets/tourPageData-CaEkVdIq.js                               3.90 kB │ gzip:   1.60 kB
+node_modules/.nitro/vite/services/ssr/assets/saturdayGroupTour-DZmeYbE3.js                          4.00 kB │ gzip:   1.79 kB
+node_modules/.nitro/vite/services/ssr/assets/consoleSettings-DMiaxci6.js                            4.14 kB │ gzip:   1.88 kB
+node_modules/.nitro/vite/services/ssr/assets/ReviewCard-CY_vZGB4.js                                 4.19 kB │ gzip:   1.58 kB
+node_modules/.nitro/vite/services/ssr/assets/shnonpedengCamp-Ce1jJ04u.js                            4.46 kB │ gzip:   1.81 kB
+node_modules/.nitro/vite/services/ssr/assets/console.functions-TWNcW35V.js                          4.60 kB │ gzip:   1.82 kB
+node_modules/.nitro/vite/services/ssr/assets/consent-ANaFdbY5.js                                    4.63 kB │ gzip:   1.90 kB
+node_modules/.nitro/vite/services/ssr/assets/hidden-places-in-meghalaya-OdEKS8Vg.js                 4.76 kB │ gzip:   1.72 kB
+node_modules/.nitro/vite/services/ssr/assets/faq-CsnkQ4Jn.js                                        5.10 kB │ gzip:   1.93 kB
+node_modules/.nitro/vite/services/ssr/assets/3-day-meghalaya-itinerary-DW011DSj.js                  5.11 kB │ gzip:   1.75 kB
+node_modules/.nitro/vite/services/ssr/assets/DestinationGallery-XjAUUxp_.js                         5.19 kB │ gzip:   1.79 kB
+node_modules/.nitro/vite/services/ssr/assets/quickSearch-CiYa9KGW.js                                5.42 kB │ gzip:   2.29 kB
+node_modules/.nitro/vite/services/ssr/assets/zimmerstackPlan-eaI9hTz_.js                            5.44 kB │ gzip:   2.29 kB
+node_modules/.nitro/vite/services/ssr/assets/restaurants-BDGrOaVA.js                                5.52 kB │ gzip:   1.95 kB
+node_modules/.nitro/vite/services/ssr/assets/plan-trip-with-ai-C2dJJbe5.js                          5.54 kB │ gzip:   2.09 kB
+node_modules/.nitro/vite/services/ssr/assets/meghalaya-couple-tour-package-DkTw3Zrt.js              5.59 kB │ gzip:   1.78 kB
+node_modules/.nitro/vite/services/ssr/assets/EnquiryForm-DSJajqcY.js                                5.70 kB │ gzip:   1.96 kB
+node_modules/.nitro/vite/services/ssr/assets/bistroGoogleSync.server-BVIzEZuh.js                    5.87 kB │ gzip:   2.40 kB
+node_modules/.nitro/vite/services/ssr/assets/pricing-Ekv7I1PD.js                                    5.96 kB │ gzip:   2.59 kB
+node_modules/.nitro/vite/services/ssr/assets/router-compat-CIwXSKZr.js                              6.05 kB │ gzip:   2.03 kB
+node_modules/.nitro/vite/services/ssr/assets/confirmation-BoolbXiZ.js                               6.37 kB │ gzip:   1.91 kB
+node_modules/.nitro/vite/services/ssr/assets/workation-CCsWyAME.js                                  6.41 kB │ gzip:   2.75 kB
+node_modules/.nitro/vite/services/ssr/assets/5-day-meghalaya-itinerary-CzIVQp1x.js                  6.43 kB │ gzip:   2.11 kB
+node_modules/.nitro/vite/services/ssr/assets/shillong-tour-package-ZuXdDU78.js                      6.48 kB │ gzip:   2.02 kB
+node_modules/.nitro/vite/services/ssr/assets/AppContext-B_IRjVyV.js                                 6.50 kB │ gzip:   2.33 kB
+node_modules/.nitro/vite/services/ssr/assets/publicEngine.functions-mPnGh_x3.js                     6.51 kB │ gzip:   2.58 kB
+node_modules/.nitro/vite/services/ssr/assets/xtsy-vs-zostel-DzTKmaZh.js                             6.51 kB │ gzip:   2.35 kB
+node_modules/.nitro/vite/services/ssr/assets/platformLogos-DIOe87Mp.js                              6.85 kB │ gzip:   1.48 kB
+node_modules/.nitro/vite/services/ssr/assets/meghalaya-photo-gallery-35ARK0-u.js                    7.01 kB │ gzip:   2.18 kB
+node_modules/.nitro/vite/services/ssr/assets/campsite-dawki-CDLYqVmo.js                             7.36 kB │ gzip:   2.64 kB
+node_modules/.nitro/vite/services/ssr/assets/zoho.server-B-uRcbaC.js                                7.37 kB │ gzip:   2.95 kB
+node_modules/.nitro/vite/services/ssr/assets/sheetSync.server-BIKhDY4C.js                           7.71 kB │ gzip:   2.96 kB
+node_modules/.nitro/vite/services/ssr/assets/publicEngine.functions-Dt3f-fcZ.js                     7.93 kB │ gzip:   2.45 kB
+node_modules/.nitro/vite/services/ssr/assets/best-time-to-visit-meghalaya-BjZT5R3Y.js               8.02 kB │ gzip:   2.49 kB
+node_modules/.nitro/vite/services/ssr/assets/_city-D6_oNjQw.js                                      8.03 kB │ gzip:   2.46 kB
+node_modules/.nitro/vite/services/ssr/assets/channel.functions-DUF7-LhF.js                          8.20 kB │ gzip:   2.50 kB
+node_modules/.nitro/vite/services/ssr/assets/budget-trip-to-meghalaya-DCL4UuqF.js                   8.21 kB │ gzip:   2.27 kB
+node_modules/.nitro/vite/services/ssr/assets/safety-house-rules-B-EVsZpa.js                         8.36 kB │ gzip:   2.80 kB
+node_modules/.nitro/vite/services/ssr/assets/invoices._id-CXP2b3nN.js                               8.42 kB │ gzip:   2.25 kB
+node_modules/.nitro/vite/services/ssr/assets/admin-BM0PmZbC.js                                      8.43 kB │ gzip:   2.59 kB
+node_modules/.nitro/vite/services/ssr/assets/engineOps.functions-DAbwDNaU.js                        8.65 kB │ gzip:   2.03 kB
+node_modules/.nitro/vite/services/ssr/assets/hostelBookingFaqs-D-D29prx.js                          8.75 kB │ gzip:   3.21 kB
+node_modules/.nitro/vite/services/ssr/assets/xtsy-facts-BkSy3aHE.js                                 8.75 kB │ gzip:   3.29 kB
+node_modules/.nitro/vite/services/ssr/assets/invoices-ClqHq-1F.js                                   9.04 kB │ gzip:   2.31 kB
+node_modules/.nitro/vite/services/ssr/assets/catering-CyjytGkb.js                                   9.06 kB │ gzip:   2.84 kB
+node_modules/.nitro/vite/services/ssr/assets/dataLayerService-BWabY6oG.js                           9.08 kB │ gzip:   3.16 kB
+node_modules/.nitro/vite/services/ssr/assets/meghalaya-festivals-DH7DrWyt.js                        9.11 kB │ gzip:   3.09 kB
+node_modules/.nitro/vite/services/ssr/assets/room-photos-CZjYlbtA.js                                9.12 kB │ gzip:   3.20 kB
+node_modules/.nitro/vite/services/ssr/assets/tripChatEvents-XJaiEh8F.js                             9.36 kB │ gzip:   3.89 kB
+node_modules/.nitro/vite/services/ssr/assets/useAnalytics-vAM4KPc4.js                               9.38 kB │ gzip:   2.67 kB
+node_modules/.nitro/vite/services/ssr/assets/contentsquareLoader-BbyuG41I.js                        9.70 kB │ gzip:   3.61 kB
+node_modules/.nitro/vite/services/ssr/assets/partner-stays-DB6EIePL.js                              9.88 kB │ gzip:   3.12 kB
+node_modules/.nitro/vite/services/ssr/assets/places-to-visit-in-meghalaya-CiG9ayHb.js              10.15 kB │ gzip:   3.10 kB
+node_modules/.nitro/vite/services/ssr/assets/xtsy-rentals--1xXwcpM.js                              10.48 kB │ gzip:   3.97 kB
+node_modules/.nitro/vite/services/ssr/assets/destination-wedding-shillong-BaKScGCi.js              10.49 kB │ gzip:   3.72 kB
+node_modules/.nitro/vite/services/ssr/assets/SEOHead-CHrCJMoY.js                                   10.67 kB │ gzip:   3.34 kB
+node_modules/.nitro/vite/services/ssr/assets/group-bookings-meghalaya-TqCNMy9V.js                  11.22 kB │ gzip:   3.85 kB
+node_modules/.nitro/vite/services/ssr/assets/meghalaya-tour-packages-305Kezpx.js                   11.50 kB │ gzip:   2.96 kB
+node_modules/.nitro/vite/services/ssr/assets/CategoryV2-NHr7lUUZ.js                                11.57 kB │ gzip:   3.66 kB
+node_modules/.nitro/vite/services/ssr/assets/tours-CxgEdTdm.js                                     12.09 kB │ gzip:   4.23 kB
+node_modules/.nitro/vite/services/ssr/assets/about.index-CtjJbAnY.js                               12.20 kB │ gzip:   4.02 kB
+node_modules/.nitro/vite/services/ssr/assets/guides-_erMoEkI.js                                    12.22 kB │ gzip:   3.87 kB
+node_modules/.nitro/vite/services/ssr/assets/booking-engine-CMQJXEpX.js                            12.43 kB │ gzip:   3.59 kB
+node_modules/.nitro/vite/services/ssr/assets/inbox-BP6BDYpn.js                                     12.49 kB │ gzip:   3.88 kB
+node_modules/.nitro/vite/services/ssr/assets/tabBistroMenu-Dz4llXc8.js                             12.82 kB │ gzip:   2.68 kB
+node_modules/.nitro/vite/services/ssr/assets/consoleHome.functions--mUEpjio.js                     13.02 kB │ gzip:   4.67 kB
+node_modules/.nitro/vite/services/ssr/assets/inventory-DhLP8qQw.js                                 13.39 kB │ gzip:   4.16 kB
+node_modules/.nitro/vite/services/ssr/assets/engineOps.core-Bmk7nD63.js                            13.53 kB │ gzip:   4.40 kB
+node_modules/.nitro/vite/services/ssr/assets/contact-BMLx4D6K.js                                   13.77 kB │ gzip:   4.01 kB
+node_modules/.nitro/vite/services/ssr/assets/luxury-glamping-shillong-C0eesovI.js                  13.96 kB │ gzip:   3.72 kB
+node_modules/.nitro/vite/services/ssr/assets/FoodAddonsSection-4oNFnXcz.js                         14.55 kB │ gzip:   3.02 kB
+node_modules/.nitro/vite/services/ssr/assets/AdventureLanding-CMoPS5kN.js                          14.76 kB │ gzip:   5.43 kB
+node_modules/.nitro/vite/services/ssr/assets/route-nI4tNipc.js                                     14.82 kB │ gzip:   4.51 kB
+node_modules/.nitro/vite/services/ssr/assets/blocks-CtSOvjQr.js                                    14.84 kB │ gzip:   4.61 kB
+node_modules/.nitro/vite/services/ssr/assets/BookExtras-C-xQEHZZ.js                                14.86 kB │ gzip:   4.95 kB
+node_modules/.nitro/vite/services/ssr/assets/homestays-in-shillong-Cyux7hhz.js                     14.95 kB │ gzip:   3.75 kB
+node_modules/.nitro/vite/services/ssr/assets/hotels-in-shillong-DNPCFaH5.js                        15.22 kB │ gzip:   3.85 kB
+node_modules/.nitro/vite/services/ssr/assets/meghalaya-for-international-tourists-6hVfSwsk.js      15.45 kB │ gzip:   3.33 kB
+node_modules/.nitro/vite/services/ssr/assets/ExpeditionsV2-srXtgzxd.js                             15.88 kB │ gzip:   4.65 kB
+node_modules/.nitro/vite/services/ssr/assets/neTaxonomy-BAGxLUCf.js                                16.89 kB │ gzip:   5.90 kB
+node_modules/.nitro/vite/services/ssr/assets/CampBooking-D5GLZ7a9.js                               17.45 kB │ gzip:   4.83 kB
+node_modules/.nitro/vite/services/ssr/assets/bookings-PCrf511p.js                                  17.67 kB │ gzip:   3.97 kB
+node_modules/.nitro/vite/services/ssr/assets/rankedPageQuestions-BQKfd-3W.js                       18.55 kB │ gzip:   6.25 kB
+node_modules/.nitro/vite/services/ssr/assets/PageFaq-CDsiENgJ.js                                   18.70 kB │ gzip:   6.86 kB
+node_modules/.nitro/vite/services/ssr/assets/stays-CQbmHatI.js                                     18.73 kB │ gzip:   4.74 kB
+node_modules/.nitro/vite/services/ssr/assets/planner-x94Pyf3_.js                                   19.46 kB │ gzip:   6.69 kB
+node_modules/.nitro/vite/services/ssr/assets/_slug-B0Am5uwX.js                                     19.65 kB │ gzip:   5.70 kB
+node_modules/.nitro/vite/services/ssr/assets/StayHubV2-BQoaaNDh.js                                 19.74 kB │ gzip:   5.54 kB
+node_modules/.nitro/vite/services/ssr/assets/hostel-booking-BcOQJ9Sc.js                            19.76 kB │ gzip:   4.64 kB
+node_modules/.nitro/vite/services/ssr/assets/how-to-reach-meghalaya-C9XH_yt0.js                    19.92 kB │ gzip:   4.00 kB
+node_modules/.nitro/vite/services/ssr/assets/console.functions-Cbmor_8r.js                         20.67 kB │ gzip:   5.72 kB
+node_modules/.nitro/vite/services/ssr/assets/IntelligentSearchOverlay-B87_4hT4.js                  20.77 kB │ gzip:   6.21 kB
+node_modules/.nitro/vite/services/ssr/assets/hostel-near-me-CLwnGyMj.js                            21.06 kB │ gzip:   5.19 kB
+node_modules/.nitro/vite/services/ssr/assets/bookingConsole.functions-BcRsET4K.js                  21.52 kB │ gzip:   6.14 kB
+node_modules/.nitro/vite/services/ssr/assets/settings-DuGxX2te.js                                  22.03 kB │ gzip:   6.26 kB
+node_modules/.nitro/vite/services/ssr/assets/guwahati-to-shillong-transport-BhEUaG8T.js            22.14 kB │ gzip:   6.40 kB
+node_modules/.nitro/vite/services/ssr/assets/terms-of-service-CaSaS-h0.js                          23.51 kB │ gzip:   5.10 kB
+node_modules/.nitro/vite/services/ssr/assets/searchIndex-DLbZ_Gs5.js                               23.71 kB │ gzip:   6.74 kB
+node_modules/.nitro/vite/services/ssr/assets/privacy-policy-Cve0aBWL.js                            25.86 kB │ gzip:   4.95 kB
+node_modules/.nitro/vite/services/ssr/assets/backpacking-india-C_AmumGU.js                         26.09 kB │ gzip:   6.57 kB
+node_modules/.nitro/vite/services/ssr/assets/pricing-cancellation-policy-CJug6F57.js               27.72 kB │ gzip:   4.94 kB
+node_modules/.nitro/vite/services/ssr/assets/signaturePackages-CzQL6Xqi.js                         27.80 kB │ gzip:   6.25 kB
+node_modules/.nitro/vite/services/ssr/assets/publicEngine.core-jKZRX2Ke.js                         28.25 kB │ gzip:   9.19 kB
+node_modules/.nitro/vite/services/ssr/assets/SiteFooter-BPl2d7Mf.js                                29.00 kB │ gzip:   7.84 kB
+node_modules/.nitro/vite/services/ssr/assets/things-to-do-in-meghalaya-mxgiE_iv.js                 29.59 kB │ gzip:   7.76 kB
+node_modules/.nitro/vite/services/ssr/assets/zimmerstack.server-DbwIWdtm.js                        29.69 kB │ gzip:   8.99 kB
+node_modules/.nitro/vite/services/ssr/assets/_state-KSktuYVr.js                                    30.23 kB │ gzip:   8.40 kB
+node_modules/.nitro/vite/services/ssr/index.js                                                     30.86 kB │ gzip:   9.93 kB
+node_modules/.nitro/vite/services/ssr/assets/DestinationV2-CEAQj2oo.js                             33.98 kB │ gzip:   9.16 kB
+node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-DmwgHiMi.js                36.80 kB │ gzip:   5.73 kB
+node_modules/.nitro/vite/services/ssr/assets/tab-bistro-BXNPVPwA.js                                39.25 kB │ gzip:  11.69 kB
+node_modules/.nitro/vite/services/ssr/assets/merch-B-cC28rr.js                                     40.08 kB │ gzip:   8.56 kB
+node_modules/.nitro/vite/services/ssr/assets/experience-by-xtsy-Cju6eDkQ.js                        41.69 kB │ gzip:  13.03 kB
+node_modules/.nitro/vite/services/ssr/assets/meghalayaTransportReference-pYf7csXN.js               45.02 kB │ gzip:  14.33 kB
+node_modules/.nitro/vite/services/ssr/assets/female-travellers-apYcgk3l.js                         48.77 kB │ gzip:  11.01 kB
+node_modules/.nitro/vite/services/ssr/assets/_slug-Cncov9un.js                                     58.42 kB │ gzip:  14.13 kB
+node_modules/.nitro/vite/services/ssr/assets/routes-DwxIin16.js                                    61.85 kB │ gzip:  16.86 kB
+node_modules/.nitro/vite/services/ssr/assets/pet-friendly-CJk6ZCWy.js                              66.69 kB │ gzip:  15.96 kB
+node_modules/.nitro/vite/services/ssr/assets/book-BKw9f0Ju.js                                      67.63 kB │ gzip:  16.73 kB
+node_modules/.nitro/vite/services/ssr/assets/meghalayaDestinations-BY0cyo2L.js                     76.46 kB │ gzip:  21.12 kB
+node_modules/.nitro/vite/services/ssr/assets/server-FYrVMWaM.js                                    86.14 kB │ gzip:  23.08 kB
+node_modules/.nitro/vite/services/ssr/assets/roomTypes-CvALwZ61.js                                144.21 kB │ gzip:  22.83 kB
+node_modules/.nitro/vite/services/ssr/assets/travelData-EJH-Pm_6.js                               166.48 kB │ gzip:  44.15 kB
+node_modules/.nitro/vite/services/ssr/assets/HomeReviews-BbEjDxAy.js                              183.39 kB │ gzip:  59.54 kB
+node_modules/.nitro/vite/services/ssr/assets/TripChat-C5HkDCt-.js                                 222.48 kB │ gzip:  52.95 kB
+node_modules/.nitro/vite/services/ssr/assets/router-C2yqi70e.js                                   271.70 kB │ gzip:  69.69 kB
+node_modules/.nitro/vite/services/ssr/assets/guidePageData-CnBisrrF.js                          1,037.80 kB │ gzip: 253.51 kB
+
+[33m[33m[INEFFECTIVE_DYNAMIC_IMPORT] [0msrc/lib/bistroGoogleProfile.ts is dynamically imported by src/lib/bistroGoogleSync.server.ts but also statically imported by src/lib/bistroGoogleSync.server.ts, dynamic import will not move module into another chunk.
+[39m
+[32m✓ built in 1.49s[39m
+[start] [nitro] Building [[35mNitro[39m] [2m(preset: `node-server`, compatibility: `2026-11-26`)[22m
+[success] [nitro] Generated public [36m.output/public[39m
+[36mvite v8.3.6 [32mbuilding nitro environment for production...[36m[39m
+[33m`output.codeSplitting.groups[0].name` is a function. Set `output.codeSplitting.groups[0].debugName` so the bundler timing report can identify this group.[39m
+transforming...
+✓ 4088 modules transformed.
+[info] Tracing dependencies:
+- `tslib` (2.8.1)
+[success] Traced 1 dependencies (4 files) in 30ms.
+[info] Ensure your production environment matches the builder OS and architecture (`linux-x64`) to avoid native module issues.
+rendering chunks...
+computing gzip size...
+.output/server/_ssr/bistroGoogleProfile-BpsRd4SE.mjs                       0.08 kB │ gzip:   0.09 kB
+.output/server/_ssr/empty-plugin-adapters-CeyhLWeJ.mjs                     0.21 kB │ gzip:   0.15 kB
+.output/server/_ssr/meghalaya-caves-B-xT7bSL.mjs                           0.21 kB │ gzip:   0.17 kB
+.output/server/_ssr/meghalaya-villages-DdMm4iDE.mjs                        0.21 kB │ gzip:   0.17 kB
+.output/server/_ssr/meghalaya-viewpoints-XTTYLFPI.mjs                      0.21 kB │ gzip:   0.17 kB
+.output/server/_ssr/meghalaya-waterfalls-DVUetAVI.mjs                      0.21 kB │ gzip:   0.17 kB
+.output/server/_attraction-D9LmxrHx.mjs                                    0.22 kB │ gzip:   0.17 kB
+.output/server/_route-BI98iV9t.mjs                                         0.22 kB │ gzip:   0.17 kB
+.output/server/_ssr/expeditions-DJnXgmKt.mjs                               0.22 kB │ gzip:   0.16 kB
+.output/server/_ssr/guestRules-Duif2H6U.mjs                                0.25 kB │ gzip:   0.20 kB
+.output/server/_ssr/utils-DWGjSd5x.mjs                                     0.27 kB │ gzip:   0.21 kB
+.output/server/_libs/radix-ui__number.mjs                                  0.30 kB │ gzip:   0.23 kB
+.output/server/_slug-mR5HOmTK.mjs                                          0.35 kB │ gzip:   0.27 kB
+.output/server/_ssr/createServerRpc-BTxy2aJO.mjs                           0.37 kB │ gzip:   0.26 kB
+.output/server/_ssr/rolldown-runtime-D8jQpDG7.mjs                          0.39 kB │ gzip:   0.27 kB
+.output/server/_ssr/best-hostel-in-shillong-Dr99zChL.mjs                   0.43 kB │ gzip:   0.30 kB
+.output/server/_ssr/budget-hostels-shillong-CbcQjbg8.mjs                   0.43 kB │ gzip:   0.30 kB
+.output/server/_ssr/localEnquiry-fzayPios.mjs                              0.45 kB │ gzip:   0.35 kB
+.output/server/_ssr/4x4-expedition-meghalaya-B-UI3J9H.mjs                  0.46 kB │ gzip:   0.29 kB
+.output/server/_ssr/meghalaya-adventure-tour-D2cW3SdD.mjs                  0.46 kB │ gzip:   0.29 kB
+.output/server/_ssr/adventure-tours-northeast-india-CuYE091K.mjs           0.47 kB │ gzip:   0.29 kB
+.output/server/_ssr/motorbike-expedition-northeast-india-AZErgmqj.mjs      0.48 kB │ gzip:   0.30 kB
+.output/server/_ssr/createSsrRpc-CjjhIT9i.mjs                              0.51 kB │ gzip:   0.32 kB
+.output/server/_ssr/serviceClient.server-DMtcEZLw.mjs                      0.52 kB │ gzip:   0.35 kB
+.output/server/_chunks/ssr-renderer.mjs                                    0.56 kB │ gzip:   0.35 kB
+.output/server/_ssr/sentryInit-Bz6hRvPl.mjs                                0.62 kB │ gzip:   0.41 kB
+.output/server/_ssr/travel-BMjKv-jf.mjs                                    0.71 kB │ gzip:   0.48 kB
+.output/server/_ssr/privacy-CTgHIOta.mjs                                   0.71 kB │ gzip:   0.48 kB
+.output/server/_ssr/contact-us-D_eTNAi7.mjs                                0.71 kB │ gzip:   0.48 kB
+.output/server/_ssr/refund-cancellation-policy-B-trcHJD.mjs                0.73 kB │ gzip:   0.49 kB
+.output/server/_libs/radix-ui__react-direction.mjs                         0.79 kB │ gzip:   0.42 kB
+.output/server/_ssr/useServerFn-C4MBUhiH.mjs                               0.81 kB │ gzip:   0.44 kB
+.output/server/_ssr/client.server-B-awhYc8.mjs                             0.90 kB │ gzip:   0.57 kB
+.output/server/_ssr/label-BYIfJH-v.mjs                                     0.95 kB │ gzip:   0.48 kB
+.output/server/_libs/radix-ui__react-label.mjs                             0.98 kB │ gzip:   0.50 kB
+.output/server/_ssr/textarea-C6snvmLv.mjs                                  0.99 kB │ gzip:   0.52 kB
+.output/server/_libs/invariant.mjs                                         1.00 kB │ gzip:   0.56 kB
+.output/server/_ssr/campsite-D7kRb9It.mjs                                  1.00 kB │ gzip:   0.53 kB
+.output/server/_ssr/tourBookingService-B3qKdgI-.mjs                        1.03 kB │ gzip:   0.58 kB
+.output/server/_ssr/input-BmrB2C56.mjs                                     1.08 kB │ gzip:   0.56 kB
+.output/server/_ssr/date-utils-xi8hqsOM.mjs                                1.15 kB │ gzip:   0.57 kB
+.output/server/_ssr/badge-BoCsKMAG.mjs                                     1.17 kB │ gzip:   0.55 kB
+.output/server/_ssr/dates-CNxbRIF1.mjs                                     1.20 kB │ gzip:   0.65 kB
+.output/server/_ssr/enquiryInbox.server-85l-sg5A.mjs                       1.30 kB │ gzip:   0.69 kB
+.output/server/_ssr/checkbox-D9CPXEar.mjs                                  1.33 kB │ gzip:   0.61 kB
+.output/server/_ssr/hostelPolicies-CKPmrqSP.mjs                            1.47 kB │ gzip:   0.70 kB
+.output/server/_ssr/adminAuth-CxSB2QXZ.mjs                                 1.49 kB │ gzip:   0.75 kB
+.output/server/_ssr/start-C2jz5jv2.mjs                                     1.50 kB │ gzip:   0.69 kB
+.output/server/_ssr/adminAuthConfig.functions-Cfg9I9Ec.mjs                 1.52 kB │ gzip:   0.78 kB
+.output/server/_ssr/performanceEnhancer-Ij9IoBnr.mjs                       1.53 kB │ gzip:   0.70 kB
+.output/server/_ssr/botCheck-CvA4obtg.mjs                                  1.65 kB │ gzip:   0.85 kB
+.output/server/_ssr/roomContent-B8dyyzzN.mjs                               1.68 kB │ gzip:   0.75 kB
+.output/server/_ssr/adminSupabase-s6WNDgd0.mjs                             1.69 kB │ gzip:   0.92 kB
+.output/server/_ssr/engineBits-tQg8CWal.mjs                                1.72 kB │ gzip:   0.85 kB
+.output/server/_ssr/client.server-Crc7fIyN.mjs                             1.75 kB │ gzip:   0.81 kB
+.output/server/_ssr/publicRates-DcDBYzdj.mjs                               1.76 kB │ gzip:   0.84 kB
+.output/server/_libs/radix-ui__primitive.mjs                               1.81 kB │ gzip:   0.70 kB
+.output/server/_ssr/rentalFleet-3OAFNF5r.mjs                               1.81 kB │ gzip:   0.75 kB
+.output/server/_ssr/RankedPageQuestions-tRDrjOJP.mjs                       1.85 kB │ gzip:   0.79 kB
+.output/server/_ssr/consoleHome.functions-CAsP_CG4.mjs                     1.87 kB │ gzip:   0.93 kB
+.output/server/_ssr/sheetAvailability-Dk26AQsk.mjs                         1.89 kB │ gzip:   0.89 kB
+.output/server/_ssr/unsubscribe-CwrExBhE.mjs                               1.89 kB │ gzip:   0.85 kB
+.output/server/_runtime.mjs                                                1.92 kB │ gzip:   0.86 kB
+.output/server/_libs/next-themes.mjs                                       1.93 kB │ gzip:   1.01 kB
+.output/server/_ssr/public.functions-Dr3f3dY1.mjs                          1.99 kB │ gzip:   0.99 kB
+.output/server/_ssr/tabBistroHours-Cu9A0HFh.mjs                            2.03 kB │ gzip:   1.01 kB
+.output/server/_ssr/card-AJRi2RAU.mjs                                      2.03 kB │ gzip:   0.60 kB
+.output/server/_ssr/consoleClosures-CaSSnm12.mjs                           2.17 kB │ gzip:   1.04 kB
+.output/server/_libs/ufo.mjs                                               2.20 kB │ gzip:   0.71 kB
+.output/server/_ssr/locationDetection-DLVdw2xm.mjs                         2.36 kB │ gzip:   1.06 kB
+.output/server/_ssr/fees-BRscNRcf.mjs                                      2.57 kB │ gzip:   1.19 kB
+.output/server/_ssr/performanceOptimizer-q4mR5A2e.mjs                      2.59 kB │ gzip:   1.05 kB
+.output/server/_ssr/catalogue-BXvT2LDt.mjs                                 2.65 kB │ gzip:   1.10 kB
+.output/server/_ssr/DestinationCard-CPptcV6A.mjs                           2.65 kB │ gzip:   0.96 kB
+.output/server/_ssr/TravelCardPhoto-CJnUQuZa.mjs                           2.67 kB │ gzip:   1.10 kB
+.output/server/_ssr/v2TourImages-DGN4cQmD.mjs                              2.73 kB │ gzip:   1.39 kB
+.output/server/_libs/react-fast-compare.mjs                                2.78 kB │ gzip:   0.91 kB
+.output/server/_ssr/CtaBand-BzCTkI9l.mjs                                   2.87 kB │ gzip:   1.14 kB
+.output/server/_ssr/StayAndTourCTA-DbaZVV12.mjs                            3.06 kB │ gzip:   1.28 kB
+.output/server/_libs/class-variance-authority+clsx.mjs                     3.13 kB │ gzip:   1.23 kB
+.output/server/_ssr/channel.functions-DWNnoN0x.mjs                         3.31 kB │ gzip:   1.45 kB
+.output/server/_ssr/brandFacts-DnSgKOiF.mjs                                3.49 kB │ gzip:   1.72 kB
+.output/server/_ssr/bookingConsole.functions-zRAOWOS-.mjs                  3.49 kB │ gzip:   1.33 kB
+.output/server/_ssr/StayEatExplore-DR8dPVYj.mjs                            3.54 kB │ gzip:   1.45 kB
+.output/server/_ssr/helmet-Cd1Kbkl9.mjs                                    3.60 kB │ gzip:   1.55 kB
+.output/server/_ssr/destinations-CP03xP-E.mjs                              3.62 kB │ gzip:   1.11 kB
+.output/server/_ssr/engineOps.functions-jl2PotPb.mjs                       3.68 kB │ gzip:   1.31 kB
+.output/server/_ssr/catalogue-Cvr7AI0A.mjs                                 3.72 kB │ gzip:   1.64 kB
+.output/server/_ssr/ConsoleBits-BovUdwiB.mjs                               3.82 kB │ gzip:   1.46 kB
+.output/server/_ssr/tourPageData-CaEkVdIq.mjs                              3.90 kB │ gzip:   1.61 kB
+.output/server/_ssr/dialog-CUk5G_Iw.mjs                                    4.00 kB │ gzip:   1.29 kB
+.output/server/_ssr/saturdayGroupTour-DZmeYbE3.mjs                         4.04 kB │ gzip:   1.82 kB
+.output/server/_ssr/PlanTripLinks-DVZMcm6g.mjs                             4.25 kB │ gzip:   1.50 kB
+.output/server/_ssr/consoleSettings-DMiaxci6.mjs                           4.40 kB │ gzip:   1.97 kB
+.output/server/_ssr/shnonpedengCamp-Ce1jJ04u.mjs                           4.50 kB │ gzip:   1.84 kB
+.output/server/_ssr/ReviewCard-CY_vZGB4.mjs                                4.65 kB │ gzip:   1.63 kB
+.output/server/_ssr/Breadcrumbs-BDsq5RLP.mjs                               4.66 kB │ gzip:   1.27 kB
+.output/server/_ssr/console.functions-TWNcW35V.mjs                         4.68 kB │ gzip:   1.88 kB
+.output/server/_ssr/hidden-places-in-meghalaya-OdEKS8Vg.mjs                5.35 kB │ gzip:   1.77 kB
+.output/server/_ssr/quickSearch-CiYa9KGW.mjs                               5.46 kB │ gzip:   2.32 kB
+.output/server/_ssr/zimmerstackPlan-eaI9hTz_.mjs                           5.65 kB │ gzip:   2.35 kB
+.output/server/_ssr/3-day-meghalaya-itinerary-DW011DSj.mjs                 5.76 kB │ gzip:   1.82 kB
+.output/server/_ssr/bistroGoogleSync.server-BVIzEZuh.mjs                   5.82 kB │ gzip:   2.42 kB
+.output/server/_ssr/DestinationGallery-XjAUUxp_.mjs                        5.92 kB │ gzip:   1.93 kB
+.output/server/_ssr/pricing-Ekv7I1PD.mjs                                   5.96 kB │ gzip:   2.61 kB
+.output/server/_ssr/faq-CsnkQ4Jn.mjs                                       5.98 kB │ gzip:   2.04 kB
+.output/server/_ssr/plan-trip-with-ai-C2dJJbe5.mjs                         6.15 kB │ gzip:   2.15 kB
+.output/server/_ssr/meghalaya-couple-tour-package-DkTw3Zrt.mjs             6.41 kB │ gzip:   1.84 kB
+.output/server/_ssr/router-compat-CIwXSKZr.mjs                             6.50 kB │ gzip:   2.17 kB
+.output/server/_ssr/restaurants-BDGrOaVA.mjs                               6.51 kB │ gzip:   2.07 kB
+.output/server/_ssr/EnquiryForm-DSJajqcY.mjs                               6.60 kB │ gzip:   2.10 kB
+.output/server/_ssr/workation-CCsWyAME.mjs                                 7.06 kB │ gzip:   2.81 kB
+.output/server/_ssr/5-day-meghalaya-itinerary-CzIVQp1x.mjs                 7.22 kB │ gzip:   2.18 kB
+.output/server/_ssr/xtsy-vs-zostel-DzTKmaZh.mjs                            7.29 kB │ gzip:   2.43 kB
+.output/server/_ssr/shillong-tour-package-ZuXdDU78.mjs                     7.31 kB │ gzip:   2.07 kB
+.output/server/_ssr/zoho.server-B-uRcbaC.mjs                               7.34 kB │ gzip:   2.97 kB
+.output/server/_ssr/confirmation-BoolbXiZ.mjs                              7.66 kB │ gzip:   2.02 kB
+.output/server/_libs/radix-ui__react-switch.mjs                            7.83 kB │ gzip:   2.24 kB
+.output/server/_ssr/sheetSync.server-BIKhDY4C.mjs                          7.83 kB │ gzip:   3.01 kB
+.output/server/_ssr/meghalaya-photo-gallery-35ARK0-u.mjs                   7.95 kB │ gzip:   2.23 kB
+.output/server/_ssr/publicEngine.functions-Dt3f-fcZ.mjs                    8.03 kB │ gzip:   2.51 kB
+.output/server/_ssr/campsite-dawki-CDLYqVmo.mjs                            8.03 kB │ gzip:   2.70 kB
+.output/server/_ssr/channel.functions-DUF7-LhF.mjs                         8.30 kB │ gzip:   2.56 kB
+.output/server/_ssr/engineOps.functions-DAbwDNaU.mjs                       8.70 kB │ gzip:   2.08 kB
+.output/server/_city-D6_oNjQw.mjs                                          8.94 kB │ gzip:   2.50 kB
+.output/server/_ssr/best-time-to-visit-meghalaya-BjZT5R3Y.mjs              9.02 kB │ gzip:   2.56 kB
+.output/server/_ssr/budget-trip-to-meghalaya-DCL4UuqF.mjs                  9.49 kB │ gzip:   2.36 kB
+.output/server/_ssr/safety-house-rules-B-EVsZpa.mjs                        9.57 kB │ gzip:   2.90 kB
+.output/server/_ssr/hostelBookingFaqs-D-D29prx.mjs                         9.72 kB │ gzip:   3.35 kB
+.output/server/_ssr/admin-BM0PmZbC.mjs                                     9.72 kB │ gzip:   2.69 kB
+.output/server/_ssr/contentsquareLoader-BbyuG41I.mjs                       9.74 kB │ gzip:   3.65 kB
+.output/server/_ssr/xtsy-facts-BkSy3aHE.mjs                                9.89 kB │ gzip:   3.40 kB
+.output/server/_ssr/meghalaya-festivals-DH7DrWyt.mjs                      10.04 kB │ gzip:   3.16 kB
+.output/server/_ssr/invoices._id-CXP2b3nN.mjs                             10.21 kB │ gzip:   2.35 kB
+.output/server/_ssr/tripChatEvents-XJaiEh8F.mjs                           10.26 kB │ gzip:   4.00 kB
+.output/server/_ssr/catering-CyjytGkb.mjs                                 10.26 kB │ gzip:   2.95 kB
+.output/server/_ssr/useAnalytics-vAM4KPc4.mjs                             10.38 kB │ gzip:   2.99 kB
+.output/server/_ssr/room-photos-CZjYlbtA.mjs                              10.38 kB │ gzip:   3.36 kB
+.output/server/_ssr/invoices-ClqHq-1F.mjs                                 10.93 kB │ gzip:   2.46 kB
+.output/server/_ssr/partner-stays-DB6EIePL.mjs                            11.14 kB │ gzip:   3.24 kB
+.output/server/_ssr/destination-wedding-shillong-BaKScGCi.mjs             11.24 kB │ gzip:   3.79 kB
+.output/server/_ssr/places-to-visit-in-meghalaya-CiG9ayHb.mjs             11.25 kB │ gzip:   3.16 kB
+.output/server/_libs/date-fns__tz.mjs                                     11.49 kB │ gzip:   3.31 kB
+.output/server/_ssr/xtsy-rentals--1xXwcpM.mjs                             11.58 kB │ gzip:   4.08 kB
+.output/server/_ssr/group-bookings-meghalaya-TqCNMy9V.mjs                 12.15 kB │ gzip:   3.93 kB
+.output/server/_libs/supabase__functions-js.mjs                           12.47 kB │ gzip:   3.44 kB
+.output/server/_libs/tanstack__history.mjs                                12.48 kB │ gzip:   3.69 kB
+.output/server/_ssr/CategoryV2-NHr7lUUZ.mjs                               12.78 kB │ gzip:   3.74 kB
+.output/server/_ssr/tabBistroMenu-Dz4llXc8.mjs                            12.87 kB │ gzip:   2.71 kB
+.output/server/_ssr/meghalaya-tour-packages-305Kezpx.mjs                  12.93 kB │ gzip:   3.03 kB
+.output/server/_ssr/consoleHome.functions--mUEpjio.mjs                    13.04 kB │ gzip:   4.69 kB
+.output/server/_libs/radix-ui__react-tooltip.mjs                          13.26 kB │ gzip:   3.38 kB
+.output/server/_ssr/tours-CxgEdTdm.mjs                                    13.28 kB │ gzip:   4.32 kB
+.output/server/_ssr/guides-_erMoEkI.mjs                                   13.46 kB │ gzip:   3.99 kB
+.output/server/_ssr/engineOps.core-Bmk7nD63.mjs                           13.57 kB │ gzip:   4.44 kB
+.output/server/_ssr/about.index-CtjJbAnY.mjs                              13.64 kB │ gzip:   4.10 kB
+.output/server/_ssr/inbox-BP6BDYpn.mjs                                    14.31 kB │ gzip:   4.05 kB
+.output/server/_ssr/booking-engine-CMQJXEpX.mjs                           14.54 kB │ gzip:   3.75 kB
+.output/server/_ssr/inventory-DhLP8qQw.mjs                                15.23 kB │ gzip:   4.32 kB
+.output/server/_ssr/AdventureLanding-CMoPS5kN.mjs                         15.54 kB │ gzip:   5.53 kB
+.output/server/_ssr/contact-BMLx4D6K.mjs                                  15.58 kB │ gzip:   4.12 kB
+.output/server/_ssr/luxury-glamping-shillong-C0eesovI.mjs                 15.80 kB │ gzip:   3.86 kB
+.output/server/_ssr/BookExtras-C-xQEHZZ.mjs                               16.57 kB │ gzip:   5.11 kB
+.output/server/_ssr/route-nI4tNipc.mjs                                    16.76 kB │ gzip:   4.66 kB
+.output/server/_ssr/blocks-CtSOvjQr.mjs                                   17.07 kB │ gzip:   4.79 kB
+.output/server/_ssr/homestays-in-shillong-Cyux7hhz.mjs                    17.07 kB │ gzip:   3.89 kB
+.output/server/_ssr/FoodAddonsSection-4oNFnXcz.mjs                        17.33 kB │ gzip:   3.23 kB
+.output/server/_ssr/hotels-in-shillong-DNPCFaH5.mjs                       17.38 kB │ gzip:   3.98 kB
+.output/server/_ssr/ExpeditionsV2-srXtgzxd.mjs                            17.85 kB │ gzip:   4.74 kB
+.output/server/_libs/tanstack__react-query.mjs                            17.94 kB │ gzip:   5.05 kB
+.output/server/_ssr/meghalaya-for-international-tourists-6hVfSwsk.mjs     18.06 kB │ gzip:   3.42 kB
+.output/server/_ssr/rankedPageQuestions-BQKfd-3W.mjs                      18.60 kB │ gzip:   6.29 kB
+.output/server/_ssr/PageFaq-CDsiENgJ.mjs                                  18.99 kB │ gzip:   6.93 kB
+.output/server/_ssr/CampBooking-D5GLZ7a9.mjs                              19.73 kB │ gzip:   4.96 kB
+.output/server/_libs/radix-ui__react-collection.mjs                       20.13 kB │ gzip:   4.50 kB
+.output/server/_libs/@radix-ui/react-popover+[...].mjs                    20.34 kB │ gzip:   5.04 kB
+.output/server/_ssr/console.functions-Cbmor_8r.mjs                        20.73 kB │ gzip:   5.76 kB
+.output/server/_ssr/bookings-PCrf511p.mjs                                 21.24 kB │ gzip:   4.14 kB
+.output/server/_ssr/bookingConsole.functions-BcRsET4K.mjs                 21.52 kB │ gzip:   6.16 kB
+.output/server/_slug-B0Am5uwX.mjs                                         21.77 kB │ gzip:   5.82 kB
+.output/server/_ssr/stays-CQbmHatI.mjs                                    21.88 kB │ gzip:   4.90 kB
+.output/server/_ssr/hostel-booking-BcOQJ9Sc.mjs                           22.29 kB │ gzip:   4.80 kB
+.output/server/_ssr/StayHubV2-BQoaaNDh.mjs                                22.43 kB │ gzip:   5.70 kB
+.output/server/_ssr/IntelligentSearchOverlay-B87_4hT4.mjs                 22.54 kB │ gzip:   6.35 kB
+.output/server/_ssr/how-to-reach-meghalaya-C9XH_yt0.mjs                   23.49 kB │ gzip:   4.11 kB
+.output/server/_ssr/searchIndex-DLbZ_Gs5.mjs                              23.63 kB │ gzip:   6.75 kB
+.output/server/_ssr/hostel-near-me-CLwnGyMj.mjs                           23.85 kB │ gzip:   5.36 kB
+.output/server/_ssr/settings-DuGxX2te.mjs                                 24.53 kB │ gzip:   6.41 kB
+.output/server/_ssr/guwahati-to-shillong-transport-BhEUaG8T.mjs           24.60 kB │ gzip:   6.51 kB
+.output/server/_libs/radix-ui__react-toast.mjs                            25.27 kB │ gzip:   5.88 kB
+.output/server/_libs/@floating-ui/dom+[...].mjs                           25.35 kB │ gzip:   6.56 kB
+.output/server/_libs/@floating-ui/core+[...].mjs                          25.52 kB │ gzip:   6.31 kB
+.output/server/_libs/sentry__core.mjs                                     26.33 kB │ gzip:   6.84 kB
+.output/server/_ssr/terms-of-service-CaSaS-h0.mjs                         27.64 kB │ gzip:   5.18 kB
+.output/server/_ssr/signaturePackages-CzQL6Xqi.mjs                        27.85 kB │ gzip:   6.29 kB
+.output/server/_libs/h3+rou3+srvx.mjs                                     28.08 kB │ gzip:   7.38 kB
+.output/server/_ssr/publicEngine.core-jKZRX2Ke.mjs                        28.19 kB │ gzip:   9.20 kB
+.output/server/_ssr/backpacking-india-C_AmumGU.mjs                        29.31 kB │ gzip:   6.74 kB
+.output/server/_libs/@tanstack/router-core+[...].mjs                      29.73 kB │ gzip:   8.06 kB
+.output/server/_libs/react-helmet-async+[...].mjs                         29.79 kB │ gzip:   7.55 kB
+.output/server/_ssr/zimmerstack.server-DbwIWdtm.mjs                       29.95 kB │ gzip:   9.07 kB
+.output/server/_ssr/ssr.mjs                                               30.69 kB │ gzip:   9.88 kB
+.output/server/_ssr/privacy-policy-Cve0aBWL.mjs                           31.02 kB │ gzip:   5.05 kB
+.output/server/_state-KSktuYVr.mjs                                        32.15 kB │ gzip:   8.45 kB
+.output/server/_libs/@floating-ui/react-dom+[...].mjs                     32.52 kB │ gzip:   8.21 kB
+.output/server/_ssr/things-to-do-in-meghalaya-mxgiE_iv.mjs                32.76 kB │ gzip:   7.87 kB
+.output/server/_ssr/pricing-cancellation-policy-CJug6F57.mjs              33.08 kB │ gzip:   5.09 kB
+.output/server/_libs/@radix-ui/react-checkbox+[...].mjs                   33.85 kB │ gzip:   8.09 kB
+.output/server/_tanstack-start-manifest_v-DmwgHiMi.mjs                    36.86 kB │ gzip:   5.76 kB
+.output/server/_ssr/DestinationV2-CEAQj2oo.mjs                            37.05 kB │ gzip:   9.24 kB
+.output/server/_libs/supabase__supabase-js.mjs                            38.51 kB │ gzip:  11.35 kB
+.output/server/_ssr/merch-B-cC28rr.mjs                                    41.32 kB │ gzip:   8.66 kB
+.output/server/_libs/h3-v2+rou3+srvx.mjs                                  41.45 kB │ gzip:  11.24 kB
+.output/server/_ssr/tab-bistro-BXNPVPwA.mjs                               42.77 kB │ gzip:  11.82 kB
+.output/server/_ssr/meghalayaTransportReference-pYf7csXN.mjs              44.71 kB │ gzip:  14.25 kB
+.output/server/_ssr/experience-by-xtsy-Cju6eDkQ.mjs                       45.03 kB │ gzip:  13.17 kB
+.output/server/_libs/@radix-ui/react-select+[...].mjs                     48.21 kB │ gzip:  10.06 kB
+.output/server/_ssr/female-travellers-apYcgk3l.mjs                        49.36 kB │ gzip:  11.08 kB
+.output/server/_libs/supabase__phoenix.mjs                                50.52 kB │ gzip:  12.75 kB
+.output/server/_libs/lucide-react.mjs                                     52.37 kB │ gzip:  10.15 kB
+.output/server/_libs/sonner.mjs                                           53.61 kB │ gzip:  12.09 kB
+.output/server/_slug-Cncov9un.mjs                                         65.26 kB │ gzip:  14.35 kB
+.output/server/_libs/@radix-ui/react-dialog+[...].mjs                     65.99 kB │ gzip:  15.58 kB
+.output/server/_ssr/routes-DwxIin16.mjs                                   68.51 kB │ gzip:  17.06 kB
+.output/server/_ssr/pet-friendly-CJk6ZCWy.mjs                             73.01 kB │ gzip:  16.16 kB
+.output/server/_ssr/book-BKw9f0Ju.mjs                                     75.99 kB │ gzip:  17.04 kB
+.output/server/_libs/supabase__realtime-js.mjs                            83.23 kB │ gzip:  21.49 kB
+.output/server/_ssr/server-FYrVMWaM.mjs                                   85.48 kB │ gzip:  23.07 kB
+.output/server/_libs/tailwind-merge.mjs                                   88.90 kB │ gzip:  15.69 kB
+.output/server/_libs/date-fns.mjs                                        103.52 kB │ gzip:  18.46 kB
+.output/server/_libs/supabase__postgrest-js.mjs                          112.03 kB │ gzip:  23.69 kB
+.output/server/_libs/zimmerstack__connect.mjs                            115.11 kB │ gzip:  35.30 kB
+.output/server/_libs/@supabase/storage-js+[...].mjs                      127.69 kB │ gzip:  24.09 kB
+.output/server/_libs/react-day-picker.mjs                                133.56 kB │ gzip:  26.47 kB
+.output/server/_libs/tanstack__query-core.mjs                            143.14 kB │ gzip:  34.05 kB
+.output/server/_ssr/roomTypes-CvALwZ61.mjs                               144.09 kB │ gzip:  22.73 kB
+.output/server/_ssr/travelData-EJH-Pm_6.mjs                              165.61 kB │ gzip:  44.03 kB
+.output/server/_libs/zod.mjs                                             179.10 kB │ gzip:  39.79 kB
+.output/server/_ssr/HomeReviews-BbEjDxAy.mjs                             184.76 kB │ gzip:  59.70 kB
+.output/server/_ssr/TripChat-C5HkDCt-.mjs                                224.82 kB │ gzip:  53.08 kB
+.output/server/_libs/supabase__auth-js.mjs                               321.30 kB │ gzip:  65.29 kB
+.output/server/_libs/framer-motion.mjs                                   347.09 kB │ gzip:  92.18 kB
+.output/server/index.mjs                                                 459.11 kB │ gzip:  83.55 kB
+.output/server/_ssr/router-C2yqi70e.mjs                                  465.01 kB │ gzip: 123.84 kB
+.output/server/_libs/@tanstack/react-router+[...].mjs                    805.72 kB │ gzip: 171.94 kB
+.output/server/_ssr/guidePageData-CnBisrrF.mjs                         1,037.01 kB │ gzip: 253.16 kB
+
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-router/dist/esm/index.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-router/dist/esm/index.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-router/dist/esm/CatchBoundary.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-router/dist/esm/CatchBoundary.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-router/dist/esm/ClientOnly.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-router/dist/esm/ClientOnly.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-router/dist/esm/useRouter.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-router/dist/esm/useRouter.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-router/dist/esm/useMatch.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-router/dist/esm/useMatch.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-router/dist/esm/link.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-router/dist/esm/link.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-router/dist/esm/Matches.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-router/dist/esm/Matches.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-router/dist/esm/RouterProvider.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-router/dist/esm/RouterProvider.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-router/dist/esm/useNavigate.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-router/dist/esm/useNavigate.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-router/dist/esm/Match.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-router/dist/esm/Match.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-router/dist/esm/utils.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-router/dist/esm/utils.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@radix-ui/react-toast/dist/index.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@radix-ui/react-toast/dist/index.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-router/dist/esm/nonRouteComponentContext.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-router/dist/esm/nonRouteComponentContext.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-router/dist/esm/useRouterState.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-router/dist/esm/useRouterState.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-router/dist/esm/useBlocker.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-router/dist/esm/useBlocker.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-router/dist/esm/useLocation.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-router/dist/esm/useLocation.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@radix-ui/react-switch/dist/index.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@radix-ui/react-switch/dist/index.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-router/dist/esm/Asset.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-router/dist/esm/Asset.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/sonner/dist/index.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/sonner/dist/index.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m 'use client';
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-router/dist/esm/routerContext.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-router/dist/esm/routerContext.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-router/dist/esm/HeadContent.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-router/dist/esm/HeadContent.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/next-themes/dist/index.mjs" may not be preserved when bundling.
+ - module level directive may not be preserved in node_modules/next-themes/dist/index.mjs at 0..13
+ [38;5;240m │[0m 
+ [38;5;240m │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@radix-ui/react-tooltip/dist/index.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@radix-ui/react-tooltip/dist/index.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-router/dist/esm/Transitioner.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-router/dist/esm/Transitioner.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-router/dist/esm/matchContext.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-router/dist/esm/matchContext.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@radix-ui/react-visually-hidden/dist/index.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@radix-ui/react-visually-hidden/dist/index.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@radix-ui/react-primitive/dist/index.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@radix-ui/react-primitive/dist/index.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@radix-ui/react-collection/dist/index.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@radix-ui/react-collection/dist/index.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@radix-ui/react-dismissable-layer/dist/index.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@radix-ui/react-dismissable-layer/dist/index.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@radix-ui/react-portal/dist/index.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@radix-ui/react-portal/dist/index.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@radix-ui/react-presence/dist/index.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@radix-ui/react-presence/dist/index.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-query/build/modern/HydrationBoundary.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-query/build/modern/HydrationBoundary.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-query/build/modern/IsRestoringProvider.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-query/build/modern/IsRestoringProvider.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-query/build/modern/QueryErrorResetBoundary.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-query/build/modern/QueryErrorResetBoundary.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-query/build/modern/useQueries.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-query/build/modern/useQueries.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-query/build/modern/useSuspenseQueries.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-query/build/modern/useSuspenseQueries.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-query/build/modern/useQuery.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-query/build/modern/useQuery.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-query/build/modern/useSuspenseQuery.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-query/build/modern/useSuspenseQuery.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-query/build/modern/useSuspenseInfiniteQuery.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-query/build/modern/useSuspenseInfiniteQuery.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-query/build/modern/QueryClientProvider.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-query/build/modern/QueryClientProvider.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@radix-ui/react-popper/dist/index.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@radix-ui/react-popper/dist/index.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-query/build/modern/useIsFetching.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-query/build/modern/useIsFetching.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-query/build/modern/useInfiniteQuery.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-query/build/modern/useInfiniteQuery.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-query/build/modern/useMutationState.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-query/build/modern/useMutationState.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-query/build/modern/useMutation.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-query/build/modern/useMutation.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@radix-ui/react-focus-scope/dist/index.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@radix-ui/react-focus-scope/dist/index.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@radix-ui/react-label/dist/index.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@radix-ui/react-label/dist/index.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-query/build/modern/useBaseQuery.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-query/build/modern/useBaseQuery.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@radix-ui/react-arrow/dist/index.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@radix-ui/react-arrow/dist/index.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@tanstack/react-query/build/modern/errorBoundaryUtils.js" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@tanstack/react-query/build/modern/errorBoundaryUtils.js:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@radix-ui/react-popover/dist/index.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@radix-ui/react-popover/dist/index.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@radix-ui/react-checkbox/dist/index.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@radix-ui/react-checkbox/dist/index.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/components/LayoutGroup/index.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/components/LayoutGroup/index.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/components/AnimatePresence/index.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/components/AnimatePresence/index.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/render/dom/features-animation.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/render/dom/features-animation.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/components/LazyMotion/index.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/components/LazyMotion/index.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/components/AnimatePresence/PresenceChild.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/components/AnimatePresence/PresenceChild.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/components/MotionConfig/index.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/components/MotionConfig/index.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/utils/use-in-view.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/utils/use-in-view.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/value/use-motion-template.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/value/use-motion-template.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/value/use-spring.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/value/use-spring.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/utils/use-animation-frame.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/utils/use-animation-frame.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/components/AnimatePresence/PopChild.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/components/AnimatePresence/PopChild.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/value/use-will-change/index.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/value/use-will-change/index.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/utils/use-cycle.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/utils/use-cycle.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/utils/use-instant-transition.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/utils/use-instant-transition.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/utils/reduced-motion/use-reduced-motion.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/utils/reduced-motion/use-reduced-motion.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/utils/use-page-in-view.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/utils/use-page-in-view.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/utils/use-unmount-effect.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/utils/use-unmount-effect.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/utils/use-isomorphic-effect.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/utils/use-isomorphic-effect.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/motion/utils/use-visual-state.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/motion/utils/use-visual-state.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/utils/reduced-motion/use-reduced-motion-config.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/utils/reduced-motion/use-reduced-motion-config.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/utils/use-force-update.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/utils/use-force-update.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/render/dom/features-max.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/render/dom/features-max.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/value/use-motion-value.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/value/use-motion-value.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/render/dom/features-min.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/render/dom/features-min.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/utils/use-motion-value-event.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/utils/use-motion-value-event.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/context/LayoutGroupContext.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/context/LayoutGroupContext.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/context/MotionConfigContext.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/context/MotionConfigContext.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/value/use-scroll.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/value/use-scroll.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/value/use-velocity.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/value/use-velocity.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/animation/hooks/use-animate-style.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/animation/hooks/use-animate-style.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/value/use-follow-value.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/value/use-follow-value.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/value/use-time.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/value/use-time.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/context/MotionContext/index.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/context/MotionContext/index.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/value/use-transform.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/value/use-transform.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/context/PresenceContext.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/context/PresenceContext.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/animation/hooks/use-animate.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/animation/hooks/use-animate.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/context/SwitchLayoutGroupContext.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/context/SwitchLayoutGroupContext.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/animation/hooks/use-animation.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/animation/hooks/use-animation.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/components/AnimatePresence/use-presence-data.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/components/AnimatePresence/use-presence-data.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/events/use-dom-event.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/events/use-dom-event.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/animation/hooks/use-animated-state.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/animation/hooks/use-animated-state.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/components/AnimateSharedLayout.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/components/AnimateSharedLayout.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/context/DeprecatedLayoutGroupContext.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/context/DeprecatedLayoutGroupContext.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/value/use-inverted-scale.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/value/use-inverted-scale.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/components/AnimatePresence/use-presence.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/components/AnimatePresence/use-presence.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@radix-ui/react-select/dist/index.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@radix-ui/react-select/dist/index.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@radix-ui/react-dialog/dist/index.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@radix-ui/react-dialog/dist/index.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/context/LazyContext.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/context/LazyContext.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/value/use-combine-values.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/value/use-combine-values.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/utils/use-constant.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/utils/use-constant.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/utils/use-is-mounted.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/utils/use-is-mounted.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/value/use-computed.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/value/use-computed.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@radix-ui/react-focus-guards/dist/index.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@radix-ui/react-focus-guards/dist/index.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/components/Reorder/Group.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/components/Reorder/Group.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/components/Reorder/Item.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/components/Reorder/Item.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/@radix-ui/react-direction/dist/index.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/@radix-ui/react-direction/dist/index.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/motion/features/layout/MeasureLayout.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/motion/features/layout/MeasureLayout.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/motion/index.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/motion/index.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/context/ReorderContext.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/context/ReorderContext.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/render/html/use-html-visual-state.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/render/html/use-html-visual-state.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/motion/utils/use-visual-element.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/motion/utils/use-visual-element.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/render/svg/use-svg-visual-state.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/render/svg/use-svg-visual-state.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/motion/utils/use-motion-ref.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/motion/utils/use-motion-ref.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/context/MotionContext/create.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/context/MotionContext/create.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/render/dom/use-render.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/render/dom/use-render.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/render/html/use-props.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/render/html/use-props.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[33m[33m[MODULE_LEVEL_DIRECTIVE] [0mThe semantics of the module level directive "use client" in "node_modules/framer-motion/dist/es/render/svg/use-props.mjs" may not be preserved when bundling.
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m node_modules/framer-motion/dist/es/render/svg/use-props.mjs:1:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m1 │[0m "use client";
+ [38;5;240m  │[0m ──────┬──────  
+ [38;5;240m  │[0m       ╰──────── module level directive may not be preserved
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: For more information, see https://rolldown.rs/in-depth/directives#other-directives
+[38;5;246m───╯[0m
+[39m
+[32m✓ built in 955ms[39m
+[info] Generated [36m.output/nitro.json[39m
+[success] [nitro] You can preview this build using `npx vite preview`
