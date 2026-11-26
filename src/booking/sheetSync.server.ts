@@ -70,8 +70,13 @@ async function approvedSheet(request: Request): Promise<{ client: any; link: { i
   if (!/^[A-Za-z0-9_-]{40,100}$/.test(token)) return json({ error: 'Unauthorized' }, 401);
   const client = await db();
   if (!client) return json({ error: 'Database unavailable' }, 503);
-  const link = await client.from('be_sheet_links').select('id,status,writes_since').eq('token_hash', sha256(token)).maybeSingle();
+  const find = async (cols: string): Promise<{ data: any; error: unknown }> => client.from('be_sheet_links').select(cols).eq('token_hash', sha256(token)).maybeSingle();
+  let link = await find('id,status,writes_since');
+  // Before the write-back migration (0031) runs, writes_since does not exist yet: the counts must
+  // still get through, with write-back simply off.
+  if (link.error) link = await find('id,status');
   if (link.error) return json({ error: 'Database unavailable' }, 503);
+  if (link.data) link.data.writes_since ??= null;
   if (!link.data || link.data.status === 'revoked') return json({ error: 'Unauthorized' }, 401);
   if (link.data.status !== 'active') return json({ status: 'waiting-for-approval', detail: 'Approve this sheet’s pairing code in the XTSY console (Stays).' }, 403);
   return { client, link: link.data };
