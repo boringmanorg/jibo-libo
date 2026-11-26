@@ -285,7 +285,12 @@ function sendOnce(props) {
   // The counts are read AFTER writing, so they already include the bookings just written.
   var today = todayIndia();
   var cells = parseRoomManagement(sheet.getDataRange().getDisplayValues(), today);
-  var res = post(props, '/api/public/hooks/sheet-availability', { from: today, cells: cells, applied: wrote.applied, waiting: wrote.waiting });
+  // Only send the write-back fields when there is something in them, so the counts still go through
+  // to a website that has not been published with write-back yet.
+  var payload = { from: today, cells: cells };
+  if (wrote.applied.length) payload.applied = wrote.applied;
+  if (wrote.waiting.length) payload.waiting = wrote.waiting;
+  var res = post(props, '/api/public/hooks/sheet-availability', payload);
   (res.body.acked || []).forEach(function (id) { props.deleteProperty('DONE_' + id); });
   var msg = res.code === 403 ? 'Waiting for approval: approve pairing code ' + (props.getProperty('PAIR_CODE') || '') + ' in the XTSY console (Stays).'
     : 'Sent ' + cells.length + ' room-nights' + (wrote.applied.length ? ', wrote ' + wrote.applied.length + ' booking(s)' : '')
