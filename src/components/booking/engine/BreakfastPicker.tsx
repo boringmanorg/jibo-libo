@@ -26,7 +26,7 @@ export default function BreakfastPicker({ picks, onChange, mornings }: { picks: 
       <div className="inline-flex rounded-full border border-xt-line bg-white/60 p-1" role="tablist" aria-label="Breakfast menu">
         {GROUPS.map((g) => (
           <button key={g} type="button" role="tab" aria-selected={group === g} onClick={() => setGroup(g)}
-            className={cn('min-h-10 rounded-full px-4 text-sm font-semibold', group === g ? 'bg-xt-ink text-xt-sand' : 'text-xt-mute hover:text-xt-ink')}>{g}</button>
+            className={cn('min-h-[48px] rounded-full px-4 text-sm font-semibold', group === g ? 'bg-xt-ink text-xt-sand' : 'text-xt-mute hover:text-xt-ink')}>{g}</button>
         ))}
       </div>
       <div className="mt-3 max-h-[420px] space-y-4 overflow-y-auto rounded-2xl border border-xt-line bg-white p-3">
@@ -43,7 +43,7 @@ export default function BreakfastPicker({ picks, onChange, mornings }: { picks: 
         <div className="mt-3 rounded-2xl bg-xt-cream p-4 text-sm text-xt-ink">
           <p className="font-semibold">Each morning: {chosen.map((i) => `${picks[i.id]} × ${i.name}`).join(', ')}</p>
           <p className="mt-1 text-xt-mute">{inr(perMorning)} a morning × {mornings} morning{mornings === 1 ? '' : 's'} = {inr(perMorning * mornings)}, plus GST</p>
-          <button type="button" onClick={() => onChange({})} className="mt-2 min-h-10 text-sm font-semibold text-xt-crimson underline">Clear breakfast</button>
+          <button type="button" onClick={() => onChange({})} className="mt-2 min-h-[48px] text-sm font-semibold text-xt-crimson underline">Clear breakfast</button>
         </div>
       )}
     </div>
@@ -55,12 +55,12 @@ function Item({ item, qty, onQty }: { item: BreakfastItem; qty: number; onQty: (
     <li className="flex items-center justify-between gap-3 py-2">
       <span className="min-w-0 text-sm text-xt-ink">{item.name}<span className="block text-xs text-xt-mute">{inr(item.price)}</span></span>
       {qty === 0 ? (
-        <button type="button" onClick={() => onQty(1)} className="min-h-12 shrink-0 rounded-full border border-xt-ink px-5 text-sm font-semibold text-xt-ink">Add</button>
+        <button type="button" onClick={() => onQty(1)} className="min-h-[48px] shrink-0 rounded-full border border-xt-ink px-5 text-sm font-semibold text-xt-ink">Add</button>
       ) : (
         <span className="flex shrink-0 items-center gap-1" role="group" aria-label={`${item.name} quantity`}>
-          <button type="button" aria-label={`One less ${item.name}`} onClick={() => onQty(qty - 1)} className="flex h-12 w-12 items-center justify-center rounded-full border border-xt-line"><Minus className="h-4 w-4" /></button>
+          <button type="button" aria-label={`One less ${item.name}`} onClick={() => onQty(qty - 1)} className="flex h-[48px] w-[48px] items-center justify-center rounded-full border border-xt-line"><Minus className="h-4 w-4" /></button>
           <output className="w-6 text-center font-bold">{qty}</output>
-          <button type="button" aria-label={`One more ${item.name}`} disabled={qty >= MAX_BREAKFAST_QTY} onClick={() => onQty(qty + 1)} className="flex h-12 w-12 items-center justify-center rounded-full border border-xt-line disabled:opacity-35"><Plus className="h-4 w-4" /></button>
+          <button type="button" aria-label={`One more ${item.name}`} disabled={qty >= MAX_BREAKFAST_QTY} onClick={() => onQty(qty + 1)} className="flex h-[48px] w-[48px] items-center justify-center rounded-full border border-xt-line disabled:opacity-35"><Plus className="h-4 w-4" /></button>
         </span>
       )}
     </li>

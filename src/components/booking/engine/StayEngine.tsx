@@ -149,7 +149,7 @@ export default function StayEngine({ mode, photos, closures, sheet, initialLocat
                 <div className="inline-flex w-fit rounded-full border border-xt-line bg-white/60 p-1" role="tablist" aria-label="Room type">
                   {([['all', 'All stays'], ['bed', 'Dorm beds'], ['room', 'Private rooms']] as const).map(([k, label]) => (
                     <button key={k} type="button" role="tab" aria-selected={filter === k} onClick={() => setFilter(k)}
-                      className={cn('min-h-12 rounded-full px-4 text-sm font-semibold transition-colors', filter === k ? 'bg-xt-ink text-xt-sand' : 'text-xt-mute hover:text-xt-ink')}>
+                      className={cn('min-h-[48px] rounded-full px-4 text-sm font-semibold transition-colors', filter === k ? 'bg-xt-ink text-xt-sand' : 'text-xt-mute hover:text-xt-ink')}>
                       {label}
                     </button>
                   ))}
@@ -196,7 +196,7 @@ function Hero({ onChangeLocation }: { onChangeLocation?: () => void }) {
   return (
     <header className="mx-auto max-w-6xl px-4 pt-8">
       {onChangeLocation && (
-        <button type="button" onClick={onChangeLocation} className="mb-3 flex min-h-11 items-center gap-2 text-sm font-semibold text-xt-mute hover:text-xt-ink">← Change location</button>
+        <button type="button" onClick={onChangeLocation} className="mb-3 flex min-h-[48px] items-center gap-2 text-sm font-semibold text-xt-mute hover:text-xt-ink">← Change location</button>
       )}
       <div className="xt-in">
         <h1 className="xt-display text-[clamp(3rem,9vw,6.5rem)] leading-[0.88] text-xt-ink">XTSY Travellers Hostel</h1>
@@ -216,15 +216,15 @@ function DateBar({ checkIn, checkOut, min, onChange }: { checkIn: IsoDate; check
   const n = daysBetween(checkIn, checkOut);
   return (
     <div className="flex w-full items-center gap-2 rounded-full bg-xt-ink py-2 pl-5 pr-2 text-xt-sand md:w-auto md:gap-3">
-      <label className="flex min-w-0 flex-1 flex-col text-[11px] text-xt-fog">
+      <label className="flex min-h-[48px] min-w-0 flex-1 flex-col justify-center text-[11px] text-xt-fog">
         Check-in
-        <input type="date" className="w-full min-w-0 bg-transparent text-sm font-semibold text-xt-sand [color-scheme:dark]" value={checkIn} min={min} max={addDays(min, 365)}
+        <input type="date" className="w-full min-w-0 bg-transparent text-base font-semibold text-xt-sand [color-scheme:dark]" value={checkIn} min={min} max={addDays(min, 365)}
           onChange={(e) => e.target.value && onChange(e.target.value, checkOut)} />
       </label>
       <span aria-hidden className="h-8 w-px bg-xt-steel" />
-      <label className="flex min-w-0 flex-1 flex-col text-[11px] text-xt-fog">
+      <label className="flex min-h-[48px] min-w-0 flex-1 flex-col justify-center text-[11px] text-xt-fog">
         Check-out
-        <input type="date" className="w-full min-w-0 bg-transparent text-sm font-semibold text-xt-sand [color-scheme:dark]" value={checkOut} min={addDays(checkIn, 1)} max={addDays(checkIn, 30)}
+        <input type="date" className="w-full min-w-0 bg-transparent text-base font-semibold text-xt-sand [color-scheme:dark]" value={checkOut} min={addDays(checkIn, 1)} max={addDays(checkIn, 30)}
           onChange={(e) => e.target.value && onChange(checkIn, e.target.value)} />
       </label>
       <span className="shrink-0 whitespace-nowrap rounded-full bg-xt-crimson px-3 py-1.5 text-xs font-bold">{nightsLabel(n)}</span>
@@ -243,8 +243,8 @@ function PhotoCarousel({ images, alt, dim }: { images: string[]; alt: string; di
       <img src={images[i]} alt={`${alt}, photo ${i + 1} of ${images.length}`} loading="lazy" className={cn('absolute inset-0 h-full w-full object-cover', dim && 'grayscale')} />
       {images.length > 1 && (
         <>
-          <button type="button" onClick={() => go(-1)} aria-label="Previous photo" className="absolute left-2 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/85 text-xt-ink opacity-100 shadow sm:opacity-0 sm:group-hover:opacity-100 sm:focus-visible:opacity-100"><ChevronLeft className="h-5 w-5" /></button>
-          <button type="button" onClick={() => go(1)} aria-label="Next photo" className="absolute right-2 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/85 text-xt-ink opacity-100 shadow sm:opacity-0 sm:group-hover:opacity-100 sm:focus-visible:opacity-100"><ChevronRight className="h-5 w-5" /></button>
+          <button type="button" onClick={() => go(-1)} aria-label="Previous photo" className="absolute left-2 top-1/2 flex h-[48px] w-[48px] -translate-y-1/2 items-center justify-center rounded-full bg-white/85 text-xt-ink opacity-100 shadow sm:opacity-0 sm:group-hover:opacity-100 sm:focus-visible:opacity-100"><ChevronLeft className="h-5 w-5" /></button>
+          <button type="button" onClick={() => go(1)} aria-label="Next photo" className="absolute right-2 top-1/2 flex h-[48px] w-[48px] -translate-y-1/2 items-center justify-center rounded-full bg-white/85 text-xt-ink opacity-100 shadow sm:opacity-0 sm:group-hover:opacity-100 sm:focus-visible:opacity-100"><ChevronRight className="h-5 w-5" /></button>
           <div className="absolute inset-x-0 bottom-3 flex justify-center gap-1.5" aria-hidden>
             {images.slice(0, 6).map((_, k) => <span key={k} className={cn('h-1.5 rounded-full bg-white transition-all', k === i ? 'w-6' : 'w-1.5 opacity-60')} />)}
           </div>
@@ -289,7 +289,7 @@ function RoomCard({ room, enquiry, picked, onPick }: { room: RoomResult; enquiry
 
           <div className="mt-auto flex flex-wrap items-end justify-between gap-4 pt-2">
             <button type="button" onClick={() => setOpen((o) => !o)} aria-expanded={open} aria-controls={`strip-${room.id}`}
-              className="flex min-h-11 items-center gap-2 rounded-full border border-xt-line px-4 text-sm font-semibold text-xt-ink hover:border-xt-stone">
+              className="flex min-h-[48px] items-center gap-2 rounded-full border border-xt-line px-4 text-sm font-semibold text-xt-ink hover:border-xt-stone">
               <CalendarDays className="h-4 w-4" aria-hidden /> {enquiry ? 'Prices, next 7 nights' : 'Next 7 nights'} <ChevronDown className={cn('h-4 w-4 transition-transform', open && 'rotate-180')} aria-hidden />
             </button>
             {soldOut ? (
@@ -303,12 +303,12 @@ function RoomCard({ room, enquiry, picked, onPick }: { room: RoomResult; enquiry
                 </div>
                 {picked ? (
                   <div className="flex items-center rounded-full bg-xt-ink text-xt-sand" role="group" aria-label={`${unitWord(room, 2)} selected`}>
-                    <button type="button" className="flex h-12 w-12 items-center justify-center rounded-full hover:bg-xt-slate" onClick={() => setUnits(picked.units - 1)} aria-label={`One fewer ${unitWord(room)}`}><Minus className="h-4 w-4" /></button>
+                    <button type="button" className="flex h-[48px] w-[48px] items-center justify-center rounded-full hover:bg-xt-slate" onClick={() => setUnits(picked.units - 1)} aria-label={`One fewer ${unitWord(room)}`}><Minus className="h-4 w-4" /></button>
                     <span className="min-w-6 text-center font-bold" aria-live="polite">{picked.units}</span>
-                    <button type="button" className="flex h-12 w-12 items-center justify-center rounded-full hover:bg-xt-slate disabled:opacity-40" disabled={picked.units >= maxUnits} onClick={() => setUnits(picked.units + 1)} aria-label={`One more ${unitWord(room)}`}><Plus className="h-4 w-4" /></button>
+                    <button type="button" className="flex h-[48px] w-[48px] items-center justify-center rounded-full hover:bg-xt-slate disabled:opacity-40" disabled={picked.units >= maxUnits} onClick={() => setUnits(picked.units + 1)} aria-label={`One more ${unitWord(room)}`}><Plus className="h-4 w-4" /></button>
                   </div>
                 ) : (
-                  <button type="button" className="min-h-12 rounded-full bg-xt-crimson px-6 text-sm font-bold text-white hover:bg-xt-crimson-dark" onClick={() => setUnits(1)}>Select {unitWord(room)}</button>
+                  <button type="button" className="min-h-[48px] rounded-full bg-xt-crimson px-6 text-sm font-bold text-white hover:bg-xt-crimson-dark" onClick={() => setUnits(1)}>Select {unitWord(room)}</button>
                 )}
               </div>
             )}
@@ -317,7 +317,7 @@ function RoomCard({ room, enquiry, picked, onPick }: { room: RoomResult; enquiry
           {picked && room.soldAs === 'room' && room.maxGuestsPerUnit > 1 && (
             <label className="flex items-center justify-end gap-2 text-sm font-semibold text-xt-ink">
               Guests
-              <select className="min-h-11 rounded-full border border-xt-line bg-white px-3" value={picked.guests}
+              <select className="min-h-[48px] rounded-full border border-xt-line bg-white px-3" value={picked.guests}
                 onChange={(e) => onPick({ units: picked.units, guests: Number(e.target.value) })}>
                 {Array.from({ length: picked.units * room.maxGuestsPerUnit - picked.units + 1 }, (_, i) => picked.units + i).map((g) => <option key={g} value={g}>{g}</option>)}
               </select>
@@ -389,7 +389,7 @@ function Summary({ enquiry, result, lines, quote, onRemove, onContinue, compact 
               <span className="block text-xs text-xt-fog">Total {formatInr(quote.quote.total)} with GST, {nightsLabel(nights)}</span></>
           ) : result?.fromRate != null ? <>From <span className="text-lg font-extrabold">{formatInr(result.fromRate)}</span> a night</> : 'Nothing free for these dates'}
         </div>
-        <button type="button" className="min-h-12 rounded-full bg-xt-crimson px-7 font-bold text-white disabled:opacity-40" disabled={!lines.length} onClick={onContinue}>Book now</button>
+        <button type="button" className="min-h-[48px] rounded-full bg-xt-crimson px-7 font-bold text-white disabled:opacity-40" disabled={!lines.length} onClick={onContinue}>Book now</button>
       </div>
     );
   }
@@ -417,7 +417,7 @@ function Summary({ enquiry, result, lines, quote, onRemove, onContinue, compact 
                     <p className="text-sm text-xt-fog">{formatInr(l.room!.fromRate)} × {nightsLabel(nights)}</p>
                   </div>
                   <span className="pt-0.5 font-semibold">{formatInr(l.room!.fromRate * l.units * nights)}</span>
-                  <button type="button" onClick={() => onRemove(l.room!.id)} className="-mr-2 -mt-1.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-xt-fog hover:bg-xt-slate hover:text-white" aria-label={`Remove ${l.room!.name}`}>
+                  <button type="button" onClick={() => onRemove(l.room!.id)} className="-mr-2 -mt-1.5 flex h-[48px] w-[48px] shrink-0 items-center justify-center rounded-full text-xt-fog hover:bg-xt-slate hover:text-white" aria-label={`Remove ${l.room!.name}`}>
                     <Trash2 className="h-4 w-4" />
                   </button>
                 </li>
@@ -441,7 +441,7 @@ function Summary({ enquiry, result, lines, quote, onRemove, onContinue, compact 
         </div>
       )}
       <div className="px-6 pb-6">
-        <button type="button" className="min-h-12 w-full rounded-full bg-xt-crimson font-bold text-white hover:bg-[#B52B4E] disabled:cursor-not-allowed disabled:opacity-40" disabled={!lines.length} onClick={onContinue}>
+        <button type="button" className="min-h-[48px] w-full rounded-full bg-xt-crimson font-bold text-white hover:bg-[#B52B4E] disabled:cursor-not-allowed disabled:opacity-40" disabled={!lines.length} onClick={onContinue}>
           {lines.length ? 'Book now' : 'Select a bed or room'}
         </button>
         <p className="mt-3 text-center text-xs text-xt-fog">{BOOKING_POLICY_TEXT.short}</p>
@@ -473,13 +473,13 @@ function KnowBeforeYouGo({ open, onOpenChange, onContinue }: { open: boolean; on
           </div>
         ))}
       </dl>
-      <button type="button" className="min-h-12 w-full rounded-full bg-xt-crimson font-bold text-white hover:bg-xt-crimson-dark" onClick={onContinue}>Continue to guest details</button>
+      <button type="button" className="min-h-[48px] w-full rounded-full bg-xt-crimson font-bold text-white hover:bg-xt-crimson-dark" onClick={onContinue}>Continue to guest details</button>
     </XtDialog>
   );
 }
 
 const NATIONALITIES = ['India', 'Bangladesh', 'Bhutan', 'Nepal', 'Myanmar', 'Thailand', 'Malaysia', 'Singapore', 'Japan', 'South Korea', 'China', 'Australia', 'United Kingdom', 'United States', 'Canada', 'Germany', 'France', 'Netherlands', 'Spain', 'Italy', 'Israel', 'Russia', 'Other'];
-const inputCls = 'min-h-12 w-full rounded-2xl border border-xt-line bg-white px-4 text-base text-xt-ink outline-none focus:border-xt-ink focus-visible:ring-2 focus-visible:ring-xt-ink/20';
+const inputCls = 'min-h-[48px] w-full rounded-2xl border border-xt-line bg-white px-4 text-base text-xt-ink outline-none focus:border-xt-ink focus-visible:ring-2 focus-visible:ring-xt-ink/20';
 
 function Details({ mode, result, cart, lines, onBack }: { mode: EngineMode; result: SearchResult; cart: Cart; lines: Line[]; onBack: () => void }) {
   const totalGuests = lines.reduce((s, l) => s + l.guests, 0);
@@ -574,7 +574,7 @@ function Details({ mode, result, cart, lines, onBack }: { mode: EngineMode; resu
     <form onSubmit={submit} className="mx-auto grid max-w-6xl gap-8 px-4 pt-8 lg:grid-cols-[1fr_380px]">
       <section className="min-w-0 space-y-8">
         <div className="flex items-center gap-3">
-          <button type="button" onClick={onBack} className="flex h-12 w-12 items-center justify-center rounded-full border border-xt-line bg-white text-xt-ink hover:border-xt-stone" aria-label="Back to rooms"><ArrowLeft className="h-5 w-5" /></button>
+          <button type="button" onClick={onBack} className="flex h-[48px] w-[48px] items-center justify-center rounded-full border border-xt-line bg-white text-xt-ink hover:border-xt-stone" aria-label="Back to rooms"><ArrowLeft className="h-5 w-5" /></button>
           <h1 className="xt-display text-5xl leading-none text-xt-ink sm:text-6xl">{enquiry ? 'Confirm & send' : 'Confirm & pay'}</h1>
         </div>
 
@@ -594,7 +594,7 @@ function Details({ mode, result, cart, lines, onBack }: { mode: EngineMode; resu
               <legend className="text-sm font-semibold text-xt-ink">Gender<span className="text-xt-crimson"> *</span></legend>
               <div className="flex flex-wrap gap-2">
                 {(['female', 'male', 'other'] as const).map((g) => (
-                  <label key={g} className={cn('flex min-h-12 cursor-pointer items-center gap-2 rounded-full border px-5 text-sm font-semibold capitalize has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-xt-ink/30', guest.gender === g ? 'border-xt-ink bg-xt-ink text-xt-sand' : 'border-xt-line bg-white text-xt-ink')}>
+                  <label key={g} className={cn('flex min-h-[48px] cursor-pointer items-center gap-2 rounded-full border px-5 text-sm font-semibold capitalize has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-xt-ink/30', guest.gender === g ? 'border-xt-ink bg-xt-ink text-xt-sand' : 'border-xt-line bg-white text-xt-ink')}>
                     <input type="radio" name="gender" value={g} className="sr-only" checked={guest.gender === g} onChange={() => setGuest({ ...guest, gender: g })} required /> {g}
                   </label>
                 ))}
@@ -611,7 +611,7 @@ function Details({ mode, result, cart, lines, onBack }: { mode: EngineMode; resu
         {!enquiry && <Panel title="Pay the advance with">
           <div className="grid gap-2 sm:grid-cols-2">
             {PAYMENT_METHODS.filter((m) => m.id !== 'wallet').map((m) => (
-              <label key={m.id} className={cn('flex min-h-12 cursor-pointer items-center gap-3 rounded-2xl border px-4 text-sm font-semibold', method === m.id ? 'border-xt-ink bg-white text-xt-ink shadow-[0_0_0_1px_#1F2230]' : 'border-xt-line bg-white/60 text-xt-mute')}>
+              <label key={m.id} className={cn('flex min-h-[48px] cursor-pointer items-center gap-3 rounded-2xl border px-4 text-sm font-semibold', method === m.id ? 'border-xt-ink bg-white text-xt-ink shadow-[0_0_0_1px_#1F2230]' : 'border-xt-line bg-white/60 text-xt-mute')}>
                 <input type="radio" name="method" value={m.id} className="accent-[#A12444]" checked={method === m.id} onChange={() => setMethod(m.id)} /> {m.label}
               </label>
             ))}
@@ -691,7 +691,7 @@ function Details({ mode, result, cart, lines, onBack }: { mode: EngineMode; resu
             {femaleBeds > 1 && <Ack id="ack-female" checked={female} onChange={setFemale}>Every guest in the female deluxe dorm is female.</Ack>}
             {needsSky && <Ack id="ack-sky" checked={sky} onChange={setSky}>I understand the suite’s sky view depends on the weather and is not guaranteed.</Ack>}
             {!enquiry && <BotCheck onToken={setBotToken} onRequired={setBotRequired} />}
-            <button type="submit" className="mt-2 flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-xt-crimson font-bold text-white hover:bg-[#B52B4E] disabled:cursor-not-allowed disabled:opacity-40" disabled={busy || !quote || !ready}>
+            <button type="submit" className="mt-2 flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full bg-xt-crimson font-bold text-white hover:bg-[#B52B4E] disabled:cursor-not-allowed disabled:opacity-40" disabled={busy || !quote || !ready}>
               {enquiry ? <MessageCircle className="h-4 w-4" aria-hidden /> : <ShieldCheck className="h-4 w-4" aria-hidden />}
               {enquiry ? 'Send enquiry on WhatsApp' : busy ? 'Opening payment…' : quote ? `Confirm & pay ${formatInr(quote.advanceCharge.payable)}` : 'Confirm & pay'}
             </button>
@@ -701,7 +701,7 @@ function Details({ mode, result, cart, lines, onBack }: { mode: EngineMode; resu
               </p>
             )}
             {msg && <p className="rounded-2xl bg-xt-blush p-3 text-sm text-xt-crimson-dark" role="alert">{msg}</p>}
-            {!enquiry && <button type="button" onClick={whatsapp} className="flex min-h-11 w-full items-center justify-center gap-2 text-sm text-xt-fog hover:text-white">
+            {!enquiry && <button type="button" onClick={whatsapp} className="flex min-h-[48px] w-full items-center justify-center gap-2 text-sm text-xt-fog hover:text-white">
               <MessageCircle className="h-4 w-4" aria-hidden /> Prefer to talk? WhatsApp the desk
             </button>}
           </div>
@@ -715,7 +715,7 @@ function Details({ mode, result, cart, lines, onBack }: { mode: EngineMode; resu
             You chose {femaleBeds} bed{femaleBeds > 1 ? 's' : ''} in the female-only dorm, but the lead guest is not female. Change the lead guest’s gender or choose another room.
           </DialogDescription>
         </DialogHeader>
-        <button type="button" className="min-h-12 rounded-full bg-xt-ink font-bold text-xt-sand" onClick={() => setMismatch(false)}>Got it</button>
+        <button type="button" className="min-h-[48px] rounded-full bg-xt-ink font-bold text-xt-sand" onClick={() => setMismatch(false)}>Got it</button>
       </XtDialog>
     </form>
   );
@@ -780,7 +780,7 @@ function Field({ id, label, value, onChange, required, type = 'text', autoComple
 
 function Ack({ id, checked, onChange, children }: { id: string; checked: boolean; onChange: (v: boolean) => void; children: ReactNode }) {
   return (
-    <div className="flex min-h-12 items-start gap-3 rounded-xl py-2">
+    <div className="flex min-h-[48px] items-start gap-3 rounded-xl py-2">
       <Checkbox id={id} checked={checked} onCheckedChange={(v) => onChange(v === true)} className="mt-0.5 h-6 w-6 shrink-0 border-xt-fog data-[state=checked]:border-xt-crimson data-[state=checked]:bg-xt-crimson" />
       <label htmlFor={id} className="flex-1 cursor-pointer py-0.5 leading-snug text-xt-sand">{children}<span className="text-xt-rose"> *</span></label>
     </div>

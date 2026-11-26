@@ -81,7 +81,7 @@ export function LocationPicker({ onPick }: { onPick: (l: BookLocation) => void }
               <p className="text-[15px] text-xt-mute">{l.line}</p>
               <div className="flex items-center justify-between gap-3 pt-2">
                 <span className="text-sm font-bold text-xt-pine">{l.stays}</span>
-                <span className="flex min-h-11 items-center gap-2 rounded-full bg-xt-crimson px-5 text-sm font-bold text-white">See stays <ArrowRight className="h-4 w-4" aria-hidden /></span>
+                <span className="flex min-h-[48px] items-center gap-2 rounded-full bg-xt-crimson px-5 text-sm font-bold text-white">See stays <ArrowRight className="h-4 w-4" aria-hidden /></span>
               </div>
             </div>
           </button>
@@ -104,7 +104,7 @@ export function PhotoStrip({ photos }: { photos: { src: string; alt: string }[] 
       </div>
       {photos.length > 1 && (
         <button type="button" onClick={() => setOpen(true)}
-          className="absolute bottom-6 right-2 flex min-h-11 items-center gap-2 rounded-full bg-white/95 px-4 text-sm font-bold text-xt-ink shadow-md sm:right-0">
+          className="absolute bottom-6 right-2 flex min-h-[48px] items-center gap-2 rounded-full bg-white/95 px-4 text-sm font-bold text-xt-ink shadow-md sm:right-0">
           <Images className="h-4 w-4" aria-hidden /> See all {photos.length} photos
         </button>
       )}
@@ -201,7 +201,7 @@ export function Promotions({ step }: { step: 1 | 2 }) {
                 <p className="xt-display text-3xl leading-none text-xt-sand">{p.title}</p>
                 <p className="text-sm text-xt-fog">{p.line}</p>
                 <p className="mt-auto pt-2 text-sm font-bold text-white">{p.price}</p>
-                <span className="mt-2 flex min-h-11 w-fit items-center gap-2 rounded-full bg-xt-crimson px-5 text-sm font-bold text-white">{p.cta} <ArrowRight className="h-4 w-4" aria-hidden /></span>
+                <span className="mt-2 flex min-h-[48px] w-fit items-center gap-2 rounded-full bg-xt-crimson px-5 text-sm font-bold text-white">{p.cta} <ArrowRight className="h-4 w-4" aria-hidden /></span>
               </div>
             </>
           );
