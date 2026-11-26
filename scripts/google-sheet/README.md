@@ -6,10 +6,44 @@ then shows them on /book (console blocks are taken off on top).
 
 Only room numbers, dates and counts are sent. Guest names and notes never leave the sheet.
 
-**Read-only, one tab.** The script reads only the **Room Management** tab (never Tours, Rates or Raw Data)
-and never writes anything to the spreadsheet. `@OnlyCurrentDoc` limits Google's permission to this file.
-When a channel manager or PMS is connected later, any rule for writing back to the sheet will be agreed
-with the owner first; this script has none.
+**One tab.** The script works only on the **Room Management** tab (never Tours, Rates or Raw Data).
+`@OnlyCurrentDoc` limits Google's permission to this one file.
+
+## Bookings written into the sheet (agreed with the owner, 26 Nov 2026)
+
+OTA bookings (arriving through ZimmerStack) and xtsy.one bookings are written into Room Management the
+way the owner writes them by hand, so the owner types **only offline bookings**.
+
+**When it starts (owner, 26 Nov 2026):** only once all of these are live: the channel manager
+(ZimmerStack live for the hostel, every room type linked), the PMS (switched on in the console with the
+posbyxtsy.club address and key saved), online payment (Zoho Payments), and this script in the sheet.
+Until then nothing is written and the sheet is kept by hand as today. Website bookings are written
+only after a successful payment. The console Inbox lists whatever is still missing.
+
+- **Which room:** the lowest-numbered room of that type with space for the whole group on every night
+  (6-bed mixed: 4, then 5, then 7). Only if no single room fits is the group split across rooms, in
+  number order, keeping the same rooms every night.
+- **What it writes:** that night's count goes down by the beds or rooms taken, and the note cell (the date
+  column) gets `Priyanka Sharma 2B MMT` for dorms (**B** = beds) or `Rahul Das 2G AGODA` for private rooms
+  (**G** = guests). xtsy.one bookings are tagged `XTSY`; OTAs `MMT`, `GOIBIBO`, `BDC`, `AGODA`, `HW`,
+  `AIRBNB`, `EXPEDIA`, `TRIP`, `YATRA`. An existing note is kept: `Rama Krishna 1B + Priyanka Sharma 2B MMT`.
+- **Cancelled or changed:** the same cells get their beds back and the note becomes
+  `Priyanka Sharma 2B MMT (cancelled)`; a changed booking is then written again.
+- **Never below 0:** if a night cannot fit everyone, the extra is written with `OVERBOOKED` and shows in
+  the console Inbox under **Google Sheet needs you**. A month that is not in the sheet yet is not written
+  at all (also shown there) and is tried again once the month is added. A count cell holding a formula is
+  left alone (only the note is added) and reported.
+- **Only the count and note cells** of the booked nights change; nothing else in the tab is touched.
+- **When:** within a minute of the booking (the one-minute run), or at once on any edit or
+  **XTSY → Sync with xtsy.one now**. Until the sheet has it, /book holds those rooms, so nothing is offered
+  twice in between; once written, the sheet alone counts it. Each booking is written once: the script
+  remembers what it wrote until the website confirms it.
+- Bookings that arrived before write-back started stay as they were (the old rule: held on /book until
+  you edit that night). A booking already written is always followed if it is changed or cancelled.
+
+**Updating from the read-only script:** paste the new `availability-sync.gs` over `Code.gs` and save.
+No new pairing is needed; Google may ask you to allow it again the first time it writes (same one-file
+permission).
 
 ## One-time setup (no password)
 
@@ -29,9 +63,9 @@ admin approved. The sheet's token is random (256-bit) and only its SHA-256 hash 
 the console revokes it instantly. Pairing requests are limited to 5 an hour per visitor and 10 pending in
 total, and expire after 30 minutes. Only JSON under 1 MB is read; an empty send is never published.
 
-**When guests see a change:** each sync is published as the next minute's snapshot. At the start of that
-minute every open booking page refreshes together; new and returning visitors always load the last
-published snapshot. So a change saved at 10:00:20 shows for everyone from about 10:01.
+**When guests see a change:** each sync is published as soon as it arrives and every open booking page
+refreshes at once; new and returning visitors always load the latest published counts. So a change
+saved at 10:00:20 shows for everyone a few seconds later. The console shows the same counts.
 
 ## How the sheet is read
 
@@ -48,4 +82,6 @@ published snapshot. So a change saved at 10:00:20 shows for everyone from about 
   number changes on the website too.
 - Once the sheet has synced, it is the only source: nights after its last month (or a blank count cell)
   are not bookable on the website. Console blocks are still taken off on top.
-- /book refreshes just after each minute boundary while open (and when the guest returns to the tab).
+- /book refreshes the moment a sync, a console block or an OTA booking lands (data-free signal), and
+  again whenever a guest returns to the tab or comes back with the back button. /book is never stored
+  by a browser or CDN (`no-store`), so a returning visitor always loads today's counts.

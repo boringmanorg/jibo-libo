@@ -174,16 +174,15 @@ interface Loads { confirmed: NightLoad[]; holds: Hold[] }
 
 async function loadLoads(d: EngineDeps, from: IsoDate, to: IsoDate): Promise<Loads> {
   if (!d.db) return { confirmed: [], holds: [] };
-  const b = await d.db
-    .from('be_bookings')
-    .select('check_in,check_out,status,channel_status,be_booking_lines(room_type_id,units)')
-    .in('status', LIVE_STATUSES)
-    .lt('check_in', to)
-    .gt('check_out', from);
+  const q = (cols: string) => d.db!.from('be_bookings').select(cols).in('status', LIVE_STATUSES).lt('check_in', to).gt('check_out', from);
+  let b = await q('check_in,check_out,status,channel_status,sheet_write,be_booking_lines(room_type_id,units)');
+  if (b.error && !isMissingTable(b.error)) b = await q('check_in,check_out,status,channel_status,be_booking_lines(room_type_id,units)'); // before the write-back migration
   if (b.error && !isMissingTable(b.error)) throw new EngineError('Could not read bookings');
   const confirmed: NightLoad[] = [];
-  for (const row of b.data ?? []) {
-    // The sheet is the master count; a website booking stays counted here until the owner's sheet includes it.
+  for (const row of (b.data ?? []) as any[]) {
+    // The sheet is the master count. A website booking is counted here until the sheet's script has
+    // written it into the sheet (sheet_write 'applied'); from then on the sheet's count includes it.
+    if (row.sheet_write === 'applied') continue;
     for (const line of row.be_booking_lines ?? []) {
       for (const night of stayNights(row.check_in, row.check_out)) {
         confirmed.push({ roomTypeId: line.room_type_id, night, units: Number(line.units) });
@@ -497,6 +496,10 @@ export async function settleSession(d: EngineDeps, sessionId: string): Promise<'
         });
       }
       await pushToChannel(d, b.data.id);
+      // Paid: written into the owner's Google Sheet as "Name 2B XTSY" by the sheet's script
+      // (once channel manager, PMS and payment are all live).
+      const { queueWebsiteBooking } = await import('./sheetWrites.server');
+      await queueWebsiteBooking({ db, env: d.env, now: d.now }, b.data.id).catch(() => null);
     }
     return 'confirmed';
   }

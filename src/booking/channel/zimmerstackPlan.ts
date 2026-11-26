@@ -115,25 +115,30 @@ export interface OtaBookingRow {
   rooms: { roomTypeId: string; units: number }[];
   sheet_at_arrival: Record<string, Record<string, number>>;
   received_at: string;
+  /** Google Sheet write-back: 'queued' = the sheet's script has not written it yet; 'applied' = it has. */
+  sheet_write?: 'queued' | 'applied' | null;
 }
 
 /**
  * Rooms an OTA booking holds on /book, as console-style block rows (one per night and room type).
- * A night stops being held once the owner has edited that night's count in the Google Sheet after
- * the booking arrived (the sheet then already counts it), when an "open" is saved in the console
- * after it, or when the booking is cancelled. Nights before `today` are left out.
+ * - Written into the sheet by the sheet's script ('applied'): no hold; the sheet's count includes it.
+ * - Waiting for the script ('queued'): every night is held, whatever else changes in the sheet.
+ * - Not written by the website (write-back off, or an older booking): a night stops being held once
+ *   the owner has edited that night's count in the Google Sheet after the booking arrived.
+ * An "open" saved in the console after it, or the booking being cancelled, also ends the hold.
+ * Nights before `today` are left out.
  */
 export function otaHolds(rows: OtaBookingRow[], sheetNow: SheetAvailability, today: IsoDate): ClosureRow[] {
   const out: ClosureRow[] = [];
   for (const b of rows) {
-    if (b.status !== 'CONFIRMED') continue;
+    if (b.status !== 'CONFIRMED' || b.sheet_write === 'applied') continue;
     for (const room of b.rooms ?? []) {
       if (!room.units || room.units < 1) continue;
       for (const night of stayNights(b.check_in, b.check_out)) {
         if (night < today) continue;
         const seen = b.sheet_at_arrival?.[room.roomTypeId]?.[night];
         const current = sheetNow[room.roomTypeId]?.[night];
-        if (seen !== undefined && current !== undefined && seen !== current) continue; // owner already counted it
+        if (b.sheet_write !== 'queued' && seen !== undefined && current !== undefined && seen !== current) continue; // owner already counted it
         out.push({ unit: room.roomTypeId, start: night, end: night, state: 'blocked', units: room.units, at: b.received_at });
       }
     }

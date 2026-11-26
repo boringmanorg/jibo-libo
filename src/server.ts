@@ -208,6 +208,30 @@ function withEdgeCacheHeaders(request: Request, response: Response): Response {
   }
 }
 
+/**
+ * /book and the data calls behind it (server functions) are never stored by a browser, proxy or CDN:
+ * a returning visitor, a reload or the back button always gets the counts as they are now
+ * (Google Sheet, console blocks and bookings). Also keeps /book out of the back-forward cache, so
+ * "back" re-asks the server instead of showing a frozen copy.
+ */
+export function withFreshAvailabilityHeaders(request: Request, response: Response): Response {
+  let path = "";
+  try { path = new URL(request.url).pathname; } catch { return response; }
+  const page = /^\/book(?:\/|$)/.test(path);
+  const data = /^\/_server(?:Fn)?(?:\/|$)/.test(path);
+  if (!page && !data) return response;
+  if (data && response.headers.has("cache-control")) return response;
+  const value = "no-store, max-age=0";
+  try {
+    response.headers.set("cache-control", value);
+    return response;
+  } catch {
+    const out = new Response(response.body, response);
+    out.headers.set("cache-control", value);
+    return out;
+  }
+}
+
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     const hostRedirect = canonicalHostRedirect(request);
@@ -223,7 +247,7 @@ export default {
       const response = await withPageCache(request, ctx, async () =>
         normalizeCatastrophicSsrResponse(await handler.fetch(request.clone(), env, ctx)),
       );
-      return withEdgeCacheHeaders(request, withFrameProtection(request, withGoneStatus(request, response)));
+      return withFreshAvailabilityHeaders(request, withEdgeCacheHeaders(request, withFrameProtection(request, withGoneStatus(request, response))));
     } catch (error) {
       console.error(error);
       return new Response(renderErrorPage(), {

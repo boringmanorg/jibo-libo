@@ -336,11 +336,13 @@ async function closuresWithHolds(d: ZsDeps, sheet: SheetAvailability): Promise<C
   return [...rows, ...otaHolds(await loadOtaBookings(d), sheet, today)];
 }
 
-/** Confirmed website bookings per room type and night (they are not in the sheet until the owner adds them). */
+/** Confirmed website bookings per room type and night that the sheet does not include yet. */
 async function websiteLoads(d: ZsDeps, from: IsoDate, to: IsoDate) {
-  const b = await d.db.from('be_bookings').select('check_in,check_out,be_booking_lines(room_type_id,units)').in('status', ['confirmed', 'checked_in']).lt('check_in', to).gt('check_out', from);
+  const q = (cols: string) => d.db.from('be_bookings').select(cols).in('status', ['confirmed', 'checked_in']).lt('check_in', to).gt('check_out', from);
+  let b = await q('check_in,check_out,sheet_write,be_booking_lines(room_type_id,units)');
+  if (b.error) b = await q('check_in,check_out,be_booking_lines(room_type_id,units)');
   const out = new Map<string, number>();
-  for (const row of b.data ?? []) for (const line of row.be_booking_lines ?? []) for (const night of stayNights(row.check_in, row.check_out)) {
+  for (const row of (b.data ?? []).filter((x: any) => x.sheet_write !== 'applied')) for (const line of row.be_booking_lines ?? []) for (const night of stayNights(row.check_in, row.check_out)) {
     const k = `${line.room_type_id}|${night}`;
     out.set(k, (out.get(k) ?? 0) + Number(line.units));
   }
@@ -471,7 +473,10 @@ async function pushWebsiteBooking(d: ZsDeps, res: ChannelReservation) {
 // ------------------------------------------------------------------ OTA bookings in
 
 export async function loadOtaBookings(d: Pick<ZsDeps, 'db' | 'now'>): Promise<OtaBookingRow[]> {
-  const r = await d.db.from('be_ota_bookings').select('status,check_in,check_out,rooms,sheet_at_arrival,received_at').gte('check_out', todayInIndia(d.now));
+  const cols = 'status,check_in,check_out,rooms,sheet_at_arrival,received_at';
+  let r = await d.db.from('be_ota_bookings').select(`${cols},sheet_write`).gte('check_out', todayInIndia(d.now));
+  // Before the write-back migration runs the column is missing: keep holding rooms the old way.
+  if (r.error) r = await d.db.from('be_ota_bookings').select(cols).gte('check_out', todayInIndia(d.now));
   if (r.error) return [];
   return ((r.data ?? []) as any[]).map((x) => ({ ...x, check_in: String(x.check_in).slice(0, 10), check_out: String(x.check_out).slice(0, 10) }));
 }
@@ -505,6 +510,9 @@ export async function applyOtaBooking(d: ZsDeps, propertyId: ChannelPropertyId, 
     adults: b.occupancy.adults, children: b.occupancy.children, total: b.amounts.total, currency: b.amounts.currency,
     rooms, sheet_at_arrival: sheetAtArrival, received_at: existing.data?.received_at ?? d.now.toISOString(), updated_at: d.now.toISOString(),
   });
+  // Written into the owner's Google Sheet by the sheet's script, once channel manager, PMS and payment are all live.
+  const { queueOtaBooking } = await import('../sheetWrites.server');
+  await queueOtaBooking({ db: d.db, env: d.env, now: d.now }, mode, b.id).catch(() => null);
   return { applied: true };
 }
 
