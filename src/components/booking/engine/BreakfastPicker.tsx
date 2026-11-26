@@ -55,12 +55,12 @@ function Item({ item, qty, onQty }: { item: BreakfastItem; qty: number; onQty: (
     <li className="flex items-center justify-between gap-3 py-2">
       <span className="min-w-0 text-sm text-xt-ink">{item.name}<span className="block text-xs text-xt-mute">{inr(item.price)}</span></span>
       {qty === 0 ? (
-        <button type="button" onClick={() => onQty(1)} className="min-h-10 shrink-0 rounded-full border border-xt-ink px-4 text-sm font-semibold text-xt-ink">Add</button>
+        <button type="button" onClick={() => onQty(1)} className="min-h-12 shrink-0 rounded-full border border-xt-ink px-5 text-sm font-semibold text-xt-ink">Add</button>
       ) : (
         <span className="flex shrink-0 items-center gap-1" role="group" aria-label={`${item.name} quantity`}>
-          <button type="button" aria-label={`One less ${item.name}`} onClick={() => onQty(qty - 1)} className="flex h-10 w-10 items-center justify-center rounded-full border border-xt-line"><Minus className="h-4 w-4" /></button>
+          <button type="button" aria-label={`One less ${item.name}`} onClick={() => onQty(qty - 1)} className="flex h-12 w-12 items-center justify-center rounded-full border border-xt-line"><Minus className="h-4 w-4" /></button>
           <output className="w-6 text-center font-bold">{qty}</output>
-          <button type="button" aria-label={`One more ${item.name}`} disabled={qty >= MAX_BREAKFAST_QTY} onClick={() => onQty(qty + 1)} className="flex h-10 w-10 items-center justify-center rounded-full border border-xt-line disabled:opacity-35"><Plus className="h-4 w-4" /></button>
+          <button type="button" aria-label={`One more ${item.name}`} disabled={qty >= MAX_BREAKFAST_QTY} onClick={() => onQty(qty + 1)} className="flex h-12 w-12 items-center justify-center rounded-full border border-xt-line disabled:opacity-35"><Plus className="h-4 w-4" /></button>
         </span>
       )}
     </li>

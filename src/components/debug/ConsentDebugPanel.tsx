@@ -211,6 +211,7 @@ export default function ConsentDebugPanel() {
     <div
       style={{ position: 'fixed', bottom: 12, left: 12, zIndex: 999999, fontFamily: 'ui-monospace, monospace' }}
       aria-label="Consent & CS-Loader debug"
+      className="hidden lg:block"
     >
       {!open ? (
         <button

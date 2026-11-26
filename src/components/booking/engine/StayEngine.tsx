@@ -144,12 +144,12 @@ export default function StayEngine({ mode, photos, closures, sheet, initialLocat
             <section aria-labelledby="select-room" className="min-w-0">
               <h2 id="select-room" className="xt-display text-4xl text-xt-ink">Choose your bed or room</h2>
               {enquiry && <p className="mt-1 text-sm text-xt-mute">Pick what you’d like and send it to the desk on WhatsApp. The desk confirms availability, then you pay the {HOSTEL_POLICIES.advancePercent}% advance.</p>}
-              <div className="sticky top-[104px] z-30 -mx-4 mt-3 flex flex-col gap-3 border-b border-xt-line bg-[#F6F1EA] px-4 py-3 shadow-[0_8px_16px_-12px_rgba(31,34,48,.35)] sm:top-[124px] md:flex-row md:items-center md:justify-between lg:static lg:mx-0 lg:border-0 lg:bg-transparent lg:px-0 lg:shadow-none">
+              <div className="-mx-4 mt-3 md:sticky md:top-[124px] md:z-30 flex flex-col gap-3 border-b border-xt-line bg-[#F6F1EA] px-4 py-3 shadow-[0_8px_16px_-12px_rgba(31,34,48,.35)] md:flex-row md:items-center md:justify-between lg:static lg:mx-0 lg:border-0 lg:bg-transparent lg:px-0 lg:shadow-none">
                 <DateBar checkIn={checkIn} checkOut={checkOut} min={today} onChange={setDates} />
                 <div className="inline-flex w-fit rounded-full border border-xt-line bg-white/60 p-1" role="tablist" aria-label="Room type">
                   {([['all', 'All stays'], ['bed', 'Dorm beds'], ['room', 'Private rooms']] as const).map(([k, label]) => (
                     <button key={k} type="button" role="tab" aria-selected={filter === k} onClick={() => setFilter(k)}
-                      className={cn('min-h-10 rounded-full px-4 text-sm font-semibold transition-colors', filter === k ? 'bg-xt-ink text-xt-sand' : 'text-xt-mute hover:text-xt-ink')}>
+                      className={cn('min-h-12 rounded-full px-4 text-sm font-semibold transition-colors', filter === k ? 'bg-xt-ink text-xt-sand' : 'text-xt-mute hover:text-xt-ink')}>
                       {label}
                     </button>
                   ))}
@@ -243,8 +243,8 @@ function PhotoCarousel({ images, alt, dim }: { images: string[]; alt: string; di
       <img src={images[i]} alt={`${alt}, photo ${i + 1} of ${images.length}`} loading="lazy" className={cn('absolute inset-0 h-full w-full object-cover', dim && 'grayscale')} />
       {images.length > 1 && (
         <>
-          <button type="button" onClick={() => go(-1)} aria-label="Previous photo" className="absolute left-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/85 text-xt-ink opacity-100 shadow sm:opacity-0 sm:group-hover:opacity-100 sm:focus-visible:opacity-100"><ChevronLeft className="h-5 w-5" /></button>
-          <button type="button" onClick={() => go(1)} aria-label="Next photo" className="absolute right-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/85 text-xt-ink opacity-100 shadow sm:opacity-0 sm:group-hover:opacity-100 sm:focus-visible:opacity-100"><ChevronRight className="h-5 w-5" /></button>
+          <button type="button" onClick={() => go(-1)} aria-label="Previous photo" className="absolute left-2 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/85 text-xt-ink opacity-100 shadow sm:opacity-0 sm:group-hover:opacity-100 sm:focus-visible:opacity-100"><ChevronLeft className="h-5 w-5" /></button>
+          <button type="button" onClick={() => go(1)} aria-label="Next photo" className="absolute right-2 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/85 text-xt-ink opacity-100 shadow sm:opacity-0 sm:group-hover:opacity-100 sm:focus-visible:opacity-100"><ChevronRight className="h-5 w-5" /></button>
           <div className="absolute inset-x-0 bottom-3 flex justify-center gap-1.5" aria-hidden>
             {images.slice(0, 6).map((_, k) => <span key={k} className={cn('h-1.5 rounded-full bg-white transition-all', k === i ? 'w-6' : 'w-1.5 opacity-60')} />)}
           </div>
@@ -594,7 +594,7 @@ function Details({ mode, result, cart, lines, onBack }: { mode: EngineMode; resu
               <legend className="text-sm font-semibold text-xt-ink">Gender<span className="text-xt-crimson"> *</span></legend>
               <div className="flex flex-wrap gap-2">
                 {(['female', 'male', 'other'] as const).map((g) => (
-                  <label key={g} className={cn('flex min-h-11 cursor-pointer items-center gap-2 rounded-full border px-5 text-sm font-semibold capitalize has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-xt-ink/30', guest.gender === g ? 'border-xt-ink bg-xt-ink text-xt-sand' : 'border-xt-line bg-white text-xt-ink')}>
+                  <label key={g} className={cn('flex min-h-12 cursor-pointer items-center gap-2 rounded-full border px-5 text-sm font-semibold capitalize has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-xt-ink/30', guest.gender === g ? 'border-xt-ink bg-xt-ink text-xt-sand' : 'border-xt-line bg-white text-xt-ink')}>
                     <input type="radio" name="gender" value={g} className="sr-only" checked={guest.gender === g} onChange={() => setGuest({ ...guest, gender: g })} required /> {g}
                   </label>
                 ))}
@@ -780,9 +780,9 @@ function Field({ id, label, value, onChange, required, type = 'text', autoComple
 
 function Ack({ id, checked, onChange, children }: { id: string; checked: boolean; onChange: (v: boolean) => void; children: ReactNode }) {
   return (
-    <div className="flex items-start gap-3">
-      <Checkbox id={id} checked={checked} onCheckedChange={(v) => onChange(v === true)} className="mt-0.5 border-xt-fog data-[state=checked]:border-xt-crimson data-[state=checked]:bg-xt-crimson" />
-      <label htmlFor={id} className="leading-snug text-xt-sand">{children}<span className="text-xt-rose"> *</span></label>
+    <div className="flex min-h-12 items-start gap-3 rounded-xl py-2">
+      <Checkbox id={id} checked={checked} onCheckedChange={(v) => onChange(v === true)} className="mt-0.5 h-6 w-6 shrink-0 border-xt-fog data-[state=checked]:border-xt-crimson data-[state=checked]:bg-xt-crimson" />
+      <label htmlFor={id} className="flex-1 cursor-pointer py-0.5 leading-snug text-xt-sand">{children}<span className="text-xt-rose"> *</span></label>
     </div>
   );
 }
