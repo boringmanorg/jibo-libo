@@ -1032,3 +1032,20 @@ body.reduce-motion .xt-suite-motion :is(.tgh-tile, .tgh-tablet-track, .xt-love, 
 .xt-console :where(input, textarea, select) { font-size: max(16px, 1em); }
 .xt-console :where(h1, h2).xt-display { font-family: "Staatliches", Impact, sans-serif; font-weight: 400; letter-spacing: 0.01em; }
 .xt-console :where([data-slot="card"], .rounded-lg.border.bg-card) { box-shadow: 0 1px 0 rgba(31, 34, 48, 0.04); }
+
+/* Guest tap targets: every button and standalone link is at least 48px tall on touch screens.
+   Explicit px because the root font size makes rem-based utilities render smaller. Inline links inside
+   running text are exempt (WCAG 2.5.8). Admin console is excluded. */
+@media (pointer: coarse), (max-width: 767px) {
+  body :is(button, [role="button"], select, summary, input[type="submit"], input[type="button"]):not(.xt-console *) {
+    min-height: 48px;
+  }
+  body a:not(p a):not(.sr-only):not(.xt-console *) {
+    min-height: 48px;
+  }
+  body a:not([class*="flex"]):not([class*="block"]):not([class*="grid"]):not(p a):not(.sr-only):not(.xt-console *) {
+    display: inline-flex;
+    align-items: center;
+  }
+  body input:is([type="checkbox"], [type="radio"]):not(.xt-console *) { min-width: 24px; min-height: 24px; }
+}
