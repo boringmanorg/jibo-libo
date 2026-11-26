@@ -5,21 +5,26 @@ import { createHash } from 'node:crypto';
 type Row = Record<string, any>;
 const tables: Record<string, Row[]> = {};
 const published: { version: number; rows: Row[] }[] = [];
+/** Columns the database does not have yet (a migration still to run). */
+const missingColumns = new Set<string>();
 function query(table: string) {
   const filters: ((r: Row) => boolean)[] = [];
   let mode: 'select' | 'update' | 'delete' = 'select';
   let patch: Row = {};
   let head = false;
+  let cols = '';
   const rows = () => (tables[table] ??= []).filter((r) => filters.every((f) => f(r)));
   const q: any = {
-    select: (_c?: string, o?: { head?: boolean }) => { head = !!o?.head; return q; },
+    select: (c?: string, o?: { head?: boolean }) => { head = !!o?.head; cols = c ?? ''; return q; },
     eq: (k: string, v: unknown) => { filters.push((r) => r[k] === v); return q; },
     lt: (k: string, v: string) => { filters.push((r) => r[k] < v); return q; },
     gte: (k: string, v: string) => { filters.push((r) => r[k] >= v); return q; },
     update: (p: Row) => { mode = 'update'; patch = p; return q; },
     delete: () => { mode = 'delete'; return q; },
     insert: async (r: Row) => { (tables[table] ??= []).push({ id: `id-${(tables[table] ?? []).length}`, created_at: new Date().toISOString(), status: 'pending', ...r }); return { error: null }; },
-    maybeSingle: async () => ({ data: rows()[0] ?? null, error: null }),
+    maybeSingle: async () => (cols.split(',').some((c) => missingColumns.has(c.trim()))
+      ? { data: null, error: { code: '42703', message: 'column does not exist' } }
+      : { data: rows()[0] ?? null, error: null }),
     then: (res: (v: unknown) => void) => {
       if (mode === 'update') { rows().forEach((r) => Object.assign(r, patch)); return res({ error: null }); }
       if (mode === 'delete') { const keep = (tables[table] ?? []).filter((r) => !filters.every((f) => f(r))); tables[table] = keep; return res({ error: null }); }
@@ -40,7 +45,16 @@ const post = (path: string, body: unknown, auth?: string, ip = '203.0.113.7') =>
 const cells = { from: '2026-11-21', cells: [{ roomNo: '2', night: '2027-02-02', free: 7 }, { roomNo: '3', night: '2027-02-02', free: 7 }, { roomNo: '99', night: '2027-02-02', free: 4 }] };
 
 describe('Google Sheet sync: passwordless pairing approved in the console', () => {
-  beforeEach(() => { for (const k of Object.keys(tables)) delete tables[k]; published.length = 0; });
+  beforeEach(() => { for (const k of Object.keys(tables)) delete tables[k]; published.length = 0; missingColumns.clear(); });
+
+  it('still publishes the counts before the write-back migration has run', async () => {
+    const pair = await (await handleSheetPair(post('sheet-pair', { label: 'S' }))).json();
+    tables.be_sheet_links[0].status = 'active';
+    missingColumns.add('writes_since');
+    const res = await handleSheetAvailability(post('sheet-availability', cells, pair.token), Date.UTC(2026, 10, 26, 17, 41));
+    expect(res.status).toBe(200);
+    expect(published).toHaveLength(1);
+  });
 
   it('a sheet asks to connect and gets a token and code; its numbers are refused until approved', async () => {
     const pair = await (await handleSheetPair(post('sheet-pair', { label: 'Room Management' }))).json();
