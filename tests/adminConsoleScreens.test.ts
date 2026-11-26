@@ -61,7 +61,7 @@ describe('Booking engine page', () => {
   it('shows each payment method with Zoho\'s fee and a worked example', async () => {
     const html = await render('booking-engine', { '["engine","status"]': ready });
     expect(html).toContain('Credit card');
-    expect(html).toContain('₹19.90 + ₹3.58 GST'); // 1.99% of ₹1,000, plus 18% GST
+    expect(html).toContain('₹20 + ₹3.60 GST'); // Zoho's 2% online card rate on ₹1,000, plus 18% GST
     expect(html).toContain('₹5 + ₹0.90 GST'); // UPI 0.5%
   });
 });
