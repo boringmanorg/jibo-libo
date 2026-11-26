@@ -23,7 +23,6 @@ const notReady = { dbReady: false, blockers: ['Booking database is not set up ye
 const ready = {
   dbReady: true,
   settings: { ...settingsFromRow(null) },
-  mapping: [{ roomTypeId: 'experience-by-xtsy', roomCode: 'R7', rateCode: 'RO' }],
   state: { switchedOn: false, gatewayConfigured: false, botProtection: false, channelConnected: false, unmappedRoomTypes: BOOKING_ROOM_TYPES.slice(0, 6).map((r) => r.id), feeTableProblems: [], databaseReady: true },
   blockers: ['No channel manager or PMS is connected.', 'Payment gateway keys are not saved.', 'Live booking is switched off in the admin console.'],
 };
@@ -61,7 +60,7 @@ describe('Booking engine page', () => {
   it('shows each payment method with Zoho\'s fee and a worked example', async () => {
     const html = await render('booking-engine', { '["engine","status"]': ready });
     expect(html).toContain('Credit card');
-    expect(html).toContain('₹19.90 + ₹3.58 GST'); // 1.99% of ₹1,000, plus 18% GST
+    expect(html).toContain('₹20 + ₹3.60 GST'); // Zoho's 2% online card rate on ₹1,000, plus 18% GST
     expect(html).toContain('₹5 + ₹0.90 GST'); // UPI 0.5%
   });
 });

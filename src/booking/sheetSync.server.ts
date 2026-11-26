@@ -77,7 +77,32 @@ export async function handleSheetAvailability(request: Request, now = Date.now()
   const pub = await client.rpc('be_sheet_publish', { p_version: version, p_rows: rows });
   if (pub.error) return json({ error: 'Could not publish availability' }, 500);
   await client.from('be_sheet_links').update({ last_sync_at: new Date(now).toISOString(), last_sync_rows: rows.length }).eq('id', link.data.id);
-  return json({ status: 'ok', saved: rows.length, unknownRooms, visibleFrom: new Date(version * 60_000).toISOString() });
+  // The owner edited the sheet: send the hostel nights whose count changed to the channel manager
+  // (ZimmerStack), when it is switched on. Never blocks or fails the sheet's own sync.
+  const channel = await sendChangedNights(client, version, rows, parsed.data.from, now).catch(() => null);
+  return json({ status: 'ok', saved: rows.length, unknownRooms, visibleFrom: new Date(version * 60_000).toISOString(), ...(channel ? { channel } : {}) });
+}
+
+/** The previous published snapshot vs this one; the changed hostel nights go to ZimmerStack. */
+async function sendChangedNights(client: any, version: number, rows: { room_type_id: string; night: string; free: number }[], from: string, now: number) {
+  const prevV = await client.from('be_sheet_availability').select('version').lt('version', version).order('version', { ascending: false }).limit(1);
+  const prevVersion = prevV.data?.[0]?.version;
+  if (prevVersion === undefined) return null; // first sync: going live sends every night instead
+  const prev: Record<string, Record<string, number>> = {};
+  for (let page = 0; page < 20; page++) {
+    const r = await client.from('be_sheet_availability').select('room_type_id,night,free').eq('version', prevVersion).gte('night', from).order('night').order('room_type_id').range(page * 1000, page * 1000 + 999);
+    if (r.error) return null;
+    for (const x of r.data ?? []) (prev[x.room_type_id] ??= {})[String(x.night).slice(0, 10)] = x.free;
+    if ((r.data ?? []).length < 1000) break;
+  }
+  const next: Record<string, Record<string, number>> = {};
+  for (const x of rows) (next[x.room_type_id] ??= {})[x.night] = x.free;
+  const { changedSheetNights } = await import('./channel/zimmerstackPlan');
+  const changed = changedSheetNights(prev, next).filter((c) => c.night >= from);
+  if (!changed.length) return { sent: 0 };
+  const { afterSheetPublish } = await import('./channel/zimmerstack.server');
+  const res = await afterSheetPublish({ db: client, env: process.env, now: new Date(now) }, changed);
+  return { sent: res.sent, ...('skipped' in res && res.skipped ? { skipped: res.skipped } : {}) };
 }
 
 /** POST /api/public/hooks/sheet-pair — a sheet asks to connect; returns its token and pairing code. */

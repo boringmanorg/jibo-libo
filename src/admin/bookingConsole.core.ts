@@ -4,9 +4,9 @@
  * exist yet, functions report `dbReady: false` instead of failing.
  */
 import { BOOKING_ROOM_TYPES } from '@/booking/catalogue';
-import { unmappedRoomTypes, type ChannelManager, type ChannelMapping } from '@/booking/channel/channelManager';
-import { staahNotConnected } from '@/booking/channel/staah.server';
-import { addDays, stayNights, todayInIndia, type IsoDate } from '@/booking/dates';
+import type { ChannelManager } from '@/booking/channel/channelManager';
+import { hostelChannelStatus, zimmerstackChannel } from '@/booking/channel/zimmerstack.server';
+import { stayNights, todayInIndia, type IsoDate } from '@/booking/dates';
 import { launchBlockers } from '@/booking/launchGate';
 import { botCheckConfigured } from '@/booking/botCheck';
 import { canChangeDates, refundOnCancel, type BookingStatus } from '@/booking/policy';
@@ -34,7 +34,13 @@ export function isMissingTable(error: { code?: string; message?: string } | null
   return ['42P01', '42883', 'PGRST205', 'PGRST202'].includes(error.code ?? '') || /does not exist|could not find the (table|function)/i.test(error.message ?? '');
 }
 
-const channelOf = (d: ConsoleDeps) => d.channel ?? staahNotConnected();
+/** ZimmerStack for XTSY Travellers Hostel, as set up under Connections. */
+async function channelOf(d: ConsoleDeps): Promise<ChannelManager> {
+  if (d.channel) return d.channel;
+  const zs = { db: d.db, env: d.env, now: d.now };
+  return zimmerstackChannel(zs, await hostelChannelStatus(zs).catch(() => ({ connected: false, unmapped: BOOKING_ROOM_TYPES.map((r) => r.id) })));
+}
+
 const gatewayOf = (d: ConsoleDeps): PaymentGateway | null => {
   if (d.gateway !== undefined) return d.gateway;
   const cfg = zohoConfigFromEnv(d.env);
@@ -50,19 +56,17 @@ export async function loadStatus(d: ConsoleDeps) {
   if (isMissingTable(s.error)) return { dbReady: false as const, blockers: ['Booking database is not set up yet.'] };
   if (s.error) throw new ConsoleError('Could not read booking settings');
   const settings = settingsFromRow(s.data);
-  const m = await d.db.from('be_room_mapping').select('*');
-  const mapping: ChannelMapping[] = (m.data ?? []).map((r: any) => ({ roomTypeId: r.room_type_id, roomCode: r.staah_room_code ?? '', rateCode: r.staah_rate_code ?? '' }));
-  const ids = BOOKING_ROOM_TYPES.map((r) => r.id);
+  const channel = await channelOf(d);
   const state = {
     switchedOn: settings.engineSwitchedOn,
     gatewayConfigured: gatewayOf(d) !== null,
     botProtection: botCheckConfigured(d.env),
-    channelConnected: channelOf(d).connected,
-    unmappedRoomTypes: unmappedRoomTypes(ids, mapping),
+    channelConnected: channel.connected,
+    unmappedRoomTypes: channel.unmapped,
     feeTableProblems: validateFeeTable(settings.feeTable),
     databaseReady: true,
   };
-  return { dbReady: true as const, settings, mapping, state, blockers: launchBlockers(state) };
+  return { dbReady: true as const, settings, state, blockers: launchBlockers(state) };
 }
 
 export async function saveSettings(d: ConsoleDeps, input: SettingsInput) {
@@ -89,18 +93,6 @@ export async function setLaunchSwitch(d: ConsoleDeps, on: boolean) {
   if (error) throw new ConsoleError('Could not change the switch');
   await audit(d, on ? 'launch.on' : 'launch.off', {});
   return { ok: true, on };
-}
-
-export async function saveMapping(d: ConsoleDeps, rows: ChannelMapping[]) {
-  const known = new Set(BOOKING_ROOM_TYPES.map((r) => r.id));
-  const bad = rows.filter((r) => !known.has(r.roomTypeId));
-  if (bad.length) throw new ConsoleError(`Unknown room types: ${bad.map((r) => r.roomTypeId).join(', ')}`);
-  const { error } = await d.db.from('be_room_mapping').upsert(rows.map((r) => ({
-    room_type_id: r.roomTypeId, staah_room_code: r.roomCode.trim(), staah_rate_code: r.rateCode.trim(), updated_at: d.now.toISOString(),
-  })));
-  if (error) throw new ConsoleError(isMissingTable(error) ? 'Booking database is not set up yet.' : 'Could not save mapping');
-  await audit(d, 'mapping.save', { rows: rows.length });
-  return { ok: true };
 }
 
 export async function listBookings(d: ConsoleDeps, f: { status?: string; from?: IsoDate; to?: IsoDate; search?: string }) {
@@ -131,14 +123,14 @@ export async function getBooking(d: ConsoleDeps, id: string) {
 }
 
 /**
- * Applies the guest's one date change. Needs STAAH to confirm the new nights are free.
+ * Applies the guest's one date change. Needs the channel manager connected, so OTA sales are counted.
  * A higher price adds the difference to the balance; a lower one refunds nothing (no-refund policy).
  */
 export async function changeDates(d: ConsoleDeps, id: string, checkIn: IsoDate, checkOut: IsoDate) {
   const { booking, lines } = await getBooking(d, id);
   const decision = canChangeDates({ status: booking.status, checkIn: booking.check_in, dateChangesUsed: booking.date_changes_used }, d.now);
   if (!decision.allowed) throw new ConsoleError(decision.reason);
-  if (!channelOf(d).connected) throw new ConsoleError('No channel manager or PMS is connected, so the new dates cannot be checked against OTA bookings.');
+  if (!(await channelOf(d)).connected) throw new ConsoleError('No channel manager or PMS is connected, so the new dates cannot be checked against OTA bookings.');
   if (stayNights(checkIn, checkOut).length === 0) throw new ConsoleError('Check-out must be after check-in.');
   const q = quoteStay({ checkIn, checkOut, breakfast: [], rooms: lines.map((l: any) => ({ roomTypeId: l.room_type_id, units: l.units, guests: l.guests })) });
   const extra = Math.max(0, q.total - booking.total_paise);
@@ -180,28 +172,6 @@ export async function createBalanceLink(d: ConsoleDeps, id: string, method?: Pay
   await d.db.from('be_payments').insert({ booking_id: id, kind: 'balance', gateway: gateway.id, link_id: link.linkId, link_url: link.url, method_declared: method ?? null, amount_paise: due, status: 'created' });
   await audit(d, 'payment.balance_link', { reference: booking.reference, due });
   return { ok: true, url: link.url, due };
-}
-
-/** Console buttons for STAAH: connection status, a rates pull, and a test booking push. */
-export async function staahTest(d: ConsoleDeps, action: 'status' | 'pull' | 'push_test') {
-  const ch = channelOf(d);
-  let ok = false, detail = '';
-  try {
-    if (action === 'status') { ok = ch.connected; detail = ch.connected ? 'STAAH is connected.' : 'STAAH is not connected yet.'; }
-    if (action === 'pull') {
-      const today = todayInIndia(d.now);
-      const ari = await ch.getAri(BOOKING_ROOM_TYPES.map((r) => r.id), today, addDays(today, 14));
-      ok = true; detail = `Received ${ari.length} night(s) of rates and availability.`;
-    }
-    if (action === 'push_test') {
-      const r = await ch.pushReservation({ reference: `TEST-${d.now.getTime()}`, status: 'confirmed', checkIn: todayInIndia(d.now), checkOut: addDays(todayInIndia(d.now), 1), rooms: [], guestName: 'XTSY console test', total: 0, paid: 0 });
-      ok = r.acknowledged; detail = ok ? `STAAH acknowledged the test booking${r.channelId ? ` (${r.channelId})` : ''}.` : 'STAAH did not acknowledge the test booking.';
-    }
-  } catch (e) {
-    detail = e instanceof Error ? e.message : 'STAAH request failed';
-  }
-  await d.db.from('be_channel_log').insert({ direction: 'test', message_type: action, status: ok ? 'ok' : 'failed', detail });
-  return { ok, detail };
 }
 
 export async function channelLog(d: ConsoleDeps) {

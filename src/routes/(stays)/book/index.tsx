@@ -33,7 +33,7 @@ export const Route = createFileRoute("/(stays)/book/")({
       // Start the first property photo during HTML parse, sized for the phone.
       ...(bookHero ? { preloadImage: bookHero.src, preloadImageSrcSet: bookHero.srcSet, preloadImageSizes: "(max-width: 768px) 100vw, 50vw" } : {}),
     }),
-  // Online payment appears only when the console's launch gate allows it (STAAH connected,
+  // Online payment appears only when the console's launch gate allows it (channel manager connected,
   // rooms mapped, payment and bot-check keys saved, switch on). Until then, and on any error,
   // the same page runs from the static catalogue and ends in a WhatsApp enquiry.
   // A paused Cloud database must not hold the page: after 4.5 s guests get the enquiry page with

@@ -10,6 +10,7 @@ import { activitySentence } from './activityText';
 import { closureFromRow, type ClosureRow } from '@/booking/consoleClosures';
 import { addDays, todayInIndia, type IsoDate } from '@/booking/dates';
 import type { SheetAvailability } from '@/booking/sheetAvailability';
+import { otaHolds } from '@/booking/channel/zimmerstackPlan';
 
 const date = z.string().regex(/^\d{4}-\d{2}-\d{2}$/);
 type Ctx = { supabase: any; userId: string };
@@ -33,6 +34,15 @@ async function loadSheet(ctx: Ctx, from: IsoDate, to: IsoDate) {
   return { sheet: out, syncedAt };
 }
 
+/** Rooms OTA bookings (ZimmerStack) hold, as block rows, until the owner edits those nights in the sheet. */
+async function loadOtaHolds(ctx: Ctx, sheet: SheetAvailability): Promise<ClosureRow[]> {
+  const today = todayInIndia(new Date());
+  const r = await ctx.supabase.from('be_ota_bookings').select('status,check_in,check_out,rooms,sheet_at_arrival,received_at').gte('check_out', today);
+  if (r.error) return [];
+  const rows = (r.data ?? []).map((x: any) => ({ ...x, check_in: String(x.check_in).slice(0, 10), check_out: String(x.check_out).slice(0, 10) }));
+  return otaHolds(rows, sheet, today);
+}
+
 async function loadClosures(ctx: Ctx, from: IsoDate, to: IsoDate): Promise<ClosureRow[]> {
   const r = await ctx.supabase.from('console_inventory_overrides').select('*').gte('end_date', from).lte('start_date', to).order('created_at');
   return (r.data ?? []).map(closureFromRow).filter((x: ClosureRow | null): x is ClosureRow => x !== null);
@@ -46,7 +56,8 @@ export const getInventoryCalendar = createServerFn({ method: 'POST' })
     const start = data.start as IsoDate;
     const end = addDays(start, data.days);
     const [{ sheet, syncedAt }, closures] = await Promise.all([loadSheet(ctx, start, end), loadClosures(ctx, start, addDays(end, -1))]);
-    return { start, days: data.days, today: todayInIndia(new Date()), sheetSyncedAt: syncedAt, rows: buildCalendar(start, data.days, sheet, closures) };
+    const ota = await loadOtaHolds(ctx, sheet);
+    return { start, days: data.days, today: todayInIndia(new Date()), sheetSyncedAt: syncedAt, rows: buildCalendar(start, data.days, sheet, closures, undefined, ota) };
   });
 
 export const getTodaySummary = createServerFn({ method: 'GET' })
@@ -62,7 +73,7 @@ export const getTodaySummary = createServerFn({ method: 'GET' })
       ctx.supabase.from('be_enquiries').select('id', { count: 'exact', head: true }).eq('status', 'new'),
       ctx.supabase.from('console_audit_log').select('id,action,details,created_at').order('created_at', { ascending: false }).limit(12),
     ]);
-    const rows = buildCalendar(today, 14, sheet, closures);
+    const rows = buildCalendar(today, 14, sheet, closures, undefined, await loadOtaHolds(ctx, sheet));
     return {
       today,
       sheetSyncedAt: syncedAt,

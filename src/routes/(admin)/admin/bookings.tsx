@@ -43,7 +43,7 @@ function Bookings() {
 
       {data.rows.length === 0 ? <p className="text-sm text-muted-foreground">No bookings yet. They appear here once live booking is switched on.</p> : (
         <div className="overflow-x-auto rounded-lg border border-border"><table className="w-full text-sm">
-          <thead><tr className="text-left text-muted-foreground"><th className="p-3">Reference</th><th>Guest</th><th>Dates</th><th>Status</th><th>Total</th><th>Balance</th><th>STAAH</th><th /></tr></thead>
+          <thead><tr className="text-left text-muted-foreground"><th className="p-3">Reference</th><th>Guest</th><th>Dates</th><th>Status</th><th>Total</th><th>Balance</th><th>Channel</th><th /></tr></thead>
           <tbody>{data.rows.map((b: any) => (
             <tr key={b.id} className="border-t border-border">
               <td className="p-3 font-mono">{b.reference}</td><td>{b.guest_name}</td><td>{b.check_in} → {b.check_out}</td>

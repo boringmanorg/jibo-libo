@@ -52,7 +52,7 @@ export function nightAudit(bookings: AuditBooking[], payments: AuditPayment[], t
       }
     }
     if (CONFIRMED.has(b.status) && b.channel_status !== 'synced' && b.channel_status !== 'not_required') {
-      issues.push({ code: 'channel_not_synced', reference: b.reference, severity: 'high', detail: `Not confirmed by STAAH (${b.channel_status}); OTAs may still sell these nights.` });
+      issues.push({ code: 'channel_not_synced', reference: b.reference, severity: 'high', detail: `Not confirmed by the channel manager (${b.channel_status}); OTAs may still sell these nights.` });
     }
     if (CONFIRMED.has(b.status) && daysBetween(b.check_out, today) >= 0 && paidBalance < b.balance_paise) {
       issues.push({ code: 'balance_unpaid_after_checkout', reference: b.reference, severity: 'high', detail: `Checked out on ${b.check_out} with ${rupee(b.balance_paise - paidBalance)} of the balance unpaid.` });

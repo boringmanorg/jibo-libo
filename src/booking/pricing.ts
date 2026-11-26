@@ -16,7 +16,7 @@ export interface QuoteRequest {
   rooms: { roomTypeId: string; units: number; guests: number }[];
   /** TAB Bistro breakfast dishes and beverages, each served every morning of the stay; empty for none. */
   breakfast: BreakfastPick[];
-  /** Nightly rate per unit, when STAAH supplies one; otherwise the catalogue rate. */
+  /** Nightly rate per unit (the catalogue rate until Stage 2 pricing control). */
   rateFor?: (roomTypeId: string, night: IsoDate) => Paise;
   gstSlabFor?: (roomTypeId: string) => GstSlab;
   breakfastGstSlab?: GstSlab;

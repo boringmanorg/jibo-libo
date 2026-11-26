@@ -1,7 +1,7 @@
 /**
  * Units free per night = capacity − confirmed − live holds, or zero on a blocked night.
- * With STAAH connected, `capacity` is STAAH's available count for that night and `confirmed`
- * covers only engine bookings STAAH has not acknowledged yet.
+ * `capacity` is the Google Sheet count after console blocks and OTA bookings (ZimmerStack);
+ * `confirmed` is the website's own bookings.
  */
 import { stayNights, type IsoDate } from './dates';
 
@@ -12,7 +12,7 @@ export interface AvailabilityInput {
   roomTypeId: string;
   checkIn: IsoDate;
   checkOut: IsoDate;
-  /** Units per night; a function so STAAH's per-night counts can be plugged in. */
+  /** Units per night, before website bookings and checkout holds. */
   capacity: (night: IsoDate) => number;
   confirmed: NightLoad[];
   holds: Hold[];

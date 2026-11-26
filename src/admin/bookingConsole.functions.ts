@@ -27,11 +27,6 @@ export const setBookingLaunchSwitch = createServerFn({ method: 'POST' })
   .inputValidator(z.object({ on: z.boolean() }))
   .handler(async ({ data, context }) => core.setLaunchSwitch(deps(context), data.on));
 
-export const saveStaahMapping = createServerFn({ method: 'POST' })
-  .middleware([requireSuperAdmin])
-  .inputValidator(z.object({ rows: z.array(z.object({ roomTypeId: z.string().max(80), roomCode: z.string().max(60), rateCode: z.string().max(60) })).max(50) }))
-  .handler(async ({ data, context }) => core.saveMapping(deps(context), data.rows));
-
 export const listEngineBookings = createServerFn({ method: 'POST' })
   .middleware([requireSuperAdmin])
   .inputValidator(z.object({ status: z.string().max(30).optional(), from: date.optional(), to: date.optional(), search: z.string().max(60).optional() }))
@@ -57,12 +52,7 @@ export const createEngineBalanceLink = createServerFn({ method: 'POST' })
   .inputValidator(z.object({ id: z.string().uuid(), method: method.optional() }))
   .handler(async ({ data, context }) => core.createBalanceLink(deps(context), data.id, data.method));
 
-export const runStaahTest = createServerFn({ method: 'POST' })
-  .middleware([requireSuperAdmin])
-  .inputValidator(z.object({ action: z.enum(['status', 'pull', 'push_test']) }))
-  .handler(async ({ data, context }) => core.staahTest(deps(context), data.action));
-
-export const getStaahLog = createServerFn({ method: 'GET' })
+export const getChannelLog = createServerFn({ method: 'GET' })
   .middleware([requireSuperAdmin])
   .handler(async ({ context }) => core.channelLog(deps(context)));
 
