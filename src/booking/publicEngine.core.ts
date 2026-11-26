@@ -12,8 +12,9 @@
  */
 import { breakfastItem, type BreakfastPick } from '@/data/breakfastMenu';
 import { BOOKING_ROOM_TYPES, findRoomType, type BookingRoomType } from './catalogue';
-import { ariBlocksStay, unmappedRoomTypes, type ChannelManager, type ChannelMapping, type NightAri } from './channel/channelManager';
-import { staahNotConnected } from './channel/staah.server';
+import { channelNotConnected, type ChannelManager } from './channel/channelManager';
+import { hostelChannelStatus, loadOtaBookings, zimmerstackChannel } from './channel/zimmerstack.server';
+import { otaHolds } from './channel/zimmerstackPlan';
 import { addDays, daysBetween, isIsoDate, stayNights, todayInIndia, type IsoDate } from './dates';
 import { freeUnitsPerNight, type Hold, type NightLoad } from './availability';
 import { closureFromRow, freeAfterClosures, type ClosureRow } from './consoleClosures';
@@ -56,7 +57,13 @@ const MAX_CHECKOUT_SECONDS = 900;
 const LIVE_STATUSES = ['confirmed', 'checked_in'];
 const REF_ALPHABET = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
 
-const channelOf = (d: EngineDeps) => d.channel ?? staahNotConnected();
+/** The channel manager (ZimmerStack) for XTSY Travellers Hostel, as the console has set it up. */
+async function channelOf(d: EngineDeps): Promise<ChannelManager> {
+  if (d.channel) return d.channel;
+  if (!d.db) return channelNotConnected();
+  const zs = { db: d.db, env: d.env, now: d.now };
+  return zimmerstackChannel(zs, await hostelChannelStatus(zs).catch(() => ({ connected: false, unmapped: BOOKING_ROOM_TYPES.map((r) => r.id) })));
+}
 const gatewayOf = (d: EngineDeps): PaymentGateway | null => {
   if (d.gateway !== undefined) return d.gateway;
   const cfg = zohoConfigFromEnv(d.env);
@@ -81,20 +88,19 @@ interface EngineState {
 
 async function loadState(d: EngineDeps): Promise<EngineState> {
   const fallback = settingsFromRow(null);
+  const channel = await channelOf(d);
   const base: LaunchState = {
-    switchedOn: false, gatewayConfigured: gatewayOf(d) !== null, botProtection: botCheckConfigured(d.env), channelConnected: channelOf(d).connected,
+    switchedOn: false, gatewayConfigured: gatewayOf(d) !== null, botProtection: botCheckConfigured(d.env), channelConnected: channel.connected,
     unmappedRoomTypes: BOOKING_ROOM_TYPES.map((r) => r.id), feeTableProblems: [], databaseReady: false,
   };
   if (!d.db) return { dbReady: false, settings: fallback, launch: base, live: false };
   const s = await d.db.from('be_settings').select('*').eq('id', 1).maybeSingle();
   if (s.error) return { dbReady: false, settings: fallback, launch: base, live: false };
   const settings = settingsFromRow(s.data);
-  const m = await d.db.from('be_room_mapping').select('*');
-  const mapping: ChannelMapping[] = (m.data ?? []).map((r: any) => ({ roomTypeId: r.room_type_id, roomCode: r.staah_room_code ?? '', rateCode: r.staah_rate_code ?? '' }));
   const launch: LaunchState = {
     ...base,
     switchedOn: settings.engineSwitchedOn,
-    unmappedRoomTypes: unmappedRoomTypes(BOOKING_ROOM_TYPES.map((r) => r.id), mapping),
+    unmappedRoomTypes: channel.unmapped,
     feeTableProblems: validateFeeTable(settings.feeTable),
     databaseReady: true,
   };
@@ -108,7 +114,8 @@ export async function engineStatus(d: EngineDeps): Promise<{ live: boolean }> {
 
 /** /book on load: whether payment is live, plus console-uploaded photos by room type. */
 export async function bookPageData(d: EngineDeps): Promise<{ live: boolean; photos: Record<string, { src: string; alt: string }[]>; closures: ClosureRow[]; sheet: SheetAvailability; refreshAt: number }> {
-  const [status, photos, closures, sheet] = await Promise.all([engineStatus(d), loadRoomPhotos(d).catch(() => new Map()), loadClosures(d).catch(() => []), loadSheetAvailability(d).catch(() => ({}))]);
+  const sheetP = loadSheetAvailability(d).catch(() => ({} as SheetAvailability));
+  const [status, photos, closures, sheet] = await Promise.all([engineStatus(d), loadRoomPhotos(d).catch(() => new Map()), sheetP.then((s) => loadClosures(d, s)).catch(() => []), sheetP]);
   // Next minute boundary: when the next published snapshot (if any) becomes visible to everyone.
   return { live: status.live, photos: Object.fromEntries(photos), closures, sheet, refreshAt: (Math.floor(d.now.getTime() / 60_000) + 1) * 60_000 };
 }
@@ -144,21 +151,28 @@ export async function loadSheetAvailability(d: EngineDeps): Promise<SheetAvailab
 }
 
 /**
- * Blocks and openings from the console (Stays → Block or open dates) that end today or later.
- * The /book page applies them to every room count, so a blocked night shows as full.
+ * Blocks and openings from the console (Stays → Block or open dates) that end today or later,
+ * plus the rooms OTA bookings hold (as block rows). The /book page applies them to every room
+ * count, so a blocked night shows as full.
  */
-export async function loadClosures(d: EngineDeps): Promise<ClosureRow[]> {
+export async function loadClosures(d: EngineDeps, sheetNow?: SheetAvailability): Promise<ClosureRow[]> {
   if (!d.db) return [];
-  const r = await d.db.from('console_inventory_overrides').select('*').gte('end_date', todayInIndia(d.now)).order('created_at', { ascending: true });
-  if (r.error) return [];
-  return (r.data ?? []).map((row: Record<string, unknown>) => closureFromRow(row)).filter((x: ClosureRow | null): x is ClosureRow => x !== null);
+  const [r, ota] = await Promise.all([
+    d.db.from('console_inventory_overrides').select('*').gte('end_date', todayInIndia(d.now)).order('created_at', { ascending: true }),
+    loadOtaBookings({ db: d.db, now: d.now }).catch(() => []),
+  ]);
+  const rows: ClosureRow[] = r.error ? [] : (r.data ?? []).map((row: Record<string, unknown>) => closureFromRow(row)).filter((x: ClosureRow | null): x is ClosureRow => x !== null);
+  if (!ota.length) return rows;
+  // OTA bookings from ZimmerStack hold their rooms until the owner edits those nights in the sheet.
+  const sheet = sheetNow ?? await loadSheetAvailability(d).catch(() => ({} as SheetAvailability));
+  return [...rows, ...otaHolds(ota, sheet, todayInIndia(d.now))];
 }
 
 // ---------------------------------------------------------------- availability
 
 interface Loads { confirmed: NightLoad[]; holds: Hold[] }
 
-async function loadLoads(d: EngineDeps, from: IsoDate, to: IsoDate, channelSynced: boolean): Promise<Loads> {
+async function loadLoads(d: EngineDeps, from: IsoDate, to: IsoDate): Promise<Loads> {
   if (!d.db) return { confirmed: [], holds: [] };
   const b = await d.db
     .from('be_bookings')
@@ -169,8 +183,7 @@ async function loadLoads(d: EngineDeps, from: IsoDate, to: IsoDate, channelSynce
   if (b.error && !isMissingTable(b.error)) throw new EngineError('Could not read bookings');
   const confirmed: NightLoad[] = [];
   for (const row of b.data ?? []) {
-    // With STAAH connected, its counts already include bookings it has acknowledged.
-    if (channelSynced && row.channel_status === 'synced') continue;
+    // The sheet is the master count; a website booking stays counted here until the owner's sheet includes it.
     for (const line of row.be_booking_lines ?? []) {
       for (const night of stayNights(row.check_in, row.check_out)) {
         confirmed.push({ roomTypeId: line.room_type_id, night, units: Number(line.units) });
@@ -225,7 +238,7 @@ export interface RoomResult {
 }
 export interface SearchResult {
   live: boolean;
-  /** True when counts come from the channel manager, so they include OTA sales. */
+  /** True when the channel manager is connected, so OTA sales reach these counts as soon as they happen. */
   inventorySynced: boolean;
   checkIn: IsoDate;
   checkOut: IsoDate;
@@ -252,35 +265,24 @@ export async function searchStays(d: EngineDeps, q: { checkIn: string; checkOut:
   const stayLen = daysBetween(checkIn, checkOut);
   const span = Math.max(stayLen, STRIP_NIGHTS);
   const rangeEnd = addDays(checkIn, span);
-  const channel = channelOf(d);
-  const ari: NightAri[] = channel.connected ? await channel.getAri(BOOKING_ROOM_TYPES.map((r) => r.id), checkIn, rangeEnd) : [];
-  const loads = await loadLoads(d, checkIn, rangeEnd, channel.connected);
+  const loads = await loadLoads(d, checkIn, rangeEnd);
   const photos = await loadRoomPhotos(d);
-  const closures = await loadClosures(d).catch(() => [] as ClosureRow[]);
-  const sheet = channel.connected ? {} : await loadSheetAvailability(d).catch(() => ({} as SheetAvailability));
-  const ariFor = (id: string, night: IsoDate) => ari.find((a) => a.roomTypeId === id && a.night === night);
+  const sheet = await loadSheetAvailability(d).catch(() => ({} as SheetAvailability));
+  const closures = await loadClosures(d, sheet).catch(() => [] as ClosureRow[]);
 
   const rooms: RoomResult[] = BOOKING_ROOM_TYPES.map((room) => {
-    const nightsInSpan = stayNights(checkIn, rangeEnd);
-    const closedNight = (night: IsoDate) => {
-      const a = ariFor(room.id, night);
-      if (!a) return channel.connected; // no ARI for a night = not sellable once STAAH is the master
-      const isStay = night < checkOut;
-      return isStay
-        ? ariBlocksStay(a, { isArrival: night === checkIn, isDeparture: false, stayNights: stayLen })
-        : Boolean(a.stopSell);
-    };
-    const blocked = new Set(nightsInSpan.filter(closedNight));
+    // Counts come from the Google Sheet, console blocks and OTA bookings; no channel restrictions yet.
+    const blocked = new Set<IsoDate>();
     const free = freeUnitsPerNight({
       roomTypeId: room.id, checkIn, checkOut: rangeEnd,
-      capacity: (night) => freeAfterClosures(closures, room.id, night, channel.connected ? ariFor(room.id, night)?.available ?? 0 : sheetCapacity(sheet, room.id, night, room.units)),
+      capacity: (night) => freeAfterClosures(closures, room.id, night, sheetCapacity(sheet, room.id, night, room.units)),
       confirmed: loads.confirmed, holds: loads.holds, blockedNights: blocked, now: d.now,
     });
     const strip: NightCell[] = free.slice(0, STRIP_NIGHTS).map(({ night, free: f }) => ({
-      night, free: f, rate: ariFor(room.id, night)?.rate ?? room.rate, closed: blocked.has(night),
+      night, free: f, rate: room.rate, closed: blocked.has(night),
     }));
     const stay = free.slice(0, stayLen);
-    const rates = stay.map(({ night }) => ariFor(room.id, night)?.rate ?? room.rate);
+    const rates = stay.map(() => room.rate);
     return {
       id: room.id, name: room.name, descriptor: room.descriptor, soldAs: room.soldAs, femaleOnly: room.femaleOnly,
       maxGuestsPerUnit: room.maxGuestsPerUnit,
@@ -292,7 +294,7 @@ export async function searchStays(d: EngineDeps, q: { checkIn: string; checkOut:
   });
   const open = rooms.filter((r) => r.freeForStay > 0);
   return {
-    live: state.live, inventorySynced: channel.connected, checkIn, checkOut, nights: stayLen, rooms,
+    live: state.live, inventorySynced: state.launch.channelConnected, checkIn, checkOut, nights: stayLen, rooms,
     fromRate: open.length ? Math.min(...open.map((r) => r.fromRate)) : null,
   };
 }
@@ -447,15 +449,13 @@ export async function startCheckout(d: EngineDeps, input: CheckoutInput, origin:
 
 /** True when confirmed bookings plus live holds exceed what any night can sell. */
 async function oversold(d: EngineDeps, rooms: CheckoutInput['rooms'], checkIn: IsoDate, checkOut: IsoDate): Promise<boolean> {
-  const channel = channelOf(d);
-  const loads = await loadLoads(d, checkIn, checkOut, channel.connected);
-  const ari = channel.connected ? await channel.getAri(rooms.map((r) => r.roomTypeId), checkIn, checkOut) : [];
-  const closures = await loadClosures(d).catch(() => [] as ClosureRow[]);
-  const sheet = channel.connected ? {} : await loadSheetAvailability(d).catch(() => ({} as SheetAvailability));
+  const loads = await loadLoads(d, checkIn, checkOut);
+  const sheet = await loadSheetAvailability(d).catch(() => ({} as SheetAvailability));
+  const closures = await loadClosures(d, sheet).catch(() => [] as ClosureRow[]);
   return rooms.some((r) => {
     const room = findRoomType(r.roomTypeId)!;
     return stayNights(checkIn, checkOut).some((night) => {
-      const cap = freeAfterClosures(closures, room.id, night, channel.connected ? ari.find((a) => a.roomTypeId === room.id && a.night === night)?.available ?? 0 : sheetCapacity(sheet, room.id, night, room.units));
+      const cap = freeAfterClosures(closures, room.id, night, sheetCapacity(sheet, room.id, night, room.units));
       const used = [...loads.confirmed.filter((l) => l.roomTypeId === room.id && l.night === night).map((l) => l.units),
         ...loads.holds.filter((h) => h.roomTypeId === room.id && h.expiresAt > d.now && h.nights.includes(night)).map((h) => h.units)]
         .reduce((s, u) => s + u, 0);
@@ -511,12 +511,12 @@ export async function settleSession(d: EngineDeps, sessionId: string): Promise<'
 
 async function pushToChannel(d: EngineDeps, bookingId: string) {
   const db = d.db;
-  const channel = channelOf(d);
+  const channel = await channelOf(d);
   if (!channel.connected) {
-    await db.from('be_channel_log').insert({ booking_id: bookingId, direction: 'out', message_type: 'reservation', status: 'pending', detail: 'STAAH not connected; send when connected.' });
+    await db.from('be_channel_log').insert({ booking_id: bookingId, direction: 'out', message_type: 'reservation', status: 'pending', detail: 'Channel manager not connected; send when connected.' });
     return;
   }
-  const b = await db.from('be_bookings').select('reference,check_in,check_out,guest_name,total_paise,advance_paise,be_booking_lines(room_type_id,units,guests,taxable_paise)').eq('id', bookingId).single();
+  const b = await db.from('be_bookings').select('reference,check_in,check_out,guest_name,guest_phone,guest_email,total_paise,advance_paise,be_booking_lines(room_type_id,units,guests,taxable_paise)').eq('id', bookingId).single();
   if (!b.data) return;
   const nights = daysBetween(b.data.check_in, b.data.check_out);
   try {
@@ -526,10 +526,11 @@ async function pushToChannel(d: EngineDeps, bookingId: string) {
         roomTypeId: l.room_type_id, units: Number(l.units), guests: Number(l.guests),
         nightlyRates: Array(nights).fill(Math.round(Number(l.taxable_paise) / nights / Number(l.units))),
       })),
-      guestName: b.data.guest_name, total: Number(b.data.total_paise), paid: Number(b.data.advance_paise),
+      guestName: b.data.guest_name, guestPhone: b.data.guest_phone ?? undefined, guestEmail: b.data.guest_email ?? undefined,
+      total: Number(b.data.total_paise), paid: Number(b.data.advance_paise),
     });
     await db.from('be_bookings').update({ channel_status: r.acknowledged ? 'synced' : 'failed', channel_id: r.channelId ?? null }).eq('id', bookingId);
-    await db.from('be_channel_log').insert({ booking_id: bookingId, direction: 'out', message_type: 'reservation', status: r.acknowledged ? 'ok' : 'failed' });
+    await db.from('be_channel_log').insert({ booking_id: bookingId, direction: 'out', message_type: 'reservation', status: r.acknowledged ? 'ok' : 'failed', detail: r.detail?.slice(0, 300) ?? null });
   } catch (e) {
     await db.from('be_bookings').update({ channel_status: 'failed' }).eq('id', bookingId);
     await db.from('be_channel_log').insert({ booking_id: bookingId, direction: 'out', message_type: 'reservation', status: 'failed', detail: e instanceof Error ? e.message.slice(0, 300) : 'push failed' });

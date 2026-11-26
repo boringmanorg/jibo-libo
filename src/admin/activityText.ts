@@ -25,6 +25,19 @@ export function activitySentence(action: string, d: Details): string {
     case 'pms.sync': return 'Synced rooms with the PMS';
     case 'tables.blocked': return `Closed TAB Bistro tables on ${day(d?.serviceDate)}`;
     case 'tables.open': return `Reopened TAB Bistro tables on ${day(d?.serviceDate)}`;
-    default: return action.replace(/[._]/g, ' ');
+    default: {
+      if (action.startsWith('channel.')) {
+        const what = findProperty(d?.id)?.name ?? 'a property';
+        const verb: Record<string, string> = {
+          'channel.on': `Switched the channel manager on for ${what}`, 'channel.off': `Switched the channel manager off for ${what}`,
+          'channel.hotel.add': `Added ${what} to ZimmerStack`, 'channel.hotel.link': `Linked ${what} to ZimmerStack`,
+          'channel.catalog': `Sent room types of ${what} to ZimmerStack`, 'channel.prices': `Sent prices of ${what} to ZimmerStack`,
+          'channel.counts': `Sent room counts of ${what} to ZimmerStack`, 'channel.go_live': `Made XTSY the source of truth for ${what} on ZimmerStack`,
+          'channel.catch_up': `Read OTA bookings for ${what}`, 'channel.ota.link': `Made an OTA connect link for ${what}`,
+        };
+        return verb[action] ?? action.replace(/[._]/g, ' ');
+      }
+      return action.replace(/[._]/g, ' ');
+    }
   }
 }

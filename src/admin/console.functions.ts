@@ -25,6 +25,23 @@ async function settings(ctx: Ctx) {
 async function audit(ctx: Ctx, action: string, details: Record<string, unknown>) {
   await ctx.supabase.from('console_audit_log').insert({ action, details });
 }
+/** A block or opening changed some nights: send their new counts to ZimmerStack (properties switched on only). */
+async function channelAfterClosure(rooms: { propertyId: string; unitTypeId: string }[], start: string, end: string) {
+  try {
+    const { getServiceClient } = await import('./serviceClient.server');
+    const db = getServiceClient();
+    if (!db) return null;
+    const { afterClosureChange } = await import('@/booking/channel/zimmerstack.server');
+    const res = await afterClosureChange({ db, env: process.env, now: new Date() }, rooms, start, end);
+    const parts = Object.values(res);
+    const sent = parts.reduce((n, p) => n + p.sent, 0);
+    const problem = parts.map((p) => ('error' in p && p.error) || ('rejected' in p && p.rejected?.length ? p.rejected.join('; ') : '')).find(Boolean);
+    if (problem) return `ZimmerStack: ${problem}`;
+    return sent ? `Sent ${sent} night(s) to ZimmerStack.` : null;
+  } catch {
+    return null;
+  }
+}
 
 export const getConsoleOverview = createServerFn({ method: 'GET' })
   .middleware([requireSuperAdmin])
@@ -156,7 +173,8 @@ export const saveInventoryOverride = createServerFn({ method: 'POST' })
       }
     }
     await audit(ctx, `inventory.${data.state}`, { ...data, rooms: targets.length, pmsStatus });
-    return { id: rows[0].id, saved: rows.length, pmsStatus };
+    const channel = await channelAfterClosure(targets, data.startDate, data.endDate);
+    return { id: rows[0].id, saved: rows.length, pmsStatus, channel };
   });
 
 export const deleteInventoryOverride = createServerFn({ method: 'POST' })
@@ -164,9 +182,11 @@ export const deleteInventoryOverride = createServerFn({ method: 'POST' })
   .inputValidator(z.object({ id: z.string().uuid() }))
   .handler(async ({ data, context }) => {
     const ctx = context as Ctx;
+    const { data: row } = await ctx.supabase.from('console_inventory_overrides').select('property_id,unit_type_id,start_date,end_date').eq('id', data.id).maybeSingle();
     await ctx.supabase.from('console_inventory_overrides').delete().eq('id', data.id);
     await audit(ctx, 'inventory.remove', data);
-    return { ok: true };
+    const channel = row ? await channelAfterClosure([{ propertyId: row.property_id, unitTypeId: row.unit_type_id }], String(row.start_date).slice(0, 10), String(row.end_date).slice(0, 10)) : null;
+    return { ok: true, channel };
   });
 
 export const syncRoomsNow = createServerFn({ method: 'POST' })

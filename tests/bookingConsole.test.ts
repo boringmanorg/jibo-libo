@@ -41,9 +41,8 @@ function fakeDb(tables: Record<string, any[]>, missing: string[] = []) {
 }
 
 const NOW = new Date('2026-11-19T06:00:00Z');
-const connected: ChannelManager = { id: 'staah', connected: true, getAri: async () => [], pushReservation: async () => ({ acknowledged: true, channelId: 'S-1' }) };
+const connected: ChannelManager = { id: 'zimmerstack', connected: true, unmapped: [], pushReservation: async () => ({ acknowledged: true, channelId: 'ZS-1' }) };
 const fakeGateway = { id: 'zoho', createPaymentLink: async () => ({ linkId: 'pl_1', url: 'https://pay/pl_1' }) } as unknown as PaymentGateway;
-const mappedAll = BOOKING_ROOM_TYPES.map((r) => ({ room_type_id: r.id, staah_room_code: `R-${r.id}`, staah_rate_code: 'RO' }));
 const booking = (over: Record<string, unknown> = {}) => ({
   id: 'b1', reference: 'XTSY-AAAA1', status: 'confirmed', check_in: '2026-12-10', check_out: '2026-12-12', date_changes_used: 0,
   total_paise: 210000, advance_paise: 52500, balance_paise: 157500, channel_status: 'synced', ...over,
@@ -62,8 +61,8 @@ describe('console before the database exists', () => {
 });
 
 describe('launch switch', () => {
-  it('lists today\'s blockers: STAAH, mapping, gateway keys, bot check and the switch', async () => {
-    const s = await core.loadStatus(deps({ be_settings: [{ id: 1 }], be_room_mapping: [] }));
+  it('lists today\'s blockers: channel manager, room links, gateway keys, bot check and the switch', async () => {
+    const s = await core.loadStatus(deps({ be_settings: [{ id: 1 }] }));
     expect(s.dbReady && s.blockers).toEqual([
       'No channel manager or PMS is connected.',
       `Room types not mapped to the channel manager: ${BOOKING_ROOM_TYPES.map((r) => r.id).join(', ')}.`,
@@ -72,14 +71,14 @@ describe('launch switch', () => {
       'Live booking is switched off in the admin console.',
     ]);
   });
-  it('refuses to switch on while STAAH is not connected, and logs nothing', async () => {
-    const t = { be_settings: [{ id: 1 }], be_room_mapping: mappedAll, be_audit_log: [] as any[] };
+  it('refuses to switch on while no channel manager is connected, and logs nothing', async () => {
+    const t = { be_settings: [{ id: 1 }], be_audit_log: [] as any[] };
     await expect(core.setLaunchSwitch(deps(t, { gateway: fakeGateway }), true)).rejects.toThrow(/No channel manager or PMS is connected/);
     expect(t.be_settings[0].engine_switched_on).toBeUndefined();
     expect(t.be_audit_log).toHaveLength(0);
   });
   it('switches on when everything is ready, and off at any time', async () => {
-    const t = { be_settings: [{ id: 1 }], be_room_mapping: mappedAll, be_audit_log: [] as any[] };
+    const t = { be_settings: [{ id: 1 }], be_audit_log: [] as any[] };
     const d = deps(t, { gateway: fakeGateway, channel: connected, env: { TURNSTILE_SITE_KEY: 'site', TURNSTILE_SECRET_KEY: 'test-value' } });
     await core.setLaunchSwitch(d, true);
     expect(t.be_settings[0].engine_switched_on).toBe(true);
@@ -113,7 +112,7 @@ describe('settings', () => {
 });
 
 describe('booking actions', () => {
-  it('records one date change when STAAH is connected, adding any price increase to the balance', async () => {
+  it('records one date change when the channel manager is connected, adding any price increase to the balance', async () => {
     const t = { be_bookings: [booking()], be_booking_lines: [{ booking_id: 'b1', room_type_id: 'bed-in-6-bed-mixed-dormitory', units: 2, guests: 2 }], be_audit_log: [] as any[] };
     const r = await core.changeDates(deps(t, { channel: connected }), 'b1', '2026-12-20', '2026-12-23');
     expect(r.extra).toBe(105000); // 3 nights instead of 2: ₹1,000 + 5% GST more
@@ -124,7 +123,7 @@ describe('booking actions', () => {
     const r = await core.changeDates(deps(t, { channel: connected }), 'b1', '2026-12-20', '2026-12-21');
     expect([r.extra, t.be_bookings[0].total_paise]).toEqual([0, 210000]);
   });
-  it('refuses a change within 14 days, a second change, or with STAAH not connected', async () => {
+  it('refuses a change within 14 days, a second change, or with no channel manager', async () => {
     const lines = [{ booking_id: 'b1', room_type_id: 'bed-in-6-bed-mixed-dormitory', units: 1, guests: 1 }];
     await expect(core.changeDates(deps({ be_bookings: [booking({ check_in: '2026-11-25' })], be_booking_lines: lines }, { channel: connected }), 'b1', '2026-12-20', '2026-12-21')).rejects.toThrow(/14 days/);
     await expect(core.changeDates(deps({ be_bookings: [booking({ date_changes_used: 1 })], be_booking_lines: lines }, { channel: connected }), 'b1', '2026-12-20', '2026-12-21')).rejects.toThrow(/already used/);
@@ -150,18 +149,6 @@ describe('booking actions', () => {
   });
 });
 
-describe('STAAH test buttons', () => {
-  it('logs a failed test while STAAH is not connected', async () => {
-    const t = { be_channel_log: [] as any[] };
-    expect(await core.staahTest(deps(t), 'pull')).toEqual({ ok: false, detail: expect.stringMatching(/not connected/) });
-    expect(t.be_channel_log[0]).toMatchObject({ direction: 'test', message_type: 'pull', status: 'failed' });
-  });
-  it('reports success once STAAH is connected', async () => {
-    const t = { be_channel_log: [] as any[] };
-    expect((await core.staahTest(deps(t, { channel: connected }), 'push_test')).detail).toMatch(/acknowledged.*S-1/);
-  });
-});
-
 describe('night audit', () => {
   const b = (o: Record<string, unknown>) => ({ id: 'b1', reference: 'XTSY-A', status: 'confirmed', check_in: '2026-11-10', check_out: '2026-11-12', advance_paise: 52500, balance_paise: 157500, channel_status: 'synced', ...o });
   const p = (o: Record<string, unknown>) => ({ id: 'p1', booking_id: 'b1', kind: 'advance', status: 'succeeded', amount_paise: 52500, method_declared: 'upi', method_actual: 'upi', settled_paise: 52500, created_at: '2026-11-01T10:00:00Z', ...o });
@@ -176,7 +163,7 @@ describe('night audit', () => {
   it('flags a confirmed booking with no advance', () => {
     expect(codes([b({ check_out: '2026-12-12' })], [])).toEqual(['confirmed_without_advance']);
   });
-  it('flags a short advance, a method switch, a missing settlement and an unsynced STAAH booking', () => {
+  it('flags a short advance, a method switch, a missing settlement and a booking the channel manager has not confirmed', () => {
     expect(codes([b({ check_out: '2026-12-12', channel_status: 'failed' })], [p({ amount_paise: 50000, method_actual: 'credit_card', settled_paise: null })]).sort())
       .toEqual(['advance_amount_mismatch', 'channel_not_synced', 'method_mismatch', 'not_settled']);
   });

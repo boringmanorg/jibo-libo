@@ -1,22 +1,15 @@
 /**
- * The channel manager is the master copy of availability, rates and restrictions (STAAH).
- * The engine reads ARI from it and sends confirmed bookings back. Implementations are server-only.
+ * The channel manager the booking engine sends to (ZimmerStack, src/booking/channel/zimmerstack.server.ts).
+ *
+ * XTSY's booking engine is the source of truth: room counts come from the owner's Google Sheet and
+ * the console, and are sent to the channel manager, which passes them to the OTAs. OTA bookings come
+ * back by signed webhook. A future XTSY PMS connects to this booking engine, never straight to the
+ * channel manager, so each hotel has exactly one writer.
  */
 import type { IsoDate } from '../dates';
 import type { Paise } from '../money';
 
-export interface NightAri {
-  roomTypeId: string;
-  night: IsoDate;
-  available: number;
-  rate: Paise;
-  minStay?: number;
-  maxStay?: number;
-  closedToArrival?: boolean;
-  closedToDeparture?: boolean;
-  stopSell?: boolean;
-}
-
+/** A website booking sent to the channel manager, so the OTAs stop selling those rooms. */
 export interface ChannelReservation {
   reference: string;
   status: 'confirmed' | 'modified' | 'cancelled';
@@ -24,34 +17,28 @@ export interface ChannelReservation {
   checkOut: IsoDate;
   rooms: { roomTypeId: string; units: number; guests: number; nightlyRates: Paise[] }[];
   guestName: string;
+  guestPhone?: string;
+  guestEmail?: string;
   total: Paise;
   paid: Paise;
 }
 
 export interface ChannelManager {
-  id: 'staah';
-  /** False until STAAH enables ChannelConnect for this property and the credentials are saved. */
+  id: 'zimmerstack';
+  /** True once the property is switched on in the console and linked to a ZimmerStack hotel. */
   connected: boolean;
-  getAri(roomTypeIds: string[], from: IsoDate, to: IsoDate): Promise<NightAri[]>;
-  /** Sends a new, changed or cancelled booking. Idempotent on `reference`. */
-  pushReservation(r: ChannelReservation): Promise<{ acknowledged: boolean; channelId?: string }>;
+  /** Engine room types not yet linked to a ZimmerStack room type and rate plan. */
+  unmapped: string[];
+  /** Sends a website booking. Idempotent on `reference`. */
+  pushReservation(r: ChannelReservation): Promise<{ acknowledged: boolean; channelId?: string; detail?: string }>;
 }
 
-/** Each engine room type must map to one STAAH room code and one rate code before launch. */
-export interface ChannelMapping { roomTypeId: string; roomCode: string; rateCode: string }
-
-export function unmappedRoomTypes(roomTypeIds: string[], mapping: ChannelMapping[]): string[] {
-  return roomTypeIds.filter((id) => {
-    const m = mapping.find((x) => x.roomTypeId === id);
-    return !m || !m.roomCode.trim() || !m.rateCode.trim();
-  });
-}
-
-/** True when the night cannot be sold for this stay, whatever the count says. */
-export function ariBlocksStay(n: NightAri, opts: { isArrival: boolean; isDeparture: boolean; stayNights: number }): boolean {
-  if (n.stopSell || n.available <= 0) return true;
-  if (opts.isArrival && n.closedToArrival) return true;
-  if (opts.isArrival && n.minStay && opts.stayNights < n.minStay) return true;
-  if (opts.isArrival && n.maxStay && opts.stayNights > n.maxStay) return true;
-  return false;
+/** No channel manager: the engine stays on WhatsApp enquiries (launchGate). */
+export function channelNotConnected(unmapped: string[] = [], detail = 'No channel manager is connected.'): ChannelManager {
+  return {
+    id: 'zimmerstack',
+    connected: false,
+    unmapped,
+    pushReservation: async () => ({ acknowledged: false, detail }),
+  };
 }

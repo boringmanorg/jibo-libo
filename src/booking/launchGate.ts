@@ -1,6 +1,6 @@
 /**
  * /book switches from WhatsApp enquiry to live booking only when every condition holds.
- * Selling without STAAH would let an OTA and the website sell the same bed.
+ * Selling without a channel manager (ZimmerStack) would let an OTA and the website sell the same bed.
  */
 export interface LaunchState {
   /** The owner's switch in the admin console. */

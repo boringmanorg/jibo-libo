@@ -1,6 +1,6 @@
 /**
  * Room types the booking engine sells. Owner-confirmed 19 Nov 2026.
- * IDs are the room name in lowercase with hyphens, and map one-to-one to STAAH room codes.
+ * IDs are the room name in lowercase with hyphens, and are the room-type refs sent to ZimmerStack.
  * Rates exclude breakfast, GST and payment gateway charges.
  */
 import { rupees, type Paise } from './money';

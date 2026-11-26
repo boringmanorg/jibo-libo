@@ -90,7 +90,7 @@ function Inventory() {
                       <td key={cell.night} className="border-b border-xt-line p-1">
                         {past ? <span className="block h-11 min-w-[2.75rem] rounded-lg bg-xt-sand/60" aria-hidden /> : (
                         <button type="button" onClick={() => setPicked({ row, cell })}
-                          aria-label={`${row.short}, ${dayMonth(cell.night)}: ${cell.sheetMissing ? 'not in the sheet' : `${cell.free} of ${cell.start} free`}${cell.closed ? `, ${cell.closed} blocked` : ''}`}
+                          aria-label={`${row.short}, ${dayMonth(cell.night)}: ${cell.sheetMissing ? 'not in the sheet' : `${cell.free} of ${cell.start} free`}${cell.closed ? `, ${cell.closed} blocked` : ''}${cell.ota ? `, ${cell.ota} held by OTA bookings` : ''}`}
                           className={cn('relative flex h-11 w-full min-w-[2.75rem] flex-col items-center justify-center rounded-lg text-[15px] font-bold transition-shadow hover:ring-2 hover:ring-xt-ink disabled:opacity-40 disabled:hover:ring-0',
                             cell.sheetMissing ? 'bg-[repeating-linear-gradient(135deg,#EFE6DA_0_6px,#F6F1EA_6px_12px)] text-xt-mute' : freeTone(cell.free, row.total))}>
                           {cell.sheetMissing ? '–' : cell.free}
@@ -145,7 +145,7 @@ function NightPanel({ row, cell, onClose }: { row: CalendarRow; cell: CalendarCe
           <button type="button" onClick={onClose} aria-label="Close" className="flex h-11 w-11 items-center justify-center rounded-full hover:bg-xt-cream"><X className="h-5 w-5" /></button>
         </div>
         <dl className="mt-5 grid grid-cols-3 gap-2 text-center">
-          {([[row.source === 'sheet' ? 'From sheet' : 'Total', cell.sheetMissing ? '–' : cell.start], ['Blocked here', cell.closed], ['On /book', cell.free]] as const).map(([k, v]) => (
+          {([[row.source === 'sheet' ? 'From sheet' : 'Total', cell.sheetMissing ? '–' : cell.start], ['Blocked here', cell.closed], ['OTA bookings (until the sheet is updated)', cell.ota], ['On /book', cell.free]] as const).map(([k, v]) => (
             <div key={k} className="rounded-2xl bg-xt-sand p-3"><dt className="text-xs text-xt-mute">{k}</dt><dd className="xt-display text-3xl text-xt-ink">{v}</dd></div>
           ))}
         </dl>

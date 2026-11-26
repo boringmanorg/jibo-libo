@@ -55,6 +55,8 @@ export interface CalendarCell {
   start: number;
   /** Closed by console blocks (capped at the starting count). */
   closed: number;
+  /** Held by OTA bookings from ZimmerStack (until the sheet is edited for that night). */
+  ota: number;
   free: number;
   /** The sheet had no number for this night (after it has synced, such nights are not bookable). */
   sheetMissing: boolean;
@@ -62,7 +64,7 @@ export interface CalendarCell {
 
 export interface CalendarRow extends CalendarRoom { cells: CalendarCell[] }
 
-export function buildCalendar(start: IsoDate, days: number, sheet: SheetAvailability, closures: ClosureRow[], rooms = calendarRooms()): CalendarRow[] {
+export function buildCalendar(start: IsoDate, days: number, sheet: SheetAvailability, closures: ClosureRow[], rooms = calendarRooms(), otaHolds: ClosureRow[] = []): CalendarRow[] {
   const nights = Array.from({ length: days }, (_, i) => addDays(start, i));
   return rooms.map((room) => ({
     ...room,
@@ -70,8 +72,9 @@ export function buildCalendar(start: IsoDate, days: number, sheet: SheetAvailabi
       const fromSheet = room.source === 'sheet';
       const startCount = fromSheet ? sheetCapacity(sheet, room.id, night, room.total) : room.total;
       const closed = Math.min(startCount, closedUnits(closures, room.id, night));
+      const ota = Math.min(startCount - closed, closedUnits(otaHolds, room.id, night));
       return {
-        night, start: startCount, closed, free: Math.max(0, startCount - closed),
+        night, start: startCount, closed, ota, free: Math.max(0, startCount - closed - ota),
         sheetMissing: fromSheet && Object.keys(sheet).length > 0 && sheet[room.id]?.[night] === undefined,
       };
     }),

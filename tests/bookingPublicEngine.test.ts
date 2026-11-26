@@ -74,7 +74,6 @@ function fakeDb(seed: Record<string, Row[]> = {}) {
 const ALL_IDS = ['bed-in-8-bed-mixed-dormitory', 'bed-in-6-bed-standard-dormitory', 'bed-in-6-bed-mixed-dormitory', 'bed-in-4-bed-female-deluxe-dormitory', 'king-room-with-mountain-view', 'triple-room-with-mountain-view', 'experience-by-xtsy'];
 const liveSeed = () => ({
   be_settings: [{ id: 1, engine_switched_on: true, hold_minutes: 15 }],
-  be_room_mapping: ALL_IDS.map((id) => ({ room_type_id: id, staah_room_code: 'R-' + id, staah_rate_code: 'BAR' })),
 });
 
 function fakeGateway(state: Partial<SessionState> = {}): PaymentGateway & { sessions: any[] } {
@@ -88,18 +87,11 @@ function fakeGateway(state: Partial<SessionState> = {}): PaymentGateway & { sess
     async verifyReturn() { return true; },
   };
 }
-const connectedChannel = (available = 99): ChannelManager & { pushed: any[] } => {
+const connectedChannel = (): ChannelManager & { pushed: any[] } => {
   const pushed: any[] = [];
   return {
-    id: 'staah', connected: true, pushed,
-    async getAri(ids, from, to) {
-      const out = [];
-      for (let d = new Date(from); d.toISOString().slice(0, 10) < to; d.setUTCDate(d.getUTCDate() + 1)) {
-        for (const id of ids) out.push({ roomTypeId: id, night: d.toISOString().slice(0, 10), available: id === 'king-room-with-mountain-view' ? 2 : available, rate: 0 });
-      }
-      return out.map((a) => ({ ...a, rate: a.roomTypeId === 'king-room-with-mountain-view' ? 240000 : 50000 }));
-    },
-    async pushReservation(r) { pushed.push(r); return { acknowledged: true, channelId: 'STAAH-1' }; },
+    id: 'zimmerstack', connected: true, unmapped: [], pushed,
+    async pushReservation(r) { pushed.push(r); return { acknowledged: true, channelId: 'ZS-1' }; },
   };
 };
 
@@ -152,10 +144,12 @@ describe('search', () => {
     expect(by('king-room-with-mountain-view').strip[1].free).toBe(2);
   });
 
-  it('uses channel-manager counts and rates once connected', async () => {
-    const r = await searchStays(deps({ channel: connectedChannel(3) }), { checkIn: '2026-12-01', checkOut: '2026-12-02' });
+  it('keeps the sheet counts once connected; an OTA booking from ZimmerStack holds its beds at once', async () => {
+    const db = fakeDb({ be_ota_bookings: [{ status: 'CONFIRMED', check_in: '2026-12-01', check_out: '2026-12-03', rooms: [{ roomTypeId: 'bed-in-6-bed-mixed-dormitory', units: 2 }], sheet_at_arrival: {}, received_at: '2026-11-20T05:00:00Z' }] } as any);
+    const r = await searchStays(deps({ db, channel: connectedChannel() }), { checkIn: '2026-12-01', checkOut: '2026-12-02' });
     expect(r.inventorySynced).toBe(true);
-    expect(r.rooms.find((x) => x.id === 'bed-in-6-bed-mixed-dormitory')).toMatchObject({ freeForStay: 3, fromRate: 50000 });
+    expect(r.rooms.find((x) => x.id === 'bed-in-6-bed-mixed-dormitory')).toMatchObject({ freeForStay: 16, fromRate: 50000 });
+    expect(r.rooms.find((x) => x.id === 'bed-in-8-bed-mixed-dormitory')).toMatchObject({ freeForStay: 8 });
   });
 });
 
@@ -221,10 +215,10 @@ describe('payment confirmation', () => {
     return { db, channel, d: { ...d, gateway: after }, reference };
   }
 
-  it('a verified webhook confirms once, issues an advance receipt and pushes to STAAH', async () => {
+  it('a verified webhook confirms once, issues an advance receipt and sends it to the channel manager', async () => {
     const { db, channel, d } = await paidBooking();
     expect(await handlePaymentWebhook(d, 'good', new Headers())).toEqual({ status: 200, body: 'ok' });
-    expect(db.t.be_bookings[0]).toMatchObject({ status: 'confirmed', channel_status: 'synced', channel_id: 'STAAH-1' });
+    expect(db.t.be_bookings[0]).toMatchObject({ status: 'confirmed', channel_status: 'synced', channel_id: 'ZS-1' });
     expect(db.t.be_holds).toHaveLength(0);
     expect(db.t.be_invoices[0].number).toMatch(/^XTSY\/2026-27\/AR\/0001$/);
     expect(channel.pushed).toHaveLength(1);
