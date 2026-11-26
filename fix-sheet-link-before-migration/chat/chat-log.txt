@@ -1,0 +1,47 @@
+> Plan 5 days with Wari Chora and Dawki for 4 of us in December
+Checking real drive times & routes…
+
+> How far is Wari Chora from Shillong?
+Your 5-day plan for 4 travellers in December · ~19 h on the road in total.
+
+Best fit for your needs: a dorm for a social stay, or a private room for privacy. Look near Dawki & the Umngot River, to avoid returning to Shillong after each sightseeing day.
+
+What is your nightly budget, who is travelling, and would you prefer a dorm or a private room?
+
+Stays: 4 nights at XTSY Travellers Hostel, New Shillong (our own stay).
+
+The day-by-day route below uses New Shillong as its base. If you prefer another overnight location, ask the desk to adjust transfers before confirming; these are proposed stays, not reservations.
+
+⚠️ I left out Wari Chora canyon: Garo Hills (Tura, Siju, Baghmara, Wari Chora) is ~10.5 h (~299 km) from Shillong — too far for a day trip. Add 3 days to fit it in.
+
+You had spare time, so I added: Laitlum Canyons, Umiam Lake, Nohkalikai Falls, Mawsmai Cave. Say “remove …” to drop any.
+
+• Dawki, Mawlynnong & Shnongpdeng: The Umngot is glass-clear November–April; in the monsoon it turns muddy and boating can stop.
+
+• Cherrapunji (Sohra): Waterfalls peak June–September; clearest views October–March.
+
+DAY
+1
+Arrive in the pines
+Pick-up at Guwahati airport or station · Umiam Lake viewpoint on the way in · Drive ~3.25 h to New Shillong · Check in at XTSY Travellers Hostel (check-in 11 AM) · Dinner at TAB Bistro by XTSY
+~3.25 h on the road
+Night: XTSY, New Shillong
+DAY
+2
+Laitlum Canyons
+Laitlum Canyons · Free afternoon in Shillong: Police Bazaar, Ward’s Lake and cafés · Back
+
+> Where should I stay near Kaziranga?
+Checking real drive times & routes…
+
+> Tawang in 7 days, honeymoon
+Best fit for your needs: a dorm for a social stay, or a private room for privacy. Look near Kaziranga National Park, to avoid returning to Shillong after each sightseeing day.
+
+What is your nightly budget, who is travelling, and would you prefer a dorm or a private room?
+
+send click failed TimeoutError: locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for getByRole('button', { name: 'Get this plan confirmed' }).last()
+
+lead form visible: false
+popup open: true
