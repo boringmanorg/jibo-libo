@@ -70,7 +70,7 @@ async function approvedSheet(request: Request): Promise<{ client: any; link: { i
   if (!/^[A-Za-z0-9_-]{40,100}$/.test(token)) return json({ error: 'Unauthorized' }, 401);
   const client = await db();
   if (!client) return json({ error: 'Database unavailable' }, 503);
-  const find = (cols: string) => client.from('be_sheet_links').select(cols).eq('token_hash', sha256(token)).maybeSingle();
+  const find = (cols: string): Promise<{ data: any; error: unknown }> => client.from('be_sheet_links').select(cols).eq('token_hash', sha256(token)).maybeSingle();
   let link = await find('id,status,writes_since');
   // Before the write-back migration (0031) runs, writes_since does not exist yet: the counts must
   // still get through, with write-back simply off.
