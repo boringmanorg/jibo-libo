@@ -148,7 +148,7 @@ export async function changeDates(d: ConsoleDeps, id: string, checkIn: IsoDate, 
 /** The Google Sheet follows a re-dated or cancelled website booking (the sheet's script rewrites it). */
 async function sheetFollows(d: ConsoleDeps, id: string) {
   const { queueWebsiteBooking } = await import('@/booking/sheetWrites.server');
-  await queueWebsiteBooking(d.db, id).catch(() => null);
+  await queueWebsiteBooking({ db: d.db, env: d.env, now: d.now }, id).catch(() => null);
 }
 
 /** Guest cancellations keep everything paid; XTSY cancellations refund it all (issued from the gateway). */

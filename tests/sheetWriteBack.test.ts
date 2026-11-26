@@ -206,17 +206,37 @@ function fakeDb(seed: Record<string, Row[]> = {}) {
 const link = { id: 'l1', status: 'active', writes_since: '2026-11-26T00:00:00Z' };
 const ota = (over: Row = {}) => ({ zs_mode: 'live', zs_booking_id: 77, property_id: 'XTSY-SHL-HOSTEL', status: 'CONFIRMED', ota_name: 'MakeMyTrip', ota_code: 'NH123', check_in: '2026-12-05', check_out: '2026-12-07', guest_name: 'Priyanka Sharma', adults: 2, children: 0, rooms: [{ roomTypeId: 'bed-in-6-bed-mixed-dormitory', units: 2 }], ...over });
 const NOW = new Date('2026-11-26T06:00:00Z');
+const LIVE_ALL = { channel: true, pms: true, payment: true };
+const dep = (db: any, integrations = LIVE_ALL) => ({ db, env: {}, now: NOW, integrations });
 
 describe('the write queue', () => {
   it('nothing is queued until the sheet runs the write-back script', async () => {
     const db = fakeDb({ be_sheet_links: [{ ...link, writes_since: null }], be_ota_bookings: [ota()] });
-    expect(await queueOtaBooking(db, 'live', 77)).toBeNull();
+    expect(await queueOtaBooking(dep(db), 'live', 77)).toBeNull();
+    expect(db.t.be_sheet_writes).toHaveLength(0);
+  });
+
+  it('nothing is written until channel manager, PMS and online payment are all live', async () => {
+    for (const off of [{ ...LIVE_ALL, channel: false }, { ...LIVE_ALL, pms: false }, { ...LIVE_ALL, payment: false }]) {
+      const db = fakeDb({ be_sheet_links: [link], be_ota_bookings: [ota()] });
+      expect(await queueOtaBooking(dep(db, off), 'live', 77)).toBeNull();
+      expect(db.t.be_sheet_writes).toHaveLength(0);
+      expect(db.t.be_ota_bookings[0].sheet_write).toBeNull(); // the old rule: held until the owner edits the night
+      const issues = await sheetWriteIssues(dep(db, off));
+      expect(issues.enabled).toBe(false);
+      expect(issues.missing).toHaveLength(1);
+    }
+  });
+
+  it('a website booking that was never paid is never written', async () => {
+    const db = fakeDb({ be_sheet_links: [link], be_bookings: [{ id: 'b2', reference: 'XTSY-HELD', status: 'held', check_in: '2026-12-10', check_out: '2026-12-11', guest_name: 'A', be_booking_lines: [{ room_type_id: 'bed-in-8-bed-mixed-dormitory', units: 1, guests: 1 }] }] });
+    expect(await queueWebsiteBooking(dep(db), 'b2')).toBeNull();
     expect(db.t.be_sheet_writes).toHaveLength(0);
   });
 
   it('a new OTA booking is queued as "Name 2B MMT", held until the sheet has written it', async () => {
     const db = fakeDb({ be_sheet_links: [link], be_ota_bookings: [ota()] });
-    expect(await queueOtaBooking(db, 'live', 77)).toBe('queued');
+    expect(await queueOtaBooking(dep(db), 'live', 77)).toBe('queued');
     expect(db.t.be_ota_bookings[0].sheet_write).toBe('queued');
     const [w] = await pendingForSheet(db);
     expect(w).toMatchObject({ kind: 'book', guestName: 'Priyanka Sharma', tag: 'MMT', checkIn: '2026-12-05', rooms: [{ letter: 'B', units: 2, roomNos: ['4', '5', '7'] }] });
@@ -225,27 +245,27 @@ describe('the write queue', () => {
     expect(db.t.be_ota_bookings[0].sheet_write).toBe('applied');
     expect(await pendingForSheet(db)).toEqual([]);
     // The same delivery again changes nothing.
-    expect(await queueOtaBooking(db, 'live', 77)).toBe('applied');
+    expect(await queueOtaBooking(dep(db), 'live', 77)).toBe('applied');
     expect(db.t.be_sheet_writes).toHaveLength(1);
   });
 
   it('a cancelled OTA booking gives its beds back with what was written', async () => {
     const db = fakeDb({ be_sheet_links: [link], be_ota_bookings: [ota()] });
-    await queueOtaBooking(db, 'live', 77);
+    await queueOtaBooking(dep(db), 'live', 77);
     const [w] = await pendingForSheet(db);
     const placed = [{ roomNo: '4', night: '2026-12-05', units: 2, note: 'Priyanka Sharma 2B MMT' }];
     await recordSheetAcks(db, [{ id: w.id, placed }], [], NOW);
     db.t.be_ota_bookings[0].status = 'CANCELLED';
-    await queueOtaBooking(db, 'live', 77);
+    await queueOtaBooking(dep(db), 'live', 77);
     const [c] = await pendingForSheet(db);
     expect(c).toMatchObject({ kind: 'cancel', placed });
   });
 
   it('a change before the sheet wrote it simply replaces the request; after, it cancels and rewrites', async () => {
     const db = fakeDb({ be_sheet_links: [link], be_ota_bookings: [ota()] });
-    await queueOtaBooking(db, 'live', 77);
+    await queueOtaBooking(dep(db), 'live', 77);
     db.t.be_ota_bookings[0].check_out = '2026-12-08';
-    await queueOtaBooking(db, 'live', 77);
+    await queueOtaBooking(dep(db), 'live', 77);
     expect(db.t.be_sheet_writes.map((w) => `${w.kind}:${w.status}`)).toEqual(['book:superseded', 'book:pending']);
     // The sheet had already written the first one: it is given back.
     await recordSheetAcks(db, [{ id: db.t.be_sheet_writes[0].id, placed: [{ roomNo: '4', night: '2026-12-05', units: 2, note: 'x' }] }], [], NOW);
@@ -255,22 +275,22 @@ describe('the write queue', () => {
 
   it('website bookings are tagged XTSY; a cancellation after writing queues a give-back', async () => {
     const db = fakeDb({ be_sheet_links: [link], be_bookings: [{ id: 'b1', reference: 'XTSY-ABC', status: 'confirmed', check_in: '2026-12-10', check_out: '2026-12-11', guest_name: 'Rahul Das', be_booking_lines: [{ room_type_id: 'king-room-with-mountain-view', units: 1, guests: 2 }] }] });
-    expect(await queueWebsiteBooking(db, 'b1')).toBe('queued');
+    expect(await queueWebsiteBooking(dep(db), 'b1')).toBe('queued');
     const [w] = await pendingForSheet(db);
     expect(w).toMatchObject({ tag: 'XTSY', rooms: [{ letter: 'G', guests: 2, roomNos: ['1', '6'] }] });
     await recordSheetAcks(db, [{ id: w.id, placed: [{ roomNo: '1', night: '2026-12-10', units: 1, note: 'Rahul Das 2G XTSY' }] }], [], NOW);
     expect(db.t.be_bookings[0].sheet_write).toBe('applied');
     db.t.be_bookings[0].status = 'cancelled_by_guest';
-    await queueWebsiteBooking(db, 'b1');
+    await queueWebsiteBooking(dep(db), 'b1');
     expect((await pendingForSheet(db))[0]).toMatchObject({ kind: 'cancel' });
   });
 
   it('a request the sheet cannot write yet shows in the console with the reason', async () => {
     const db = fakeDb({ be_sheet_links: [link], be_ota_bookings: [ota()] });
-    await queueOtaBooking(db, 'live', 77);
+    await queueOtaBooking(dep(db), 'live', 77);
     const [w] = await pendingForSheet(db);
     await recordSheetAcks(db, [], [{ id: w.id, problem: 'The sheet has no 2026-12-05 for room 4/5/7 yet (add that month).' }], NOW);
-    const issues = await sheetWriteIssues(db, NOW);
+    const issues = await sheetWriteIssues(dep(db));
     expect(issues.enabled).toBe(true);
     expect(issues.rows[0].problem).toMatch(/add that month/);
     expect(db.t.be_ota_bookings[0].sheet_write).toBe('queued'); // still held on /book
@@ -278,8 +298,8 @@ describe('the write queue', () => {
 
   it('the camp has no sheet: nothing is queued for it', async () => {
     const db = fakeDb({ be_sheet_links: [link], be_ota_bookings: [ota({ property_id: 'XTSY-SHN-CAMP', rooms: [{ roomTypeId: 'shnonpedeng-tent', units: 1 }] })] });
-    expect(await queueOtaBooking(db, 'live', 77)).toBeNull();
-    expect(await reconcileSheetWrites(db, 'ota', 'live:1', { checkIn: '2026-12-01', checkOut: '2026-12-02', rooms: [{ roomTypeId: 'shnonpedeng-tent', units: 1, guests: 2 }], guestName: 'A', tag: 'MMT' })).toBeNull();
+    expect(await queueOtaBooking(dep(db), 'live', 77)).toBeNull();
+    expect(await reconcileSheetWrites(dep(db), 'ota', 'live:1', { checkIn: '2026-12-01', checkOut: '2026-12-02', rooms: [{ roomTypeId: 'shnonpedeng-tent', units: 1, guests: 2 }], guestName: 'A', tag: 'MMT' })).toBeNull();
     expect(db.t.be_sheet_writes).toHaveLength(0);
   });
 });

@@ -100,14 +100,17 @@ const SHEET_STATE: Record<string, string> = { applied: 'In the sheet', queued: '
 /** OTA bookings delivered by ZimmerStack (upcoming). Their rooms are held on /book until the sheet has them. */
 function OtaBookings() {
   const fetchOta = useServerFn(listOtaBookings);
+  const fetchIssues = useServerFn(listSheetWriteIssues);
   const { data } = useQuery({ queryKey: ['console', 'ota-bookings'], queryFn: () => fetchOta(), refetchInterval: 60_000 });
+  const { data: gate } = useQuery({ queryKey: ['console', 'sheet-write-issues'], queryFn: () => fetchIssues(), refetchInterval: 60_000 });
   if (!data?.ready || data.rows.length === 0) return null;
-  const writing = data.rows.some((b) => b.sheet_write);
+  const writing = gate?.enabled || data.rows.some((b) => b.sheet_write);
   return (
     <Panel title="OTA bookings (ZimmerStack)" className="mt-8">
       <p className="mb-3 text-sm text-xt-mute">{writing
         ? 'These rooms are held on /book at once and written into your Google Sheet within a minute (“Name 2B MMT”). No need to type them.'
-        : 'These rooms are held on /book at once. Update the nights in your Google Sheet as usual; the hold drops when you do.'}</p>
+        : 'These rooms are held on /book at once. Update the nights in your Google Sheet as usual; the hold drops when you do.'}
+        {!writing && gate && gate.missing.length > 0 && <span className="mt-1 block">Automatic writing into the sheet starts once all of these are live: {gate.missing.join('; ')}.</span>}</p>
       <ul className="divide-y divide-xt-line">
         {data.rows.map((b) => (
           <li key={`${b.zs_mode}-${b.zs_booking_id}`} className="flex flex-wrap items-center justify-between gap-2 py-3 text-[15px]">

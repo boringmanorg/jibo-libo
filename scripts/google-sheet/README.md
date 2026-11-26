@@ -12,7 +12,13 @@ Only room numbers, dates and counts are sent. Guest names and notes never leave 
 ## Bookings written into the sheet (agreed with the owner, 26 Nov 2026)
 
 OTA bookings (arriving through ZimmerStack) and xtsy.one bookings are written into Room Management the
-way the owner writes them by hand, so the owner types **only offline bookings**:
+way the owner writes them by hand, so the owner types **only offline bookings**.
+
+**When it starts (owner, 26 Nov 2026):** only once all of these are live: the channel manager
+(ZimmerStack live for the hostel, every room type linked), the PMS (switched on in the console with the
+posbyxtsy.club address and key saved), online payment (Zoho Payments), and this script in the sheet.
+Until then nothing is written and the sheet is kept by hand as today. Website bookings are written
+only after a successful payment. The console Inbox lists whatever is still missing.
 
 - **Which room:** the lowest-numbered room of that type with space for the whole group on every night
   (6-bed mixed: 4, then 5, then 7). Only if no single room fits is the group split across rooms, in
@@ -32,8 +38,8 @@ way the owner writes them by hand, so the owner types **only offline bookings**:
   **XTSY → Sync with xtsy.one now**. Until the sheet has it, /book holds those rooms, so nothing is offered
   twice in between; once written, the sheet alone counts it. Each booking is written once: the script
   remembers what it wrote until the website confirms it.
-- Write-back starts the first time the updated script runs. Bookings that arrived before that stay as
-  they were (the old rule: held on /book until you edit that night).
+- Bookings that arrived before write-back started stay as they were (the old rule: held on /book until
+  you edit that night). A booking already written is always followed if it is changed or cancelled.
 
 **Updating from the read-only script:** paste the new `availability-sync.gs` over `Code.gs` and save.
 No new pairing is needed; Google may ask you to allow it again the first time it writes (same one-file

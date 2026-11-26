@@ -510,9 +510,9 @@ export async function applyOtaBooking(d: ZsDeps, propertyId: ChannelPropertyId, 
     adults: b.occupancy.adults, children: b.occupancy.children, total: b.amounts.total, currency: b.amounts.currency,
     rooms, sheet_at_arrival: sheetAtArrival, received_at: existing.data?.received_at ?? d.now.toISOString(), updated_at: d.now.toISOString(),
   });
-  // Written into the owner's Google Sheet by the sheet's script (when it runs the write-back version).
+  // Written into the owner's Google Sheet by the sheet's script, once channel manager, PMS and payment are all live.
   const { queueOtaBooking } = await import('../sheetWrites.server');
-  await queueOtaBooking(d.db, mode, b.id).catch(() => null);
+  await queueOtaBooking({ db: d.db, env: d.env, now: d.now }, mode, b.id).catch(() => null);
   return { applied: true };
 }
 

@@ -35,6 +35,44 @@ export async function writesEnabled(db: Db): Promise<boolean> {
   return !r.error && (r.data ?? []).length > 0;
 }
 
+export interface WriteBackDeps {
+  db: Db;
+  env: Record<string, string | undefined>;
+  now: Date;
+  /** Tests only: the integration checks' answers. */
+  integrations?: { channel: boolean; pms: boolean; payment: boolean };
+}
+
+/**
+ * Owner, 26 Nov 2026: bookings are written into the sheet only once the channel manager, the PMS
+ * and online payment are all connected and working. Until then nothing is queued and the owner keeps
+ * the sheet by hand as today (OTA bookings stay held on /book until the owner edits those nights).
+ * - Channel manager: ZimmerStack live for the hostel with every room type linked.
+ * - PMS: switched on in the console (Settings) with the posbyxtsy.club address and key saved.
+ * - Payment: the Zoho Payments keys saved (website bookings are queued only after a successful payment).
+ * - The sheet runs the write-back script.
+ */
+export async function writeBackGate(d: WriteBackDeps): Promise<{ ready: boolean; missing: string[] }> {
+  let checks = d.integrations;
+  if (!checks) {
+    const { hostelChannelStatus } = await import('./channel/zimmerstack.server');
+    const { zohoConfigFromEnv } = await import('./payments/zoho.server');
+    const ch = await hostelChannelStatus({ db: d.db, env: d.env, now: d.now }).catch(() => ({ connected: false, unmapped: ['?'] }));
+    const pms = await d.db.from('console_integration_settings').select('pms_enabled').eq('id', 1).maybeSingle();
+    checks = {
+      channel: ch.connected && ch.unmapped.length === 0,
+      pms: !pms.error && pms.data?.pms_enabled === true && !!d.env.XTSY_SAAS_API_URL && !!d.env.XTSY_SAAS_API_KEY,
+      payment: zohoConfigFromEnv(d.env) !== null,
+    };
+  }
+  const missing: string[] = [];
+  if (!checks.channel) missing.push('Channel manager (ZimmerStack) live for the hostel');
+  if (!checks.pms) missing.push('PMS connected (posbyxtsy.club)');
+  if (!checks.payment) missing.push('Online payment (Zoho Payments) connected');
+  if (!(await writesEnabled(d.db))) missing.push('The new script running in the Google Sheet');
+  return { ready: missing.length === 0, missing };
+}
+
 /** The book request that currently stands for this booking (not cancelled, not replaced). */
 function standing(rows: WriteRow[]): WriteRow | null {
   const cancelled = new Set(rows.filter((r) => r.kind === 'cancel' && r.status !== 'superseded').map((r) => Number(r.cancels)));
@@ -47,13 +85,16 @@ function standing(rows: WriteRow[]): WriteRow | null {
  * 'applied' (the sheet already holds it), 'queued' (waiting for the sheet) or null (nothing to hold:
  * write-back is off, or the booking is cancelled).
  */
-export async function reconcileSheetWrites(db: Db, source: 'ota' | 'website', ref: string, want: SheetWant | null): Promise<SheetWriteState> {
+export async function reconcileSheetWrites(d: WriteBackDeps, source: 'ota' | 'website', ref: string, want: SheetWant | null): Promise<SheetWriteState> {
+  const db = d.db;
   const existing = await db.from('be_sheet_writes').select('*').eq('source', source).eq('source_ref', ref).order('id', { ascending: true });
   if (existing.error) return null;
   const rows = (existing.data ?? []) as WriteRow[];
   const rooms = want ? writableRooms(want.rooms) : [];
   const target = want && rooms.length ? { ...want, rooms } : null;
-  if (!rows.length && !(await writesEnabled(db))) return null; // the sheet does not take writes yet
+  // Not written before: start only once every integration is live. A booking already written is
+  // always followed (changed or cancelled), even if an integration is switched off later.
+  if (!rows.length && (!target || !(await writeBackGate(d)).ready)) return null;
   const live = standing(rows);
   if (live && target && sameStay({ checkIn: day(live.check_in), checkOut: day(live.check_out), rooms: live.rooms }, target)) {
     return live.status === 'applied' ? 'applied' : 'queued';
@@ -79,29 +120,34 @@ export async function reconcileSheetWrites(db: Db, source: 'ota' | 'website', re
 }
 
 /** After an OTA booking is saved: queue it for the sheet (hostel only) and note where it stands. */
-export async function queueOtaBooking(db: Db, mode: 'test' | 'live', zsBookingId: number) {
+export async function queueOtaBooking(d: WriteBackDeps, mode: 'test' | 'live', zsBookingId: number) {
+  const db = d.db;
   const r = await db.from('be_ota_bookings').select('property_id,status,ota_name,ota_code,check_in,check_out,guest_name,adults,children,rooms').eq('zs_mode', mode).eq('zs_booking_id', zsBookingId).maybeSingle();
   const b = r.data;
   if (!b || b.property_id !== 'XTSY-SHL-HOSTEL') return null;
   const want: SheetWant | null = b.status === 'CONFIRMED'
     ? { checkIn: day(b.check_in), checkOut: day(b.check_out), rooms: otaRoomGuests(b.rooms ?? [], Number(b.adults ?? 0), Number(b.children ?? 0)), guestName: b.guest_name ?? '', tag: otaTag(b.ota_name, b.ota_code) }
     : null;
-  const state = await reconcileSheetWrites(db, 'ota', `${mode}:${zsBookingId}`, want);
+  const state = await reconcileSheetWrites(d, 'ota', `${mode}:${zsBookingId}`, want);
   await db.from('be_ota_bookings').update({ sheet_write: state }).eq('zs_mode', mode).eq('zs_booking_id', zsBookingId);
   return state;
 }
 
 const LIVE = ['confirmed', 'checked_in'];
 
-/** After a website booking is confirmed, re-dated or cancelled: queue it for the sheet, tagged XTSY. */
-export async function queueWebsiteBooking(db: Db, bookingId: string) {
+/**
+ * After a website booking's payment succeeds (and when it is later re-dated or cancelled): queue it
+ * for the sheet, tagged XTSY. A booking that was never paid is never written.
+ */
+export async function queueWebsiteBooking(d: WriteBackDeps, bookingId: string) {
+  const db = d.db;
   const r = await db.from('be_bookings').select('reference,status,check_in,check_out,guest_name,be_booking_lines(room_type_id,units,guests)').eq('id', bookingId).maybeSingle();
   const b = r.data;
   if (!b) return null;
   const want: SheetWant | null = LIVE.includes(b.status)
     ? { checkIn: day(b.check_in), checkOut: day(b.check_out), rooms: (b.be_booking_lines ?? []).map((l: any) => ({ roomTypeId: l.room_type_id, units: Number(l.units), guests: Number(l.guests) })), guestName: b.guest_name ?? '', tag: WEBSITE_TAG }
     : null;
-  const state = await reconcileSheetWrites(db, 'website', b.reference, want);
+  const state = await reconcileSheetWrites(d, 'website', b.reference, want);
   await db.from('be_bookings').update({ sheet_write: state }).eq('id', bookingId);
   return state;
 }
@@ -162,14 +208,16 @@ export async function recordSheetAcks(db: Db, applied: SheetAck[], waiting: { id
 }
 
 /** For the console: requests with a problem, and requests the sheet has not picked up for 10 minutes. */
-export async function sheetWriteIssues(db: Db, now: Date) {
+export async function sheetWriteIssues(d: WriteBackDeps) {
+  const { db, now } = d;
   const since = new Date(now.getTime() - 30 * 86_400_000).toISOString();
   const r = await db.from('be_sheet_writes').select('id,source,source_ref,kind,tag,guest_name,check_in,check_out,status,problem,created_at,applied_at')
     .gte('created_at', since).order('id', { ascending: false }).limit(200);
-  if (r.error) return { enabled: false, rows: [] as any[] };
+  if (r.error) return { enabled: false, missing: [] as string[], rows: [] as any[] };
   const stale = now.getTime() - 10 * 60_000;
   const today = todayInIndia(now);
   const rows = ((r.data ?? []) as any[]).filter((x) =>
     day(x.check_out) >= today && (x.problem || (x.status === 'pending' && new Date(x.created_at).getTime() < stale)));
-  return { enabled: await writesEnabled(db), rows: rows.map((x) => ({ ...x, nights: stayNights(day(x.check_in), day(x.check_out)).length })) };
+  const gate = await writeBackGate(d);
+  return { enabled: gate.ready, missing: gate.missing, rows: rows.map((x) => ({ ...x, nights: stayNights(day(x.check_in), day(x.check_out)).length })) };
 }

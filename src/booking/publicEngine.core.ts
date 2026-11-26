@@ -496,9 +496,10 @@ export async function settleSession(d: EngineDeps, sessionId: string): Promise<'
         });
       }
       await pushToChannel(d, b.data.id);
-      // Written into the owner's Google Sheet as "Name 2B XTSY" by the sheet's script.
+      // Paid: written into the owner's Google Sheet as "Name 2B XTSY" by the sheet's script
+      // (once channel manager, PMS and payment are all live).
       const { queueWebsiteBooking } = await import('./sheetWrites.server');
-      await queueWebsiteBooking(db, b.data.id).catch(() => null);
+      await queueWebsiteBooking({ db, env: d.env, now: d.now }, b.data.id).catch(() => null);
     }
     return 'confirmed';
   }

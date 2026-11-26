@@ -53,7 +53,7 @@ function Connections() {
       <PageHead title="Connections" sub="Where availability comes from today, and what can be plugged in later." />
 
       <Row icon={<FileSpreadsheet className="h-5 w-5" />} title="Google Sheet: Room Management" status={<SheetChip syncedAt={data.sheetSyncedAt} />}>
-        <p>Your live availability. A script in the sheet sends the numbers on every saved edit. It also writes OTA and website bookings into the Room Management tab the way you do (“Name 2B MMT”, “Name 2G XTSY”), so you type only offline bookings. No other tab is touched.</p>
+        <p>Your live availability. A script in the sheet sends the numbers on every saved edit. Once the channel manager, PMS and online payment are all live, it also writes OTA bookings and paid website bookings into the Room Management tab the way you do (“Name 2B MMT”, “Name 2G XTSY”), so you type only offline bookings. No other tab is touched.</p>
         <p>Setup steps are in the repository at <code className="rounded bg-xt-sand px-1.5 py-0.5 text-xt-ink">scripts/google-sheet/README.md</code>.</p>
       </Row>
 

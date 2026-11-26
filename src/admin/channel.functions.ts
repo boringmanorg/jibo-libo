@@ -138,8 +138,7 @@ export const listSheetWriteIssues = createServerFn({ method: 'GET' })
   .middleware([requireSuperAdmin])
   .handler(async () => {
     const { sheetWriteIssues } = await import('@/booking/sheetWrites.server');
-    const { db, now } = await deps();
-    return sheetWriteIssues(db, now) as Promise<{ enabled: boolean; rows: {
+    return sheetWriteIssues(await deps()) as Promise<{ enabled: boolean; missing: string[]; rows: {
       id: number; source: 'ota' | 'website'; source_ref: string; kind: 'book' | 'cancel'; tag: string; guest_name: string;
       check_in: string; check_out: string; status: string; problem: string | null; created_at: string; applied_at: string | null; nights: number;
     }[] }>;
