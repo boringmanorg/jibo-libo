@@ -6,7 +6,7 @@ import { toast } from 'sonner';
 import { MessageCircle, Phone, Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { listInbox, updateEnquiry } from '@/admin/consoleHome.functions';
-import { listOtaBookings } from '@/admin/channel.functions';
+import { listOtaBookings, listSheetWriteIssues } from '@/admin/channel.functions';
 import { PageHead, Panel, STATUS_LABEL, STATUS_STYLE, ago, dayMonth, inrWhole } from '@/admin/components/ConsoleBits';
 
 export const Route = createFileRoute('/(admin)/admin/inbox')({ component: InboxPage });
@@ -51,6 +51,7 @@ function InboxPage() {
         <ul className="space-y-3">{data.enquiries.map((e: any) => <EnquiryCard key={e.id} e={e} />)}</ul>
       )}
 
+      <SheetWriteIssues />
       <OtaBookings />
 
       {data && data.onlineBookings.length > 0 && (
@@ -71,14 +72,42 @@ function InboxPage() {
 
 const PROPERTY_NAME: Record<string, string> = { 'XTSY-SHL-HOSTEL': 'Hostel', 'XTSY-SHN-CAMP': 'Shnonpedeng camp' };
 
-/** OTA bookings delivered by ZimmerStack (upcoming). Their rooms are held on /book until the sheet is updated. */
+/** Bookings the Google Sheet's script could not write (or has not collected): the owner fixes these by hand. */
+function SheetWriteIssues() {
+  const fetchIssues = useServerFn(listSheetWriteIssues);
+  const { data } = useQuery({ queryKey: ['console', 'sheet-write-issues'], queryFn: () => fetchIssues(), refetchInterval: 60_000 });
+  if (!data || data.rows.length === 0) return null;
+  return (
+    <Panel title="Google Sheet needs you" className="mt-8">
+      <p className="mb-3 text-sm text-xt-mute">These bookings could not be written into Room Management as usual. Their rooms stay held on /book until it is sorted.</p>
+      <ul className="divide-y divide-xt-line">
+        {data.rows.map((w) => (
+          <li key={w.id} className="py-3 text-[15px]">
+            <span className="font-semibold">{w.guest_name}</span> · {w.tag} · {dayMonth(w.check_in)} → {dayMonth(w.check_out)}{w.kind === 'cancel' ? ' · cancellation' : ''}
+            <span className="block text-sm text-xt-mute">
+              {w.problem ?? `Queued ${ago(w.created_at)} and not collected by the sheet yet. Open the sheet and choose XTSY → Sync with xtsy.one now.`}
+              {w.status === 'applied' && w.problem ? ' Written, but check these nights in the sheet.' : ''}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </Panel>
+  );
+}
+
+const SHEET_STATE: Record<string, string> = { applied: 'In the sheet', queued: 'Writing to the sheet' };
+
+/** OTA bookings delivered by ZimmerStack (upcoming). Their rooms are held on /book until the sheet has them. */
 function OtaBookings() {
   const fetchOta = useServerFn(listOtaBookings);
   const { data } = useQuery({ queryKey: ['console', 'ota-bookings'], queryFn: () => fetchOta(), refetchInterval: 60_000 });
   if (!data?.ready || data.rows.length === 0) return null;
+  const writing = data.rows.some((b) => b.sheet_write);
   return (
     <Panel title="OTA bookings (ZimmerStack)" className="mt-8">
-      <p className="mb-3 text-sm text-xt-mute">These rooms are held on /book at once. Update the nights in your Google Sheet as usual; the hold drops when you do.</p>
+      <p className="mb-3 text-sm text-xt-mute">{writing
+        ? 'These rooms are held on /book at once and written into your Google Sheet within a minute (“Name 2B MMT”). No need to type them.'
+        : 'These rooms are held on /book at once. Update the nights in your Google Sheet as usual; the hold drops when you do.'}</p>
       <ul className="divide-y divide-xt-line">
         {data.rows.map((b) => (
           <li key={`${b.zs_mode}-${b.zs_booking_id}`} className="flex flex-wrap items-center justify-between gap-2 py-3 text-[15px]">
@@ -86,7 +115,10 @@ function OtaBookings() {
               <span className="font-semibold">{b.guest_name ?? 'Guest'}</span> · {b.ota_name ?? 'OTA'}{b.ota_code ? ` ${b.ota_code}` : ''} · {dayMonth(b.check_in)} → {dayMonth(b.check_out)}
               <span className="block text-sm text-xt-mute">{PROPERTY_NAME[b.property_id] ?? b.property_id} · {b.rooms.map((r) => `${r.units} × ${r.roomTypeId.replace(/-/g, ' ')}`).join(', ') || 'room not linked'}{b.guest_phone ? ` · ${b.guest_phone}` : ''}{b.zs_mode === 'test' ? ' · sandbox' : ''}</span>
             </span>
-            <span className={cn('rounded-full px-2.5 py-0.5 text-xs font-bold', b.status === 'CANCELLED' ? 'bg-xt-cream text-xt-mute' : 'bg-xt-leaf/10 text-xt-pine')}>{b.status === 'CANCELLED' ? 'Cancelled' : 'Confirmed'}</span>
+            <span className="flex flex-wrap gap-1.5">
+              {b.status !== 'CANCELLED' && b.sheet_write && <span className="rounded-full bg-xt-cream px-2.5 py-0.5 text-xs font-bold text-xt-ink">{SHEET_STATE[b.sheet_write]}</span>}
+              <span className={cn('rounded-full px-2.5 py-0.5 text-xs font-bold', b.status === 'CANCELLED' ? 'bg-xt-cream text-xt-mute' : 'bg-xt-leaf/10 text-xt-pine')}>{b.status === 'CANCELLED' ? 'Cancelled' : 'Confirmed'}</span>
+            </span>
           </li>
         ))}
       </ul>

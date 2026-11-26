@@ -15,7 +15,7 @@ import {
   useRouter,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
-import { memo, Suspense, useEffect, type ReactNode } from "react";
+import { memo, Suspense, useEffect, useRef, type ReactNode } from "react";
 import { trackAIReferral } from "@/utils/aiReferralTracking";
 import { installChunkRecovery } from "@/utils/chunkRecovery";
 
@@ -290,11 +290,45 @@ function RootComponent() {
   // data-free signal and the open page re-runs its loaders (no timers, no browser refresh).
   // Console pages refresh their own queries.
   const liveRouter = useRouter();
-  useSheetDoorbell(() => {
-    if (!isGuestPage || document.visibilityState !== "visible") return;
+  const missedRing = useRef(false);
+  const lastRefresh = useRef(0);
+  const refreshLive = () => {
+    lastRefresh.current = Date.now();
+    missedRing.current = false;
     void liveRouter.invalidate();
     void queryClient.invalidateQueries();
+  };
+  useSheetDoorbell(() => {
+    if (!isGuestPage) return;
+    // A change while the tab is in the background is applied the moment the guest comes back.
+    if (document.visibilityState !== "visible") { missedRing.current = true; return; }
+    refreshLive();
   });
+  // Returning to the tab, or arriving through back/forward from the browser's page cache: booking
+  // pages always re-ask for the live counts (the sheet or an OTA may have changed them meanwhile);
+  // other guest pages only when a change arrived while they were away.
+  useEffect(() => {
+    const onReturn = (e: Event) => {
+      if (document.visibilityState !== "visible") return;
+      const restored = e.type === "pageshow" && (e as PageTransitionEvent).persisted;
+      if (e.type === "pageshow" && !restored) return; // a normal load already has fresh data
+      const path = window.location.pathname;
+      if (/^\/(admin|admin-login|franchise|api)(\/|$)/.test(path)) return;
+      const booking = /^\/book(\/|$)/.test(path);
+      if (!restored && !missedRing.current && !booking) return;
+      if (!restored && Date.now() - lastRefresh.current < 3000) return; // focus + visibility fire together
+      refreshLive();
+    };
+    window.addEventListener("pageshow", onReturn);
+    window.addEventListener("focus", onReturn);
+    document.addEventListener("visibilitychange", onReturn);
+    return () => {
+      window.removeEventListener("pageshow", onReturn);
+      window.removeEventListener("focus", onReturn);
+      document.removeEventListener("visibilitychange", onReturn);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Label AI-assistant referrals (ChatGPT / Perplexity / Gemini …) for the
   // GA4 "AI assistant traffic" segment. Diagnostic only — never a conversion.

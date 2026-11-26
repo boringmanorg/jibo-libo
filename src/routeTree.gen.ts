@@ -96,6 +96,7 @@ import { Route as toursExpeditionsTypeRouteRouteImport } from './routes/(tours)/
 import { Route as ApiPublicHooksBistroGoogleSyncRouteImport } from './routes/api/public/hooks/bistro-google-sync'
 import { Route as ApiPublicHooksSheetAvailabilityRouteImport } from './routes/api/public/hooks/sheet-availability'
 import { Route as ApiPublicHooksSheetPairRouteImport } from './routes/api/public/hooks/sheet-pair'
+import { Route as ApiPublicHooksSheetWritesRouteImport } from './routes/api/public/hooks/sheet-writes'
 import { Route as ApiPublicHooksZimmerstackRouteImport } from './routes/api/public/hooks/zimmerstack'
 import { Route as ApiPublicHooksZohoOauthRouteImport } from './routes/api/public/hooks/zoho-oauth'
 import { Route as ApiPublicHooksZohoPaymentsRouteImport } from './routes/api/public/hooks/zoho-payments'
@@ -582,6 +583,12 @@ const ApiPublicHooksSheetPairRoute = ApiPublicHooksSheetPairRouteImport.update({
   path: '/api/public/hooks/sheet-pair',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicHooksSheetWritesRoute =
+  ApiPublicHooksSheetWritesRouteImport.update({
+    id: '/api/public/hooks/sheet-writes',
+    path: '/api/public/hooks/sheet-writes',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ApiPublicHooksZimmerstackRoute =
   ApiPublicHooksZimmerstackRouteImport.update({
     id: '/api/public/hooks/zimmerstack',
@@ -699,6 +706,7 @@ export interface FileRoutesByFullPath {
   '/api/public/hooks/bistro-google-sync': typeof ApiPublicHooksBistroGoogleSyncRoute
   '/api/public/hooks/sheet-availability': typeof ApiPublicHooksSheetAvailabilityRoute
   '/api/public/hooks/sheet-pair': typeof ApiPublicHooksSheetPairRoute
+  '/api/public/hooks/sheet-writes': typeof ApiPublicHooksSheetWritesRoute
   '/api/public/hooks/zimmerstack': typeof ApiPublicHooksZimmerstackRoute
   '/api/public/hooks/zoho-oauth': typeof ApiPublicHooksZohoOauthRoute
   '/api/public/hooks/zoho-payments': typeof ApiPublicHooksZohoPaymentsRoute
@@ -792,6 +800,7 @@ export interface FileRoutesByTo {
   '/api/public/hooks/bistro-google-sync': typeof ApiPublicHooksBistroGoogleSyncRoute
   '/api/public/hooks/sheet-availability': typeof ApiPublicHooksSheetAvailabilityRoute
   '/api/public/hooks/sheet-pair': typeof ApiPublicHooksSheetPairRoute
+  '/api/public/hooks/sheet-writes': typeof ApiPublicHooksSheetWritesRoute
   '/api/public/hooks/zimmerstack': typeof ApiPublicHooksZimmerstackRoute
   '/api/public/hooks/zoho-oauth': typeof ApiPublicHooksZohoOauthRoute
   '/api/public/hooks/zoho-payments': typeof ApiPublicHooksZohoPaymentsRoute
@@ -887,6 +896,7 @@ export interface FileRoutesById {
   '/api/public/hooks/bistro-google-sync': typeof ApiPublicHooksBistroGoogleSyncRoute
   '/api/public/hooks/sheet-availability': typeof ApiPublicHooksSheetAvailabilityRoute
   '/api/public/hooks/sheet-pair': typeof ApiPublicHooksSheetPairRoute
+  '/api/public/hooks/sheet-writes': typeof ApiPublicHooksSheetWritesRoute
   '/api/public/hooks/zimmerstack': typeof ApiPublicHooksZimmerstackRoute
   '/api/public/hooks/zoho-oauth': typeof ApiPublicHooksZohoOauthRoute
   '/api/public/hooks/zoho-payments': typeof ApiPublicHooksZohoPaymentsRoute
@@ -983,6 +993,7 @@ export interface FileRouteTypes {
     | '/api/public/hooks/bistro-google-sync'
     | '/api/public/hooks/sheet-availability'
     | '/api/public/hooks/sheet-pair'
+    | '/api/public/hooks/sheet-writes'
     | '/api/public/hooks/zimmerstack'
     | '/api/public/hooks/zoho-oauth'
     | '/api/public/hooks/zoho-payments'
@@ -1076,6 +1087,7 @@ export interface FileRouteTypes {
     | '/api/public/hooks/bistro-google-sync'
     | '/api/public/hooks/sheet-availability'
     | '/api/public/hooks/sheet-pair'
+    | '/api/public/hooks/sheet-writes'
     | '/api/public/hooks/zimmerstack'
     | '/api/public/hooks/zoho-oauth'
     | '/api/public/hooks/zoho-payments'
@@ -1170,6 +1182,7 @@ export interface FileRouteTypes {
     | '/api/public/hooks/bistro-google-sync'
     | '/api/public/hooks/sheet-availability'
     | '/api/public/hooks/sheet-pair'
+    | '/api/public/hooks/sheet-writes'
     | '/api/public/hooks/zimmerstack'
     | '/api/public/hooks/zoho-oauth'
     | '/api/public/hooks/zoho-payments'
@@ -1254,6 +1267,7 @@ export interface RootRouteChildren {
   ApiPublicHooksBistroGoogleSyncRoute: typeof ApiPublicHooksBistroGoogleSyncRoute
   ApiPublicHooksSheetAvailabilityRoute: typeof ApiPublicHooksSheetAvailabilityRoute
   ApiPublicHooksSheetPairRoute: typeof ApiPublicHooksSheetPairRoute
+  ApiPublicHooksSheetWritesRoute: typeof ApiPublicHooksSheetWritesRoute
   ApiPublicHooksZimmerstackRoute: typeof ApiPublicHooksZimmerstackRoute
   ApiPublicHooksZohoOauthRoute: typeof ApiPublicHooksZohoOauthRoute
   ApiPublicHooksZohoPaymentsRoute: typeof ApiPublicHooksZohoPaymentsRoute
@@ -1873,6 +1887,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicHooksSheetPairRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/hooks/sheet-writes': {
+      id: '/api/public/hooks/sheet-writes'
+      path: '/api/public/hooks/sheet-writes'
+      fullPath: '/api/public/hooks/sheet-writes'
+      preLoaderRoute: typeof ApiPublicHooksSheetWritesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/hooks/zimmerstack': {
       id: '/api/public/hooks/zimmerstack'
       path: '/api/public/hooks/zimmerstack'
@@ -2042,6 +2063,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiPublicHooksBistroGoogleSyncRoute: ApiPublicHooksBistroGoogleSyncRoute,
   ApiPublicHooksSheetAvailabilityRoute: ApiPublicHooksSheetAvailabilityRoute,
   ApiPublicHooksSheetPairRoute: ApiPublicHooksSheetPairRoute,
+  ApiPublicHooksSheetWritesRoute: ApiPublicHooksSheetWritesRoute,
   ApiPublicHooksZimmerstackRoute: ApiPublicHooksZimmerstackRoute,
   ApiPublicHooksZohoOauthRoute: ApiPublicHooksZohoOauthRoute,
   ApiPublicHooksZohoPaymentsRoute: ApiPublicHooksZohoPaymentsRoute,

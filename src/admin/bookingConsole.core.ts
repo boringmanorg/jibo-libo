@@ -140,8 +140,15 @@ export async function changeDates(d: ConsoleDeps, id: string, checkIn: IsoDate, 
     channel_status: 'pending', updated_at: d.now.toISOString(),
   }).eq('id', id);
   if (error) throw new ConsoleError('Could not save the new dates');
+  await sheetFollows(d, id);
   await audit(d, 'booking.date_change', { reference: booking.reference, from: [booking.check_in, booking.check_out], to: [checkIn, checkOut], extra });
   return { ok: true, extra };
+}
+
+/** The Google Sheet follows a re-dated or cancelled website booking (the sheet's script rewrites it). */
+async function sheetFollows(d: ConsoleDeps, id: string) {
+  const { queueWebsiteBooking } = await import('@/booking/sheetWrites.server');
+  await queueWebsiteBooking(d.db, id).catch(() => null);
 }
 
 /** Guest cancellations keep everything paid; XTSY cancellations refund it all (issued from the gateway). */
@@ -155,6 +162,7 @@ export async function cancelBooking(d: ConsoleDeps, id: string, by: 'guest' | 'x
     status: by === 'guest' ? 'cancelled_by_guest' : 'cancelled_by_xtsy', cancel_reason: reason.trim(), channel_status: 'pending', updated_at: d.now.toISOString(),
   }).eq('id', id);
   if (error) throw new ConsoleError('Could not cancel');
+  await sheetFollows(d, id);
   await audit(d, `booking.cancel.${by}`, { reference: booking.reference, paid, refund, reason: reason.trim() });
   return { ok: true, paid, refund };
 }

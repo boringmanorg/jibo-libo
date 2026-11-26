@@ -121,12 +121,26 @@ export const listOtaBookings = createServerFn({ method: 'GET' })
   .middleware([requireSuperAdmin])
   .handler(async ({ context }) => {
     const ctx = context as Ctx;
-    const r = await ctx.supabase.from('be_ota_bookings')
-      .select('zs_booking_id,zs_mode,property_id,status,ota_name,ota_code,check_in,check_out,guest_name,guest_phone,guest_email,contact_withheld,adults,children,total,currency,rooms,received_at')
-      .gte('check_out', todayInIndia(new Date())).order('check_in').limit(200);
+    const cols = 'zs_booking_id,zs_mode,property_id,status,ota_name,ota_code,check_in,check_out,guest_name,guest_phone,guest_email,contact_withheld,adults,children,total,currency,rooms,received_at';
+    const q = (c: string) => ctx.supabase.from('be_ota_bookings').select(c).gte('check_out', todayInIndia(new Date())).order('check_in').limit(200);
+    let r = await q(`${cols},sheet_write`);
+    if (r.error) r = await q(cols); // before the write-back migration
     return { ready: !r.error, rows: (r.data ?? []) as {
       zs_booking_id: number; zs_mode: string; property_id: string; status: string; ota_name: string | null; ota_code: string | null;
       check_in: string; check_out: string; guest_name: string | null; guest_phone: string | null; guest_email: string | null; contact_withheld: string | null;
       adults: number; children: number; total: number | null; currency: string | null; rooms: { roomTypeId: string; units: number }[]; received_at: string;
+      sheet_write?: 'queued' | 'applied' | null;
     }[] };
+  });
+
+/** Bookings the Google Sheet could not take (month missing, OVERBOOKED) or has not picked up for 10 minutes. */
+export const listSheetWriteIssues = createServerFn({ method: 'GET' })
+  .middleware([requireSuperAdmin])
+  .handler(async () => {
+    const { sheetWriteIssues } = await import('@/booking/sheetWrites.server');
+    const { db, now } = await deps();
+    return sheetWriteIssues(db, now) as Promise<{ enabled: boolean; rows: {
+      id: number; source: 'ota' | 'website'; source_ref: string; kind: 'book' | 'cancel'; tag: string; guest_name: string;
+      check_in: string; check_out: string; status: string; problem: string | null; created_at: string; applied_at: string | null; nights: number;
+    }[] }>;
   });
