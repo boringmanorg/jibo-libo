@@ -2,11 +2,11 @@
  {
   "route": "/",
   "status": 200,
-  "wallMs": 9981,
-  "ttfb": 160,
-  "fcp": 1452,
+  "wallMs": 9926,
+  "ttfb": 156,
+  "fcp": 1320,
   "lcp": {
-   "t": 1452,
+   "t": 1320,
    "size": 249600,
    "url": "http://localhost:4174/img/o/xtsy-hostel-front-portrait-828.avif",
    "tag": "IMG",
@@ -15,7 +15,7 @@
   },
   "lcpCandidates": [
    {
-    "t": 1452,
+    "t": 1320,
     "size": 249600,
     "url": "http://localhost:4174/img/o/xtsy-hostel-front-portrait-828.avif",
     "tag": "IMG",
@@ -27,7 +27,7 @@
   "shifts": [
    {
     "v": 0.0098,
-    "t": 3203,
+    "t": 3142,
     "nodes": [
      "DIV.max-w-5xl"
     ],
@@ -40,18 +40,21 @@
    },
    {
     "v": 0.0004,
-    "t": 3402,
+    "t": 3374,
     "nodes": [
      "A.xt-btn flex h-14 items-center gap-2.5 rounded-full bg-xt-paper pl-4 pr-6 text-[1",
-     "DIV.flex items-center gap-2"
+     "DIV.flex items-center gap-2",
+     "A.flex h-full items-center whitespace-nowrap text-xt-paper underline-offset-2 hove"
     ],
     "rects": [
      "160,569 187x49 -> 165,569 199x49",
-     "177,41 199x48 -> 172,41 204x48"
+     "177,41 199x48 -> 172,41 204x48",
+     "121,0 149x32 -> 118,0 155x32"
     ],
     "text": [
      "Plan a trip with AI",
-     "Plan with AIBook now"
+     "Plan with AIBook now",
+     "Dorm beds from ₹400/night"
     ]
    }
   ],
@@ -71,11 +74,11 @@
    },
    "stylesheet": {
     "n": 2,
-    "kb": 215
+    "kb": 214
    },
    "font": {
     "n": 5,
-    "kb": 86
+    "kb": 92
    },
    "fetch": {
     "n": 1,
@@ -84,7 +87,7 @@
   },
   "biggest": [
    {
-    "url": "http://localhost:4174/assets/index-CIXQdrNg.js",
+    "url": "http://localhost:4174/assets/index-CarFebQp.js",
     "type": "script",
     "bytes": 561403,
     "kb": 548
@@ -102,7 +105,7 @@
     "kb": 204
    },
    {
-    "url": "http://localhost:4174/assets/TripChat-SWC7hMfR.js",
+    "url": "http://localhost:4174/assets/TripChat-CiQxi9ln.js",
     "type": "script",
     "bytes": 196227,
     "kb": 192
@@ -132,7 +135,7 @@
     "kb": 67
    },
    {
-    "url": "http://localhost:4174/assets/routes-6YTChoTH.js",
+    "url": "http://localhost:4174/assets/routes-DmX5vLNJ.js",
     "type": "script",
     "bytes": 46310,
     "kb": 45
@@ -150,21 +153,21 @@
     "kb": 29
    },
    {
-    "url": "http://localhost:4174/assets/utils-D0T3A-kS.js",
-    "type": "script",
-    "bytes": 27564,
-    "kb": 27
+    "url": "https://fonts.gstatic.com/s/josefinsans/v34/Qw3aZQNVED7rKGKxtqIqX5EUDXx4.woff2",
+    "type": "font",
+    "bytes": 28528,
+    "kb": 28
    }
   ]
  },
  {
   "route": "/best-hostel-in-shillong",
   "status": 200,
-  "wallMs": 9785,
-  "ttfb": 315,
-  "fcp": 1512,
+  "wallMs": 9660,
+  "ttfb": 308,
+  "fcp": 1320,
   "lcp": {
-   "t": 1512,
+   "t": 1320,
    "size": 72910,
    "url": "",
    "tag": "P",
@@ -173,7 +176,7 @@
   },
   "lcpCandidates": [
    {
-    "t": 1512,
+    "t": 1320,
     "size": 72910,
     "url": "",
     "tag": "P",
@@ -185,7 +188,7 @@
   "shifts": [
    {
     "v": 0.0192,
-    "t": 2970,
+    "t": 2928,
     "nodes": [
      "DIV.rounded-[22px] bg-xt-blush p-5",
      "#text.",
@@ -210,7 +213,7 @@
    },
    {
     "v": 0.0006,
-    "t": 3192,
+    "t": 3092,
     "nodes": [
      "DIV.flex items-center gap-2",
      "BUTTON.xt-btn flex h-12 items-center rounded-full border-[1.5px] border-xt-ink px-6 tex",
@@ -234,7 +237,7 @@
     ]
    }
   ],
-  "requests": 87,
+  "requests": 89,
   "byType": {
    "document": {
     "n": 2,
@@ -245,8 +248,8 @@
     "kb": 39
    },
    "script": {
-    "n": 73,
-    "kb": 1569
+    "n": 75,
+    "kb": 1571
    },
    "stylesheet": {
     "n": 2,
@@ -263,7 +266,7 @@
   },
   "biggest": [
    {
-    "url": "http://localhost:4174/assets/index-CIXQdrNg.js",
+    "url": "http://localhost:4174/assets/index-CarFebQp.js",
     "type": "script",
     "bytes": 561403,
     "kb": 548
@@ -281,7 +284,7 @@
     "kb": 204
    },
    {
-    "url": "http://localhost:4174/assets/HomeReviews-B5y8vzq4.js",
+    "url": "http://localhost:4174/assets/HomeReviews-CnUWkWvY.js",
     "type": "script",
     "bytes": 161176,
     "kb": 157
@@ -339,11 +342,11 @@
  {
   "route": "/cheap-hostels-shillong",
   "status": 200,
-  "wallMs": 9716,
+  "wallMs": 9719,
   "ttfb": 307,
-  "fcp": 1360,
+  "fcp": 1348,
   "lcp": {
-   "t": 1360,
+   "t": 1348,
    "size": 65892,
    "url": "",
    "tag": "P",
@@ -352,7 +355,7 @@
   },
   "lcpCandidates": [
    {
-    "t": 1360,
+    "t": 1348,
     "size": 65892,
     "url": "",
     "tag": "P",
@@ -364,7 +367,7 @@
   "shifts": [
    {
     "v": 0.0411,
-    "t": 2942,
+    "t": 2990,
     "nodes": [
      "DIV.rounded-[22px] bg-xt-blush p-5",
      "#text.",
@@ -389,7 +392,7 @@
    },
    {
     "v": 0.0006,
-    "t": 3093,
+    "t": 3148,
     "nodes": [
      "DIV.flex items-center gap-2",
      "BUTTON.xt-btn flex h-12 items-center rounded-full border-[1.5px] border-xt-ink px-6 tex",
@@ -413,7 +416,7 @@
     ]
    }
   ],
-  "requests": 87,
+  "requests": 89,
   "byType": {
    "document": {
     "n": 2,
@@ -424,8 +427,8 @@
     "kb": 39
    },
    "script": {
-    "n": 73,
-    "kb": 1569
+    "n": 75,
+    "kb": 1571
    },
    "stylesheet": {
     "n": 2,
@@ -442,7 +445,7 @@
   },
   "biggest": [
    {
-    "url": "http://localhost:4174/assets/index-CIXQdrNg.js",
+    "url": "http://localhost:4174/assets/index-CarFebQp.js",
     "type": "script",
     "bytes": 561403,
     "kb": 548
@@ -460,7 +463,7 @@
     "kb": 204
    },
    {
-    "url": "http://localhost:4174/assets/HomeReviews-B5y8vzq4.js",
+    "url": "http://localhost:4174/assets/HomeReviews-CnUWkWvY.js",
     "type": "script",
     "bytes": 161176,
     "kb": 157
@@ -518,11 +521,11 @@
  {
   "route": "/shillong-dormitory",
   "status": 200,
-  "wallMs": 9763,
-  "ttfb": 313,
-  "fcp": 1332,
+  "wallMs": 9705,
+  "ttfb": 309,
+  "fcp": 1280,
   "lcp": {
-   "t": 1332,
+   "t": 1280,
    "size": 81295,
    "url": "",
    "tag": "P",
@@ -531,7 +534,7 @@
   },
   "lcpCandidates": [
    {
-    "t": 1332,
+    "t": 1280,
     "size": 81295,
     "url": "",
     "tag": "P",
@@ -543,7 +546,7 @@
   "shifts": [
    {
     "v": 0.0041,
-    "t": 3082,
+    "t": 3040,
     "nodes": [
      "#text.",
      "#text."
@@ -559,7 +562,7 @@
    },
    {
     "v": 0.0013,
-    "t": 3174,
+    "t": 3147,
     "nodes": [
      "DIV.flex items-center gap-2",
      "BUTTON.xt-btn flex h-11 items-center rounded-full border-[1.5px] border-xt-ink px-5 tex",
@@ -616,7 +619,7 @@
   },
   "biggest": [
    {
-    "url": "http://localhost:4174/assets/index-CIXQdrNg.js",
+    "url": "http://localhost:4174/assets/index-CarFebQp.js",
     "type": "script",
     "bytes": 561403,
     "kb": 548
@@ -692,11 +695,11 @@
  {
   "route": "/xtsy-270",
   "status": 200,
-  "wallMs": 11533,
-  "ttfb": 312,
-  "fcp": 1424,
+  "wallMs": 11380,
+  "ttfb": 305,
+  "fcp": 1352,
   "lcp": {
-   "t": 1424,
+   "t": 1352,
    "size": 62486,
    "url": "",
    "tag": "H1",
@@ -705,7 +708,7 @@
   },
   "lcpCandidates": [
    {
-    "t": 1424,
+    "t": 1352,
     "size": 62486,
     "url": "",
     "tag": "H1",
@@ -717,7 +720,7 @@
   "shifts": [
    {
     "v": 0.219,
-    "t": 3518,
+    "t": 3463,
     "nodes": [
      "DIV.overflow-hidden relative mt-4 h-[280px] w-full sm:h-[580px]",
      "P.xt-in xt-d2 m-0 max-w-[620px] text-[17px] leading-relaxed sm:text-[20px]",
@@ -742,7 +745,7 @@
    },
    {
     "v": 0.0088,
-    "t": 3774,
+    "t": 3728,
     "nodes": [
      "#text.",
      "DIV.xt-in xt-d2 flex items-end gap-4",
@@ -795,7 +798,7 @@
   },
   "biggest": [
    {
-    "url": "http://localhost:4174/assets/index-CIXQdrNg.js",
+    "url": "http://localhost:4174/assets/index-CarFebQp.js",
     "type": "script",
     "bytes": 561403,
     "kb": 548
@@ -813,7 +816,7 @@
     "kb": 204
    },
    {
-    "url": "http://localhost:4174/assets/HomeReviews-B5y8vzq4.js",
+    "url": "http://localhost:4174/assets/HomeReviews-CnUWkWvY.js",
     "type": "script",
     "bytes": 161176,
     "kb": 157
@@ -871,11 +874,11 @@
  {
   "route": "https://xtsy.one/",
   "status": 200,
-  "wallMs": 10212,
-  "ttfb": 170,
-  "fcp": 2516,
+  "wallMs": 10408,
+  "ttfb": 381,
+  "fcp": 2724,
   "lcp": {
-   "t": 2516,
+   "t": 2724,
    "size": 249600,
    "url": "https://xtsy.one/img/o/xtsy-hostel-front-portrait-828.avif",
    "tag": "IMG",
@@ -884,7 +887,7 @@
   },
   "lcpCandidates": [
    {
-    "t": 2516,
+    "t": 2724,
     "size": 249600,
     "url": "https://xtsy.one/img/o/xtsy-hostel-front-portrait-828.avif",
     "tag": "IMG",
