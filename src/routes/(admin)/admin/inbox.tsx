@@ -7,6 +7,7 @@ import { MessageCircle, Phone, Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { listInbox, updateEnquiry } from '@/admin/consoleHome.functions';
 import { listOtaBookings, listSheetWriteIssues } from '@/admin/channel.functions';
+import { applyDateChangeRequest, declineDateChangeRequest, listDateChangeRequests } from '@/admin/bookingConsole.functions';
 import { PageHead, Panel, STATUS_LABEL, STATUS_STYLE, ago, dayMonth, inrWhole } from '@/admin/components/ConsoleBits';
 
 export const Route = createFileRoute('/(admin)/admin/inbox')({ component: InboxPage });
@@ -51,6 +52,7 @@ function InboxPage() {
         <ul className="space-y-3">{data.enquiries.map((e: any) => <EnquiryCard key={e.id} e={e} />)}</ul>
       )}
 
+      <DateChangeRequests />
       <SheetWriteIssues />
       <OtaBookings />
 
@@ -71,6 +73,41 @@ function InboxPage() {
 }
 
 const PROPERTY_NAME: Record<string, string> = { 'XTSY-SHL-HOSTEL': 'Hostel', 'XTSY-SHN-CAMP': 'Shnonpedeng camp' };
+
+/** Guests' date change requests from "Manage my booking": apply (policy and price checked again) or decline. */
+function DateChangeRequests() {
+  const qc = useQueryClient();
+  const fetchList = useServerFn(listDateChangeRequests);
+  const apply = useServerFn(applyDateChangeRequest);
+  const decline = useServerFn(declineDateChangeRequest);
+  const [reason, setReason] = useState<Record<string, string>>({});
+  const { data } = useQuery({ queryKey: ['console', 'date-change-requests'], queryFn: () => fetchList(), refetchInterval: 60_000 });
+  const done = (msg: string) => { toast.success(msg); void qc.invalidateQueries({ queryKey: ['console'] }); };
+  const applyM = useMutation({ mutationFn: (id: string) => apply({ data: { id } }), onSuccess: (r: any) => done(r.extra > 0 ? `Dates changed; ${inrWhole(r.extra / 100)} added to the balance` : 'Dates changed'), onError: (e) => toast.error(e.message) });
+  const declineM = useMutation({ mutationFn: (v: { id: string; reason: string }) => decline({ data: v }), onSuccess: () => done('Request declined'), onError: (e) => toast.error(e.message) });
+  const open = (data?.rows ?? []).filter((r: any) => r.status === 'pending');
+  if (!open.length) return null;
+  return (
+    <Panel title="Date change requests" className="mt-8">
+      <p className="mb-3 text-sm text-xt-mute">Sent by guests from “Manage my booking”. Applying uses the same date change as the booking page: the policy and the price are checked again, and any higher price is added to the balance.</p>
+      <ul className="divide-y divide-xt-line">
+        {open.map((r: any) => (
+          <li key={r.id} className="py-4 text-[15px]">
+            <p><span className="font-semibold">{r.be_bookings?.guest_name}</span> · {r.be_bookings?.reference}</p>
+            <p className="text-sm text-xt-mute">Now {dayMonth(r.be_bookings?.check_in)} → {dayMonth(r.be_bookings?.check_out)} · asks for <span className="font-semibold text-xt-ink">{dayMonth(r.check_in)} → {dayMonth(r.check_out)}</span> · {ago(r.created_at)}</p>
+            {r.note && <p className="mt-1 text-sm text-xt-ink">“{r.note}”</p>}
+            <div className="mt-3 flex flex-wrap items-center gap-2">
+              <button type="button" disabled={applyM.isPending} onClick={() => applyM.mutate(r.id)} className="min-h-10 rounded-full bg-xt-ink px-4 text-sm font-bold text-xt-sand disabled:opacity-40">Apply new dates</button>
+              <input value={reason[r.id] ?? ''} onChange={(e) => setReason((v) => ({ ...v, [r.id]: e.target.value }))} placeholder="Reason the guest will see"
+                className="min-h-10 min-w-0 flex-1 rounded-full border border-xt-line px-4 text-sm" aria-label="Reason for declining" />
+              <button type="button" disabled={declineM.isPending} onClick={() => declineM.mutate({ id: r.id, reason: reason[r.id] ?? '' })} className="min-h-10 rounded-full border border-xt-line px-4 text-sm font-semibold disabled:opacity-40">Decline</button>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </Panel>
+  );
+}
 
 /** Bookings the Google Sheet's script could not write (or has not collected): the owner fixes these by hand. */
 function SheetWriteIssues() {
@@ -119,6 +156,7 @@ function OtaBookings() {
               <span className="block text-sm text-xt-mute">{PROPERTY_NAME[b.property_id] ?? b.property_id} · {b.rooms.map((r) => `${r.units} × ${r.roomTypeId.replace(/-/g, ' ')}`).join(', ') || 'room not linked'}{b.guest_phone ? ` · ${b.guest_phone}` : ''}{b.zs_mode === 'test' ? ' · sandbox' : ''}</span>
             </span>
             <span className="flex flex-wrap gap-1.5">
+              {b.duplicate_of != null && <span className="rounded-full bg-xt-blush px-2.5 py-0.5 text-xs font-bold text-xt-crimson-dark" title={`The OTA sent reservation ${b.ota_code ?? ''} again; it was first received as ZimmerStack #${b.duplicate_of}. Same nights and rooms: held once. Different: both held; check the extranet.`}>Sent twice · first #{b.duplicate_of}</span>}
               {b.status !== 'CANCELLED' && b.sheet_write && <span className="rounded-full bg-xt-cream px-2.5 py-0.5 text-xs font-bold text-xt-ink">{SHEET_STATE[b.sheet_write]}</span>}
               <span className={cn('rounded-full px-2.5 py-0.5 text-xs font-bold', b.status === 'CANCELLED' ? 'bg-xt-cream text-xt-mute' : 'bg-xt-leaf/10 text-xt-pine')}>{b.status === 'CANCELLED' ? 'Cancelled' : 'Confirmed'}</span>
             </span>

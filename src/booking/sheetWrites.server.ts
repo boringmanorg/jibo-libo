@@ -12,6 +12,7 @@
  *   simply replaced.
  */
 import type { IsoDate } from './dates';
+import { sameOtaStay } from './channel/zimmerstackPlan';
 import { stayNights, todayInIndia } from './dates';
 import {
   WEBSITE_TAG, cleanGuestName, forScript, otaRoomGuests, otaTag, sameStay, writableRooms,
@@ -125,7 +126,14 @@ export async function queueOtaBooking(d: WriteBackDeps, mode: 'test' | 'live', z
   const r = await db.from('be_ota_bookings').select('property_id,status,ota_name,ota_code,check_in,check_out,guest_name,adults,children,rooms').eq('zs_mode', mode).eq('zs_booking_id', zsBookingId).maybeSingle();
   const b = r.data;
   if (!b || b.property_id !== 'XTSY-SHL-HOSTEL') return null;
-  const want: SheetWant | null = b.status === 'CONFIRMED'
+  // A repeat delivery of an OTA reservation already written (same code, nights, rooms) is not written twice.
+  const dup = await db.from('be_ota_bookings').select('duplicate_of').eq('zs_mode', mode).eq('zs_booking_id', zsBookingId).maybeSingle();
+  let repeat = false;
+  if (!dup.error && dup.data?.duplicate_of != null) {
+    const first = await db.from('be_ota_bookings').select('status,check_in,check_out,rooms').eq('zs_mode', mode).eq('zs_booking_id', Number(dup.data.duplicate_of)).maybeSingle();
+    repeat = !!first.data && first.data.status === 'CONFIRMED' && sameOtaStay(first.data, b);
+  }
+  const want: SheetWant | null = b.status === 'CONFIRMED' && !repeat
     ? { checkIn: day(b.check_in), checkOut: day(b.check_out), rooms: otaRoomGuests(b.rooms ?? [], Number(b.adults ?? 0), Number(b.children ?? 0)), guestName: b.guest_name ?? '', tag: otaTag(b.ota_name, b.ota_code) }
     : null;
   const state = await reconcileSheetWrites(d, 'ota', `${mode}:${zsBookingId}`, want);

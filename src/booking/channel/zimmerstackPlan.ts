@@ -117,6 +117,27 @@ export interface OtaBookingRow {
   received_at: string;
   /** Google Sheet write-back: 'queued' = the sheet's script has not written it yet; 'applied' = it has. */
   sheet_write?: 'queued' | 'applied' | null;
+  zs_booking_id?: number;
+  /** The same OTA reservation already on file under this ZimmerStack booking id. */
+  duplicate_of?: number | null;
+}
+
+const roomsKey = (rooms: { roomTypeId: string; units: number }[] | undefined) =>
+  [...(rooms ?? [])].filter((r) => r.units > 0).sort((a, b) => a.roomTypeId.localeCompare(b.roomTypeId)).map((r) => `${r.roomTypeId}:${r.units}`).join('|');
+
+/** Two OTA bookings for the same nights and the same rooms. */
+export const sameOtaStay = (a: Pick<OtaBookingRow, 'check_in' | 'check_out' | 'rooms'>, b: Pick<OtaBookingRow, 'check_in' | 'check_out' | 'rooms'>) =>
+  String(a.check_in).slice(0, 10) === String(b.check_in).slice(0, 10) && String(a.check_out).slice(0, 10) === String(b.check_out).slice(0, 10) && roomsKey(a.rooms) === roomsKey(b.rooms);
+
+/**
+ * A booking that repeats an earlier, still-confirmed one (same OTA reservation code, same nights,
+ * same rooms) holds nothing of its own. If the stay differs, both hold: holding too much is safe,
+ * selling twice is not, and the console flags it for the owner.
+ */
+export function isRepeatOf(b: OtaBookingRow, byId: Map<number, OtaBookingRow>): boolean {
+  if (b.duplicate_of == null) return false;
+  const first = byId.get(Number(b.duplicate_of));
+  return !!first && first.status === 'CONFIRMED' && sameOtaStay(first, b);
 }
 
 /**
@@ -126,12 +147,14 @@ export interface OtaBookingRow {
  * - Not written by the website (write-back off, or an older booking): a night stops being held once
  *   the owner has edited that night's count in the Google Sheet after the booking arrived.
  * An "open" saved in the console after it, or the booking being cancelled, also ends the hold.
+ * A repeat delivery of the same OTA reservation (same code, nights and rooms) holds nothing extra.
  * Nights before `today` are left out.
  */
 export function otaHolds(rows: OtaBookingRow[], sheetNow: SheetAvailability, today: IsoDate): ClosureRow[] {
   const out: ClosureRow[] = [];
+  const byId = new Map(rows.filter((r) => r.zs_booking_id != null).map((r) => [Number(r.zs_booking_id), r]));
   for (const b of rows) {
-    if (b.status !== 'CONFIRMED' || b.sheet_write === 'applied') continue;
+    if (b.status !== 'CONFIRMED' || b.sheet_write === 'applied' || isRepeatOf(b, byId)) continue;
     for (const room of b.rooms ?? []) {
       if (!room.units || room.units < 1) continue;
       for (const night of stayNights(b.check_in, b.check_out)) {

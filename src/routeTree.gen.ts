@@ -56,6 +56,7 @@ import { Route as restaurantTabBistroCateringRouteImport } from './routes/(resta
 import { Route as staysBookIndexRouteImport } from './routes/(stays)/book/index'
 import { Route as staysBookCampsiteRouteImport } from './routes/(stays)/book/campsite'
 import { Route as staysBookConfirmationRouteImport } from './routes/(stays)/book/confirmation'
+import { Route as staysBookManageRouteImport } from './routes/(stays)/book/manage'
 import { Route as staysBookSelectRouteImport } from './routes/(stays)/book/select'
 import { Route as staysStaysBestHostelInShillongRouteImport } from './routes/(stays)/stays/best-hostel-in-shillong'
 import { Route as staysStaysBudgetHostelsShillongRouteImport } from './routes/(stays)/stays/budget-hostels-shillong'
@@ -357,6 +358,11 @@ const staysBookCampsiteRoute = staysBookCampsiteRouteImport.update({
 const staysBookConfirmationRoute = staysBookConfirmationRouteImport.update({
   id: '/(stays)/book/confirmation',
   path: '/book/confirmation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const staysBookManageRoute = staysBookManageRouteImport.update({
+  id: '/(stays)/book/manage',
+  path: '/book/manage',
   getParentRoute: () => rootRouteImport,
 } as any)
 const staysBookSelectRoute = staysBookSelectRouteImport.update({
@@ -667,6 +673,7 @@ export interface FileRoutesByFullPath {
   '/tab-bistro/catering': typeof restaurantTabBistroCateringRoute
   '/book/campsite': typeof staysBookCampsiteRoute
   '/book/confirmation': typeof staysBookConfirmationRoute
+  '/book/manage': typeof staysBookManageRoute
   '/book/select': typeof staysBookSelectRoute
   '/stays/best-hostel-in-shillong': typeof staysStaysBestHostelInShillongRoute
   '/stays/budget-hostels-shillong': typeof staysStaysBudgetHostelsShillongRoute
@@ -762,6 +769,7 @@ export interface FileRoutesByTo {
   '/tab-bistro/catering': typeof restaurantTabBistroCateringRoute
   '/book/campsite': typeof staysBookCampsiteRoute
   '/book/confirmation': typeof staysBookConfirmationRoute
+  '/book/manage': typeof staysBookManageRoute
   '/book/select': typeof staysBookSelectRoute
   '/stays/best-hostel-in-shillong': typeof staysStaysBestHostelInShillongRoute
   '/stays/budget-hostels-shillong': typeof staysStaysBudgetHostelsShillongRoute
@@ -859,6 +867,7 @@ export interface FileRoutesById {
   '/(restaurant)/tab-bistro/catering': typeof restaurantTabBistroCateringRoute
   '/(stays)/book/campsite': typeof staysBookCampsiteRoute
   '/(stays)/book/confirmation': typeof staysBookConfirmationRoute
+  '/(stays)/book/manage': typeof staysBookManageRoute
   '/(stays)/book/select': typeof staysBookSelectRoute
   '/(stays)/stays/best-hostel-in-shillong': typeof staysStaysBestHostelInShillongRoute
   '/(stays)/stays/budget-hostels-shillong': typeof staysStaysBudgetHostelsShillongRoute
@@ -957,6 +966,7 @@ export interface FileRouteTypes {
     | '/tab-bistro/catering'
     | '/book/campsite'
     | '/book/confirmation'
+    | '/book/manage'
     | '/book/select'
     | '/stays/best-hostel-in-shillong'
     | '/stays/budget-hostels-shillong'
@@ -1052,6 +1062,7 @@ export interface FileRouteTypes {
     | '/tab-bistro/catering'
     | '/book/campsite'
     | '/book/confirmation'
+    | '/book/manage'
     | '/book/select'
     | '/stays/best-hostel-in-shillong'
     | '/stays/budget-hostels-shillong'
@@ -1148,6 +1159,7 @@ export interface FileRouteTypes {
     | '/(restaurant)/tab-bistro/catering'
     | '/(stays)/book/campsite'
     | '/(stays)/book/confirmation'
+    | '/(stays)/book/manage'
     | '/(stays)/book/select'
     | '/(stays)/stays/best-hostel-in-shillong'
     | '/(stays)/stays/budget-hostels-shillong'
@@ -1236,6 +1248,7 @@ export interface RootRouteChildren {
   restaurantTabBistroCateringRoute: typeof restaurantTabBistroCateringRoute
   staysBookCampsiteRoute: typeof staysBookCampsiteRoute
   staysBookConfirmationRoute: typeof staysBookConfirmationRoute
+  staysBookManageRoute: typeof staysBookManageRoute
   staysBookSelectRoute: typeof staysBookSelectRoute
   staysStaysBestHostelInShillongRoute: typeof staysStaysBestHostelInShillongRoute
   staysStaysBudgetHostelsShillongRoute: typeof staysStaysBudgetHostelsShillongRoute
@@ -1618,6 +1631,13 @@ declare module '@tanstack/react-router' {
       path: '/book/confirmation'
       fullPath: '/book/confirmation'
       preLoaderRoute: typeof staysBookConfirmationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(stays)/book/manage': {
+      id: '/(stays)/book/manage'
+      path: '/book/manage'
+      fullPath: '/book/manage'
+      preLoaderRoute: typeof staysBookManageRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/(stays)/book/select': {
@@ -2036,6 +2056,7 @@ const rootRouteChildren: RootRouteChildren = {
   restaurantTabBistroCateringRoute: restaurantTabBistroCateringRoute,
   staysBookCampsiteRoute: staysBookCampsiteRoute,
   staysBookConfirmationRoute: staysBookConfirmationRoute,
+  staysBookManageRoute: staysBookManageRoute,
   staysBookSelectRoute: staysBookSelectRoute,
   staysStaysBestHostelInShillongRoute: staysStaysBestHostelInShillongRoute,
   staysStaysBudgetHostelsShillongRoute: staysStaysBudgetHostelsShillongRoute,

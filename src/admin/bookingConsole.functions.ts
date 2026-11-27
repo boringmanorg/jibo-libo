@@ -63,3 +63,17 @@ export const runEngineNightAudit = createServerFn({ method: 'POST' })
 export const getEngineAuditLog = createServerFn({ method: 'GET' })
   .middleware([requireSuperAdmin])
   .handler(async ({ context }) => core.auditLog(deps(context)));
+
+export const listDateChangeRequests = createServerFn({ method: 'GET' })
+  .middleware([requireSuperAdmin])
+  .handler(async ({ context }) => core.listChangeRequests(deps(context)));
+
+export const applyDateChangeRequest = createServerFn({ method: 'POST' })
+  .middleware([requireSuperAdmin])
+  .inputValidator(z.object({ id: z.string().uuid() }))
+  .handler(async ({ data, context }) => core.applyChangeRequest(deps(context), data.id));
+
+export const declineDateChangeRequest = createServerFn({ method: 'POST' })
+  .middleware([requireSuperAdmin])
+  .inputValidator(z.object({ id: z.string().uuid(), reason: z.string().max(300) }))
+  .handler(async ({ data, context }) => core.declineChangeRequest(deps(context), data.id, data.reason));

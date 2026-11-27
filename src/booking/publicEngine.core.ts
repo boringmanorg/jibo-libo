@@ -29,6 +29,7 @@ import { financialYear, invoiceNumber } from './invoiceNumber';
 import { HOSTEL_POLICIES } from '@/data/hostelPolicies';
 import type { Paise } from './money';
 import { isIndian } from './guestRules';
+import { nearestOpenStays, suggestionRange, type OpenStay } from './nearestDates';
 import { botCheckConfigured, verifyBotCheck } from './botCheck';
 
 type Db = any;
@@ -64,7 +65,7 @@ async function channelOf(d: EngineDeps): Promise<ChannelManager> {
   const zs = { db: d.db, env: d.env, now: d.now };
   return zimmerstackChannel(zs, await hostelChannelStatus(zs).catch(() => ({ connected: false, unmapped: BOOKING_ROOM_TYPES.map((r) => r.id) })));
 }
-const gatewayOf = (d: EngineDeps): PaymentGateway | null => {
+export const gatewayOf = (d: EngineDeps): PaymentGateway | null => {
   if (d.gateway !== undefined) return d.gateway;
   const cfg = zohoConfigFromEnv(d.env);
   return cfg ? createZohoGateway(cfg) : null;
@@ -245,6 +246,8 @@ export interface SearchResult {
   rooms: RoomResult[];
   /** Lowest rate among room types with space, for the "From ₹…" summary. */
   fromRate: Paise | null;
+  /** When nothing has space: the closest stays of the same length that do (closest first). */
+  suggestions?: OpenStay[];
 }
 
 export function validateDates(checkIn: string, checkOut: string, now: Date): { checkIn: IsoDate; checkOut: IsoDate } {
@@ -292,9 +295,29 @@ export async function searchStays(d: EngineDeps, q: { checkIn: string; checkOut:
     };
   });
   const open = rooms.filter((r) => r.freeForStay > 0);
+  // Full: look a week back and two weeks ahead for the closest stays of the same length.
+  let suggestions: OpenStay[] | undefined;
+  if (!open.length) {
+    const today = todayInIndia(d.now);
+    const range = suggestionRange(checkIn, stayLen, today);
+    const wide = await loadLoads(d, range.from, range.to);
+    const perRoom = BOOKING_ROOM_TYPES.map((room) => ({
+      rate: room.rate,
+      free: new Map(freeUnitsPerNight({
+        roomTypeId: room.id, checkIn: range.from, checkOut: range.to,
+        capacity: (night) => freeAfterClosures(closures, room.id, night, sheetCapacity(sheet, room.id, night, room.units)),
+        confirmed: wide.confirmed, holds: wide.holds, blockedNights: new Set(), now: d.now,
+      }).map((n) => [n.night, n.free] as const)),
+    }));
+    suggestions = nearestOpenStays(checkIn, stayLen, today, BOOKING_WINDOW_DAYS, (ci, co) => {
+      const rates = perRoom.filter((r) => stayNights(ci, co).every((n) => (r.free.get(n) ?? 0) > 0)).map((r) => r.rate);
+      return rates.length ? Math.min(...rates) : null;
+    });
+  }
   return {
     live: state.live, inventorySynced: state.launch.channelConnected, checkIn, checkOut, nights: stayLen, rooms,
     fromRate: open.length ? Math.min(...open.map((r) => r.fromRate)) : null,
+    ...(suggestions ? { suggestions } : {}),
   };
 }
 
@@ -558,8 +581,35 @@ export async function handlePaymentWebhook(d: EngineDeps, rawBody: string, heade
     sessionId = p.data?.session_id ?? undefined;
   }
   if (sessionId) await settleSession(d, sessionId);
+  else if (pointer.linkId) await settleLink(d, pointer.linkId);
   await d.db.from('be_webhook_events').update({ processed: true }).eq('key', key);
   return { status: 200, body: 'ok' };
+}
+
+/**
+ * A balance payment link (75% paid before or at check-in): re-reads its state from the gateway and
+ * records the payment once paid. Webhooks call it; so does the guest's "Manage my booking" page,
+ * in case a webhook was missed.
+ */
+export async function settleLink(d: EngineDeps, linkId: string): Promise<'paid' | 'open' | 'closed' | 'unknown'> {
+  const gateway = gatewayOf(d);
+  if (!gateway?.getPaymentLink || !d.db) return 'unknown';
+  const p = await d.db.from('be_payments').select('id,booking_id,status').eq('link_id', linkId).maybeSingle();
+  if (!p.data) return 'unknown';
+  if (p.data.status === 'succeeded') return 'paid';
+  const l = await gateway.getPaymentLink(linkId).catch(() => null);
+  if (!l) return 'unknown';
+  const at = d.now.toISOString();
+  if (l.status === 'paid') {
+    await d.db.from('be_payments').update({ status: 'succeeded', payment_id: l.paymentIds[0] ?? null, updated_at: at }).eq('id', p.data.id).neq('status', 'succeeded');
+    await d.db.from('be_audit_log').insert({ action: 'payment.balance_paid', details: { booking_id: p.data.booking_id, link_id: linkId } });
+    return 'paid';
+  }
+  if (l.status === 'expired' || l.status === 'canceled') {
+    await d.db.from('be_payments').update({ status: 'expired', updated_at: at }).eq('id', p.data.id).eq('status', 'created');
+    return 'closed';
+  }
+  return 'open';
 }
 
 export interface PublicBooking {
