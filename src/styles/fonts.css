@@ -46,3 +46,14 @@
   descent-override: 29.8%;
   line-gap-override: 0%;
 }
+/* Metric-matched fallback for Staatliches (headlines and eyebrows): Arial/Roboto scaled to
+   Staatliches' average letter width (~83.5%) with its line box (ascent 0.95, descent 0.30 em),
+   so a headline painted before the font arrives wraps and sits the same way (no CLS on swap). */
+@font-face {
+  font-family: 'Staatliches Fallback';
+  src: local('Arial'), local('Helvetica'), local('Roboto'), local('Liberation Sans');
+  size-adjust: 83.5%;
+  ascent-override: 113.8%;
+  descent-override: 35.9%;
+  line-gap-override: 0%;
+}

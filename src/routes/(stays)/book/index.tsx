@@ -1,9 +1,9 @@
 import { createFileRoute, useRouter } from "@tanstack/react-router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import StayEngine from "@/components/booking/engine/StayEngine";
 import { PageShell } from "@/components/v2/blocks";
 import { z } from "zod";
-import { loadBookPageData, rememberBookPageData } from "@/booking/bookPageLoader";
+import { BOOK_PAGE_PENDING, loadBookPageData, rememberBookPageData, type BookPageData } from "@/booking/bookPageLoader";
 import type { IsoDate } from "@/booking/dates";
 import { buildRouteHead } from "@/lib/seo-head";
 import { inr, roomPrice } from "@/components/v2/pricing";
@@ -38,17 +38,28 @@ export const Route = createFileRoute("/(stays)/book/")({
   // the same page runs from the static catalogue and ends in a WhatsApp enquiry.
   // A paused Cloud database must not hold the page: after 4.5 s guests get the enquiry page with
   // the built-in photos.
-  loader: () => loadBookPageData(),
+  // The server sends the page without waiting for the database (it took ~1 s); the browser asks for
+  // the live counts as soon as the page starts (see BookPage).
+  loader: () => (import.meta.env.SSR ? BOOK_PAGE_PENDING : loadBookPageData()),
   component: BookPage,
 });
 
 function BookPage() {
-  const data = Route.useLoaderData();
+  const routeData = Route.useLoaderData();
+  // Server-sent page: the live counts are fetched here, straight after the page starts.
+  const [fetched, setFetched] = useState<BookPageData | null>(null);
+  useEffect(() => {
+    if (!routeData.pending) return;
+    let gone = false;
+    void loadBookPageData().then((d) => { if (!gone) setFetched(d); });
+    return () => { gone = true; };
+  }, [routeData]);
+  const data = routeData.pending ? (fetched ?? routeData) : routeData;
   const { live, photos, closures, sheet } = data;
   useEffect(() => { rememberBookPageData(data); }, [data]);
+  const router = useRouter();
   // Live updates come from the sitewide listener in the root layout; this also refreshes
   // when a guest returns to the tab. No timers run while nothing changes.
-  const router = useRouter();
   useEffect(() => {
     const back = () => { if (document.visibilityState === 'visible') void router.invalidate(); };
     document.addEventListener('visibilitychange', back);
@@ -58,7 +69,7 @@ function BookPage() {
   // Site header (logo, menu) and footer around the booking page; the page has its own bottom bar.
   return (
     <PageShell cta={false} bar={false}>
-      <StayEngine mode={live ? "live" : "enquiry"} photos={photos} closures={closures} sheet={sheet} initialLocation={location} initialDates={checkIn && checkOut ? { checkIn: checkIn as IsoDate, checkOut: checkOut as IsoDate } : undefined} />
+      <StayEngine mode={live ? "live" : "enquiry"} pending={!!data.pending} photos={photos} closures={closures} sheet={sheet} initialLocation={location} initialDates={checkIn && checkOut ? { checkIn: checkIn as IsoDate, checkOut: checkOut as IsoDate } : undefined} />
     </PageShell>
   );
 }

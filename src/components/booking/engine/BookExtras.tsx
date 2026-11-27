@@ -144,7 +144,7 @@ export function BrandStory() {
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {FAMILY.map((f) => (
           <Link key={f.name} to={f.to} className="group overflow-hidden rounded-[24px] border border-xt-line bg-[#FBF8F3] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-xt-ink">
-            {f.img && <img src={f.img} alt="" loading="lazy" className="aspect-[4/3] w-full object-cover" />}
+            {f.img && <SizedImg src={f.img} alt="" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" className="aspect-[4/3] w-full object-cover" />}
             <div className="space-y-1.5 p-4">
               <p className="xt-display text-2xl leading-none text-xt-ink">{f.name}</p>
               <p className="text-sm text-xt-mute">{f.line}</p>
@@ -194,7 +194,7 @@ export function Promotions({ step }: { step: 1 | 2 }) {
           const body = (
             <>
               <div className="relative h-full min-h-48 sm:w-2/5 sm:shrink-0">
-                <img src={p.img} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+                <SizedImg src={p.img} alt="" sizes="(max-width: 640px) 100vw, 40vw" className="absolute inset-0 h-full w-full object-cover" />
                 <span className="absolute left-3 top-3 rounded-full bg-xt-ink px-3 py-1 text-xs font-bold text-xt-sand">{p.kicker}</span>
               </div>
               <div className="flex flex-1 flex-col gap-2 p-5">

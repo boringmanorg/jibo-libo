@@ -833,7 +833,7 @@ img.lazy-below-fold {
    Light "sand" theme with Staatliches display type and Manrope body.
    Pages opt in by wrapping content in .xt (see src/components/v2). */
 @theme inline {
-  --font-display: "Staatliches", Impact, sans-serif;
+  --font-display: "Staatliches", "Staatliches Fallback", Impact, sans-serif;
   --font-manrope: "Manrope", "Manrope Fallback", system-ui, sans-serif;
   --color-xt-crimson: #A12444;
   --color-xt-crimson-dark: #8A1D3A;
@@ -857,8 +857,8 @@ img.lazy-below-fold {
 
 .xt { background: #F6F1EA; color: #1F2230; font-family: "Manrope", "Manrope Fallback", system-ui, sans-serif; }
 .xt a:not([class*="text-"]) { color: inherit; }
-.xt-display { font-family: "Staatliches", Impact, sans-serif; font-weight: 400; letter-spacing: 0.01em; }
-.xt-eyebrow { font-family: "Staatliches", Impact, sans-serif; letter-spacing: 0.22em; color: #A12444; }
+.xt-display { font-family: "Staatliches", "Staatliches Fallback", Impact, sans-serif; font-weight: 400; letter-spacing: 0.01em; }
+.xt-eyebrow { font-family: "Staatliches", "Staatliches Fallback", Impact, sans-serif; letter-spacing: 0.22em; color: #A12444; }
 
 @keyframes xtRise { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
 @keyframes xtMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
@@ -985,7 +985,7 @@ body.reduce-motion .xt-suite-motion :is(.tgh-tile, .tgh-tablet-track, .xt-love, 
   color: hsl(var(--foreground));
   font-family: "Manrope", "Manrope Fallback", system-ui, sans-serif;
 }
-.public-design :where(h1, h2):not(.xt *) { font-family: "Staatliches", Impact, sans-serif; font-weight: 400; letter-spacing: 0; }
+.public-design :where(h1, h2):not(.xt *) { font-family: "Staatliches", "Staatliches Fallback", Impact, sans-serif; font-weight: 400; letter-spacing: 0; }
 .public-design :where(main > section, article > section) { scroll-margin-top: 7rem; }
 .public-design :where(input, textarea, select) { font-size: max(16px, 1em); }
 .public-design .xt { --background: 36 38% 96%; --foreground: 229 21% 15%; }
@@ -1030,7 +1030,7 @@ body.reduce-motion .xt-suite-motion :is(.tgh-tile, .tgh-tablet-track, .xt-love, 
   color-scheme: light;
 }
 .xt-console :where(input, textarea, select) { font-size: max(16px, 1em); }
-.xt-console :where(h1, h2).xt-display { font-family: "Staatliches", Impact, sans-serif; font-weight: 400; letter-spacing: 0.01em; }
+.xt-console :where(h1, h2).xt-display { font-family: "Staatliches", "Staatliches Fallback", Impact, sans-serif; font-weight: 400; letter-spacing: 0.01em; }
 .xt-console :where([data-slot="card"], .rounded-lg.border.bg-card) { box-shadow: 0 1px 0 rgba(31, 34, 48, 0.04); }
 
 /* Guest tap targets: every button and standalone link is at least 48px tall on touch screens.

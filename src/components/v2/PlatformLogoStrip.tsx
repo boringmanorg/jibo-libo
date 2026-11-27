@@ -8,7 +8,10 @@ export function PlatformLogoStrip({ logos, size = 32, label, className, showName
       {label && <span className={cn('text-xs font-bold uppercase tracking-[0.14em] opacity-80', compact && 'basis-full sm:basis-auto')}>{label}</span>}
       <ul className={cn('m-0 flex list-none flex-wrap items-center p-0', compact ? 'gap-3' : 'gap-2.5')}>
         {logos.map((l) => {
-          const img = <img src={l.src} alt={showNames ? '' : l.name} width={Math.round(size * l.ratio)} height={size} loading="lazy" decoding="async" className="block rounded-md object-contain" style={{ height: size, width: 'auto' }} />;
+          // A fixed box (not width: auto): the row is laid out the same before, during and after the
+          // logos load, whatever the files' own proportions, so the hero never jumps (layout shift).
+          const w = Math.round(size * l.ratio);
+          const img = <img src={l.src} alt={showNames ? '' : l.name} width={w} height={size} loading="lazy" decoding="async" className="block shrink-0 overflow-hidden rounded-md object-contain" style={{ height: size, width: w }} />;
           const inner = <>{img}{showNames && <span className="text-sm font-semibold">{l.name}</span>}</>;
           const cls = cn('flex min-h-12 items-center justify-center gap-2 rounded-lg', !compact && 'min-w-12');
           return (
