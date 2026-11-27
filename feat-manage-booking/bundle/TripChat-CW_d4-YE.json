@@ -1,0 +1,38 @@
+{
+  "results": [
+    {
+      "bundleName": ".output/public/assets/TripChat-CW_d4-YE.js",
+      "totalBytes": 196227,
+      "mappedBytes": 196120,
+      "unmappedBytes": 94,
+      "eolBytes": 13,
+      "sourceMapCommentBytes": 0,
+      "files": {
+        "[no source]": {
+          "size": 153623
+        },
+        "../../../src/lib/travel/websiteAnswers.ts": {
+          "size": 1844
+        },
+        "../../../src/data/stargazingPolicy.ts": {
+          "size": 535
+        },
+        "../../../src/lib/travel/assistant.ts": {
+          "size": 25029
+        },
+        "../../../src/components/v2/TripChat.tsx": {
+          "size": 15089
+        },
+        "[sourceMappingURL]": {
+          "size": 0
+        },
+        "[unmapped]": {
+          "size": 94
+        },
+        "[EOLs]": {
+          "size": 13
+        }
+      }
+    }
+  ]
+}
