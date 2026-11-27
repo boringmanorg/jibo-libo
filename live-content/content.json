@@ -436,7 +436,7 @@
   "findings": [
    {
     "rule": "price:dorm \"from\" price",
-    "detail": "₹400 — \"Skip to content Book direct with the XTSY desk · Dorm beds from ₹400 /night · New Shillong Township, near IIM & N\""
+    "detail": "₹400 — \"Skip to content Book direct with the XTSY desk � Dorm beds from ₹400 /night · New Shillong Township, near IIM & N\""
    },
    {
     "rule": "schema:address",
