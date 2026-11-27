@@ -22,6 +22,11 @@ for (const [p, o] of Object.entries(OPTIMIZED_IMAGES)) { if (o.srcs.length) { BY
 for (const o of Object.values(PEXELS_PHOTOS)) if (o?.srcs?.length) BY_ANY[defaultSrc(o)] = o;
 // Reviewed site photos: any of their sizes resolves to the full responsive set.
 for (const o of Object.values(SITE_PHOTOS)) if (o?.srcs?.length) for (const [, u] of o.srcs) BY_ANY[u] = o;
+// Shnonpedeng partner-camp photos: two sizes each (long edge 640 / 1280), AVIF and WebP.
+for (const [n, w, h, w640] of [[1, 956, 1280, 640], [2, 962, 1280, 640], [3, 1280, 960, 640], [4, 1280, 960, 640], [5, 1280, 960, 640], [6, 981, 1280, 640]] as const) {
+  const b = `/img/o/shnonpedeng-camp-${n}`;
+  BY_ANY[`${b}-1280.webp`] = { w, h, srcs: [[w640, `${b}-640.webp`], [w, `${b}-1280.webp`]], avifSrcs: [[w640, `${b}-640.avif`], [w, `${b}-1280.avif`]] };
+}
 
 /**
  * The CDN serves the original phone photos (often 2–7 MB). When the optimiser

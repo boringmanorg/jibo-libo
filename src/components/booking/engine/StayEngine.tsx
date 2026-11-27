@@ -57,7 +57,7 @@ const FACTS: { icon: typeof Clock; text: string }[] = [
   { icon: PawPrint, text: 'Cats and birds welcome' },
 ];
 
-export default function StayEngine({ mode, photos, closures, sheet, initialLocation, initialDates }: { mode: EngineMode; photos?: Record<string, { src: string; alt: string }[]>; closures?: ClosureRow[]; sheet?: SheetAvailability; initialLocation?: BookLocation; initialDates?: { checkIn: IsoDate; checkOut: IsoDate } }) {
+export default function StayEngine({ mode, pending = false, photos, closures, sheet, initialLocation, initialDates }: { mode: EngineMode; /** Live counts not loaded yet: show placeholders, never rooms. */ pending?: boolean; photos?: Record<string, { src: string; alt: string }[]>; closures?: ClosureRow[]; sheet?: SheetAvailability; initialLocation?: BookLocation; initialDates?: { checkIn: IsoDate; checkOut: IsoDate } }) {
   const [location, setLocation] = useState<BookLocation | null>(initialLocation ?? (mode === 'preview' ? 'new-shillong' : null));
   const pickLocation = (l: BookLocation | null) => {
     setLocation(l);
@@ -86,6 +86,7 @@ export default function StayEngine({ mode, photos, closures, sheet, initialLocat
     let stale = false;
     setLoading(true);
     setError('');
+    if (pending) { setResult(null); return; } // counts on their way: placeholders only
     if (enquiry) {
       const problem = staticDateProblem(checkIn, checkOut);
       if (problem) { setResult(null); setError(problem); } else setResult(staticSearch(checkIn, checkOut, photos, closures, sheet));
@@ -101,7 +102,7 @@ export default function StayEngine({ mode, photos, closures, sheet, initialLocat
       .catch(() => !stale && setError('Rooms could not load. Check your connection and try again.'))
       .finally(() => !stale && setLoading(false));
     return () => { stale = true; };
-  }, [checkIn, checkOut, enquiry, closures, sheet]);
+  }, [checkIn, checkOut, enquiry, closures, sheet, pending]);
 
   // Drop anything no longer free for the new dates.
   useEffect(() => {

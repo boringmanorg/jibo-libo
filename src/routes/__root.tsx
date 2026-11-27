@@ -23,7 +23,6 @@ import { HelmetProvider } from "react-helmet-async";
 
 import appCss from "../styles.css?url";
 import staatlichesLatin from "@/assets/fonts/staatliches-latin.woff2?url";
-import staatlichesLatinExt from "@/assets/fonts/staatliches-latin-ext.woff2?url";
 import manropeLatin from "@/assets/fonts/manrope-latin.woff2?url";
 import manropeLatinExt from "@/assets/fonts/manrope-latin-ext.woff2?url";
 
@@ -154,7 +153,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         { rel: "preload", as: "font", type: "font/woff2", href: manropeLatin, crossOrigin: "anonymous" },
         // ₹ (U+20B9) lives in latin-ext; preload it to prevent a late price-glyph swap.
         { rel: "preload", as: "font", type: "font/woff2", href: manropeLatinExt, crossOrigin: "anonymous" },
-        { rel: "preload", as: "font", type: "font/woff2", href: staatlichesLatinExt, crossOrigin: "anonymous" },
+        // Staatliches latin-ext is not preloaded: headlines rarely use those letters, and a late swap
+        // is invisible thanks to the metric-matched "Staatliches Fallback" (fonts.css).
       ] as const : []),
       // Legacy Playfair/Josefin fonts load after the page, and only on older pages that use them:
       // see LEGACY_FONTS_SCRIPT.

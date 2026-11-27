@@ -8,13 +8,22 @@ import { getBookPageDataFn } from './publicEngine.functions';
 import type { ClosureRow } from './consoleClosures';
 import type { SheetAvailability } from './sheetAvailability';
 
-export type BookPageData = { live: boolean; photos: Record<string, { src: string; alt: string }[]>; closures: ClosureRow[]; sheet: SheetAvailability; refreshAt?: number };
+export type BookPageData = { live: boolean; photos: Record<string, { src: string; alt: string }[]>; closures: ClosureRow[]; sheet: SheetAvailability; refreshAt?: number; pending?: boolean };
+
+/**
+ * What the server sends with the /book HTML: nothing live yet. The page (header, hostel photos,
+ * dates) goes out at once instead of waiting on the database; the browser fetches the live counts
+ * straight after it starts, and the room list shows placeholders until they arrive. No room is ever
+ * offered from a count that was not read live.
+ */
+export const BOOK_PAGE_PENDING: BookPageData = { live: false, photos: {}, closures: [], sheet: {}, pending: true };
 
 /** Last data that arrived in time: a slow refresh keeps showing it instead of dropping the sheet's numbers. */
 let lastGood: BookPageData | null = null;
 
 /** Seed with data the page already shows (e.g. server-rendered), so a later slow refresh keeps it. */
 export function rememberBookPageData(data: BookPageData) {
+  if (data.pending) return;
   if (!lastGood || Object.keys(data.sheet).length > 0) lastGood = data;
 }
 

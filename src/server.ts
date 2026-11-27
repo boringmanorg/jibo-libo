@@ -7,6 +7,7 @@ import { GONE_SLUGS } from "./data/seoGoneSlugs";
 import { renderErrorPage } from "./lib/error-page";
 import { withPageCache, cacheKey } from "./lib/pageCache";
 import { isAdminPath, isBookingPath, serverOnlySecurityHeaders, withAdminConnectSources, withBotCheckSources } from "./utils/productionSecurityHeaders";
+import { routeHeroPreload, withInlineStylesheet } from "./lib/inlineStylesheet.server";
 
 type ServerEntry = {
   fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
@@ -244,8 +245,9 @@ export default {
     try {
       const handler = await getServerEntry();
       // Public pages are served from the page cache when possible (see src/lib/pageCache.ts).
+      // HTML pages carry their stylesheet inline, so the first paint never waits for it.
       const response = await withPageCache(request, ctx, async () =>
-        normalizeCatastrophicSsrResponse(await handler.fetch(request.clone(), env, ctx)),
+        withInlineStylesheet(await normalizeCatastrophicSsrResponse(await handler.fetch(request.clone(), env, ctx)), undefined, routeHeroPreload(new URL(request.url).pathname)),
       );
       return withFreshAvailabilityHeaders(request, withEdgeCacheHeaders(request, withFrameProtection(request, withGoneStatus(request, response))));
     } catch (error) {
