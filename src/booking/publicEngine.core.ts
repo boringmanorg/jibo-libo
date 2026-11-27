@@ -603,3 +603,29 @@ export async function publicBooking(d: EngineDeps, reference: string): Promise<P
 }
 
 export type { Quote };
+
+// ---------------------------------------------------------------- PMS feed
+
+/**
+ * Room types, their beds and rooms, and the free count per night for the next PMS_FEED_DAYS
+ * nights, worked out exactly as /book does (sheet, console blocks, OTA holds, website bookings
+ * and live checkout holds). Hostel POS pulls this on each sync (pmsFeed.ts).
+ */
+export async function pmsFeed(d: EngineDeps): Promise<import('./pmsFeed').PmsFeed> {
+  const { feedRoomTypes, PMS_FEED_DAYS, PMS_FEED_VERSION } = await import('./pmsFeed');
+  const from = todayInIndia(d.now);
+  const to = addDays(from, PMS_FEED_DAYS);
+  const loads = await loadLoads(d, from, to).catch(() => ({ confirmed: [], holds: [] } as Loads));
+  const sheet = await loadSheetAvailability(d).catch(() => ({} as SheetAvailability));
+  const closures = await loadClosures(d, sheet).catch(() => [] as ClosureRow[]);
+  const free: Record<string, Record<IsoDate, number>> = {};
+  for (const room of BOOKING_ROOM_TYPES) {
+    const nights = freeUnitsPerNight({
+      roomTypeId: room.id, checkIn: from, checkOut: to,
+      capacity: (night) => freeAfterClosures(closures, room.id, night, sheetCapacity(sheet, room.id, night, room.units)),
+      confirmed: loads.confirmed, holds: loads.holds, blockedNights: new Set(), now: d.now,
+    });
+    free[room.id] = Object.fromEntries(nights.map((n) => [n.night, n.free]));
+  }
+  return { version: PMS_FEED_VERSION, source: 'xtsy.one', generatedAt: d.now.toISOString(), from, days: PMS_FEED_DAYS, roomTypes: feedRoomTypes(), free };
+}

@@ -90,6 +90,7 @@ import { Route as toursToursPlanTripWithAiRouteImport } from './routes/(tours)/t
 import { Route as toursToursShillongTourPackageRouteImport } from './routes/(tours)/tours/shillong-tour-package'
 import { Route as toursToursTravelRouteImport } from './routes/(tours)/tours/travel'
 import { Route as toursToursXtsyRentalsRouteImport } from './routes/(tours)/tours/xtsy-rentals'
+import { Route as ApiPublicPmsFeedRouteImport } from './routes/api/public/pms-feed'
 import { Route as adminAdminInvoicesIdRouteImport } from './routes/(admin)/admin/invoices.$id'
 import { Route as guidesDestinationsStateIndexRouteImport } from './routes/(guides)/destinations/$state/index'
 import { Route as toursExpeditionsTypeRouteRouteImport } from './routes/(tours)/expeditions/$type/$route'
@@ -549,6 +550,11 @@ const toursToursXtsyRentalsRoute = toursToursXtsyRentalsRouteImport.update({
   path: '/tours/xtsy-rentals',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicPmsFeedRoute = ApiPublicPmsFeedRouteImport.update({
+  id: '/api/public/pms-feed',
+  path: '/api/public/pms-feed',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const adminAdminInvoicesIdRoute = adminAdminInvoicesIdRouteImport.update({
   id: '/$id',
   path: '/$id',
@@ -693,6 +699,7 @@ export interface FileRoutesByFullPath {
   '/tours/shillong-tour-package': typeof toursToursShillongTourPackageRoute
   '/tours/travel': typeof toursToursTravelRoute
   '/tours/xtsy-rentals': typeof toursToursXtsyRentalsRoute
+  '/api/public/pms-feed': typeof ApiPublicPmsFeedRoute
   '/admin/': typeof adminAdminIndexRoute
   '/about/': typeof companyAboutIndexRoute
   '/destinations/': typeof guidesDestinationsIndexRoute
@@ -787,6 +794,7 @@ export interface FileRoutesByTo {
   '/tours/shillong-tour-package': typeof toursToursShillongTourPackageRoute
   '/tours/travel': typeof toursToursTravelRoute
   '/tours/xtsy-rentals': typeof toursToursXtsyRentalsRoute
+  '/api/public/pms-feed': typeof ApiPublicPmsFeedRoute
   '/admin': typeof adminAdminIndexRoute
   '/about': typeof companyAboutIndexRoute
   '/destinations': typeof guidesDestinationsIndexRoute
@@ -883,6 +891,7 @@ export interface FileRoutesById {
   '/(tours)/tours/shillong-tour-package': typeof toursToursShillongTourPackageRoute
   '/(tours)/tours/travel': typeof toursToursTravelRoute
   '/(tours)/tours/xtsy-rentals': typeof toursToursXtsyRentalsRoute
+  '/api/public/pms-feed': typeof ApiPublicPmsFeedRoute
   '/(admin)/admin/': typeof adminAdminIndexRoute
   '/(company)/about/': typeof companyAboutIndexRoute
   '/(guides)/destinations/': typeof guidesDestinationsIndexRoute
@@ -980,6 +989,7 @@ export interface FileRouteTypes {
     | '/tours/shillong-tour-package'
     | '/tours/travel'
     | '/tours/xtsy-rentals'
+    | '/api/public/pms-feed'
     | '/admin/'
     | '/about/'
     | '/destinations/'
@@ -1074,6 +1084,7 @@ export interface FileRouteTypes {
     | '/tours/shillong-tour-package'
     | '/tours/travel'
     | '/tours/xtsy-rentals'
+    | '/api/public/pms-feed'
     | '/admin'
     | '/about'
     | '/destinations'
@@ -1169,6 +1180,7 @@ export interface FileRouteTypes {
     | '/(tours)/tours/shillong-tour-package'
     | '/(tours)/tours/travel'
     | '/(tours)/tours/xtsy-rentals'
+    | '/api/public/pms-feed'
     | '/(admin)/admin/'
     | '/(company)/about/'
     | '/(guides)/destinations/'
@@ -1256,6 +1268,7 @@ export interface RootRouteChildren {
   toursToursShillongTourPackageRoute: typeof toursToursShillongTourPackageRoute
   toursToursTravelRoute: typeof toursToursTravelRoute
   toursToursXtsyRentalsRoute: typeof toursToursXtsyRentalsRoute
+  ApiPublicPmsFeedRoute: typeof ApiPublicPmsFeedRoute
   companyAboutIndexRoute: typeof companyAboutIndexRoute
   guidesDestinationsIndexRoute: typeof guidesDestinationsIndexRoute
   guidesGuidesIndexRoute: typeof guidesGuidesIndexRoute
@@ -1845,6 +1858,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof toursToursXtsyRentalsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/pms-feed': {
+      id: '/api/public/pms-feed'
+      path: '/api/public/pms-feed'
+      fullPath: '/api/public/pms-feed'
+      preLoaderRoute: typeof ApiPublicPmsFeedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/(admin)/admin/invoices/$id': {
       id: '/(admin)/admin/invoices/$id'
       path: '/$id'
@@ -2052,6 +2072,7 @@ const rootRouteChildren: RootRouteChildren = {
   toursToursShillongTourPackageRoute: toursToursShillongTourPackageRoute,
   toursToursTravelRoute: toursToursTravelRoute,
   toursToursXtsyRentalsRoute: toursToursXtsyRentalsRoute,
+  ApiPublicPmsFeedRoute: ApiPublicPmsFeedRoute,
   companyAboutIndexRoute: companyAboutIndexRoute,
   guidesDestinationsIndexRoute: guidesDestinationsIndexRoute,
   guidesGuidesIndexRoute: guidesGuidesIndexRoute,
