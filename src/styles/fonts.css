@@ -40,10 +40,24 @@
    width and line box), so the swap to Manrope moves nothing on screen (no CLS). */
 @font-face {
   font-family: 'Manrope Fallback';
+  font-weight: 200 500;
   src: local('Arial'), local('Helvetica'), local('Roboto'), local('Liberation Sans');
   size-adjust: 100.6%;
   ascent-override: 106%;
   descent-override: 29.8%;
+  line-gap-override: 0%;
+}
+/* Semibold to extrabold (buttons, labels, prices): a real bold face, not the regular one made bold
+   by the browser, which is ~6% narrower than Manrope Bold and let a row of buttons fit on one line
+   until Manrope arrived and wrapped it (FAQ page CLS 0.15, 27 Nov 2026). Manrope 600-800 is 0.98-1.02x
+   Arial Bold and ~1.04x Roboto Bold wide, hence 102%. */
+@font-face {
+  font-family: 'Manrope Fallback';
+  font-weight: 600 800;
+  src: local('Arial Bold'), local('Arial-BoldMT'), local('Helvetica Bold'), local('Roboto Bold'), local('Roboto-Bold'), local('Liberation Sans Bold'), local('LiberationSans-Bold');
+  size-adjust: 102%;
+  ascent-override: 104.6%;
+  descent-override: 29.4%;
   line-gap-override: 0%;
 }
 /* Metric-matched fallback for Staatliches (headlines and eyebrows): Arial/Roboto scaled to
