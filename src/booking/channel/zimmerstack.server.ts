@@ -474,9 +474,11 @@ async function pushWebsiteBooking(d: ZsDeps, res: ChannelReservation) {
 
 export async function loadOtaBookings(d: Pick<ZsDeps, 'db' | 'now'>): Promise<OtaBookingRow[]> {
   const cols = 'status,check_in,check_out,rooms,sheet_at_arrival,received_at';
-  let r = await d.db.from('be_ota_bookings').select(`${cols},sheet_write`).gte('check_out', todayInIndia(d.now));
-  // Before the write-back migration runs the column is missing: keep holding rooms the old way.
-  if (r.error) r = await d.db.from('be_ota_bookings').select(cols).gte('check_out', todayInIndia(d.now));
+  const q = (c: string) => d.db.from('be_ota_bookings').select(c).gte('check_out', todayInIndia(d.now));
+  let r = await q(`${cols},sheet_write,zs_booking_id,duplicate_of`);
+  // Before migrations 0031/0032 run their columns are missing: keep holding rooms the old way.
+  if (r.error) r = await q(`${cols},sheet_write`);
+  if (r.error) r = await q(cols);
   if (r.error) return [];
   return ((r.data ?? []) as any[]).map((x) => ({ ...x, check_in: String(x.check_in).slice(0, 10), check_out: String(x.check_out).slice(0, 10) }));
 }
@@ -499,17 +501,28 @@ export async function applyOtaBooking(d: ZsDeps, propertyId: ChannelPropertyId, 
   const existing = await d.db.from('be_ota_bookings').select('version,sheet_at_arrival,received_at').eq('zs_mode', mode).eq('zs_booking_id', b.id).maybeSingle();
   const version = b.version ?? 1;
   if (existing.data && Number(existing.data.version) >= version) return { applied: false };
+  // The same OTA reservation already on file under another ZimmerStack id (a re-sent booking).
+  const code = b.channel.otaReservationCode?.trim();
+  const earlier = code
+    ? await d.db.from('be_ota_bookings').select('zs_booking_id,ota_name').eq('zs_mode', mode).eq('property_id', propertyId).eq('ota_code', code).neq('zs_booking_id', b.id).order('received_at', { ascending: true }).limit(5)
+    : null;
+  const sameOta = (earlier && !earlier.error ? earlier.data ?? [] : []).find((x: any) => (x.ota_name ?? '').toLowerCase() === (b.channel.otaName ?? '').toLowerCase());
+  const duplicateOf = sameOta ? Number(sameOta.zs_booking_id) : null;
   const sheetAtArrival = existing.data?.sheet_at_arrival && Object.keys(existing.data.sheet_at_arrival).length
     ? existing.data.sheet_at_arrival
     : propertyId === HOSTEL_ID ? sheetSnapshotFor(rooms, b.stay.checkIn, b.stay.checkOut, await currentSheet(d)) : {};
-  await d.db.from('be_ota_bookings').upsert({
+  const row = {
     zs_booking_id: b.id, zs_mode: mode, property_id: propertyId, version, status: b.status,
     ota_name: b.channel.otaName, ota_code: b.channel.otaReservationCode, check_in: b.stay.checkIn, check_out: b.stay.checkOut,
     // Contact is copied now: ZimmerStack withholds it 30 days after checkout.
     guest_name: b.guest.fullName, guest_phone: b.guest.phone ?? null, guest_email: b.guest.email ?? null, contact_withheld: b.guest.contactWithheld ?? null,
     adults: b.occupancy.adults, children: b.occupancy.children, total: b.amounts.total, currency: b.amounts.currency,
     rooms, sheet_at_arrival: sheetAtArrival, received_at: existing.data?.received_at ?? d.now.toISOString(), updated_at: d.now.toISOString(),
-  });
+  };
+  const saved = await d.db.from('be_ota_bookings').upsert(duplicateOf ? { ...row, duplicate_of: duplicateOf } : row);
+  // Before migration 0032 the duplicate_of column is missing: save the booking without the flag.
+  if (saved?.error && duplicateOf) await d.db.from('be_ota_bookings').upsert(row);
+  if (duplicateOf) await log(d, { direction: 'in', message_type: 'booking.duplicate', status: 'failed', detail: `OTA reservation ${code} arrived again as ZimmerStack #${b.id}; first seen as #${duplicateOf}.` });
   // Written into the owner's Google Sheet by the sheet's script, once channel manager, PMS and payment are all live.
   const { queueOtaBooking } = await import('../sheetWrites.server');
   await queueOtaBooking({ db: d.db, env: d.env, now: d.now }, mode, b.id).catch(() => null);

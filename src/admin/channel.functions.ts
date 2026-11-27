@@ -123,13 +123,14 @@ export const listOtaBookings = createServerFn({ method: 'GET' })
     const ctx = context as Ctx;
     const cols = 'zs_booking_id,zs_mode,property_id,status,ota_name,ota_code,check_in,check_out,guest_name,guest_phone,guest_email,contact_withheld,adults,children,total,currency,rooms,received_at';
     const q = (c: string) => ctx.supabase.from('be_ota_bookings').select(c).gte('check_out', todayInIndia(new Date())).order('check_in').limit(200);
-    let r = await q(`${cols},sheet_write`);
+    let r = await q(`${cols},sheet_write,duplicate_of`);
+    if (r.error) r = await q(`${cols},sheet_write`); // before migration 0032
     if (r.error) r = await q(cols); // before the write-back migration
     return { ready: !r.error, rows: (r.data ?? []) as {
       zs_booking_id: number; zs_mode: string; property_id: string; status: string; ota_name: string | null; ota_code: string | null;
       check_in: string; check_out: string; guest_name: string | null; guest_phone: string | null; guest_email: string | null; contact_withheld: string | null;
       adults: number; children: number; total: number | null; currency: string | null; rooms: { roomTypeId: string; units: number }[]; received_at: string;
-      sheet_write?: 'queued' | 'applied' | null;
+      sheet_write?: 'queued' | 'applied' | null; duplicate_of?: number | null;
     }[] };
   });
 

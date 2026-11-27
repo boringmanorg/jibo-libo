@@ -127,3 +127,33 @@ export const recordEnquiryFn = createServerFn({ method: 'POST' })
     }
   });
 
+
+// ---------------------------------------------------------------- Manage my booking (/book/manage)
+
+const manageInput = z.object({ reference: z.string().trim().min(5).max(20), phone: z.string().trim().min(10).max(20) });
+const clientIp = () => {
+  const req = getRequest();
+  return req?.headers.get('cf-connecting-ip') ?? req?.headers.get('x-forwarded-for')?.split(',').pop()?.trim() ?? undefined;
+};
+
+/** POST so the phone number never sits in a URL or a cache. */
+export const manageLookupFn = createServerFn({ method: 'POST' })
+  .inputValidator(manageInput)
+  .handler(async ({ data }) => {
+    const m = await import('./manageBooking.server');
+    return asResult(async () => m.manageLookup(await deps(), data.reference, data.phone, clientIp()));
+  });
+
+export const payBalanceFn = createServerFn({ method: 'POST' })
+  .inputValidator(manageInput)
+  .handler(async ({ data }) => {
+    const m = await import('./manageBooking.server');
+    return asResult(async () => m.payBalance(await deps(), data.reference, data.phone, clientIp()));
+  });
+
+export const requestDateChangeFn = createServerFn({ method: 'POST' })
+  .inputValidator(manageInput.extend({ checkIn: date, checkOut: date, note: z.string().max(300).optional() }))
+  .handler(async ({ data }) => {
+    const m = await import('./manageBooking.server');
+    return asResult(async () => m.requestDateChange(await deps(), data.reference, data.phone, clientIp(), data.checkIn, data.checkOut, data.note));
+  });

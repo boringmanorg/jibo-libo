@@ -13,6 +13,7 @@ import type { PaymentMethod } from './payments/fees';
 import type { SearchResult } from './publicEngine.core';
 import { freeAfterClosures, type ClosureRow } from './consoleClosures';
 import { sheetCapacity, type SheetAvailability } from './sheetAvailability';
+import { nearestOpenStays } from './nearestDates';
 
 const STRIP_NIGHTS = 7;
 
@@ -26,7 +27,7 @@ export function staticDateProblem(checkIn: string, checkOut: string, now = new D
   return null;
 }
 
-export function staticSearch(checkIn: IsoDate, checkOut: IsoDate, photos: Record<string, { src: string; alt: string }[]> = {}, closures: ClosureRow[] = [], sheet: SheetAvailability = {}): SearchResult {
+export function staticSearch(checkIn: IsoDate, checkOut: IsoDate, photos: Record<string, { src: string; alt: string }[]> = {}, closures: ClosureRow[] = [], sheet: SheetAvailability = {}, now = new Date()): SearchResult {
   const nights = daysBetween(checkIn, checkOut);
   const rooms = BOOKING_ROOM_TYPES.map((r) => {
     // The Google Sheet's count for the night (else the full room count), less console blocks;
@@ -43,7 +44,12 @@ export function staticSearch(checkIn: IsoDate, checkOut: IsoDate, photos: Record
     };
   });
   const open = rooms.filter((r) => r.freeForStay > 0);
-  return { live: false, inventorySynced: false, checkIn, checkOut, nights, rooms, fromRate: open.length ? Math.min(...open.map((r) => r.fromRate)) : null };
+  // Full: the closest stays of the same length that have space (same counts as above).
+  const suggestions = open.length ? undefined : nearestOpenStays(checkIn, nights, todayInIndia(now), 365, (ci, co) => {
+    const rates = BOOKING_ROOM_TYPES.filter((r) => stayNights(ci, co).every((n) => freeAfterClosures(closures, r.id, n, sheetCapacity(sheet, r.id, n, r.units)) > 0)).map((r) => r.rate);
+    return rates.length ? Math.min(...rates) : null;
+  });
+  return { live: false, inventorySynced: false, checkIn, checkOut, nights, rooms, fromRate: open.length ? Math.min(...open.map((r) => r.fromRate)) : null, ...(suggestions ? { suggestions } : {}) };
 }
 
 /** Quote with the default console settings (owner's GST slabs and Zoho fee table). */

@@ -159,6 +159,7 @@ export default function StayEngine({ mode, pending = false, photos, closures, sh
 
               {error && <p className="mt-4 rounded-2xl border border-xt-crimson/30 bg-xt-blush p-4 text-sm text-xt-crimson-dark" role="alert">{error}</p>}
               {loading && !result && <RoomSkeletons />}
+              {!loading && result?.suggestions && <NearestDates result={result} onPick={setDates} />}
               <div className={cn('mt-6 space-y-5 transition-opacity', loading && result && 'opacity-50')} aria-busy={loading}>
                 {shown.map((r) => (
                   <RoomCard key={r.id} room={r} enquiry={enquiry} picked={cart[r.id]}
@@ -352,6 +353,31 @@ function RoomCard({ room, enquiry, picked, onPick }: { room: RoomResult; enquiry
         </div>
       )}
     </article>
+  );
+}
+
+/** Everything is full for the chosen dates: the closest stays of the same length that have space. */
+function NearestDates({ result, onPick }: { result: SearchResult; onPick: (ci: IsoDate, co: IsoDate) => void }) {
+  const list = result.suggestions ?? [];
+  return (
+    <div className="mt-6 rounded-[24px] border border-xt-line bg-white/70 p-5" role="status">
+      <p className="font-semibold text-xt-ink">Every bed and room is taken for {nightsLabel(result.nights)} from {longDate(result.checkIn)}.</p>
+      {list.length ? (
+        <>
+          <p className="mt-1 text-sm text-xt-mute">These dates nearby have space:</p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {list.map((s) => (
+              <button key={s.checkIn} type="button" onClick={() => onPick(s.checkIn, s.checkOut)}
+                className="min-h-[48px] rounded-full border border-xt-ink/20 bg-white px-4 text-left text-sm font-semibold text-xt-ink hover:border-xt-ink">
+                {date(s.checkIn)} – {date(s.checkOut)} <span className="font-normal text-xt-mute">· from {formatInr(s.fromRate)}</span>
+              </button>
+            ))}
+          </div>
+        </>
+      ) : (
+        <p className="mt-1 text-sm text-xt-mute">Nothing frees up within two weeks either. Try other dates, or message the desk on WhatsApp.</p>
+      )}
+    </div>
   );
 }
 

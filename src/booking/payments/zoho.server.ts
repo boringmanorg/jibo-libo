@@ -14,7 +14,7 @@
  */
 import type { Paise } from '../money';
 import { GATEWAY_METHOD } from './fees';
-import type { Checkout, CheckoutRequest, PaymentGateway, PaymentLink, PaymentLinkRequest, SessionState, SessionStatus, WebhookPointer } from './gateway';
+import type { Checkout, CheckoutRequest, LinkState, PaymentGateway, PaymentLink, PaymentLinkRequest, SessionState, SessionStatus, WebhookPointer } from './gateway';
 import { hmacSha256Hex, safeEqual } from './crypto';
 
 export interface ZohoConfig {
@@ -129,6 +129,18 @@ export function createZohoGateway(cfg: ZohoConfig, deps: { fetch: Fetch; now: ()
         },
       });
       return { linkId: out.payment_links.payment_link_id, url: out.payment_links.url };
+    },
+
+    async getPaymentLink(linkId: string): Promise<LinkState> {
+      const out = await call<{ payment_links: { status?: string; payments?: { payment_id: string; status?: string }[] } }>(`/paymentlinks/${encodeURIComponent(linkId)}`, { method: 'GET' });
+      const l = out.payment_links ?? {};
+      const status = (l.status ?? '').toLowerCase();
+      const ok = (l.payments ?? []).filter((p) => !p.status || /succe/i.test(p.status));
+      return {
+        // Zoho's own example shows "paid" with amount_paid "0.00", so a succeeded payment is also required.
+        status: status === 'paid' && ok.length ? 'paid' : (['active', 'expired', 'canceled'].includes(status) ? status as LinkState['status'] : 'unknown'),
+        paymentIds: ok.map((p) => p.payment_id),
+      };
     },
 
     async getSession(sessionId: string): Promise<SessionState> {

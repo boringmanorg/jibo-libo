@@ -27,6 +27,7 @@ function fakeDb(seed: Record<string, Row[]> = {}) {
     const q: any = {
       select: () => q, order: () => q, limit: () => q, range: () => q, in: (c: string, v: any[]) => (filters.push((r) => v.includes(r[c])), q),
       eq: (c: string, v: any) => (filters.push((r) => r[c] === v), q),
+      neq: (c: string, v: any) => (filters.push((r) => r[c] !== v), q),
       gte: (c: string, v: any) => (filters.push((r) => String(r[c]) >= String(v)), q),
       lte: (c: string, v: any) => (filters.push((r) => String(r[c]) <= String(v)), q),
       lt: (c: string, v: any) => (filters.push((r) => r[c] < v), q),
@@ -238,5 +239,19 @@ describe('ZimmerStack webhook', () => {
     // The same delivery again, or a scheduled catch-up: the log is read from place 1, nothing new.
     await catchUp({ db, env, now: NOW, fetch: api.fetch }, HOSTEL_ID);
     expect(db.t.be_ota_bookings).toHaveLength(1);
+  });
+
+  it('the same OTA reservation re-sent under a new ZimmerStack id is flagged, not held twice', async () => {
+    const again = otaEvent(2);
+    (again.data.booking as any).id = 4002;
+    const events = [otaEvent(1), again];
+    const api = fakeApi({ 'GET /events': (_b, url) => ({ items: events.filter((e) => e.sequence > Number(url.searchParams.get('after') ?? 0)), more: false, nextAfter: events.length, earliestSequence: 1, retentionDays: 90 }) });
+    const db = fakeDb({ be_channel_properties: [hostelRow()], be_channel_room_map: fullMap() });
+    const env = { ZIMMERSTACK_CONNECT_KEY: SANDBOX, ZIMMERSTACK_WEBHOOK_SECRET: signingSecret };
+    await catchUp({ db, env, now: NOW, fetch: api.fetch }, HOSTEL_ID);
+    expect(db.t.be_ota_bookings.map((b) => [b.zs_booking_id, b.duplicate_of ?? null])).toEqual([[4001, null], [4002, 4001]]);
+    expect(db.t.be_channel_log.some((l) => l.message_type === 'booking.duplicate' && /BDC-1/.test(l.detail))).toBe(true);
+    const holds = otaHolds(db.t.be_ota_bookings as any, {}, '2026-11-27');
+    expect(holds).toHaveLength(2); // two nights, held once
   });
 });

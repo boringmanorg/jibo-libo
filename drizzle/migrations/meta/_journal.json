@@ -225,6 +225,13 @@
       "when": 1795700000000,
       "tag": "0031_sheet_write_back",
       "breakpoints": true
+    },
+    {
+      "idx": 32,
+      "version": "7",
+      "when": 1795800000000,
+      "tag": "0032_manage_booking",
+      "breakpoints": true
     }
   ]
 }

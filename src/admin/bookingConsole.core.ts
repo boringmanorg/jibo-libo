@@ -167,6 +167,36 @@ export async function cancelBooking(d: ConsoleDeps, id: string, by: 'guest' | 'x
   return { ok: true, paid, refund };
 }
 
+/** Guests' date change requests from "Manage my booking", newest first, with their booking. */
+export async function listChangeRequests(d: ConsoleDeps) {
+  const r = await d.db.from('be_change_requests')
+    .select('id,booking_id,check_in,check_out,note,status,decided_reason,created_at,decided_at,be_bookings(reference,guest_name,check_in,check_out,status)')
+    .order('created_at', { ascending: false }).limit(50);
+  if (isMissingTable(r.error)) return { dbReady: false as const, rows: [] };
+  if (r.error) throw new ConsoleError('Could not load date change requests');
+  return { dbReady: true as const, rows: r.data ?? [] };
+}
+
+/** Applies a guest's request with the same date-change action the desk uses (policy and price checked again). */
+export async function applyChangeRequest(d: ConsoleDeps, requestId: string) {
+  const r = await d.db.from('be_change_requests').select('*').eq('id', requestId).maybeSingle();
+  if (!r.data) throw new ConsoleError('Request not found');
+  if (r.data.status !== 'pending') throw new ConsoleError('This request was already decided.');
+  const res = await changeDates(d, r.data.booking_id, r.data.check_in, r.data.check_out);
+  await d.db.from('be_change_requests').update({ status: 'applied', decided_at: d.now.toISOString() }).eq('id', requestId);
+  await audit(d, 'booking.date_change_request.applied', { request: requestId, extra: res.extra });
+  return res;
+}
+
+export async function declineChangeRequest(d: ConsoleDeps, requestId: string, reason: string) {
+  if (reason.trim().length < 5) throw new ConsoleError('Write a short reason the guest will see.');
+  const { error } = await d.db.from('be_change_requests').update({ status: 'declined', decided_reason: reason.trim().slice(0, 300), decided_at: d.now.toISOString() })
+    .eq('id', requestId).eq('status', 'pending');
+  if (error) throw new ConsoleError('Could not decline the request');
+  await audit(d, 'booking.date_change_request.declined', { request: requestId, reason: reason.trim() });
+  return { ok: true };
+}
+
 /** The 75% balance as a payment link the guest pays at check-in. */
 export async function createBalanceLink(d: ConsoleDeps, id: string, method?: PaymentMethod) {
   const { booking, payments } = await getBooking(d, id);

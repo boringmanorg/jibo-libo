@@ -77,6 +77,7 @@ function Confirmation() {
               <p>{BOOKING_POLICY_TEXT.cancellation}</p>
               <p>Date change: one, requested by {fmt(b.lastChangeDate)} (at least {HOSTEL_POLICIES.modificationCutoffDays} days before check-in), subject to availability.</p>
               <p>XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township. Questions: WhatsApp +91 88373 17070 with your reference.</p>
+              <p><Link to="/book/manage" search={{ ref: b.reference }} className="font-medium text-foreground underline">Manage your booking</Link>: pay the balance or ask for your date change. Keep your reference; you’ll need it with your phone number.</p>
             </div>
           )}
         </section>

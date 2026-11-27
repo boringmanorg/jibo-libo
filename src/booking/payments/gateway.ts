@@ -31,10 +31,15 @@ export interface SessionState { status: SessionStatus; paymentIds: string[]; amo
 /** What a verified webhook points at. It is a trigger only: status is always re-read from the gateway. */
 export interface WebhookPointer { sessionId?: string; linkId?: string; paymentId?: string }
 
+export type LinkStatus = 'paid' | 'active' | 'expired' | 'canceled' | 'unknown';
+export interface LinkState { status: LinkStatus; paymentIds: string[] }
+
 export interface PaymentGateway {
   id: GatewayId;
   createCheckout(req: CheckoutRequest): Promise<Checkout>;
   createPaymentLink(req: PaymentLinkRequest): Promise<PaymentLink>;
+  /** Re-reads a payment link (balance payments). Optional: gateways without it never settle links. */
+  getPaymentLink?(linkId: string): Promise<LinkState>;
   getSession(sessionId: string): Promise<SessionState>;
   /** Null when the signature or timestamp fails: the request is ignored. */
   verifyWebhook(rawBody: string, headers: Headers): Promise<WebhookPointer | null>;
