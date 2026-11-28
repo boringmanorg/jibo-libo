@@ -1,6 +1,6 @@
-import { createFileRoute, Link, Navigate, Outlet, useRouterState } from '@tanstack/react-router';
+import { createFileRoute, Link, Navigate, Outlet, useRouterState, useNavigate } from '@tanstack/react-router';
 import { PageHead } from '@/admin/components/ConsoleBits';
-import { Ban, CalendarDays, CreditCard, ExternalLink, ImageIcon, Inbox, LogOut, Menu, PlugZap, ReceiptText, ScanLine, Sun, UtensilsCrossed, Wallet, X } from 'lucide-react';
+import { Ban, CalendarDays, CreditCard, ExternalLink, ImageIcon, Inbox, LogOut, Menu, PlugZap, ReceiptText, ScanLine, Sun, Wallet, X } from 'lucide-react';
 import xtsyLogo from '@/assets/xtsy-color-logo.webp';
 import { useEffect, useState, type FormEvent } from 'react';
 import { Button } from '@/components/ui/button';
@@ -8,17 +8,20 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { getAdminSupabase, SUPER_ADMIN_EMAIL } from '@/admin/adminSupabase';
 import { ConsoleScopeContext, hostelConsolePath } from '@/admin/consoleScope';
+import { z } from 'zod';
+import { CONSOLE_PROPERTIES, CAMP_ID } from '@/admin/consoleProperties';
 import { deniedMessage, deniedReason, signInErrorMessage, type DeniedReason } from '@/admin/signInMessages';
 
 export const Route = createFileRoute('/(admin)/admin')({
   ssr: false,
+  validateSearch: z.object({ property: z.enum(['XTSY-SHL-HOSTEL', 'XTSY-SHN-CAMP']).optional() }),
   head: () => ({
     meta: [
       { title: 'XTSY Console' },
-      { name: 'description', content: 'Private console for XTSY booking engine, PMS and POS.' },
+      { name: 'description', content: 'Private console for XTSY property operations and booking engine.' },
       { name: 'robots', content: 'noindex, nofollow' },
       { property: 'og:title', content: 'XTSY Super Admin Console' },
-      { property: 'og:description', content: 'Private console for XTSY booking engine, PMS and POS.' },
+      { property: 'og:description', content: 'Private console for XTSY property operations and booking engine.' },
       { property: 'og:type', content: 'website' },
       { name: 'twitter:card', content: 'summary' },
     ],
@@ -95,7 +98,7 @@ function AdminLayout() {
 }
 
 const NAV: { group: string; items: { to: string; label: string; icon: typeof CalendarDays; exact?: boolean }[] }[] = [
-  { group: 'Run the hostel', items: [
+  { group: 'Property operations', items: [
     { to: '/admin', label: 'Today', icon: Sun, exact: true },
     { to: '/admin/inventory', label: 'Inventory', icon: CalendarDays },
     { to: '/admin/inbox', label: 'Inbox', icon: Inbox },
@@ -106,7 +109,6 @@ const NAV: { group: string; items: { to: string; label: string; icon: typeof Cal
     { to: '/admin/room-photos', label: 'Room photos', icon: ImageIcon },
     { to: '/admin/booking-engine', label: 'Online booking', icon: CreditCard },
     { to: '/admin/settings', label: 'Connections', icon: PlugZap },
-    { to: '/admin/restaurants', label: 'TAB Bistro', icon: UtensilsCrossed },
   ] },
   { group: 'Money', items: [
     { to: '/admin/bookings', label: 'Paid bookings', icon: Wallet },
@@ -121,14 +123,19 @@ const OLD_SCREEN_TITLES: Record<string, [string, string]> = {
   '/admin/booking-engine': ['Online booking', 'Card and UPI payment on /book, fees and GST.'],
   '/admin/bookings': ['Paid bookings', 'Bookings paid online through /book.'],
   '/admin/invoices': ['Invoices', 'Advance receipts and tax invoices.'],
-  '/admin/restaurants': ['TAB Bistro', 'Table slots and the live tables shown on the Bistro page.'],
 };
 
 function Shell({ email, access, onSignOut }: { email: string; access: 'admin' | 'frontdesk'; onSignOut: () => void }) {
   const [open, setOpen] = useState(false);
   const path = useRouterState({ select: (st) => st.location.pathname.replace(/\/$/, '') });
+  const selected = Route.useSearch().property;
+  const allView = ['/admin', '/admin/check-in', '/admin/inbox'].includes(path);
+  const property = access === 'frontdesk' ? 'XTSY-SHL-HOSTEL' : selected ?? (allView ? undefined : 'XTSY-SHL-HOSTEL');
+  const navigate = useNavigate({ from: Route.fullPath });
   if (access === 'frontdesk' && !hostelConsolePath(path)) return <Navigate to="/admin/check-in" replace />;
   const oldTitle = OLD_SCREEN_TITLES[path];
+  const hostelOnly = ['/admin/inventory', '/admin/stays', '/admin/room-photos', '/admin/booking-engine', '/admin/settings', '/admin/bookings'];
+  const campUnsupported = property === CAMP_ID && hostelOnly.includes(path);
   const groups = access === 'frontdesk'
     ? NAV.map((g) => ({ ...g, items: g.items.filter((i) => hostelConsolePath(i.to)) })).filter((g) => g.items.length)
     : NAV;
@@ -140,7 +147,7 @@ function Shell({ email, access, onSignOut }: { email: string; access: 'admin' | 
           <ul className="space-y-0.5">
             {g.items.map(({ to, label, icon: Icon, exact }) => (
               <li key={to}>
-                <Link to={to} activeOptions={{ exact: !!exact }} onClick={() => setOpen(false)}
+                <Link to={to} search={{ property: property ?? (['/admin', '/admin/check-in', '/admin/inbox'].includes(to) ? undefined : 'XTSY-SHL-HOSTEL') }} activeOptions={{ exact: !!exact }} onClick={() => setOpen(false)}
                   className="flex min-h-11 items-center gap-3 rounded-xl px-3 text-[15px] font-semibold text-xt-mute transition-colors hover:bg-xt-cream hover:text-xt-ink [&.active]:bg-xt-ink [&.active]:text-xt-sand">
                   <Icon className="h-[18px] w-[18px] shrink-0" aria-hidden />{label}
                 </Link>
@@ -178,8 +185,18 @@ function Shell({ email, access, onSignOut }: { email: string; access: 'admin' | 
       )}
       <main className="min-w-0 px-4 py-6 sm:px-6 lg:px-10 lg:py-10">
         <div className="mx-auto max-w-6xl">
+          <div className="mb-6 border-b border-xt-line pb-4 print:hidden">
+            <Label htmlFor="console-property">Property</Label>
+            <select id="console-property" aria-label="Console property" className="mt-2 min-h-[48px] w-full max-w-lg rounded-md border border-input bg-background px-3 text-base" value={property ?? ''} disabled={access === 'frontdesk'} onChange={(e) => {
+              const value = e.target.value;
+              void navigate({ search: (prev) => ({ ...prev, property: value === CAMP_ID ? CAMP_ID : value === 'XTSY-SHL-HOSTEL' ? 'XTSY-SHL-HOSTEL' : undefined }) });
+            }}>
+              {access === 'admin' && allView && <option value="">All properties</option>}
+              {CONSOLE_PROPERTIES.filter((p) => access === 'admin' || p.id === 'XTSY-SHL-HOSTEL').map((p) => <option key={p.id} value={p.id}>{p.name}</option>)}
+            </select>
+          </div>
           {oldTitle && <PageHead title={oldTitle[0]} sub={oldTitle[1]} />}
-          <ConsoleScopeContext.Provider value={access === 'admin' ? 'super' : 'hostel'}><Outlet /></ConsoleScopeContext.Provider>
+          <ConsoleScopeContext.Provider value={access === 'admin' ? 'super' : 'hostel'}>{campUnsupported ? <div className="space-y-4"><h2 className="text-xl font-bold">Shnonpedeng Riverside Camping by XTSY</h2><p className="text-muted-foreground">WhatsApp enquiry-only. No live inventory, online payment or hostel connections apply to this property.</p><Link to="/admin" search={{ property: CAMP_ID }} className="inline-flex min-h-[48px] items-center underline">View property overview</Link></div> : <Outlet key={property ?? 'all'} />}</ConsoleScopeContext.Provider>
         </div>
       </main>
     </div>

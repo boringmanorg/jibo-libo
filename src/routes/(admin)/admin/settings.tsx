@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useServerFn } from '@tanstack/react-start';
 import { toast } from 'sonner';
-import { FileSpreadsheet, Hotel, UtensilsCrossed } from 'lucide-react';
+import { FileSpreadsheet, Hotel } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { Switch } from '@/components/ui/switch';
 import { getConsoleOverview, setIntegrationFlags, testConnection } from '@/admin/console.functions';
@@ -65,10 +65,7 @@ function Connections() {
         {toggle('pms', data.settings.pms_enabled)}
       </Row>
 
-      <Row icon={<UtensilsCrossed className="h-5 w-5" />} title="POS by XTSY: TAB Bistro" status={pill(data.settings.pos_enabled && data.secretsConfigured, 'Connected', data.secretsConfigured ? 'Off' : 'Not configured')}>
-        <p>Table slots, reservations, lunch preorders and QR ordering for TAB Bistro.</p>
-        {toggle('pos', data.settings.pos_enabled)}
-      </Row>
+
     </div>
   );
 }

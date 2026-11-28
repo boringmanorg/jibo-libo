@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 import { toast } from 'sonner';
 import { z } from 'zod';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { useConsoleProperty } from '@/admin/consoleScope';
 import { cn } from '@/lib/utils';
 import { getInventoryCalendar } from '@/admin/consoleHome.functions';
 import { saveInventoryOverride } from '@/admin/console.functions';
@@ -26,9 +27,10 @@ const daysIn = (ym: string) => new Date(Date.UTC(Number(ym.slice(0, 4)), Number(
 
 function Inventory() {
   const { start } = Route.useSearch();
+  const property = useConsoleProperty();
   const month = start ?? thisMonth();
   const navigate = useNavigate({ from: Route.fullPath });
-  const go = (ym: string) => navigate({ search: { start: ym } });
+  const go = (ym: string) => navigate({ search: (prev) => ({ ...prev, start: ym }) });
   const fetchCal = useServerFn(getInventoryCalendar);
   const { data, error, isFetching } = useQuery({
     queryKey: ['console', 'calendar', month],
@@ -68,7 +70,7 @@ function Inventory() {
             <thead>
               <tr>
                 <th scope="col" className="sticky left-0 z-10 min-w-[7.5rem] border-b sm:min-w-[11rem] border-xt-line bg-white px-4 py-3 text-left font-semibold text-xt-mute">Room</th>
-                {data.rows[0]?.cells.map((c) => {
+                {data.rows.filter((r) => !property || r.propertyId === property)[0]?.cells.map((c) => {
                   const wkend = ['Sat', 'Sun'].includes(weekday(c.night));
                   return (
                     <th key={c.night} scope="col" data-today={c.night === data.today || undefined} className={cn('min-w-[3.25rem] border-b border-xt-line px-1 py-2 text-center font-normal', c.night === data.today ? 'bg-xt-ink text-xt-sand' : wkend ? 'bg-xt-sand text-xt-ink' : 'text-xt-mute')}>
@@ -80,7 +82,7 @@ function Inventory() {
               </tr>
             </thead>
             <tbody>
-              {data.rows.map((row) => (
+              {data.rows.filter((r) => !property || r.propertyId === property).map((row) => (
                 <tr key={row.id}>
                   <th scope="row" className="sticky left-0 z-10 border-b border-xt-line bg-white px-3 py-2 text-left sm:px-4">
                     <span className="block font-semibold text-xt-ink">{row.short}</span>

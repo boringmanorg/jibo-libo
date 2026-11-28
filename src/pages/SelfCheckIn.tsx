@@ -41,9 +41,9 @@ function DocumentInput({ id, label, note, file, onChange }: { id: DocumentKind; 
   );
 }
 
-export default function SelfCheckIn() {
-  const [step, setStep] = useState(0);
-  const [propertyId, setPropertyId] = useState<CheckInPropertyId>('XTSY-SHL-HOSTEL');
+export default function SelfCheckIn({ initialPropertyId }: { initialPropertyId?: CheckInPropertyId }) {
+  const [step, setStep] = useState(initialPropertyId ? 1 : 0);
+  const [propertyId, setPropertyId] = useState<CheckInPropertyId>(initialPropertyId ?? 'XTSY-SHL-HOSTEL');
   const [isInternational, setIsInternational] = useState(false);
   const [bookingReference, setBookingReference] = useState('');
   const [guestName, setGuestName] = useState('');
@@ -56,7 +56,7 @@ export default function SelfCheckIn() {
   const [email, setEmail] = useState('');
   const [totalGuests, setTotalGuests] = useState(1);
   const [purpose, setPurpose] = useState<(typeof CHECK_IN_PURPOSES)[number]>('Leisure');
-  const [roomTypeId, setRoomTypeId] = useState(roomPreferences('XTSY-SHL-HOSTEL')[0]?.id ?? '');
+  const [roomTypeId, setRoomTypeId] = useState(roomPreferences(initialPropertyId ?? 'XTSY-SHL-HOSTEL')[0]?.id ?? '');
   const [files, setFiles] = useState<Record<DocumentKind, File | null>>({ front: null, back: null, visa: null });
   const [readPolicies, setReadPolicies] = useState(false);
   const [policyAccepted, setPolicyAccepted] = useState(false);
@@ -84,7 +84,7 @@ export default function SelfCheckIn() {
 
   useEffect(() => {
     try {
-      const saved = sessionStorage.getItem('xtsy-self-check-in-receipt');
+      const saved = sessionStorage.getItem(`xtsy-self-check-in-receipt-${initialPropertyId ?? 'choose'}`);
       if (!saved) return;
       const value = JSON.parse(saved) as Receipt;
       if (!value.id || !value.accessToken) return;
@@ -153,7 +153,7 @@ export default function SelfCheckIn() {
       const result = await submit({ data: body });
       setReceipt(result);
       setStep(STEPS.length);
-      try { sessionStorage.setItem('xtsy-self-check-in-receipt', JSON.stringify(result)); } catch { /* private receipt remains visible */ }
+      try { sessionStorage.setItem(`xtsy-self-check-in-receipt-${initialPropertyId ?? 'choose'}`, JSON.stringify(result)); } catch { /* private receipt remains visible */ }
       await loadReceipt(result);
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Could not complete check-in. Please try again.');
@@ -163,8 +163,8 @@ export default function SelfCheckIn() {
   };
 
   const reset = () => {
-    try { sessionStorage.removeItem('xtsy-self-check-in-receipt'); } catch { /* no-op */ }
-    setReceipt(null); setGuestReceipt(null); setStep(0); setFiles({ front: null, back: null, visa: null });
+    try { sessionStorage.removeItem(`xtsy-self-check-in-receipt-${initialPropertyId ?? 'choose'}`); } catch { /* no-op */ }
+    setReceipt(null); setGuestReceipt(null); setStep(initialPropertyId ? 1 : 0); setFiles({ front: null, back: null, visa: null });
     setPolicyAccepted(false); setReadPolicies(false); setError('');
   };
 
@@ -190,7 +190,7 @@ export default function SelfCheckIn() {
         {step === 0 && <section className="space-y-6">
           <div><h2 className="xt-display text-4xl text-xt-ink">Where are you checking in?</h2><p className="mt-2 text-xt-mute">Choose the property on your confirmed booking.</p></div>
           <div className="grid gap-3 sm:grid-cols-2">
-            {CHECK_IN_PROPERTIES.map((p) => <button key={p.id} type="button" onClick={() => chooseProperty(p.id)} aria-pressed={propertyId === p.id} className={cn('min-h-[112px] rounded-[24px] border-2 p-5 text-left', propertyId === p.id ? 'border-xt-ink bg-xt-sand' : 'border-xt-line bg-xt-paper')}>
+            {CHECK_IN_PROPERTIES.filter((p) => !initialPropertyId || p.id === initialPropertyId).map((p) => <button key={p.id} type="button" onClick={() => chooseProperty(p.id)} aria-pressed={propertyId === p.id} className={cn('min-h-[112px] rounded-[24px] border-2 p-5 text-left', propertyId === p.id ? 'border-xt-ink bg-xt-sand' : 'border-xt-line bg-xt-paper')}>
               <span className="block text-lg font-extrabold text-xt-ink">{p.name}</span><span className="mt-2 block text-sm text-xt-mute">{p.location}</span>
             </button>)}
           </div>

@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { toast } from 'sonner';
 import { MessageCircle, Phone, Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { useConsoleScope } from '@/admin/consoleScope';
+import { useConsoleScope, useConsoleProperty } from '@/admin/consoleScope';
 import { buildRouteHead } from '@/lib/seo-head';
 import { listInbox, updateEnquiry } from '@/admin/consoleHome.functions';
 import { listOtaBookings, listSheetWriteIssues } from '@/admin/channel.functions';
@@ -19,11 +19,12 @@ const TABS: (Status | 'all')[] = ['new', 'contacted', 'confirmed', 'lost', 'all'
 
 function InboxPage() {
   const scope = useConsoleScope();
+  const property = useConsoleProperty();
   const [tab, setTab] = useState<Status | 'all'>('new');
   const [q, setQ] = useState('');
   const [search, setSearch] = useState('');
   const fetchInbox = useServerFn(listInbox);
-  const filters = { ...(tab !== 'all' ? { status: tab } : {}), ...(search ? { search } : {}) };
+  const filters = { ...(property ? { propertyId: property } : {}), ...(tab !== 'all' ? { status: tab } : {}), ...(search ? { search } : {}) };
   const { data, error } = useQuery({ queryKey: ['console', 'inbox', filters], queryFn: () => fetchInbox({ data: filters }), refetchInterval: 60_000 });
   const total = data ? Object.values(data.counts).reduce((a, b) => a + b, 0) : 0;
 
@@ -55,12 +56,12 @@ function InboxPage() {
         <ul className="space-y-3">{data.enquiries.map((e: any) => <EnquiryCard key={e.id} e={e} />)}</ul>
       )}
 
-      <DateChangeRequests />
-      {scope === 'super' && <SheetWriteIssues />}
-      <OtaBookings />
+      {property !== 'XTSY-SHN-CAMP' && <DateChangeRequests />}
+      {scope === 'super' && property !== 'XTSY-SHN-CAMP' && <SheetWriteIssues />}
+      {property !== 'XTSY-SHN-CAMP' && <OtaBookings />}
 
       {data && data.onlineBookings.length > 0 && (
-        <Panel title="Paid online bookings" className="mt-8" action={<Link to="/admin/bookings" className="text-sm font-semibold text-xt-crimson">Manage</Link>}>
+        <Panel title="Paid online bookings" className="mt-8" action={<Link to="/admin/bookings" search={property ? { property } : {}} className="text-sm font-semibold text-xt-crimson">Manage</Link>}>
           <ul className="divide-y divide-xt-line">
             {data.onlineBookings.map((b: any) => (
               <li key={b.id} className="flex flex-wrap items-center justify-between gap-2 py-3 text-[15px]">

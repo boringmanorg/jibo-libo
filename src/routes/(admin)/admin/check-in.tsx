@@ -7,6 +7,9 @@ import { toast } from 'sonner';
 import { PageHead, Panel } from '@/admin/components/ConsoleBits';
 import { getCheckInDocumentFn, listCheckInsFn } from '@/checkin/checkIn.functions';
 import { CHECK_IN_PROPERTIES, roomPreferences, type CheckInPropertyId } from '@/checkin/checkInModel';
+import { useConsoleProperty, useConsoleScope } from '@/admin/consoleScope';
+import { checkInUrl } from '@/admin/consoleProperties';
+import { Button } from '@/components/ui/button';
 import { buildRouteHead } from '@/lib/seo-head';
 
 export const Route = createFileRoute('/(admin)/admin/check-in')({
@@ -32,21 +35,24 @@ function CheckInDesk() {
   const documentLink = useServerFn(getCheckInDocumentFn);
   const q = useQuery({ queryKey: ['staff', 'self-check-ins'], queryFn: () => list() as Promise<CheckInRow[]> });
   const [search, setSearch] = useState('');
-  const [origin, setOrigin] = useState('https://xtsy.one');
-  const [qr, setQr] = useState('');
+  const scope = useConsoleScope();
+  const selected = useConsoleProperty();
+  const properties = CHECK_IN_PROPERTIES.filter((p) => (scope === 'super' || p.id === 'XTSY-SHL-HOSTEL') && (!selected || p.id === selected));
+  const [codes, setCodes] = useState<Record<string, string>>({});
 
   useEffect(() => {
-    const url = `${window.location.origin}/check-in`;
-    setOrigin(window.location.origin);
     let live = true;
-    void import('qrcode').then((QRCode) => QRCode.toDataURL(url, { width: 512, margin: 2, errorCorrectionLevel: 'M' })).then((value) => { if (live) setQr(value); }).catch(() => toast.error('Could not draw the QR code.'));
+    void import('qrcode').then(async (QRCode) => {
+      const entries = await Promise.all(CHECK_IN_PROPERTIES.map(async (p) => [p.id, await QRCode.toDataURL(checkInUrl(p.id), { width: 512, margin: 2, errorCorrectionLevel: 'M' })] as const));
+      if (live) setCodes(Object.fromEntries(entries));
+    }).catch(() => toast.error('Could not draw the QR codes.'));
     return () => { live = false; };
   }, []);
 
   const rows = useMemo(() => {
     const needle = search.trim().toLowerCase();
-    return (q.data ?? []).filter((r) => !needle || [r.guestName, r.bookingReference, r.phone, r.email, r.city].some((v) => v.toLowerCase().includes(needle)));
-  }, [q.data, search]);
+    return (q.data ?? []).filter((r) => (!selected || r.propertyId === selected) && (!needle || [r.guestName, r.bookingReference, r.phone, r.email, r.city].some((v) => v.toLowerCase().includes(needle))));
+  }, [q.data, search, selected]);
 
   const openDocument = async (id: string, kind: 'front' | 'back' | 'visa', mode: 'view' | 'download') => {
     const tab = window.open('about:blank', '_blank');
@@ -62,22 +68,30 @@ function CheckInDesk() {
   return <div className="space-y-6">
     <PageHead title="Self check-in" sub="Guest arrivals, identity documents and room preferences. Allocate rooms or beds in the existing booking tools." />
 
-    <Panel>
+    {properties.map((p) => <Panel key={p.id}>
       <div className="grid items-center gap-6 sm:grid-cols-[160px_1fr]">
-        <div className="rounded-2xl bg-white p-3 print:fixed print:inset-0 print:flex print:items-center print:justify-center">
-          {qr ? <img src={qr} alt="QR code opening the XTSY self check-in page" className="mx-auto h-36 w-36 print:h-80 print:w-80" /> : <QrCode className="mx-auto h-32 w-32 text-xt-ink" aria-hidden />}
+        <div className="rounded-lg bg-background p-3">
+          {codes[p.id] ? <img src={codes[p.id]} alt={`Self check-in QR — ${p.name}`} className="mx-auto h-36 w-36" /> : <QrCode className="mx-auto h-32 w-32 text-xt-ink" aria-hidden />}
         </div>
-        <div className="print:hidden">
-          <h2 className="text-lg font-extrabold text-xt-ink">Front-desk QR sign</h2>
-          <p className="mt-1 text-sm text-xt-mute">Guests scan this code to open <span className="font-mono">{origin}/check-in</span>. No app or sign-in is needed.</p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            <button type="button" className="inline-flex min-h-[48px] items-center gap-2 rounded-full bg-xt-ink px-4 text-sm font-bold text-xt-sand" onClick={() => window.print()}><Printer className="h-4 w-4" aria-hidden />Print QR sign</button>
-            <a href={`${origin}/check-in`} target="_blank" rel="noreferrer" className="inline-flex min-h-[48px] items-center gap-2 rounded-full border border-xt-line px-4 text-sm font-bold text-xt-ink"><ExternalLink className="h-4 w-4" aria-hidden />Open guest page</a>
-            <button type="button" className="min-h-[48px] rounded-full border border-xt-line px-4 text-sm font-bold text-xt-ink" onClick={() => void navigator.clipboard.writeText(`${origin}/check-in`).then(() => toast.success('Check-in link copied'))}>Copy link</button>
+        <div className="min-w-0">
+          <h2 className="text-lg font-extrabold text-xt-ink">{p.name}</h2>
+          <p className="mt-1 break-all text-sm text-xt-mute">{checkInUrl(p.id)}</p>
+          <div className="mt-4 flex flex-wrap gap-2 print:hidden">
+            <Button variant="outline" className="min-h-[48px]" onClick={() => {
+              const sign = window.open('', '_blank');
+              if (!sign || !codes[p.id]) { sign?.close(); return; }
+              sign.document.title = `${p.name} — Self check-in QR`;
+              const heading = sign.document.createElement('h1'); heading.textContent = p.name;
+              const image = sign.document.createElement('img'); image.src = codes[p.id] ?? ''; image.width = 400; image.height = 400;
+              const url = sign.document.createElement('p'); url.textContent = checkInUrl(p.id);
+              sign.document.body.append(heading, image, url); image.onload = () => sign.print(); sign.opener = null;
+            }}><Printer className="h-4 w-4" />Print QR sign</Button>
+            <Button variant="outline" className="min-h-[48px]" asChild><a href={checkInUrl(p.id)} target="_blank" rel="noreferrer"><ExternalLink className="h-4 w-4" />Open guest page</a></Button>
+            <Button variant="outline" className="min-h-[48px]" onClick={() => void navigator.clipboard.writeText(checkInUrl(p.id)).then(() => toast.success('Check-in link copied'))}>Copy link</Button>
           </div>
         </div>
       </div>
-    </Panel>
+    </Panel>)}
 
     <div className="relative print:hidden"><Search className="absolute left-4 top-4 h-5 w-5 text-xt-mute" aria-hidden /><input aria-label="Search check-ins" className="min-h-[48px] w-full rounded-2xl border border-xt-line bg-white pl-12 pr-4 text-base text-xt-ink" placeholder="Search name, reference, phone, email or city" value={search} onChange={(e) => setSearch(e.target.value)} /></div>
     {q.isLoading && <p className="text-xt-mute">Loading check-ins…</p>}

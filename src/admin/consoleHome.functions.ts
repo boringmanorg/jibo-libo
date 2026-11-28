@@ -70,7 +70,7 @@ export const getTodaySummary = createServerFn({ method: 'GET' })
     const [{ sheet, syncedAt }, closures, enq, newCount, log] = await Promise.all([
       loadSheet(ctx, today, end),
       loadClosures(ctx, today, end),
-      ctx.supabase.from('be_enquiries').select('id,reference,kind,guest_name,check_in,check_out,guests,estimate_rupees,status,created_at').order('created_at', { ascending: false }).limit(6),
+      ctx.supabase.from('be_enquiries').select('id,reference,kind,guest_name,check_in,check_out,guests,estimate_rupees,summary,status,created_at').order('created_at', { ascending: false }).limit(6),
       ctx.supabase.from('be_enquiries').select('id', { count: 'exact', head: true }).eq('status', 'new'),
       ctx.supabase.from('console_audit_log').select('id,action,details,created_at').order('created_at', { ascending: false }).limit(12),
     ]);
@@ -93,10 +93,11 @@ const STATUS = z.enum(['new', 'contacted', 'confirmed', 'lost']);
 
 export const listInbox = createServerFn({ method: 'POST' })
   .middleware([requirePropertyAdmin])
-  .inputValidator(z.object({ status: STATUS.optional(), search: z.string().trim().max(60).optional() }))
+  .inputValidator(z.object({ status: STATUS.optional(), search: z.string().trim().max(60).optional(), propertyId: z.enum(['XTSY-SHL-HOSTEL', 'XTSY-SHN-CAMP']).optional() }))
   .handler(async ({ data, context }) => {
     const ctx = context as Ctx;
     let q = ctx.supabase.from('be_enquiries').select('*').order('created_at', { ascending: false }).limit(200);
+    if (data.propertyId) q = q.eq('kind', data.propertyId === 'XTSY-SHN-CAMP' ? 'camp' : 'stay');
     if (data.status) q = q.eq('status', data.status);
     if (data.search) {
       const s = data.search.replace(/[%,()]/g, ' ');
@@ -104,12 +105,12 @@ export const listInbox = createServerFn({ method: 'POST' })
     }
     const [enq, counts, paid] = await Promise.all([
       q,
-      ctx.supabase.from('be_enquiries').select('status'),
+      data.propertyId ? ctx.supabase.from('be_enquiries').select('status').eq('kind', data.propertyId === 'XTSY-SHN-CAMP' ? 'camp' : 'stay') : ctx.supabase.from('be_enquiries').select('status'),
       ctx.supabase.from('be_bookings').select('id,reference,guest_name,check_in,check_out,status,total_paise,created_at').order('created_at', { ascending: false }).limit(50),
     ]);
     const tally = { new: 0, contacted: 0, confirmed: 0, lost: 0 } as Record<string, number>;
     for (const r of counts.data ?? []) tally[r.status] = (tally[r.status] ?? 0) + 1;
-    return { ready: !enq.error, enquiries: enq.data ?? [], counts: tally, onlineBookings: paid.error ? [] : paid.data ?? [] };
+    return { ready: !enq.error, enquiries: enq.data ?? [], counts: tally, onlineBookings: paid.error || data.propertyId === 'XTSY-SHN-CAMP' ? [] : paid.data ?? [] };
   });
 
 export const updateEnquiry = createServerFn({ method: 'POST' })

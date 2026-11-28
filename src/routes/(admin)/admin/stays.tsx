@@ -1,3 +1,4 @@
+import { useConsoleProperty } from '@/admin/consoleScope';
 import { useSheetDoorbell } from '@/hooks/useSheetDoorbell';
 import { buildRouteHead } from '@/lib/seo-head';
 import { createFileRoute } from '@tanstack/react-router';
@@ -32,7 +33,7 @@ function Stays() {
   const sync = useServerFn(syncRoomsNow);
   const check = useServerFn(consoleCheckAvailability);
 
-  const [propertyId, setPropertyId] = useState('XTSY-SHL-HOSTEL');
+  const propertyId = useConsoleProperty() ?? 'XTSY-SHL-HOSTEL';
   const property = data?.properties.find((p) => p.propertyId === propertyId);
   const [unit, setUnit] = useState('');
   const [start, setStart] = useState(today());
@@ -63,9 +64,7 @@ function Stays() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-end gap-3">
         <div className="min-w-60 flex-1"><Label htmlFor="prop">Property</Label>
-          <select id="prop" className={selectCls} value={propertyId} onChange={(e) => { setPropertyId(e.target.value); setUnit(''); checkM.reset(); }}>
-            {data.properties.map((p) => <option key={p.propertyId} value={p.propertyId}>{p.name}</option>)}
-          </select></div>
+          <p id="prop" className="py-3 font-semibold">{property.name}</p></div>
         <Button className="min-h-12" onClick={() => syncM.mutate()} disabled={syncM.isPending}>{syncM.isPending ? 'Syncing…' : 'Sync rooms with PMS'}</Button>
       </div>
 
@@ -82,7 +81,7 @@ function Stays() {
         <div className="grid gap-3 md:grid-cols-5">
           <div><Label htmlFor="unit">Room</Label><select id="unit" className={selectCls} value={chosen} onChange={(e) => { setUnit(e.target.value); setCount(''); }}>
             <option value={WHOLE_PROPERTY}>Whole property: every {property.propertyId === 'XTSY-SHL-HOSTEL' ? 'room, including Experience by XTSY,' : 'tent'} at {property.name}</option>
-            {data.accessScope === 'super' && <option value={ALL_STAYS}>Every property: {data.properties.map((p) => p.name).join(' and ')}</option>}
+            
             {property.units.map((u) => <option key={u.id} value={u.id}>{u.name}</option>)}</select></div>
           <div><Label htmlFor="bn">How many to close</Label><Input id="bn" type="number" min={1} max={chosenUnit?.totalUnits ?? 1} inputMode="numeric" className="h-12 text-base" disabled={!single}
             placeholder={single ? `All ${chosenUnit?.totalUnits ?? ''}` : 'All'} value={count} onChange={(e) => setCount(e.target.value)} />
