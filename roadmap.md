@@ -5,7 +5,7 @@
 - [x] Let the hostel property admin or super admin delete a check-in before allocation or after release, with property-scoped server checks, database policy, document removal and confirmation; six rule checks pass without deleting a real record.
 - [x] Make the console sidebar collapsible with independent scrolling that does not trap or collide with page scrolling; verified signed in at 1025×661.
 - [x] Add a property-specific A4 printable self-check-in sign with the XTSY logo, QR code, steps and canonical www.xtsy.one link; generated one-page A4 PDF visually verified.
-- [ ] Sign in to the live site as booking@xtsy.one and allocate then release the latest genuine self check-in; leave the earlier test record untouched. Live publish and live-account browser access remain to be verified.
+- [x] Signed in on https://xtsy.one as booking@xtsy.one, allocated room 1 to Amrudheen D and released it; the admin delete control appeared after release, no record was deleted, and database readback confirms no remaining hold. Live /book also shows ₹420 with no browser errors.
 
 ## Console intelligence — 28 November 2026
 - [x] Desk allocates exact beds/rooms per self check-in; allocation holds that room type's inventory on /book and in the console.
