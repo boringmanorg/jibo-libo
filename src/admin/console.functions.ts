@@ -472,3 +472,52 @@ export const refreshSearchDemand = createServerFn({ method: 'POST' })
     await audit(ctx, 'pricing.demand_refresh', { windowEnd, rows: rows.length });
     return { ok: true, rows: rows.length };
   });
+
+/** Manual nightly prices (super admin). Refused for any room type whose smart pricing is on. */
+export const listRateOverrides = createServerFn({ method: 'GET' })
+  .middleware([requireSuperAdmin])
+  .handler(async ({ context }): Promise<{ overrides: { roomTypeId: string; night: string; rupees: number }[]; smartOn: string[] }> => {
+    const ctx = context as Ctx;
+    const today = new Date(Date.now() + 5.5 * 3600_000).toISOString().slice(0, 10);
+    const [o, s] = await Promise.all([
+      ctx.supabase.from('be_rate_overrides').select('room_type_id,night,rupees').gte('night', today).order('night').limit(2000),
+      ctx.supabase.from('be_smart_pricing').select('room_type_id,enabled'),
+    ]);
+    if (o.error) throw new Error('Could not load manual prices.');
+    return {
+      overrides: (o.data ?? []).map((r: any) => ({ roomTypeId: r.room_type_id as string, night: r.night as string, rupees: Number(r.rupees) })),
+      smartOn: (s.data ?? []).filter((r: any) => r.enabled).map((r: any) => r.room_type_id as string),
+    };
+  });
+
+export const saveRateOverrides = createServerFn({ method: 'POST' })
+  .middleware([requireSuperAdmin])
+  .inputValidator(z.object({
+    roomTypeIds: z.array(z.string().max(60)).min(1).max(20),
+    from: z.string().regex(/^\d{4}-\d{2}-\d{2}$/), to: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+    rupees: z.number().int().min(1).max(100000).nullable(),
+  }))
+  .handler(async ({ data, context }) => {
+    const ctx = context as Ctx;
+    const { BOOKING_ROOM_TYPES } = await import('@/booking/catalogue');
+    if (data.roomTypeIds.some((id) => !BOOKING_ROOM_TYPES.some((r) => r.id === id))) throw new Error('Unknown room type.');
+    const today = new Date(Date.now() + 5.5 * 3600_000).toISOString().slice(0, 10);
+    if (data.from < today) throw new Error('Prices can only be set for today or later.');
+    if (data.to < data.from) throw new Error('The end date must be on or after the start date.');
+    const nights: string[] = [];
+    for (let d = new Date(`${data.from}T00:00:00Z`); d.toISOString().slice(0, 10) <= data.to; d.setUTCDate(d.getUTCDate() + 1)) nights.push(d.toISOString().slice(0, 10));
+    if (nights.length > 366) throw new Error('Choose at most one year at a time.');
+    const { data: smart } = await ctx.supabase.from('be_smart_pricing').select('room_type_id,enabled').in('room_type_id', data.roomTypeIds);
+    const on = (smart ?? []).filter((r: any) => r.enabled).map((r: any) => r.room_type_id as string);
+    if (on.length) throw new Error('Turn off smart pricing for these room types first (Smart pricing page): ' + on.map((id: string) => BOOKING_ROOM_TYPES.find((r) => r.id === id)?.name ?? id).join(', '));
+    if (data.rupees === null) {
+      const { error } = await ctx.supabase.from('be_rate_overrides').delete().in('room_type_id', data.roomTypeIds).gte('night', data.from).lte('night', data.to);
+      if (error) throw new Error('Could not clear manual prices.');
+    } else {
+      const rows = data.roomTypeIds.flatMap((id) => nights.map((night) => ({ room_type_id: id, night, rupees: data.rupees, updated_at: new Date().toISOString(), updated_by: ctx.userId })));
+      const { error } = await ctx.supabase.from('be_rate_overrides').upsert(rows);
+      if (error) throw new Error('Could not save manual prices.');
+    }
+    await audit(ctx, data.rupees === null ? 'pricing.manual.clear' : 'pricing.manual.set', data);
+    return { ok: true, nights: nights.length, rooms: data.roomTypeIds.length };
+  });

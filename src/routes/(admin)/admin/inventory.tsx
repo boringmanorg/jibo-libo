@@ -16,6 +16,8 @@ import { PageHead, SheetChip, dayMonth, freeTone, weekday } from '@/admin/compon
 import { DateRangeBar, useConsoleRange } from '@/admin/components/DateRangeBar';
 import { daysOf, dayHeading } from '@/admin/dateRange';
 import { InventoryBulk } from '@/admin/components/InventoryBulk';
+import { useRateOverrides, useSaveRates } from '@/admin/components/RateOverrides';
+import { useConsoleAccess } from '@/admin/consoleScope';
 
 export const Route = createFileRoute('/(admin)/admin/inventory')({
   validateSearch: z.object({ start: z.string().regex(/^\d{4}-\d{2}$/).optional(), view: z.string().max(8).optional() }),
@@ -192,6 +194,8 @@ function NightPanel({ row, cell, onClose }: { row: CalendarRow; cell: CalendarCe
     onError: (e) => toast.error(e.message),
   });
   const n = Number(count);
+  const access = useConsoleAccess();
+  const priceable = access === 'admin' && row.source === 'sheet';
   return (
     <div className="fixed inset-0 z-40 flex items-end justify-center bg-xt-ink/30 p-0 sm:items-center sm:p-6" role="dialog" aria-modal="true" aria-labelledby="night-title" onClick={onClose}>
       <div className="w-full max-w-md rounded-t-[28px] bg-white p-6 shadow-xl sm:rounded-[28px]" onClick={(e) => e.stopPropagation()}>
@@ -219,8 +223,29 @@ function NightPanel({ row, cell, onClose }: { row: CalendarRow; cell: CalendarCe
           )}
           {cell.closed > 0 && <button type="button" disabled={m.isPending} onClick={() => m.mutate({ state: 'open' })} className="min-h-12 w-full rounded-full bg-xt-ink font-bold text-xt-sand disabled:opacity-40">Reopen this night</button>}
         </div>
+        {priceable && <NightPrice roomTypeId={row.id} night={cell.night} onDone={onClose} />}
         <p className="mt-4 text-xs text-xt-mute">For several nights or the whole property, use Bulk edit & rates.</p>
       </div>
     </div>
   );
+}
+
+/** Single-night manual price (super admin); refused while smart pricing is on for the room type. */
+function NightPrice({ roomTypeId, night, onDone }: { roomTypeId: string; night: string; onDone: () => void }) {
+  const q = useRateOverrides();
+  const m = useSaveRates(onDone);
+  const [price, setPrice] = useState('');
+  const current = q.data?.overrides.find((o) => o.roomTypeId === roomTypeId && o.night === night);
+  const smart = q.data?.smartOn.includes(roomTypeId);
+  const n = Number(price);
+  return <div className="mt-5 border-t border-xt-line pt-4">
+    <p className="text-sm font-bold text-xt-ink">Price this night{current ? ` · now ₹${current.rupees.toLocaleString('en-IN')} (manual)` : ''}</p>
+    {smart ? <p className="mt-1 text-sm text-xt-mute">Smart pricing is on for this room type. Turn it off on Smart pricing to set a manual price.</p> : <>
+      <div className="mt-2 flex gap-2">
+        <input type="number" min={1} inputMode="numeric" value={price} onChange={(e) => setPrice(e.target.value)} placeholder="₹ before tax" aria-label="Nightly price in rupees before tax" className="h-12 min-w-0 flex-1 rounded-full border border-xt-line px-4 text-base" />
+        <button type="button" disabled={m.isPending || !(n >= 1)} onClick={() => m.mutate({ roomTypeIds: [roomTypeId], from: night, to: night, rupees: n })} className="min-h-12 shrink-0 rounded-full border border-xt-ink px-5 font-bold text-xt-ink disabled:opacity-40">Set price</button>
+      </div>
+      {current && <button type="button" disabled={m.isPending} onClick={() => m.mutate({ roomTypeIds: [roomTypeId], from: night, to: night, rupees: null })} className="mt-2 min-h-12 w-full rounded-full text-sm font-bold text-xt-crimson">Clear manual price</button>}
+    </>}
+  </div>;
 }

@@ -1,4 +1,5 @@
-import { useConsoleProperty } from '@/admin/consoleScope';
+import { useConsoleAccess, useConsoleProperty } from '@/admin/consoleScope';
+import { RateOverrides } from '@/admin/components/RateOverrides';
 import { useSheetDoorbell } from '@/hooks/useSheetDoorbell';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useServerFn } from '@tanstack/react-start';
@@ -32,6 +33,7 @@ export function InventoryBulk() {
   const check = useServerFn(consoleCheckAvailability);
 
   const propertyId = useConsoleProperty() ?? 'XTSY-SHL-HOSTEL';
+  const access = useConsoleAccess();
   const property = data?.properties.find((p) => p.propertyId === propertyId);
   const [unit, setUnit] = useState('');
   const [start, setStart] = useState(today());
@@ -70,6 +72,8 @@ export function InventoryBulk() {
           <tbody>{property.units.map((u) => <tr key={u.id} className="border-t border-border"><td className="py-2">{u.name}</td><td>{u.totalUnits}</td><td>{u.rate.toLocaleString('en-IN')}</td></tr>)}</tbody></table></div>
         <p className="mt-2 text-xs text-muted-foreground">Rates come from the PMS when connected; until then, from the site's approved prices.</p>
       </CardContent></Card>
+
+      {access === 'admin' && propertyId === 'XTSY-SHL-HOSTEL' && <RateOverrides />}
 
       <SheetLinks syncedAt={data.sheetSyncedAt} />
 

@@ -10,6 +10,7 @@ import { BOOKING_ROOM_TYPES } from '@/booking/catalogue';
 import { settingsFromRow } from '@/booking/consoleSettings';
 
 vi.mock('@tanstack/react-start', async (orig) => ({ ...(await orig<object>()), useServerFn: (fn: unknown) => fn }));
+vi.mock('@/admin/components/DateRangeBar', () => ({ DateRangeBar: () => null, useConsoleRange: () => ({ preset: 'custom', from: '2000-01-01', to: '2100-12-31', label: 'All' }) }));
 vi.mock('@/admin/bookingConsole.functions', () => {
   const stub = Object.assign(async () => ({}), {});
   return {
@@ -38,7 +39,7 @@ async function render(page: string, data: Record<string, unknown>) {
 describe('console screens before the database exists', () => {
   it.each([
     ['booking-engine', { '["engine","status"]': notReady }],
-    ['bookings', { '["engine","bookings",{}]': { dbReady: false, rows: [] } }],
+    ['bookings', { '["engine","bookings",{"from":"2000-01-01","to":"2100-12-31"}]': { dbReady: false, rows: [] } }],
   ])('%s explains that the database is not set up', async (page, data) => {
     expect(await render(page, data)).toContain('The booking database is not set up yet.');
   });
@@ -67,11 +68,11 @@ describe('Booking engine page', () => {
 
 describe('Bookings page', () => {
   it('says there are no bookings until live booking starts', async () => {
-    expect(await render('bookings', { '["engine","bookings",{}]': { dbReady: true, rows: [] } })).toContain('No bookings yet');
+    expect(await render('bookings', { '["engine","bookings",{"from":"2000-01-01","to":"2100-12-31"}]': { dbReady: true, rows: [] } })).toContain('Bookings appear here once live booking is switched on');
   });
   it('lists bookings with money in rupees', async () => {
     const row = { id: '6f1c5a8e-0000-4000-8000-000000000001', reference: 'XTSY-7KQ2M', status: 'confirmed', check_in: '2026-12-10', check_out: '2026-12-12', guest_name: 'Asha', total_paise: 210000, balance_paise: 157500, channel_status: 'synced' };
-    const html = await render('bookings', { '["engine","bookings",{}]': { dbReady: true, rows: [row] } });
+    const html = await render('bookings', { '["engine","bookings",{"from":"2000-01-01","to":"2100-12-31"}]': { dbReady: true, rows: [row] } });
     for (const s of ['XTSY-7KQ2M', 'Asha', '2026-12-10 → 2026-12-12', 'Confirmed', '₹2,100', '₹1,575', 'synced']) expect(html).toContain(s);
   });
 });

@@ -12,7 +12,12 @@
 import type { IsoDate } from './dates';
 import { daysBetween } from './dates';
 
-export interface SmartRule { roomTypeId: string; enabled: boolean; minRupees: number; maxRupees: number; demandMultiplier?: number }
+export interface SmartRule { roomTypeId: string; enabled: boolean; minRupees: number; maxRupees: number; demandMultiplier?: number;
+  /** Manual nightly prices in rupees by night, set from Inventory. Used only while smart pricing is off for the room type. */
+  overrides?: Record<string, number> }
+
+/** True when a rule carries something that changes a price: smart pricing on, or a manual night price. */
+export const rulePrices = (r: SmartRule) => r.enabled || !!(r.overrides && Object.keys(r.overrides).length);
 
 export function smartMultiplier(occupancy: number, daysOut: number): number {
   if (occupancy >= 0.9) return 1.25;
@@ -24,6 +29,7 @@ export function smartMultiplier(occupancy: number, daysOut: number): number {
 
 /** Nightly rate in paise. Base rate when there is no rule or it is off. */
 export function smartRate(basePaise: number, rule: SmartRule | undefined, free: number, units: number, night: IsoDate, today: IsoDate): number {
+  if (rule && !rule.enabled) { const o = rule.overrides?.[night]; return o && o > 0 ? Math.round(o) * 100 : basePaise; }
   if (!rule?.enabled || units <= 0) return basePaise;
   const occupancy = Math.min(1, Math.max(0, (units - Math.max(0, free)) / units));
   const demand = rule.demandMultiplier && rule.demandMultiplier >= 0.9 && rule.demandMultiplier <= 1.15 ? rule.demandMultiplier : 1;

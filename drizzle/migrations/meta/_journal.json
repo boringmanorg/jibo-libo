@@ -316,6 +316,13 @@
       "when": 1795873388816,
       "tag": "0044_check_in_guests_selfie_and_source",
       "breakpoints": true
+    },
+    {
+      "idx": 45,
+      "version": "7",
+      "when": 1795874537873,
+      "tag": "0045_rate_overrides",
+      "breakpoints": true
     }
   ]
 }

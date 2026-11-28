@@ -28,7 +28,7 @@ import { createZohoGateway, zohoConfigFromEnv } from './payments/zoho.server';
 import { financialYear, invoiceNumber } from './invoiceNumber';
 import { HOSTEL_POLICIES } from '@/data/hostelPolicies';
 import type { Paise } from './money';
-import { ruleFromRow, smartRate, type SmartRule } from './smartPricing';
+import { ruleFromRow, rulePrices, smartRate, type SmartRule } from './smartPricing';
 import { isIndian } from './guestRules';
 import { nearestOpenStays, suggestionRange, type OpenStay } from './nearestDates';
 import { botCheckConfigured, verifyBotCheck } from './botCheck';
@@ -119,7 +119,7 @@ export async function bookPageData(d: EngineDeps): Promise<{ live: boolean; phot
   const sheetP = loadSheetAvailability(d).catch(() => ({} as SheetAvailability));
   const [status, photos, closures, sheet, pricing] = await Promise.all([engineStatus(d), loadRoomPhotos(d).catch(() => new Map()), sheetP.then((s) => loadClosures(d, s)).catch(() => []), sheetP, loadPricing(d).catch(() => [] as SmartRule[])]);
   // Next minute boundary: when the next published snapshot (if any) becomes visible to everyone.
-  return { live: status.live, photos: Object.fromEntries(photos), closures, sheet, pricing: pricing.filter((r) => r.enabled), refreshAt: (Math.floor(d.now.getTime() / 60_000) + 1) * 60_000 };
+  return { live: status.live, photos: Object.fromEntries(photos), closures, sheet, pricing: pricing.filter(rulePrices), refreshAt: (Math.floor(d.now.getTime() / 60_000) + 1) * 60_000 };
 }
 
 /**
@@ -173,8 +173,10 @@ export async function loadClosures(d: EngineDeps, sheetNow?: SheetAvailability):
 /** Owner's smart-pricing limits (all off until switched on in the console). */
 export async function loadPricing(d: EngineDeps): Promise<SmartRule[]> {
   if (!d.db) return [];
-  const [r, demand] = await Promise.all([
+  const today = todayInIndia(d.now);
+  const [r, demand, ov] = await Promise.all([
     d.db.from('be_smart_pricing').select('*'),
+    d.db.from('be_rate_overrides').select('room_type_id,night,rupees').gte('night', today).limit(5000),
     // Latest hostel search-demand reading; older than 14 days counts as neutral.
     d.db.from('be_demand_snapshots').select('multiplier,captured_at').eq('property_id', 'XTSY-SHL-HOSTEL').order('captured_at', { ascending: false }).limit(1),
   ]);
@@ -182,14 +184,22 @@ export async function loadPricing(d: EngineDeps): Promise<SmartRule[]> {
   const snap = demand.error ? undefined : (demand.data ?? [])[0] as { multiplier: number; captured_at: string } | undefined;
   const fresh = snap && d.now.getTime() - Date.parse(snap.captured_at) < 14 * 86_400_000;
   const demandMultiplier = fresh ? Number(snap.multiplier) : 1;
-  return (r.data ?? []).map((row: Record<string, unknown>) => ruleFromRow(row)).filter((x: SmartRule | null): x is SmartRule => x !== null)
+  const rules: SmartRule[] = (r.data ?? []).map((row: Record<string, unknown>) => ruleFromRow(row)).filter((x: SmartRule | null): x is SmartRule => x !== null)
     .map((rule: SmartRule) => (demandMultiplier !== 1 ? { ...rule, demandMultiplier } : rule));
+  // Manual night prices apply only while smart pricing is off for that room type.
+  for (const o of (ov.error ? [] : ov.data ?? []) as { room_type_id: string; night: string; rupees: number }[]) {
+    let rule = rules.find((x) => x.roomTypeId === o.room_type_id);
+    if (!rule) { rule = { roomTypeId: o.room_type_id, enabled: false, minRupees: 0, maxRupees: 0 }; rules.push(rule); }
+    if (rule.enabled) continue;
+    (rule.overrides ??= {})[o.night] = Number(o.rupees);
+  }
+  return rules;
 }
 
 /** Nightly rate per room type and night, after smart pricing on that night's free count. */
 export async function stayRateFor(d: EngineDeps, checkIn: IsoDate, checkOut: IsoDate): Promise<(roomTypeId: string, night: IsoDate) => Paise> {
   const rules = await loadPricing(d).catch(() => [] as SmartRule[]);
-  if (!rules.some((r) => r.enabled)) return (id) => (findRoomType(id)?.rate ?? 0) as Paise;
+  if (!rules.some(rulePrices)) return (id) => (findRoomType(id)?.rate ?? 0) as Paise;
   const loads = await loadLoads(d, checkIn, checkOut);
   const sheet = await loadSheetAvailability(d).catch(() => ({} as SheetAvailability));
   const closures = await loadClosures(d, sheet).catch(() => [] as ClosureRow[]);

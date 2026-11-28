@@ -1678,6 +1678,30 @@ export type Database = {
         }
         Relationships: []
       }
+      be_rate_overrides: {
+        Row: {
+          night: string
+          room_type_id: string
+          rupees: number
+          updated_at: string
+          updated_by: string | null
+        }
+        Insert: {
+          night: string
+          room_type_id: string
+          rupees: number
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Update: {
+          night?: string
+          room_type_id?: string
+          rupees?: number
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Relationships: []
+      }
       be_room_mapping: {
         Row: {
           room_type_id: string
