@@ -1,0 +1,1 @@
+DELETE FROM public.be_property_staff WHERE user_id = 'dc7e4981-dd10-4c9d-b834-7035d4bae9ee';
