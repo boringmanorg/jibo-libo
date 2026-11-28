@@ -1,13 +1,14 @@
 import { createFileRoute, Link, Navigate, Outlet, useRouterState, useNavigate } from '@tanstack/react-router';
 import { PageHead } from '@/admin/components/ConsoleBits';
-import { Ban, CalendarDays, CreditCard, ExternalLink, ImageIcon, Inbox, LogOut, Menu, PlugZap, Building2, ScanLine, Sun, Wallet, X } from 'lucide-react';
+import { Ban, CalendarDays, CreditCard, ExternalLink, ImageIcon, Inbox, LogOut, Menu, PlugZap, Building2, ScanLine, Sparkles, Sun, Users, Wallet, X } from 'lucide-react';
 import xtsyLogo from '@/assets/xtsy-color-logo.webp';
 import { useEffect, useState, type FormEvent } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { getAdminSupabase, SUPER_ADMIN_EMAIL } from '@/admin/adminSupabase';
-import { ConsoleScopeContext, hostelConsolePath } from '@/admin/consoleScope';
+import { ConsoleScopeContext, ConsolePropertyLock, hostelConsolePath } from '@/admin/consoleScope';
+import { DESK_PATHS } from '@/admin/teamRules';
 import { z } from 'zod';
 import { CONSOLE_PROPERTIES, CAMP_ID } from '@/admin/consoleProperties';
 import { deniedMessage, deniedReason, signInErrorMessage, type DeniedReason } from '@/admin/signInMessages';
@@ -30,13 +31,15 @@ export const Route = createFileRoute('/(admin)/admin')({
 });
 
 type Status = 'loading' | 'out' | 'denied' | 'in' | 'recovery';
+type Access = 'admin' | 'property' | 'desk';
 
 function AdminLayout() {
   const [status, setStatus] = useState<Status>('loading');
   const [email, setEmail] = useState('');
   const [reason, setReason] = useState<DeniedReason>('wrong_email');
   const [configError, setConfigError] = useState('');
-  const [access, setAccess] = useState<'admin' | 'frontdesk'>('admin');
+  const [access, setAccess] = useState<Access>('admin');
+  const [deskProperty, setDeskProperty] = useState<string>('XTSY-SHL-HOSTEL');
 
   useEffect(() => {
     let unsubscribe: (() => void) | undefined;
@@ -55,18 +58,17 @@ function AdminLayout() {
         const u = data.user;
         if (!u) return setStatus('out');
         setEmail(u.email ?? '');
-        const why = deniedReason(u, SUPER_ADMIN_EMAIL);
-        setReason(why);
-        if (why !== 'no_admin_role') return setStatus('denied');
-        if (u.email?.toLowerCase() === SUPER_ADMIN_EMAIL) {
-          const { data: ok } = await sb.rpc('is_super_admin');
-          setAccess('admin');
-          setStatus(ok === true ? 'in' : 'denied');
-        } else {
-          const { data: ok } = await sb.rpc('be_is_checkin_staff');
-          setAccess('frontdesk');
-          setStatus(ok === true ? 'in' : 'denied');
-        }
+        // Access comes from the database (super admin, or an active row in the property team).
+        // Presentation only: every server function and RLS policy checks again.
+        if (!u.email_confirmed_at) { setReason('unconfirmed'); return setStatus('denied'); }
+        const { data: rows } = await sb.rpc('be_my_console_access');
+        const list = (rows ?? []) as { property_id: string; role: string }[];
+        setReason(deniedReason(u, SUPER_ADMIN_EMAIL));
+        if (!list.length) return setStatus('denied');
+        if (list.some((r) => r.role === 'super')) setAccess('admin');
+        else if (list.some((r) => r.role === 'property_admin' && r.property_id === 'XTSY-SHL-HOSTEL')) setAccess('property');
+        else { setAccess('desk'); setDeskProperty(list[0]!.property_id); }
+        setStatus('in');
       };
       const { data: sub } = sb.auth.onAuthStateChange((event) => {
         if (event === 'PASSWORD_RECOVERY') return setStatus('recovery');
@@ -92,24 +94,26 @@ function AdminLayout() {
           <Button className="mt-6 min-h-12" onClick={signOut}>Sign out</Button>
         </div>
       )}
-      {status === 'in' && <Shell email={email} access={access} onSignOut={signOut} />}
+      {status === 'in' && <Shell email={email} access={access} deskProperty={deskProperty} onSignOut={signOut} />}
     </div>
   );
 }
 
-const NAV: { group: string; items: { to: string; label: string; icon: typeof CalendarDays; exact?: boolean }[] }[] = [
+const NAV: { group: string; items: { to: string; label: string; icon: typeof CalendarDays; exact?: boolean; superOnly?: boolean }[] }[] = [
   { group: 'Property operations', items: [
     { to: '/admin', label: 'Today', icon: Sun, exact: true },
     { to: '/admin/inventory', label: 'Inventory', icon: CalendarDays },
     { to: '/admin/inbox', label: 'Inbox', icon: Inbox },
     { to: '/admin/check-in', label: 'Self check-in', icon: ScanLine },
     { to: '/admin/stays', label: 'Blocks', icon: Ban },
+    { to: '/admin/pricing', label: 'Smart pricing', icon: Sparkles, superOnly: true },
   ] },
   { group: 'Set up', items: [
     { to: '/admin/property', label: 'Property setup', icon: Building2 },
     { to: '/admin/room-photos', label: 'Room photos', icon: ImageIcon },
     { to: '/admin/booking-engine', label: 'Online booking', icon: CreditCard },
     { to: '/admin/settings', label: 'Connections', icon: PlugZap },
+    { to: '/admin/team', label: 'Team & logins', icon: Users },
   ] },
   { group: 'Money', items: [
     { to: '/admin/bookings', label: 'Paid bookings', icon: Wallet },
@@ -125,20 +129,22 @@ const OLD_SCREEN_TITLES: Record<string, [string, string]> = {
   '/admin/invoices': ['Invoices', 'Advance receipts and tax invoices.'],
 };
 
-function Shell({ email, access, onSignOut }: { email: string; access: 'admin' | 'frontdesk'; onSignOut: () => void }) {
+function Shell({ email, access, deskProperty, onSignOut }: { email: string; access: Access; deskProperty: string; onSignOut: () => void }) {
   const [open, setOpen] = useState(false);
   const path = useRouterState({ select: (st) => st.location.pathname.replace(/\/$/, '') });
   const selected = Route.useSearch().property;
   const allView = ['/admin', '/admin/check-in', '/admin/inbox'].includes(path);
-  const property = access === 'frontdesk' ? 'XTSY-SHL-HOSTEL' : selected ?? (allView ? undefined : 'XTSY-SHL-HOSTEL');
+  type Pid = 'XTSY-SHL-HOSTEL' | 'XTSY-SHN-CAMP';
+  const lock: Pid | undefined = access === 'desk' ? (deskProperty === CAMP_ID ? CAMP_ID : 'XTSY-SHL-HOSTEL') : access === 'property' ? 'XTSY-SHL-HOSTEL' : undefined;
+  const property = lock ?? selected ?? (allView ? undefined : 'XTSY-SHL-HOSTEL');
   const navigate = useNavigate({ from: Route.fullPath });
-  if (access === 'frontdesk' && !hostelConsolePath(path)) return <Navigate to="/admin/check-in" replace />;
+  const deskPath = (p: string) => (DESK_PATHS as readonly string[]).includes(p);
+  const allowed = (p: string) => access === 'admin' || (access === 'property' ? hostelConsolePath(p) || p === '/admin/team' : deskPath(p));
+  if (!allowed(path)) return <Navigate to="/admin/check-in" search={{ property: lock }} replace />;
   const oldTitle = OLD_SCREEN_TITLES[path];
   const hostelOnly = ['/admin/inventory', '/admin/stays', '/admin/room-photos', '/admin/booking-engine', '/admin/settings', '/admin/bookings'];
   const campUnsupported = property === CAMP_ID && hostelOnly.includes(path);
-  const groups = access === 'frontdesk'
-    ? NAV.map((g) => ({ ...g, items: g.items.filter((i) => hostelConsolePath(i.to)) })).filter((g) => g.items.length)
-    : NAV;
+  const groups = NAV.map((g) => ({ ...g, items: g.items.filter((i) => (!i.superOnly || access === 'admin') && allowed(i.to)) })).filter((g) => g.items.length);
   const nav = (
     <nav aria-label="Console" className="space-y-6">
       {groups.map((g) => (
@@ -187,16 +193,16 @@ function Shell({ email, access, onSignOut }: { email: string; access: 'admin' | 
         <div className="mx-auto max-w-6xl">
           <div className="mb-6 border-b border-xt-line pb-4 print:hidden">
             <Label htmlFor="console-property">Property</Label>
-            <select id="console-property" aria-label="Console property" className="mt-2 min-h-[48px] w-full max-w-lg rounded-md border border-input bg-background px-3 text-base" value={property ?? ''} disabled={access === 'frontdesk'} onChange={(e) => {
+            <select id="console-property" aria-label="Console property" className="mt-2 min-h-[48px] w-full max-w-lg rounded-md border border-input bg-background px-3 text-base" value={property ?? ''} disabled={access !== 'admin'} onChange={(e) => {
               const value = e.target.value;
               void navigate({ to: path, search: (prev) => ({ ...prev, property: value === CAMP_ID ? CAMP_ID : value === 'XTSY-SHL-HOSTEL' ? 'XTSY-SHL-HOSTEL' : undefined }) });
             }}>
               {access === 'admin' && allView && <option value="">All properties</option>}
-              {CONSOLE_PROPERTIES.filter((p) => access === 'admin' || p.id === 'XTSY-SHL-HOSTEL').map((p) => <option key={p.id} value={p.id}>{p.name}</option>)}
+              {CONSOLE_PROPERTIES.filter((p) => access === 'admin' || p.id === lock).map((p) => <option key={p.id} value={p.id}>{p.name}</option>)}
             </select>
           </div>
           {oldTitle && <PageHead title={oldTitle[0]} sub={oldTitle[1]} />}
-          <ConsoleScopeContext.Provider value={access === 'admin' ? 'super' : 'hostel'}>{campUnsupported ? <div className="space-y-4"><h2 className="text-xl font-bold">Shnonpedeng Riverside Camping by XTSY</h2><p className="text-muted-foreground">WhatsApp enquiry-only. No live inventory, online payment or hostel connections apply to this property.</p><Link to="/admin" search={{ property: CAMP_ID }} className="inline-flex min-h-[48px] items-center underline">View property overview</Link></div> : <Outlet key={property ?? 'all'} />}</ConsoleScopeContext.Provider>
+          <ConsolePropertyLock.Provider value={lock}><ConsoleScopeContext.Provider value={access === 'admin' ? 'super' : 'hostel'}>{campUnsupported ? <div className="space-y-4"><h2 className="text-xl font-bold">Shnonpedeng Riverside Camping by XTSY</h2><p className="text-muted-foreground">WhatsApp enquiry-only. No live inventory, online payment or hostel connections apply to this property.</p><Link to="/admin" search={{ property: CAMP_ID }} className="inline-flex min-h-[48px] items-center underline">View property overview</Link></div> : <Outlet key={property ?? 'all'} />}</ConsoleScopeContext.Provider></ConsolePropertyLock.Provider>
         </div>
       </main>
     </div>

@@ -9,10 +9,14 @@ export function hostelConsolePath(path: string): boolean {
 /** Presentation only. Server middleware and RLS are authoritative. */
 export const ConsoleScopeContext = createContext<'super' | 'hostel'>('hostel');
 export const useConsoleScope = () => useContext(ConsoleScopeContext);
+/** The one property a non-super login is tied to (hostel admin, or a front desk's own property). */
+export const ConsolePropertyLock = createContext<string | undefined>(undefined);
 export function useConsoleProperty() {
   const { property } = getRouteApi('/(admin)/admin').useSearch();
   const scope = useConsoleScope();
+  const lock = useContext(ConsolePropertyLock);
   const path = useRouterState({ select: (s) => s.location.pathname.replace(/\/$/, '') });
+  if (lock) return lock as typeof HOSTEL_ID;
   return scope === 'hostel' ? HOSTEL_ID : property ?? (['/admin', '/admin/check-in', '/admin/inbox'].includes(path) ? undefined : HOSTEL_ID);
 }
 export function canManageProperty(isSuperAdmin: boolean, propertyId: string): boolean {

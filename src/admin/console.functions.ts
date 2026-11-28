@@ -6,7 +6,7 @@
 import { createServerFn } from '@tanstack/react-start';
 import { z } from 'zod';
 import { PMS_PROPERTIES, POS_OUTLETS, canonicalPropertyId, findOutlet, findProperty, unitInfo } from '@/integrations/xtsy-saas/catalogue';
-import { requireSuperAdmin, requirePropertyAdmin } from './adminAuth';
+import { requireSuperAdmin, requirePropertyAdmin, requireCheckInStaff } from './adminAuth';
 import { assertPropertyScope, HOSTEL_ID } from './consoleScope';
 import { staticTableSlots } from './slots';
 import { closedUnits, closureFromRow, type ClosureRow } from '@/booking/consoleClosures';
@@ -14,6 +14,11 @@ import { stayNights } from '@/booking/dates';
 
 const date = z.string().regex(/^\d{4}-\d{2}-\d{2}$/);
 type Ctx = { supabase: any; userId: string; isSuperAdmin: boolean };
+/** Super admin, or staff (admin or front desk) of this property. RLS enforces the same. */
+function assertDeskScope(context: unknown, propertyId: string) {
+  const c = context as Ctx & { access?: { propertyId: string; role: string }[] };
+  if (!c.isSuperAdmin && !c.access?.some((a) => a.propertyId === propertyId)) throw new Error('Forbidden: not your property.');
+}
 
 async function endpoint() {
   const { getSaasEndpoint, saasRequest } = await import('@/integrations/xtsy-saas/client.server');
@@ -320,7 +325,7 @@ export const setSheetLink = createServerFn({ method: 'POST' })
  * and ZimmerStack all count them as taken. Re-allocating replaces the previous hold.
  */
 export const allocateCheckInRooms = createServerFn({ method: 'POST' })
-  .middleware([requirePropertyAdmin])
+  .middleware([requireCheckInStaff])
   .inputValidator(z.object({ id: z.string().uuid(), roomTypeId: z.string().max(60), units: z.array(z.string().max(12)).min(1).max(40), checkOut: date }))
   .handler(async ({ data, context }) => {
     const ctx = context as Ctx;
@@ -328,7 +333,7 @@ export const allocateCheckInRooms = createServerFn({ method: 'POST' })
     const { data: row } = await ctx.supabase.from('be_self_check_ins').select('*').eq('id', data.id).maybeSingle();
     if (!row) throw new Error('Check-in not found.');
     if (row.property_id !== HOSTEL_ID) throw new Error('Room allocation is for the hostel only.');
-    assertPropertyScope(ctx.isSuperAdmin, row.property_id);
+    assertDeskScope(context, row.property_id);
     const { data: others } = await ctx.supabase.from('be_self_check_ins').select('id,allocated_room_type_id,allocated_units,check_in_date,check_out_date')
       .eq('property_id', row.property_id).not('allocated_room_type_id', 'is', null).gte('check_out_date', row.check_in_date);
     const allocs = (others ?? []).map((o: any) => ({ id: o.id, roomTypeId: o.allocated_room_type_id, units: o.allocated_units ?? [], checkIn: o.check_in_date, checkOut: o.check_out_date }));
@@ -358,14 +363,14 @@ export const allocateCheckInRooms = createServerFn({ method: 'POST' })
   });
 
 export const releaseCheckInRooms = createServerFn({ method: 'POST' })
-  .middleware([requirePropertyAdmin])
+  .middleware([requireCheckInStaff])
   .inputValidator(z.object({ id: z.string().uuid() }))
   .handler(async ({ data, context }) => {
     const ctx = context as Ctx;
     const { lastNight } = await import('@/checkin/allocation');
     const { data: row } = await ctx.supabase.from('be_self_check_ins').select('*').eq('id', data.id).maybeSingle();
     if (!row) throw new Error('Check-in not found.');
-    assertPropertyScope(ctx.isSuperAdmin, row.property_id);
+    assertDeskScope(context, row.property_id);
     if (row.allocation_override_id) await ctx.supabase.from('console_inventory_overrides').delete().eq('id', row.allocation_override_id);
     await ctx.supabase.from('be_self_check_ins').update({ allocated_room_type_id: null, allocated_units: [], allocation_override_id: null, allocated_at: null }).eq('id', row.id);
     await audit(ctx, 'checkin.release', { id: row.id });
@@ -396,4 +401,40 @@ export const saveSmartPricing = createServerFn({ method: 'POST' })
     if (error) throw new Error('Could not save smart pricing.');
     await audit(ctx, 'pricing.smart', data);
     return { ok: true };
+  });
+
+/** Latest search-demand reading per property (super admin or property admin). */
+export const getSearchDemand = createServerFn({ method: 'GET' })
+  .middleware([requirePropertyAdmin])
+  .handler(async ({ context }) => {
+    const ctx = context as Ctx;
+    const { data } = await ctx.supabase.from('be_demand_snapshots').select('*').order('captured_at', { ascending: false }).limit(20);
+    const latest: Record<string, any> = {};
+    for (const r of data ?? []) if (!latest[r.property_id]) latest[r.property_id] = r;
+    return Object.values(latest).map((r: any) => ({
+      propertyId: r.property_id as string, windowEnd: r.window_end as string, capturedAt: r.captured_at as string,
+      recentImpressions: r.recent_impressions as number, baselineWeekly: r.baseline_weekly as number,
+      ratio: Number(r.ratio), multiplier: Number(r.multiplier), topQueries: (r.top_queries ?? []) as { query: string; impressions: number; clicks: number }[],
+    }));
+  });
+
+/** Super admin presses refresh: read Google search appearances and store one reading per property. */
+export const refreshSearchDemand = createServerFn({ method: 'POST' })
+  .middleware([requireSuperAdmin])
+  .handler(async ({ context }) => {
+    const ctx = context as Ctx;
+    const { fetchSearchRows } = await import('./searchDemand.server');
+    const { readDemand } = await import('@/booking/demandIntent');
+    const { rows, windowEnd } = await fetchSearchRows(new Date());
+    const readings = readDemand(rows, windowEnd);
+    const { getServiceClient } = await import('./serviceClient.server');
+    const db = getServiceClient();
+    if (!db) throw new Error('The console server is not configured.');
+    const { error } = await db.from('be_demand_snapshots').insert(readings.map((r) => ({
+      property_id: r.propertyId, window_end: windowEnd, recent_impressions: r.recentImpressions, baseline_weekly: r.baselineWeekly,
+      ratio: r.ratio, multiplier: r.multiplier, top_queries: r.topQueries,
+    })));
+    if (error) throw new Error('Could not save the reading.');
+    await audit(ctx, 'pricing.demand_refresh', { windowEnd, rows: rows.length });
+    return { ok: true, rows: rows.length };
   });

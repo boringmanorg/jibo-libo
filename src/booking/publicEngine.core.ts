@@ -173,9 +173,17 @@ export async function loadClosures(d: EngineDeps, sheetNow?: SheetAvailability):
 /** Owner's smart-pricing limits (all off until switched on in the console). */
 export async function loadPricing(d: EngineDeps): Promise<SmartRule[]> {
   if (!d.db) return [];
-  const r = await d.db.from('be_smart_pricing').select('*');
+  const [r, demand] = await Promise.all([
+    d.db.from('be_smart_pricing').select('*'),
+    // Latest hostel search-demand reading; older than 14 days counts as neutral.
+    d.db.from('be_demand_snapshots').select('multiplier,captured_at').eq('property_id', 'XTSY-SHL-HOSTEL').order('captured_at', { ascending: false }).limit(1),
+  ]);
   if (r.error) return [];
-  return (r.data ?? []).map((row: Record<string, unknown>) => ruleFromRow(row)).filter((x: SmartRule | null): x is SmartRule => x !== null);
+  const snap = demand.error ? undefined : (demand.data ?? [])[0] as { multiplier: number; captured_at: string } | undefined;
+  const fresh = snap && d.now.getTime() - Date.parse(snap.captured_at) < 14 * 86_400_000;
+  const demandMultiplier = fresh ? Number(snap.multiplier) : 1;
+  return (r.data ?? []).map((row: Record<string, unknown>) => ruleFromRow(row)).filter((x: SmartRule | null): x is SmartRule => x !== null)
+    .map((rule: SmartRule) => (demandMultiplier !== 1 ? { ...rule, demandMultiplier } : rule));
 }
 
 /** Nightly rate per room type and night, after smart pricing on that night's free count. */

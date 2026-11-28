@@ -19,11 +19,13 @@ import { Route as adminAdminCheckInRouteImport } from './routes/(admin)/admin/ch
 import { Route as adminAdminInboxRouteImport } from './routes/(admin)/admin/inbox'
 import { Route as adminAdminInventoryRouteImport } from './routes/(admin)/admin/inventory'
 import { Route as adminAdminInvoicesRouteImport } from './routes/(admin)/admin/invoices'
+import { Route as adminAdminPricingRouteImport } from './routes/(admin)/admin/pricing'
 import { Route as adminAdminPropertyRouteImport } from './routes/(admin)/admin/property'
 import { Route as adminAdminRestaurantsRouteImport } from './routes/(admin)/admin/restaurants'
 import { Route as adminAdminRoomPhotosRouteImport } from './routes/(admin)/admin/room-photos'
 import { Route as adminAdminSettingsRouteImport } from './routes/(admin)/admin/settings'
 import { Route as adminAdminStaysRouteImport } from './routes/(admin)/admin/stays'
+import { Route as adminAdminTeamRouteImport } from './routes/(admin)/admin/team'
 import { Route as companyAboutIndexRouteImport } from './routes/(company)/about.index'
 import { Route as companyAboutContactRouteImport } from './routes/(company)/about/contact'
 import { Route as companyAboutContactUsRouteImport } from './routes/(company)/about/contact-us'
@@ -158,6 +160,11 @@ const adminAdminInvoicesRoute = adminAdminInvoicesRouteImport.update({
   path: '/invoices',
   getParentRoute: () => adminAdminRouteRoute,
 } as any)
+const adminAdminPricingRoute = adminAdminPricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => adminAdminRouteRoute,
+} as any)
 const adminAdminPropertyRoute = adminAdminPropertyRouteImport.update({
   id: '/property',
   path: '/property',
@@ -181,6 +188,11 @@ const adminAdminSettingsRoute = adminAdminSettingsRouteImport.update({
 const adminAdminStaysRoute = adminAdminStaysRouteImport.update({
   id: '/stays',
   path: '/stays',
+  getParentRoute: () => adminAdminRouteRoute,
+} as any)
+const adminAdminTeamRoute = adminAdminTeamRouteImport.update({
+  id: '/team',
+  path: '/team',
   getParentRoute: () => adminAdminRouteRoute,
 } as any)
 const companyAboutIndexRoute = companyAboutIndexRouteImport.update({
@@ -659,11 +671,13 @@ export interface FileRoutesByFullPath {
   '/admin/inbox': typeof adminAdminInboxRoute
   '/admin/inventory': typeof adminAdminInventoryRoute
   '/admin/invoices': typeof adminAdminInvoicesRouteWithChildren
+  '/admin/pricing': typeof adminAdminPricingRoute
   '/admin/property': typeof adminAdminPropertyRoute
   '/admin/restaurants': typeof adminAdminRestaurantsRoute
   '/admin/room-photos': typeof adminAdminRoomPhotosRoute
   '/admin/settings': typeof adminAdminSettingsRoute
   '/admin/stays': typeof adminAdminStaysRoute
+  '/admin/team': typeof adminAdminTeamRoute
   '/about/contact': typeof companyAboutContactRoute
   '/about/contact-us': typeof companyAboutContactUsRoute
   '/about/faq': typeof companyAboutFaqRoute
@@ -758,11 +772,13 @@ export interface FileRoutesByTo {
   '/admin/inbox': typeof adminAdminInboxRoute
   '/admin/inventory': typeof adminAdminInventoryRoute
   '/admin/invoices': typeof adminAdminInvoicesRouteWithChildren
+  '/admin/pricing': typeof adminAdminPricingRoute
   '/admin/property': typeof adminAdminPropertyRoute
   '/admin/restaurants': typeof adminAdminRestaurantsRoute
   '/admin/room-photos': typeof adminAdminRoomPhotosRoute
   '/admin/settings': typeof adminAdminSettingsRoute
   '/admin/stays': typeof adminAdminStaysRoute
+  '/admin/team': typeof adminAdminTeamRoute
   '/about/contact': typeof companyAboutContactRoute
   '/about/contact-us': typeof companyAboutContactUsRoute
   '/about/faq': typeof companyAboutFaqRoute
@@ -859,11 +875,13 @@ export interface FileRoutesById {
   '/(admin)/admin/inbox': typeof adminAdminInboxRoute
   '/(admin)/admin/inventory': typeof adminAdminInventoryRoute
   '/(admin)/admin/invoices': typeof adminAdminInvoicesRouteWithChildren
+  '/(admin)/admin/pricing': typeof adminAdminPricingRoute
   '/(admin)/admin/property': typeof adminAdminPropertyRoute
   '/(admin)/admin/restaurants': typeof adminAdminRestaurantsRoute
   '/(admin)/admin/room-photos': typeof adminAdminRoomPhotosRoute
   '/(admin)/admin/settings': typeof adminAdminSettingsRoute
   '/(admin)/admin/stays': typeof adminAdminStaysRoute
+  '/(admin)/admin/team': typeof adminAdminTeamRoute
   '/(company)/about/contact': typeof companyAboutContactRoute
   '/(company)/about/contact-us': typeof companyAboutContactUsRoute
   '/(company)/about/faq': typeof companyAboutFaqRoute
@@ -961,11 +979,13 @@ export interface FileRouteTypes {
     | '/admin/inbox'
     | '/admin/inventory'
     | '/admin/invoices'
+    | '/admin/pricing'
     | '/admin/property'
     | '/admin/restaurants'
     | '/admin/room-photos'
     | '/admin/settings'
     | '/admin/stays'
+    | '/admin/team'
     | '/about/contact'
     | '/about/contact-us'
     | '/about/faq'
@@ -1060,11 +1080,13 @@ export interface FileRouteTypes {
     | '/admin/inbox'
     | '/admin/inventory'
     | '/admin/invoices'
+    | '/admin/pricing'
     | '/admin/property'
     | '/admin/restaurants'
     | '/admin/room-photos'
     | '/admin/settings'
     | '/admin/stays'
+    | '/admin/team'
     | '/about/contact'
     | '/about/contact-us'
     | '/about/faq'
@@ -1160,11 +1182,13 @@ export interface FileRouteTypes {
     | '/(admin)/admin/inbox'
     | '/(admin)/admin/inventory'
     | '/(admin)/admin/invoices'
+    | '/(admin)/admin/pricing'
     | '/(admin)/admin/property'
     | '/(admin)/admin/restaurants'
     | '/(admin)/admin/room-photos'
     | '/(admin)/admin/settings'
     | '/(admin)/admin/stays'
+    | '/(admin)/admin/team'
     | '/(company)/about/contact'
     | '/(company)/about/contact-us'
     | '/(company)/about/faq'
@@ -1411,6 +1435,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof adminAdminInvoicesRouteImport
       parentRoute: typeof adminAdminRouteRoute
     }
+    '/(admin)/admin/pricing': {
+      id: '/(admin)/admin/pricing'
+      path: '/pricing'
+      fullPath: '/admin/pricing'
+      preLoaderRoute: typeof adminAdminPricingRouteImport
+      parentRoute: typeof adminAdminRouteRoute
+    }
     '/(admin)/admin/property': {
       id: '/(admin)/admin/property'
       path: '/property'
@@ -1444,6 +1475,13 @@ declare module '@tanstack/react-router' {
       path: '/stays'
       fullPath: '/admin/stays'
       preLoaderRoute: typeof adminAdminStaysRouteImport
+      parentRoute: typeof adminAdminRouteRoute
+    }
+    '/(admin)/admin/team': {
+      id: '/(admin)/admin/team'
+      path: '/team'
+      fullPath: '/admin/team'
+      preLoaderRoute: typeof adminAdminTeamRouteImport
       parentRoute: typeof adminAdminRouteRoute
     }
     '/(company)/about/': {
@@ -2048,11 +2086,13 @@ interface adminAdminRouteRouteChildren {
   adminAdminInboxRoute: typeof adminAdminInboxRoute
   adminAdminInventoryRoute: typeof adminAdminInventoryRoute
   adminAdminInvoicesRoute: typeof adminAdminInvoicesRouteWithChildren
+  adminAdminPricingRoute: typeof adminAdminPricingRoute
   adminAdminPropertyRoute: typeof adminAdminPropertyRoute
   adminAdminRestaurantsRoute: typeof adminAdminRestaurantsRoute
   adminAdminRoomPhotosRoute: typeof adminAdminRoomPhotosRoute
   adminAdminSettingsRoute: typeof adminAdminSettingsRoute
   adminAdminStaysRoute: typeof adminAdminStaysRoute
+  adminAdminTeamRoute: typeof adminAdminTeamRoute
   adminAdminIndexRoute: typeof adminAdminIndexRoute
 }
 
@@ -2063,11 +2103,13 @@ const adminAdminRouteRouteChildren: adminAdminRouteRouteChildren = {
   adminAdminInboxRoute: adminAdminInboxRoute,
   adminAdminInventoryRoute: adminAdminInventoryRoute,
   adminAdminInvoicesRoute: adminAdminInvoicesRouteWithChildren,
+  adminAdminPricingRoute: adminAdminPricingRoute,
   adminAdminPropertyRoute: adminAdminPropertyRoute,
   adminAdminRestaurantsRoute: adminAdminRestaurantsRoute,
   adminAdminRoomPhotosRoute: adminAdminRoomPhotosRoute,
   adminAdminSettingsRoute: adminAdminSettingsRoute,
   adminAdminStaysRoute: adminAdminStaysRoute,
+  adminAdminTeamRoute: adminAdminTeamRoute,
   adminAdminIndexRoute: adminAdminIndexRoute,
 }
 

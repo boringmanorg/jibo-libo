@@ -10,7 +10,7 @@ import { getSmartPricing, saveSmartPricing } from '@/admin/console.functions';
 type Rule = { roomTypeId: string; enabled: boolean; minRupees: number; maxRupees: number };
 
 /** Super admin: automatic nightly prices within limits. `free` = free units tonight per room type. */
-export function SmartPricingPanel({ free, today }: { free: Record<string, number | undefined>; today: string }) {
+export function SmartPricingPanel({ free, today, demandMultiplier = 1 }: { free: Record<string, number | undefined>; today: string; demandMultiplier?: number }) {
   const load = useServerFn(getSmartPricing);
   const save = useServerFn(saveSmartPricing);
   const qc = useQueryClient();
@@ -27,11 +27,11 @@ export function SmartPricingPanel({ free, today }: { free: Record<string, number
 
   return <div className="rounded-2xl border border-xt-line bg-white p-4">
     <h3 className="flex items-center gap-2 text-lg font-bold"><Sparkles className="h-5 w-5 text-xt-crimson" aria-hidden />Smart pricing</h3>
-    <p className="mt-1 text-xs text-xt-mute">When on, the nightly price on /book follows how full each room type is (up to +25% when nearly full, −10% for an empty night 2 days out), never outside your lowest and highest. Off = approved base price.</p>
+    <p className="mt-1 text-xs text-xt-mute">When on, the nightly price on /book follows how full each room type is (up to +25% when nearly full, −10% for an empty night 2 days out), then the hostel's search demand above (−5% to +10%), never outside your lowest and highest. Off = approved base price.</p>
     {q.error && <p className="mt-2 text-sm text-destructive">Could not load smart pricing.</p>}
     <ul className="mt-3 divide-y divide-xt-line">{BOOKING_ROOM_TYPES.map((r) => {
       const d = draft[r.id]; if (!d) return null;
-      const tonight = smartRate(r.rate, d, free[r.id] ?? r.units, r.units, today, today) / 100;
+      const tonight = smartRate(r.rate, { ...d, demandMultiplier }, free[r.id] ?? r.units, r.units, today, today) / 100;
       const set = (patch: Partial<Rule>) => setDraft((x) => ({ ...x, [r.id]: { ...d, ...patch } }));
       return <li key={r.id} className="grid gap-2 py-3 text-sm sm:grid-cols-[minmax(0,1fr)_auto_auto_auto_auto] sm:items-center">
         <span className="min-w-0"><span className="font-semibold">{r.name}</span><span className="block text-xs text-xt-mute">Base ₹{(r.rate / 100).toLocaleString('en-IN')} · tonight ₹{tonight.toLocaleString('en-IN')}</span></span>

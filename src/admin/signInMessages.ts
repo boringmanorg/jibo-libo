@@ -44,17 +44,14 @@ export function deniedReason(
   user: { email?: string | null; email_confirmed_at?: string | null },
   superAdminEmail: string,
 ): DeniedReason {
-  const email = (user.email ?? "").toLowerCase();
-  if (email !== superAdminEmail && email !== "booking@xtsy.one")
-    return "wrong_email";
   if (!user.email_confirmed_at) return "unconfirmed";
-  return "no_admin_role";
+  return (user.email ?? "").toLowerCase() === superAdminEmail ? "no_admin_role" : "wrong_email";
 }
 
 export function deniedMessage(reason: DeniedReason, email: string): string {
   switch (reason) {
     case "wrong_email":
-      return `${email} is not allowed in this console. Only admin@xtsy.one and booking@xtsy.one can sign in.`;
+      return `${email} has no console access, or its login is switched off. Ask the property admin or the super admin.`;
     case "unconfirmed":
       return `${email} is signed in but its email is not confirmed. Confirm it in Lovable Cloud → Users, then sign in again.`;
     case "no_admin_role":

@@ -1119,6 +1119,42 @@ export type Database = {
           },
         ]
       }
+      be_demand_snapshots: {
+        Row: {
+          baseline_weekly: number
+          captured_at: string
+          id: string
+          multiplier: number
+          property_id: string
+          ratio: number
+          recent_impressions: number
+          top_queries: Json
+          window_end: string
+        }
+        Insert: {
+          baseline_weekly?: number
+          captured_at?: string
+          id?: string
+          multiplier?: number
+          property_id: string
+          ratio?: number
+          recent_impressions?: number
+          top_queries?: Json
+          window_end: string
+        }
+        Update: {
+          baseline_weekly?: number
+          captured_at?: string
+          id?: string
+          multiplier?: number
+          property_id?: string
+          ratio?: number
+          recent_impressions?: number
+          top_queries?: Json
+          window_end?: string
+        }
+        Relationships: []
+      }
       be_enquiries: {
         Row: {
           check_in: string
@@ -1545,6 +1581,7 @@ export type Database = {
           address: string
           amenities: string[]
           description: string
+          desk_logins_enabled: boolean
           display_name: string
           google_maps_uri: string | null
           google_place_id: string | null
@@ -1564,6 +1601,7 @@ export type Database = {
           address?: string
           amenities?: string[]
           description?: string
+          desk_logins_enabled?: boolean
           display_name?: string
           google_maps_uri?: string | null
           google_place_id?: string | null
@@ -1583,6 +1621,7 @@ export type Database = {
           address?: string
           amenities?: string[]
           description?: string
+          desk_logins_enabled?: boolean
           display_name?: string
           google_maps_uri?: string | null
           google_place_id?: string | null
@@ -1597,6 +1636,45 @@ export type Database = {
           property_id?: string
           property_type?: string
           updated_at?: string
+        }
+        Relationships: []
+      }
+      be_property_staff: {
+        Row: {
+          active: boolean
+          created_at: string
+          created_by: string | null
+          display_name: string | null
+          email: string
+          id: string
+          property_id: string
+          role: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          active?: boolean
+          created_at?: string
+          created_by?: string | null
+          display_name?: string | null
+          email: string
+          id?: string
+          property_id: string
+          role: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          active?: boolean
+          created_at?: string
+          created_by?: string | null
+          display_name?: string | null
+          email?: string
+          id?: string
+          property_id?: string
+          role?: string
+          updated_at?: string
+          user_id?: string
         }
         Relationships: []
       }
@@ -7156,6 +7234,13 @@ export type Database = {
       }
       be_is_checkin_staff: { Args: never; Returns: boolean }
       be_is_console_admin: { Args: never; Returns: boolean }
+      be_my_console_access: {
+        Args: never
+        Returns: {
+          property_id: string
+          role: string
+        }[]
+      }
       be_next_invoice_seq: {
         Args: { p_fy: string; p_kind: string }
         Returns: number
@@ -7164,6 +7249,7 @@ export type Database = {
         Args: { p_rows: Json; p_version: number }
         Returns: number
       }
+      be_staff_role: { Args: { p_property_id: string }; Returns: string }
       calculate_onboarding_readiness: {
         Args: { checklist: Json }
         Returns: number

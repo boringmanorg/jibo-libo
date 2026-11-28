@@ -35,7 +35,7 @@ describe('/book before online booking is live', () => {
 
   it('/book always renders the new page: payment when live, WhatsApp enquiry otherwise', () => {
     const route = readFileSync('src/routes/(stays)/book/index.tsx', 'utf8');
-    expect(route).toMatch(/<StayEngine mode=\{live \? "live" : "enquiry"\}/);
+    expect(route).toMatch(/<StayEngine [^>]*mode=\{live \? "live" : "enquiry"\}/);
     expect(route).not.toMatch(/SimplifiedBookingFlow/);
     // The server sends the page at once (no database wait); the browser fetches the live counts.
     expect(route).toMatch(/loader: \(\) => \(import\.meta\.env\.SSR \? BOOK_PAGE_PENDING : loadBookPageData\(\)\)/);

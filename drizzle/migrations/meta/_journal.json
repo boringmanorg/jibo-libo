@@ -288,6 +288,13 @@
       "when": 1795862184521,
       "tag": "0040_property_profiles",
       "breakpoints": true
+    },
+    {
+      "idx": 41,
+      "version": "7",
+      "when": 1795865757682,
+      "tag": "0041_property_team_and_search_demand",
+      "breakpoints": true
     }
   ]
 }

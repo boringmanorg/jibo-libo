@@ -11,5 +11,6 @@ describe('smart pricing', () => {
   it('raises 15% at 75% taken', () => { expect(smartRate(40000, rule, 2, 8, far, today)).toBe(46000); });
   it('drops 10% for an empty night two days out', () => { expect(smartRate(40000, rule, 8, 8, '2026-12-03', today)).toBe(36000); });
   it('never goes above the owner maximum', () => { expect(smartRate(60000, rule, 0, 8, far, today)).toBe(60000); });
+  it('adds search demand on top, still inside the owner limits', () => { expect(smartRate(40000, { ...rule, demandMultiplier: 1.1 }, 8, 8, far, today)).toBe(44000); expect(smartRate(50000, { ...rule, demandMultiplier: 1.1 }, 0, 10, far, today)).toBe(60000); });
   it('never goes below the owner minimum', () => { expect(smartRate(38000, rule, 8, 8, today, today)).toBe(35000); });
 });
