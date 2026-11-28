@@ -29,8 +29,9 @@ const ready = {
 };
 
 async function render(page: string, data: Record<string, unknown>) {
-  const mod = await import(`../src/routes/(admin)/admin/${page}.tsx`);
-  const Component = mod.Route.options.component as ComponentType;
+  const Component = (page === 'booking-engine'
+    ? (await import('../src/admin/components/OnlineBookingPanel')).BookingEngine
+    : (await import(`../src/routes/(admin)/admin/${page}.tsx`)).Route.options.component) as ComponentType;
   const qc = new QueryClient();
   for (const [key, value] of Object.entries(data)) qc.setQueryData(JSON.parse(key), value);
   return renderToString(createElement(QueryClientProvider, { client: qc }, createElement(Component))).replace(/<!-- -->/g, '');

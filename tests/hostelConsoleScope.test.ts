@@ -16,8 +16,8 @@ describe('hostel administrator scope', () => {
     expect(canManageProperty(true, 'XTSY-SHN-CAMP')).toBe(true);
     expect(canManageProperty(true, 'XTSY-SHL-HOSTEL')).toBe(true);
   });
-  it('keeps payment activation, shared connections and restaurant controls super-admin only', () => {
-    for (const path of ['/admin/settings', '/admin/booking-engine', '/admin/restaurants']) expect(hostelConsolePath(path)).toBe(false);
+  it('keeps shared connections and restaurant controls super-admin only (payment settings are a super-admin tab inside Booking Config)', () => {
+    for (const path of ['/admin/settings', '/admin/restaurants']) expect(hostelConsolePath(path)).toBe(false);
   });
   it('keeps XTSY Bed & Breakfast, Sohra upcoming and out of active stays and check-in', () => {
     expect(UPCOMING_PROPERTIES).toEqual([{ name: 'XTSY Bed & Breakfast, Sohra', city: 'Sohra, Meghalaya', status: 'upcoming' }]);
