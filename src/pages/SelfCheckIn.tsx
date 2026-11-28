@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useRef, useState, type ChangeEvent, type ReactNode } from 'react';
 import { ArrowLeft, ArrowRight, Check, Download, FileCheck2, FileText, Globe2, LockKeyhole, ScanLine, Upload, UserRound, Wifi } from 'lucide-react';
 import { useServerFn } from '@tanstack/react-start';
-import { PageShell } from '@/components/v2/blocks';
 import { cn } from '@/lib/utils';
 import {
   CHECK_IN_FILE_ACCEPT, CHECK_IN_POLICY_VERSION, CHECK_IN_PROPERTIES, CHECK_IN_PURPOSES,
@@ -169,7 +168,7 @@ export default function SelfCheckIn({ initialPropertyId }: { initialPropertyId?:
   };
 
   return (
-    <PageShell cta={false} bar={false}>
+    <main className="min-h-dvh bg-xt-paper text-xt-ink">
       <section className="bg-xt-ink px-4 py-10 text-xt-paper sm:px-8 sm:py-14">
         <div className="mx-auto max-w-3xl">
           <p className="flex items-center gap-2 text-sm font-bold text-xt-sand"><ScanLine className="h-5 w-5" aria-hidden />XTSY contactless arrival</p>
@@ -255,6 +254,6 @@ export default function SelfCheckIn({ initialPropertyId }: { initialPropertyId?:
           {step === 4 && <p className="mt-3 text-right text-xs text-xt-mute"><Wifi className="mr-1 inline h-4 w-4" aria-hidden />No payment is taken in this form.</p>}
         </>}
       </div>
-    </PageShell>
+    </main>
   );
 }

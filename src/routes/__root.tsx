@@ -279,6 +279,7 @@ RouteBoundary.displayName = "RouteBoundary";
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const pathname = useLocation().pathname;
+  const isSelfCheckIn = /^\/check-in\/?$/.test(pathname);
   // Every guest-facing surface (pages, account, consent, chat) uses the light
   // 2026 palette; admin and franchise consoles keep the dark theme.
   const isGuestPage = !/^\/(admin(?:\/|$)|admin-login(?:\/|$)|franchise(?:\/|$)|\.lovable(?:\/|$)|api(?:\/|$))/.test(pathname);
@@ -381,8 +382,8 @@ function RootComponent() {
                              </div>
                           </RouteBoundary>
                         </RouteErrorBoundary>
-                        <FloatingWhatsApp />
-                        {isGuestPage && <ChatLauncher />}
+                        {!isSelfCheckIn && <FloatingWhatsApp />}
+                        {isGuestPage && !isSelfCheckIn && <ChatLauncher />}
                       </TooltipProvider>
                     </EnhancedAnalyticsProvider>
                   </ConversionSignalsProvider>
