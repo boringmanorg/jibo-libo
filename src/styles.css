@@ -1036,6 +1036,17 @@ body.reduce-motion .xt-suite-motion :is(.tgh-tile, .tgh-tablet-track, .xt-love, 
 /* Guest tap targets: every button and standalone link is at least 48px tall on touch screens.
    Explicit px because the root font size makes rem-based utilities render smaller. Inline links inside
    running text are exempt (WCAG 2.5.8). Admin console is excluded. */
+/* Console printing (sales invoices): print exactly what is on screen, colours included, without the console frame. */
+@media print {
+  * { print-color-adjust: exact; }
+  .console-invoice { page: invoice; }
+  .console-shell { display: block !important; min-height: 0 !important; }
+  .console-shell main > div { max-width: none !important; }
+  body:has(.console-invoice) { background: white !important; }
+  body:has(.console-invoice) [data-sonner-toaster] { display: none !important; }
+}
+@page invoice { size: A4 portrait; margin: 10mm; }
+
 /* Property-specific self check-in sign: one A4 portrait page, opened by the console's print action. */
 .checkin-a4-print { display: none; }
 @media print {

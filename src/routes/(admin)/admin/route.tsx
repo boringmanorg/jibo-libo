@@ -174,7 +174,7 @@ function Shell({ email, access, deskProperty, onSignOut }: { email: string; acce
     </nav>
   );
   return (
-    <div className={`lg:grid lg:min-h-screen ${collapsed ? 'lg:grid-cols-[80px_1fr]' : 'lg:grid-cols-[256px_1fr]'}`}>
+    <div className={`console-shell lg:grid lg:min-h-screen ${collapsed ? 'lg:grid-cols-[80px_1fr]' : 'lg:grid-cols-[256px_1fr]'}`}>
       <aside className={`sticky top-0 hidden h-screen h-[100dvh] border-r border-xt-line bg-white/70 py-5 lg:flex lg:flex-col print:hidden ${collapsed ? 'px-2' : 'px-4'}`}>
         <div className={`flex shrink-0 ${collapsed ? 'flex-col items-center gap-3' : 'items-center justify-between gap-2'}`}>
           <Brand compact={collapsed} />
@@ -200,7 +200,7 @@ function Shell({ email, access, deskProperty, onSignOut }: { email: string; acce
           <div className="mt-4"><Account email={email} onSignOut={onSignOut} /></div>
         </div>
       )}
-      <main className="min-w-0 px-4 py-6 sm:px-6 lg:px-10 lg:py-10">
+      <main className="min-w-0 px-4 py-6 sm:px-6 lg:px-10 lg:py-10 print:p-0">
         <div className="mx-auto max-w-6xl">
           <div className="mb-8 flex flex-wrap items-center justify-between gap-3 rounded-3xl border border-xt-line bg-white/80 p-2 pl-4 shadow-sm print:hidden">
             <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-xt-mute">

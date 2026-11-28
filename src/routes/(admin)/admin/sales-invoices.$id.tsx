@@ -35,7 +35,7 @@ function SalesInvoiceView() {
   const g = b.gstRegistered && f.gst ? f.gst : null;
   const row = (k: string, v: string | number) => (v === '' || v == null ? null : <div className="grid grid-cols-[8.5rem_minmax(0,1fr)] gap-2"><dt className="text-neutral-500">{k}</dt><dd>{v}</dd></div>);
   return (
-    <div className="space-y-4">
+    <div className="console-invoice space-y-4">
       <div className="flex flex-wrap gap-2 print:hidden">
         <Link to="/admin/guest-folio" className="inline-flex min-h-11 items-center rounded-md border border-border px-4 text-sm">Back to Guest Folio</Link>
         {f.balance > 0 ? (
