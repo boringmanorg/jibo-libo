@@ -1,4 +1,3 @@
-import PropertyOverview from "@/components/booking/PropertyOverview";
 import { createFileRoute } from "@tanstack/react-router";
 import CampsiteBookingFlow from "@/pages/CampsiteBookingFlow";
 import { buildRouteHead } from "@/lib/seo-head";
@@ -20,7 +19,6 @@ function CampsitePage() {
   return (
     <>
       <CampsiteBookingFlow />
-      <div className="px-4"><PropertyOverview propertyId="XTSY-SHN-CAMP" /></div>
     </>
   );
 }

@@ -35,6 +35,7 @@ import { trackBookingStart } from '@/utils/dataLayerService';
 import { openWhatsAppDirectly } from '@/utils/privacyCompliantWhatsApp';
 import { BrandStory, LocationPicker, NEW_SHILLONG_PHOTOS, PhotoStrip, Promotions, type BookLocation } from './BookExtras';
 import CampBooking from './CampBooking';
+import PropertyOverview from '@/components/booking/PropertyOverview';
 import BreakfastPicker, { picksToList } from './BreakfastPicker';
 import { breakfastItem } from '@/data/breakfastMenu';
 
@@ -217,6 +218,7 @@ function Hero({ onChangeLocation }: { onChangeLocation?: () => void }) {
           <li key={text} className="flex items-center gap-2"><Icon className="h-4 w-4 text-xt-pine" aria-hidden />{text}</li>
         ))}
       </ul>
+      <PropertyOverview propertyId="XTSY-SHL-HOSTEL" />
     </header>
   );
 }

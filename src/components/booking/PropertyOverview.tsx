@@ -4,6 +4,8 @@ import { MapPin } from 'lucide-react';
 import { logoFor } from '@/data/platformLogos';
 import { getPublicPropertyProfileFn } from '@/property/propertySetup.functions';
 import { directionsHref } from '@/property/propertySetup';
+import { GOOGLE_RATING } from '@/data/brandFacts';
+import { hostelPlatformScores } from '@/data/hostelPlatformScores';
 
 type Id = 'XTSY-SHL-HOSTEL' | 'XTSY-SHN-CAMP';
 
@@ -16,8 +18,12 @@ export function usePublicPropertyProfile(propertyId: Id) {
 export default function PropertyOverview({ propertyId }: { propertyId: Id }) {
   const { data: p } = usePublicPropertyProfile(propertyId);
   if (!p) return null;
+  // Approved hostel scores only (brandFacts / platform snapshot); each keeps its own scale, never blended.
+  const scores: Record<string, { value: string; scale: number; note?: string }> | null = propertyId === 'XTSY-SHL-HOSTEL'
+    ? { Google: { value: GOOGLE_RATING.value, scale: 5, note: `${GOOGLE_RATING.count} reviews` }, ...Object.fromEntries(hostelPlatformScores.map((x) => [x.platform, { value: x.value, scale: x.scale, ...(x.platform === 'Booking.com' ? { note: 'Earlier score' } : {}) }])) }
+    : null;
   return (
-    <section aria-label="About this property" className="mx-auto my-8 max-w-5xl space-y-5 rounded-2xl border border-border bg-card p-5 sm:p-7">
+    <section aria-label="About this property" className="mt-6 space-y-5 rounded-2xl border border-border bg-card p-5 sm:p-7">
       <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3">
         <div className="min-w-0">
           <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{p.propertyType}</p>
@@ -49,9 +55,18 @@ export default function PropertyOverview({ propertyId }: { propertyId: Id }) {
       )}
       {p.otaPresence.length > 0 && (
         <div>
-          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Also listed on</p>
-          <ul className="flex flex-wrap items-center gap-4">
-            {p.otaPresence.map((o) => { const l = logoFor(o); return <li key={o}>{l ? <img src={l.src} alt={o} title={o} width={32} height={32} loading="lazy" className="h-8 w-8 object-contain" /> : <span className="text-sm">{o}</span>}</li>; })}
+          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">{scores ? 'Guest ratings' : 'Also listed on'}</p>
+          <ul className="flex flex-wrap items-center gap-3">
+            {p.otaPresence.map((o) => {
+              const l = logoFor(o);
+              const s = scores?.[o];
+              return (
+                <li key={o} className={s ? 'flex min-h-[48px] items-center gap-2 rounded-xl border border-border px-3 py-1.5' : ''}>
+                  {l ? <img src={l.src} alt={o} title={o} width={32} height={32} loading="lazy" className="h-8 w-8 object-contain" /> : <span className="text-sm">{o}</span>}
+                  {s && <span className="leading-tight"><span className="block text-base font-semibold">{s.value}<span className="text-xs font-normal text-muted-foreground">/{s.scale}</span></span>{s.note && <span className="block text-xs text-muted-foreground">{s.note}</span>}</span>}
+                </li>
+              );
+            })}
           </ul>
         </div>
       )}

@@ -13,6 +13,7 @@ import { bookingPageSource, openWhatsAppDirectly } from '@/utils/privacyComplian
 import { trackBookingStart } from '@/utils/dataLayerService';
 import { CAMP, CAMP_GST_NOTE, CAMP_MEALS, CAMP_PHOTOS, CAMP_PLANS, campGuests, campProblem, campQuote, type CampMealId } from '@/data/shnonpedengCamp';
 import { PhotoStrip } from './BookExtras';
+import PropertyOverview from '@/components/booking/PropertyOverview';
 import { recordEnquiryFn } from '@/booking/publicEngine.functions';
 
 const inr = (n: number) => `₹${n.toLocaleString('en-IN')}`;
@@ -109,6 +110,7 @@ export default function CampBooking({ onBack }: { onBack?: () => void }) {
       <h1 id="camp-title" className="xt-display mt-3 text-[clamp(3rem,9vw,6rem)] leading-[0.88] text-xt-ink">{CAMP.name}</h1>
       <p className="mt-3 text-base text-xt-mute">{CAMP.where}</p>
       <PhotoStrip photos={CAMP_PHOTOS} />
+      <PropertyOverview propertyId="XTSY-SHN-CAMP" />
 
       <div className="mt-10 grid gap-8 lg:grid-cols-[1fr_360px]">
         <div className="min-w-0 space-y-8">
