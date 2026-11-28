@@ -7,6 +7,7 @@ const valid = {
   propertyId: 'XTSY-SHL-HOSTEL', bookingReference: '', guestName: 'Asha Sharma', checkInDate: '2026-12-01', checkInTime: '11:00',
   city: 'Guwahati', state: 'Assam', country: 'India', phone: '+91 98765 43210', email: 'asha@example.com', totalGuests: 1,
   purpose: 'Leisure', isInternational: false, roomTypeId: 'bed-in-8-bed-mixed-dormitory', policyAccepted: true, policyVersion: CHECK_IN_POLICY_VERSION,
+  checkOutDate: '2026-12-02', checkOutTime: '10:00', emergencyName: 'Ravi Sharma', emergencyPhone: '+91 98765 00000', referralSource: 'Instagram', guests: [],
 } as const;
 
 const file = (bytes: number[], type: string) => new File([new Uint8Array(bytes)], 'document', { type });

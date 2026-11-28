@@ -386,7 +386,7 @@ export const deleteCheckIn = createServerFn({ method: 'POST' })
   .handler(async ({ data, context }) => {
     const ctx = context as Ctx;
     const { data: row, error } = await ctx.supabase.from('be_self_check_ins').select(
-      'id,property_id,guest_name,allocation_override_id,allocated_units,id_front_path,id_back_path,visa_path',
+      'id,property_id,guest_name,allocation_override_id,allocated_units,id_front_path,id_back_path,visa_path,selfie_path,guest_documents',
     ).eq('id', data.id).maybeSingle();
     if (error) throw new Error('Could not verify the check-in.');
     if (!row) throw new Error('Check-in not found.');
@@ -398,7 +398,8 @@ export const deleteCheckIn = createServerFn({ method: 'POST' })
     );
     if (problem) throw new Error(problem);
 
-    const paths = [row.id_front_path, row.id_back_path, row.visa_path].filter((p): p is string => typeof p === 'string' && p.length > 0);
+    const { documentPaths } = await import('@/checkin/checkIn.server');
+    const paths = Object.values(documentPaths(row));
     if (paths.length) {
       const removed = await ctx.supabase.storage.from('guest-identity-documents').remove(paths);
       if (removed.error) throw new Error('Could not delete the private documents. The check-in was kept; please try again.');

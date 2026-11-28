@@ -11,6 +11,7 @@ import { UPCOMING_PROPERTIES } from '@/data/brandFacts';
 import { getTodaySummary } from '@/admin/consoleHome.functions';
 import { listCheckInsFn } from '@/checkin/checkIn.functions';
 import { PageHead, SheetChip, inrWhole } from '@/admin/components/ConsoleBits';
+import { TodayInsights } from '@/admin/components/TodayInsights';
 
 export const Route = createFileRoute('/(admin)/admin/')({
   head: () => buildRouteHead({ path: '/admin', title: 'Today — XTSY Property Console', description: 'Private property-by-property arrivals, inventory, room prices and meal selections.', noIndex: true }),
@@ -18,7 +19,7 @@ export const Route = createFileRoute('/(admin)/admin/')({
 });
 
 const longDate = new Intl.DateTimeFormat('en-IN', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' });
-type Arrival = { id: string; propertyId: string; guestName: string; checkInDate: string; checkInTime: string; totalGuests: number; status: string; allocatedUnits: string[]; checkOutDate: string };
+type Arrival = { id: string; propertyId: string; guestName: string; checkInDate: string; checkInTime: string; totalGuests: number; status: string; allocatedUnits: string[]; checkOutDate: string; isInternational: boolean; referralSource: string; purpose: string; state: string; country: string };
 
 function Kpi({ label, value, note, tone = 'ink', children }: { label: string; value: string; note?: string; tone?: 'ink' | 'crimson' | 'green'; children?: ReactNode }) {
   const c = tone === 'crimson' ? 'text-xt-crimson' : tone === 'green' ? 'text-emerald-700' : 'text-xt-ink';
@@ -39,7 +40,7 @@ function Today() {
   const properties = CONSOLE_PROPERTIES.filter((p) => (scope === 'super' || p.id === 'XTSY-SHL-HOSTEL') && (!selected || p.id === selected));
 
   return <div className="space-y-8">
-    <PageHead title="Today" sub={longDate.format(new Date(`${data.today}T00:00:00Z`))} />
+    <PageHead title={selected ? (properties[0]?.name ?? 'Today') : 'Today · All properties'} sub={longDate.format(new Date(`${data.today}T00:00:00Z`))} />
     {(() => {
       // Occupancy counts every property in view that tracks live inventory. The campsite is
       // enquiry-only (no live counts), so it is listed as not tracked rather than counted as empty.
@@ -68,11 +69,13 @@ function Today() {
         {pending.length > 0 && <div className="flex flex-wrap items-center gap-2 rounded-2xl bg-xt-blush px-4 py-3 text-sm"><strong className="text-xt-crimson-dark">Allocate rooms:</strong>{pending.slice(0, 6).map((r) => <span key={r.id} className="rounded-full bg-white px-3 py-1 font-semibold">{r.guestName} · {r.totalGuests}</span>)}<Link to="/admin/check-in" search={{ property: 'XTSY-SHL-HOSTEL' }} className="ml-auto inline-flex min-h-[48px] items-center gap-1 font-bold text-xt-crimson">Open desk <ArrowRight className="h-4 w-4" /></Link></div>}
       </section>;
     })()}
+    <TodayInsights arrivals={arrivals.data ?? []} rows={data.rows} propertyIds={properties.map((p) => p.id)} {...(selected ? { single: selected } : {})} />
     {properties.map((p) => {
       const camp = p.id === CAMP_ID;
       const inventory = propertyInventory(p.id);
       const checkInRows = (arrivals.data ?? []).filter((r) => r.propertyId === p.id && r.checkInDate === data.today);
-      return <section key={p.id} aria-label={p.name} className="space-y-5 border-b border-xt-line pb-8">
+      return <details key={p.id} open={properties.length === 1} aria-label={p.name} className="group space-y-5 rounded-[28px] border border-xt-line bg-white p-5 sm:p-6">
+        <summary className="flex min-h-[48px] cursor-pointer items-center justify-between gap-3 text-sm font-bold text-xt-mute"><span>Tonight’s operations · inventory, prices and meals</span><span className="group-open:hidden">Show</span><span className="hidden group-open:inline">Hide</span></summary>
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div className="min-w-0"><h2 className="text-2xl font-extrabold text-xt-ink">{p.name}</h2><p className="mt-1 text-sm text-xt-mute">{p.location} · {camp ? 'WhatsApp enquiry-only · no live availability' : 'Live inventory · console is the main record, Google Sheet kept in step'}</p>{!camp && <div className="mt-2"><SheetChip syncedAt={data.sheetSyncedAt} /></div>}</div>
           <Link to="/admin/check-in" search={{ property: p.id }} className="inline-flex min-h-[48px] items-center gap-2 font-semibold text-xt-crimson">Self check-in QR <ArrowRight className="h-4 w-4" /></Link>
@@ -100,7 +103,7 @@ function Today() {
         <div><h3 className="mb-2 text-lg font-bold">Today’s self check-ins · {checkInRows.length}</h3>
           {arrivals.error ? <p className="text-sm text-destructive">Could not load check-ins.</p> : arrivals.isLoading ? <p className="text-sm text-xt-mute">Loading arrivals…</p> : checkInRows.length === 0 ? <p className="text-sm text-xt-mute">No self check-ins recorded for today.</p> : <ul className="divide-y divide-xt-line">{checkInRows.map((r) => <li key={r.id} className="py-3 text-sm"><strong>{r.guestName}</strong> · {r.checkInTime} · {r.totalGuests} guests<span className="block text-xt-mute">{r.status.replace(/_/g, ' ')}</span></li>)}</ul>}
         </div>
-      </section>;
+      </details>;
     })}
     {scope === 'super' && !selected && <section aria-label="Upcoming properties"><h2 className="text-xl font-bold">Upcoming properties</h2>{UPCOMING_PROPERTIES.map((p) => <p key={p.name} className="mt-2 text-sm text-xt-mute">{p.name} · {p.city} · Upcoming, not open for booking or check-in</p>)}</section>}
   </div>;

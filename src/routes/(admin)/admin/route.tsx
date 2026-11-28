@@ -15,7 +15,12 @@ import { deniedMessage, deniedReason, signInErrorMessage, type DeniedReason } fr
 
 export const Route = createFileRoute('/(admin)/admin')({
   ssr: false,
-  validateSearch: z.object({ property: z.enum(['XTSY-SHL-HOSTEL', 'XTSY-SHN-CAMP']).optional() }),
+  validateSearch: z.object({
+    property: z.enum(['XTSY-SHL-HOSTEL', 'XTSY-SHN-CAMP']).optional(),
+    range: z.string().max(12).optional(),
+    from: z.string().max(10).optional(),
+    to: z.string().max(10).optional(),
+  }),
   head: () => ({
     meta: [
       { title: 'XTSY Console' },

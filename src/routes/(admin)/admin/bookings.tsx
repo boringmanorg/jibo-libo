@@ -12,16 +12,19 @@ import { Textarea } from '@/components/ui/textarea';
 import { cancelEngineBooking, changeEngineBookingDates, createEngineBalanceLink, getEngineBooking, listEngineBookings } from '@/admin/bookingConsole.functions';
 import { NotSetUp, STATUS_LABEL, inr, selectCls } from '@/admin/components/engineBits';
 import { findRoomType } from '@/booking/catalogue';
+import { DateRangeBar, useConsoleRange } from '@/admin/components/DateRangeBar';
+import { dayHeading, groupByDay, todayInIndiaIso } from '@/admin/dateRange';
 import { PAYMENT_METHODS, type PaymentMethod } from '@/booking/payments/fees';
 
 export const Route = createFileRoute('/(admin)/admin/bookings')({ component: Bookings });
 
 function Bookings() {
   const list = useServerFn(listEngineBookings);
-  const [filters, setFilters] = useState({ status: '', from: '', to: '', search: '' });
+  const range = useConsoleRange('7d');
+  const [filters, setFilters] = useState({ status: '', search: '' });
   const [applied, setApplied] = useState(filters);
   const [openId, setOpenId] = useState<string | null>(null);
-  const clean = Object.fromEntries(Object.entries(applied).filter(([, v]) => v)) as typeof applied;
+  const clean = { ...Object.fromEntries(Object.entries(applied).filter(([, v]) => v)), ...(applied.search ? {} : { from: range.from, to: range.to }) } as { status?: string; search?: string; from?: string; to?: string };
   const { data, error, isFetching } = useQuery({ queryKey: ['engine', 'bookings', clean], queryFn: () => list({ data: clean }) });
 
   if (error) return <p className="text-destructive">Could not load bookings.</p>;
@@ -30,28 +33,29 @@ function Bookings() {
 
   return (
     <div className="space-y-6">
-      <Card><CardContent className="grid gap-3 p-4 md:grid-cols-5">
+      <DateRangeBar fallback="7d" />
+      <Card><CardContent className="grid gap-3 p-4 md:grid-cols-3">
         <div><Label htmlFor="st">Status</Label>
           <select id="st" className={selectCls} value={filters.status} onChange={(e) => setFilters({ ...filters, status: e.target.value })}>
             <option value="">All</option>{Object.entries(STATUS_LABEL).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
           </select></div>
-        <div><Label htmlFor="fr">Check-in from</Label><Input id="fr" type="date" className="h-12 text-base" value={filters.from} onChange={(e) => setFilters({ ...filters, from: e.target.value })} /></div>
-        <div><Label htmlFor="to">Check-in to</Label><Input id="to" type="date" className="h-12 text-base" value={filters.to} onChange={(e) => setFilters({ ...filters, to: e.target.value })} /></div>
         <div><Label htmlFor="q">Reference or guest</Label><Input id="q" className="h-12 text-base" placeholder="XTSY-…" value={filters.search} onChange={(e) => setFilters({ ...filters, search: e.target.value })} /></div>
         <div className="flex items-end"><Button className="min-h-12 w-full" onClick={() => setApplied(filters)} disabled={isFetching}>Search</Button></div>
       </CardContent></Card>
 
-      {data.rows.length === 0 ? <p className="text-sm text-muted-foreground">No bookings yet. They appear here once live booking is switched on.</p> : (
-        <div className="overflow-x-auto rounded-lg border border-border"><table className="w-full text-sm">
+      {data.rows.length === 0 ? <p className="text-sm text-muted-foreground">No bookings with check-in in this range. Bookings appear here once live booking is switched on.</p> : groupByDay(data.rows as any[], (b) => String(b.check_in)).map((d) => (
+        <details key={d.day} open className="rounded-2xl border border-border">
+        <summary className="flex min-h-[52px] cursor-pointer items-center justify-between gap-3 px-4 font-extrabold">{dayHeading(d.day, todayInIndiaIso())}<span className="text-sm font-semibold text-muted-foreground">{d.items.length} booking{d.items.length === 1 ? '' : 's'}</span></summary>
+        <div className="overflow-x-auto border-t border-border"><table className="w-full text-sm">
           <thead><tr className="text-left text-muted-foreground"><th className="p-3">Reference</th><th>Guest</th><th>Dates</th><th>Status</th><th>Total</th><th>Balance</th><th>Channel</th><th /></tr></thead>
-          <tbody>{data.rows.map((b: any) => (
+          <tbody>{d.items.map((b: any) => (
             <tr key={b.id} className="border-t border-border">
               <td className="p-3 font-mono">{b.reference}</td><td>{b.guest_name}</td><td>{b.check_in} → {b.check_out}</td>
               <td>{STATUS_LABEL[b.status] ?? b.status}</td><td>{inr(b.total_paise)}</td><td>{inr(b.balance_paise)}</td>
               <td><Badge variant={b.channel_status === 'synced' ? 'default' : b.channel_status === 'failed' ? 'destructive' : 'secondary'}>{b.channel_status}</Badge></td>
               <td><Button variant="ghost" className="min-h-12" onClick={() => setOpenId(openId === b.id ? null : b.id)}>{openId === b.id ? 'Close' : 'Open'}</Button></td>
-            </tr>))}</tbody></table></div>
-      )}
+            </tr>))}</tbody></table></div></details>
+      ))}
       {openId && <BookingDetail id={openId} />}
     </div>
   );

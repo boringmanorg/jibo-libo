@@ -27,7 +27,9 @@ export const submitCheckInFn = createServerFn({ method: 'POST' })
     };
     let details: unknown;
     try { details = JSON.parse(String(data.get('details') ?? '{}')); } catch { throw new Error('Check the form details and try again.'); }
-    return submitCheckIn(await serviceDeps(), details, { front: file('front'), back: file('back'), visa: file('visa') }, requestIp());
+    const files: Record<string, File | null> = {};
+    for (const key of data.keys()) if (/^(front|back|visa|selfie|g\d{1,2}-(front|back|single))$/.test(key)) files[key] = file(key);
+    return submitCheckIn(await serviceDeps(), details, files, requestIp());
   });
 
 export const getGuestCheckInFn = createServerFn({ method: 'POST' })
@@ -46,7 +48,7 @@ export const listCheckInsFn = createServerFn({ method: 'GET' }).middleware([requ
   });
 
 export const getCheckInDocumentFn = createServerFn({ method: 'POST' }).middleware([requireCheckInStaff])
-  .inputValidator(z.object({ id: z.string().uuid(), kind: z.enum(['front', 'back', 'visa']), mode: z.enum(['view', 'download']) }))
+  .inputValidator(z.object({ id: z.string().uuid(), kind: z.string().regex(/^(front|back|visa|selfie|g\d{1,2}-(front|back|single))$/), mode: z.enum(['view', 'download']) }))
   .handler(async ({ data, context }) => {
     setResponseHeader('Cache-Control', 'no-store');
     const { staffCheckInDocument } = await import('./checkIn.server');

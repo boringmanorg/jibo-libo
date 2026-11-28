@@ -13,6 +13,8 @@ import { useConsoleAccess, useConsoleProperty, useConsoleScope } from '@/admin/c
 import { checkInUrl } from '@/admin/consoleProperties';
 import { deleteCheckIn } from '@/admin/console.functions';
 import { CheckInQrSign } from '@/admin/components/CheckInQrSign';
+import { DateRangeBar, useConsoleRange } from '@/admin/components/DateRangeBar';
+import { dayHeading, groupByDay, inRange, todayInIndiaIso } from '@/admin/dateRange';
 import { Button } from '@/components/ui/button';
 import { buildRouteHead } from '@/lib/seo-head';
 
@@ -30,6 +32,7 @@ type CheckInRow = {
   city: string; state: string; country: string; phone: string; email: string; totalGuests: number; purpose: string;
   isInternational: boolean; roomTypeId: string; status: string; createdAt: string;
   checkOutDate: string; allocatedRoomTypeId: string; allocatedUnits: string[]; allocationOverrideId: string; documents: { front: boolean; back: boolean; visa: boolean };
+  documentList: { key: string; label: string }[]; checkOutTime: string; formOpenedAt: string; emergencyName: string; emergencyPhone: string; referralSource: string; guestNames: string[];
 };
 
 const propertyName = (id: string) => CHECK_IN_PROPERTIES.find((p) => p.id === id)?.name ?? id;
@@ -42,6 +45,8 @@ function CheckInDesk() {
   const qc = useQueryClient();
   const q = useQuery({ queryKey: ['staff', 'self-check-ins'], queryFn: () => list() as Promise<CheckInRow[]> });
   const [search, setSearch] = useState('');
+  const range = useConsoleRange('7d');
+  const today = todayInIndiaIso();
   const [deleteCandidate, setDeleteCandidate] = useState<string | null>(null);
   const [printProperty, setPrintProperty] = useState<CheckInPropertyId | null>(null);
   const scope = useConsoleScope();
@@ -80,10 +85,11 @@ function CheckInDesk() {
 
   const rows = useMemo(() => {
     const needle = search.trim().toLowerCase();
-    return (q.data ?? []).filter((r) => (!selected || r.propertyId === selected) && (!needle || [r.guestName, r.bookingReference, r.phone, r.email, r.city].some((v) => v.toLowerCase().includes(needle))));
-  }, [q.data, search, selected]);
+    return (q.data ?? []).filter((r) => (!selected || r.propertyId === selected) && (needle || inRange(r.checkInDate, range)) && (!needle || [r.guestName, r.bookingReference, r.phone, r.email, r.city].some((v) => v.toLowerCase().includes(needle))));
+  }, [q.data, search, selected, range.from, range.to]);
+  const days = useMemo(() => groupByDay(rows, (r) => r.checkInDate), [rows]);
 
-  const openDocument = async (id: string, kind: 'front' | 'back' | 'visa', mode: 'view' | 'download') => {
+  const openDocument = async (id: string, kind: string, mode: 'view' | 'download') => {
     const tab = window.open('about:blank', '_blank');
     try {
       const r = await documentLink({ data: { id, kind, mode } });
@@ -99,6 +105,9 @@ function CheckInDesk() {
     <div className="space-y-6 print:hidden">
       <PageHead title="Self check-in" sub="Guest arrivals, identity documents and room preferences. Allocate exact beds or rooms; each allocation holds that inventory on /book and in the console." />
 
+      <details className="group rounded-2xl border border-xt-line bg-white">
+        <summary className="flex min-h-[56px] cursor-pointer items-center gap-2 px-5 font-bold text-xt-ink"><QrCode className="h-5 w-5" aria-hidden />Self check-in QR codes · {properties.length}</summary>
+        <div className="space-y-4 p-4 pt-0">
       {properties.map((p) => <Panel key={p.id}>
         <div className="grid items-center gap-6 sm:grid-cols-[160px_1fr]">
           <div className="rounded-lg bg-background p-3">
@@ -115,13 +124,27 @@ function CheckInDesk() {
           </div>
         </div>
       </Panel>)}
+        </div>
+      </details>
 
-      <div className="relative"><Search className="absolute left-4 top-4 h-5 w-5 text-xt-mute" aria-hidden /><input aria-label="Search check-ins" className="min-h-[48px] w-full rounded-2xl border border-xt-line bg-white pl-12 pr-4 text-base text-xt-ink" placeholder="Search name, reference, phone, email or city" value={search} onChange={(e) => setSearch(e.target.value)} /></div>
+      <DateRangeBar fallback="7d" />
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        {[
+          ['Check-ins', String(rows.length)],
+          ['Guests', String(rows.reduce((n, r) => n + r.totalGuests, 0))],
+          ['Awaiting room', String(rows.filter((r) => r.propertyId === 'XTSY-SHL-HOSTEL' && !r.allocatedUnits.length).length)],
+          ['International', String(rows.filter((r) => r.isInternational).length)],
+        ].map(([k, v]) => <div key={k} className="rounded-2xl border border-xt-line bg-white p-4"><p className="text-xs font-semibold uppercase tracking-wider text-xt-mute">{k}</p><p className="mt-1 text-2xl font-extrabold tabular-nums text-xt-ink">{v}</p></div>)}
+      </div>
+
+      <div className="relative"><Search className="absolute left-4 top-4 h-5 w-5 text-xt-mute" aria-hidden /><input aria-label="Search check-ins" className="min-h-[48px] w-full rounded-2xl border border-xt-line bg-white pl-12 pr-4 text-base text-xt-ink" placeholder="Search all dates: name, reference, phone, email or city" value={search} onChange={(e) => setSearch(e.target.value)} /></div>
       {q.isLoading && <p className="text-xt-mute">Loading check-ins…</p>}
       {q.error && <p className="rounded-2xl bg-xt-blush p-4 text-sm text-xt-crimson-dark">{(q.error as Error).message}</p>}
       {!q.isLoading && rows.length === 0 && <Panel><p className="text-xt-mute">No matching self check-ins yet.</p></Panel>}
 
-      <div className="space-y-4">{rows.map((r) => {
+      <div className="space-y-4">{days.map((d) => <details key={d.day} open={d.day === today || days.length <= 2} className="rounded-[24px] border border-xt-line bg-xt-cream/40">
+        <summary className="flex min-h-[56px] cursor-pointer items-center justify-between gap-3 px-5 text-base font-extrabold text-xt-ink"><span>{dayHeading(d.day, today)}</span><span className="text-sm font-semibold text-xt-mute">{d.items.length} check-in{d.items.length === 1 ? '' : 's'} · {d.items.reduce((n, r) => n + r.totalGuests, 0)} guests</span></summary>
+        <div className="space-y-4 p-3 pt-0 sm:p-4 sm:pt-0">{d.items.map((r) => {
         const hasAllocation = r.allocatedUnits.length > 0 || !!r.allocationOverrideId;
         return <article key={r.id} className="rounded-[24px] border border-xt-line bg-white p-5">
           <div className="flex flex-wrap items-start justify-between gap-3">
@@ -129,7 +152,11 @@ function CheckInDesk() {
             <span className="rounded-full bg-xt-sand px-3 py-1 text-xs font-bold uppercase text-xt-ink">{r.status.replace('_', ' ')}</span>
           </div>
           <dl className="mt-4 grid gap-x-6 gap-y-3 text-sm sm:grid-cols-2 lg:grid-cols-3">
-            <div><dt className="font-bold text-xt-ink">Arrival</dt><dd className="text-xt-mute">{r.checkInDate} at {r.checkInTime}</dd></div>
+            <div><dt className="font-bold text-xt-ink">Check-in</dt><dd className="text-xt-mute">{r.checkInDate} at {r.checkInTime}</dd></div>
+            <div><dt className="font-bold text-xt-ink">Check-out</dt><dd className="text-xt-mute">{r.checkOutDate ? `${r.checkOutDate}${r.checkOutTime ? ` at ${r.checkOutTime}` : ''}` : '—'}</dd></div>
+            <div><dt className="font-bold text-xt-ink">Found XTSY via</dt><dd className="text-xt-mute">{r.referralSource || '—'}</dd></div>
+            <div><dt className="font-bold text-xt-ink">Emergency contact</dt><dd className="text-xt-mute">{r.emergencyName ? <>{r.emergencyName} · <a className="inline-flex min-h-[48px] items-center underline" href={`tel:${r.emergencyPhone}`}>{r.emergencyPhone}</a></> : '—'}</dd></div>
+            {r.guestNames.length > 0 && <div className="sm:col-span-2"><dt className="font-bold text-xt-ink">Other guests</dt><dd className="text-xt-mute">{r.guestNames.map((n, i) => `${i + 2}. ${n}`).join(' · ')}</dd></div>}
             <div><dt className="font-bold text-xt-ink">Guests / purpose</dt><dd className="text-xt-mute">{r.totalGuests} · {r.purpose}</dd></div>
             <div><dt className="font-bold text-xt-ink">From</dt><dd className="text-xt-mute">{r.city}, {r.state}, {r.country}</dd></div>
             <div><dt className="font-bold text-xt-ink">Phone</dt><dd className="text-xt-mute"><a className="inline-flex min-h-[48px] items-center underline" href={`tel:${r.phone}`}>{r.phone}</a></dd></div>
@@ -140,7 +167,7 @@ function CheckInDesk() {
             ? <AllocationPanel row={r} all={q.data ?? []} />
             : <div className="mt-4 rounded-2xl bg-xt-cream p-4 text-sm"><span className="font-bold text-xt-ink">Guest chose:</span> <span className="text-xt-mute">{roomName(r.propertyId, r.roomTypeId)}. Camp tents are arranged on WhatsApp.</span></div>}
           <div className="mt-4 grid gap-3 sm:grid-cols-3">
-            {(['front', 'back', 'visa'] as const).map((kind) => r.documents[kind] && <div key={kind} className="rounded-2xl border border-xt-line p-3"><p className="flex items-center gap-2 text-sm font-bold text-xt-ink"><FileText className="h-4 w-4" aria-hidden />{kind === 'visa' ? 'Visa' : r.isInternational ? `Passport ${kind === 'front' ? 'first page' : 'last page'}` : `National ID ${kind}`}</p><div className="mt-2 flex gap-2"><button type="button" onClick={() => void openDocument(r.id, kind, 'view')} className="min-h-[48px] flex-1 rounded-full border border-xt-line text-sm font-bold text-xt-ink">View</button><button type="button" onClick={() => void openDocument(r.id, kind, 'download')} aria-label={`Download ${kind} document`} className="flex min-h-[48px] min-w-[48px] items-center justify-center rounded-full bg-xt-ink text-xt-sand"><Download className="h-4 w-4" aria-hidden /></button></div></div>)}
+            {r.documentList.map(({ key: kind, label }) => <div key={kind} className="rounded-2xl border border-xt-line p-3"><p className="flex items-center gap-2 text-sm font-bold text-xt-ink"><FileText className="h-4 w-4" aria-hidden />{label}</p><div className="mt-2 flex gap-2"><button type="button" onClick={() => void openDocument(r.id, kind, 'view')} className="min-h-[48px] flex-1 rounded-full border border-xt-line text-sm font-bold text-xt-ink">View</button><button type="button" onClick={() => void openDocument(r.id, kind, 'download')} aria-label={`Download ${kind} document`} className="flex min-h-[48px] min-w-[48px] items-center justify-center rounded-full bg-xt-ink text-xt-sand"><Download className="h-4 w-4" aria-hidden /></button></div></div>)}
           </div>
           {access !== 'desk' && <div className="mt-5 border-t border-xt-line pt-4">
             {hasAllocation
@@ -153,7 +180,7 @@ function CheckInDesk() {
                 : <button type="button" className="inline-flex min-h-[48px] items-center gap-2 rounded-full border border-xt-line px-4 text-sm font-bold text-xt-crimson" onClick={() => setDeleteCandidate(r.id)}><Trash2 className="h-4 w-4" aria-hidden />Delete check-in</button>}
           </div>}
         </article>;
-      })}</div>
+      })}</div></details>)}</div>
     </div>
     {print && codes[print.id] && createPortal(<CheckInQrSign property={print} code={codes[print.id]} url={checkInUrl(print.id)} />, document.body)}
   </>;

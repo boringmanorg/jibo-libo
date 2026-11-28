@@ -13,9 +13,11 @@ import { getInventoryCalendar } from '@/admin/consoleHome.functions';
 import { saveInventoryOverride } from '@/admin/console.functions';
 import type { CalendarCell, CalendarRow } from '@/admin/inventoryCalendar';
 import { PageHead, SheetChip, dayMonth, freeTone, weekday } from '@/admin/components/ConsoleBits';
+import { DateRangeBar, useConsoleRange } from '@/admin/components/DateRangeBar';
+import { daysOf, dayHeading } from '@/admin/dateRange';
 
 export const Route = createFileRoute('/(admin)/admin/inventory')({
-  validateSearch: z.object({ start: z.string().regex(/^\d{4}-\d{2}$/).optional() }),
+  validateSearch: z.object({ start: z.string().regex(/^\d{4}-\d{2}$/).optional(), view: z.string().max(8).optional() }),
   head: () => buildRouteHead({ path: '/admin/inventory', title: 'Inventory — XTSY Console', description: 'XTSY room inventory and hostel availability.', noIndex: true }),
   component: Inventory,
 });
@@ -26,6 +28,57 @@ const shift = (ym: string, by: number) => { const d = new Date(`${ym}-01T00:00:0
 const daysIn = (ym: string) => new Date(Date.UTC(Number(ym.slice(0, 4)), Number(ym.slice(5, 7)), 0)).getUTCDate();
 
 function Inventory() {
+  const { view } = Route.useSearch();
+  const navigate = useNavigate({ from: Route.fullPath });
+  const list = view !== 'grid';
+  return <div>
+    <div role="tablist" aria-label="Inventory view" className="mb-4 inline-flex rounded-full border border-xt-line bg-white p-1">
+      {([['list', 'Day list'], ['grid', 'Month grid']] as const).map(([v, label]) => <button key={v} type="button" role="tab" aria-selected={(v === 'list') === list}
+        onClick={() => void navigate({ search: (prev) => ({ ...prev, view: v }), replace: true })}
+        className={cn('min-h-[44px] rounded-full px-5 text-sm font-bold', (v === 'list') === list ? 'bg-xt-ink text-xt-sand' : 'text-xt-mute')}>{label}</button>)}
+    </div>
+    {list ? <InventoryDays /> : <InventoryGrid />}
+  </div>;
+}
+
+function InventoryDays() {
+  const property = useConsoleProperty();
+  const range = useConsoleRange('next7');
+  const nights = daysOf(range).slice(0, 62);
+  const fetchCal = useServerFn(getInventoryCalendar);
+  const { data, error } = useQuery({
+    queryKey: ['console', 'calendar', 'days', range.from, nights.length],
+    queryFn: () => fetchCal({ data: { start: range.from, days: nights.length } }),
+  });
+  const qcDoor = useQueryClient();
+  useSheetDoorbell(() => { void qcDoor.invalidateQueries({ queryKey: ['console'] }); });
+  const [picked, setPicked] = useState<{ row: CalendarRow; cell: CalendarCell } | null>(null);
+  const rows = (data?.rows ?? []).filter((r) => !property || r.propertyId === property);
+  return <div className="space-y-4">
+    <PageHead title="Inventory" sub="Day by day: what /book offers each night after console blocks and OTA holds.">{data && <SheetChip syncedAt={data.sheetSyncedAt} />}</PageHead>
+    <DateRangeBar fallback="next7" />
+    {error && <p className="text-destructive">Could not load inventory. {(error as Error).message}</p>}
+    {!data ? <p className="text-muted-foreground">Loading…</p> : nights.map((night, i) => {
+      let total = 0, free = 0, closed = 0, ota = 0;
+      for (const r of rows) { const c = r.cells[i]; if (c && !c.sheetMissing) { total += c.start; free += c.free; closed += c.closed; ota += c.ota; } }
+      const occ = total ? Math.round(((total - free) / total) * 100) : 0;
+      return <details key={night} open={i < 3} className="rounded-[24px] border border-xt-line bg-white">
+        <summary className="grid min-h-[60px] cursor-pointer grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-5">
+          <span className="min-w-0"><span className="block font-extrabold text-xt-ink">{dayHeading(night, data.today)}</span><span className="block text-xs text-xt-mute">{free} free of {total}{closed ? ` · ${closed} blocked` : ''}{ota ? ` · ${ota} OTA` : ''}</span></span>
+          <span className={cn('rounded-full px-3 py-1 text-sm font-extrabold tabular-nums', occ >= 90 ? 'bg-xt-blush text-xt-crimson-dark' : occ >= 60 ? 'bg-amber-100 text-amber-900' : 'bg-xt-leaf/15 text-xt-ink')}>{occ}% full</span>
+        </summary>
+        <ul className="divide-y divide-xt-line border-t border-xt-line">{rows.map((row) => { const cell = row.cells[i]; if (!cell) return null; const past = night < data.today; return <li key={row.id}>
+          <button type="button" disabled={past} onClick={() => setPicked({ row, cell })} className="grid min-h-[52px] w-full grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-5 py-2 text-left text-sm hover:bg-xt-cream disabled:cursor-default disabled:hover:bg-transparent">
+            <span className="min-w-0 truncate font-semibold text-xt-ink">{row.short}<span className="ml-2 font-normal text-xt-mute">{row.total} {row.unit}{row.total === 1 ? '' : 's'}</span></span>
+            <span className={cn('shrink-0 rounded-lg px-3 py-1 font-bold tabular-nums', cell.sheetMissing ? 'text-xt-mute' : freeTone(cell.free, row.total))}>{cell.sheetMissing ? 'Not in sheet' : `${cell.free} free`}{cell.closed ? ` · ${cell.closed} blocked` : ''}</span>
+          </button></li>; })}</ul>
+      </details>;
+    })}
+    {picked && <NightPanel row={picked.row} cell={picked.cell} onClose={() => setPicked(null)} />}
+  </div>;
+}
+
+function InventoryGrid() {
   const { start } = Route.useSearch();
   const property = useConsoleProperty();
   const month = start ?? thisMonth();

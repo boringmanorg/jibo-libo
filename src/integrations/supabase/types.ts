@@ -1737,10 +1737,15 @@ export type Database = {
           check_in_date: string
           check_in_time: string
           check_out_date: string | null
+          check_out_time: string | null
           city: string
           country: string
           created_at: string
           email: string
+          emergency_contact_name: string | null
+          emergency_contact_phone: string | null
+          form_opened_at: string | null
+          guest_documents: Json
           guest_name: string
           id: string
           id_back_path: string
@@ -1750,7 +1755,9 @@ export type Database = {
           policy_accepted_at: string
           property_id: string
           purpose: string
+          referral_source: string | null
           room_type_id: string
+          selfie_path: string | null
           state: string
           status: string
           total_guests: number
@@ -1768,10 +1775,15 @@ export type Database = {
           check_in_date: string
           check_in_time: string
           check_out_date?: string | null
+          check_out_time?: string | null
           city: string
           country: string
           created_at?: string
           email: string
+          emergency_contact_name?: string | null
+          emergency_contact_phone?: string | null
+          form_opened_at?: string | null
+          guest_documents?: Json
           guest_name: string
           id?: string
           id_back_path?: string
@@ -1781,7 +1793,9 @@ export type Database = {
           policy_accepted_at: string
           property_id: string
           purpose: string
+          referral_source?: string | null
           room_type_id: string
+          selfie_path?: string | null
           state: string
           status?: string
           total_guests: number
@@ -1799,10 +1813,15 @@ export type Database = {
           check_in_date?: string
           check_in_time?: string
           check_out_date?: string | null
+          check_out_time?: string | null
           city?: string
           country?: string
           created_at?: string
           email?: string
+          emergency_contact_name?: string | null
+          emergency_contact_phone?: string | null
+          form_opened_at?: string | null
+          guest_documents?: Json
           guest_name?: string
           id?: string
           id_back_path?: string
@@ -1812,7 +1831,9 @@ export type Database = {
           policy_accepted_at?: string
           property_id?: string
           purpose?: string
+          referral_source?: string | null
           room_type_id?: string
+          selfie_path?: string | null
           state?: string
           status?: string
           total_guests?: number

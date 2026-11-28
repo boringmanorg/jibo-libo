@@ -16,6 +16,30 @@ export type CheckInPropertyId = (typeof CHECK_IN_PROPERTIES)[number]['id'];
 
 export const CHECK_IN_PURPOSES = ['Leisure', 'Backpacking', 'Workation', 'Business', 'Family visit', 'Event or wedding', 'Other'] as const;
 
+export const REFERRAL_SOURCES = [
+  'Google Search', 'Google Maps', 'Instagram', 'YouTube', 'Facebook', 'WhatsApp', 'Booking.com', 'Agoda', 'MakeMyTrip', 'Goibibo',
+  'Hostelworld', 'Airbnb', 'Expedia', 'Tripadvisor', 'Friend or family', 'Returning guest', 'Travel blog or vlogger',
+  'Walk-in / passing by', 'Tour or travel agent', 'Other',
+] as const;
+export const DOCUMENT_MODES = ['separate', 'single'] as const;
+export type DocumentMode = (typeof DOCUMENT_MODES)[number];
+export const MAX_CHECK_IN_UPLOAD_BYTES = 90 * 1024 * 1024;
+
+/** Local date/time parts for the moment the form opened, used as the default arrival. */
+export function arrivalFromOpen(now: Date): { date: string; time: string } {
+  const pad = (n: number) => String(n).padStart(2, '0');
+  return { date: `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`, time: `${pad(now.getHours())}:${pad(now.getMinutes())}` };
+}
+
+/** Document slots a group must upload: the main guest plus one entry per additional guest. */
+export function requiredDocumentKeys(input: { mainDocMode: DocumentMode; isInternational: boolean; guests: { docMode: DocumentMode }[] }): string[] {
+  const keys = ['selfie', 'front'];
+  if (input.mainDocMode === 'separate') keys.push('back');
+  if (input.isInternational) keys.push('visa');
+  input.guests.forEach((g, i) => { const n = i + 2; if (g.docMode === 'single') keys.push(`g${n}-single`); else keys.push(`g${n}-front`, `g${n}-back`); });
+  return keys;
+}
+
 export interface RoomPreference { id: string; name: string; detail: string }
 export function roomPreferences(propertyId: CheckInPropertyId): RoomPreference[] {
   if (propertyId === 'XTSY-SHN-CAMP') return [
@@ -30,16 +54,26 @@ export function roomPreferences(propertyId: CheckInPropertyId): RoomPreference[]
 }
 
 const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Use a valid check-in date.').refine((v) => !Number.isNaN(Date.parse(`${v}T00:00:00Z`)), 'Use a valid check-in date.');
+const clock = z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/, 'Enter a valid time.');
+const phoneNumber = z.string().trim().min(10).max(20).refine((v) => (v.match(/\d/g)?.length ?? 0) >= 10, 'Enter a phone number with country code.');
 export const checkInDetailsSchema = z.object({
   propertyId: z.enum(['XTSY-SHL-HOSTEL', 'XTSY-SHN-CAMP']),
   bookingReference: z.string().trim().max(20).refine((v) => !v || /^XTSY-[A-Z0-9-]{3,16}$/i.test(v), 'Check the booking reference.').optional().default(''),
   guestName: z.string().trim().min(2, 'Enter the lead guest’s full name.').max(120),
   checkInDate: isoDate,
   checkInTime: z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/, 'Enter the arrival time.'),
+  checkOutDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Choose your check-out date.'),
+  checkOutTime: clock,
+  formOpenedAt: z.string().datetime().optional(),
+  emergencyName: z.string().trim().min(2, 'Enter an emergency contact name.').max(120),
+  emergencyPhone: phoneNumber,
+  referralSource: z.enum(REFERRAL_SOURCES),
+  mainDocMode: z.enum(DOCUMENT_MODES).default('separate'),
+  guests: z.array(z.object({ name: z.string().trim().min(2, 'Enter every guest’s full name.').max(120), docMode: z.enum(DOCUMENT_MODES) })).max(59).default([]),
   city: z.string().trim().min(2).max(80),
   state: z.string().trim().min(2).max(80),
   country: z.string().trim().min(2).max(80),
-  phone: z.string().trim().min(10).max(20).refine((v) => (v.match(/\d/g)?.length ?? 0) >= 10, 'Enter a phone number with country code.'),
+  phone: phoneNumber,
   email: z.string().trim().email().max(160),
   totalGuests: z.number().int().min(1).max(60),
   purpose: z.enum(CHECK_IN_PURPOSES),
@@ -53,7 +87,16 @@ export type CheckInDetails = z.infer<typeof checkInDetailsSchema>;
 export function validateCheckInDetails(input: unknown): CheckInDetails {
   const data = checkInDetailsSchema.parse(input);
   if (!roomPreferences(data.propertyId).some((r) => r.id === data.roomTypeId)) throw new Error('Choose a room type offered by this property.');
+  const stayProblem = checkOutProblem(data);
+  if (stayProblem) throw new Error(stayProblem);
+  if (data.guests.length !== data.totalGuests - 1) throw new Error('Add identity details for every guest in your group.');
   return data;
+}
+
+export function checkOutProblem(d: { checkInDate: string; checkInTime: string; checkOutDate: string; checkOutTime: string }): string | null {
+  if (!d.checkOutDate || !d.checkOutTime) return 'Choose your check-out date and time.';
+  if (`${d.checkOutDate}T${d.checkOutTime}` <= `${d.checkInDate}T${d.checkInTime}`) return 'Check-out must be after your arrival.';
+  return null;
 }
 
 export interface PolicySection { title: string; lines: string[] }
@@ -96,8 +139,9 @@ export function checkInPolicies(propertyId: CheckInPropertyId): PolicySection[] 
   ];
 }
 
-export function clientFileProblem(file: File | null, required = true): string | null {
+export function clientFileProblem(file: File | null, required = true, imageOnly = false): string | null {
   if (!file) return required ? 'Choose this document.' : null;
+  if (imageOnly && !['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) return 'Take or choose a JPG, PNG or WebP photo.';
   if (file.size <= 0 || file.size > MAX_CHECK_IN_FILE_BYTES) return 'Each document must be between 1 byte and 8 MB.';
   if (!['image/jpeg', 'image/png', 'image/webp', 'application/pdf'].includes(file.type)) return 'Use a JPG, PNG, WebP or PDF document.';
   return null;

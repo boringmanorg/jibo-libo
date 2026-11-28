@@ -309,6 +309,13 @@
       "when": 1795870889533,
       "tag": "0043_allow_admin_delete_released_check_ins",
       "breakpoints": true
+    },
+    {
+      "idx": 44,
+      "version": "7",
+      "when": 1795873388816,
+      "tag": "0044_check_in_guests_selfie_and_source",
+      "breakpoints": true
     }
   ]
 }

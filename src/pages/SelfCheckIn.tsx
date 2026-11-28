@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useRef, useState, type ChangeEvent, type ReactNode } from 'react';
-import { ArrowLeft, ArrowRight, Check, Download, FileCheck2, FileText, Globe2, LockKeyhole, ScanLine, Upload, UserRound, Wifi } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Camera, Check, Download, FileCheck2, FileText, Globe2, LockKeyhole, ScanLine, Upload, UserRound, Wifi } from 'lucide-react';
 import { useServerFn } from '@tanstack/react-start';
 import { cn } from '@/lib/utils';
 import {
-  CHECK_IN_FILE_ACCEPT, CHECK_IN_POLICY_VERSION, CHECK_IN_PROPERTIES, CHECK_IN_PURPOSES,
-  checkInPolicies, clientFileProblem, roomPreferences, validateCheckInDetails, type CheckInPropertyId,
+  CHECK_IN_FILE_ACCEPT, CHECK_IN_POLICY_VERSION, CHECK_IN_PROPERTIES, CHECK_IN_PURPOSES, MAX_CHECK_IN_UPLOAD_BYTES, REFERRAL_SOURCES,
+  arrivalFromOpen, checkInPolicies, checkOutProblem, clientFileProblem, requiredDocumentKeys, roomPreferences, validateCheckInDetails,
+  type CheckInPropertyId, type DocumentMode,
 } from '@/checkin/checkInModel';
 import { getGuestCheckInFn, submitCheckInFn } from '@/checkin/checkIn.functions';
 
@@ -12,26 +13,32 @@ const STEPS = ['Property', 'Your details', 'Documents', 'Room preference', 'Poli
 const field = 'min-h-[48px] w-full rounded-2xl border border-xt-line bg-xt-paper px-4 text-base text-xt-ink outline-none focus:ring-2 focus:ring-xt-ink';
 const button = 'inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full px-6 text-base font-extrabold disabled:cursor-not-allowed disabled:opacity-45';
 
-type DocumentKind = 'front' | 'back' | 'visa';
-type DocumentLinks = Partial<Record<DocumentKind, { viewUrl: string; downloadUrl: string }>>;
+type DocumentLinks = Record<string, { viewUrl: string; downloadUrl: string }>;
 type Receipt = { id: string; accessToken: string };
-type GuestReceipt = { checkIn: { guestName: string; propertyId: CheckInPropertyId; roomTypeId: string; checkInDate: string; checkInTime: string; totalGuests: number }; documents: DocumentLinks };
+type GuestReceipt = { checkIn: { documentList: { key: string; label: string }[]; guestName: string; propertyId: CheckInPropertyId; roomTypeId: string; checkInDate: string; checkInTime: string; totalGuests: number }; documents: DocumentLinks };
 
 function Field({ label, children, hint }: { label: string; children: ReactNode; hint?: string }) {
   return <label className="block space-y-2 text-sm font-bold text-xt-ink"><span>{label}</span>{children}{hint && <span className="block text-xs font-normal text-xt-mute">{hint}</span>}</label>;
 }
 
-function DocumentInput({ id, label, note, file, onChange }: { id: DocumentKind; label: string; note: string; file: File | null; onChange: (file: File | null) => void }) {
+function ModeToggle({ value, onChange, label }: { value: DocumentMode; onChange: (m: DocumentMode) => void; label: string }) {
+  return <div role="radiogroup" aria-label={label} className="grid grid-cols-2 gap-2">
+    {([['separate', 'Front and back'], ['single', 'One document']] as const).map(([m, text]) => <button key={m} type="button" role="radio" aria-checked={value === m} onClick={() => onChange(m)} className={cn('min-h-[48px] rounded-2xl border-2 px-3 text-sm font-bold', value === m ? 'border-xt-ink bg-xt-sand text-xt-ink' : 'border-xt-line bg-xt-paper text-xt-mute')}>{text}</button>)}
+  </div>;
+}
+
+function DocumentInput({ label, note, file, onChange, selfie = false }: { label: string; note: string; file: File | null; onChange: (file: File | null) => void; selfie?: boolean }) {
   return (
     <label className="block rounded-[24px] border border-dashed border-xt-line bg-xt-paper p-5">
       <span className="flex items-start gap-3">
-        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-xt-sand text-xt-ink"><Upload className="h-5 w-5" aria-hidden /></span>
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-xt-sand text-xt-ink">{selfie ? <Camera className="h-5 w-5" aria-hidden /> : <Upload className="h-5 w-5" aria-hidden />}</span>
         <span><span className="block text-base font-extrabold text-xt-ink">{label}</span><span className="mt-1 block text-sm text-xt-mute">{note}</span></span>
       </span>
       <input
         aria-label={label}
         type="file"
-        accept={CHECK_IN_FILE_ACCEPT}
+        accept={selfie ? 'image/jpeg,image/png,image/webp' : CHECK_IN_FILE_ACCEPT}
+        {...(selfie ? { capture: 'user' as const } : {})}
         className="mt-4 min-h-[48px] w-full cursor-pointer rounded-xl text-base text-xt-ink file:mr-3 file:min-h-[48px] file:rounded-full file:border-0 file:bg-xt-ink file:px-4 file:font-bold file:text-xt-sand"
         onChange={(e: ChangeEvent<HTMLInputElement>) => onChange(e.target.files?.[0] ?? null)}
       />
@@ -47,7 +54,15 @@ export default function SelfCheckIn({ initialPropertyId }: { initialPropertyId?:
   const [bookingReference, setBookingReference] = useState('');
   const [guestName, setGuestName] = useState('');
   const [checkInDate, setCheckInDate] = useState('');
-  const [checkInTime, setCheckInTime] = useState('11:00');
+  const [checkInTime, setCheckInTime] = useState('');
+  const [checkOutDate, setCheckOutDate] = useState('');
+  const [checkOutTime, setCheckOutTime] = useState('10:00');
+  const [formOpenedAt, setFormOpenedAt] = useState('');
+  const [emergencyName, setEmergencyName] = useState('');
+  const [emergencyPhone, setEmergencyPhone] = useState('');
+  const [referralSource, setReferralSource] = useState<(typeof REFERRAL_SOURCES)[number] | ''>('');
+  const [mainDocMode, setMainDocMode] = useState<DocumentMode>('separate');
+  const [guests, setGuests] = useState<{ name: string; docMode: DocumentMode }[]>([]);
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [country, setCountry] = useState('India');
@@ -56,7 +71,8 @@ export default function SelfCheckIn({ initialPropertyId }: { initialPropertyId?:
   const [totalGuests, setTotalGuests] = useState(1);
   const [purpose, setPurpose] = useState<(typeof CHECK_IN_PURPOSES)[number]>('Leisure');
   const [roomTypeId, setRoomTypeId] = useState(roomPreferences(initialPropertyId ?? 'XTSY-SHL-HOSTEL')[0]?.id ?? '');
-  const [files, setFiles] = useState<Record<DocumentKind, File | null>>({ front: null, back: null, visa: null });
+  const [files, setFiles] = useState<Record<string, File | null>>({});
+  const setFile = (key: string) => (file: File | null) => setFiles((f) => ({ ...f, [key]: file }));
   const [readPolicies, setReadPolicies] = useState(false);
   const [policyAccepted, setPolicyAccepted] = useState(false);
   const [error, setError] = useState('');
@@ -71,6 +87,14 @@ export default function SelfCheckIn({ initialPropertyId }: { initialPropertyId?:
   const rooms = useMemo(() => roomPreferences(propertyId), [propertyId]);
   const policies = useMemo(() => checkInPolicies(propertyId), [propertyId]);
   const documentLabel = isInternational ? 'Passport' : 'National ID';
+  const slotLabel = (key: string) => {
+    if (key === 'selfie') return 'Your selfie';
+    if (key === 'visa') return 'Visa';
+    if (key === 'front') return `${documentLabel} ${mainDocMode === 'single' ? '(one document)' : isInternational ? 'first page' : 'front'}`;
+    if (key === 'back') return `${documentLabel} ${isInternational ? 'last page' : 'back'}`;
+    const m = /^g(\d+)-(front|back|single)$/.exec(key);
+    return m ? `Guest ${m[1]} ID ${m[2] === 'single' ? 'document' : m[2]}` : key;
+  };
 
   const loadReceipt = async (value: Receipt) => {
     try {
@@ -95,6 +119,21 @@ export default function SelfCheckIn({ initialPropertyId }: { initialPropertyId?:
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Arrival defaults to the moment this form was opened; the guest can still change it.
+  useEffect(() => {
+    const now = new Date();
+    const open = arrivalFromOpen(now);
+    setFormOpenedAt(now.toISOString());
+    setCheckInDate(open.date);
+    setCheckInTime(open.time);
+    setCheckOutDate(arrivalFromOpen(new Date(now.getTime() + 86400_000)).date);
+  }, []);
+
+  useEffect(() => {
+    const extra = Math.max(0, Math.min(59, Number(totalGuests) || 1) - 1);
+    setGuests((g) => g.length === extra ? g : Array.from({ length: extra }, (_, i) => g[i] ?? { name: '', docMode: 'separate' as DocumentMode }));
+  }, [totalGuests]);
+
   useEffect(() => {
     if (step !== 4) return;
     setReadPolicies(false);
@@ -116,6 +155,11 @@ export default function SelfCheckIn({ initialPropertyId }: { initialPropertyId?:
     if ((phone.match(/\d/g)?.length ?? 0) < 10) return 'Enter a phone number with country code.';
     if (!/^\S+@\S+\.\S+$/.test(email)) return 'Enter a valid email address.';
     if (totalGuests < 1 || totalGuests > 60) return 'Total guests must be between 1 and 60.';
+    const stay = checkOutProblem({ checkInDate, checkInTime, checkOutDate, checkOutTime });
+    if (stay) return stay;
+    if (emergencyName.trim().length < 2) return 'Enter an emergency contact name.';
+    if ((emergencyPhone.match(/\d/g)?.length ?? 0) < 10) return 'Enter the emergency contact’s phone with country code.';
+    if (!referralSource) return 'Tell us how you found XTSY.';
     return null;
   };
 
@@ -126,10 +170,15 @@ export default function SelfCheckIn({ initialPropertyId }: { initialPropertyId?:
       if (problem) return setError(problem);
     }
     if (step === 2) {
-      for (const kind of ['front', 'back', 'visa'] as const) {
-        const problem = clientFileProblem(files[kind], kind !== 'visa' || isInternational);
-        if (problem) return setError(`${kind === 'front' ? `${documentLabel} ${isInternational ? 'first page' : 'front'}` : kind === 'back' ? `${documentLabel} ${isInternational ? 'last page' : 'back'}` : 'Visa'}: ${problem}`);
+      const missingName = guests.findIndex((g) => g.name.trim().length < 2);
+      if (missingName >= 0) return setError(`Enter the full name of guest ${missingName + 2}.`);
+      let total = 0;
+      for (const key of requiredDocumentKeys({ mainDocMode, isInternational, guests })) {
+        const problem = clientFileProblem(files[key] ?? null, true, key === 'selfie');
+        if (problem) return setError(`${slotLabel(key)}: ${problem}`);
+        total += files[key]?.size ?? 0;
       }
+      if (total > MAX_CHECK_IN_UPLOAD_BYTES) return setError('All documents together are too large. Please use smaller photos.');
     }
     if (step === 3 && !roomTypeId) return setError('Choose your preferred room, bed or tent.');
     setStep((s) => Math.min(STEPS.length - 1, s + 1));
@@ -141,14 +190,13 @@ export default function SelfCheckIn({ initialPropertyId }: { initialPropertyId?:
     setBusy(true);
     try {
       const details = validateCheckInDetails({
-        propertyId, bookingReference, guestName, checkInDate, checkInTime, city, state, country, phone, email,
+        propertyId, bookingReference, guestName, checkInDate, checkInTime, checkOutDate, checkOutTime,
+        ...(formOpenedAt ? { formOpenedAt } : {}), emergencyName, emergencyPhone, referralSource, mainDocMode, guests, city, state, country, phone, email,
         totalGuests: Number(totalGuests), purpose, isInternational, roomTypeId, policyAccepted, policyVersion: CHECK_IN_POLICY_VERSION,
       });
       const body = new FormData();
       body.set('details', JSON.stringify(details));
-      if (files.front) body.set('front', files.front);
-      if (files.back) body.set('back', files.back);
-      if (files.visa) body.set('visa', files.visa);
+      for (const key of requiredDocumentKeys({ mainDocMode, isInternational, guests })) { const f = files[key]; if (f) body.set(key, f); }
       const result = await submit({ data: body });
       setReceipt(result);
       setStep(STEPS.length);
@@ -163,7 +211,7 @@ export default function SelfCheckIn({ initialPropertyId }: { initialPropertyId?:
 
   const reset = () => {
     try { sessionStorage.removeItem(`xtsy-self-check-in-receipt-${initialPropertyId ?? 'choose'}`); } catch { /* no-op */ }
-    setReceipt(null); setGuestReceipt(null); setStep(0); setFiles({ front: null, back: null, visa: null });
+    setReceipt(null); setGuestReceipt(null); setStep(0); setFiles({});
     setPolicyAccepted(false); setReadPolicies(false); setError('');
   };
 
@@ -202,18 +250,42 @@ export default function SelfCheckIn({ initialPropertyId }: { initialPropertyId?:
         {step === 1 && <section className="space-y-5">
           <div><h2 className="xt-display text-4xl text-xt-ink">Lead guest and arrival</h2><p className="mt-2 text-xt-mute">Use the same name shown on the identity document.</p></div>
           <Field label="Full name"><input className={field} autoComplete="name" value={guestName} onChange={(e) => setGuestName(e.target.value)} /></Field>
-          <div className="grid gap-4 sm:grid-cols-2"><Field label="Check-in date"><input type="date" className={field} value={checkInDate} onChange={(e) => setCheckInDate(e.target.value)} /></Field><Field label="Arrival time"><input type="time" className={field} value={checkInTime} onChange={(e) => setCheckInTime(e.target.value)} /></Field></div>
+          <div className="grid gap-4 sm:grid-cols-2"><Field label="Check-in date" hint="Filled in from when you opened this form. Tap to change."><input type="date" className={field} value={checkInDate} onChange={(e) => setCheckInDate(e.target.value)} /></Field><Field label="Check-in time" hint="Your arrival time. Tap to change."><input type="time" className={field} value={checkInTime} onChange={(e) => setCheckInTime(e.target.value)} /></Field></div>
+          <div className="grid gap-4 sm:grid-cols-2"><Field label="Check-out date"><input type="date" className={field} min={checkInDate || undefined} value={checkOutDate} onChange={(e) => setCheckOutDate(e.target.value)} /></Field><Field label="Check-out time"><input type="time" className={field} value={checkOutTime} onChange={(e) => setCheckOutTime(e.target.value)} /></Field></div>
           <Field label="Booking reference (optional)" hint="For example XTSY-ABCDEF. Leave blank if the desk has not given you one."><input className={field} value={bookingReference} onChange={(e) => setBookingReference(e.target.value.toUpperCase())} /></Field>
           <div className="grid gap-4 sm:grid-cols-3"><Field label="City"><input className={field} autoComplete="address-level2" value={city} onChange={(e) => setCity(e.target.value)} /></Field><Field label="State"><input className={field} autoComplete="address-level1" value={state} onChange={(e) => setState(e.target.value)} /></Field><Field label="Country"><input className={field} autoComplete="country-name" value={country} onChange={(e) => setCountry(e.target.value)} /></Field></div>
           <div className="grid gap-4 sm:grid-cols-2"><Field label="Phone number"><input type="tel" inputMode="tel" className={field} autoComplete="tel" placeholder="With country code" value={phone} onChange={(e) => setPhone(e.target.value)} /></Field><Field label="Email ID"><input type="email" inputMode="email" className={field} autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} /></Field></div>
           <div className="grid gap-4 sm:grid-cols-2"><Field label="Total number of guests"><input type="number" min={1} max={60} inputMode="numeric" className={field} value={totalGuests} onChange={(e) => setTotalGuests(Number(e.target.value))} /></Field><Field label="Purpose of travel"><select className={field} value={purpose} onChange={(e) => setPurpose(e.target.value as typeof purpose)}>{CHECK_IN_PURPOSES.map((p) => <option key={p}>{p}</option>)}</select></Field></div>
+          <p className="text-sm text-xt-mute">You are the main guest. You will upload ID for each of the {totalGuests} guest{totalGuests === 1 ? '' : 's'} in the next step.</p>
+          <div className="grid gap-4 sm:grid-cols-2"><Field label="Emergency contact name"><input className={field} value={emergencyName} onChange={(e) => setEmergencyName(e.target.value)} /></Field><Field label="Emergency contact phone"><input type="tel" inputMode="tel" className={field} placeholder="With country code" value={emergencyPhone} onChange={(e) => setEmergencyPhone(e.target.value)} /></Field></div>
+          <Field label="How did you find XTSY?"><select className={field} value={referralSource} onChange={(e) => setReferralSource(e.target.value as typeof referralSource)}><option value="" disabled>Choose one</option>{REFERRAL_SOURCES.map((r) => <option key={r}>{r}</option>)}</select></Field>
         </section>}
 
         {step === 2 && <section className="space-y-5">
           <div><h2 className="xt-display text-4xl text-xt-ink">{isInternational ? 'Passport and visa' : 'National identity document'}</h2><p className="mt-2 text-xt-mute">Upload clear, uncropped JPG, PNG, WebP or PDF files. Maximum 8 MB each.</p></div>
-          <DocumentInput id="front" label={`${documentLabel} — ${isInternational ? 'first page' : 'front'}`} note={isInternational ? 'The passport page with your photo and personal details.' : 'Front side of your government-issued national ID.'} file={files.front} onChange={(file) => setFiles((f) => ({ ...f, front: file }))} />
-          <DocumentInput id="back" label={`${documentLabel} — ${isInternational ? 'last page' : 'back'}`} note={isInternational ? 'The final passport page with address or other printed details.' : 'Back side of the same national ID.'} file={files.back} onChange={(file) => setFiles((f) => ({ ...f, back: file }))} />
-          {isInternational && <DocumentInput id="visa" label="Visa — one document" note="Upload your valid Indian visa or permitted entry document as one file." file={files.visa} onChange={(file) => setFiles((f) => ({ ...f, visa: file }))} />}
+          <div className="space-y-4 rounded-[28px] border border-xt-line bg-xt-cream/50 p-4 sm:p-5">
+            <h3 className="text-lg font-extrabold text-xt-ink">Guest 1 · {guestName || 'Main guest'}</h3>
+            <DocumentInput selfie label="Your selfie" note="Take a clear photo of your face with the front camera." file={files['selfie'] ?? null} onChange={setFile('selfie')} />
+            <ModeToggle label="Main guest document format" value={mainDocMode} onChange={setMainDocMode} />
+            {mainDocMode === 'single'
+              ? <DocumentInput label={`${documentLabel} — one document`} note="Both sides or all pages in one file (a PDF works well)." file={files['front'] ?? null} onChange={setFile('front')} />
+              : <>
+                <DocumentInput label={`${documentLabel} — ${isInternational ? 'first page' : 'front'}`} note={isInternational ? 'The passport page with your photo and personal details.' : 'Front side of your government-issued national ID.'} file={files['front'] ?? null} onChange={setFile('front')} />
+                <DocumentInput label={`${documentLabel} — ${isInternational ? 'last page' : 'back'}`} note={isInternational ? 'The final passport page with address or other printed details.' : 'Back side of the same national ID.'} file={files['back'] ?? null} onChange={setFile('back')} />
+              </>}
+            {isInternational && <DocumentInput label="Visa — one document" note="Upload your valid Indian visa or permitted entry document as one file." file={files['visa'] ?? null} onChange={setFile('visa')} />}
+          </div>
+          {guests.map((g, i) => { const n = i + 2; return <div key={n} className="space-y-4 rounded-[28px] border border-xt-line p-4 sm:p-5">
+            <h3 className="text-lg font-extrabold text-xt-ink">Guest {n}</h3>
+            <Field label={`Guest ${n} full name`}><input className={field} value={g.name} onChange={(e) => setGuests((all) => all.map((x, j) => j === i ? { ...x, name: e.target.value } : x))} /></Field>
+            <ModeToggle label={`Guest ${n} document format`} value={g.docMode} onChange={(m) => setGuests((all) => all.map((x, j) => j === i ? { ...x, docMode: m } : x))} />
+            {g.docMode === 'single'
+              ? <DocumentInput label={`Guest ${n} — ID, one document`} note="National ID or passport, all sides in one file." file={files[`g${n}-single`] ?? null} onChange={setFile(`g${n}-single`)} />
+              : <>
+                <DocumentInput label={`Guest ${n} — ID front`} note="Front side, or passport photo page." file={files[`g${n}-front`] ?? null} onChange={setFile(`g${n}-front`)} />
+                <DocumentInput label={`Guest ${n} — ID back`} note="Back side, or passport last page." file={files[`g${n}-back`] ?? null} onChange={setFile(`g${n}-back`)} />
+              </>}
+          </div>; })}
           <p className="flex gap-2 rounded-2xl bg-xt-cream p-4 text-sm text-xt-mute"><LockKeyhole className="h-5 w-5 shrink-0 text-xt-ink" aria-hidden />Files are stored privately, never publicly listed. You and authorised staff can view or download them through private links.</p>
         </section>}
 
@@ -238,7 +310,7 @@ export default function SelfCheckIn({ initialPropertyId }: { initialPropertyId?:
           <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-xt-pine text-xt-paper"><Check className="h-8 w-8" aria-hidden /></div>
           <div><h2 className="xt-display text-5xl text-xt-ink">Check-in details received.</h2><p className="mx-auto mt-3 max-w-xl text-xt-mute">Thank you{guestReceipt ? `, ${guestReceipt.checkIn.guestName}` : ''}. The front desk will verify your documents and allocate your room, bed or tent. This is not a room allocation or payment confirmation.</p></div>
           {receipt && <div className="rounded-[24px] bg-xt-cream p-5 text-left"><p className="font-extrabold text-xt-ink">Your private document receipt</p><p className="mt-1 text-sm text-xt-mute">These links expire after five minutes for privacy. Reload this page in the same tab to request fresh links.</p>{!guestReceipt && <p className="mt-4 text-sm font-bold text-xt-ink" role="status">Preparing private links…</p>}<div className="mt-4 space-y-3">
-            {(['front', 'back', 'visa'] as const).map((kind) => guestReceipt?.documents[kind] && <div key={kind} className="flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-xt-paper p-3"><span className="flex items-center gap-2 font-bold text-xt-ink"><FileText className="h-5 w-5" aria-hidden />{kind === 'visa' ? 'Visa' : `${documentLabel} ${kind === 'front' ? 'first/front' : 'last/back'}`}</span><span className="flex gap-2"><a className="inline-flex min-h-[48px] items-center rounded-full border border-xt-line px-4 text-sm font-bold text-xt-ink" href={guestReceipt.documents[kind]?.viewUrl} target="_blank" rel="noopener noreferrer">View</a><a className="inline-flex min-h-[48px] items-center gap-1 rounded-full bg-xt-ink px-4 text-sm font-bold text-xt-sand" href={guestReceipt.documents[kind]?.downloadUrl}><Download className="h-4 w-4" aria-hidden />Download</a></span></div>)}
+            {(guestReceipt?.checkIn.documentList ?? []).map(({ key: kind, label }) => guestReceipt?.documents[kind] && <div key={kind} className="flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-xt-paper p-3"><span className="flex items-center gap-2 font-bold text-xt-ink"><FileText className="h-5 w-5" aria-hidden />{label}</span><span className="flex gap-2"><a className="inline-flex min-h-[48px] items-center rounded-full border border-xt-line px-4 text-sm font-bold text-xt-ink" href={guestReceipt.documents[kind]?.viewUrl} target="_blank" rel="noopener noreferrer">View</a><a className="inline-flex min-h-[48px] items-center gap-1 rounded-full bg-xt-ink px-4 text-sm font-bold text-xt-sand" href={guestReceipt.documents[kind]?.downloadUrl}><Download className="h-4 w-4" aria-hidden />Download</a></span></div>)}
           </div></div>}
           {error && <p role="alert" className="rounded-2xl bg-xt-blush p-4 text-left text-sm text-xt-crimson-dark">{error}</p>}
           <button type="button" onClick={reset} className={cn(button, 'border border-xt-line bg-xt-paper text-xt-ink')}><UserRound className="h-5 w-5" aria-hidden />Start another check-in</button>
