@@ -1540,6 +1540,66 @@ export type Database = {
         }
         Relationships: []
       }
+      be_property_profiles: {
+        Row: {
+          address: string
+          amenities: string[]
+          description: string
+          display_name: string
+          google_maps_uri: string | null
+          google_place_id: string | null
+          google_rating: number | null
+          google_review_count: number | null
+          google_reviews: Json
+          google_synced_at: string | null
+          hidden_room_types: string[]
+          latitude: number | null
+          longitude: number | null
+          ota_presence: string[]
+          property_id: string
+          property_type: string
+          updated_at: string
+        }
+        Insert: {
+          address?: string
+          amenities?: string[]
+          description?: string
+          display_name?: string
+          google_maps_uri?: string | null
+          google_place_id?: string | null
+          google_rating?: number | null
+          google_review_count?: number | null
+          google_reviews?: Json
+          google_synced_at?: string | null
+          hidden_room_types?: string[]
+          latitude?: number | null
+          longitude?: number | null
+          ota_presence?: string[]
+          property_id: string
+          property_type?: string
+          updated_at?: string
+        }
+        Update: {
+          address?: string
+          amenities?: string[]
+          description?: string
+          display_name?: string
+          google_maps_uri?: string | null
+          google_place_id?: string | null
+          google_rating?: number | null
+          google_review_count?: number | null
+          google_reviews?: Json
+          google_synced_at?: string | null
+          hidden_room_types?: string[]
+          latitude?: number | null
+          longitude?: number | null
+          ota_presence?: string[]
+          property_id?: string
+          property_type?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       be_room_mapping: {
         Row: {
           room_type_id: string

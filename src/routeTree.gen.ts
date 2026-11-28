@@ -19,6 +19,7 @@ import { Route as adminAdminCheckInRouteImport } from './routes/(admin)/admin/ch
 import { Route as adminAdminInboxRouteImport } from './routes/(admin)/admin/inbox'
 import { Route as adminAdminInventoryRouteImport } from './routes/(admin)/admin/inventory'
 import { Route as adminAdminInvoicesRouteImport } from './routes/(admin)/admin/invoices'
+import { Route as adminAdminPropertyRouteImport } from './routes/(admin)/admin/property'
 import { Route as adminAdminRestaurantsRouteImport } from './routes/(admin)/admin/restaurants'
 import { Route as adminAdminRoomPhotosRouteImport } from './routes/(admin)/admin/room-photos'
 import { Route as adminAdminSettingsRouteImport } from './routes/(admin)/admin/settings'
@@ -155,6 +156,11 @@ const adminAdminInventoryRoute = adminAdminInventoryRouteImport.update({
 const adminAdminInvoicesRoute = adminAdminInvoicesRouteImport.update({
   id: '/invoices',
   path: '/invoices',
+  getParentRoute: () => adminAdminRouteRoute,
+} as any)
+const adminAdminPropertyRoute = adminAdminPropertyRouteImport.update({
+  id: '/property',
+  path: '/property',
   getParentRoute: () => adminAdminRouteRoute,
 } as any)
 const adminAdminRestaurantsRoute = adminAdminRestaurantsRouteImport.update({
@@ -653,6 +659,7 @@ export interface FileRoutesByFullPath {
   '/admin/inbox': typeof adminAdminInboxRoute
   '/admin/inventory': typeof adminAdminInventoryRoute
   '/admin/invoices': typeof adminAdminInvoicesRouteWithChildren
+  '/admin/property': typeof adminAdminPropertyRoute
   '/admin/restaurants': typeof adminAdminRestaurantsRoute
   '/admin/room-photos': typeof adminAdminRoomPhotosRoute
   '/admin/settings': typeof adminAdminSettingsRoute
@@ -751,6 +758,7 @@ export interface FileRoutesByTo {
   '/admin/inbox': typeof adminAdminInboxRoute
   '/admin/inventory': typeof adminAdminInventoryRoute
   '/admin/invoices': typeof adminAdminInvoicesRouteWithChildren
+  '/admin/property': typeof adminAdminPropertyRoute
   '/admin/restaurants': typeof adminAdminRestaurantsRoute
   '/admin/room-photos': typeof adminAdminRoomPhotosRoute
   '/admin/settings': typeof adminAdminSettingsRoute
@@ -851,6 +859,7 @@ export interface FileRoutesById {
   '/(admin)/admin/inbox': typeof adminAdminInboxRoute
   '/(admin)/admin/inventory': typeof adminAdminInventoryRoute
   '/(admin)/admin/invoices': typeof adminAdminInvoicesRouteWithChildren
+  '/(admin)/admin/property': typeof adminAdminPropertyRoute
   '/(admin)/admin/restaurants': typeof adminAdminRestaurantsRoute
   '/(admin)/admin/room-photos': typeof adminAdminRoomPhotosRoute
   '/(admin)/admin/settings': typeof adminAdminSettingsRoute
@@ -952,6 +961,7 @@ export interface FileRouteTypes {
     | '/admin/inbox'
     | '/admin/inventory'
     | '/admin/invoices'
+    | '/admin/property'
     | '/admin/restaurants'
     | '/admin/room-photos'
     | '/admin/settings'
@@ -1050,6 +1060,7 @@ export interface FileRouteTypes {
     | '/admin/inbox'
     | '/admin/inventory'
     | '/admin/invoices'
+    | '/admin/property'
     | '/admin/restaurants'
     | '/admin/room-photos'
     | '/admin/settings'
@@ -1149,6 +1160,7 @@ export interface FileRouteTypes {
     | '/(admin)/admin/inbox'
     | '/(admin)/admin/inventory'
     | '/(admin)/admin/invoices'
+    | '/(admin)/admin/property'
     | '/(admin)/admin/restaurants'
     | '/(admin)/admin/room-photos'
     | '/(admin)/admin/settings'
@@ -1397,6 +1409,13 @@ declare module '@tanstack/react-router' {
       path: '/invoices'
       fullPath: '/admin/invoices'
       preLoaderRoute: typeof adminAdminInvoicesRouteImport
+      parentRoute: typeof adminAdminRouteRoute
+    }
+    '/(admin)/admin/property': {
+      id: '/(admin)/admin/property'
+      path: '/property'
+      fullPath: '/admin/property'
+      preLoaderRoute: typeof adminAdminPropertyRouteImport
       parentRoute: typeof adminAdminRouteRoute
     }
     '/(admin)/admin/restaurants': {
@@ -2029,6 +2048,7 @@ interface adminAdminRouteRouteChildren {
   adminAdminInboxRoute: typeof adminAdminInboxRoute
   adminAdminInventoryRoute: typeof adminAdminInventoryRoute
   adminAdminInvoicesRoute: typeof adminAdminInvoicesRouteWithChildren
+  adminAdminPropertyRoute: typeof adminAdminPropertyRoute
   adminAdminRestaurantsRoute: typeof adminAdminRestaurantsRoute
   adminAdminRoomPhotosRoute: typeof adminAdminRoomPhotosRoute
   adminAdminSettingsRoute: typeof adminAdminSettingsRoute
@@ -2043,6 +2063,7 @@ const adminAdminRouteRouteChildren: adminAdminRouteRouteChildren = {
   adminAdminInboxRoute: adminAdminInboxRoute,
   adminAdminInventoryRoute: adminAdminInventoryRoute,
   adminAdminInvoicesRoute: adminAdminInvoicesRouteWithChildren,
+  adminAdminPropertyRoute: adminAdminPropertyRoute,
   adminAdminRestaurantsRoute: adminAdminRestaurantsRoute,
   adminAdminRoomPhotosRoute: adminAdminRoomPhotosRoute,
   adminAdminSettingsRoute: adminAdminSettingsRoute,

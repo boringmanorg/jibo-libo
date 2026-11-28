@@ -61,7 +61,7 @@ const FACTS: { icon: typeof Clock; text: string }[] = [
   { icon: PawPrint, text: 'Cats and birds welcome' },
 ];
 
-export default function StayEngine({ mode, pending = false, photos, closures, sheet, pricing, initialLocation, initialDates }: { mode: EngineMode; pricing?: SmartRule[]; /** Live counts not loaded yet: show placeholders, never rooms. */ pending?: boolean; photos?: Record<string, { src: string; alt: string }[]>; closures?: ClosureRow[]; sheet?: SheetAvailability; initialLocation?: BookLocation; initialDates?: { checkIn: IsoDate; checkOut: IsoDate } }) {
+export default function StayEngine({ hiddenRooms, mode, pending = false, photos, closures, sheet, pricing, initialLocation, initialDates }: { hiddenRooms?: string[]; mode: EngineMode; pricing?: SmartRule[]; /** Live counts not loaded yet: show placeholders, never rooms. */ pending?: boolean; photos?: Record<string, { src: string; alt: string }[]>; closures?: ClosureRow[]; sheet?: SheetAvailability; initialLocation?: BookLocation; initialDates?: { checkIn: IsoDate; checkOut: IsoDate } }) {
   const [location, setLocation] = useState<BookLocation | null>(initialLocation ?? (mode === 'preview' ? 'new-shillong' : null));
   const pickLocation = (l: BookLocation | null) => {
     setLocation(l);
@@ -119,7 +119,7 @@ export default function StayEngine({ mode, pending = false, photos, closures, sh
   const quoteInputs = useMemo(() => ({ closures, sheet, pricing }), [closures, sheet, pricing]);
   const roomQuote = useRoomQuote(result, cart, enquiry, quoteInputs);
   const setDates = (ci: IsoDate, co: IsoDate) => { setCheckIn(ci); setCheckOut(co > ci ? co : addDays(ci, 1)); };
-  const shown = result?.rooms.filter((r) => filter === 'all' || r.soldAs === filter) ?? [];
+  const shown = result?.rooms.filter((r) => !hiddenRooms?.includes(r.id) && (filter === 'all' || r.soldAs === filter)) ?? [];
   const toDetails = () => { setRulesOpen(false); setStep('details'); window.scrollTo({ top: 0 }); };
 
   return (

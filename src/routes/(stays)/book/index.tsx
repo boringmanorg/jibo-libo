@@ -1,3 +1,4 @@
+import PropertyOverview, { usePublicPropertyProfile } from "@/components/booking/PropertyOverview";
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import StayEngine from "@/components/booking/engine/StayEngine";
@@ -66,10 +67,12 @@ function BookPage() {
     return () => document.removeEventListener('visibilitychange', back);
   }, [router]);
   const { location, checkIn, checkOut } = Route.useSearch();
+  const profile = usePublicPropertyProfile("XTSY-SHL-HOSTEL");
   // Site header (logo, menu) and footer around the booking page; the page has its own bottom bar.
   return (
     <PageShell cta={false} bar={false}>
-      <StayEngine mode={live ? "live" : "enquiry"} pending={!!data.pending} photos={photos} closures={closures} sheet={sheet} pricing={data.pricing} initialLocation={location} initialDates={checkIn && checkOut ? { checkIn: checkIn as IsoDate, checkOut: checkOut as IsoDate } : undefined} />
+      <StayEngine hiddenRooms={profile.data?.hiddenRoomTypes} mode={live ? "live" : "enquiry"} pending={!!data.pending} photos={photos} closures={closures} sheet={sheet} pricing={data.pricing} initialLocation={location} initialDates={checkIn && checkOut ? { checkIn: checkIn as IsoDate, checkOut: checkOut as IsoDate } : undefined} />
+      <PropertyOverview propertyId="XTSY-SHL-HOSTEL" />
     </PageShell>
   );
 }

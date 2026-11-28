@@ -281,6 +281,13 @@
       "when": 1795860264737,
       "tag": "0039_smart_pricing_rules",
       "breakpoints": true
+    },
+    {
+      "idx": 40,
+      "version": "7",
+      "when": 1795862184521,
+      "tag": "0040_property_profiles",
+      "breakpoints": true
     }
   ]
 }

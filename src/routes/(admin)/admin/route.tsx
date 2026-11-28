@@ -1,6 +1,6 @@
 import { createFileRoute, Link, Navigate, Outlet, useRouterState, useNavigate } from '@tanstack/react-router';
 import { PageHead } from '@/admin/components/ConsoleBits';
-import { Ban, CalendarDays, CreditCard, ExternalLink, ImageIcon, Inbox, LogOut, Menu, PlugZap, ReceiptText, ScanLine, Sun, Wallet, X } from 'lucide-react';
+import { Ban, CalendarDays, CreditCard, ExternalLink, ImageIcon, Inbox, LogOut, Menu, PlugZap, Building2, ScanLine, Sun, Wallet, X } from 'lucide-react';
 import xtsyLogo from '@/assets/xtsy-color-logo.webp';
 import { useEffect, useState, type FormEvent } from 'react';
 import { Button } from '@/components/ui/button';
@@ -106,13 +106,13 @@ const NAV: { group: string; items: { to: string; label: string; icon: typeof Cal
     { to: '/admin/stays', label: 'Blocks', icon: Ban },
   ] },
   { group: 'Set up', items: [
+    { to: '/admin/property', label: 'Property setup', icon: Building2 },
     { to: '/admin/room-photos', label: 'Room photos', icon: ImageIcon },
     { to: '/admin/booking-engine', label: 'Online booking', icon: CreditCard },
     { to: '/admin/settings', label: 'Connections', icon: PlugZap },
   ] },
   { group: 'Money', items: [
     { to: '/admin/bookings', label: 'Paid bookings', icon: Wallet },
-    { to: '/admin/invoices', label: 'Invoices', icon: ReceiptText },
   ] },
 ];
 

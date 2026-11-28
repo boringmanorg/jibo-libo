@@ -1,3 +1,4 @@
+import PropertyOverview from "@/components/booking/PropertyOverview";
 import { createFileRoute } from "@tanstack/react-router";
 import CampsiteBookingFlow from "@/pages/CampsiteBookingFlow";
 import { buildRouteHead } from "@/lib/seo-head";
@@ -16,5 +17,10 @@ export const Route = createFileRoute("/(stays)/book/campsite")({
 });
 
 function CampsitePage() {
-  return <CampsiteBookingFlow />;
+  return (
+    <>
+      <CampsiteBookingFlow />
+      <div className="px-4"><PropertyOverview propertyId="XTSY-SHN-CAMP" /></div>
+    </>
+  );
 }

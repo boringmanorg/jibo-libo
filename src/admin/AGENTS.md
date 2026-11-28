@@ -3,3 +3,4 @@
 - Keep booking records property-tagged and enforce matching property RLS on their child rows and invoices; the hostel operator must not access another property's records, even through direct API calls.
 
 - Preserve existing console URLs and carry the selected property in validated search state; generate property-specific check-in QR URLs from the shared canonical-domain helper, and use shared catalogue/meal facts for console summaries so public content remains unchanged.
+- Property setup (`/admin/property`, `src/property/`) is the single store for property type, location, amenities, listing presence and hidden room types; Google Places is read once on an admin click via the gateway and copied into `be_property_profiles`, never written to and never fetched on guest page views. /book reads it through the public read-only server function; listing logos are never links.
