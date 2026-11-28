@@ -1,2 +1,3 @@
 # Check-in access
 - Enforce property-scoped document and record access through database RLS as the signed-in staff user, including storage policies; hiding console links alone cannot protect another property's identity files.
+- Desk room allocation (`src/checkin/allocation.ts`, `allocateCheckInRooms`) holds the chosen beds/rooms as one console block per check-in (units = labels picked, nights check-in → night before check-out); releasing deletes it. This reuses the single closure path /book, the console and ZimmerStack already read, so the console stays the main record and the Google Sheet the backup.

@@ -1,0 +1,1 @@
+- Smart pricing (`src/booking/smartPricing.ts`, `be_smart_pricing`) is owner-authorised automatic pricing: off per room type until the super admin switches it on, always clamped to the owner's lowest/highest, applied through `rateFor` in both the live engine and the enquiry-mode quote so displayed and charged amounts match.

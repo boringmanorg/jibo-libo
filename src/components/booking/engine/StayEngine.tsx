@@ -9,6 +9,9 @@
  * the static catalogue (no database, no availability counts), ending in a WhatsApp enquiry.
  */
 import type { SmartRule } from '@/booking/smartPricing';
+import { createContext, useContext } from 'react';
+/** Counts and smart-pricing rules for enquiry-mode quotes in the summary/checkout steps. */
+const QuoteInputs = createContext<{ closures?: ClosureRow[]; sheet?: SheetAvailability; pricing?: SmartRule[] }>({});
 import { useEffect, useMemo, useRef, useState, type FormEvent, type ReactNode } from 'react';
 import { CalendarDays, ChevronDown, ChevronLeft, ChevronRight, Minus, Plus, Users, X, MessageCircle, ArrowLeft, ShieldCheck, Trash2, Flame, Coffee, PawPrint, Clock } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
@@ -113,12 +116,14 @@ export default function StayEngine({ mode, pending = false, photos, closures, sh
 
   const lines = useMemo(() => Object.entries(cart).map(([id, v]) => ({ room: result?.rooms.find((r) => r.id === id), ...v })).filter((l) => l.room), [cart, result]);
   const remove = (id: string) => setCart((c) => { const n = { ...c }; delete n[id]; return n; });
-  const roomQuote = useRoomQuote(result, cart, enquiry);
+  const quoteInputs = useMemo(() => ({ closures, sheet, pricing }), [closures, sheet, pricing]);
+  const roomQuote = useRoomQuote(result, cart, enquiry, quoteInputs);
   const setDates = (ci: IsoDate, co: IsoDate) => { setCheckIn(ci); setCheckOut(co > ci ? co : addDays(ci, 1)); };
   const shown = result?.rooms.filter((r) => filter === 'all' || r.soldAs === filter) ?? [];
   const toDetails = () => { setRulesOpen(false); setStep('details'); window.scrollTo({ top: 0 }); };
 
   return (
+    <QuoteInputs.Provider value={quoteInputs}>
     <div className="xt min-h-screen pb-32 lg:pb-16">
       {mode === 'preview' && (
         <p className="mx-auto max-w-6xl px-4 pt-4 text-sm text-xt-mute" role="note">
@@ -192,6 +197,7 @@ export default function StayEngine({ mode, pending = false, photos, closures, sh
         )
       )}
     </div>
+    </QuoteInputs.Provider>
   );
 }
 
@@ -387,13 +393,13 @@ function RoomSkeletons() {
 }
 
 /** Quote for the room step (no breakfast, UPI): tax, grand total and the 25% payable now. */
-function useRoomQuote(result: SearchResult | null, cart: Cart, enquiry: boolean): QuoteData | null {
+function useRoomQuote(result: SearchResult | null, cart: Cart, enquiry: boolean, quoteInputs: { closures?: ClosureRow[]; sheet?: SheetAvailability; pricing?: SmartRule[] } = {}): QuoteData | null {
   const [q, setQ] = useState<QuoteData | null>(null);
   const key = JSON.stringify(cart);
   useEffect(() => {
     const rooms = Object.entries(cart).map(([roomTypeId, v]) => ({ roomTypeId, ...v }));
     if (!result || rooms.length === 0) { setQ(null); return; }
-    if (enquiry) { setQ(staticQuote({ checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfast: [], method: 'upi' }, { closures, sheet, pricing })); return; }
+    if (enquiry) { setQ(staticQuote({ checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfast: [], method: 'upi' }, quoteInputs)); return; }
     let stale = false;
     quoteFn({ data: { checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfast: [], method: 'upi' } })
       .then((r) => !stale && setQ(r.ok ? r.data : null))
@@ -510,6 +516,7 @@ const NATIONALITIES = ['India', 'Bangladesh', 'Bhutan', 'Nepal', 'Myanmar', 'Tha
 const inputCls = 'min-h-[48px] w-full rounded-2xl border border-xt-line bg-white px-4 text-base text-xt-ink outline-none focus:border-xt-ink focus-visible:ring-2 focus-visible:ring-xt-ink/20';
 
 function Details({ mode, result, cart, lines, onBack }: { mode: EngineMode; result: SearchResult; cart: Cart; lines: Line[]; onBack: () => void }) {
+  const quoteInputs = useContext(QuoteInputs);
   const totalGuests = lines.reduce((s, l) => s + l.guests, 0);
   const [picks, setPicks] = useState<Record<string, number>>({});
   const breakfast = picksToList(picks);
@@ -533,7 +540,7 @@ function Details({ mode, result, cart, lines, onBack }: { mode: EngineMode; resu
   const [sentRef, setSentRef] = useState('');
 
   useEffect(() => {
-    if (enquiry) { setQuote(staticQuote({ checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfast, method }, { closures, sheet, pricing })); return; }
+    if (enquiry) { setQuote(staticQuote({ checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfast, method }, quoteInputs)); return; }
     let stale = false;
     quoteFn({ data: { checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfast, method } })
       .then((r) => !stale && (r.ok ? setQuote(r.data) : setMsg(r.error)));

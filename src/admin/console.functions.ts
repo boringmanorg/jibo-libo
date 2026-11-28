@@ -373,3 +373,27 @@ export const releaseCheckInRooms = createServerFn({ method: 'POST' })
       ? await channelAfterClosure([{ propertyId: HOSTEL_ID, unitTypeId: row.allocated_room_type_id }], row.check_in_date, lastNight(row.check_out_date)) : null;
     return { ok: true, channel };
   });
+
+/** Smart pricing limits per hostel room type (super admin only). Off until switched on. */
+export const getSmartPricing = createServerFn({ method: 'GET' })
+  .middleware([requireSuperAdmin])
+  .handler(async ({ context }) => {
+    const ctx = context as Ctx;
+    const { data, error } = await ctx.supabase.from('be_smart_pricing').select('*');
+    if (error) throw new Error('Could not load smart pricing.');
+    return (data ?? []).map((r: any) => ({ roomTypeId: r.room_type_id as string, enabled: !!r.enabled, minRupees: Number(r.min_rupees), maxRupees: Number(r.max_rupees) }));
+  });
+
+export const saveSmartPricing = createServerFn({ method: 'POST' })
+  .middleware([requireSuperAdmin])
+  .inputValidator(z.object({ roomTypeId: z.string().max(60), enabled: z.boolean(), minRupees: z.number().int().min(1).max(100000), maxRupees: z.number().int().min(1).max(100000) }))
+  .handler(async ({ data, context }) => {
+    const ctx = context as Ctx;
+    const { BOOKING_ROOM_TYPES } = await import('@/booking/catalogue');
+    if (!BOOKING_ROOM_TYPES.some((r) => r.id === data.roomTypeId)) throw new Error('Unknown room type.');
+    if (data.maxRupees < data.minRupees) throw new Error('Highest price must be at least the lowest price.');
+    const { error } = await ctx.supabase.from('be_smart_pricing').upsert({ room_type_id: data.roomTypeId, enabled: data.enabled, min_rupees: data.minRupees, max_rupees: data.maxRupees, updated_at: new Date().toISOString() });
+    if (error) throw new Error('Could not save smart pricing.');
+    await audit(ctx, 'pricing.smart', data);
+    return { ok: true };
+  });

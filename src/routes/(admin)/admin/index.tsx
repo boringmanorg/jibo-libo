@@ -9,6 +9,7 @@ import { CONSOLE_PROPERTIES, CAMP_ID, enquiryProperty, propertyInventory, proper
 import { UPCOMING_PROPERTIES } from '@/data/brandFacts';
 import { getTodaySummary } from '@/admin/consoleHome.functions';
 import { listCheckInsFn } from '@/checkin/checkIn.functions';
+import { SmartPricingPanel } from '@/admin/components/SmartPricingPanel';
 import { PageHead, SheetChip, STATUS_LABEL, dayMonth, inrWhole } from '@/admin/components/ConsoleBits';
 
 export const Route = createFileRoute('/(admin)/admin/')({
@@ -85,6 +86,7 @@ function Today() {
             <p className="mt-2 text-xs text-xt-mute">Approved base prices. GST and applicable fees are separate; meals are optional.</p>
           </div>
         </div>
+        {!camp && scope === 'super' && <SmartPricingPanel today={data.today} free={Object.fromEntries(inventory.map((r) => [r.id, data.rows.find((row) => row.id === r.id)?.cells[0]?.free]))} />}
         <details className="border-t border-xt-line pt-3">
           <summary className="flex min-h-[48px] cursor-pointer items-center text-lg font-bold">{camp ? 'Meal plan options' : 'Breakfast selections'} · {propertyMeals(p.id).length}</summary>
           <ul className="grid gap-x-6 sm:grid-cols-2">{propertyMeals(p.id).map((m) => <li key={m.id} className="flex items-start justify-between gap-3 border-b border-xt-line py-3 text-sm"><span className="font-semibold">{m.name}</span><span className="shrink-0 text-right">{inrWhole(m.price)}<span className="block text-xs text-xt-mute">{m.unit}</span></span></li>)}</ul>
