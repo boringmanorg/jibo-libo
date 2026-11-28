@@ -1,6 +1,6 @@
 import { createFileRoute, Link, Navigate, Outlet, useRouterState, useNavigate } from '@tanstack/react-router';
 import { PageHead } from '@/admin/components/ConsoleBits';
-import { Activity, CalendarDays, CreditCard, ExternalLink, Inbox, LogOut, Menu, PanelLeftClose, PanelLeftOpen, PlugZap, ScanLine, Sparkles, Sun, Users, X } from 'lucide-react';
+import { Activity, BookUser, CalendarDays, CreditCard, ExternalLink, Inbox, LogOut, Menu, PanelLeftClose, PanelLeftOpen, PlugZap, ScanLine, Sparkles, Sun, Users, X } from 'lucide-react';
 import xtsyLogo from '@/assets/xtsy-color-logo.webp';
 import { useEffect, useState, type FormEvent } from 'react';
 import { Button } from '@/components/ui/button';
@@ -109,6 +109,7 @@ const NAV: { group: string; items: { to: string; label: string; icon: typeof Cal
     { to: '/admin', label: 'Today', icon: Sun, exact: true },
     { to: '/admin/inventory', label: 'Inventory', icon: CalendarDays },
     { to: '/admin/inbox', label: 'Sales', icon: Inbox },
+    { to: '/admin/guest-folio', label: 'Guest Folio', icon: BookUser },
     { to: '/admin/check-in', label: 'Self check-in', icon: ScanLine },
     { to: '/admin/pricing', label: 'Smart pricing', icon: Sparkles, superOnly: true },
   ] },
@@ -135,7 +136,7 @@ function Shell({ email, access, deskProperty, onSignOut }: { email: string; acce
   const [collapsed, setCollapsed] = useState(false);
   const path = useRouterState({ select: (st) => st.location.pathname.replace(/\/$/, '') });
   const selected = Route.useSearch().property;
-  const allView = ['/admin', '/admin/check-in', '/admin/inbox'].includes(path);
+  const allView = ['/admin', '/admin/check-in', '/admin/inbox', '/admin/guest-folio', '/admin/live'].includes(path);
   type Pid = 'XTSY-SHL-HOSTEL' | 'XTSY-SHN-CAMP';
   const lock: Pid | undefined = access === 'desk' ? (deskProperty === CAMP_ID ? CAMP_ID : 'XTSY-SHL-HOSTEL') : access === 'property' ? 'XTSY-SHL-HOSTEL' : undefined;
   const property = lock ?? selected ?? (allView ? undefined : 'XTSY-SHL-HOSTEL');
@@ -155,7 +156,7 @@ function Shell({ email, access, deskProperty, onSignOut }: { email: string; acce
           <ul className="space-y-1">
             {g.items.map(({ to, label, icon: Icon, exact }) => (
               <li key={to}>
-                <Link to={to} search={{ property: property ?? (['/admin', '/admin/check-in', '/admin/inbox'].includes(to) ? undefined : 'XTSY-SHL-HOSTEL') }} activeOptions={{ exact: !!exact }} onClick={() => setOpen(false)}
+                <Link to={to} search={{ property: property ?? (['/admin', '/admin/check-in', '/admin/inbox', '/admin/guest-folio', '/admin/live'].includes(to) ? undefined : 'XTSY-SHL-HOSTEL') }} activeOptions={{ exact: !!exact }} onClick={() => setOpen(false)}
                   aria-label={compact ? label : undefined} title={compact ? label : undefined}
                   className={`flex min-h-12 items-center rounded-xl text-[15px] font-semibold text-xt-mute transition-colors hover:bg-xt-cream hover:text-xt-ink [&.active]:bg-xt-ink [&.active]:text-xt-sand ${compact ? 'justify-center px-0' : 'gap-3 px-3'}`}>
                   <Icon className="h-[18px] w-[18px] shrink-0" aria-hidden />{!compact && label}
@@ -201,15 +202,22 @@ function Shell({ email, access, deskProperty, onSignOut }: { email: string; acce
       )}
       <main className="min-w-0 px-4 py-6 sm:px-6 lg:px-10 lg:py-10">
         <div className="mx-auto max-w-6xl">
-          <div className="mb-6 border-b border-xt-line pb-4 print:hidden">
-            <Label htmlFor="console-property">Property</Label>
-            <select id="console-property" aria-label="Console property" className="mt-2 min-h-[48px] w-full max-w-lg rounded-md border border-input bg-background px-3 text-base" value={property ?? ''} disabled={access !== 'admin'} onChange={(e) => {
-              const value = e.target.value;
-              void navigate({ to: path, search: (prev) => ({ ...prev, property: value === CAMP_ID ? CAMP_ID : value === 'XTSY-SHL-HOSTEL' ? 'XTSY-SHL-HOSTEL' : undefined }) });
-            }}>
-              {access === 'admin' && allView && <option value="">All properties</option>}
-              {CONSOLE_PROPERTIES.filter((p) => access === 'admin' || p.id === lock).map((p) => <option key={p.id} value={p.id}>{p.name}</option>)}
-            </select>
+          <div className="mb-8 flex flex-wrap items-center justify-between gap-3 rounded-3xl border border-xt-line bg-white/80 p-2 pl-4 shadow-sm print:hidden">
+            <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-xt-mute">
+              <span className={`h-2 w-2 rounded-full ${access === 'admin' ? 'bg-xt-crimson' : 'bg-xt-leaf'}`} aria-hidden />
+              {access === 'admin' ? 'Super admin' : access === 'property' ? 'Property admin' : 'Front desk'}
+            </span>
+            <div role="group" aria-label="Console property" className="flex flex-wrap gap-1">
+              {[...(access === 'admin' && allView ? [{ id: '', name: 'All properties' }] : []), ...CONSOLE_PROPERTIES.filter((p) => access === 'admin' || p.id === lock)].map((p) => {
+                const on = (property ?? '') === p.id;
+                return (
+                  <button key={p.id || 'all'} type="button" aria-pressed={on} disabled={access !== 'admin'} onClick={() => void navigate({ to: path, search: (prev) => ({ ...prev, property: p.id === CAMP_ID ? CAMP_ID : p.id === 'XTSY-SHL-HOSTEL' ? 'XTSY-SHL-HOSTEL' : undefined }) })}
+                    className={`min-h-11 rounded-full px-4 text-sm font-semibold transition-colors ${on ? 'bg-xt-ink text-xt-sand' : 'text-xt-mute hover:bg-xt-cream hover:text-xt-ink'} disabled:cursor-default`}>
+                    {p.name}
+                  </button>
+                );
+              })}
+            </div>
           </div>
           {oldTitle && <PageHead title={oldTitle[0]} sub={oldTitle[1]} />}
           <ConsoleAccessContext.Provider value={access}><ConsolePropertyLock.Provider value={lock}><ConsoleScopeContext.Provider value={access === 'admin' ? 'super' : 'hostel'}>{campUnsupported ? <div className="space-y-4"><h2 className="text-xl font-bold">Shnonpedeng Riverside Camping by XTSY</h2><p className="text-muted-foreground">WhatsApp enquiry-only. No live inventory, online payment or hostel connections apply to this property.</p><Link to="/admin" search={{ property: CAMP_ID }} className="inline-flex min-h-[48px] items-center underline">View property overview</Link></div> : <Outlet key={property ?? 'all'} />}</ConsoleScopeContext.Provider></ConsolePropertyLock.Provider></ConsoleAccessContext.Provider>

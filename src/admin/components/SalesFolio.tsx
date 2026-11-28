@@ -44,7 +44,10 @@ export function SalesFolio({ e }: { e: { id: string; summary: string; estimate_r
               <span className="flex items-center gap-2 font-semibold">{inr(p.amount)}{!invoiced && <button type="button" aria-label="Remove payment" disabled={delM.isPending} onClick={() => delM.mutate(p.id)} className="flex h-11 w-11 items-center justify-center rounded-full hover:bg-white"><Trash2 className="h-4 w-4" /></button>}</span>
             </li>))}</ul>
         )}
-        {!invoiced && <div className="mt-2 grid gap-2 sm:grid-cols-[7rem_8rem_10rem_minmax(0,1fr)_auto]">
+        {invoiced && (() => { const paid = q.data.payments.reduce((a, p) => a + p.amount, 0); const due = Math.round((invoiced.total - paid) * 100) / 100; return due > 0 ? (
+          <p className="mt-2 flex flex-wrap items-center gap-2 text-sm"><span className="font-semibold text-xt-crimson">Balance due {inr(due)}</span><button type="button" onClick={() => setPay({ ...pay, amount: String(due) })} className="min-h-11 rounded-full border border-xt-line bg-white px-3 text-sm font-semibold">Fill balance</button></p>
+        ) : <p className="mt-2 text-sm font-semibold text-xt-pine">Fully paid</p>; })()}
+        {(!invoiced || q.data.payments.reduce((a, p) => a + p.amount, 0) < invoiced.total) && <div className="mt-2 grid gap-2 sm:grid-cols-[7rem_8rem_10rem_minmax(0,1fr)_auto]">
           <input className={input} type="number" min={1} inputMode="decimal" placeholder="₹ amount" aria-label="Amount paid" value={pay.amount} onChange={(ev) => setPay({ ...pay, amount: ev.target.value })} />
           <select className={input} aria-label="Payment method" value={pay.method} onChange={(ev) => setPay({ ...pay, method: ev.target.value as SalesMethod })}>{SALES_METHODS.map((m) => <option key={m.id} value={m.id}>{m.label}</option>)}</select>
           <input className={input} type="date" max={todayIso()} aria-label="Paid on" value={pay.paidOn} onChange={(ev) => setPay({ ...pay, paidOn: ev.target.value })} />

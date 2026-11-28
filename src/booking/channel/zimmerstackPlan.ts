@@ -45,6 +45,7 @@ export interface ChannelPropertySpec {
 /** Whole paise → "1400.00": exact, no floating-point arithmetic. */
 export const paiseToRupeeString = (paise: number) => `${Math.trunc(paise / 100)}.${String(Math.abs(paise % 100)).padStart(2, '0')}`;
 const planRef = (ref: string) => `${ref}--room-only`;
+export const CAMP_BED_ID = 'shnonpedeng-bed';
 
 export function channelProperty(id: ChannelPropertyId): ChannelPropertySpec {
   if (id === HOSTEL_ID) {
@@ -66,6 +67,10 @@ export function channelProperty(id: ChannelPropertyId): ChannelPropertySpec {
     roomTypes: [{
       ref: CAMP_UNIT_ID, name: 'Riverside tent for two (camping and bonfire)', roomCount: CAMP_TENTS, adults: CAMP_PLANS.tent.guestsPer,
       planRef: planRef(CAMP_UNIT_ID), planName: 'Camping only', rate: paiseToRupeeString(CAMP_PLANS.tent.price * 100),
+    }, {
+      // Solo bed spaces share the same tents (two per tent): send counts as free tents × 2 so the two never oversell together.
+      ref: CAMP_BED_ID, name: 'One bed space in a shared riverside tent', roomCount: CAMP_TENTS * 2, adults: CAMP_PLANS.bed.guestsPer,
+      planRef: planRef(CAMP_BED_ID), planName: 'Camping only', rate: paiseToRupeeString(CAMP_PLANS.bed.price * 100),
     }],
   };
 }

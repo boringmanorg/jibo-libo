@@ -98,6 +98,8 @@ import { Route as toursToursShillongTourPackageRouteImport } from './routes/(tou
 import { Route as toursToursTravelRouteImport } from './routes/(tours)/tours/travel'
 import { Route as toursToursXtsyRentalsRouteImport } from './routes/(tours)/tours/xtsy-rentals'
 import { Route as ApiPublicPmsFeedRouteImport } from './routes/api/public/pms-feed'
+import { Route as adminAdminGuestFolioIndexRouteImport } from './routes/(admin)/admin/guest-folio.index'
+import { Route as adminAdminGuestFolioKeyRouteImport } from './routes/(admin)/admin/guest-folio.$key'
 import { Route as adminAdminInvoicesIdRouteImport } from './routes/(admin)/admin/invoices.$id'
 import { Route as adminAdminSalesInvoicesIdRouteImport } from './routes/(admin)/admin/sales-invoices.$id'
 import { Route as guidesDestinationsStateIndexRouteImport } from './routes/(guides)/destinations/$state/index'
@@ -598,6 +600,17 @@ const ApiPublicPmsFeedRoute = ApiPublicPmsFeedRouteImport.update({
   path: '/api/public/pms-feed',
   getParentRoute: () => rootRouteImport,
 } as any)
+const adminAdminGuestFolioIndexRoute =
+  adminAdminGuestFolioIndexRouteImport.update({
+    id: '/guest-folio/',
+    path: '/guest-folio/',
+    getParentRoute: () => adminAdminRouteRoute,
+  } as any)
+const adminAdminGuestFolioKeyRoute = adminAdminGuestFolioKeyRouteImport.update({
+  id: '/guest-folio/$key',
+  path: '/guest-folio/$key',
+  getParentRoute: () => adminAdminRouteRoute,
+} as any)
 const adminAdminInvoicesIdRoute = adminAdminInvoicesIdRouteImport.update({
   id: '/$id',
   path: '/$id',
@@ -764,6 +777,7 @@ export interface FileRoutesByFullPath {
   '/book/': typeof staysBookIndexRoute
   '/expeditions/': typeof toursExpeditionsIndexRoute
   '/tours/': typeof toursToursIndexRoute
+  '/admin/guest-folio/$key': typeof adminAdminGuestFolioKeyRoute
   '/admin/invoices/$id': typeof adminAdminInvoicesIdRoute
   '/admin/sales-invoices/$id': typeof adminAdminSalesInvoicesIdRoute
   '/expeditions/$type/$route': typeof toursExpeditionsTypeRouteRoute
@@ -774,6 +788,7 @@ export interface FileRoutesByFullPath {
   '/api/public/hooks/zimmerstack': typeof ApiPublicHooksZimmerstackRoute
   '/api/public/hooks/zoho-oauth': typeof ApiPublicHooksZohoOauthRoute
   '/api/public/hooks/zoho-payments': typeof ApiPublicHooksZohoPaymentsRoute
+  '/admin/guest-folio/': typeof adminAdminGuestFolioIndexRoute
   '/destinations/$state/': typeof guidesDestinationsStateIndexRoute
   '/destinations/$state/$city/$attraction': typeof guidesDestinationsStateCityAttractionRoute
   '/destinations/$state/$city/': typeof guidesDestinationsStateCityIndexRoute
@@ -867,6 +882,7 @@ export interface FileRoutesByTo {
   '/book': typeof staysBookIndexRoute
   '/expeditions': typeof toursExpeditionsIndexRoute
   '/tours': typeof toursToursIndexRoute
+  '/admin/guest-folio/$key': typeof adminAdminGuestFolioKeyRoute
   '/admin/invoices/$id': typeof adminAdminInvoicesIdRoute
   '/admin/sales-invoices/$id': typeof adminAdminSalesInvoicesIdRoute
   '/expeditions/$type/$route': typeof toursExpeditionsTypeRouteRoute
@@ -877,6 +893,7 @@ export interface FileRoutesByTo {
   '/api/public/hooks/zimmerstack': typeof ApiPublicHooksZimmerstackRoute
   '/api/public/hooks/zoho-oauth': typeof ApiPublicHooksZohoOauthRoute
   '/api/public/hooks/zoho-payments': typeof ApiPublicHooksZohoPaymentsRoute
+  '/admin/guest-folio': typeof adminAdminGuestFolioIndexRoute
   '/destinations/$state': typeof guidesDestinationsStateIndexRoute
   '/destinations/$state/$city/$attraction': typeof guidesDestinationsStateCityAttractionRoute
   '/destinations/$state/$city': typeof guidesDestinationsStateCityIndexRoute
@@ -972,6 +989,7 @@ export interface FileRoutesById {
   '/(stays)/book/': typeof staysBookIndexRoute
   '/(tours)/expeditions/': typeof toursExpeditionsIndexRoute
   '/(tours)/tours/': typeof toursToursIndexRoute
+  '/(admin)/admin/guest-folio/$key': typeof adminAdminGuestFolioKeyRoute
   '/(admin)/admin/invoices/$id': typeof adminAdminInvoicesIdRoute
   '/(admin)/admin/sales-invoices/$id': typeof adminAdminSalesInvoicesIdRoute
   '/(tours)/expeditions/$type/$route': typeof toursExpeditionsTypeRouteRoute
@@ -982,6 +1000,7 @@ export interface FileRoutesById {
   '/api/public/hooks/zimmerstack': typeof ApiPublicHooksZimmerstackRoute
   '/api/public/hooks/zoho-oauth': typeof ApiPublicHooksZohoOauthRoute
   '/api/public/hooks/zoho-payments': typeof ApiPublicHooksZohoPaymentsRoute
+  '/(admin)/admin/guest-folio/': typeof adminAdminGuestFolioIndexRoute
   '/(guides)/destinations/$state/': typeof guidesDestinationsStateIndexRoute
   '/(guides)/destinations/$state/$city/$attraction': typeof guidesDestinationsStateCityAttractionRoute
   '/(guides)/destinations/$state/$city/': typeof guidesDestinationsStateCityIndexRoute
@@ -1078,6 +1097,7 @@ export interface FileRouteTypes {
     | '/book/'
     | '/expeditions/'
     | '/tours/'
+    | '/admin/guest-folio/$key'
     | '/admin/invoices/$id'
     | '/admin/sales-invoices/$id'
     | '/expeditions/$type/$route'
@@ -1088,6 +1108,7 @@ export interface FileRouteTypes {
     | '/api/public/hooks/zimmerstack'
     | '/api/public/hooks/zoho-oauth'
     | '/api/public/hooks/zoho-payments'
+    | '/admin/guest-folio/'
     | '/destinations/$state/'
     | '/destinations/$state/$city/$attraction'
     | '/destinations/$state/$city/'
@@ -1181,6 +1202,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/expeditions'
     | '/tours'
+    | '/admin/guest-folio/$key'
     | '/admin/invoices/$id'
     | '/admin/sales-invoices/$id'
     | '/expeditions/$type/$route'
@@ -1191,6 +1213,7 @@ export interface FileRouteTypes {
     | '/api/public/hooks/zimmerstack'
     | '/api/public/hooks/zoho-oauth'
     | '/api/public/hooks/zoho-payments'
+    | '/admin/guest-folio'
     | '/destinations/$state'
     | '/destinations/$state/$city/$attraction'
     | '/destinations/$state/$city'
@@ -1285,6 +1308,7 @@ export interface FileRouteTypes {
     | '/(stays)/book/'
     | '/(tours)/expeditions/'
     | '/(tours)/tours/'
+    | '/(admin)/admin/guest-folio/$key'
     | '/(admin)/admin/invoices/$id'
     | '/(admin)/admin/sales-invoices/$id'
     | '/(tours)/expeditions/$type/$route'
@@ -1295,6 +1319,7 @@ export interface FileRouteTypes {
     | '/api/public/hooks/zimmerstack'
     | '/api/public/hooks/zoho-oauth'
     | '/api/public/hooks/zoho-payments'
+    | '/(admin)/admin/guest-folio/'
     | '/(guides)/destinations/$state/'
     | '/(guides)/destinations/$state/$city/$attraction'
     | '/(guides)/destinations/$state/$city/'
@@ -2013,6 +2038,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicPmsFeedRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/(admin)/admin/guest-folio/': {
+      id: '/(admin)/admin/guest-folio/'
+      path: '/guest-folio'
+      fullPath: '/admin/guest-folio/'
+      preLoaderRoute: typeof adminAdminGuestFolioIndexRouteImport
+      parentRoute: typeof adminAdminRouteRoute
+    }
+    '/(admin)/admin/guest-folio/$key': {
+      id: '/(admin)/admin/guest-folio/$key'
+      path: '/guest-folio/$key'
+      fullPath: '/admin/guest-folio/$key'
+      preLoaderRoute: typeof adminAdminGuestFolioKeyRouteImport
+      parentRoute: typeof adminAdminRouteRoute
+    }
     '/(admin)/admin/invoices/$id': {
       id: '/(admin)/admin/invoices/$id'
       path: '/$id'
@@ -2134,7 +2173,9 @@ interface adminAdminRouteRouteChildren {
   adminAdminStaysRoute: typeof adminAdminStaysRoute
   adminAdminTeamRoute: typeof adminAdminTeamRoute
   adminAdminIndexRoute: typeof adminAdminIndexRoute
+  adminAdminGuestFolioKeyRoute: typeof adminAdminGuestFolioKeyRoute
   adminAdminSalesInvoicesIdRoute: typeof adminAdminSalesInvoicesIdRoute
+  adminAdminGuestFolioIndexRoute: typeof adminAdminGuestFolioIndexRoute
 }
 
 const adminAdminRouteRouteChildren: adminAdminRouteRouteChildren = {
@@ -2153,7 +2194,9 @@ const adminAdminRouteRouteChildren: adminAdminRouteRouteChildren = {
   adminAdminStaysRoute: adminAdminStaysRoute,
   adminAdminTeamRoute: adminAdminTeamRoute,
   adminAdminIndexRoute: adminAdminIndexRoute,
+  adminAdminGuestFolioKeyRoute: adminAdminGuestFolioKeyRoute,
   adminAdminSalesInvoicesIdRoute: adminAdminSalesInvoicesIdRoute,
+  adminAdminGuestFolioIndexRoute: adminAdminGuestFolioIndexRoute,
 }
 
 const adminAdminRouteRouteWithChildren = adminAdminRouteRoute._addFileChildren(

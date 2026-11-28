@@ -83,7 +83,7 @@ describe('what each property sells on ZimmerStack', () => {
     expect(hostel.roomTypes).toHaveLength(7);
     expect(hostel.roomTypes.find((r) => r.ref === 'bed-in-6-bed-mixed-dormitory')).toMatchObject({ roomCount: 18, adults: 1, rate: '500.00', planRef: 'bed-in-6-bed-mixed-dormitory--room-only' });
     expect(hostel.roomTypes.find((r) => r.ref === 'experience-by-xtsy')).toMatchObject({ roomCount: 1, adults: 2, rate: '4999.00' });
-    expect(channelProperty(CAMP_ID).roomTypes).toEqual([expect.objectContaining({ ref: 'shnonpedeng-tent', roomCount: 10, rate: '1400.00' })]);
+    expect(channelProperty(CAMP_ID).roomTypes).toEqual([expect.objectContaining({ ref: 'shnonpedeng-tent', roomCount: 10, rate: '1400.00' }), expect.objectContaining({ ref: 'shnonpedeng-bed', roomCount: 20, adults: 1, rate: '700.00' })]);
     expect(paiseToRupeeString(12345)).toBe('123.45');
   });
 });

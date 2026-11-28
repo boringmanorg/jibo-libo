@@ -7403,6 +7403,21 @@ export type Database = {
       }
       be_is_checkin_staff: { Args: never; Returns: boolean }
       be_is_console_admin: { Args: never; Returns: boolean }
+      be_live_funnel: {
+        Args: { p_active_min?: number; p_drop_min?: number; p_since: string }
+        Returns: {
+          chose_rooms: number
+          contacted: number
+          details_now: number
+          dropped: number
+          property_id: string
+          reached_details: number
+          refs: string[]
+          rooms_now: number
+          viewing_now: number
+          visits: number
+        }[]
+      }
       be_my_console_access: {
         Args: never
         Returns: {

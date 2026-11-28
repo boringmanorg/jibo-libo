@@ -41,4 +41,11 @@ export function invoiceBlocker(i: { status: string; kind: string; payments: numb
   return null;
 }
 
+/** Why a payment can't be recorded, or null. Once invoiced, a payment may not exceed the balance still due. */
+export function paymentProblem(amount: number, invoiceTotal: number | null, paidSoFar: number): string | null {
+  if (!(amount > 0)) return 'Enter an amount above zero.';
+  if (invoiceTotal !== null && r2(paidSoFar + amount) > invoiceTotal) return `Only ₹${r2(invoiceTotal - paidSoFar).toLocaleString('en-IN')} is still due on this invoice.`;
+  return null;
+}
+
 export const propertyForKind = (kind: string) => (kind === 'camp' ? 'XTSY-SHN-CAMP' : 'XTSY-SHL-HOSTEL');

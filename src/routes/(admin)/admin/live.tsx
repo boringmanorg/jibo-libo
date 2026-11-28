@@ -3,9 +3,11 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useServerFn } from '@tanstack/react-start';
 import { useCallback, useState } from 'react';
 import { Activity, Eye, BedDouble, ClipboardList, MessageCircle, LogOut } from 'lucide-react';
-import { getLiveInsights } from '@/admin/live.functions';
+import { getLiveInsights, purgeOldLiveEvents } from '@/admin/live.functions';
+import { toast } from 'sonner';
+import { useConsoleScope } from '@/admin/consoleScope';
 import { useLiveDoorbell } from '@/admin/useLiveDoorbell';
-import { ACTIVE_MINUTES, DROP_MINUTES } from '@/admin/liveInsights';
+import { ACTIVE_MINUTES, DROP_MINUTES, RETAIN_DAYS } from '@/admin/liveInsights';
 import { PageHead, Panel } from '@/admin/components/ConsoleBits';
 import { useConsoleProperty } from '@/admin/consoleScope';
 import { buildRouteHead } from '@/lib/seo-head';
@@ -37,6 +39,12 @@ function LiveInsights() {
   const q = useQuery({ queryKey: key, queryFn: () => get({ data: { since } }) });
   const refresh = useCallback(() => void qc.invalidateQueries({ queryKey: ['console', 'live'] }), [qc]);
   useLiveDoorbell(refresh);
+  const purge = useServerFn(purgeOldLiveEvents);
+  const isSuper = useConsoleScope() === 'super';
+  const clean = async () => {
+    if (!window.confirm(`Delete visit steps older than ${RETAIN_DAYS} days? Enquiries are not touched.`)) return;
+    try { const r = await purge(); toast.success(`${r.deleted} old entries deleted`); refresh(); } catch (e) { toast.error((e as Error).message); }
+  };
   const list = (q.data?.properties ?? []).filter((p) => !selected || p.propertyId === selected);
 
   return (
@@ -49,7 +57,6 @@ function LiveInsights() {
       </div>
       {q.isLoading && <p className="text-xt-mute">Loading…</p>}
       {q.error && <p className="text-destructive">{(q.error as Error).message}</p>}
-      {q.data?.truncated && <p className="text-sm text-amber-800">Showing the most recent 10,000 steps for this period.</p>}
       {list.map((p) => (
         <Panel key={p.propertyId}>
           <h2 className="flex items-center gap-2 text-lg font-extrabold text-xt-ink"><Activity className="h-5 w-5 text-xt-leaf" aria-hidden />{p.name}</h2>
@@ -83,6 +90,7 @@ function LiveInsights() {
         </Panel>
       ))}
       <p className="text-xs text-xt-mute">Visits are anonymous: no cookies or names are stored until a guest sends an enquiry. Online payments are off; past paid bookings stay at <Link to="/admin/bookings" className="underline">Paid bookings</Link>.</p>
+      {isSuper && <button type="button" onClick={clean} className="min-h-11 rounded-full border border-xt-line bg-white px-4 text-sm font-semibold text-xt-ink hover:border-xt-ink">Clean up entries older than {RETAIN_DAYS} days</button>}
     </div>
   );
 }
