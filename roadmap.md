@@ -1,5 +1,9 @@
 # Roadmap — Master SEO prompt (xtsy.one)
 
+## Selected privacy findings — 28 November 2026
+- [x] Remove checkout's phone-based unpaid-booking disclosure while preserving bot and capacity checks; 26 checkout and hostel-access checks pass.
+- [x] Restrict role lookup to the caller's own account or backend; applied database assertions verify anonymous denial, own-account access, other-account denial and backend access. Only the two selected findings updated. Payments remain off, not published; signed-in console browser check unavailable for the requesting account.
+
 ## Property-wise console and QR — 28 November 2026
 - [x] Separate canonical www.xtsy.one check-in QR codes and property-specific forms; retain international-traveller selection and private receipt isolation.
 - [x] Route console selection by property and expand Today with inventory, prices, meal options, arrivals and saved enquiry selections; campsite counts are configured capacity, never live availability.

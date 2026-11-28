@@ -396,9 +396,8 @@ export async function startCheckout(d: EngineDeps, input: CheckoutInput, origin:
   const db = d.db;
   const phone = normalisePhone(input.guest.phone);
 
-  // One unpaid booking at a time per phone number.
-  const open = await db.from('be_bookings').select('id').eq('guest_phone', phone).eq('status', 'held').gt('created_at', new Date(d.now.getTime() - state.settings.holdMinutes * 60_000).toISOString());
-  if ((open.data ?? []).length) throw new EngineError('You already have a booking waiting for payment. Finish it or wait a few minutes.');
+  // A supplied phone is contact information, not proof of booking ownership.
+  // Do not look up another booking by it; bot checks, unit caps and live holds still apply.
 
   for (const r of input.rooms) {
     if ((await freeForStay(d, r.roomTypeId, checkIn, checkOut)) < r.units) {

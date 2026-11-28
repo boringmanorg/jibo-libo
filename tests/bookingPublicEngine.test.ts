@@ -194,13 +194,23 @@ describe('checkout', () => {
     expect(db.t.be_payments[0]).toMatchObject({ kind: 'advance', session_id: 'ps_1', amount_paise: 126000 });
   });
 
-  it('refuses when the stay is no longer free, and when the same phone already has one waiting', async () => {
+  it('allows another checkout for the same contact without revealing unpaid bookings, while retaining capacity checks', async () => {
     const db = fakeDb(liveSeed());
     const d = deps({ db, gateway: fakeGateway({ status: 'pending' }), channel: connectedChannel() });
-    await startCheckout(d, input(), 'https://xtsy.one');
-    await expect(startCheckout(d, input(), 'https://xtsy.one')).rejects.toThrow(/already have a booking waiting/);
-    await startCheckout(d, input({ guest: { name: 'Second', phone: '+91 90000 00002', email: 's@example.com', gender: 'male', nationality: 'India' } }), 'https://xtsy.one');
+    const first = await startCheckout(d, input(), 'https://xtsy.one');
+    const second = await startCheckout(d, input(), 'https://xtsy.one');
+    expect(second.reference).not.toBe(first.reference);
+    expect(db.t.be_bookings).toHaveLength(2);
     await expect(startCheckout(d, input({ guest: { name: 'Third', phone: '+91 90000 00003', email: 't@example.com', gender: 'male', nationality: 'India' } }), 'https://xtsy.one')).rejects.toThrow(/no longer has 1 free/);
+  });
+
+  it('does not change checkout success based on an unrelated held booking for the supplied phone', async () => {
+    for (const existing of [[], [{ id: 'private', guest_phone: '+919876543210', status: 'held', created_at: NOW.toISOString() }]]) {
+      const db = fakeDb({ ...liveSeed(), be_bookings: existing });
+      const result = await startCheckout(deps({ db, gateway: fakeGateway(), channel: connectedChannel() }), input(), 'https://xtsy.one');
+      expect(result.redirectUrl).toBe('https://payments.zoho.in/hostedpages/x1');
+      expect(db.t.be_holds).toHaveLength(1);
+    }
   });
 });
 
