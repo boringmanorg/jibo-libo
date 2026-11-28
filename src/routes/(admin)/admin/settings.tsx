@@ -8,8 +8,12 @@ import { Switch } from '@/components/ui/switch';
 import { getConsoleOverview, setIntegrationFlags, testConnection } from '@/admin/console.functions';
 import { PageHead, Panel, SheetChip } from '@/admin/components/ConsoleBits';
 import { ChannelManagerPanel } from '@/admin/components/ChannelManagerPanel';
+import { buildRouteHead } from '@/lib/seo-head';
 
-export const Route = createFileRoute('/(admin)/admin/settings')({ component: Connections });
+export const Route = createFileRoute('/(admin)/admin/settings')({
+  head: () => buildRouteHead({ path: '/admin/settings', title: 'Hostel Connections — XTSY Console', description: 'Private XTSY hostel sheet, PMS and channel-manager connections.', noIndex: true }),
+  component: Connections,
+});
 
 function Row({ icon, title, status, children }: { icon: ReactNode; title: string; status: ReactNode; children: ReactNode }) {
   return (

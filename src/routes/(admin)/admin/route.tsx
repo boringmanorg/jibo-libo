@@ -189,7 +189,7 @@ function Shell({ email, access, onSignOut }: { email: string; access: 'admin' | 
             <Label htmlFor="console-property">Property</Label>
             <select id="console-property" aria-label="Console property" className="mt-2 min-h-[48px] w-full max-w-lg rounded-md border border-input bg-background px-3 text-base" value={property ?? ''} disabled={access === 'frontdesk'} onChange={(e) => {
               const value = e.target.value;
-              void navigate({ search: (prev) => ({ ...prev, property: value === CAMP_ID ? CAMP_ID : value === 'XTSY-SHL-HOSTEL' ? 'XTSY-SHL-HOSTEL' : undefined }) });
+              void navigate({ to: path, search: (prev) => ({ ...prev, property: value === CAMP_ID ? CAMP_ID : value === 'XTSY-SHL-HOSTEL' ? 'XTSY-SHL-HOSTEL' : undefined }) });
             }}>
               {access === 'admin' && allView && <option value="">All properties</option>}
               {CONSOLE_PROPERTIES.filter((p) => access === 'admin' || p.id === 'XTSY-SHL-HOSTEL').map((p) => <option key={p.id} value={p.id}>{p.name}</option>)}

@@ -67,10 +67,11 @@ export const getTodaySummary = createServerFn({ method: 'GET' })
     const ctx = context as Ctx;
     const today = todayInIndia(new Date());
     const end = addDays(today, 14);
-    const [{ sheet, syncedAt }, closures, enq, newCount, log] = await Promise.all([
+    const [{ sheet, syncedAt }, closures, enq, campEnq, newCount, log] = await Promise.all([
       loadSheet(ctx, today, end),
       loadClosures(ctx, today, end),
-      ctx.supabase.from('be_enquiries').select('id,reference,kind,guest_name,check_in,check_out,guests,estimate_rupees,summary,status,created_at').order('created_at', { ascending: false }).limit(6),
+      ctx.supabase.from('be_enquiries').select('id,reference,kind,guest_name,check_in,check_out,guests,estimate_rupees,summary,status,created_at').eq('kind', 'stay').order('created_at', { ascending: false }).limit(6),
+      ctx.isSuperAdmin ? ctx.supabase.from('be_enquiries').select('id,reference,kind,guest_name,check_in,check_out,guests,estimate_rupees,summary,status,created_at').eq('kind', 'camp').order('created_at', { ascending: false }).limit(6) : Promise.resolve({ data: [], error: null }),
       ctx.supabase.from('be_enquiries').select('id', { count: 'exact', head: true }).eq('status', 'new'),
       ctx.supabase.from('console_audit_log').select('id,action,details,created_at').order('created_at', { ascending: false }).limit(12),
     ]);
@@ -82,9 +83,9 @@ export const getTodaySummary = createServerFn({ method: 'GET' })
       tonight: totals(rows, 0),
       week: Array.from({ length: 14 }, (_, i) => ({ night: addDays(today, i), ...totals(rows, i) })),
       activeBlocks: closures.filter((c) => c.state === 'blocked').length,
-      inboxReady: !enq.error,
+      inboxReady: !enq.error && !campEnq.error,
       newEnquiries: newCount.count ?? 0,
-      latestEnquiries: enq.data ?? [],
+      latestEnquiries: [...(enq.data ?? []), ...(campEnq.data ?? [])],
       activity: (log.data ?? []).map((a: any) => ({ id: a.id, at: a.created_at, text: activitySentence(a.action, a.details) })),
     };
   });

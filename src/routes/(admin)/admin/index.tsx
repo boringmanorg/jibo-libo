@@ -33,7 +33,7 @@ function Today() {
   const properties = CONSOLE_PROPERTIES.filter((p) => (scope === 'super' || p.id === 'XTSY-SHL-HOSTEL') && (!selected || p.id === selected));
 
   return <div className="space-y-8">
-    <PageHead title="Today" sub={longDate.format(new Date(`${data.today}T00:00:00Z`))}><SheetChip syncedAt={data.sheetSyncedAt} /></PageHead>
+    <PageHead title="Today" sub={longDate.format(new Date(`${data.today}T00:00:00Z`))}>{selected !== CAMP_ID && <SheetChip syncedAt={data.sheetSyncedAt} />}</PageHead>
     {properties.map((p) => {
       const camp = p.id === CAMP_ID;
       const inventory = propertyInventory(p.id);

@@ -1,10 +1,10 @@
 # Roadmap — Master SEO prompt (xtsy.one)
 
 ## Property-wise console and QR — 28 November 2026
-- [ ] Separate canonical www.xtsy.one check-in QR codes and property-specific forms.
-- [ ] Route console selection by property and expand Today with inventory, prices and meals.
-- [ ] Remove restaurant controls only; leave public restaurant, homepage and SEO untouched.
-- [ ] Verify signed-in desktop/phone property navigation and QR links; save without publishing.
+- [x] Separate canonical www.xtsy.one check-in QR codes and property-specific forms; retain international-traveller selection and private receipt isolation.
+- [x] Route console selection by property and expand Today with inventory, prices, meal options, arrivals and saved enquiry selections; campsite counts are configured capacity, never live availability.
+- [x] Remove restaurant controls and POS settings from the console only; public restaurant, homepage and SEO untouched.
+- [x] Verify signed-in super-admin desktop/phone property navigation and QR links with no page errors; 70 targeted checks pass. No guest records created, payments remain off, not published.
 
 ## Hostel-only access and campsite terms — 28 November 2026
 - [x] Give booking@xtsy.one all hostel operations (bookings, inventory and invoices), with server-side campsite and super-admin settings protection.

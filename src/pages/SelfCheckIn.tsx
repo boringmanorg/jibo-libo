@@ -42,7 +42,7 @@ function DocumentInput({ id, label, note, file, onChange }: { id: DocumentKind; 
 }
 
 export default function SelfCheckIn({ initialPropertyId }: { initialPropertyId?: CheckInPropertyId }) {
-  const [step, setStep] = useState(initialPropertyId ? 1 : 0);
+  const [step, setStep] = useState(0);
   const [propertyId, setPropertyId] = useState<CheckInPropertyId>(initialPropertyId ?? 'XTSY-SHL-HOSTEL');
   const [isInternational, setIsInternational] = useState(false);
   const [bookingReference, setBookingReference] = useState('');
@@ -164,7 +164,7 @@ export default function SelfCheckIn({ initialPropertyId }: { initialPropertyId?:
 
   const reset = () => {
     try { sessionStorage.removeItem(`xtsy-self-check-in-receipt-${initialPropertyId ?? 'choose'}`); } catch { /* no-op */ }
-    setReceipt(null); setGuestReceipt(null); setStep(initialPropertyId ? 1 : 0); setFiles({ front: null, back: null, visa: null });
+    setReceipt(null); setGuestReceipt(null); setStep(0); setFiles({ front: null, back: null, visa: null });
     setPolicyAccepted(false); setReadPolicies(false); setError('');
   };
 
@@ -174,6 +174,7 @@ export default function SelfCheckIn({ initialPropertyId }: { initialPropertyId?:
         <div className="mx-auto max-w-3xl">
           <p className="flex items-center gap-2 text-sm font-bold text-xt-sand"><ScanLine className="h-5 w-5" aria-hidden />XTSY contactless arrival</p>
           <h1 className="xt-display mt-4 text-5xl leading-none sm:text-7xl">Self check-in, at your pace.</h1>
+          {initialPropertyId && <p className="mt-3 text-lg font-bold text-xt-paper">{property.name}</p>}
           <p className="mt-4 max-w-xl text-base leading-relaxed text-xt-fog">Share your arrival details and private documents before you reach the desk. Your room, bed or tent is allocated only after staff verification.</p>
           <div className="mt-5 flex items-center gap-2 text-sm text-xt-sand"><LockKeyhole className="h-4 w-4" aria-hidden />Private uploads · staff-verified arrival · no payment</div>
         </div>
