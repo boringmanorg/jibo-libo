@@ -1044,8 +1044,7 @@ body.reduce-motion .xt-suite-motion :is(.tgh-tile, .tgh-tablet-track, .xt-love, 
     min-height: 48px;
   }
   body a:not([class*="flex"]):not([class*="block"]):not([class*="grid"]):not(p a):not(.sr-only):not(.xt-console *) {
-    display: inline-flex;
-    align-items: center;
+    display: inline-block;
   }
   body input:is([type="checkbox"], [type="radio"]):not(.xt-console *) { min-width: 24px; min-height: 24px; }
 }
