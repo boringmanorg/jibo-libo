@@ -1,5 +1,10 @@
 # Roadmap — Master SEO prompt (xtsy.one)
 
+## Hostel-only access and campsite terms — 28 November 2026
+- [ ] Confirm booking@xtsy.one account and verify hostel check-in uploads, policies, QR and staff downloads while blocking campsite access.
+- [ ] Apply campsite rates and meal choices; remove all campsite live availability displays and restrictions.
+- [ ] Record Sohra Bed & Breakfast as upcoming only, verify phone flows and save without publishing.
+
 ## Self check-in, invoicing and property naming — 28 November 2026
 - [x] Rename the campsite to “Shnonpedeng Riverside Camping by XTSY” across guest content, console labels, metadata and generated discovery files without changing URLs or internal IDs.
 - [x] Add per-property GST registration status so unregistered properties issue ordinary business invoices without GST, while registered properties retain tax invoices; keep XTSY and franchise records separate.

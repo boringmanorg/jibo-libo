@@ -7044,6 +7044,10 @@ export type Database = {
           invoice_number: string
         }[]
       }
+      be_can_access_checkin_property: {
+        Args: { p_property_id: string }
+        Returns: boolean
+      }
       be_is_checkin_staff: { Args: never; Returns: boolean }
       be_is_console_admin: { Args: never; Returns: boolean }
       be_next_invoice_seq: {

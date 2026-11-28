@@ -239,6 +239,13 @@
       "when": 1795853453505,
       "tag": "0033_self_check_in_and_property_invoice_profiles",
       "breakpoints": true
+    },
+    {
+      "idx": 34,
+      "version": "7",
+      "when": 1795855126640,
+      "tag": "0034_hostel_only_checkin_access",
+      "breakpoints": true
     }
   ]
 }
