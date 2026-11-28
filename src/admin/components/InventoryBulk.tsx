@@ -11,7 +11,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import {
-  ALL_STAYS, WHOLE_PROPERTY, consoleCheckAvailability, listSheetLinks, setSheetLink, deleteInventoryOverride, getConsoleOverview, listPmsEnquiries, saveInventoryOverride, syncRoomsNow,
+  ALL_STAYS, WHOLE_PROPERTY, consoleCheckAvailability, listSheetLinks, setSheetLink, deleteInventoryOverride, getConsoleOverview, saveInventoryOverride, syncRoomsNow,
 } from '@/admin/console.functions';
 
 
@@ -25,8 +25,6 @@ export function InventoryBulk() {
   const overview = useServerFn(getConsoleOverview);
   const { data } = useQuery({ queryKey: ['console', 'overview'], queryFn: () => overview() });
   useSheetDoorbell(() => { void qc.invalidateQueries({ queryKey: ['console'] }); });
-  const fetchEnq = useServerFn(listPmsEnquiries);
-  const enquiries = useQuery({ queryKey: ['console', 'enquiries'], queryFn: () => fetchEnq() });
   const save = useServerFn(saveInventoryOverride);
   const remove = useServerFn(deleteInventoryOverride);
   const sync = useServerFn(syncRoomsNow);
@@ -120,15 +118,6 @@ export function InventoryBulk() {
         )}
       </CardContent></Card>
 
-      <Card><CardHeader><CardTitle>Enquiries and bookings</CardTitle></CardHeader><CardContent>
-        {!enquiries.data ? <p className="text-sm text-muted-foreground">Loading…</p> : !enquiries.data.connected ? (
-          <p className="text-sm text-muted-foreground">PMS is not connected. Guest enquiries currently go to the desk WhatsApp; they will appear here once the PMS is switched on.</p>
-        ) : enquiries.data.items.length === 0 ? <p className="text-sm text-muted-foreground">No enquiries.</p> : (
-          <ul className="divide-y divide-border text-sm">{enquiries.data.items.map((e) => (
-            <li key={e.reference} className="flex flex-wrap justify-between gap-2 py-2"><span>{e.reference} · {e.guestName} · {e.checkIn} → {e.checkOut} · {e.guests} guests</span><Badge>{e.status}</Badge></li>
-          ))}</ul>
-        )}
-      </CardContent></Card>
     </div>
   );
 }

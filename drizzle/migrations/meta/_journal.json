@@ -323,6 +323,13 @@
       "when": 1795874537873,
       "tag": "0045_rate_overrides",
       "breakpoints": true
+    },
+    {
+      "idx": 46,
+      "version": "7",
+      "when": 1795876054486,
+      "tag": "0046_sales_payments_invoices",
+      "breakpoints": true
     }
   ]
 }

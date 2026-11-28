@@ -98,6 +98,7 @@ import { Route as toursToursTravelRouteImport } from './routes/(tours)/tours/tra
 import { Route as toursToursXtsyRentalsRouteImport } from './routes/(tours)/tours/xtsy-rentals'
 import { Route as ApiPublicPmsFeedRouteImport } from './routes/api/public/pms-feed'
 import { Route as adminAdminInvoicesIdRouteImport } from './routes/(admin)/admin/invoices.$id'
+import { Route as adminAdminSalesInvoicesIdRouteImport } from './routes/(admin)/admin/sales-invoices.$id'
 import { Route as guidesDestinationsStateIndexRouteImport } from './routes/(guides)/destinations/$state/index'
 import { Route as toursExpeditionsTypeRouteRouteImport } from './routes/(tours)/expeditions/$type/$route'
 import { Route as ApiPublicHooksBistroGoogleSyncRouteImport } from './routes/api/public/hooks/bistro-google-sync'
@@ -596,6 +597,12 @@ const adminAdminInvoicesIdRoute = adminAdminInvoicesIdRouteImport.update({
   path: '/$id',
   getParentRoute: () => adminAdminInvoicesRoute,
 } as any)
+const adminAdminSalesInvoicesIdRoute =
+  adminAdminSalesInvoicesIdRouteImport.update({
+    id: '/sales-invoices/$id',
+    path: '/sales-invoices/$id',
+    getParentRoute: () => adminAdminRouteRoute,
+  } as any)
 const guidesDestinationsStateIndexRoute =
   guidesDestinationsStateIndexRouteImport.update({
     id: '/(guides)/destinations/$state/',
@@ -751,6 +758,7 @@ export interface FileRoutesByFullPath {
   '/expeditions/': typeof toursExpeditionsIndexRoute
   '/tours/': typeof toursToursIndexRoute
   '/admin/invoices/$id': typeof adminAdminInvoicesIdRoute
+  '/admin/sales-invoices/$id': typeof adminAdminSalesInvoicesIdRoute
   '/expeditions/$type/$route': typeof toursExpeditionsTypeRouteRoute
   '/api/public/hooks/bistro-google-sync': typeof ApiPublicHooksBistroGoogleSyncRoute
   '/api/public/hooks/sheet-availability': typeof ApiPublicHooksSheetAvailabilityRoute
@@ -852,6 +860,7 @@ export interface FileRoutesByTo {
   '/expeditions': typeof toursExpeditionsIndexRoute
   '/tours': typeof toursToursIndexRoute
   '/admin/invoices/$id': typeof adminAdminInvoicesIdRoute
+  '/admin/sales-invoices/$id': typeof adminAdminSalesInvoicesIdRoute
   '/expeditions/$type/$route': typeof toursExpeditionsTypeRouteRoute
   '/api/public/hooks/bistro-google-sync': typeof ApiPublicHooksBistroGoogleSyncRoute
   '/api/public/hooks/sheet-availability': typeof ApiPublicHooksSheetAvailabilityRoute
@@ -955,6 +964,7 @@ export interface FileRoutesById {
   '/(tours)/expeditions/': typeof toursExpeditionsIndexRoute
   '/(tours)/tours/': typeof toursToursIndexRoute
   '/(admin)/admin/invoices/$id': typeof adminAdminInvoicesIdRoute
+  '/(admin)/admin/sales-invoices/$id': typeof adminAdminSalesInvoicesIdRoute
   '/(tours)/expeditions/$type/$route': typeof toursExpeditionsTypeRouteRoute
   '/api/public/hooks/bistro-google-sync': typeof ApiPublicHooksBistroGoogleSyncRoute
   '/api/public/hooks/sheet-availability': typeof ApiPublicHooksSheetAvailabilityRoute
@@ -1059,6 +1069,7 @@ export interface FileRouteTypes {
     | '/expeditions/'
     | '/tours/'
     | '/admin/invoices/$id'
+    | '/admin/sales-invoices/$id'
     | '/expeditions/$type/$route'
     | '/api/public/hooks/bistro-google-sync'
     | '/api/public/hooks/sheet-availability'
@@ -1160,6 +1171,7 @@ export interface FileRouteTypes {
     | '/expeditions'
     | '/tours'
     | '/admin/invoices/$id'
+    | '/admin/sales-invoices/$id'
     | '/expeditions/$type/$route'
     | '/api/public/hooks/bistro-google-sync'
     | '/api/public/hooks/sheet-availability'
@@ -1262,6 +1274,7 @@ export interface FileRouteTypes {
     | '/(tours)/expeditions/'
     | '/(tours)/tours/'
     | '/(admin)/admin/invoices/$id'
+    | '/(admin)/admin/sales-invoices/$id'
     | '/(tours)/expeditions/$type/$route'
     | '/api/public/hooks/bistro-google-sync'
     | '/api/public/hooks/sheet-availability'
@@ -1988,6 +2001,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof adminAdminInvoicesIdRouteImport
       parentRoute: typeof adminAdminInvoicesRoute
     }
+    '/(admin)/admin/sales-invoices/$id': {
+      id: '/(admin)/admin/sales-invoices/$id'
+      path: '/sales-invoices/$id'
+      fullPath: '/admin/sales-invoices/$id'
+      preLoaderRoute: typeof adminAdminSalesInvoicesIdRouteImport
+      parentRoute: typeof adminAdminRouteRoute
+    }
     '/(guides)/destinations/$state/': {
       id: '/(guides)/destinations/$state/'
       path: '/destinations/$state'
@@ -2094,6 +2114,7 @@ interface adminAdminRouteRouteChildren {
   adminAdminStaysRoute: typeof adminAdminStaysRoute
   adminAdminTeamRoute: typeof adminAdminTeamRoute
   adminAdminIndexRoute: typeof adminAdminIndexRoute
+  adminAdminSalesInvoicesIdRoute: typeof adminAdminSalesInvoicesIdRoute
 }
 
 const adminAdminRouteRouteChildren: adminAdminRouteRouteChildren = {
@@ -2111,6 +2132,7 @@ const adminAdminRouteRouteChildren: adminAdminRouteRouteChildren = {
   adminAdminStaysRoute: adminAdminStaysRoute,
   adminAdminTeamRoute: adminAdminTeamRoute,
   adminAdminIndexRoute: adminAdminIndexRoute,
+  adminAdminSalesInvoicesIdRoute: adminAdminSalesInvoicesIdRoute,
 }
 
 const adminAdminRouteRouteWithChildren = adminAdminRouteRoute._addFileChildren(

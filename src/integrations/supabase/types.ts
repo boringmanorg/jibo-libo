@@ -1750,6 +1750,103 @@ export type Database = {
         }
         Relationships: []
       }
+      be_sales_invoices: {
+        Row: {
+          business_snapshot: Json
+          enquiry_id: string
+          folio: Json
+          fy: string
+          id: string
+          issued_at: string
+          issued_by: string | null
+          kind: string
+          number: string
+          property_id: string
+          seq: number
+          total_rupees: number
+        }
+        Insert: {
+          business_snapshot: Json
+          enquiry_id: string
+          folio: Json
+          fy: string
+          id?: string
+          issued_at?: string
+          issued_by?: string | null
+          kind: string
+          number: string
+          property_id: string
+          seq: number
+          total_rupees: number
+        }
+        Update: {
+          business_snapshot?: Json
+          enquiry_id?: string
+          folio?: Json
+          fy?: string
+          id?: string
+          issued_at?: string
+          issued_by?: string | null
+          kind?: string
+          number?: string
+          property_id?: string
+          seq?: number
+          total_rupees?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "be_sales_invoices_enquiry_id_fkey"
+            columns: ["enquiry_id"]
+            isOneToOne: true
+            referencedRelation: "be_enquiries"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      be_sales_payments: {
+        Row: {
+          amount_rupees: number
+          created_at: string
+          enquiry_id: string
+          id: string
+          method: string
+          note: string | null
+          paid_on: string
+          property_id: string
+          recorded_by: string | null
+        }
+        Insert: {
+          amount_rupees: number
+          created_at?: string
+          enquiry_id: string
+          id?: string
+          method: string
+          note?: string | null
+          paid_on: string
+          property_id: string
+          recorded_by?: string | null
+        }
+        Update: {
+          amount_rupees?: number
+          created_at?: string
+          enquiry_id?: string
+          id?: string
+          method?: string
+          note?: string | null
+          paid_on?: string
+          property_id?: string
+          recorded_by?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "be_sales_payments_enquiry_id_fkey"
+            columns: ["enquiry_id"]
+            isOneToOne: false
+            referencedRelation: "be_enquiries"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       be_self_check_ins: {
         Row: {
           access_token_hash: string

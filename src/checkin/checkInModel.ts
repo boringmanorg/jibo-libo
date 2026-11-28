@@ -96,15 +96,19 @@ export function validateCheckInDetails(input: unknown): CheckInDetails {
 export function checkOutProblem(d: { checkInDate: string; checkInTime: string; checkOutDate: string; checkOutTime: string }): string | null {
   if (!d.checkOutDate || !d.checkOutTime) return 'Choose your check-out date and time.';
   if (`${d.checkOutDate}T${d.checkOutTime}` <= `${d.checkInDate}T${d.checkInTime}`) return 'Check-out must be after your arrival.';
+  if (d.checkOutTime > LATEST_CHECK_OUT) return 'Check-out cannot be later than 11:30 AM on any date (a late check-out after 10 AM may carry extra charges).';
   return null;
 }
+
+/** Latest check-out a guest may choose on the self check-in form, any room type, any date; later than standard may be charged. */
+export const LATEST_CHECK_OUT = '11:30';
 
 export interface PolicySection { title: string; lines: string[] }
 export function checkInPolicies(propertyId: CheckInPropertyId): PolicySection[] {
   const hostel = propertyId === 'XTSY-SHL-HOSTEL';
   return [
     { title: 'Arrival and identity', lines: [
-      hostel ? `Check-in is from ${HOSTEL_POLICIES.checkIn}; check-out is strictly by ${HOSTEL_POLICIES.checkOut}.` : 'Confirm your camp arrival and departure times with the XTSY desk before travelling.',
+      hostel ? `Check-in is from ${HOSTEL_POLICIES.checkIn}; check-out is by ${HOSTEL_POLICIES.checkOut}; a late check-out up to 11:30 AM at the latest is subject to additional charges.` : 'Confirm your camp arrival and departure times with the XTSY desk before travelling.',
       'Bring the original identity document used here. The lead guest’s name must match the document. International travellers must carry their passport and valid visa or other permitted entry document.',
       'This form records your arrival request. The front desk verifies documents and allocates the actual room, bed or tent; your preference is not an allocation.',
     ] },

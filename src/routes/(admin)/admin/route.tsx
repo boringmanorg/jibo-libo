@@ -108,7 +108,7 @@ const NAV: { group: string; items: { to: string; label: string; icon: typeof Cal
   { group: 'Property operations', items: [
     { to: '/admin', label: 'Today', icon: Sun, exact: true },
     { to: '/admin/inventory', label: 'Inventory', icon: CalendarDays },
-    { to: '/admin/inbox', label: 'Inbox', icon: Inbox },
+    { to: '/admin/inbox', label: 'Sales', icon: Inbox },
     { to: '/admin/check-in', label: 'Self check-in', icon: ScanLine },
     { to: '/admin/pricing', label: 'Smart pricing', icon: Sparkles, superOnly: true },
   ] },

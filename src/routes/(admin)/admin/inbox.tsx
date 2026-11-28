@@ -10,14 +10,51 @@ import { buildRouteHead } from '@/lib/seo-head';
 import { listInbox, updateEnquiry } from '@/admin/consoleHome.functions';
 import { listOtaBookings, listSheetWriteIssues } from '@/admin/channel.functions';
 import { applyDateChangeRequest, declineDateChangeRequest, listDateChangeRequests } from '@/admin/bookingConsole.functions';
+import { SalesFolio } from '@/admin/components/SalesFolio';
+import { listSalesInvoices } from '@/admin/sales.functions';
+import { listPmsEnquiries } from '@/admin/console.functions';
 import { PageHead, Panel, STATUS_LABEL, STATUS_STYLE, ago, dayMonth, inrWhole } from '@/admin/components/ConsoleBits';
 
-export const Route = createFileRoute('/(admin)/admin/inbox')({ head: () => buildRouteHead({ path: '/admin/inbox', title: 'Enquiries — XTSY Console', description: 'Review permitted XTSY booking enquiries and date-change requests.', noIndex: true }), component: InboxPage });
+export const Route = createFileRoute('/(admin)/admin/inbox')({ head: () => buildRouteHead({ path: '/admin/inbox', title: 'Sales — XTSY Console', description: 'Enquiries, payments and invoices for XTSY bookings.', noIndex: true }), component: InboxPage });
 
 type Status = 'new' | 'contacted' | 'confirmed' | 'lost';
 const TABS: (Status | 'all')[] = ['new', 'contacted', 'confirmed', 'lost', 'all'];
 
 function InboxPage() {
+  const [section, setSection] = useState<'enquiries' | 'invoices'>('enquiries');
+  return <div>
+    <PageHead title="Sales" sub="Enquiries first; once a booking is confirmed, record payments and generate its invoice." />
+    <div role="tablist" aria-label="Sales" className="mb-5 inline-flex rounded-full border border-xt-line bg-white p-1">
+      {([['enquiries', 'Enquiries'], ['invoices', 'Invoices']] as const).map(([v, label]) => <button key={v} type="button" role="tab" aria-selected={section === v} onClick={() => setSection(v)}
+        className={cn('min-h-[44px] rounded-full px-5 text-sm font-bold', section === v ? 'bg-xt-ink text-xt-sand' : 'text-xt-mute')}>{label}</button>)}
+    </div>
+    {section === 'enquiries' ? <Enquiries /> : <SalesInvoices />}
+  </div>;
+}
+
+function SalesInvoices() {
+  const property = useConsoleProperty();
+  const list = useServerFn(listSalesInvoices);
+  const { data, error } = useQuery({ queryKey: ['console', 'sales-invoices', property ?? 'all'], queryFn: () => list({ data: property ? { propertyId: property } : {} }) });
+  if (error) return <p className="text-destructive">Could not load invoices.</p>;
+  if (!data) return <p className="text-muted-foreground">Loading…</p>;
+  if (!data.length) return <Panel><p className="text-[15px] text-xt-mute">No invoices yet. Confirm an enquiry, record its payment, then generate the invoice from the enquiry card.</p></Panel>;
+  return <ul className="divide-y divide-xt-line rounded-[24px] border border-xt-line bg-white">{data.map((i) => (
+    <li key={i.id}><Link to="/admin/sales-invoices/$id" params={{ id: i.id }} className="grid min-h-[56px] grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-5 py-2 hover:bg-xt-cream">
+      <span className="min-w-0"><span className="block truncate font-semibold text-xt-ink">{i.number} · {i.guestName}</span><span className="block text-xs text-xt-mute">{i.reference} · {new Date(i.issuedAt).toLocaleDateString('en-IN')}</span></span>
+      <span className="text-right text-sm"><span className="block font-bold">{inrWhole(i.total)}</span>{i.balance > 0 && <span className="block text-xs text-xt-crimson">Balance {inrWhole(i.balance)}</span>}</span>
+    </Link></li>))}</ul>;
+}
+
+function PmsEnquiries() {
+  const fetchEnq = useServerFn(listPmsEnquiries);
+  const q = useQuery({ queryKey: ['console', 'enquiries'], queryFn: () => fetchEnq() });
+  if (!q.data || !q.data.connected) return null;
+  return <Panel title="Bookings from the PMS" className="mt-8">{q.data.items.length === 0 ? <p className="text-sm text-xt-mute">No PMS bookings.</p> : (
+    <ul className="divide-y divide-xt-line text-sm">{q.data.items.map((e) => <li key={e.reference} className="flex flex-wrap justify-between gap-2 py-2"><span>{e.reference} · {e.guestName} · {e.checkIn} → {e.checkOut} · {e.guests} guests</span><span className="font-semibold">{e.status}</span></li>)}</ul>)}</Panel>;
+}
+
+function Enquiries() {
   const scope = useConsoleScope();
   const property = useConsoleProperty();
   const [tab, setTab] = useState<Status | 'all'>('new');
@@ -30,7 +67,7 @@ function InboxPage() {
 
   return (
     <div>
-      <PageHead title="Inbox" sub={scope === 'super' ? 'Every enquiry sent from /book and the Shnonpedeng camp page, newest first.' : 'Hostel booking enquiries, newest first.'} />
+      <p className="mb-4 text-sm text-xt-mute">{scope === 'super' ? 'Every enquiry sent from /book and the Shnonpedeng camp page, newest first.' : 'Hostel booking enquiries, newest first.'}</p>
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
         <div className="flex max-w-full gap-1 overflow-x-auto rounded-full border border-xt-line bg-white p-1" role="tablist" aria-label="Enquiry status">
           {TABS.map((s) => (
@@ -59,6 +96,7 @@ function InboxPage() {
       {property !== 'XTSY-SHN-CAMP' && <DateChangeRequests />}
       {scope === 'super' && property !== 'XTSY-SHN-CAMP' && <SheetWriteIssues />}
       {property !== 'XTSY-SHN-CAMP' && <OtaBookings />}
+      {property !== 'XTSY-SHN-CAMP' && <PmsEnquiries />}
 
       {data && data.onlineBookings.length > 0 && (
         <Panel title="Paid online bookings" className="mt-8" action={<Link to="/admin/bookings" search={property ? { property } : {}} className="text-sm font-semibold text-xt-crimson">Manage</Link>}>
@@ -210,6 +248,7 @@ function EnquiryCard({ e }: { e: any }) {
           <button type="button" disabled={m.isPending || note === (e.desk_note ?? '')} onClick={() => m.mutate({ note })} className="min-h-11 rounded-full border border-xt-ink px-4 text-sm font-bold disabled:opacity-40">Save note</button>
         </div>
       )}
+      {e.status === 'confirmed' && (e.kind === 'stay' || e.kind === 'camp') && <SalesFolio e={e} />}
       <div className="mt-4 flex flex-wrap gap-2 border-t border-xt-line pt-4">
         {(['contacted', 'confirmed', 'lost', 'new'] as Status[]).filter((s) => s !== e.status).map((s) => (
           <button key={s} type="button" disabled={m.isPending} onClick={() => m.mutate({ status: s })}
