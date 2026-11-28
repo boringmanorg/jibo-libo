@@ -81,6 +81,7 @@ function rowToStaff(row: any) {
     checkInDate: row.check_in_date, checkInTime: String(row.check_in_time).slice(0, 5), city: row.city, state: row.state,
     country: row.country, phone: row.phone, email: row.email, totalGuests: Number(row.total_guests), purpose: row.purpose,
     isInternational: !!row.is_international, roomTypeId: row.room_type_id, status: row.status, createdAt: row.created_at,
+    checkOutDate: row.check_out_date ?? '', allocatedRoomTypeId: row.allocated_room_type_id ?? '', allocatedUnits: (row.allocated_units ?? []) as string[], allocatedAt: row.allocated_at ?? '',
     documents: { front: !!row.id_front_path, back: !!row.id_back_path, visa: !!row.visa_path },
   };
 }

@@ -8,6 +8,7 @@
  * payment is switched off. mode="enquiry": /book before online booking is live: the same page from
  * the static catalogue (no database, no availability counts), ending in a WhatsApp enquiry.
  */
+import type { SmartRule } from '@/booking/smartPricing';
 import { useEffect, useMemo, useRef, useState, type FormEvent, type ReactNode } from 'react';
 import { CalendarDays, ChevronDown, ChevronLeft, ChevronRight, Minus, Plus, Users, X, MessageCircle, ArrowLeft, ShieldCheck, Trash2, Flame, Coffee, PawPrint, Clock } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
@@ -57,7 +58,7 @@ const FACTS: { icon: typeof Clock; text: string }[] = [
   { icon: PawPrint, text: 'Cats and birds welcome' },
 ];
 
-export default function StayEngine({ mode, pending = false, photos, closures, sheet, initialLocation, initialDates }: { mode: EngineMode; /** Live counts not loaded yet: show placeholders, never rooms. */ pending?: boolean; photos?: Record<string, { src: string; alt: string }[]>; closures?: ClosureRow[]; sheet?: SheetAvailability; initialLocation?: BookLocation; initialDates?: { checkIn: IsoDate; checkOut: IsoDate } }) {
+export default function StayEngine({ mode, pending = false, photos, closures, sheet, pricing, initialLocation, initialDates }: { mode: EngineMode; pricing?: SmartRule[]; /** Live counts not loaded yet: show placeholders, never rooms. */ pending?: boolean; photos?: Record<string, { src: string; alt: string }[]>; closures?: ClosureRow[]; sheet?: SheetAvailability; initialLocation?: BookLocation; initialDates?: { checkIn: IsoDate; checkOut: IsoDate } }) {
   const [location, setLocation] = useState<BookLocation | null>(initialLocation ?? (mode === 'preview' ? 'new-shillong' : null));
   const pickLocation = (l: BookLocation | null) => {
     setLocation(l);
@@ -89,7 +90,7 @@ export default function StayEngine({ mode, pending = false, photos, closures, sh
     if (pending) { setResult(null); return; } // counts on their way: placeholders only
     if (enquiry) {
       const problem = staticDateProblem(checkIn, checkOut);
-      if (problem) { setResult(null); setError(problem); } else setResult(staticSearch(checkIn, checkOut, photos, closures, sheet));
+      if (problem) { setResult(null); setError(problem); } else setResult(staticSearch(checkIn, checkOut, photos, closures, sheet, new Date(), pricing));
       setLoading(false);
       return;
     }
@@ -102,7 +103,7 @@ export default function StayEngine({ mode, pending = false, photos, closures, sh
       .catch(() => !stale && setError('Rooms could not load. Check your connection and try again.'))
       .finally(() => !stale && setLoading(false));
     return () => { stale = true; };
-  }, [checkIn, checkOut, enquiry, closures, sheet, pending]);
+  }, [checkIn, checkOut, enquiry, closures, sheet, pricing, pending]);
 
   // Drop anything no longer free for the new dates.
   useEffect(() => {
@@ -392,7 +393,7 @@ function useRoomQuote(result: SearchResult | null, cart: Cart, enquiry: boolean)
   useEffect(() => {
     const rooms = Object.entries(cart).map(([roomTypeId, v]) => ({ roomTypeId, ...v }));
     if (!result || rooms.length === 0) { setQ(null); return; }
-    if (enquiry) { setQ(staticQuote({ checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfast: [], method: 'upi' })); return; }
+    if (enquiry) { setQ(staticQuote({ checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfast: [], method: 'upi' }, { closures, sheet, pricing })); return; }
     let stale = false;
     quoteFn({ data: { checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfast: [], method: 'upi' } })
       .then((r) => !stale && setQ(r.ok ? r.data : null))
@@ -532,7 +533,7 @@ function Details({ mode, result, cart, lines, onBack }: { mode: EngineMode; resu
   const [sentRef, setSentRef] = useState('');
 
   useEffect(() => {
-    if (enquiry) { setQuote(staticQuote({ checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfast, method })); return; }
+    if (enquiry) { setQuote(staticQuote({ checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfast, method }, { closures, sheet, pricing })); return; }
     let stale = false;
     quoteFn({ data: { checkIn: result.checkIn, checkOut: result.checkOut, rooms, breakfast, method } })
       .then((r) => !stale && (r.ok ? setQuote(r.data) : setMsg(r.error)));

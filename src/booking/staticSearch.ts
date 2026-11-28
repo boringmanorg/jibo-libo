@@ -14,6 +14,7 @@ import type { SearchResult } from './publicEngine.core';
 import { freeAfterClosures, type ClosureRow } from './consoleClosures';
 import { sheetCapacity, type SheetAvailability } from './sheetAvailability';
 import { nearestOpenStays } from './nearestDates';
+import { smartRate, type SmartRule } from './smartPricing';
 
 const STRIP_NIGHTS = 7;
 
@@ -27,19 +28,23 @@ export function staticDateProblem(checkIn: string, checkOut: string, now = new D
   return null;
 }
 
-export function staticSearch(checkIn: IsoDate, checkOut: IsoDate, photos: Record<string, { src: string; alt: string }[]> = {}, closures: ClosureRow[] = [], sheet: SheetAvailability = {}, now = new Date()): SearchResult {
+export function staticSearch(checkIn: IsoDate, checkOut: IsoDate, photos: Record<string, { src: string; alt: string }[]> = {}, closures: ClosureRow[] = [], sheet: SheetAvailability = {}, now = new Date(), pricing: SmartRule[] = []): SearchResult {
+  const today = todayInIndia(now);
   const nights = daysBetween(checkIn, checkOut);
   const rooms = BOOKING_ROOM_TYPES.map((r) => {
     // The Google Sheet's count for the night (else the full room count), less console blocks;
     // caps the +/− stepper and marks full nights.
     const free = (night: IsoDate) => freeAfterClosures(closures, r.id, night, sheetCapacity(sheet, r.id, night, r.units));
     const stay = stayNights(checkIn, checkOut).map(free);
+    const rule = pricing.find((p) => p.roomTypeId === r.id);
+    const rateOn = (night: IsoDate, f: number) => smartRate(r.rate, rule, f, r.units, night, today);
+    const stayRates = stayNights(checkIn, checkOut).map((n, i) => rateOn(n, stay[i] ?? 0));
     return {
       id: r.id, name: r.name, descriptor: r.descriptor, soldAs: r.soldAs, femaleOnly: r.femaleOnly, maxGuestsPerUnit: r.maxGuestsPerUnit,
-      fromRate: r.rate,
+      fromRate: stayRates.length ? Math.min(...stayRates) : r.rate,
       freeForStay: stay.length ? Math.min(...stay) : 0,
       totalUnits: r.units,
-      strip: stayNights(checkIn, addDays(checkIn, STRIP_NIGHTS)).map((night) => { const f = free(night); return { night, free: f, rate: r.rate, closed: f === 0 }; }),
+      strip: stayNights(checkIn, addDays(checkIn, STRIP_NIGHTS)).map((night) => { const f = free(night); return { night, free: f, rate: rateOn(night, f), closed: f === 0 }; }),
       photos: photos[r.id] ?? [],
     };
   });
@@ -53,9 +58,17 @@ export function staticSearch(checkIn: IsoDate, checkOut: IsoDate, photos: Record
 }
 
 /** Quote with the default console settings (owner's GST slabs and Zoho fee table). */
-export function staticQuote(input: { checkIn: IsoDate; checkOut: IsoDate; rooms: { roomTypeId: string; units: number; guests: number }[]; breakfast: BreakfastPick[]; method: PaymentMethod }) {
+export function staticQuote(input: { checkIn: IsoDate; checkOut: IsoDate; rooms: { roomTypeId: string; units: number; guests: number }[]; breakfast: BreakfastPick[]; method: PaymentMethod }, opts: { closures?: ClosureRow[]; sheet?: SheetAvailability; pricing?: SmartRule[]; now?: Date } = {}) {
   const settings = settingsFromRow(null);
+  const today = todayInIndia(opts.now ?? new Date());
+  const rateFor = opts.pricing?.length ? (id: string, night: IsoDate) => {
+    const r = BOOKING_ROOM_TYPES.find((x) => x.id === id);
+    if (!r) return 0;
+    const f = freeAfterClosures(opts.closures ?? [], r.id, night, sheetCapacity(opts.sheet ?? {}, r.id, night, r.units));
+    return smartRate(r.rate, opts.pricing?.find((p) => p.roomTypeId === id), f, r.units, night, today);
+  } : undefined;
   const quote = quoteStay({
+    rateFor: rateFor as never,
     checkIn: input.checkIn, checkOut: input.checkOut, rooms: input.rooms, breakfast: input.breakfast,
     gstSlabFor: (id) => settings.gstSlabs[id], breakfastGstSlab: settings.breakfastGst,
   });

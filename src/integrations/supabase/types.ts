@@ -1591,9 +1591,14 @@ export type Database = {
       be_self_check_ins: {
         Row: {
           access_token_hash: string
+          allocated_at: string | null
+          allocated_room_type_id: string | null
+          allocated_units: string[]
+          allocation_override_id: string | null
           booking_reference: string | null
           check_in_date: string
           check_in_time: string
+          check_out_date: string | null
           city: string
           country: string
           created_at: string
@@ -1617,9 +1622,14 @@ export type Database = {
         }
         Insert: {
           access_token_hash: string
+          allocated_at?: string | null
+          allocated_room_type_id?: string | null
+          allocated_units?: string[]
+          allocation_override_id?: string | null
           booking_reference?: string | null
           check_in_date: string
           check_in_time: string
+          check_out_date?: string | null
           city: string
           country: string
           created_at?: string
@@ -1643,9 +1653,14 @@ export type Database = {
         }
         Update: {
           access_token_hash?: string
+          allocated_at?: string | null
+          allocated_room_type_id?: string | null
+          allocated_units?: string[]
+          allocation_override_id?: string | null
           booking_reference?: string | null
           check_in_date?: string
           check_in_time?: string
+          check_out_date?: string | null
           city?: string
           country?: string
           created_at?: string
@@ -1847,6 +1862,30 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      be_smart_pricing: {
+        Row: {
+          enabled: boolean
+          max_rupees: number
+          min_rupees: number
+          room_type_id: string
+          updated_at: string
+        }
+        Insert: {
+          enabled?: boolean
+          max_rupees: number
+          min_rupees: number
+          room_type_id: string
+          updated_at?: string
+        }
+        Update: {
+          enabled?: boolean
+          max_rupees?: number
+          min_rupees?: number
+          room_type_id?: string
+          updated_at?: string
+        }
+        Relationships: []
       }
       be_webhook_events: {
         Row: {

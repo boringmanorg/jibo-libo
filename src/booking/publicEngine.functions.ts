@@ -64,7 +64,7 @@ export const quoteFn = createServerFn({ method: 'POST' })
       const d = await deps();
       core.validateDates(data.checkIn, data.checkOut, d.now);
       const row = d.db ? (await d.db.from('be_settings').select('*').eq('id', 1).maybeSingle()).data : null;
-      return core.quoteCheckout(data, settingsFromRow(row));
+      return core.quoteCheckout(data, settingsFromRow(row), await core.stayRateFor(d, data.checkIn as never, data.checkOut as never));
     });
   });
 

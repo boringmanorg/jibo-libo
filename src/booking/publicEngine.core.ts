@@ -28,6 +28,7 @@ import { createZohoGateway, zohoConfigFromEnv } from './payments/zoho.server';
 import { financialYear, invoiceNumber } from './invoiceNumber';
 import { HOSTEL_POLICIES } from '@/data/hostelPolicies';
 import type { Paise } from './money';
+import { ruleFromRow, smartRate, type SmartRule } from './smartPricing';
 import { isIndian } from './guestRules';
 import { nearestOpenStays, suggestionRange, type OpenStay } from './nearestDates';
 import { botCheckConfigured, verifyBotCheck } from './botCheck';
@@ -114,11 +115,11 @@ export async function engineStatus(d: EngineDeps): Promise<{ live: boolean }> {
 }
 
 /** /book on load: whether payment is live, plus console-uploaded photos by room type. */
-export async function bookPageData(d: EngineDeps): Promise<{ live: boolean; photos: Record<string, { src: string; alt: string }[]>; closures: ClosureRow[]; sheet: SheetAvailability; refreshAt: number }> {
+export async function bookPageData(d: EngineDeps): Promise<{ live: boolean; photos: Record<string, { src: string; alt: string }[]>; closures: ClosureRow[]; sheet: SheetAvailability; pricing: SmartRule[]; refreshAt: number }> {
   const sheetP = loadSheetAvailability(d).catch(() => ({} as SheetAvailability));
-  const [status, photos, closures, sheet] = await Promise.all([engineStatus(d), loadRoomPhotos(d).catch(() => new Map()), sheetP.then((s) => loadClosures(d, s)).catch(() => []), sheetP]);
+  const [status, photos, closures, sheet, pricing] = await Promise.all([engineStatus(d), loadRoomPhotos(d).catch(() => new Map()), sheetP.then((s) => loadClosures(d, s)).catch(() => []), sheetP, loadPricing(d).catch(() => [] as SmartRule[])]);
   // Next minute boundary: when the next published snapshot (if any) becomes visible to everyone.
-  return { live: status.live, photos: Object.fromEntries(photos), closures, sheet, refreshAt: (Math.floor(d.now.getTime() / 60_000) + 1) * 60_000 };
+  return { live: status.live, photos: Object.fromEntries(photos), closures, sheet, pricing: pricing.filter((r) => r.enabled), refreshAt: (Math.floor(d.now.getTime() / 60_000) + 1) * 60_000 };
 }
 
 /**
@@ -167,6 +168,37 @@ export async function loadClosures(d: EngineDeps, sheetNow?: SheetAvailability):
   // OTA bookings from ZimmerStack hold their rooms until the owner edits those nights in the sheet.
   const sheet = sheetNow ?? await loadSheetAvailability(d).catch(() => ({} as SheetAvailability));
   return [...rows, ...otaHolds(ota, sheet, todayInIndia(d.now))];
+}
+
+/** Owner's smart-pricing limits (all off until switched on in the console). */
+export async function loadPricing(d: EngineDeps): Promise<SmartRule[]> {
+  if (!d.db) return [];
+  const r = await d.db.from('be_smart_pricing').select('*');
+  if (r.error) return [];
+  return (r.data ?? []).map((row: Record<string, unknown>) => ruleFromRow(row)).filter((x: SmartRule | null): x is SmartRule => x !== null);
+}
+
+/** Nightly rate per room type and night, after smart pricing on that night's free count. */
+export async function stayRateFor(d: EngineDeps, checkIn: IsoDate, checkOut: IsoDate): Promise<(roomTypeId: string, night: IsoDate) => Paise> {
+  const rules = await loadPricing(d).catch(() => [] as SmartRule[]);
+  if (!rules.some((r) => r.enabled)) return (id) => (findRoomType(id)?.rate ?? 0) as Paise;
+  const loads = await loadLoads(d, checkIn, checkOut);
+  const sheet = await loadSheetAvailability(d).catch(() => ({} as SheetAvailability));
+  const closures = await loadClosures(d, sheet).catch(() => [] as ClosureRow[]);
+  const today = todayInIndia(d.now);
+  const free = new Map<string, Map<IsoDate, number>>();
+  for (const room of BOOKING_ROOM_TYPES) {
+    free.set(room.id, new Map(freeUnitsPerNight({
+      roomTypeId: room.id, checkIn, checkOut,
+      capacity: (night) => freeAfterClosures(closures, room.id, night, sheetCapacity(sheet, room.id, night, room.units)),
+      confirmed: loads.confirmed, holds: loads.holds, blockedNights: new Set(), now: d.now,
+    }).map((n) => [n.night, n.free] as const)));
+  }
+  return (id, night) => {
+    const room = findRoomType(id);
+    if (!room) return 0 as Paise;
+    return smartRate(room.rate, rules.find((r) => r.roomTypeId === id), free.get(id)?.get(night) ?? room.units, room.units, night, today) as Paise;
+  };
 }
 
 // ---------------------------------------------------------------- availability
@@ -271,6 +303,8 @@ export async function searchStays(d: EngineDeps, q: { checkIn: string; checkOut:
   const photos = await loadRoomPhotos(d);
   const sheet = await loadSheetAvailability(d).catch(() => ({} as SheetAvailability));
   const closures = await loadClosures(d, sheet).catch(() => [] as ClosureRow[]);
+  const rules = await loadPricing(d).catch(() => [] as SmartRule[]);
+  const today = todayInIndia(d.now);
 
   const rooms: RoomResult[] = BOOKING_ROOM_TYPES.map((room) => {
     // Counts come from the Google Sheet, console blocks and OTA bookings; no channel restrictions yet.
@@ -281,10 +315,10 @@ export async function searchStays(d: EngineDeps, q: { checkIn: string; checkOut:
       confirmed: loads.confirmed, holds: loads.holds, blockedNights: blocked, now: d.now,
     });
     const strip: NightCell[] = free.slice(0, STRIP_NIGHTS).map(({ night, free: f }) => ({
-      night, free: f, rate: room.rate, closed: blocked.has(night),
+      night, free: f, rate: smartRate(room.rate, rules.find((r) => r.roomTypeId === room.id), f, room.units, night, today) as Paise, closed: blocked.has(night),
     }));
     const stay = free.slice(0, stayLen);
-    const rates = stay.map(() => room.rate);
+    const rates = stay.map((n) => smartRate(room.rate, rules.find((r) => r.roomTypeId === room.id), n.free, room.units, n.night, today));
     return {
       id: room.id, name: room.name, descriptor: room.descriptor, soldAs: room.soldAs, femaleOnly: room.femaleOnly,
       maxGuestsPerUnit: room.maxGuestsPerUnit,
@@ -341,8 +375,9 @@ export interface CheckoutInput {
 }
 
 /** The quote and the advance the guest will pay, shown before they leave for the gateway. */
-export function quoteCheckout(input: Pick<CheckoutInput, 'checkIn' | 'checkOut' | 'rooms' | 'breakfast' | 'method'>, settings: BookingSettings) {
+export function quoteCheckout(input: Pick<CheckoutInput, 'checkIn' | 'checkOut' | 'rooms' | 'breakfast' | 'method'>, settings: BookingSettings, rateFor?: (roomTypeId: string, night: IsoDate) => Paise) {
   const quote = quoteStay({
+    rateFor,
     checkIn: input.checkIn, checkOut: input.checkOut, rooms: input.rooms, breakfast: input.breakfast,
     gstSlabFor: (id) => settings.gstSlabs[id], breakfastGstSlab: settings.breakfastGst,
   });
@@ -404,7 +439,7 @@ export async function startCheckout(d: EngineDeps, input: CheckoutInput, origin:
       throw new EngineError(`${findRoomType(r.roomTypeId)!.name} no longer has ${r.units} free for these dates.`);
     }
   }
-  const { quote } = quoteCheckout({ ...input, checkIn, checkOut }, state.settings);
+  const { quote } = quoteCheckout({ ...input, checkIn, checkOut }, state.settings, await stayRateFor(d, checkIn, checkOut));
   const reference = newReference();
   const nights = stayNights(checkIn, checkOut);
   const holdMinutes = Math.min(state.settings.holdMinutes, MAX_CHECKOUT_SECONDS / 60);

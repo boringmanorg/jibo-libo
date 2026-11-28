@@ -69,7 +69,7 @@ function BookPage() {
   // Site header (logo, menu) and footer around the booking page; the page has its own bottom bar.
   return (
     <PageShell cta={false} bar={false}>
-      <StayEngine mode={live ? "live" : "enquiry"} pending={!!data.pending} photos={photos} closures={closures} sheet={sheet} initialLocation={location} initialDates={checkIn && checkOut ? { checkIn: checkIn as IsoDate, checkOut: checkOut as IsoDate } : undefined} />
+      <StayEngine mode={live ? "live" : "enquiry"} pending={!!data.pending} photos={photos} closures={closures} sheet={sheet} pricing={data.pricing} initialLocation={location} initialDates={checkIn && checkOut ? { checkIn: checkIn as IsoDate, checkOut: checkOut as IsoDate } : undefined} />
     </PageShell>
   );
 }

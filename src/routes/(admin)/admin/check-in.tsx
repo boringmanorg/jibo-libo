@@ -6,6 +6,7 @@ import { Download, ExternalLink, FileText, Printer, QrCode, Search } from 'lucid
 import { toast } from 'sonner';
 import { PageHead, Panel } from '@/admin/components/ConsoleBits';
 import { getCheckInDocumentFn, listCheckInsFn } from '@/checkin/checkIn.functions';
+import { AllocationPanel } from '@/admin/components/AllocationPanel';
 import { CHECK_IN_PROPERTIES, roomPreferences, type CheckInPropertyId } from '@/checkin/checkInModel';
 import { useConsoleProperty, useConsoleScope } from '@/admin/consoleScope';
 import { checkInUrl } from '@/admin/consoleProperties';
@@ -24,7 +25,8 @@ export const Route = createFileRoute('/(admin)/admin/check-in')({
 type CheckInRow = {
   id: string; propertyId: CheckInPropertyId; bookingReference: string; guestName: string; checkInDate: string; checkInTime: string;
   city: string; state: string; country: string; phone: string; email: string; totalGuests: number; purpose: string;
-  isInternational: boolean; roomTypeId: string; status: string; createdAt: string; documents: { front: boolean; back: boolean; visa: boolean };
+  isInternational: boolean; roomTypeId: string; status: string; createdAt: string;
+  checkOutDate: string; allocatedRoomTypeId: string; allocatedUnits: string[]; documents: { front: boolean; back: boolean; visa: boolean };
 };
 
 const propertyName = (id: string) => CHECK_IN_PROPERTIES.find((p) => p.id === id)?.name ?? id;
@@ -66,7 +68,7 @@ function CheckInDesk() {
   };
 
   return <div className="space-y-6">
-    <PageHead title="Self check-in" sub="Guest arrivals, identity documents and room preferences. Allocate rooms or beds in the existing booking tools." />
+    <PageHead title="Self check-in" sub="Guest arrivals, identity documents and room preferences. Allocate exact beds or rooms; each allocation holds that inventory on /book and in the console." />
 
     {properties.map((p) => <Panel key={p.id}>
       <div className="grid items-center gap-6 sm:grid-cols-[160px_1fr]">
@@ -111,7 +113,9 @@ function CheckInDesk() {
         <div><dt className="font-bold text-xt-ink">Email</dt><dd className="break-all text-xt-mute"><a className="inline-flex min-h-[48px] items-center underline" href={`mailto:${r.email}`}>{r.email}</a></dd></div>
         <div><dt className="font-bold text-xt-ink">Traveller type</dt><dd className="text-xt-mute">{r.isInternational ? 'International · passport and visa' : 'Domestic · national ID'}</dd></div>
       </dl>
-      <div className="mt-4 rounded-2xl bg-xt-cream p-4 text-sm"><span className="font-bold text-xt-ink">Preference only:</span> <span className="text-xt-mute">{roomName(r.propertyId, r.roomTypeId)}. Actual room/bed allocation stays with the desk.</span></div>
+      {r.propertyId === 'XTSY-SHL-HOSTEL'
+        ? <AllocationPanel row={r} all={q.data ?? []} />
+        : <div className="mt-4 rounded-2xl bg-xt-cream p-4 text-sm"><span className="font-bold text-xt-ink">Guest chose:</span> <span className="text-xt-mute">{roomName(r.propertyId, r.roomTypeId)}. Camp tents are arranged on WhatsApp.</span></div>}
       <div className="mt-4 grid gap-3 sm:grid-cols-3">
         {(['front', 'back', 'visa'] as const).map((kind) => r.documents[kind] && <div key={kind} className="rounded-2xl border border-xt-line p-3"><p className="flex items-center gap-2 text-sm font-bold text-xt-ink"><FileText className="h-4 w-4" aria-hidden />{kind === 'visa' ? 'Visa' : r.isInternational ? `Passport ${kind === 'front' ? 'first page' : 'last page'}` : `National ID ${kind}`}</p><div className="mt-2 flex gap-2"><button type="button" onClick={() => void openDocument(r.id, kind, 'view')} className="min-h-[48px] flex-1 rounded-full border border-xt-line text-sm font-bold text-xt-ink">View</button><button type="button" onClick={() => void openDocument(r.id, kind, 'download')} aria-label={`Download ${kind} document`} className="flex min-h-[48px] min-w-[48px] items-center justify-center rounded-full bg-xt-ink text-xt-sand"><Download className="h-4 w-4" aria-hidden /></button></div></div>)}
       </div>

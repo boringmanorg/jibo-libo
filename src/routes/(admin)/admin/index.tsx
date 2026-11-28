@@ -17,7 +17,12 @@ export const Route = createFileRoute('/(admin)/admin/')({
 });
 
 const longDate = new Intl.DateTimeFormat('en-IN', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' });
-type Arrival = { id: string; propertyId: string; guestName: string; checkInDate: string; checkInTime: string; totalGuests: number; status: string };
+type Arrival = { id: string; propertyId: string; guestName: string; checkInDate: string; checkInTime: string; totalGuests: number; status: string; allocatedUnits: string[]; checkOutDate: string };
+
+function Kpi({ label, value, note, tone = 'ink' }: { label: string; value: string; note?: string; tone?: 'ink' | 'crimson' | 'green' }) {
+  const c = tone === 'crimson' ? 'text-xt-crimson' : tone === 'green' ? 'text-emerald-700' : 'text-xt-ink';
+  return <div className="rounded-2xl border border-xt-line bg-white p-4 shadow-xs"><p className="text-xs font-semibold uppercase tracking-wider text-xt-mute">{label}</p><p className={`mt-2 text-3xl font-extrabold tabular-nums ${c}`}>{value}</p>{note && <p className="mt-1 text-xs text-xt-mute">{note}</p>}</div>;
+}
 
 function Today() {
   const scope = useConsoleScope();
@@ -34,6 +39,26 @@ function Today() {
 
   return <div className="space-y-8">
     <PageHead title="Today" sub={longDate.format(new Date(`${data.today}T00:00:00Z`))}>{selected !== CAMP_ID && <SheetChip syncedAt={data.sheetSyncedAt} />}</PageHead>
+    {(() => {
+      const live = propertyInventory('XTSY-SHL-HOSTEL');
+      let total = 0, free = 0;
+      for (const r of live) { const c = data.rows.find((row) => row.id === r.id)?.cells[0]; if (c && !c.sheetMissing) { total += r.total; free += Math.max(0, c.free); } }
+      const occ = total ? Math.round(((total - free) / total) * 100) : 0;
+      const todays = (arrivals.data ?? []).filter((r) => r.checkInDate === data.today && properties.some((p) => p.id === r.propertyId));
+      const pending = (arrivals.data ?? []).filter((r) => r.propertyId === 'XTSY-SHL-HOSTEL' && !r.allocatedUnits?.length && r.checkInDate >= data.today);
+      const inHouse = (arrivals.data ?? []).filter((r) => r.allocatedUnits?.length && r.checkInDate <= data.today && r.checkOutDate > data.today);
+      const newEnquiries = data.latestEnquiries.filter((e: { status: string }) => e.status === 'new').length;
+      return <section aria-label="Portfolio at a glance" className="space-y-3">
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-5">
+          <Kpi label="Hostel occupancy" value={`${occ}%`} note={`${total - free} of ${total} units taken tonight`} tone={occ >= 80 ? 'green' : 'ink'} />
+          <Kpi label="Free tonight" value={String(free)} note="beds + rooms, console wins" />
+          <Kpi label="Arrivals today" value={String(todays.length)} note={`${todays.reduce((n, r) => n + r.totalGuests, 0)} guests`} />
+          <Kpi label="Awaiting room" value={String(pending.length)} note="self check-ins to allocate" tone={pending.length ? 'crimson' : 'ink'} />
+          <Kpi label="In house" value={String(inHouse.reduce((n, r) => n + r.totalGuests, 0))} note={`${newEnquiries} new enquiries`} />
+        </div>
+        {pending.length > 0 && <div className="flex flex-wrap items-center gap-2 rounded-2xl bg-xt-blush px-4 py-3 text-sm"><strong className="text-xt-crimson-dark">Allocate rooms:</strong>{pending.slice(0, 6).map((r) => <span key={r.id} className="rounded-full bg-white px-3 py-1 font-semibold">{r.guestName} · {r.totalGuests}</span>)}<Link to="/admin/check-in" search={{ property: 'XTSY-SHL-HOSTEL' }} className="ml-auto inline-flex min-h-[48px] items-center gap-1 font-bold text-xt-crimson">Open desk <ArrowRight className="h-4 w-4" /></Link></div>}
+      </section>;
+    })()}
     {properties.map((p) => {
       const camp = p.id === CAMP_ID;
       const inventory = propertyInventory(p.id);
@@ -41,7 +66,7 @@ function Today() {
       const checkInRows = (arrivals.data ?? []).filter((r) => r.propertyId === p.id && r.checkInDate === data.today);
       return <section key={p.id} aria-label={p.name} className="space-y-5 border-b border-xt-line pb-8">
         <div className="flex flex-wrap items-start justify-between gap-3">
-          <div><h2 className="text-2xl font-extrabold text-xt-ink">{p.name}</h2><p className="mt-1 text-sm text-xt-mute">{p.location} · {camp ? 'WhatsApp enquiry-only · no live availability' : 'Live hostel inventory from the Google Sheet'}</p></div>
+          <div><h2 className="text-2xl font-extrabold text-xt-ink">{p.name}</h2><p className="mt-1 text-sm text-xt-mute">{p.location} · {camp ? 'WhatsApp enquiry-only · no live availability' : 'Live inventory · console is the main record, Google Sheet kept in step'}</p></div>
           <Link to="/admin/check-in" search={{ property: p.id }} className="inline-flex min-h-[48px] items-center gap-2 font-semibold text-xt-crimson">Self check-in QR <ArrowRight className="h-4 w-4" /></Link>
         </div>
         <div className="grid gap-5 lg:grid-cols-2">
@@ -49,7 +74,8 @@ function Today() {
             <h3 className="mb-3 text-lg font-bold">{camp ? 'Configured inventory · not live' : 'Inventory tonight'}</h3>
             <ul className="divide-y divide-xt-line">{inventory.map((r) => {
               const cell = data.rows.find((row) => row.id === r.id)?.cells[0];
-              return <li key={r.id} className="flex items-center justify-between gap-3 py-3 text-sm"><span className="min-w-0 font-semibold">{r.name}</span><span className="shrink-0 text-right text-xt-mute">{r.live ? cell?.sheetMissing ? 'Not in sheet' : cell ? `${cell.free} free / ${r.total} ${r.unit}${cell.closed ? ` · ${cell.closed} blocked` : ''}` : 'Unavailable' : `${r.total} ${r.unit} · capacity only`}</span></li>;
+              const pct = r.live && cell && !cell.sheetMissing ? Math.round(((r.total - Math.max(0, cell.free)) / r.total) * 100) : null;
+              return <li key={r.id} className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-1 py-3 text-sm"><span className="min-w-0 truncate font-semibold">{r.name}</span><span className="shrink-0 text-right text-xt-mute">{r.live ? cell?.sheetMissing ? 'Not in sheet' : cell ? `${cell.free} free / ${r.total} ${r.unit}${cell.closed ? ` · ${cell.closed} blocked` : ''}` : 'Unavailable' : `${r.total} ${r.unit} · capacity only`}</span>{pct !== null && <span className="col-span-2 h-1.5 overflow-hidden rounded-full bg-xt-line"><span className={`block h-full rounded-full ${pct >= 90 ? 'bg-xt-crimson' : pct >= 60 ? 'bg-amber-500' : 'bg-emerald-600'}`} style={{ width: `${pct}%` }} /></span>}</li>;
             })}</ul>
             {!camp && <Link to="/admin/inventory" search={{ property: p.id }} className="inline-flex min-h-[48px] items-center gap-1 text-sm font-semibold text-xt-crimson">Open inventory <ArrowRight className="h-4 w-4" /></Link>}
           </div>

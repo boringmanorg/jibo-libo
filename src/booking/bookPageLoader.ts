@@ -7,8 +7,9 @@
 import { getBookPageDataFn } from './publicEngine.functions';
 import type { ClosureRow } from './consoleClosures';
 import type { SheetAvailability } from './sheetAvailability';
+import type { SmartRule } from './smartPricing';
 
-export type BookPageData = { live: boolean; photos: Record<string, { src: string; alt: string }[]>; closures: ClosureRow[]; sheet: SheetAvailability; refreshAt?: number; pending?: boolean };
+export type BookPageData = { live: boolean; photos: Record<string, { src: string; alt: string }[]>; closures: ClosureRow[]; sheet: SheetAvailability; pricing?: SmartRule[]; refreshAt?: number; pending?: boolean };
 
 /**
  * What the server sends with the /book HTML: nothing live yet. The page (header, hostel photos,

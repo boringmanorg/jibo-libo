@@ -313,3 +313,63 @@ export const setSheetLink = createServerFn({ method: 'POST' })
     await audit(ctx, `sheet.${data.action}`, { id: data.id });
     return { ok: true };
   });
+
+/**
+ * Desk allocates exact beds/rooms to a self check-in. Holds that many units of the room type on
+ * every night of the stay as a console block (same path as Stays → Block), so /book, the console
+ * and ZimmerStack all count them as taken. Re-allocating replaces the previous hold.
+ */
+export const allocateCheckInRooms = createServerFn({ method: 'POST' })
+  .middleware([requirePropertyAdmin])
+  .inputValidator(z.object({ id: z.string().uuid(), roomTypeId: z.string().max(60), units: z.array(z.string().max(12)).min(1).max(40), checkOut: date }))
+  .handler(async ({ data, context }) => {
+    const ctx = context as Ctx;
+    const { validateAllocation, lastNight } = await import('@/checkin/allocation');
+    const { data: row } = await ctx.supabase.from('be_self_check_ins').select('*').eq('id', data.id).maybeSingle();
+    if (!row) throw new Error('Check-in not found.');
+    if (row.property_id !== HOSTEL_ID) throw new Error('Room allocation is for the hostel only.');
+    assertPropertyScope(ctx.isSuperAdmin, row.property_id);
+    const { data: others } = await ctx.supabase.from('be_self_check_ins').select('id,allocated_room_type_id,allocated_units,check_in_date,check_out_date')
+      .eq('property_id', row.property_id).not('allocated_room_type_id', 'is', null).gte('check_out_date', row.check_in_date);
+    const allocs = (others ?? []).map((o: any) => ({ id: o.id, roomTypeId: o.allocated_room_type_id, units: o.allocated_units ?? [], checkIn: o.check_in_date, checkOut: o.check_out_date }));
+    validateAllocation({ roomTypeId: data.roomTypeId, units: data.units, guests: Number(row.total_guests), checkIn: row.check_in_date, checkOut: data.checkOut }, allocs, row.id);
+    const affected: { propertyId: string; unitTypeId: string }[] = [{ propertyId: HOSTEL_ID, unitTypeId: data.roomTypeId }];
+    if (row.allocation_override_id) {
+      await ctx.supabase.from('console_inventory_overrides').delete().eq('id', row.allocation_override_id);
+      if (row.allocated_room_type_id && row.allocated_room_type_id !== data.roomTypeId) affected.push({ propertyId: HOSTEL_ID, unitTypeId: row.allocated_room_type_id });
+    }
+    const units = [...new Set(data.units)];
+    const { ENGINE_ROOM_ID } = await import('@/data/publicRates');
+    const consoleId = Object.entries(ENGINE_ROOM_ID).find(([, e]) => e === data.roomTypeId)?.[0] ?? data.roomTypeId;
+    const { data: hold, error } = await ctx.supabase.from('console_inventory_overrides').insert({
+      property_id: HOSTEL_ID, unit_type_id: consoleId, start_date: row.check_in_date, end_date: lastNight(data.checkOut),
+      state: 'blocked', units: units.length, reason: `Check-in ${row.guest_name} · ${units.join(', ')}`,
+    }).select('id').single();
+    if (error || !hold) throw new Error('Could not hold the rooms. Nothing was changed.');
+    const { error: upd } = await ctx.supabase.from('be_self_check_ins').update({
+      check_out_date: data.checkOut, allocated_room_type_id: data.roomTypeId, allocated_units: units,
+      allocation_override_id: hold.id, allocated_at: new Date().toISOString(), status: 'checked_in',
+    }).eq('id', row.id);
+    if (upd) { await ctx.supabase.from('console_inventory_overrides').delete().eq('id', hold.id); throw new Error('Could not save the allocation.'); }
+    await audit(ctx, 'checkin.allocate', { id: row.id, roomTypeId: data.roomTypeId, units, checkOut: data.checkOut });
+    const prevEnd = row.check_out_date && row.check_out_date > data.checkOut ? row.check_out_date : data.checkOut;
+    const channel = await channelAfterClosure(affected, row.check_in_date, lastNight(prevEnd));
+    return { ok: true, channel };
+  });
+
+export const releaseCheckInRooms = createServerFn({ method: 'POST' })
+  .middleware([requirePropertyAdmin])
+  .inputValidator(z.object({ id: z.string().uuid() }))
+  .handler(async ({ data, context }) => {
+    const ctx = context as Ctx;
+    const { lastNight } = await import('@/checkin/allocation');
+    const { data: row } = await ctx.supabase.from('be_self_check_ins').select('*').eq('id', data.id).maybeSingle();
+    if (!row) throw new Error('Check-in not found.');
+    assertPropertyScope(ctx.isSuperAdmin, row.property_id);
+    if (row.allocation_override_id) await ctx.supabase.from('console_inventory_overrides').delete().eq('id', row.allocation_override_id);
+    await ctx.supabase.from('be_self_check_ins').update({ allocated_room_type_id: null, allocated_units: [], allocation_override_id: null, allocated_at: null }).eq('id', row.id);
+    await audit(ctx, 'checkin.release', { id: row.id });
+    const channel = row.allocated_room_type_id && row.check_out_date
+      ? await channelAfterClosure([{ propertyId: HOSTEL_ID, unitTypeId: row.allocated_room_type_id }], row.check_in_date, lastNight(row.check_out_date)) : null;
+    return { ok: true, channel };
+  });
