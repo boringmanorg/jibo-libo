@@ -3,6 +3,7 @@ import { useServerFn } from '@tanstack/react-start';
 import { MapPin } from 'lucide-react';
 import { logoFor } from '@/data/platformLogos';
 import { getPublicPropertyProfileFn } from '@/property/propertySetup.functions';
+import { directionsHref } from '@/property/propertySetup';
 
 type Id = 'XTSY-SHL-HOSTEL' | 'XTSY-SHN-CAMP';
 
@@ -22,6 +23,7 @@ export default function PropertyOverview({ propertyId }: { propertyId: Id }) {
           <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{p.propertyType}</p>
           <h2 className="font-display text-2xl sm:text-3xl">{p.displayName}</h2>
           {p.address && <p className="mt-1 flex items-start gap-1 text-sm text-muted-foreground"><MapPin className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />{p.address}</p>}
+          {directionsHref(p) && <a href={directionsHref(p)!} target="_blank" rel="noopener noreferrer" className="mt-1 inline-flex min-h-[48px] items-center text-sm font-medium text-primary underline">Open in Google Maps</a>}
         </div>
         {p.googleRating !== null && (
           <div className="shrink-0 text-right">

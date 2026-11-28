@@ -13,15 +13,15 @@ import { useConsoleProperty } from '@/admin/consoleScope';
 import { BOOKING_ROOM_TYPES } from '@/booking/catalogue';
 import { CAMP_ID } from '@/admin/consoleProperties';
 import { logoFor } from '@/data/platformLogos';
-import { AMENITIES, OTA_PLATFORMS, PROPERTY_TYPES, type PlaceHit, type PropertyProfile, type PropertyType } from '@/property/propertySetup';
-import { getPropertyProfileFn, savePropertyProfileFn, searchPlacesFn, syncGooglePlaceFn } from '@/property/propertySetup.functions';
+import { AMENITIES, OTA_PLATFORMS, PROPERTY_TYPES, directionsHref, pinFromMapsLink, type PropertyProfile, type PropertyType } from '@/property/propertySetup';
+import { getPropertyProfileFn, savePropertyProfileFn } from '@/property/propertySetup.functions';
 
 export const Route = createFileRoute('/(admin)/admin/property')({
   head: () => buildRouteHead({ path: '/admin/property', title: 'Property setup — XTSY Console', description: 'Property details, location, amenities, rooms and listings.', noIndex: true }),
   component: PropertySetup,
 });
 
-type Draft = Pick<PropertyProfile, 'propertyType' | 'displayName' | 'description' | 'address' | 'latitude' | 'longitude' | 'amenities' | 'otaPresence' | 'hiddenRoomTypes'>;
+type Draft = Pick<PropertyProfile, 'propertyType' | 'displayName' | 'description' | 'address' | 'latitude' | 'longitude' | 'googleMapsUri' | 'amenities' | 'otaPresence' | 'hiddenRoomTypes'>;
 
 function toggle(list: string[], v: string) { return list.includes(v) ? list.filter((x) => x !== v) : [...list, v]; }
 
@@ -39,17 +39,11 @@ function PropertySetup() {
   const qc = useQueryClient();
   const get = useServerFn(getPropertyProfileFn);
   const save = useServerFn(savePropertyProfileFn);
-  const search = useServerFn(searchPlacesFn);
-  const sync = useServerFn(syncGooglePlaceFn);
   const key = ['property-profile', propertyId];
   const q = useQuery({ queryKey: key, queryFn: () => get({ data: { propertyId } }) });
   const [d, setD] = useState<Draft | null>(null);
-  useEffect(() => { if (q.data) setD({ propertyType: q.data.propertyType, displayName: q.data.displayName, description: q.data.description, address: q.data.address, latitude: q.data.latitude, longitude: q.data.longitude, amenities: q.data.amenities, otaPresence: q.data.otaPresence, hiddenRoomTypes: q.data.hiddenRoomTypes }); }, [q.data]);
+  useEffect(() => { if (q.data) setD({ propertyType: q.data.propertyType, displayName: q.data.displayName, description: q.data.description, address: q.data.address, latitude: q.data.latitude, longitude: q.data.longitude, googleMapsUri: q.data.googleMapsUri, amenities: q.data.amenities, otaPresence: q.data.otaPresence, hiddenRoomTypes: q.data.hiddenRoomTypes }); }, [q.data]);
 
-  const [term, setTerm] = useState('');
-  const [hits, setHits] = useState<PlaceHit[]>([]);
-  const find = useMutation({ mutationFn: () => search({ data: { query: term } }), onSuccess: (r) => { setHits(r); if (!r.length) toast.message('No places found.'); }, onError: (e) => toast.error(e.message) });
-  const pull = useMutation({ mutationFn: (placeId: string) => sync({ data: { propertyId, placeId } }), onSuccess: (r) => { qc.setQueryData(key, r); setHits([]); toast.success('Location and Google reviews copied to the console'); }, onError: (e) => toast.error(e.message) });
   const store = useMutation({ mutationFn: (x: Draft) => save({ data: { propertyId, ...x } }), onSuccess: () => { void qc.invalidateQueries({ queryKey: key }); void qc.invalidateQueries({ queryKey: ['public-property', propertyId] }); toast.success('Saved — now showing on /book'); }, onError: (e) => toast.error(e.message) });
 
   if (q.isLoading || !d) return <p className="text-sm text-muted-foreground">Loading…</p>;
@@ -57,7 +51,7 @@ function PropertySetup() {
   const p = q.data!;
   const set = (patch: Partial<Draft>) => setD({ ...d, ...patch });
   const rooms = propertyId === CAMP_ID ? [] : BOOKING_ROOM_TYPES;
-  const mapKey = import.meta.env['VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_BROWSER_KEY'] as string | undefined;
+  const href = directionsHref(d);
 
   return (
     <div className="space-y-6 pb-28">
@@ -81,26 +75,18 @@ function PropertySetup() {
       <Card>
         <CardHeader><CardTitle className="text-lg">Location (Google Maps)</CardTitle></CardHeader>
         <CardContent className="space-y-4">
-          <div className="grid grid-cols-[minmax(0,1fr)_auto] gap-2">
-            <Input aria-label="Search Google Maps" placeholder="Search the property on Google Maps" value={term} onChange={(e) => setTerm(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter' && term.trim().length >= 3) find.mutate(); }} />
-            <Button className="min-h-[48px]" disabled={term.trim().length < 3 || find.isPending} onClick={() => find.mutate()}>Search</Button>
+          <div className="space-y-2">
+            <Label htmlFor="pmaps">Google Maps link</Label>
+            <Input id="pmaps" inputMode="url" placeholder="https://maps.app.goo.gl/… or https://www.google.com/maps/…" value={d.googleMapsUri ?? ''}
+              onChange={(e) => { const v = e.target.value.trim(); const pin = pinFromMapsLink(v); set({ googleMapsUri: v || null, ...(pin ? { latitude: pin.lat, longitude: pin.lng } : {}) }); }} />
+            <p className="text-xs text-muted-foreground">Open the property in Google Maps, tap Share, copy the link and paste it here once. Guests tapping "Open in Google Maps" on /book are sent to this link. No Google charges: nothing is looked up through Google.</p>
           </div>
-          {hits.length > 0 && (
-            <ul className="divide-y divide-border rounded-lg border">
-              {hits.map((h) => (
-                <li key={h.placeId} className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 p-3">
-                  <span className="min-w-0"><span className="block font-medium">{h.name}</span><span className="block truncate text-sm text-muted-foreground">{h.address}</span></span>
-                  <Button variant="outline" className="min-h-[48px]" disabled={pull.isPending} onClick={() => pull.mutate(h.placeId)}>Use this place</Button>
-                </li>
-              ))}
-            </ul>
-          )}
+          <div className="grid grid-cols-2 gap-2">
+            <div className="space-y-2"><Label htmlFor="plat">Latitude</Label><Input id="plat" inputMode="decimal" value={d.latitude ?? ''} onChange={(e) => { const n = Number(e.target.value); set({ latitude: e.target.value === '' || Number.isNaN(n) ? null : n }); }} /></div>
+            <div className="space-y-2"><Label htmlFor="plng">Longitude</Label><Input id="plng" inputMode="decimal" value={d.longitude ?? ''} onChange={(e) => { const n = Number(e.target.value); set({ longitude: e.target.value === '' || Number.isNaN(n) ? null : n }); }} /></div>
+          </div>
           <div className="space-y-2"><Label htmlFor="paddr">Address</Label><Textarea id="paddr" rows={2} value={d.address} onChange={(e) => set({ address: e.target.value })} /></div>
-          {p.googlePlaceId && mapKey && (
-            <iframe title="Property location" className="h-72 w-full rounded-lg border" loading="lazy" referrerPolicy="strict-origin-when-cross-origin"
-              src={`https://www.google.com/maps/embed/v1/place?key=${mapKey}&q=place_id:${p.googlePlaceId}`} />
-          )}
-          <p className="text-xs text-muted-foreground">{p.googleSyncedAt ? `Copied from Google once on ${new Date(p.googleSyncedAt).toLocaleString('en-IN')}. Nothing is ever sent to Google; search again to refresh.` : 'Search and pick the place to copy its pin, rating and reviews once. No Google account is needed.'}</p>
+          {href && <a href={href} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[48px] items-center text-sm font-medium underline">Check the link: open in Google Maps</a>}
         </CardContent>
       </Card>
 

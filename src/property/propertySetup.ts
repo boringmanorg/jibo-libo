@@ -32,10 +32,34 @@ export type PropertyProfile = {
   hiddenRoomTypes: string[];
 };
 
-export type PlaceHit = { placeId: string; name: string; address: string };
 
 /** Keep only known values, in canonical order (no free-text injection into public pages). */
 export function cleanSelection(values: string[], allowed: readonly string[]): string[] {
   const set = new Set(values);
   return allowed.filter((v) => set.has(v));
+}
+
+const MAPS_HOSTS = ['maps.google.com', 'www.google.com', 'google.com', 'maps.app.goo.gl', 'goo.gl', 'g.page', 'www.google.co.in'];
+/** Only https Google Maps links may be saved (they are shown to guests as a redirect). */
+export function isGoogleMapsLink(url: string): boolean {
+  try {
+    const u = new URL(url);
+    return u.protocol === 'https:' && MAPS_HOSTS.includes(u.hostname) && (u.hostname !== 'www.google.com' && u.hostname !== 'google.com' && u.hostname !== 'www.google.co.in' || u.pathname.startsWith('/maps'));
+  } catch { return false; }
+}
+
+/** Read a pin from a pasted full Google Maps link (no Google request). Short links carry no pin. */
+export function pinFromMapsLink(url: string): { lat: number; lng: number } | null {
+  const m = url.match(/@(-?\d{1,2}\.\d+),(-?\d{1,3}\.\d+)/) ?? url.match(/!3d(-?\d{1,2}\.\d+)!4d(-?\d{1,3}\.\d+)/) ?? url.match(/[?&](?:q|query|ll)=(-?\d{1,2}\.\d+),(-?\d{1,3}\.\d+)/);
+  if (!m) return null;
+  const lat = Number(m[1]), lng = Number(m[2]);
+  return Math.abs(lat) <= 90 && Math.abs(lng) <= 180 ? { lat, lng } : null;
+}
+
+/** Where "Open in Google Maps" sends guests: the saved link, else the pin, else the address. Free; no API. */
+export function directionsHref(p: Pick<PropertyProfile, 'googleMapsUri' | 'latitude' | 'longitude' | 'address'>): string | null {
+  if (p.googleMapsUri && isGoogleMapsLink(p.googleMapsUri)) return p.googleMapsUri;
+  if (p.latitude !== null && p.longitude !== null) return `https://www.google.com/maps/search/?api=1&query=${p.latitude},${p.longitude}`;
+  if (p.address.trim()) return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.address)}`;
+  return null;
 }
