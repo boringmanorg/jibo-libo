@@ -1,10 +1,12 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useState } from 'react';
+import { toast } from 'sonner';
 import { useServerFn } from '@tanstack/react-start';
 import { Printer } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { getSalesInvoice } from '@/admin/sales.functions';
-import { SALES_METHODS } from '@/admin/sales';
+import { getSalesInvoice, recordSalesPayment } from '@/admin/sales.functions';
+import { SALES_METHODS, type SalesMethod } from '@/admin/sales';
 import xtsyLogo from '@/assets/xtsy-color-logo.webp';
 
 export const Route = createFileRoute('/(admin)/admin/sales-invoices/$id')({ component: SalesInvoiceView });
@@ -18,6 +20,14 @@ function SalesInvoiceView() {
   const { id } = Route.useParams();
   const get = useServerFn(getSalesInvoice);
   const q = useQuery({ queryKey: ['console', 'sales-invoice', id], queryFn: () => get({ data: { id } }) });
+  const record = useServerFn(recordSalesPayment);
+  const qc = useQueryClient();
+  const [payMethod, setPayMethod] = useState<SalesMethod>('upi');
+  const settle = useMutation({
+    mutationFn: () => record({ data: { enquiryId: q.data!.enquiryId, amount: q.data!.folio.balance, method: payMethod, paidOn: new Date().toLocaleDateString('en-CA'), note: 'Balance payment' } }),
+    onSuccess: () => { toast.success('Balance marked as paid'); qc.invalidateQueries({ queryKey: ['console'] }); },
+    onError: (e: Error) => toast.error(e.message),
+  });
   if (q.isLoading) return <p className="text-muted-foreground">Loading…</p>;
   if (q.error || !q.data) return <p className="text-destructive">{(q.error as Error)?.message ?? 'Invoice not found.'}</p>;
   const { folio: f, business: b } = q.data;
@@ -28,6 +38,12 @@ function SalesInvoiceView() {
     <div className="space-y-4">
       <div className="flex flex-wrap gap-2 print:hidden">
         <Link to="/admin/guest-folio" className="inline-flex min-h-11 items-center rounded-md border border-border px-4 text-sm">Back to Guest Folio</Link>
+        {f.balance > 0 ? (
+          <div className="flex flex-wrap items-center gap-2 rounded-md border border-border p-1">
+            <select className="min-h-11 rounded-md border border-border bg-background px-3 text-base" aria-label="Balance payment method" value={payMethod} onChange={(e) => setPayMethod(e.target.value as SalesMethod)}>{SALES_METHODS.map((m) => <option key={m.id} value={m.id}>{m.label}</option>)}</select>
+            <Button className="min-h-11" disabled={settle.isPending} onClick={() => { if (confirm(`Record ${inr(f.balance)} received by ${method(payMethod)} today?`)) settle.mutate(); }}>{settle.isPending ? 'Saving…' : `Mark balance ${inr(f.balance)} as paid`}</Button>
+          </div>
+        ) : <span className="inline-flex min-h-11 items-center rounded-md bg-emerald-100 px-4 text-sm font-semibold text-emerald-800">Paid in full</span>}
         <Button className="min-h-11" onClick={() => window.print()}><Printer className="mr-2 h-4 w-4" aria-hidden />Print or save as PDF</Button>
       </div>
       <article className="mx-auto max-w-3xl rounded-lg bg-white p-8 text-[13px] leading-relaxed text-neutral-900 shadow print:max-w-none print:p-0 print:shadow-none">
@@ -77,7 +93,7 @@ function SalesInvoiceView() {
           <dl className="space-y-1">
             <div className="flex justify-between rounded bg-neutral-900 px-3 py-2 text-base font-bold text-white print:bg-neutral-900"><dt>Invoice total</dt><dd>{inr(f.total)}</dd></div>
             <div className="flex justify-between"><dt>Paid</dt><dd>{inr(f.paid)}</dd></div>
-            <div className="flex justify-between font-semibold"><dt>{f.balance < 0 ? 'Refund due' : 'Balance due'}</dt><dd>{inr(Math.abs(f.balance))}</dd></div>
+            <div className="flex justify-between font-semibold"><dt>{f.balance < 0 ? 'Refund due' : f.balance === 0 ? 'Balance' : 'Balance due'}</dt><dd>{f.balance === 0 ? 'Paid in full' : inr(Math.abs(f.balance))}</dd></div>
           </dl>
         </div>
 

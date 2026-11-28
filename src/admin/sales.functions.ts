@@ -136,7 +136,7 @@ export const getSalesInvoice = createServerFn({ method: 'GET' })
     const payments = ((pays ?? []) as { amount_rupees: number; method: string; paid_on: string; note: string | null }[]).map((p) => ({ amount: Number(p.amount_rupees), method: p.method, paidOn: p.paid_on, note: p.note ?? '' }));
     const total = Number(r.total_rupees);
     const paid = Math.round(payments.reduce((a, p) => a + p.amount, 0) * 100) / 100;
-    return { id: r.id as string, number: r.number as string, kind: r.kind as string, issuedAt: r.issued_at as string, propertyId: r.property_id as string, folio: { ...(r.folio as unknown as InvoiceDoc), payments, total, paid, balance: Math.round((total - paid) * 100) / 100 }, business: r.business_snapshot as unknown as InvoiceBusiness };
+    return { id: r.id as string, enquiryId: r.enquiry_id as string, number: r.number as string, kind: r.kind as string, issuedAt: r.issued_at as string, propertyId: r.property_id as string, folio: { ...(r.folio as unknown as InvoiceDoc), payments, total, paid, balance: Math.round((total - paid) * 100) / 100 }, business: r.business_snapshot as unknown as InvoiceBusiness };
   });
 
 /** Guest Folio list: every guest with a WhatsApp enquiry, grouped by number, limited to the properties this login manages. */
