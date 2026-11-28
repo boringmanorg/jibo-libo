@@ -1,5 +1,12 @@
 # Roadmap — Master SEO prompt (xtsy.one)
 
+## Live demand pricing and check-in operations — 28 November 2026
+- [x] Activate all seven hostel room types within owner-approved base-to-base+25% limits; the latest real Google reading (+5%) produces a verified ₹420 guest card and matching quote for the ₹400 dorm bed. Controls remain super-admin-only; campsite pricing unchanged.
+- [x] Let the hostel property admin or super admin delete a check-in before allocation or after release, with property-scoped server checks, database policy, document removal and confirmation; six rule checks pass without deleting a real record.
+- [x] Make the console sidebar collapsible with independent scrolling that does not trap or collide with page scrolling; verified signed in at 1025×661.
+- [x] Add a property-specific A4 printable self-check-in sign with the XTSY logo, QR code, steps and canonical www.xtsy.one link; generated one-page A4 PDF visually verified.
+- [ ] Sign in to the live site as booking@xtsy.one and allocate then release the latest genuine self check-in; leave the earlier test record untouched. Live publish and live-account browser access remain to be verified.
+
 ## Console intelligence — 28 November 2026
 - [x] Desk allocates exact beds/rooms per self check-in; allocation holds that room type's inventory on /book and in the console.
 - [x] Today: portfolio KPIs (occupancy, free tonight, arrivals, awaiting room, in house) and occupancy bars.

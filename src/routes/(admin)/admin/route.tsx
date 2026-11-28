@@ -1,13 +1,13 @@
 import { createFileRoute, Link, Navigate, Outlet, useRouterState, useNavigate } from '@tanstack/react-router';
 import { PageHead } from '@/admin/components/ConsoleBits';
-import { Ban, CalendarDays, CreditCard, ExternalLink, ImageIcon, Inbox, LogOut, Menu, PlugZap, Building2, ScanLine, Sparkles, Sun, Users, Wallet, X } from 'lucide-react';
+import { Ban, CalendarDays, CreditCard, ExternalLink, ImageIcon, Inbox, LogOut, Menu, PanelLeftClose, PanelLeftOpen, PlugZap, Building2, ScanLine, Sparkles, Sun, Users, Wallet, X } from 'lucide-react';
 import xtsyLogo from '@/assets/xtsy-color-logo.webp';
 import { useEffect, useState, type FormEvent } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { getAdminSupabase, SUPER_ADMIN_EMAIL } from '@/admin/adminSupabase';
-import { ConsoleScopeContext, ConsolePropertyLock, hostelConsolePath } from '@/admin/consoleScope';
+import { ConsoleAccessContext, ConsoleScopeContext, ConsolePropertyLock, hostelConsolePath } from '@/admin/consoleScope';
 import { DESK_PATHS } from '@/admin/teamRules';
 import { z } from 'zod';
 import { CONSOLE_PROPERTIES, CAMP_ID } from '@/admin/consoleProperties';
@@ -131,6 +131,7 @@ const OLD_SCREEN_TITLES: Record<string, [string, string]> = {
 
 function Shell({ email, access, deskProperty, onSignOut }: { email: string; access: Access; deskProperty: string; onSignOut: () => void }) {
   const [open, setOpen] = useState(false);
+  const [collapsed, setCollapsed] = useState(false);
   const path = useRouterState({ select: (st) => st.location.pathname.replace(/\/$/, '') });
   const selected = Route.useSearch().property;
   const allView = ['/admin', '/admin/check-in', '/admin/inbox'].includes(path);
@@ -145,17 +146,18 @@ function Shell({ email, access, deskProperty, onSignOut }: { email: string; acce
   const hostelOnly = ['/admin/inventory', '/admin/stays', '/admin/room-photos', '/admin/booking-engine', '/admin/settings', '/admin/bookings'];
   const campUnsupported = property === CAMP_ID && hostelOnly.includes(path);
   const groups = NAV.map((g) => ({ ...g, items: g.items.filter((i) => (!i.superOnly || access === 'admin') && allowed(i.to)) })).filter((g) => g.items.length);
-  const nav = (
+  const renderNav = (compact = false) => (
     <nav aria-label="Console" className="space-y-6">
       {groups.map((g) => (
         <div key={g.group}>
-          <p className="px-3 pb-1.5 text-xs font-semibold text-muted-foreground">{g.group}</p>
-          <ul className="space-y-0.5">
+          {!compact && <p className="px-3 pb-1.5 text-xs font-semibold text-muted-foreground">{g.group}</p>}
+          <ul className="space-y-1">
             {g.items.map(({ to, label, icon: Icon, exact }) => (
               <li key={to}>
                 <Link to={to} search={{ property: property ?? (['/admin', '/admin/check-in', '/admin/inbox'].includes(to) ? undefined : 'XTSY-SHL-HOSTEL') }} activeOptions={{ exact: !!exact }} onClick={() => setOpen(false)}
-                  className="flex min-h-11 items-center gap-3 rounded-xl px-3 text-[15px] font-semibold text-xt-mute transition-colors hover:bg-xt-cream hover:text-xt-ink [&.active]:bg-xt-ink [&.active]:text-xt-sand">
-                  <Icon className="h-[18px] w-[18px] shrink-0" aria-hidden />{label}
+                  aria-label={compact ? label : undefined} title={compact ? label : undefined}
+                  className={`flex min-h-12 items-center rounded-xl text-[15px] font-semibold text-xt-mute transition-colors hover:bg-xt-cream hover:text-xt-ink [&.active]:bg-xt-ink [&.active]:text-xt-sand ${compact ? 'justify-center px-0' : 'gap-3 px-3'}`}>
+                  <Icon className="h-[18px] w-[18px] shrink-0" aria-hidden />{!compact && label}
                 </Link>
               </li>
             ))}
@@ -163,18 +165,25 @@ function Shell({ email, access, deskProperty, onSignOut }: { email: string; acce
         </div>
       ))}
       <div className="border-t border-xt-line pt-4">
-        <a href="/book" target="_blank" rel="noreferrer" className="flex min-h-11 items-center gap-3 rounded-xl px-3 text-[15px] font-semibold text-xt-mute hover:bg-xt-cream hover:text-xt-ink">
-          <ExternalLink className="h-[18px] w-[18px]" aria-hidden />Open /book
+        <a href="/book" target="_blank" rel="noreferrer" aria-label={compact ? 'Open guest booking page' : undefined} title={compact ? 'Open /book' : undefined} className={`flex min-h-12 items-center rounded-xl text-[15px] font-semibold text-xt-mute hover:bg-xt-cream hover:text-xt-ink ${compact ? 'justify-center px-0' : 'gap-3 px-3'}`}>
+          <ExternalLink className="h-[18px] w-[18px]" aria-hidden />{!compact && 'Open /book'}
         </a>
       </div>
     </nav>
   );
   return (
-    <div className="lg:grid lg:min-h-screen lg:grid-cols-[256px_1fr]">
-      <aside className="hidden border-r border-xt-line bg-white/70 px-4 py-6 lg:flex lg:flex-col print:hidden">
-        <Brand />
-        <div className="mt-8 flex-1">{nav}</div>
-        <Account email={email} onSignOut={onSignOut} />
+    <div className={`lg:grid lg:min-h-screen ${collapsed ? 'lg:grid-cols-[80px_1fr]' : 'lg:grid-cols-[256px_1fr]'}`}>
+      <aside className={`sticky top-0 hidden h-screen h-[100dvh] border-r border-xt-line bg-white/70 py-5 lg:flex lg:flex-col print:hidden ${collapsed ? 'px-2' : 'px-4'}`}>
+        <div className={`flex shrink-0 ${collapsed ? 'flex-col items-center gap-3' : 'items-center justify-between gap-2'}`}>
+          <Brand compact={collapsed} />
+          <button type="button" onClick={() => { setCollapsed((v) => !v); document.getElementById('console-sidebar-nav')?.scrollTo({ top: 0 }); }} aria-expanded={!collapsed} aria-controls="console-sidebar-nav"
+            aria-label={collapsed ? 'Expand console sidebar' : 'Collapse console sidebar'} title={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-xt-line bg-white text-xt-mute hover:text-xt-ink">
+            {collapsed ? <PanelLeftOpen className="h-5 w-5" aria-hidden /> : <PanelLeftClose className="h-5 w-5" aria-hidden />}
+          </button>
+        </div>
+        <div id="console-sidebar-nav" className="mt-5 min-h-0 flex-1 overflow-y-auto overscroll-contain">{renderNav(collapsed)}</div>
+        <div className="mt-4 shrink-0"><Account email={email} onSignOut={onSignOut} compact={collapsed} /></div>
       </aside>
       <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-xt-line bg-xt-sand/95 px-4 backdrop-blur lg:hidden print:hidden">
         <Brand />
@@ -184,8 +193,8 @@ function Shell({ email, access, deskProperty, onSignOut }: { email: string; acce
         </button>
       </header>
       {open && (
-        <div id="console-nav" className="fixed inset-x-0 top-16 z-30 max-h-[calc(100vh-4rem)] overflow-y-auto border-b border-xt-line bg-xt-sand px-4 py-5 shadow-lg lg:hidden">
-          {nav}
+        <div id="console-nav" className="fixed inset-x-0 top-16 z-30 max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-b border-xt-line bg-xt-sand px-4 py-5 shadow-lg lg:hidden">
+          {renderNav()}
           <div className="mt-4"><Account email={email} onSignOut={onSignOut} /></div>
         </div>
       )}
@@ -202,28 +211,28 @@ function Shell({ email, access, deskProperty, onSignOut }: { email: string; acce
             </select>
           </div>
           {oldTitle && <PageHead title={oldTitle[0]} sub={oldTitle[1]} />}
-          <ConsolePropertyLock.Provider value={lock}><ConsoleScopeContext.Provider value={access === 'admin' ? 'super' : 'hostel'}>{campUnsupported ? <div className="space-y-4"><h2 className="text-xl font-bold">Shnonpedeng Riverside Camping by XTSY</h2><p className="text-muted-foreground">WhatsApp enquiry-only. No live inventory, online payment or hostel connections apply to this property.</p><Link to="/admin" search={{ property: CAMP_ID }} className="inline-flex min-h-[48px] items-center underline">View property overview</Link></div> : <Outlet key={property ?? 'all'} />}</ConsoleScopeContext.Provider></ConsolePropertyLock.Provider>
+          <ConsoleAccessContext.Provider value={access}><ConsolePropertyLock.Provider value={lock}><ConsoleScopeContext.Provider value={access === 'admin' ? 'super' : 'hostel'}>{campUnsupported ? <div className="space-y-4"><h2 className="text-xl font-bold">Shnonpedeng Riverside Camping by XTSY</h2><p className="text-muted-foreground">WhatsApp enquiry-only. No live inventory, online payment or hostel connections apply to this property.</p><Link to="/admin" search={{ property: CAMP_ID }} className="inline-flex min-h-[48px] items-center underline">View property overview</Link></div> : <Outlet key={property ?? 'all'} />}</ConsoleScopeContext.Provider></ConsolePropertyLock.Provider></ConsoleAccessContext.Provider>
         </div>
       </main>
     </div>
   );
 }
 
-function Brand() {
+function Brand({ compact = false }: { compact?: boolean }) {
   return (
-    <Link to="/admin" className="flex items-center gap-2.5" aria-label="XTSY console home">
-      <img src={xtsyLogo} alt="XTSY" width={120} height={28} className="h-7 w-auto" />
-      <span className="rounded-full bg-xt-ink px-2.5 py-0.5 text-xs font-bold text-xt-sand">Console</span>
+    <Link to="/admin" className="flex min-h-12 items-center gap-2.5" aria-label="XTSY console home">
+      <img src={xtsyLogo} alt="XTSY" width={120} height={28} className={compact ? 'h-8 w-12 object-contain' : 'h-7 w-auto'} />
+      {!compact && <span className="rounded-full bg-xt-ink px-2.5 py-0.5 text-xs font-bold text-xt-sand">Console</span>}
     </Link>
   );
 }
 
-function Account({ email, onSignOut }: { email: string; onSignOut: () => void }) {
+function Account({ email, onSignOut, compact = false }: { email: string; onSignOut: () => void; compact?: boolean }) {
   return (
-    <div className="flex items-center justify-between gap-2 rounded-2xl bg-xt-cream p-3">
-      <p className="min-w-0 truncate text-sm text-xt-mute" title={email}>{email}</p>
-      <button type="button" onClick={onSignOut} className="flex min-h-10 shrink-0 items-center gap-1.5 rounded-full px-3 text-sm font-semibold text-xt-ink hover:bg-white">
-        <LogOut className="h-4 w-4" aria-hidden />Sign out
+    <div className={`flex items-center rounded-2xl bg-xt-cream ${compact ? 'justify-center p-2' : 'justify-between gap-2 p-3'}`}>
+      {!compact && <p className="min-w-0 truncate text-sm text-xt-mute" title={email}>{email}</p>}
+      <button type="button" onClick={onSignOut} aria-label={compact ? 'Sign out' : undefined} title={compact ? 'Sign out' : undefined} className="flex min-h-12 shrink-0 items-center gap-1.5 rounded-full px-3 text-sm font-semibold text-xt-ink hover:bg-white">
+        <LogOut className="h-4 w-4" aria-hidden />{!compact && 'Sign out'}
       </button>
     </div>
   );

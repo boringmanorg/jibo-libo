@@ -302,6 +302,13 @@
       "when": 1795866202641,
       "tag": "0042_remove_temporary_test_login",
       "breakpoints": true
+    },
+    {
+      "idx": 43,
+      "version": "7",
+      "when": 1795870889533,
+      "tag": "0043_allow_admin_delete_released_check_ins",
+      "breakpoints": true
     }
   ]
 }

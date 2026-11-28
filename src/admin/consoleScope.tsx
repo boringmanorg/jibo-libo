@@ -9,6 +9,9 @@ export function hostelConsolePath(path: string): boolean {
 /** Presentation only. Server middleware and RLS are authoritative. */
 export const ConsoleScopeContext = createContext<'super' | 'hostel'>('hostel');
 export const useConsoleScope = () => useContext(ConsoleScopeContext);
+export type ConsoleAccess = 'admin' | 'property' | 'desk';
+export const ConsoleAccessContext = createContext<ConsoleAccess>('desk');
+export const useConsoleAccess = () => useContext(ConsoleAccessContext);
 /** The one property a non-super login is tied to (hostel admin, or a front desk's own property). */
 export const ConsolePropertyLock = createContext<string | undefined>(undefined);
 export function useConsoleProperty() {

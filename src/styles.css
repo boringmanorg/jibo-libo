@@ -1036,6 +1036,46 @@ body.reduce-motion .xt-suite-motion :is(.tgh-tile, .tgh-tablet-track, .xt-love, 
 /* Guest tap targets: every button and standalone link is at least 48px tall on touch screens.
    Explicit px because the root font size makes rem-based utilities render smaller. Inline links inside
    running text are exempt (WCAG 2.5.8). Admin console is excluded. */
+/* Property-specific self check-in sign: one A4 portrait page, opened by the console's print action. */
+.checkin-a4-print { display: none; }
+@media print {
+  @page { size: A4 portrait; margin: 0; }
+  body:has(> .checkin-a4-print) { min-height: 0 !important; height: auto !important; }
+  body:has(> .checkin-a4-print) > :not(.checkin-a4-print):not(script) { display: none !important; }
+  .checkin-a4-print {
+    box-sizing: border-box;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    width: 210mm;
+    height: 297mm;
+    padding: 12mm 17mm 11mm;
+    overflow: hidden;
+    background: white;
+    color: #1f2230;
+    text-align: center;
+  }
+  .checkin-a4-brand { display: flex; flex-direction: column; align-items: center; border-bottom: 0.4mm solid #b8324f; padding-bottom: 5mm; }
+  .checkin-a4-brand img { width: 72mm; height: auto; }
+  .checkin-a4-heading { margin-top: 7mm; }
+  .checkin-a4-heading p { margin: 0; color: #b8324f; font-size: 10pt; font-weight: 800; letter-spacing: 0.18em; }
+  .checkin-a4-heading h1 { margin: 2mm 0 0; font-family: "Staatliches", "Staatliches Fallback", Impact, sans-serif; font-size: 38pt; font-weight: 400; line-height: 1; }
+  .checkin-a4-heading h2 { margin: 3mm 0 0; font-size: 20pt; line-height: 1.2; }
+  .checkin-a4-heading span { display: block; margin-top: 1.5mm; color: #5b5e6c; font-size: 11pt; }
+  .checkin-a4-scan { margin-top: 5mm; }
+  .checkin-a4-scan svg { width: 7mm; height: 7mm; color: #b8324f; }
+  .checkin-a4-scan strong { display: block; margin-top: 1mm; font-size: 16pt; }
+  .checkin-a4-scan p { margin: 1mm 0 0; color: #5b5e6c; font-size: 10pt; }
+  .checkin-a4-code { display: block; width: 88mm; height: 88mm; margin-top: 4mm; }
+  .checkin-a4-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6mm; width: 100%; margin: 5mm 0 0; padding: 0; list-style: none; text-align: left; }
+  .checkin-a4-steps li { display: flex; gap: 2.5mm; font-size: 8.5pt; line-height: 1.35; }
+  .checkin-a4-steps svg { flex: none; width: 5mm; height: 5mm; color: #b8324f; }
+  .checkin-a4-steps strong { display: block; margin-bottom: 1mm; font-size: 9.5pt; }
+  .checkin-a4-footer { width: 100%; margin-top: 6mm; border-top: 0.3mm solid #ded8ca; padding-top: 4mm; font-size: 9pt; }
+  .checkin-a4-footer span { display: block; overflow-wrap: anywhere; }
+  .checkin-a4-footer strong { display: block; margin-top: 2mm; }
+}
+
 @media (pointer: coarse), (max-width: 767px) {
   body :is(button, [role="button"], select, summary, input[type="submit"], input[type="button"]):not(.xt-console *) {
     min-height: 48px;

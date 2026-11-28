@@ -13,10 +13,10 @@ import { closedUnits, closureFromRow, type ClosureRow } from '@/booking/consoleC
 import { stayNights } from '@/booking/dates';
 
 const date = z.string().regex(/^\d{4}-\d{2}-\d{2}$/);
-type Ctx = { supabase: any; userId: string; isSuperAdmin: boolean };
+type Ctx = { supabase: any; userId: string; isSuperAdmin: boolean; access?: { propertyId: string; role: 'super' | 'property_admin' | 'front_desk' }[] };
 /** Super admin, or staff (admin or front desk) of this property. RLS enforces the same. */
 function assertDeskScope(context: unknown, propertyId: string) {
-  const c = context as Ctx & { access?: { propertyId: string; role: string }[] };
+  const c = context as Ctx;
   if (!c.isSuperAdmin && !c.access?.some((a) => a.propertyId === propertyId)) throw new Error('Forbidden: not your property.');
 }
 
@@ -377,6 +377,36 @@ export const releaseCheckInRooms = createServerFn({ method: 'POST' })
     const channel = row.allocated_room_type_id && row.check_out_date
       ? await channelAfterClosure([{ propertyId: HOSTEL_ID, unitTypeId: row.allocated_room_type_id }], row.check_in_date, lastNight(row.check_out_date)) : null;
     return { ok: true, channel };
+  });
+
+/** Property admin or super admin: permanently delete an unallocated check-in and its private documents. */
+export const deleteCheckIn = createServerFn({ method: 'POST' })
+  .middleware([requirePropertyAdmin])
+  .inputValidator(z.object({ id: z.string().uuid() }))
+  .handler(async ({ data, context }) => {
+    const ctx = context as Ctx;
+    const { data: row, error } = await ctx.supabase.from('be_self_check_ins').select(
+      'id,property_id,guest_name,allocation_override_id,allocated_units,id_front_path,id_back_path,visa_path',
+    ).eq('id', data.id).maybeSingle();
+    if (error) throw new Error('Could not verify the check-in.');
+    if (!row) throw new Error('Check-in not found.');
+    assertDeskScope(context, row.property_id);
+    const role = ctx.isSuperAdmin ? 'super' : ctx.access?.find((a) => a.propertyId === row.property_id)?.role ?? 'front_desk';
+    const { checkInDeletionProblem } = await import('@/checkin/checkInDeletion');
+    const problem = checkInDeletionProblem(
+      { allocatedUnits: row.allocated_units ?? [], allocationOverrideId: row.allocation_override_id }, role,
+    );
+    if (problem) throw new Error(problem);
+
+    const paths = [row.id_front_path, row.id_back_path, row.visa_path].filter((p): p is string => typeof p === 'string' && p.length > 0);
+    if (paths.length) {
+      const removed = await ctx.supabase.storage.from('guest-identity-documents').remove(paths);
+      if (removed.error) throw new Error('Could not delete the private documents. The check-in was kept; please try again.');
+    }
+    const deleted = await ctx.supabase.from('be_self_check_ins').delete().eq('id', row.id);
+    if (deleted.error) throw new Error('Could not delete the check-in.');
+    await audit(ctx, 'checkin.delete', { id: row.id, propertyId: row.property_id });
+    return { ok: true };
   });
 
 /** Smart pricing limits per hostel room type (super admin only). Off until switched on. */

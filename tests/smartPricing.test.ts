@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { smartRate } from '@/booking/smartPricing';
+import { staticSearch } from '@/booking/staticSearch';
 
 const rule = { roomTypeId: 'x', enabled: true, minRupees: 350, maxRupees: 600 };
 const today = '2026-12-01', far = '2026-12-20';
@@ -13,4 +14,10 @@ describe('smart pricing', () => {
   it('never goes above the owner maximum', () => { expect(smartRate(60000, rule, 0, 8, far, today)).toBe(60000); });
   it('adds search demand on top, still inside the owner limits', () => { expect(smartRate(40000, { ...rule, demandMultiplier: 1.1 }, 8, 8, far, today)).toBe(44000); expect(smartRate(50000, { ...rule, demandMultiplier: 1.1 }, 0, 10, far, today)).toBe(60000); });
   it('never goes below the owner minimum', () => { expect(smartRate(38000, rule, 8, 8, today, today)).toBe(35000); });
+  it('applies a +5% Google demand reading to the guest room list', () => {
+    const result = staticSearch('2026-12-20', '2026-12-21', {}, [], {}, new Date('2026-12-01T06:00:00Z'), [
+      { roomTypeId: 'bed-in-8-bed-mixed-dormitory', enabled: true, minRupees: 400, maxRupees: 500, demandMultiplier: 1.05 },
+    ]);
+    expect(result.rooms.find((r) => r.id === 'bed-in-8-bed-mixed-dormitory')?.fromRate).toBe(42000);
+  });
 });
