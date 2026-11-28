@@ -1036,16 +1036,15 @@ body.reduce-motion .xt-suite-motion :is(.tgh-tile, .tgh-tablet-track, .xt-love, 
 /* Guest tap targets: every button and standalone link is at least 48px tall on touch screens.
    Explicit px because the root font size makes rem-based utilities render smaller. Inline links inside
    running text are exempt (WCAG 2.5.8). Admin console is excluded. */
-/* Console printing (sales invoices): print exactly what is on screen, colours included, without the console frame. */
+/* Console printing (sales invoices): only the invoice sheet prints, one A4 page, colours kept, nothing from the console frame. */
 @media print {
-  * { print-color-adjust: exact; }
-  .console-invoice { page: invoice; }
-  .console-shell { display: block !important; min-height: 0 !important; }
-  .console-shell main > div { max-width: none !important; }
-  body:has(.console-invoice) { background: white !important; }
-  body:has(.console-invoice) [data-sonner-toaster] { display: none !important; }
+  body:has(.console-invoice) { background: white !important; min-height: 0 !important; }
+  body:has(.console-invoice) * { visibility: hidden; }
+  .console-invoice article, .console-invoice article * { visibility: visible; print-color-adjust: exact; }
+  .console-invoice article { position: absolute; left: 0; top: 0; width: 210mm; margin: 0 !important; padding: 12mm 14mm !important; box-shadow: none !important; border-radius: 0 !important; }
+  .console-invoice article > div:first-child { margin: -12mm -14mm 6mm !important; }
+  .console-invoice article tr, .console-invoice article section { break-inside: avoid; }
 }
-@page invoice { size: A4 portrait; margin: 10mm; }
 
 /* Property-specific self check-in sign: one A4 portrait page, opened by the console's print action. */
 .checkin-a4-print { display: none; }
