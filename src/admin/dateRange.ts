@@ -34,6 +34,15 @@ export function resolveRange(preset: string | undefined, from: string | undefine
   }
 }
 
+/** Inventory looks ahead only: past presets fall back to next 7 days and custom ranges never start before today. */
+export const FUTURE_PRESETS: RangePreset[] = ['today', 'next7', 'custom'];
+export function futureOnly(r: DateRange, today: string): DateRange {
+  if (!FUTURE_PRESETS.includes(r.preset)) return resolveRange('next7', undefined, undefined, today);
+  if (r.preset !== 'custom' || r.from >= today) return r;
+  const to = r.to < today ? today : r.to;
+  return resolveRange('custom', today, to, today);
+}
+
 export const inRange = (iso: string | null | undefined, r: { from: string; to: string }) => !!iso && iso.slice(0, 10) >= r.from && iso.slice(0, 10) <= r.to;
 
 export function daysOf(r: { from: string; to: string }): string[] {

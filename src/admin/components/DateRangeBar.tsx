@@ -1,16 +1,20 @@
 import { useNavigate, useSearch } from '@tanstack/react-router';
 import { CalendarRange } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { RANGE_PRESETS, resolveRange, todayInIndiaIso, type DateRange, type RangePreset } from '@/admin/dateRange';
+import { FUTURE_PRESETS, futureOnly, RANGE_PRESETS, resolveRange, todayInIndiaIso, type DateRange, type RangePreset } from '@/admin/dateRange';
 
 /** Reads the shared console range from the URL (?range=&from=&to=). */
-export function useConsoleRange(fallback: RangePreset = 'today'): DateRange {
+export function useConsoleRange(fallback: RangePreset = 'today', future = false): DateRange {
   const s = useSearch({ strict: false }) as { range?: string; from?: string; to?: string };
-  return resolveRange(s.range, s.from, s.to, todayInIndiaIso(), fallback);
+  const today = todayInIndiaIso();
+  const r = resolveRange(s.range, s.from, s.to, today, fallback);
+  return future ? futureOnly(r, today) : r;
 }
 
-export function DateRangeBar({ fallback = 'today', presets }: { fallback?: RangePreset; presets?: RangePreset[] }) {
-  const range = useConsoleRange(fallback);
+export function DateRangeBar({ fallback = 'today', presets, future = false }: { fallback?: RangePreset; presets?: RangePreset[]; future?: boolean }) {
+  const range = useConsoleRange(fallback, future);
+  const minDate = future ? todayInIndiaIso() : undefined;
+  if (future && !presets) presets = FUTURE_PRESETS;
   const navigate = useNavigate();
   const set = (patch: Record<string, string | undefined>) =>
     void navigate({ to: '.', search: ((prev: Record<string, unknown>) => ({ ...prev, ...patch })) as never, replace: true });
@@ -28,7 +32,7 @@ export function DateRangeBar({ fallback = 'today', presets }: { fallback?: Range
           className={cn('min-h-[44px] rounded-full px-4 text-sm font-bold transition-colors', range.preset === p.id ? 'bg-xt-ink text-xt-sand' : 'text-xt-mute hover:bg-xt-cream hover:text-xt-ink')}>{p.label}</button>)}
       </div>
       {range.preset === 'custom' && <div className="flex flex-wrap items-center gap-2">
-        <input type="date" aria-label="From date" className="min-h-[48px] rounded-xl border border-xt-line px-3 text-base" value={range.from} onChange={(e) => set({ range: 'custom', from: e.target.value })} />
+        <input type="date" aria-label="From date" className="min-h-[48px] rounded-xl border border-xt-line px-3 text-base" value={range.from} min={minDate} onChange={(e) => set({ range: 'custom', from: e.target.value })} />
         <span className="text-sm text-xt-mute">to</span>
         <input type="date" aria-label="To date" className="min-h-[48px] rounded-xl border border-xt-line px-3 text-base" value={range.to} min={range.from} onChange={(e) => set({ range: 'custom', to: e.target.value })} />
       </div>}

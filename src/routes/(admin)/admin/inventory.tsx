@@ -43,7 +43,7 @@ function Inventory() {
 
 function InventoryDays() {
   const property = useConsoleProperty();
-  const range = useConsoleRange('next7');
+  const range = useConsoleRange('next7', true);
   const nights = daysOf(range).slice(0, 62);
   const fetchCal = useServerFn(getInventoryCalendar);
   const { data, error } = useQuery({
@@ -56,7 +56,7 @@ function InventoryDays() {
   const rows = (data?.rows ?? []).filter((r) => !property || r.propertyId === property);
   return <div className="space-y-4">
     <PageHead title="Inventory" sub="Day by day: what /book offers each night after console blocks and OTA holds.">{data && <SheetChip syncedAt={data.sheetSyncedAt} />}</PageHead>
-    <DateRangeBar fallback="next7" />
+    <DateRangeBar fallback="next7" future />
     {error && <p className="text-destructive">Could not load inventory. {(error as Error).message}</p>}
     {!data ? <p className="text-muted-foreground">Loading…</p> : nights.map((night, i) => {
       let total = 0, free = 0, closed = 0, ota = 0;
