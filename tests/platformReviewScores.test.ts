@@ -25,6 +25,10 @@ describe('Separate listing scores', () => {
     expect(hostelPlatformScores.find((r) => r.platform === 'Airbnb')).toMatchObject({ value: '5.0', scale: 5 });
     expect(hostelOtaReviews.filter((r) => r.source === 'Airbnb')).toHaveLength(3);
   });
+  it('shows owner-approved Tripadvisor and Expedia scores on their own scales', () => {
+    expect(hostelPlatformScores.find((r) => r.platform === 'Tripadvisor')).toEqual({ platform: 'Tripadvisor', value: '5.0', scale: 5 });
+    expect(hostelPlatformScores.find((r) => r.platform === 'Expedia')).toEqual({ platform: 'Expedia', value: '8.0', scale: 10 });
+  });
   it('preserves low-rated feedback and original Agoda ten-point scale', () => {
     expect(hostelOtaReviews.find((r) => r.name === 'Parth')).toMatchObject({ rating: 2.4, ratingScale: 10, source: 'Agoda' });
     expect(hostelOtaReviews.find((r) => r.name === 'Kandarp')).toMatchObject({ rating: 9.2, ratingScale: 10 });

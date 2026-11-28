@@ -20,7 +20,7 @@ export default function PropertyOverview({ propertyId }: { propertyId: Id }) {
   if (!p) return null;
   // Approved hostel scores only (brandFacts / platform snapshot); each keeps its own scale, never blended.
   const scores: Record<string, { value: string; scale: number; note?: string }> | null = propertyId === 'XTSY-SHL-HOSTEL'
-    ? { Google: { value: GOOGLE_RATING.value, scale: 5, note: `${GOOGLE_RATING.count} reviews` }, ...Object.fromEntries(hostelPlatformScores.map((x) => [x.platform, { value: x.value, scale: x.scale, ...(x.platform === 'Booking.com' ? { note: 'Earlier score' } : {}) }])) }
+    ? { Google: { value: GOOGLE_RATING.value, scale: 5, note: `${GOOGLE_RATING.count} reviews` }, ...Object.fromEntries(hostelPlatformScores.map((x) => [x.platform, { value: x.value, scale: x.scale, ...(x.platform === 'Booking.com' ? { note: 'Earlier score' } : x.platform === 'Expedia' ? { note: '1 review' } : {}) }])) }
     : null;
   return (
     <section aria-label="About this property" className="mt-6 space-y-5 rounded-2xl border border-border bg-card p-5 sm:p-7">

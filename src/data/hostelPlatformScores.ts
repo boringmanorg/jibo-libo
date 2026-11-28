@@ -6,4 +6,6 @@ export const hostelPlatformScores = [
   { platform: 'Goibibo', value: '4.7', scale: 5 },
   { platform: 'MakeMyTrip', value: '4.8', scale: 5 },
   { platform: 'Agoda', value: '8.4', scale: 10 },
+  { platform: 'Tripadvisor', value: '5.0', scale: 5 },
+  { platform: 'Expedia', value: '8.0', scale: 10 },
 ] as const;
