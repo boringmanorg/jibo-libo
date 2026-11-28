@@ -116,11 +116,19 @@ export const listSalesInvoices = createServerFn({ method: 'GET' })
   .inputValidator(z.object({ propertyId: z.enum(['XTSY-SHL-HOSTEL', 'XTSY-SHN-CAMP']).optional() }))
   .handler(async ({ data, context }): Promise<{ id: string; number: string; total: number; issuedAt: string; propertyId: string; guestName: string; reference: string; balance: number }[]> => {
     const ctx = context as Ctx;
-    let q = ctx.supabase.from('be_sales_invoices').select('id,number,total_rupees,issued_at,property_id,folio').order('issued_at', { ascending: false }).limit(200);
+    let q = ctx.supabase.from('be_sales_invoices').select('id,number,total_rupees,issued_at,property_id,enquiry_id,folio').order('issued_at', { ascending: false }).limit(200);
     if (data.propertyId) q = q.eq('property_id', data.propertyId);
     const { data: rows, error } = await q;
     if (error) throw new Error('Could not load invoices.');
-    return (rows ?? []).filter((r) => canManageProperty(ctx.isSuperAdmin, r.property_id)).map((r) => { const f = (r.folio ?? {}) as { guestName?: string; reference?: string; balance?: number }; return { id: r.id as string, number: r.number as string, total: Number(r.total_rupees), issuedAt: r.issued_at as string, propertyId: r.property_id as string, guestName: String(f.guestName ?? ''), reference: String(f.reference ?? ''), balance: Number(f.balance ?? 0) }; });
+    const mine = (rows ?? []).filter((r) => canManageProperty(ctx.isSuperAdmin, r.property_id));
+    // Balance is worked out from the payments recorded now, not the copy frozen at issue, so balance payments show at once.
+    const ids = [...new Set(mine.map((r) => r.enquiry_id as string))];
+    const paidBy = new Map<string, number>();
+    if (ids.length) {
+      const { data: pays } = await ctx.supabase.from('be_sales_payments').select('enquiry_id,amount_rupees').in('enquiry_id', ids);
+      for (const p of (pays ?? []) as { enquiry_id: string; amount_rupees: number }[]) paidBy.set(p.enquiry_id, (paidBy.get(p.enquiry_id) ?? 0) + Number(p.amount_rupees));
+    }
+    return mine.map((r) => { const f = (r.folio ?? {}) as { guestName?: string; reference?: string }; const total = Number(r.total_rupees); return { id: r.id as string, number: r.number as string, total, issuedAt: r.issued_at as string, propertyId: r.property_id as string, guestName: String(f.guestName ?? ''), reference: String(f.reference ?? ''), balance: Math.round((total - (paidBy.get(r.enquiry_id as string) ?? 0)) * 100) / 100 }; });
   });
 
 export const getSalesInvoice = createServerFn({ method: 'GET' })

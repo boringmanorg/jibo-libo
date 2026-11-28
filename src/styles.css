@@ -1044,6 +1044,8 @@ body.reduce-motion .xt-suite-motion :is(.tgh-tile, .tgh-tablet-track, .xt-love, 
   .console-invoice article { position: absolute; left: 0; top: 0; width: 210mm; margin: 0 !important; padding: 12mm 14mm !important; box-shadow: none !important; border-radius: 0 !important; }
   .console-invoice article > div:first-child { margin: -12mm -14mm 6mm !important; }
   .console-invoice article tr, .console-invoice article section { break-inside: avoid; }
+  .console-invoice article header, .console-invoice article footer { display: flex !important; }
+  .console-invoice article footer { display: block !important; }
 }
 
 /* Property-specific self check-in sign: one A4 portrait page, opened by the console's print action. */

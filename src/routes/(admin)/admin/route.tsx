@@ -10,6 +10,7 @@ import { getAdminSupabase, SUPER_ADMIN_EMAIL } from '@/admin/adminSupabase';
 import { ConsoleAccessContext, ConsoleScopeContext, ConsolePropertyLock, hostelConsolePath } from '@/admin/consoleScope';
 import { DESK_PATHS } from '@/admin/teamRules';
 import { z } from 'zod';
+import { useQueryClient } from '@tanstack/react-query';
 import { CONSOLE_PROPERTIES, CAMP_ID } from '@/admin/consoleProperties';
 import { deniedMessage, deniedReason, signInErrorMessage, type DeniedReason } from '@/admin/signInMessages';
 
@@ -39,6 +40,9 @@ type Status = 'loading' | 'out' | 'denied' | 'in' | 'recovery';
 type Access = 'admin' | 'property' | 'desk';
 
 function AdminLayout() {
+  // Console figures must be current: refetch whenever a console screen opens or the tab regains focus (guest pages keep the longer cache).
+  const qc = useQueryClient();
+  qc.setQueryDefaults(['console'], { staleTime: 0, refetchOnWindowFocus: true, refetchOnMount: 'always' });
   const [status, setStatus] = useState<Status>('loading');
   const [email, setEmail] = useState('');
   const [reason, setReason] = useState<DeniedReason>('wrong_email');
