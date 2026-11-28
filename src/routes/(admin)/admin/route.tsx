@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { getAdminSupabase, SUPER_ADMIN_EMAIL } from '@/admin/adminSupabase';
+import { ConsoleScopeContext, hostelConsolePath } from '@/admin/consoleScope';
 import { deniedMessage, deniedReason, signInErrorMessage, type DeniedReason } from '@/admin/signInMessages';
 
 export const Route = createFileRoute('/(admin)/admin')({
@@ -126,10 +127,10 @@ const OLD_SCREEN_TITLES: Record<string, [string, string]> = {
 function Shell({ email, access, onSignOut }: { email: string; access: 'admin' | 'frontdesk'; onSignOut: () => void }) {
   const [open, setOpen] = useState(false);
   const path = useRouterState({ select: (st) => st.location.pathname.replace(/\/$/, '') });
-  if (access === 'frontdesk' && path !== '/admin/check-in') return <Navigate to="/admin/check-in" replace />;
+  if (access === 'frontdesk' && !hostelConsolePath(path)) return <Navigate to="/admin/check-in" replace />;
   const oldTitle = OLD_SCREEN_TITLES[path];
   const groups = access === 'frontdesk'
-    ? [{ group: 'Front desk', items: [{ to: '/admin/check-in', label: 'Self check-in', icon: ScanLine }] }]
+    ? NAV.map((g) => ({ ...g, items: g.items.filter((i) => hostelConsolePath(i.to)) })).filter((g) => g.items.length)
     : NAV;
   const nav = (
     <nav aria-label="Console" className="space-y-6">
@@ -178,7 +179,7 @@ function Shell({ email, access, onSignOut }: { email: string; access: 'admin' | 
       <main className="min-w-0 px-4 py-6 sm:px-6 lg:px-10 lg:py-10">
         <div className="mx-auto max-w-6xl">
           {oldTitle && <PageHead title={oldTitle[0]} sub={oldTitle[1]} />}
-          <Outlet />
+          <ConsoleScopeContext.Provider value={access === 'admin' ? 'super' : 'hostel'}><Outlet /></ConsoleScopeContext.Provider>
         </div>
       </main>
     </div>

@@ -1,3 +1,4 @@
+import { buildRouteHead } from '@/lib/seo-head';
 import { useSheetDoorbell } from '@/hooks/useSheetDoorbell';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
@@ -14,6 +15,7 @@ import { PageHead, SheetChip, dayMonth, freeTone, weekday } from '@/admin/compon
 
 export const Route = createFileRoute('/(admin)/admin/inventory')({
   validateSearch: z.object({ start: z.string().regex(/^\d{4}-\d{2}$/).optional() }),
+  head: () => buildRouteHead({ path: '/admin/inventory', title: 'Inventory — XTSY Console', description: 'XTSY room inventory and hostel availability.', noIndex: true }),
   component: Inventory,
 });
 

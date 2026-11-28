@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import CampsiteBookingFlow from "@/pages/CampsiteBookingFlow";
 import { buildRouteHead } from "@/lib/seo-head";
-import { loadBookPageData } from "@/booking/bookPageLoader";
 
 export const Route = createFileRoute("/(stays)/book/campsite")({
   head: () =>
@@ -11,14 +10,11 @@ export const Route = createFileRoute("/(stays)/book/campsite")({
       noIndexFollow: true,
       title: "Book Shnonpedeng Riverside Camping by XTSY",
       description:
-        "Book riverside tents at Shnonpedeng on the Umngot, an XTSY franchise partner camp: full tent for two ₹1,400 a night, bed space ₹750, breakfast and dinner on request.",
+        "Book riverside tents at Shnonpedeng on the Umngot, an XTSY franchise partner camp: full tent for two ₹1,400 a night, ₹700 a person, meals on request via WhatsApp.",
     }),
-  // Console blocks for the camp's tents.
-  loader: () => loadBookPageData(),
   component: CampsitePage,
 });
 
 function CampsitePage() {
-  const { closures } = Route.useLoaderData();
-  return <CampsiteBookingFlow closures={closures} />;
+  return <CampsiteBookingFlow />;
 }

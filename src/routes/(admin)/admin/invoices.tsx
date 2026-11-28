@@ -1,3 +1,4 @@
+import { buildRouteHead } from '@/lib/seo-head';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useServerFn } from '@tanstack/react-start';
@@ -8,11 +9,12 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { useConsoleScope } from '@/admin/consoleScope';
 import { getBusinessFn, issueTaxInvoiceFn, listInvoicesFn, saveBusinessFn } from '@/admin/engineOps.functions';
 import type { Business } from '@/admin/engineOps.core';
 import { inr } from '@/admin/components/engineBits';
 
-export const Route = createFileRoute('/(admin)/admin/invoices')({ component: Invoices });
+export const Route = createFileRoute('/(admin)/admin/invoices')({ head: () => buildRouteHead({ path: '/admin/invoices', title: 'Invoices — XTSY Console', description: 'Property-scoped XTSY business invoices and tax details.', noIndex: true }), component: Invoices });
 
 const KIND: Record<string, string> = { advance_receipt: 'Advance receipt', tax_invoice: 'Tax invoice', business_invoice: 'Business invoice' };
 
@@ -75,6 +77,7 @@ function Invoices() {
 }
 
 function BusinessCard({ propertyId, onPropertyChange }: { propertyId: Business['propertyId']; onPropertyChange: (propertyId: Business['propertyId']) => void }) {
+  const scope = useConsoleScope();
   const get = useServerFn(getBusinessFn);
   const save = useServerFn(saveBusinessFn);
   const q = useQuery({ queryKey: ['engine', 'business', propertyId], queryFn: () => get({ data: { propertyId } }) });
@@ -86,7 +89,7 @@ function BusinessCard({ propertyId, onPropertyChange }: { propertyId: Business['
     <Card>
       <CardHeader><CardTitle className="text-lg">Property and GST status on invoices</CardTitle></CardHeader>
       <CardContent className="grid gap-4 md:grid-cols-2">
-        <div className="space-y-1 md:col-span-2"><Label htmlFor="b-property">Property</Label><select id="b-property" className="min-h-[48px] w-full rounded-md border border-input bg-background px-3 text-base" value={propertyId} onChange={(e) => onPropertyChange(e.target.value as Business['propertyId'])}><option value="XTSY-SHL-HOSTEL">XTSY Travellers Hostel</option><option value="XTSY-SHN-CAMP">Shnonpedeng Riverside Camping by XTSY</option></select><p className="text-xs text-muted-foreground">Each company or franchise-held property keeps its own GST registration and GSTIN. Never copy one property’s tax identity to another.</p></div>
+        <div className="space-y-1 md:col-span-2"><Label htmlFor="b-property">Property</Label><select id="b-property" className="min-h-[48px] w-full rounded-md border border-input bg-background px-3 text-base" value={propertyId} onChange={(e) => onPropertyChange(e.target.value as Business['propertyId'])}><option value="XTSY-SHL-HOSTEL">XTSY Travellers Hostel</option>{scope === 'super' && <option value="XTSY-SHN-CAMP">Shnonpedeng Riverside Camping by XTSY</option>}</select><p className="text-xs text-muted-foreground">Each company or franchise-held property keeps its own GST registration and GSTIN. Never copy one property’s tax identity to another.</p></div>
         <label className="flex min-h-[48px] items-center gap-3 rounded-xl bg-muted p-3 font-medium md:col-span-2"><input type="checkbox" className="h-6 w-6" checked={b.gstRegistered} onChange={(e) => setB({ ...b, gstRegistered: e.target.checked })} /><span>This property is registered for GST</span><span className="text-sm text-muted-foreground">{b.gstRegistered ? 'Issues tax invoices with GST.' : 'Issues ordinary business invoices with no GST.'}</span></label>
         <div className="space-y-1"><Label htmlFor="b-name">Legal or business name</Label><Input id="b-name" className="min-h-[48px] text-base" value={b.legalName} onChange={(e) => setB({ ...b, legalName: e.target.value })} /></div>
         <div className="space-y-1"><Label htmlFor="b-gstin">GSTIN {b.gstRegistered ? '' : '(not shown while unregistered)'}</Label><Input id="b-gstin" disabled={!b.gstRegistered} className="min-h-[48px] font-mono text-base uppercase" maxLength={15} value={b.gstin} onChange={(e) => setB({ ...b, gstin: e.target.value.toUpperCase() })} /></div>

@@ -5,7 +5,7 @@
  */
 import { createServerFn } from '@tanstack/react-start';
 import { z } from 'zod';
-import { requireSuperAdmin } from './adminAuth';
+import { requireSuperAdmin, requirePropertyAdmin } from './adminAuth';
 import { CHANNEL_PROPERTY_IDS, type ChannelPropertyId } from '@/booking/channel/zimmerstackPlan';
 import { todayInIndia } from '@/booking/dates';
 
@@ -118,7 +118,7 @@ export const makeOtaConnectLink = createServerFn({ method: 'POST' })
 
 /** OTA bookings for the Inbox (admin RLS read), upcoming first. */
 export const listOtaBookings = createServerFn({ method: 'GET' })
-  .middleware([requireSuperAdmin])
+  .middleware([requirePropertyAdmin])
   .handler(async ({ context }) => {
     const ctx = context as Ctx;
     const cols = 'zs_booking_id,zs_mode,property_id,status,ota_name,ota_code,check_in,check_out,guest_name,guest_phone,guest_email,contact_withheld,adults,children,total,currency,rooms,received_at';

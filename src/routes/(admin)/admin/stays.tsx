@@ -1,4 +1,5 @@
 import { useSheetDoorbell } from '@/hooks/useSheetDoorbell';
+import { buildRouteHead } from '@/lib/seo-head';
 import { createFileRoute } from '@tanstack/react-router';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useServerFn } from '@tanstack/react-start';
@@ -13,7 +14,7 @@ import {
   ALL_STAYS, WHOLE_PROPERTY, consoleCheckAvailability, listSheetLinks, setSheetLink, deleteInventoryOverride, getConsoleOverview, listPmsEnquiries, saveInventoryOverride, syncRoomsNow,
 } from '@/admin/console.functions';
 
-export const Route = createFileRoute('/(admin)/admin/stays')({ component: Stays });
+export const Route = createFileRoute('/(admin)/admin/stays')({ head: () => buildRouteHead({ path: '/admin/stays', title: 'Room Blocks — XTSY Console', description: 'Manage XTSY room blocks and hostel sheet connections.', noIndex: true }), component: Stays });
 
 const today = () => new Date().toISOString().slice(0, 10);
 const plus = (d: string, n: number) => { const x = new Date(d); x.setDate(x.getDate() + n); return x.toISOString().slice(0, 10); };
@@ -81,7 +82,7 @@ function Stays() {
         <div className="grid gap-3 md:grid-cols-5">
           <div><Label htmlFor="unit">Room</Label><select id="unit" className={selectCls} value={chosen} onChange={(e) => { setUnit(e.target.value); setCount(''); }}>
             <option value={WHOLE_PROPERTY}>Whole property: every {property.propertyId === 'XTSY-SHL-HOSTEL' ? 'room, including Experience by XTSY,' : 'tent'} at {property.name}</option>
-            <option value={ALL_STAYS}>Every property: {data.properties.map((p) => p.name).join(' and ')}</option>
+            {data.accessScope === 'super' && <option value={ALL_STAYS}>Every property: {data.properties.map((p) => p.name).join(' and ')}</option>}
             {property.units.map((u) => <option key={u.id} value={u.id}>{u.name}</option>)}</select></div>
           <div><Label htmlFor="bn">How many to close</Label><Input id="bn" type="number" min={1} max={chosenUnit?.totalUnits ?? 1} inputMode="numeric" className="h-12 text-base" disabled={!single}
             placeholder={single ? `All ${chosenUnit?.totalUnits ?? ''}` : 'All'} value={count} onChange={(e) => setCount(e.target.value)} />

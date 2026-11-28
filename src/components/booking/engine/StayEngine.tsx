@@ -134,7 +134,7 @@ export default function StayEngine({ mode, pending = false, photos, closures, sh
         </>
       ) : location === 'shnonpedeng' ? (
         <>
-          <CampBooking onBack={() => pickLocation(null)} closures={closures} />
+          <CampBooking onBack={() => pickLocation(null)} />
           <Promotions step={1} />
           <BrandStory />
         </>

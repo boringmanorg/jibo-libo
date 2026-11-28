@@ -1,24 +1,22 @@
 /**
  * Shnonpedeng riverside camping, booked through the XTSY desk on WhatsApp. Used by /book
- * (location=shnonpedeng) and /book/campsite. Static data plus the console's blocks for the camp's
- * tents (passed in by the page loader): blocked nights show Full and the steppers stop at what is left.
+ * (location=shnonpedeng) and /book/campsite. Owner rule: no live availability is shown; the desk
+ * confirms every request on WhatsApp.
  */
 import { useMemo, useState, type ReactNode } from 'react';
 import { ArrowRight, Handshake, MessageCircle, Minus, Plus } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { addDays, daysBetween, stayNights, todayInIndia, type IsoDate } from '@/booking/dates';
-import { freeAfterClosures, type ClosureRow } from '@/booking/consoleClosures';
+import { addDays, daysBetween, todayInIndia, type IsoDate } from '@/booking/dates';
 import { HOSTEL_POLICIES } from '@/data/hostelPolicies';
 import { localEnquiryRef } from '@/lib/localEnquiry';
 import { bookingPageSource, openWhatsAppDirectly } from '@/utils/privacyCompliantWhatsApp';
 import { trackBookingStart } from '@/utils/dataLayerService';
-import { CAMP, CAMP_GST_NOTE, CAMP_MEALS, CAMP_PHOTOS, CAMP_PLANS, CAMP_TENTS, CAMP_UNIT_ID, campGuests, campProblem, campQuote, tentsUsed, type CampMealId } from '@/data/shnonpedengCamp';
+import { CAMP, CAMP_GST_NOTE, CAMP_MEALS, CAMP_PHOTOS, CAMP_PLANS, campGuests, campProblem, campQuote, type CampMealId } from '@/data/shnonpedengCamp';
 import { PhotoStrip } from './BookExtras';
 import { recordEnquiryFn } from '@/booking/publicEngine.functions';
 
 const inr = (n: number) => `₹${n.toLocaleString('en-IN')}`;
-const dayFmt = new Intl.DateTimeFormat('en-IN', { weekday: 'short', timeZone: 'UTC' });
-const dateFmt = new Intl.DateTimeFormat('en-IN', { day: 'numeric', month: 'short', timeZone: 'UTC' });
+const MAX_UNITS = 10;
 const field = 'h-12 w-full rounded-2xl border border-xt-line bg-white px-4 text-base text-xt-ink focus:outline-none focus:ring-2 focus:ring-xt-ink';
 
 function Stepper({ value, min = 0, max, onChange, label }: { value: number; min?: number; max: number; onChange: (n: number) => void; label: string }) {
@@ -45,13 +43,13 @@ function Row({ title, sub, children }: { title: string; sub: ReactNode; children
   );
 }
 
-export default function CampBooking({ onBack, closures = [] }: { onBack?: () => void; closures?: ClosureRow[] }) {
+export default function CampBooking({ onBack }: { onBack?: () => void }) {
   const today = todayInIndia(new Date());
   const [checkIn, setCheckIn] = useState<IsoDate>(addDays(today, 1));
   const [checkOut, setCheckOut] = useState<IsoDate>(addDays(today, 2));
   const [tents, setTents] = useState(1);
   const [beds, setBeds] = useState(0);
-  const [meals, setMeals] = useState<Record<CampMealId, number>>({ breakfast: 0, dinnerVeg: 0, dinnerNonVeg: 0 });
+  const [meals, setMeals] = useState<Record<CampMealId, number>>({ combo: 0, breakfast: 0, dinnerVeg: 0 });
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [notes, setNotes] = useState('');
@@ -61,13 +59,7 @@ export default function CampBooking({ onBack, closures = [] }: { onBack?: () => 
   const nights = Math.max(0, daysBetween(checkIn, checkOut));
   const guests = campGuests({ tents, beds });
   const req = { nights, tents, beds, meals };
-  const freeOn = (night: IsoDate) => freeAfterClosures(closures, CAMP_UNIT_ID, night, CAMP_TENTS);
-  const stayFree = stayNights(checkIn, checkOut).map(freeOn);
-  const freeTents = stayFree.length ? Math.min(...stayFree) : 0;
-  const week = stayNights(checkIn, addDays(checkIn, 7)).map((night) => ({ night, free: freeOn(night) }));
-  const used = tentsUsed({ tents, beds });
-  const problem = freeTents === 0 ? 'Sold out for these dates. Try other dates.'
-    : used > freeTents ? `Only ${freeTents} tent${freeTents === 1 ? '' : 's'} free for these dates.` : campProblem(req);
+  const problem = campProblem(req);
   const quote = useMemo(() => campQuote(req), [nights, tents, beds, meals]); // eslint-disable-line react-hooks/exhaustive-deps
   const contactProblem = !name.trim() ? 'Add your name.' : phone.replace(/\D/g, '').length < 10 ? 'Add a phone number we can WhatsApp.' : null;
 
@@ -77,9 +69,10 @@ export default function CampBooking({ onBack, closures = [] }: { onBack?: () => 
     setTents(t); setBeds(b);
     const g = campGuests({ tents: t, beds: b });
     setMeals((m) => {
-      const breakfast = Math.min(m.breakfast, g);
-      const dinnerVeg = Math.min(m.dinnerVeg, g);
-      return { breakfast, dinnerVeg, dinnerNonVeg: Math.min(m.dinnerNonVeg, g - dinnerVeg) };
+      let left = g;
+      const next = { ...m };
+      for (const id of Object.keys(next) as CampMealId[]) { next[id] = Math.min(next[id], left); left -= next[id]; }
+      return next;
     });
   };
 
@@ -131,32 +124,23 @@ export default function CampBooking({ onBack, closures = [] }: { onBack?: () => 
             </div>
           </div>
 
-          <div aria-label="Tents free, next 7 nights" className="grid grid-cols-7 gap-1 text-center text-xs sm:gap-2">
-            {week.map((n) => (
-              <div key={n.night} className={cn('rounded-2xl px-1 py-2.5', n.free > 0 ? 'bg-white' : 'bg-transparent')}>
-                <p className="text-xt-mute">{dayFmt.format(new Date(`${n.night}T00:00:00Z`))}</p>
-                <p className="font-bold text-xt-ink">{dateFmt.format(new Date(`${n.night}T00:00:00Z`))}</p>
-                {n.free > 0 ? <p className="mt-1 font-semibold text-xt-leaf">{n.free} left</p> : <p className="mt-1 font-semibold text-xt-crimson">Full</p>}
-              </div>
-            ))}
-          </div>
-          {freeTents === 0 && <p role="status" className="rounded-2xl bg-xt-oat p-4 text-sm font-bold text-xt-ink">Sold out for these dates. Pick other dates above.</p>}
+          <p className="rounded-2xl bg-xt-oat p-4 text-sm font-semibold text-xt-ink">Send your dates on WhatsApp and the XTSY desk confirms whether tents are available.</p>
 
           <div className="space-y-3">
             <h2 className="xt-display text-4xl text-xt-ink">Tents</h2>
             <Row title={CAMP_PLANS.tent.title} sub={<><span className="font-bold text-xt-ink">{inr(CAMP_PLANS.tent.price)}</span> {CAMP_PLANS.tent.unit}. {CAMP_PLANS.tent.line}</>}>
-              <Stepper label="Full tents" value={tents} max={Math.max(0, freeTents - Math.ceil(beds / 2))} onChange={(n) => changeStay(n, beds)} />
+              <Stepper label="Full tents" value={tents} max={MAX_UNITS} onChange={(n) => changeStay(n, beds)} />
             </Row>
             <Row title={CAMP_PLANS.bed.title} sub={<><span className="font-bold text-xt-ink">{inr(CAMP_PLANS.bed.price)}</span> {CAMP_PLANS.bed.unit}. {CAMP_PLANS.bed.line}</>}>
-              <Stepper label="Bed spaces" value={beds} max={Math.max(0, (freeTents - tents) * 2)} onChange={(n) => changeStay(tents, n)} />
+              <Stepper label="Bed spaces" value={beds} max={MAX_UNITS} onChange={(n) => changeStay(tents, n)} />
             </Row>
           </div>
 
           <div className="space-y-3">
             <h2 className="xt-display text-4xl text-xt-ink">Meals at the camp</h2>
-            <p className="text-sm text-xt-mute">{CAMP.mealsNote} Choose how many guests take each meal.</p>
+            <p className="text-sm text-xt-mute">{CAMP.mealsNote} Choose one option per guest.</p>
             {(Object.values(CAMP_MEALS)).map((m) => {
-              const max = m.id === 'breakfast' ? guests : guests - meals[m.id === 'dinnerVeg' ? 'dinnerNonVeg' : 'dinnerVeg'];
+              const max = guests - (Object.keys(meals) as CampMealId[]).filter((id) => id !== m.id).reduce((sum, id) => sum + meals[id], 0);
               return (
                 <Row key={m.id} title={m.title} sub={<><span className="font-bold text-xt-ink">{inr(m.price)}</span> {m.unit}</>}>
                   <Stepper label={`${m.title} guests`} value={meals[m.id]} max={Math.max(0, max)} onChange={(n) => setMeal(m.id, n)} />

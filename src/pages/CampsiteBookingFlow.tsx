@@ -4,12 +4,11 @@
  */
 import { PageShell } from '@/components/v2/blocks';
 import CampBooking from '@/components/booking/engine/CampBooking';
-import type { ClosureRow } from '@/booking/consoleClosures';
 
-export default function CampsiteBookingFlow({ closures = [] }: { closures?: ClosureRow[] }) {
+export default function CampsiteBookingFlow() {
   return (
     <PageShell cta={false} bar={false}>
-      <CampBooking closures={closures} />
+      <CampBooking />
     </PageShell>
   );
 }

@@ -1,3 +1,4 @@
+import { CAMP_PLANS } from './shnonpedengCamp';
 /**
  * Centralized Searchable Index for XTSY Intelligent Search Console
  * Includes: properties, rooms, experiences, locations, tours, pages, SEO keywords, synonyms
@@ -181,11 +182,11 @@ function buildSearchIndex(): SearchEntry[] {
   entries.push({
     id: 'exp-dawki-campsite',
     title: 'Shnonpedeng Riverside Camping by XTSY',
-    description: 'Riverside tents on the Umngot · bed space ₹750 · full tent for two ₹1,400',
+    description: `Riverside tents on the Umngot · ₹${CAMP_PLANS.bed.price} per person · full tent for two ₹${CAMP_PLANS.tent.price.toLocaleString('en-IN')}`,
     category: 'experiences',
     icon: '⛺',
     url: '/stays/campsite-dawki',
-    price: '₹750',
+    price: `₹${CAMP_PLANS.bed.price}`,
     location: 'Shnonpedeng, Meghalaya',
     keywords: [
       'dawki camping', 'camping in dawki', 'umngot river camping', 'dawki tent stay',

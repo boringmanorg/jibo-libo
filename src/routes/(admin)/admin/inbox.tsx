@@ -5,17 +5,20 @@ import { useState } from 'react';
 import { toast } from 'sonner';
 import { MessageCircle, Phone, Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useConsoleScope } from '@/admin/consoleScope';
+import { buildRouteHead } from '@/lib/seo-head';
 import { listInbox, updateEnquiry } from '@/admin/consoleHome.functions';
 import { listOtaBookings, listSheetWriteIssues } from '@/admin/channel.functions';
 import { applyDateChangeRequest, declineDateChangeRequest, listDateChangeRequests } from '@/admin/bookingConsole.functions';
 import { PageHead, Panel, STATUS_LABEL, STATUS_STYLE, ago, dayMonth, inrWhole } from '@/admin/components/ConsoleBits';
 
-export const Route = createFileRoute('/(admin)/admin/inbox')({ component: InboxPage });
+export const Route = createFileRoute('/(admin)/admin/inbox')({ head: () => buildRouteHead({ path: '/admin/inbox', title: 'Enquiries — XTSY Console', description: 'Review permitted XTSY booking enquiries and date-change requests.', noIndex: true }), component: InboxPage });
 
 type Status = 'new' | 'contacted' | 'confirmed' | 'lost';
 const TABS: (Status | 'all')[] = ['new', 'contacted', 'confirmed', 'lost', 'all'];
 
 function InboxPage() {
+  const scope = useConsoleScope();
   const [tab, setTab] = useState<Status | 'all'>('new');
   const [q, setQ] = useState('');
   const [search, setSearch] = useState('');
@@ -26,7 +29,7 @@ function InboxPage() {
 
   return (
     <div>
-      <PageHead title="Inbox" sub="Every enquiry sent from /book and the Shnonpedeng camp page, newest first." />
+      <PageHead title="Inbox" sub={scope === 'super' ? 'Every enquiry sent from /book and the Shnonpedeng camp page, newest first.' : 'Hostel booking enquiries, newest first.'} />
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
         <div className="flex max-w-full gap-1 overflow-x-auto rounded-full border border-xt-line bg-white p-1" role="tablist" aria-label="Enquiry status">
           {TABS.map((s) => (
@@ -53,7 +56,7 @@ function InboxPage() {
       )}
 
       <DateChangeRequests />
-      <SheetWriteIssues />
+      {scope === 'super' && <SheetWriteIssues />}
       <OtaBookings />
 
       {data && data.onlineBookings.length > 0 && (

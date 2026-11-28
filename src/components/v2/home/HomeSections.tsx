@@ -2,7 +2,7 @@
  * Homepage sections below the hero (v2). All prices come from the booking
  * engine / package catalogue, all photos are real XTSY or XTSY Voyage photos.
  */
-import { CAMP_PHOTOS } from '@/data/shnonpedengCamp';
+import { CAMP_PHOTOS, CAMP_PLANS } from '@/data/shnonpedengCamp';
 import { useState } from 'react';
 import { Link } from '@/lib/router-compat';
 import { ArrowRight } from 'lucide-react';
@@ -135,8 +135,8 @@ export function CampsiteBanner() {
             Riverside tents at Shnonpedeng with a bonfire in the evening, and breakfast or dinner on request. Run by an XTSY franchise accommodation partner; the XTSY desk takes your booking.
           </p>
           <div className="flex flex-wrap items-end gap-7">
-            <span className="flex flex-col"><span className="font-display text-[44px] leading-none">₹1,400</span><span className="text-[13px] text-[#C8D6CC]">full tent for two</span></span>
-            <span className="flex flex-col"><span className="font-display text-[44px] leading-none">₹750</span><span className="text-[13px] text-[#C8D6CC]">one bed space</span></span>
+            <span className="flex flex-col"><span className="font-display text-[44px] leading-none">{inr(CAMP_PLANS.tent.price)}</span><span className="text-[13px] text-[#C8D6CC]">full tent for two</span></span>
+            <span className="flex flex-col"><span className="font-display text-[44px] leading-none">{inr(CAMP_PLANS.bed.price)}</span><span className="text-[13px] text-[#C8D6CC]">one bed space</span></span>
             <span className="ml-auto text-[15px] font-extrabold">Book a tent →</span>
           </div>
         </div>

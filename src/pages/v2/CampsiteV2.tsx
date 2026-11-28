@@ -14,13 +14,13 @@ const inr = (n: number) => `₹${n.toLocaleString('en-IN')}`;
 const FAQS = [
   { q: 'Where is the camp?', a: `${CAMP.where}. Tell the XTSY desk your dates and it shares directions, or arranges a ride from New Shillong.` },
   { q: 'Who runs the camp?', a: `${CAMP.name} is an XTSY franchise accommodation partner. The partner runs the camp and its meals; it is not run by TAB Bistro or XTSY Travellers Hostel. You book through the XTSY desk, which stays your contact.` },
-  { q: 'What does a tent cost?', a: `A full tent for two is ${inr(CAMP_PLANS.tent.price)} a night, with camping and bonfire. A solo traveller can take one bed space in a shared two-person tent for ${inr(CAMP_PLANS.bed.price)} a night.` },
-  { q: 'Can I add meals?', a: `Yes, add them with your booking. Breakfast is ${inr(CAMP_MEALS.breakfast.price)} a person. Dinner is ${inr(CAMP_MEALS.dinnerVeg.price)} a person for veg or ${inr(CAMP_MEALS.dinnerNonVeg.price)} for non-veg. The partner prepares the meals.` },
+  { q: 'What does a tent cost?', a: `A full tent for two is ${inr(CAMP_PLANS.tent.price)} a night, with camping and bonfire. A solo traveller can take one bed space in a shared two-person tent for ${inr(CAMP_PLANS.bed.price)} a person a night.` },
+  { q: 'Can I add meals?', a: `Yes, add them with your booking. Choose a breakfast and dinner combo at ${inr(CAMP_MEALS.combo.price)}, breakfast only at ${inr(CAMP_MEALS.breakfast.price)}, or vegetarian dinner only at ${inr(CAMP_MEALS.dinnerVeg.price)}, per person. The partner prepares the meals.` },
   { q: 'What is the cancellation policy?', a: 'Bookings are non-refundable. You can change your dates once, if you ask at least 14 days before check-in, subject to availability.' },
 ];
 
 export default function CampsiteV2() {
-  const wa = waLink(`Hi XTSY! I want to book ${CAMP.name}. Dates: … Full tents: … Bed spaces: … Meals: breakfast / veg dinner / non-veg dinner`);
+  const wa = waLink(`Hi XTSY! I want to book ${CAMP.name}. Dates: … Full tents: … Bed spaces: … Meals: breakfast & dinner combo / breakfast only / veg dinner only`);
   const ld = {
     '@context': 'https://schema.org',
     '@type': 'Campground',
@@ -40,7 +40,7 @@ export default function CampsiteV2() {
         canonicalUrl="https://xtsy.one/xtsy-adventure-campsite-dawki"
       />
       <Helmet><script type="application/ld+json">{JSON.stringify(ld)}</script></Helmet>
-      <PageShell bar={{ label: 'Book a tent', to: '/book/campsite', note: CAMP.name }} cta={{ title: 'Pitch up by the Umngot.', sub: 'Pick your tent and meals online, or tell the desk your dates on WhatsApp.', bookTo: '/book/campsite', bookLabel: 'Book online' }}>
+      <PageShell bar={{ label: 'Book a tent', to: '/book/campsite', note: CAMP.name }} cta={{ title: 'Pitch up by the Umngot.', sub: 'Pick your tent and meals, then send the request to the desk on WhatsApp.', bookTo: '/book/campsite', bookLabel: 'Book online' }}>
         <PageHero
           bg="#2F4A3F"
           fg="#EAF0EA"

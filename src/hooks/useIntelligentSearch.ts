@@ -7,6 +7,7 @@
 
 import { useState, useCallback, useEffect, useMemo, useDeferredValue } from 'react';
 import type { SearchEntry, SearchCategory } from '@/data/searchIndex';
+import { CAMP_PLANS } from '@/data/shnonpedengCamp';
 import { loadQuickIndex, quickSearch, type QuickIndex } from '@/lib/search/quickSearch';
 
 // ---- Intent routing: known SEO slugs we want to surface as the top hit
@@ -19,7 +20,7 @@ const INTENT_ROUTES: Array<{ match: RegExp; entry: Omit<SearchEntry, 'id'> }> = 
       category: 'stays',
       icon: '⛺',
       url: '/stays/campsite-dawki',
-      price: '₹750',
+      price: `₹${CAMP_PLANS.bed.price}`,
       location: 'Shnonpedeng, Meghalaya',
       keywords: ['stay dawki today', 'dawki tonight', 'last minute dawki'],
     },
@@ -28,11 +29,11 @@ const INTENT_ROUTES: Array<{ match: RegExp; entry: Omit<SearchEntry, 'id'> }> = 
     match: /\b(camp|camping|tent)\b.*\bdawki\b|\bdawki\b.*\b(camp|camping|tent)\b/i,
     entry: {
       title: 'Shnonpedeng Riverside Camping by XTSY',
-      description: 'Riverside tents on the Umngot · bed space ₹750 · full tent for two ₹1,400',
+      description: `Riverside tents on the Umngot · ₹${CAMP_PLANS.bed.price} per person · full tent for two ₹${CAMP_PLANS.tent.price.toLocaleString('en-IN')}`,
       category: 'stays',
       icon: '⛺',
       url: '/stays/campsite-dawki',
-      price: '₹750',
+      price: `₹${CAMP_PLANS.bed.price}`,
       location: 'Shnonpedeng, Meghalaya',
       keywords: ['camping in dawki', 'dawki camping', 'tent dawki'],
     },
@@ -45,7 +46,7 @@ const INTENT_ROUTES: Array<{ match: RegExp; entry: Omit<SearchEntry, 'id'> }> = 
       category: 'stays',
       icon: '🏕️',
       url: '/stays/campsite-dawki',
-      price: '₹750',
+      price: `₹${CAMP_PLANS.bed.price}`,
       location: 'Shnonpedeng, Meghalaya',
       keywords: ['best camping dawki'],
     },
@@ -70,7 +71,7 @@ const INTENT_ROUTES: Array<{ match: RegExp; entry: Omit<SearchEntry, 'id'> }> = 
       category: 'stays',
       icon: '⛺',
       url: '/stays/campsite-dawki',
-      price: '₹750',
+      price: `₹${CAMP_PLANS.bed.price}`,
       location: 'Shnonpedeng, Meghalaya',
       keywords: ['dawki booking', 'dawki camping booking'],
     },

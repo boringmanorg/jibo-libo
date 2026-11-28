@@ -3,21 +3,23 @@ import { readFileSync } from 'node:fs';
 import { CAMP_MEALS, CAMP_PLANS, campProblem, campQuote } from '@/data/shnonpedengCamp';
 import { BREAKFAST_ITEMS, breakfastItem } from '@/data/breakfastMenu';
 
-const none = { breakfast: 0, dinnerVeg: 0, dinnerNonVeg: 0 };
+const none = { combo: 0, breakfast: 0, dinnerVeg: 0 };
 
 describe('Shnonpedeng partner camp (owner, 20 Nov 2026)', () => {
-  it('has the owner rates', () => {
-    expect([CAMP_PLANS.tent.price, CAMP_PLANS.bed.price]).toEqual([1400, 750]);
-    expect([CAMP_MEALS.breakfast.price, CAMP_MEALS.dinnerVeg.price, CAMP_MEALS.dinnerNonVeg.price]).toEqual([150, 200, 250]);
+  it('charges ₹700 per person per night', () => { expect(CAMP_PLANS.bed.price).toBe(700); });
+  it('charges ₹1,400 per full tent for two guests', () => {
+    expect(CAMP_PLANS.tent.price).toBe(1400);
+    expect(CAMP_PLANS.tent.guestsPer).toBe(2);
   });
+  it('charges ₹300 for the breakfast and dinner combo', () => { expect(CAMP_MEALS.combo.price).toBe(300); });
+  it('charges ₹120 for breakfast only', () => { expect(CAMP_MEALS.breakfast.price).toBe(120); });
+  it('charges ₹180 for vegetarian dinner only', () => { expect(CAMP_MEALS.dinnerVeg.price).toBe(180); });
   it('quotes tents, bed spaces and meals per night', () => {
-    // 1 tent + 1 bed space = 3 guests, 2 nights; breakfast for 3, veg dinner 1, non-veg 2.
-    const q = campQuote({ nights: 2, tents: 1, beds: 1, meals: { breakfast: 3, dinnerVeg: 1, dinnerNonVeg: 2 } });
-    expect(q.total).toBe(2 * 1400 + 2 * 750 + 3 * 150 * 2 + 200 * 2 + 2 * 250 * 2);
+    const q = campQuote({ nights: 2, tents: 1, beds: 1, meals: { combo: 1, breakfast: 1, dinnerVeg: 1 } });
+    expect(q.total).toBe(2 * 1400 + 2 * 700 + 2 * (300 + 120 + 180));
   });
   it('refuses meals for more guests than are staying', () => {
-    expect(campProblem({ nights: 1, tents: 1, beds: 0, meals: { ...none, breakfast: 3 } })).toMatch(/more guests/);
-    expect(campProblem({ nights: 1, tents: 1, beds: 0, meals: { ...none, dinnerVeg: 1, dinnerNonVeg: 2 } })).toMatch(/Veg and non-veg/);
+    expect(campProblem({ nights: 1, tents: 1, beds: 0, meals: { ...none, combo: 2, breakfast: 1 } })).toMatch(/one meal option per guest/);
     expect(campProblem({ nights: 1, tents: 0, beds: 0, meals: none })).toMatch(/tent or a bed/);
     expect(campProblem({ nights: 1, tents: 1, beds: 0, meals: none })).toBeNull();
   });

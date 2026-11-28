@@ -1,0 +1,1 @@
+ALTER POLICY be_sheet_links_admin_update ON public.be_sheet_links USING ((select public.be_is_console_admin()) OR (select public.be_is_checkin_staff())) WITH CHECK ((select public.be_is_console_admin()) OR (select public.be_is_checkin_staff()));

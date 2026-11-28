@@ -246,6 +246,20 @@
       "when": 1795855126640,
       "tag": "0034_hostel_only_checkin_access",
       "breakpoints": true
+    },
+    {
+      "idx": 35,
+      "version": "7",
+      "when": 1795855421605,
+      "tag": "0035_hostel_console_operations",
+      "breakpoints": true
+    },
+    {
+      "idx": 36,
+      "version": "7",
+      "when": 1795855755958,
+      "tag": "0036_hostel_sheet_connection_operations",
+      "breakpoints": true
     }
   ]
 }

@@ -1,7 +1,7 @@
 /**
  * Shnonpedeng riverside camping: an XTSY franchise accommodation partner, booked through the XTSY desk.
  * The partner runs the camp and its meals; TAB Bistro and XTSY Travellers Hostel do not.
- * Owner-set rates (20 Nov 2026), in rupees. Browser-safe: used by /book, /book/campsite and
+ * Owner-set rates (28 Nov 2026), in rupees. WhatsApp enquiry only: no live availability is shown. Browser-safe: used by /book, /book/campsite and
  * /stays/campsite-dawki so every page shows the same figures.
  */
 
@@ -16,20 +16,20 @@ export const CAMP = {
 
 export const CAMP_PLANS = {
   tent: { id: 'tent', title: 'Full tent for two', price: 1400, unit: 'a tent a night', line: 'A whole two-person tent for you and one more guest. Camping and bonfire.', guestsPer: 2 },
-  bed: { id: 'bed', title: 'One bed space', price: 750, unit: 'a person a night', line: 'One bed space in a shared two-person tent, for a solo traveller.', guestsPer: 1 },
+  bed: { id: 'bed', title: 'One bed space', price: 700, unit: 'a person a night', line: 'One bed space in a shared two-person tent, for a solo traveller.', guestsPer: 1 },
 } as const;
 
 export const CAMP_MEALS = {
-  breakfast: { id: 'breakfast', title: 'Breakfast', price: 150, unit: 'a person a morning' },
-  dinnerVeg: { id: 'dinnerVeg', title: 'Dinner, veg', price: 200, unit: 'a person a night' },
-  dinnerNonVeg: { id: 'dinnerNonVeg', title: 'Dinner, non-veg', price: 250, unit: 'a person a night' },
+  combo: { id: 'combo', title: 'Breakfast & Dinner combo', price: 300, unit: 'a person a day' },
+  breakfast: { id: 'breakfast', title: 'Only Breakfast', price: 120, unit: 'a person a morning' },
+  dinnerVeg: { id: 'dinnerVeg', title: 'Only Dinner (Veg)', price: 180, unit: 'a person a night' },
 } as const;
 
 export type CampMealId = keyof typeof CAMP_MEALS;
 
 export const CAMP_FROM = CAMP_PLANS.bed.price;
 
-/** Tents the camp sells a night (owner, 20 Nov 2026). Bed spaces come out of the same tents, two per tent. */
+/** Channel-mapping capacity only (owner, 20 Nov 2026); guest pages never show camp availability. */
 export const CAMP_TENTS = 10;
 /** Room-type id the console uses for the camp's tents. */
 export const CAMP_UNIT_ID = 'shnonpedeng-tent';
@@ -58,7 +58,7 @@ export type CampRequest = {
   nights: number;
   tents: number;
   beds: number;
-  /** Guests taking each meal; breakfast is every morning, dinner every night. */
+  /** Guests taking each meal choice; each guest picks at most one choice. */
   meals: Record<CampMealId, number>;
 };
 
@@ -72,8 +72,8 @@ export function campProblem(r: CampRequest): string | null {
   const guests = campGuests(r);
   if (r.nights < 1) return 'Pick check-out at least one night after check-in.';
   if (guests < 1) return 'Add a tent or a bed space.';
-  for (const m of Object.keys(CAMP_MEALS) as CampMealId[]) if (r.meals[m] < 0 || r.meals[m] > guests) return 'Meals cannot be for more guests than are staying.';
-  if (r.meals.dinnerVeg + r.meals.dinnerNonVeg > guests) return 'Veg and non-veg dinners together cannot be more than the guests staying.';
+  const ids = Object.keys(CAMP_MEALS) as CampMealId[];
+  if (ids.some((m) => r.meals[m] < 0) || ids.reduce((s, m) => s + r.meals[m], 0) > guests) return 'Choose one meal option per guest at most.';
   return null;
 }
 
@@ -85,7 +85,7 @@ export function campQuote(r: CampRequest): { lines: CampQuoteLine[]; total: numb
   if (r.beds) lines.push({ label: `${r.beds} × ${CAMP_PLANS.bed.title} × ${n} night${n === 1 ? '' : 's'}`, amount: r.beds * CAMP_PLANS.bed.price * n });
   for (const m of Object.values(CAMP_MEALS)) {
     const people = r.meals[m.id];
-    if (people > 0) lines.push({ label: `${m.title} × ${people} guest${people === 1 ? '' : 's'} × ${n} ${m.id === 'breakfast' ? 'morning' : 'night'}${n === 1 ? '' : 's'}`, amount: people * m.price * n });
+    if (people > 0) lines.push({ label: `${m.title} × ${people} guest${people === 1 ? '' : 's'} × ${n} ${m.id === 'breakfast' ? 'morning' : m.id === 'combo' ? 'day' : 'night'}${n === 1 ? '' : 's'}`, amount: people * m.price * n });
   }
   const subtotal = lines.reduce((s, l) => s + l.amount, 0);
   const gst = Math.round((subtotal * CAMP_GST_PERCENT) / 100);

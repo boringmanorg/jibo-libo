@@ -31,7 +31,7 @@ export const requireSuperAdmin = createMiddleware({ type: 'function' })
     if (error || !user || user.email?.toLowerCase() !== SUPER_ADMIN || !user.email_confirmed_at) throw new Error('Forbidden');
     const { data: ok } = await supabase.rpc('is_super_admin');
     if (ok !== true) throw new Error('Forbidden');
-    return next({ context: { supabase, userId: user.id } });
+    return next({ context: { supabase, userId: user.id, isSuperAdmin: true } });
   });
 
 /** Admin or the approved front-desk account, with the corresponding database role. */
@@ -57,5 +57,8 @@ export const requireCheckInStaff = createMiddleware({ type: 'function' })
     if (error || !user || ![SUPER_ADMIN, FRONT_DESK].includes(user.email?.toLowerCase() ?? '') || !user.email_confirmed_at) throw new Error('Forbidden');
     const { data: ok } = await supabase.rpc('be_is_checkin_staff');
     if (ok !== true) throw new Error('Forbidden');
-    return next({ context: { supabase, userId: user.id } });
+    return next({ context: { supabase, userId: user.id, isSuperAdmin: user.email?.toLowerCase() === SUPER_ADMIN } });
   });
+
+/** Hostel operations use the same verified identity; property RLS and handler guards narrow access. */
+export const requirePropertyAdmin = requireCheckInStaff;

@@ -858,6 +858,7 @@ export type Database = {
           nationality: string | null
           policy_accepted_at: string | null
           policy_version: string
+          property_id: string
           reference: string
           sheet_write: string | null
           source: string
@@ -886,6 +887,7 @@ export type Database = {
           nationality?: string | null
           policy_accepted_at?: string | null
           policy_version: string
+          property_id?: string
           reference: string
           sheet_write?: string | null
           source?: string
@@ -914,6 +916,7 @@ export type Database = {
           nationality?: string | null
           policy_accepted_at?: string | null
           policy_version?: string
+          property_id?: string
           reference?: string
           sheet_write?: string | null
           source?: string
@@ -7045,6 +7048,10 @@ export type Database = {
         }[]
       }
       be_can_access_checkin_property: {
+        Args: { p_property_id: string }
+        Returns: boolean
+      }
+      be_can_manage_property: {
         Args: { p_property_id: string }
         Returns: boolean
       }

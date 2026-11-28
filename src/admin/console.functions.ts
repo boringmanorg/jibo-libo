@@ -6,13 +6,14 @@
 import { createServerFn } from '@tanstack/react-start';
 import { z } from 'zod';
 import { PMS_PROPERTIES, POS_OUTLETS, canonicalPropertyId, findOutlet, findProperty, unitInfo } from '@/integrations/xtsy-saas/catalogue';
-import { requireSuperAdmin } from './adminAuth';
+import { requireSuperAdmin, requirePropertyAdmin } from './adminAuth';
+import { assertPropertyScope, HOSTEL_ID } from './consoleScope';
 import { staticTableSlots } from './slots';
 import { closedUnits, closureFromRow, type ClosureRow } from '@/booking/consoleClosures';
 import { stayNights } from '@/booking/dates';
 
 const date = z.string().regex(/^\d{4}-\d{2}-\d{2}$/);
-type Ctx = { supabase: any; userId: string };
+type Ctx = { supabase: any; userId: string; isSuperAdmin: boolean };
 
 async function endpoint() {
   const { getSaasEndpoint, saasRequest } = await import('@/integrations/xtsy-saas/client.server');
@@ -44,7 +45,7 @@ async function channelAfterClosure(rooms: { propertyId: string; unitTypeId: stri
 }
 
 export const getConsoleOverview = createServerFn({ method: 'GET' })
-  .middleware([requireSuperAdmin])
+  .middleware([requirePropertyAdmin])
   .handler(async ({ context }) => {
     const ctx = context as Ctx;
     const { cfg } = await endpoint();
@@ -59,11 +60,12 @@ export const getConsoleOverview = createServerFn({ method: 'GET' })
     return {
       settings: s,
       secretsConfigured: Boolean(cfg),
-      properties: PMS_PROPERTIES.map((p) => ({
+      accessScope: ctx.isSuperAdmin ? 'super' as const : 'hostel' as const,
+      properties: PMS_PROPERTIES.filter((p) => ctx.isSuperAdmin || p.propertyId === HOSTEL_ID).map((p) => ({
         propertyId: p.propertyId, name: p.name, path: p.path,
         units: p.unitTypeIds.map((id) => ({ id, ...unitInfo(id)! })),
       })),
-      outlets: POS_OUTLETS.map((o) => ({ outletId: o.outletId, name: o.name, path: o.path })),
+      outlets: (ctx.isSuperAdmin ? POS_OUTLETS : []).map((o) => ({ outletId: o.outletId, name: o.name, path: o.path })),
       // Rows saved under the old separate Experience by XTSY property show with the hostel.
       inventoryOverrides: (inv.data ?? []).map((o: any) => ({ ...o, property_id: canonicalPropertyId(o.property_id) })),
       tableOverrides: tables.data ?? [],
@@ -98,10 +100,11 @@ export const testConnection = createServerFn({ method: 'POST' })
   });
 
 export const consoleCheckAvailability = createServerFn({ method: 'POST' })
-  .middleware([requireSuperAdmin])
+  .middleware([requirePropertyAdmin])
   .inputValidator(z.object({ propertyId: z.string().max(40), checkIn: date, checkOut: date, guests: z.number().int().min(1).max(40) }))
   .handler(async ({ data, context }) => {
     const ctx = context as Ctx;
+    assertPropertyScope(ctx.isSuperAdmin, data.propertyId);
     if (data.checkOut <= data.checkIn) throw new Error('Check-out must be after check-in');
     const property = findProperty(data.propertyId);
     if (!property) throw new Error('Unknown property');
@@ -130,7 +133,7 @@ export const WHOLE_PROPERTY = '__property__';
 export const ALL_STAYS = '__all_stays__';
 
 export const saveInventoryOverride = createServerFn({ method: 'POST' })
-  .middleware([requireSuperAdmin])
+  .middleware([requirePropertyAdmin])
   .inputValidator(z.object({
     propertyId: z.string().max(40), unitTypeId: z.string().max(60), startDate: date, endDate: date, state: z.enum(['blocked', 'open']),
     reason: z.string().max(200).optional(),
@@ -139,11 +142,12 @@ export const saveInventoryOverride = createServerFn({ method: 'POST' })
   }))
   .handler(async ({ data, context }) => {
     const ctx = context as Ctx;
+    assertPropertyScope(ctx.isSuperAdmin, data.propertyId);
     const property = findProperty(data.propertyId);
     if (!property) throw new Error('Unknown property');
     if (data.endDate < data.startDate) throw new Error('End date is before start date');
     const targets: { propertyId: string; unitTypeId: string }[] =
-      data.unitTypeId === ALL_STAYS ? PMS_PROPERTIES.flatMap((p) => p.unitTypeIds.map((u) => ({ propertyId: p.propertyId, unitTypeId: u })))
+      data.unitTypeId === ALL_STAYS ? PMS_PROPERTIES.filter((p) => ctx.isSuperAdmin || p.propertyId === HOSTEL_ID).flatMap((p) => p.unitTypeIds.map((u) => ({ propertyId: p.propertyId, unitTypeId: u })))
       : data.unitTypeId === WHOLE_PROPERTY ? property.unitTypeIds.map((u) => ({ propertyId: property.propertyId, unitTypeId: u }))
       : property.unitTypeIds.includes(data.unitTypeId) ? [{ propertyId: property.propertyId, unitTypeId: data.unitTypeId }]
       : [];
@@ -178,7 +182,7 @@ export const saveInventoryOverride = createServerFn({ method: 'POST' })
   });
 
 export const deleteInventoryOverride = createServerFn({ method: 'POST' })
-  .middleware([requireSuperAdmin])
+  .middleware([requirePropertyAdmin])
   .inputValidator(z.object({ id: z.string().uuid() }))
   .handler(async ({ data, context }) => {
     const ctx = context as Ctx;
@@ -190,7 +194,7 @@ export const deleteInventoryOverride = createServerFn({ method: 'POST' })
   });
 
 export const syncRoomsNow = createServerFn({ method: 'POST' })
-  .middleware([requireSuperAdmin])
+  .middleware([requirePropertyAdmin])
   .handler(async ({ context }) => {
     const ctx = context as Ctx;
     const s = await settings(ctx);
@@ -215,13 +219,13 @@ export const syncRoomsNow = createServerFn({ method: 'POST' })
   });
 
 export const listPmsEnquiries = createServerFn({ method: 'GET' })
-  .middleware([requireSuperAdmin])
+  .middleware([requirePropertyAdmin])
   .handler(async ({ context }) => {
     const s = await settings(context as Ctx);
     const { cfg, saasRequest } = await endpoint();
     if (!s.pms_enabled || !cfg) return { connected: false, items: [] as PmsEnquiryRow[] };
     const res = await saasRequest<{ items: PmsEnquiryRow[] }>(cfg, '/pms/v1/enquiries', { method: 'GET' });
-    return { connected: true, items: res.items };
+    return { connected: true, items: res.items.filter((r) => (context as Ctx).isSuperAdmin || r.propertyId === HOSTEL_ID) };
   });
 export interface PmsEnquiryRow { reference: string; propertyId: string; unitTypeId: string; checkIn: string; checkOut: string; guests: number; guestName: string; status: 'new' | 'held' | 'confirmed' | 'cancelled' }
 
@@ -281,7 +285,7 @@ export const setTableSlot = createServerFn({ method: 'POST' })
 
 /** Google Sheets that asked to send availability, newest first (pending ones expire after 30 minutes). */
 export const listSheetLinks = createServerFn({ method: 'GET' })
-  .middleware([requireSuperAdmin])
+  .middleware([requirePropertyAdmin])
   .handler(async ({ context }) => {
     const ctx = context as Ctx;
     const { data, error } = await ctx.supabase.from('be_sheet_links')
@@ -292,7 +296,7 @@ export const listSheetLinks = createServerFn({ method: 'GET' })
 
 /** Approve a sheet's pairing code (only one sheet is active at a time), or reject/disconnect it. */
 export const setSheetLink = createServerFn({ method: 'POST' })
-  .middleware([requireSuperAdmin])
+  .middleware([requirePropertyAdmin])
   .inputValidator(z.object({ id: z.string().uuid(), action: z.enum(['approve', 'revoke']) }))
   .handler(async ({ data, context }) => {
     const ctx = context as Ctx;

@@ -1,10 +1,11 @@
 /**
  * Server functions for the redesigned console: Today, Inventory calendar and Inbox.
- * Admin-only (requireSuperAdmin). Reads use the signed-in admin's client, so RLS applies.
+ * Admin-only (requirePropertyAdmin). Reads use the signed-in admin's client, so RLS applies.
  */
 import { createServerFn } from '@tanstack/react-start';
 import { z } from 'zod';
-import { requireSuperAdmin } from './adminAuth';
+import { requirePropertyAdmin } from './adminAuth';
+import { HOSTEL_ID } from './consoleScope';
 import { buildCalendar, totals } from './inventoryCalendar';
 import { activitySentence } from './activityText';
 import { closureFromRow, type ClosureRow } from '@/booking/consoleClosures';
@@ -13,7 +14,7 @@ import type { SheetAvailability } from '@/booking/sheetAvailability';
 import { otaHolds } from '@/booking/channel/zimmerstackPlan';
 
 const date = z.string().regex(/^\d{4}-\d{2}-\d{2}$/);
-type Ctx = { supabase: any; userId: string };
+type Ctx = { supabase: any; userId: string; isSuperAdmin: boolean };
 
 async function loadSheet(ctx: Ctx, from: IsoDate, to: IsoDate) {
   const out: SheetAvailability = {};
@@ -49,7 +50,7 @@ async function loadClosures(ctx: Ctx, from: IsoDate, to: IsoDate): Promise<Closu
 }
 
 export const getInventoryCalendar = createServerFn({ method: 'POST' })
-  .middleware([requireSuperAdmin])
+  .middleware([requirePropertyAdmin])
   .inputValidator(z.object({ start: date, days: z.number().int().min(1).max(62) }))
   .handler(async ({ data, context }) => {
     const ctx = context as Ctx;
@@ -57,11 +58,11 @@ export const getInventoryCalendar = createServerFn({ method: 'POST' })
     const end = addDays(start, data.days);
     const [{ sheet, syncedAt }, closures] = await Promise.all([loadSheet(ctx, start, end), loadClosures(ctx, start, addDays(end, -1))]);
     const ota = await loadOtaHolds(ctx, sheet);
-    return { start, days: data.days, today: todayInIndia(new Date()), sheetSyncedAt: syncedAt, rows: buildCalendar(start, data.days, sheet, closures, undefined, ota) };
+    return { start, days: data.days, today: todayInIndia(new Date()), sheetSyncedAt: syncedAt, rows: buildCalendar(start, data.days, sheet, closures, undefined, ota).filter((r) => ctx.isSuperAdmin || r.propertyId === HOSTEL_ID) };
   });
 
 export const getTodaySummary = createServerFn({ method: 'GET' })
-  .middleware([requireSuperAdmin])
+  .middleware([requirePropertyAdmin])
   .handler(async ({ context }) => {
     const ctx = context as Ctx;
     const today = todayInIndia(new Date());
@@ -73,7 +74,7 @@ export const getTodaySummary = createServerFn({ method: 'GET' })
       ctx.supabase.from('be_enquiries').select('id', { count: 'exact', head: true }).eq('status', 'new'),
       ctx.supabase.from('console_audit_log').select('id,action,details,created_at').order('created_at', { ascending: false }).limit(12),
     ]);
-    const rows = buildCalendar(today, 14, sheet, closures, undefined, await loadOtaHolds(ctx, sheet));
+    const rows = buildCalendar(today, 14, sheet, closures, undefined, await loadOtaHolds(ctx, sheet)).filter((r) => ctx.isSuperAdmin || r.propertyId === HOSTEL_ID);
     return {
       today,
       sheetSyncedAt: syncedAt,
@@ -91,7 +92,7 @@ export const getTodaySummary = createServerFn({ method: 'GET' })
 const STATUS = z.enum(['new', 'contacted', 'confirmed', 'lost']);
 
 export const listInbox = createServerFn({ method: 'POST' })
-  .middleware([requireSuperAdmin])
+  .middleware([requirePropertyAdmin])
   .inputValidator(z.object({ status: STATUS.optional(), search: z.string().trim().max(60).optional() }))
   .handler(async ({ data, context }) => {
     const ctx = context as Ctx;
@@ -112,7 +113,7 @@ export const listInbox = createServerFn({ method: 'POST' })
   });
 
 export const updateEnquiry = createServerFn({ method: 'POST' })
-  .middleware([requireSuperAdmin])
+  .middleware([requirePropertyAdmin])
   .inputValidator(z.object({ id: z.string().uuid(), status: STATUS.optional(), note: z.string().max(1000).optional() }))
   .handler(async ({ data, context }) => {
     const ctx = context as Ctx;

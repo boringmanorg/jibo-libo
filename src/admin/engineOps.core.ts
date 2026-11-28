@@ -165,6 +165,8 @@ export async function getBusiness(d: OpsDeps, propertyId: Business['propertyId']
     propertyId, gstRegistered: !!r.data.gst_registered, legalName: r.data.legal_name ?? '', gstin: r.data.gstin ?? '',
     address: r.data.business_address ?? '', stateCode: r.data.state_code ?? '17', sacCode: r.data.sac_code ?? '996311',
   };
+  if (r.error && r.error.code !== '42P01' && r.error.code !== 'PGRST205') throw new OpsError('Could not read this property’s invoice details.');
+  if (propertyId !== 'XTSY-SHL-HOSTEL') throw new OpsError('Property invoice details not found.');
   // Older records and test fixtures keep their former hostel-only settings as a fallback.
   const legacy = await d.db.from('be_settings').select('legal_name,gstin,business_address,state_code,sac_code').eq('id', 1).maybeSingle();
   return {

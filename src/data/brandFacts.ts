@@ -62,6 +62,11 @@ export const OWN_PROPERTIES = [
   },
 ] as const;
 
+/** Announced only; not bookable, no availability or check-in until the owner makes it live. */
+export const UPCOMING_PROPERTIES = [
+  { name: 'XTSY Bed & Breakfast, Sohra', city: 'Sohra, Meghalaya', status: 'upcoming' },
+] as const;
+
 export const AWARDS = [
   'Nominated: Best Budget-Friendly Accommodation, Northeast India Tourism Awards (NEITA 2025)',
   "Rated 4.7★ on Google from 256 reviews",

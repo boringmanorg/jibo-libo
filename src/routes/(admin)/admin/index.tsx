@@ -5,6 +5,7 @@ import { buildRouteHead } from '@/lib/seo-head';
 import { useServerFn } from '@tanstack/react-start';
 import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useConsoleScope } from '@/admin/consoleScope';
 import { getTodaySummary } from '@/admin/consoleHome.functions';
 import { PageHead, Panel, SheetChip, STATUS_LABEL, STATUS_STYLE, ago, dayMonth, freeTone, inrWhole, weekday } from '@/admin/components/ConsoleBits';
 
@@ -16,6 +17,7 @@ export const Route = createFileRoute('/(admin)/admin/')({
 const longDate = new Intl.DateTimeFormat('en-IN', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' });
 
 function Today() {
+  const scope = useConsoleScope();
   const fetchToday = useServerFn(getTodaySummary);
   const { data, error } = useQuery({ queryKey: ['console', 'today'], queryFn: () => fetchToday() });
   const qc = useQueryClient();
@@ -31,8 +33,8 @@ function Today() {
         <SheetChip syncedAt={data.sheetSyncedAt} />
       </PageHead>
 
-      <div className="grid grid-cols-3 gap-2 sm:gap-4">
-        {([['Dorm beds free tonight', t.beds], ['Private rooms free tonight', t.rooms], ['Shnonpedeng tents free', t.tents]] as const).map(([label, v]) => (
+      <div className={cn('grid gap-2 sm:gap-4', scope === 'super' ? 'grid-cols-3' : 'grid-cols-2')}>
+        {([['Dorm beds free tonight', t.beds], ['Private rooms free tonight', t.rooms], ['Shnonpedeng tents free', t.tents]] as const).filter(([_, v]) => scope === 'super' || v !== t.tents).map(([label, v]) => (
           <div key={label} className="rounded-[20px] bg-xt-ink p-3 text-xt-sand sm:rounded-[24px] sm:p-5">
             <p className="text-xs leading-snug text-xt-fog sm:text-sm">{label}</p>
             <p className="mt-2 flex items-baseline gap-2"><span className="xt-display text-4xl leading-none sm:text-6xl">{v.free}</span><span className="text-xs text-xt-fog sm:text-sm">of {v.total}</span></p>
@@ -71,7 +73,7 @@ function Today() {
       <div className="grid gap-6 lg:grid-cols-2">
         <Panel title={data.newEnquiries ? `Inbox · ${data.newEnquiries} new` : 'Inbox'} action={<Link to="/admin/inbox" className="inline-flex min-h-10 items-center gap-1 text-sm font-semibold text-xt-crimson">Open inbox <ArrowRight className="h-4 w-4" /></Link>}>
           {!data.inboxReady ? <p className="text-sm text-xt-mute">The inbox starts collecting enquiries once this update’s database change has run.</p>
-            : data.latestEnquiries.length === 0 ? <p className="text-sm text-xt-mute">No enquiries yet. Every enquiry sent from /book or the camp page lands here.</p>
+            : data.latestEnquiries.length === 0 ? <p className="text-sm text-xt-mute">No enquiries yet. New booking enquiries land here.</p>
             : (
               <ul className="divide-y divide-xt-line">
                 {data.latestEnquiries.map((e: any) => (
