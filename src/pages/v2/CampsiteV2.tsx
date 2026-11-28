@@ -24,7 +24,7 @@ export default function CampsiteV2() {
   const ld = {
     '@context': 'https://schema.org',
     '@type': 'Campground',
-    name: `${CAMP.name}, booked via XTSY`,
+    name: CAMP.name,
     description: `Riverside tents on the Umngot at Shnonpedeng, Meghalaya, at an XTSY franchise accommodation partner. Full tent for two ${inr(CAMP_PLANS.tent.price)} a night; one bed space ${inr(CAMP_PLANS.bed.price)} a night.`,
     telephone: '+918837317070',
     image: CAMP_PHOTOS.slice(0, 5).map((p) => (p.src.startsWith('http') ? p.src : `https://xtsy.one${p.src}`)),
@@ -34,7 +34,7 @@ export default function CampsiteV2() {
   return (
     <>
       <SEOHead
-        title={`Shnonpedeng Riverside Camping from ${inr(CAMP_PLANS.bed.price)} | Booked via XTSY`}
+        title={`${CAMP.name} from ${inr(CAMP_PLANS.bed.price)}`}
         description={`Riverside tents on the Umngot at Shnonpedeng, an XTSY franchise partner camp. Full tent for two ${inr(CAMP_PLANS.tent.price)} a night, bed space ${inr(CAMP_PLANS.bed.price)}, breakfast and dinner on request.`}
         keywords="shnonpedeng camping, shnongpdeng camping, umngot river camping, riverside camping meghalaya, xtsy partner camp"
         canonicalUrl="https://xtsy.one/xtsy-adventure-campsite-dawki"
@@ -49,7 +49,7 @@ export default function CampsiteV2() {
           eyebrow={`${CAMP.name} · ${CAMP.partnerLine}`}
           title="Sleep beside the Umngot."
           text={`Riverside tents at Shnonpedeng with a bonfire in the evening. ${CAMP.name} is an XTSY franchise accommodation partner: the partner runs the camp and its kitchen, and the XTSY desk takes your booking and stays your contact.`}
-          actions={<><Btn to="/book/campsite">Book a tent</Btn><Btn to={wa} kind="outline-light">Ask on WhatsApp</Btn></>}
+          actions={<><Btn to="/book/campsite">Book a tent</Btn><Btn to={wa} kind="outline-light">Ask on WhatsApp</Btn><Btn to="/check-in" kind="outline-light">Self check-in</Btn></>}
           media={<Photo src={CAMP_PHOTOS[0]?.src} alt={CAMP_PHOTOS[0]?.alt ?? 'Riverside tents on the Umngot'} eager tone="slate" className="aspect-[628/560] rounded-[32px]" />}
         />
 

@@ -1611,7 +1611,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     "faqs": [
       {
         "question": "Does XTSY have its own hostel in Cherrapunji?",
-        "answer": "No. XTSY's only property is XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, Shillong. In Cherrapunji, XTSY facilitates stays, transport and travel help through trusted travel partners."
+        "answer": "No. XTSY's current properties are XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, and Shnonpedeng Riverside Camping by XTSY; neither is at this destination. In Cherrapunji, XTSY facilitates stays, transport and travel help through trusted travel partners."
       },
       {
         "question": "Can XTSY book a stay in Cherrapunji for today?",
@@ -1626,7 +1626,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
         "answer": "Yes. The XTSY desk can arrange cabs, airport or station transfers and sightseeing through trusted partners."
       }
     ],
-    "intro": "Need a stay in Cherrapunji today? XTSY does not run its own hostel in Cherrapunji — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Cherrapunji (Sohra) is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Sohra has small homestays and guesthouses rather than backpacker hostels, and mobile signal can be patchy, so confirm your stay before you set off.",
+    "intro": "Need a stay in Cherrapunji today? XTSY does not run its own hostel in Cherrapunji — our current properties are XTSY Travellers Hostel in New Shillong Township and Shnonpedeng Riverside Camping by XTSY, Meghalaya. What we do in Cherrapunji (Sohra) is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Sohra has small homestays and guesthouses rather than backpacker hostels, and mobile signal can be patchy, so confirm your stay before you set off.",
     "h1": "Hostel in Cherrapunji Today",
     "sections": [
       {
@@ -1666,7 +1666,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     "faqs": [
       {
         "question": "Does XTSY have its own hostel in Cherrapunji?",
-        "answer": "No. XTSY's only property is XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, Shillong. In Cherrapunji, XTSY facilitates stays, transport and travel help through trusted travel partners."
+        "answer": "No. XTSY's current properties are XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, and Shnonpedeng Riverside Camping by XTSY; neither is at this destination. In Cherrapunji, XTSY facilitates stays, transport and travel help through trusted travel partners."
       },
       {
         "question": "Can XTSY book a stay in Cherrapunji for this weekend?",
@@ -1695,7 +1695,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       "budget-friendly stay sohra",
       "xtsy travellers hostel"
     ],
-    "intro": "Need a stay in Cherrapunji this weekend? XTSY does not run its own hostel in Cherrapunji — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Cherrapunji (Sohra) is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Sohra has small homestays and guesthouses rather than backpacker hostels, and mobile signal can be patchy, so confirm your stay before you set off.",
+    "intro": "Need a stay in Cherrapunji this weekend? XTSY does not run its own hostel in Cherrapunji — our current properties are XTSY Travellers Hostel in New Shillong Township and Shnonpedeng Riverside Camping by XTSY, Meghalaya. What we do in Cherrapunji (Sohra) is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Sohra has small homestays and guesthouses rather than backpacker hostels, and mobile signal can be patchy, so confirm your stay before you set off.",
     "sections": [
       {
         "heading": "How XTSY helps in Cherrapunji",
@@ -1973,7 +1973,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     "faqs": [
       {
         "question": "Does XTSY have its own hostel in Cherrapunji?",
-        "answer": "No. XTSY's only property is XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, Shillong. In Cherrapunji, XTSY facilitates stays, transport and travel help through trusted travel partners."
+        "answer": "No. XTSY's current properties are XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, and Shnonpedeng Riverside Camping by XTSY; neither is at this destination. In Cherrapunji, XTSY facilitates stays, transport and travel help through trusted travel partners."
       },
       {
         "question": "Can XTSY book a stay in Cherrapunji for tomorrow?",
@@ -1988,7 +1988,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
         "answer": "Yes. The XTSY desk can arrange cabs, airport or station transfers and sightseeing through trusted partners."
       }
     ],
-    "intro": "Need a stay in Cherrapunji tomorrow? XTSY does not run its own hostel in Cherrapunji — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Cherrapunji (Sohra) is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Sohra has small homestays and guesthouses rather than backpacker hostels, and mobile signal can be patchy, so confirm your stay before you set off.",
+    "intro": "Need a stay in Cherrapunji tomorrow? XTSY does not run its own hostel in Cherrapunji — our current properties are XTSY Travellers Hostel in New Shillong Township and Shnonpedeng Riverside Camping by XTSY, Meghalaya. What we do in Cherrapunji (Sohra) is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Sohra has small homestays and guesthouses rather than backpacker hostels, and mobile signal can be patchy, so confirm your stay before you set off.",
     "keywords": [
       "hostel in cherrapunji",
       "cherrapunji backpacker stay",
@@ -2009,7 +2009,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       "dormitory in sohra",
       "xtsy travellers hostel"
     ],
-    "intro": "Need a stay in Cherrapunji at the last minute? XTSY does not run its own hostel in Cherrapunji — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Cherrapunji (Sohra) is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Sohra has small homestays and guesthouses rather than backpacker hostels, and mobile signal can be patchy, so confirm your stay before you set off.",
+    "intro": "Need a stay in Cherrapunji at the last minute? XTSY does not run its own hostel in Cherrapunji — our current properties are XTSY Travellers Hostel in New Shillong Township and Shnonpedeng Riverside Camping by XTSY, Meghalaya. What we do in Cherrapunji (Sohra) is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Sohra has small homestays and guesthouses rather than backpacker hostels, and mobile signal can be patchy, so confirm your stay before you set off.",
     "title": "Hostel in Cherrapunji Last Minute — Book via XTSY Partners",
     "metaDescription": "Need a stay in Cherrapunji at the last minute? XTSY arranges partner stays, transfers and sightseeing in Cherrapunji, Meghalaya. XTSY's own hostel is in New Shillong Township. WhatsApp +91 88373 17070.",
     "quickAnswer": "XTSY's own property is only in New Shillong Township, Meghalaya. In Cherrapunji, XTSY arranges stays at short notice, transport and travel help through trusted travel partners — WhatsApp +91 88373 17070 with your dates for live options.",
@@ -2047,7 +2047,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     "faqs": [
       {
         "question": "Does XTSY have its own hostel in Cherrapunji?",
-        "answer": "No. XTSY's only property is XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, Shillong. In Cherrapunji, XTSY facilitates stays, transport and travel help through trusted travel partners."
+        "answer": "No. XTSY's current properties are XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, and Shnonpedeng Riverside Camping by XTSY; neither is at this destination. In Cherrapunji, XTSY facilitates stays, transport and travel help through trusted travel partners."
       },
       {
         "question": "Can XTSY book a stay in Cherrapunji at short notice?",
@@ -2067,7 +2067,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     "slug": "hostel-in-cherrapunji-now",
     "quickAnswer": "XTSY's own property is only in New Shillong Township, Meghalaya. In Cherrapunji, XTSY arranges stays for right now, transport and travel help through trusted travel partners — WhatsApp +91 88373 17070 with your dates for live options.",
     "title": "Hostel in Cherrapunji Right Now — Book via XTSY Partners",
-    "intro": "Need a stay in Cherrapunji right now? XTSY does not run its own hostel in Cherrapunji — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Cherrapunji (Sohra) is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Sohra has small homestays and guesthouses rather than backpacker hostels, and mobile signal can be patchy, so confirm your stay before you set off.",
+    "intro": "Need a stay in Cherrapunji right now? XTSY does not run its own hostel in Cherrapunji — our current properties are XTSY Travellers Hostel in New Shillong Township and Shnonpedeng Riverside Camping by XTSY, Meghalaya. What we do in Cherrapunji (Sohra) is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Sohra has small homestays and guesthouses rather than backpacker hostels, and mobile signal can be patchy, so confirm your stay before you set off.",
     "sections": [
       {
         "heading": "How XTSY helps in Cherrapunji",
@@ -2102,7 +2102,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     "faqs": [
       {
         "question": "Does XTSY have its own hostel in Cherrapunji?",
-        "answer": "No. XTSY's only property is XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, Shillong. In Cherrapunji, XTSY facilitates stays, transport and travel help through trusted travel partners."
+        "answer": "No. XTSY's current properties are XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, and Shnonpedeng Riverside Camping by XTSY; neither is at this destination. In Cherrapunji, XTSY facilitates stays, transport and travel help through trusted travel partners."
       },
       {
         "question": "Can XTSY book a stay in Cherrapunji for right now?",
@@ -2164,7 +2164,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     "faqs": [
       {
         "question": "Does XTSY have its own hostel in Cherrapunji?",
-        "answer": "No. XTSY's only property is XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, Shillong. In Cherrapunji, XTSY facilitates stays, transport and travel help through trusted travel partners."
+        "answer": "No. XTSY's current properties are XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, and Shnonpedeng Riverside Camping by XTSY; neither is at this destination. In Cherrapunji, XTSY facilitates stays, transport and travel help through trusted travel partners."
       },
       {
         "question": "Can XTSY book a stay in Cherrapunji on a budget?",
@@ -2191,7 +2191,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       "solo travel meghalaya"
     ],
     "quickAnswer": "XTSY's own property is only in New Shillong Township, Meghalaya. In Cherrapunji, XTSY arranges stays on a budget, transport and travel help through trusted travel partners — WhatsApp +91 88373 17070 with your dates for live options.",
-    "intro": "Looking for a budget-friendly stay in Cherrapunji? XTSY does not run its own hostel in Cherrapunji — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Cherrapunji (Sohra) is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Sohra has small homestays and guesthouses rather than backpacker hostels, and mobile signal can be patchy, so confirm your stay before you set off."
+    "intro": "Looking for a budget-friendly stay in Cherrapunji? XTSY does not run its own hostel in Cherrapunji — our current properties are XTSY Travellers Hostel in New Shillong Township and Shnonpedeng Riverside Camping by XTSY, Meghalaya. What we do in Cherrapunji (Sohra) is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Sohra has small homestays and guesthouses rather than backpacker hostels, and mobile signal can be patchy, so confirm your stay before you set off."
   },
   {
     "slug": "best-hostel-in-cherrapunji",
@@ -2237,13 +2237,13 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
         "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ],
-    "intro": "Looking for a good hostel in Cherrapunji? XTSY does not run its own hostel in Cherrapunji — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Cherrapunji (Sohra) is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Sohra has small homestays and guesthouses rather than backpacker hostels, and mobile signal can be patchy, so confirm your stay before you set off.",
+    "intro": "Looking for a good hostel in Cherrapunji? XTSY does not run its own hostel in Cherrapunji — our current properties are XTSY Travellers Hostel in New Shillong Township and Shnonpedeng Riverside Camping by XTSY, Meghalaya. What we do in Cherrapunji (Sohra) is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Sohra has small homestays and guesthouses rather than backpacker hostels, and mobile signal can be patchy, so confirm your stay before you set off.",
     "metaDescription": "Looking for a good hostel in Cherrapunji? XTSY arranges partner stays, transfers and sightseeing in Cherrapunji, Meghalaya. XTSY's own hostel is in New Shillong Township. WhatsApp +91 88373 17070.",
     "quickAnswer": "XTSY's own property is only in New Shillong Township, Meghalaya. In Cherrapunji, XTSY arranges stays that suits your trip, transport and travel help through trusted travel partners — WhatsApp +91 88373 17070 with your dates for live options.",
     "faqs": [
       {
         "question": "Does XTSY have its own hostel in Cherrapunji?",
-        "answer": "No. XTSY's only property is XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, Shillong. In Cherrapunji, XTSY facilitates stays, transport and travel help through trusted travel partners."
+        "answer": "No. XTSY's current properties are XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, and Shnonpedeng Riverside Camping by XTSY; neither is at this destination. In Cherrapunji, XTSY facilitates stays, transport and travel help through trusted travel partners."
       },
       {
         "question": "Can XTSY book a stay in Cherrapunji that suits your trip?",
@@ -2264,7 +2264,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     "faqs": [
       {
         "question": "Does XTSY have its own hostel in Guwahati?",
-        "answer": "No. XTSY's only property is XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, Shillong. In Guwahati, XTSY facilitates stays, transport and travel help through trusted travel partners."
+        "answer": "No. XTSY's current properties are XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, and Shnonpedeng Riverside Camping by XTSY; neither is at this destination. In Guwahati, XTSY facilitates stays, transport and travel help through trusted travel partners."
       },
       {
         "question": "Can XTSY book a stay in Guwahati for tonight?",
@@ -2282,7 +2282,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     "h1": "Hostel in Guwahati Tonight",
     "quickAnswer": "XTSY's own property is only in New Shillong Township, Meghalaya. In Guwahati, XTSY arranges stays for tonight, transport and travel help through trusted travel partners — WhatsApp +91 88373 17070 with your dates for live options.",
     "title": "Hostel in Guwahati Tonight — Book via XTSY Partners",
-    "intro": "Need a stay in Guwahati tonight? XTSY does not run its own hostel in Guwahati — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Guwahati is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Guwahati is the main gateway to the Northeast, with Lokpriya Gopinath Bordoloi International Airport and Guwahati railway station. Most travellers spend a night here before heading on to Meghalaya.",
+    "intro": "Need a stay in Guwahati tonight? XTSY does not run its own hostel in Guwahati — our current properties are XTSY Travellers Hostel in New Shillong Township and Shnonpedeng Riverside Camping by XTSY, Meghalaya. What we do in Guwahati is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Guwahati is the main gateway to the Northeast, with Lokpriya Gopinath Bordoloi International Airport and Guwahati railway station. Most travellers spend a night here before heading on to Meghalaya.",
     "keywords": [
       "hostel in guwahati",
       "last minute stay guwahati",
@@ -2368,7 +2368,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     "faqs": [
       {
         "question": "Does XTSY have its own hostel in Cherrapunji?",
-        "answer": "No. XTSY's only property is XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, Shillong. In Cherrapunji, XTSY facilitates stays, transport and travel help through trusted travel partners."
+        "answer": "No. XTSY's current properties are XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, and Shnonpedeng Riverside Camping by XTSY; neither is at this destination. In Cherrapunji, XTSY facilitates stays, transport and travel help through trusted travel partners."
       },
       {
         "question": "What is the nearest airport for Cherrapunji?",
@@ -2389,18 +2389,18 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     ],
     "metaDescription": "Arriving by air for Cherrapunji? XTSY arranges partner stays, transfers and sightseeing in Cherrapunji, Meghalaya. XTSY's own hostel is in New Shillong Township. WhatsApp +91 88373 17070.",
     "quickAnswer": "XTSY's own property is only in New Shillong Township, Meghalaya. In Cherrapunji, XTSY arranges stays near your arrival point, transport and travel help through trusted travel partners — WhatsApp +91 88373 17070 with your dates for live options.",
-    "intro": "Arriving by air for Cherrapunji? XTSY does not run its own hostel in Cherrapunji — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Cherrapunji (Sohra) is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Sohra has small homestays and guesthouses rather than backpacker hostels, and mobile signal can be patchy, so confirm your stay before you set off. There is no airport in Cherrapunji. The nearest are Shillong Airport (Umroi) and Guwahati's Lokpriya Gopinath Bordoloi International Airport; XTSY can arrange the road transfer from either."
+    "intro": "Arriving by air for Cherrapunji? XTSY does not run its own hostel in Cherrapunji — our current properties are XTSY Travellers Hostel in New Shillong Township and Shnonpedeng Riverside Camping by XTSY, Meghalaya. What we do in Cherrapunji (Sohra) is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Sohra has small homestays and guesthouses rather than backpacker hostels, and mobile signal can be patchy, so confirm your stay before you set off. There is no airport in Cherrapunji. The nearest are Shillong Airport (Umroi) and Guwahati's Lokpriya Gopinath Bordoloi International Airport; XTSY can arrange the road transfer from either."
   },
   {
     "slug": "hostel-in-guwahati-today",
     "title": "Hostel in Guwahati Today — Book via XTSY Partners",
     "quickAnswer": "XTSY's own property is only in New Shillong Township, Meghalaya. In Guwahati, XTSY arranges stays for today, transport and travel help through trusted travel partners — WhatsApp +91 88373 17070 with your dates for live options.",
-    "intro": "Need a stay in Guwahati today? XTSY does not run its own hostel in Guwahati — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Guwahati is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Guwahati is the main gateway to the Northeast, with Lokpriya Gopinath Bordoloi International Airport and Guwahati railway station. Most travellers spend a night here before heading on to Meghalaya.",
+    "intro": "Need a stay in Guwahati today? XTSY does not run its own hostel in Guwahati — our current properties are XTSY Travellers Hostel in New Shillong Township and Shnonpedeng Riverside Camping by XTSY, Meghalaya. What we do in Guwahati is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Guwahati is the main gateway to the Northeast, with Lokpriya Gopinath Bordoloi International Airport and Guwahati railway station. Most travellers spend a night here before heading on to Meghalaya.",
     "metaDescription": "Need a stay in Guwahati today? XTSY arranges partner stays, transfers and sightseeing in Guwahati, Assam. XTSY's own hostel is in New Shillong Township. WhatsApp +91 88373 17070.",
     "faqs": [
       {
         "question": "Does XTSY have its own hostel in Guwahati?",
-        "answer": "No. XTSY's only property is XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, Shillong. In Guwahati, XTSY facilitates stays, transport and travel help through trusted travel partners."
+        "answer": "No. XTSY's current properties are XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, and Shnonpedeng Riverside Camping by XTSY; neither is at this destination. In Guwahati, XTSY facilitates stays, transport and travel help through trusted travel partners."
       },
       {
         "question": "Can XTSY book a stay in Guwahati for today?",
@@ -2501,11 +2501,11 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       "last minute hostels guwahati",
       "guwahati to meghalaya travel"
     ],
-    "intro": "Need a stay in Guwahati this weekend? XTSY does not run its own hostel in Guwahati — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Guwahati is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Guwahati is the main gateway to the Northeast, with Lokpriya Gopinath Bordoloi International Airport and Guwahati railway station. Most travellers spend a night here before heading on to Meghalaya.",
+    "intro": "Need a stay in Guwahati this weekend? XTSY does not run its own hostel in Guwahati — our current properties are XTSY Travellers Hostel in New Shillong Township and Shnonpedeng Riverside Camping by XTSY, Meghalaya. What we do in Guwahati is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Guwahati is the main gateway to the Northeast, with Lokpriya Gopinath Bordoloi International Airport and Guwahati railway station. Most travellers spend a night here before heading on to Meghalaya.",
     "faqs": [
       {
         "question": "Does XTSY have its own hostel in Guwahati?",
-        "answer": "No. XTSY's only property is XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, Shillong. In Guwahati, XTSY facilitates stays, transport and travel help through trusted travel partners."
+        "answer": "No. XTSY's current properties are XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, and Shnonpedeng Riverside Camping by XTSY; neither is at this destination. In Guwahati, XTSY facilitates stays, transport and travel help through trusted travel partners."
       },
       {
         "question": "Can XTSY book a stay in Guwahati for this weekend?",
@@ -2531,7 +2531,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       "guwahati dormitories",
       "northeast india travel"
     ],
-    "intro": "Need a stay in Guwahati tomorrow? XTSY does not run its own hostel in Guwahati — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Guwahati is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Guwahati is the main gateway to the Northeast, with Lokpriya Gopinath Bordoloi International Airport and Guwahati railway station. Most travellers spend a night here before heading on to Meghalaya.",
+    "intro": "Need a stay in Guwahati tomorrow? XTSY does not run its own hostel in Guwahati — our current properties are XTSY Travellers Hostel in New Shillong Township and Shnonpedeng Riverside Camping by XTSY, Meghalaya. What we do in Guwahati is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Guwahati is the main gateway to the Northeast, with Lokpriya Gopinath Bordoloi International Airport and Guwahati railway station. Most travellers spend a night here before heading on to Meghalaya.",
     "quickAnswer": "XTSY's own property is only in New Shillong Township, Meghalaya. In Guwahati, XTSY arranges stays for tomorrow, transport and travel help through trusted travel partners — WhatsApp +91 88373 17070 with your dates for live options.",
     "metaDescription": "Need a stay in Guwahati tomorrow? XTSY arranges partner stays, transfers and sightseeing in Guwahati, Assam. XTSY's own hostel is in New Shillong Township. WhatsApp +91 88373 17070.",
     "title": "Hostel in Guwahati Tomorrow — Book via XTSY Partners",
@@ -2569,7 +2569,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     "faqs": [
       {
         "question": "Does XTSY have its own hostel in Guwahati?",
-        "answer": "No. XTSY's only property is XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, Shillong. In Guwahati, XTSY facilitates stays, transport and travel help through trusted travel partners."
+        "answer": "No. XTSY's current properties are XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, and Shnonpedeng Riverside Camping by XTSY; neither is at this destination. In Guwahati, XTSY facilitates stays, transport and travel help through trusted travel partners."
       },
       {
         "question": "Can XTSY book a stay in Guwahati for tomorrow?",
@@ -2587,7 +2587,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
   },
   {
     "slug": "hostel-in-guwahati-last-minute",
-    "intro": "Need a stay in Guwahati at the last minute? XTSY does not run its own hostel in Guwahati — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Guwahati is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Guwahati is the main gateway to the Northeast, with Lokpriya Gopinath Bordoloi International Airport and Guwahati railway station. Most travellers spend a night here before heading on to Meghalaya.",
+    "intro": "Need a stay in Guwahati at the last minute? XTSY does not run its own hostel in Guwahati — our current properties are XTSY Travellers Hostel in New Shillong Township and Shnonpedeng Riverside Camping by XTSY, Meghalaya. What we do in Guwahati is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Guwahati is the main gateway to the Northeast, with Lokpriya Gopinath Bordoloi International Airport and Guwahati railway station. Most travellers spend a night here before heading on to Meghalaya.",
     "sections": [
       {
         "heading": "How XTSY helps in Guwahati",
@@ -2632,7 +2632,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     "faqs": [
       {
         "question": "Does XTSY have its own hostel in Guwahati?",
-        "answer": "No. XTSY's only property is XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, Shillong. In Guwahati, XTSY facilitates stays, transport and travel help through trusted travel partners."
+        "answer": "No. XTSY's current properties are XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, and Shnonpedeng Riverside Camping by XTSY; neither is at this destination. In Guwahati, XTSY facilitates stays, transport and travel help through trusted travel partners."
       },
       {
         "question": "Can XTSY book a stay in Guwahati at short notice?",
@@ -2691,11 +2691,11 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
         "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ],
-    "intro": "Need a stay in Guwahati right now? XTSY does not run its own hostel in Guwahati — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Guwahati is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Guwahati is the main gateway to the Northeast, with Lokpriya Gopinath Bordoloi International Airport and Guwahati railway station. Most travellers spend a night here before heading on to Meghalaya.",
+    "intro": "Need a stay in Guwahati right now? XTSY does not run its own hostel in Guwahati — our current properties are XTSY Travellers Hostel in New Shillong Township and Shnonpedeng Riverside Camping by XTSY, Meghalaya. What we do in Guwahati is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Guwahati is the main gateway to the Northeast, with Lokpriya Gopinath Bordoloi International Airport and Guwahati railway station. Most travellers spend a night here before heading on to Meghalaya.",
     "faqs": [
       {
         "question": "Does XTSY have its own hostel in Guwahati?",
-        "answer": "No. XTSY's only property is XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, Shillong. In Guwahati, XTSY facilitates stays, transport and travel help through trusted travel partners."
+        "answer": "No. XTSY's current properties are XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, and Shnonpedeng Riverside Camping by XTSY; neither is at this destination. In Guwahati, XTSY facilitates stays, transport and travel help through trusted travel partners."
       },
       {
         "question": "Can XTSY book a stay in Guwahati for right now?",
@@ -2758,7 +2758,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     "faqs": [
       {
         "question": "Does XTSY have its own hostel in Guwahati?",
-        "answer": "No. XTSY's only property is XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, Shillong. In Guwahati, XTSY facilitates stays, transport and travel help through trusted travel partners."
+        "answer": "No. XTSY's current properties are XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, and Shnonpedeng Riverside Camping by XTSY; neither is at this destination. In Guwahati, XTSY facilitates stays, transport and travel help through trusted travel partners."
       },
       {
         "question": "Can XTSY book a stay in Guwahati on a budget?",
@@ -2773,7 +2773,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
         "answer": "Yes. The XTSY desk can arrange cabs, airport or station transfers and sightseeing through trusted partners."
       }
     ],
-    "intro": "Looking for a budget-friendly stay in Guwahati? XTSY does not run its own hostel in Guwahati — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Guwahati is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Guwahati is the main gateway to the Northeast, with Lokpriya Gopinath Bordoloi International Airport and Guwahati railway station. Most travellers spend a night here before heading on to Meghalaya.",
+    "intro": "Looking for a budget-friendly stay in Guwahati? XTSY does not run its own hostel in Guwahati — our current properties are XTSY Travellers Hostel in New Shillong Township and Shnonpedeng Riverside Camping by XTSY, Meghalaya. What we do in Guwahati is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Guwahati is the main gateway to the Northeast, with Lokpriya Gopinath Bordoloi International Airport and Guwahati railway station. Most travellers spend a night here before heading on to Meghalaya.",
     "metaDescription": "Looking for a budget-friendly stay in Guwahati? XTSY arranges partner stays, transfers and sightseeing in Guwahati, Assam. XTSY's own hostel is in New Shillong Township. WhatsApp +91 88373 17070.",
     "h1": "Budget-Friendly Hostels and Budget Stays in Guwahati"
   },
@@ -2788,7 +2788,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       "northeast india travel",
       "solo travel guwahati"
     ],
-    "intro": "Looking for a good hostel in Guwahati? XTSY does not run its own hostel in Guwahati — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Guwahati is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Guwahati is the main gateway to the Northeast, with Lokpriya Gopinath Bordoloi International Airport and Guwahati railway station. Most travellers spend a night here before heading on to Meghalaya.",
+    "intro": "Looking for a good hostel in Guwahati? XTSY does not run its own hostel in Guwahati — our current properties are XTSY Travellers Hostel in New Shillong Township and Shnonpedeng Riverside Camping by XTSY, Meghalaya. What we do in Guwahati is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Guwahati is the main gateway to the Northeast, with Lokpriya Gopinath Bordoloi International Airport and Guwahati railway station. Most travellers spend a night here before heading on to Meghalaya.",
     "quickAnswer": "XTSY's own property is only in New Shillong Township, Meghalaya. In Guwahati, XTSY arranges stays that suits your trip, transport and travel help through trusted travel partners — WhatsApp +91 88373 17070 with your dates for live options.",
     "title": "Best Hostel in Guwahati (2026) — Stays via XTSY Partners",
     "metaDescription": "Looking for a good hostel in Guwahati? XTSY arranges partner stays, transfers and sightseeing in Guwahati, Assam. XTSY's own hostel is in New Shillong Township. WhatsApp +91 88373 17070.",
@@ -2826,7 +2826,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     "faqs": [
       {
         "question": "Does XTSY have its own hostel in Guwahati?",
-        "answer": "No. XTSY's only property is XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, Shillong. In Guwahati, XTSY facilitates stays, transport and travel help through trusted travel partners."
+        "answer": "No. XTSY's current properties are XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, and Shnonpedeng Riverside Camping by XTSY; neither is at this destination. In Guwahati, XTSY facilitates stays, transport and travel help through trusted travel partners."
       },
       {
         "question": "Can XTSY book a stay in Guwahati that suits your trip?",
@@ -2857,7 +2857,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     "faqs": [
       {
         "question": "Does XTSY have its own hostel in Guwahati?",
-        "answer": "No. XTSY's only property is XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, Shillong. In Guwahati, XTSY facilitates stays, transport and travel help through trusted travel partners."
+        "answer": "No. XTSY's current properties are XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, and Shnonpedeng Riverside Camping by XTSY; neither is at this destination. In Guwahati, XTSY facilitates stays, transport and travel help through trusted travel partners."
       },
       {
         "question": "What is the nearest airport for Guwahati?",
@@ -2908,7 +2908,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
         "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ],
-    "intro": "Arriving by air for Guwahati? XTSY does not run its own hostel in Guwahati — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Guwahati is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Guwahati is the main gateway to the Northeast, with Lokpriya Gopinath Bordoloi International Airport and Guwahati railway station. Most travellers spend a night here before heading on to Meghalaya. Lokpriya Gopinath Bordoloi International Airport serves Guwahati. Tell the XTSY desk your flight time and we will suggest a partner stay close to your route and arrange the pickup.",
+    "intro": "Arriving by air for Guwahati? XTSY does not run its own hostel in Guwahati — our current properties are XTSY Travellers Hostel in New Shillong Township and Shnonpedeng Riverside Camping by XTSY, Meghalaya. What we do in Guwahati is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Guwahati is the main gateway to the Northeast, with Lokpriya Gopinath Bordoloi International Airport and Guwahati railway station. Most travellers spend a night here before heading on to Meghalaya. Lokpriya Gopinath Bordoloi International Airport serves Guwahati. Tell the XTSY desk your flight time and we will suggest a partner stay close to your route and arrange the pickup.",
     "title": "Hostel near Guwahati Airport — Stays and Transfers via XTSY"
   },
   {
@@ -2916,7 +2916,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     "faqs": [
       {
         "question": "Does XTSY have its own hostel in Gangtok?",
-        "answer": "No. XTSY's only property is XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, Shillong. In Gangtok, XTSY facilitates stays, transport and travel help through trusted travel partners."
+        "answer": "No. XTSY's current properties are XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, and Shnonpedeng Riverside Camping by XTSY; neither is at this destination. In Gangtok, XTSY facilitates stays, transport and travel help through trusted travel partners."
       },
       {
         "question": "Can XTSY book a stay in Gangtok for today?",
@@ -2962,7 +2962,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       }
     ],
     "h1": "Hostel in Gangtok Today",
-    "intro": "Need a stay in Gangtok today? XTSY does not run its own hostel in Gangtok — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Gangtok is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Gangtok is reached by road from Bagdogra Airport or NJP railway station, or via Pakyong Airport. Some high-altitude areas such as Tsomgo Lake and Nathu La need permits arranged in advance.",
+    "intro": "Need a stay in Gangtok today? XTSY does not run its own hostel in Gangtok — our current properties are XTSY Travellers Hostel in New Shillong Township and Shnonpedeng Riverside Camping by XTSY, Meghalaya. What we do in Gangtok is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Gangtok is reached by road from Bagdogra Airport or NJP railway station, or via Pakyong Airport. Some high-altitude areas such as Tsomgo Lake and Nathu La need permits arranged in advance.",
     "keywords": [
       "hostel in gangtok today",
       "gangtok backpacker stay",
@@ -2993,7 +2993,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     "faqs": [
       {
         "question": "Does XTSY have its own hostel in Gangtok?",
-        "answer": "No. XTSY's only property is XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, Shillong. In Gangtok, XTSY facilitates stays, transport and travel help through trusted travel partners."
+        "answer": "No. XTSY's current properties are XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, and Shnonpedeng Riverside Camping by XTSY; neither is at this destination. In Gangtok, XTSY facilitates stays, transport and travel help through trusted travel partners."
       },
       {
         "question": "Can XTSY book a stay in Gangtok for this weekend?",
@@ -3040,7 +3040,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     ],
     "h1": "Hostel in Gangtok This Weekend",
     "title": "Hostel in Gangtok This Weekend — Book via XTSY Partners",
-    "intro": "Need a stay in Gangtok this weekend? XTSY does not run its own hostel in Gangtok — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Gangtok is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Gangtok is reached by road from Bagdogra Airport or NJP railway station, or via Pakyong Airport. Some high-altitude areas such as Tsomgo Lake and Nathu La need permits arranged in advance.",
+    "intro": "Need a stay in Gangtok this weekend? XTSY does not run its own hostel in Gangtok — our current properties are XTSY Travellers Hostel in New Shillong Township and Shnonpedeng Riverside Camping by XTSY, Meghalaya. What we do in Gangtok is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Gangtok is reached by road from Bagdogra Airport or NJP railway station, or via Pakyong Airport. Some high-altitude areas such as Tsomgo Lake and Nathu La need permits arranged in advance.",
     "quickAnswer": "XTSY's own property is only in New Shillong Township, Meghalaya. In Gangtok, XTSY arranges stays for this weekend, transport and travel help through trusted travel partners — WhatsApp +91 88373 17070 with your dates for live options."
   },
   {
@@ -3050,7 +3050,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     "faqs": [
       {
         "question": "Does XTSY have its own hostel in Gangtok?",
-        "answer": "No. XTSY's only property is XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, Shillong. In Gangtok, XTSY facilitates stays, transport and travel help through trusted travel partners."
+        "answer": "No. XTSY's current properties are XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, and Shnonpedeng Riverside Camping by XTSY; neither is at this destination. In Gangtok, XTSY facilitates stays, transport and travel help through trusted travel partners."
       },
       {
         "question": "Can XTSY book a stay in Gangtok for tomorrow?",
@@ -3095,7 +3095,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
         "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ],
-    "intro": "Need a stay in Gangtok tomorrow? XTSY does not run its own hostel in Gangtok — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Gangtok is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Gangtok is reached by road from Bagdogra Airport or NJP railway station, or via Pakyong Airport. Some high-altitude areas such as Tsomgo Lake and Nathu La need permits arranged in advance.",
+    "intro": "Need a stay in Gangtok tomorrow? XTSY does not run its own hostel in Gangtok — our current properties are XTSY Travellers Hostel in New Shillong Township and Shnonpedeng Riverside Camping by XTSY, Meghalaya. What we do in Gangtok is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Gangtok is reached by road from Bagdogra Airport or NJP railway station, or via Pakyong Airport. Some high-altitude areas such as Tsomgo Lake and Nathu La need permits arranged in advance.",
     "h1": "Hostel in Gangtok Tomorrow",
     "keywords": [
       "gangtok hostel",
@@ -3116,7 +3116,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     "faqs": [
       {
         "question": "Does XTSY have its own hostel in Gangtok?",
-        "answer": "No. XTSY's only property is XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, Shillong. In Gangtok, XTSY facilitates stays, transport and travel help through trusted travel partners."
+        "answer": "No. XTSY's current properties are XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, and Shnonpedeng Riverside Camping by XTSY; neither is at this destination. In Gangtok, XTSY facilitates stays, transport and travel help through trusted travel partners."
       },
       {
         "question": "Can XTSY book a stay in Gangtok for tonight?",
@@ -3163,7 +3163,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
         "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ],
-    "intro": "Need a stay in Gangtok tonight? XTSY does not run its own hostel in Gangtok — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Gangtok is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Gangtok is reached by road from Bagdogra Airport or NJP railway station, or via Pakyong Airport. Some high-altitude areas such as Tsomgo Lake and Nathu La need permits arranged in advance.",
+    "intro": "Need a stay in Gangtok tonight? XTSY does not run its own hostel in Gangtok — our current properties are XTSY Travellers Hostel in New Shillong Township and Shnonpedeng Riverside Camping by XTSY, Meghalaya. What we do in Gangtok is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Gangtok is reached by road from Bagdogra Airport or NJP railway station, or via Pakyong Airport. Some high-altitude areas such as Tsomgo Lake and Nathu La need permits arranged in advance.",
     "keywords": [
       "hostel in gangtok tonight",
       "gangtok backpacker stay",
@@ -3181,7 +3181,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     "faqs": [
       {
         "question": "Does XTSY have its own hostel in Gangtok?",
-        "answer": "No. XTSY's only property is XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, Shillong. In Gangtok, XTSY facilitates stays, transport and travel help through trusted travel partners."
+        "answer": "No. XTSY's current properties are XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, and Shnonpedeng Riverside Camping by XTSY; neither is at this destination. In Gangtok, XTSY facilitates stays, transport and travel help through trusted travel partners."
       },
       {
         "question": "Can XTSY book a stay in Gangtok at short notice?",
@@ -3198,7 +3198,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     ],
     "title": "Hostel in Gangtok Last Minute — Book via XTSY Partners",
     "metaDescription": "Need a stay in Gangtok at the last minute? XTSY arranges partner stays, transfers and sightseeing in Gangtok, Sikkim. XTSY's own hostel is in New Shillong Township. WhatsApp +91 88373 17070.",
-    "intro": "Need a stay in Gangtok at the last minute? XTSY does not run its own hostel in Gangtok — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Gangtok is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Gangtok is reached by road from Bagdogra Airport or NJP railway station, or via Pakyong Airport. Some high-altitude areas such as Tsomgo Lake and Nathu La need permits arranged in advance.",
+    "intro": "Need a stay in Gangtok at the last minute? XTSY does not run its own hostel in Gangtok — our current properties are XTSY Travellers Hostel in New Shillong Township and Shnonpedeng Riverside Camping by XTSY, Meghalaya. What we do in Gangtok is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Gangtok is reached by road from Bagdogra Airport or NJP railway station, or via Pakyong Airport. Some high-altitude areas such as Tsomgo Lake and Nathu La need permits arranged in advance.",
     "h1": "Hostel in Gangtok Last Minute",
     "keywords": [
       "hostel in gangtok",
@@ -3272,13 +3272,13 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
         "content": "XTSY Travellers Hostel, Mawdiangdiang Road, New Shillong Township, Shillong, Meghalaya – 793018. Nearby: NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University. Dorm beds, a female-only dorm, King Double rooms, Experience by XTSY (India's Most Romantic Couple En-suite) and TAB Bistro are all on site."
       }
     ],
-    "intro": "Need a stay in Gangtok right now? XTSY does not run its own hostel in Gangtok — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Gangtok is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Gangtok is reached by road from Bagdogra Airport or NJP railway station, or via Pakyong Airport. Some high-altitude areas such as Tsomgo Lake and Nathu La need permits arranged in advance.",
+    "intro": "Need a stay in Gangtok right now? XTSY does not run its own hostel in Gangtok — our current properties are XTSY Travellers Hostel in New Shillong Township and Shnonpedeng Riverside Camping by XTSY, Meghalaya. What we do in Gangtok is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Gangtok is reached by road from Bagdogra Airport or NJP railway station, or via Pakyong Airport. Some high-altitude areas such as Tsomgo Lake and Nathu La need permits arranged in advance.",
     "quickAnswer": "XTSY's own property is only in New Shillong Township, Meghalaya. In Gangtok, XTSY arranges stays for right now, transport and travel help through trusted travel partners — WhatsApp +91 88373 17070 with your dates for live options.",
     "metaDescription": "Need a stay in Gangtok right now? XTSY arranges partner stays, transfers and sightseeing in Gangtok, Sikkim. XTSY's own hostel is in New Shillong Township. WhatsApp +91 88373 17070.",
     "faqs": [
       {
         "question": "Does XTSY have its own hostel in Gangtok?",
-        "answer": "No. XTSY's only property is XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, Shillong. In Gangtok, XTSY facilitates stays, transport and travel help through trusted travel partners."
+        "answer": "No. XTSY's current properties are XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, and Shnonpedeng Riverside Camping by XTSY; neither is at this destination. In Gangtok, XTSY facilitates stays, transport and travel help through trusted travel partners."
       },
       {
         "question": "Can XTSY book a stay in Gangtok for right now?",
@@ -3312,7 +3312,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     "faqs": [
       {
         "question": "Does XTSY have its own hostel in Gangtok?",
-        "answer": "No. XTSY's only property is XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, Shillong. In Gangtok, XTSY facilitates stays, transport and travel help through trusted travel partners."
+        "answer": "No. XTSY's current properties are XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, and Shnonpedeng Riverside Camping by XTSY; neither is at this destination. In Gangtok, XTSY facilitates stays, transport and travel help through trusted travel partners."
       },
       {
         "question": "Can XTSY book a stay in Gangtok on a budget?",
@@ -3328,7 +3328,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       }
     ],
     "metaDescription": "Looking for a budget-friendly stay in Gangtok? XTSY arranges partner stays, transfers and sightseeing in Gangtok, Sikkim. XTSY's own hostel is in New Shillong Township. WhatsApp +91 88373 17070.",
-    "intro": "Looking for a budget-friendly stay in Gangtok? XTSY does not run its own hostel in Gangtok — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Gangtok is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Gangtok is reached by road from Bagdogra Airport or NJP railway station, or via Pakyong Airport. Some high-altitude areas such as Tsomgo Lake and Nathu La need permits arranged in advance.",
+    "intro": "Looking for a budget-friendly stay in Gangtok? XTSY does not run its own hostel in Gangtok — our current properties are XTSY Travellers Hostel in New Shillong Township and Shnonpedeng Riverside Camping by XTSY, Meghalaya. What we do in Gangtok is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Gangtok is reached by road from Bagdogra Airport or NJP railway station, or via Pakyong Airport. Some high-altitude areas such as Tsomgo Lake and Nathu La need permits arranged in advance.",
     "sections": [
       {
         "heading": "How XTSY helps in Gangtok",
@@ -3373,7 +3373,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     "faqs": [
       {
         "question": "Does XTSY have its own hostel in Gangtok?",
-        "answer": "No. XTSY's only property is XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, Shillong. In Gangtok, XTSY facilitates stays, transport and travel help through trusted travel partners."
+        "answer": "No. XTSY's current properties are XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, and Shnonpedeng Riverside Camping by XTSY; neither is at this destination. In Gangtok, XTSY facilitates stays, transport and travel help through trusted travel partners."
       },
       {
         "question": "Can XTSY book a stay in Gangtok that suits your trip?",
@@ -3428,7 +3428,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       "mg marg hostels",
       "budget-friendly rooms gangtok"
     ],
-    "intro": "Looking for a good hostel in Gangtok? XTSY does not run its own hostel in Gangtok — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Gangtok is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Gangtok is reached by road from Bagdogra Airport or NJP railway station, or via Pakyong Airport. Some high-altitude areas such as Tsomgo Lake and Nathu La need permits arranged in advance.",
+    "intro": "Looking for a good hostel in Gangtok? XTSY does not run its own hostel in Gangtok — our current properties are XTSY Travellers Hostel in New Shillong Township and Shnonpedeng Riverside Camping by XTSY, Meghalaya. What we do in Gangtok is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Gangtok is reached by road from Bagdogra Airport or NJP railway station, or via Pakyong Airport. Some high-altitude areas such as Tsomgo Lake and Nathu La need permits arranged in advance.",
     "title": "Best Hostel in Gangtok (2026) — Stays via XTSY Partners",
     "h1": "Best Hostels and Stays in Gangtok"
   },
@@ -3468,7 +3468,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     "faqs": [
       {
         "question": "Does XTSY have its own hostel in Gangtok?",
-        "answer": "No. XTSY's only property is XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, Shillong. In Gangtok, XTSY facilitates stays, transport and travel help through trusted travel partners."
+        "answer": "No. XTSY's current properties are XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, and Shnonpedeng Riverside Camping by XTSY; neither is at this destination. In Gangtok, XTSY facilitates stays, transport and travel help through trusted travel partners."
       },
       {
         "question": "What is the nearest airport for Gangtok?",
@@ -3489,7 +3489,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     ],
     "quickAnswer": "XTSY's own property is only in New Shillong Township, Meghalaya. In Gangtok, XTSY arranges stays near your arrival point, transport and travel help through trusted travel partners — WhatsApp +91 88373 17070 with your dates for live options.",
     "h1": "Hostels and Stays near Gangtok Airport",
-    "intro": "Arriving by air for Gangtok? XTSY does not run its own hostel in Gangtok — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Gangtok is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Gangtok is reached by road from Bagdogra Airport or NJP railway station, or via Pakyong Airport. Some high-altitude areas such as Tsomgo Lake and Nathu La need permits arranged in advance. Pakyong Airport is closest to Gangtok, but most flights land at Bagdogra. XTSY can arrange the road transfer and a partner stay near your arrival point.",
+    "intro": "Arriving by air for Gangtok? XTSY does not run its own hostel in Gangtok — our current properties are XTSY Travellers Hostel in New Shillong Township and Shnonpedeng Riverside Camping by XTSY, Meghalaya. What we do in Gangtok is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Gangtok is reached by road from Bagdogra Airport or NJP railway station, or via Pakyong Airport. Some high-altitude areas such as Tsomgo Lake and Nathu La need permits arranged in advance. Pakyong Airport is closest to Gangtok, but most flights land at Bagdogra. XTSY can arrange the road transfer and a partner stay near your arrival point.",
     "keywords": [
       "hostels near gangtok airport",
       "pakyong airport accommodation",
@@ -3507,7 +3507,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     "faqs": [
       {
         "question": "Does XTSY have its own hostel in Kohima?",
-        "answer": "No. XTSY's only property is XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, Shillong. In Kohima, XTSY facilitates stays, transport and travel help through trusted travel partners."
+        "answer": "No. XTSY's current properties are XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, and Shnonpedeng Riverside Camping by XTSY; neither is at this destination. In Kohima, XTSY facilitates stays, transport and travel help through trusted travel partners."
       },
       {
         "question": "Can XTSY book a stay in Kohima for today?",
@@ -3524,7 +3524,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     ],
     "metaDescription": "Need a stay in Kohima today? XTSY arranges partner stays, transfers and sightseeing in Kohima, Nagaland. XTSY's own hostel is in New Shillong Township. WhatsApp +91 88373 17070.",
     "h1": "Hostel in Kohima Today",
-    "intro": "Need a stay in Kohima today? XTSY does not run its own hostel in Kohima — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Kohima is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Nagaland has Inner Line Permit (ILP) rules for visitors. Check the current requirements before you travel; the XTSY desk can point you to the right application.",
+    "intro": "Need a stay in Kohima today? XTSY does not run its own hostel in Kohima — our current properties are XTSY Travellers Hostel in New Shillong Township and Shnonpedeng Riverside Camping by XTSY, Meghalaya. What we do in Kohima is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Nagaland has Inner Line Permit (ILP) rules for visitors. Check the current requirements before you travel; the XTSY desk can point you to the right application.",
     "keywords": [
       "hostel in kohima",
       "kohima accommodation",
@@ -3573,7 +3573,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     "faqs": [
       {
         "question": "Does XTSY have its own hostel in Kohima?",
-        "answer": "No. XTSY's only property is XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, Shillong. In Kohima, XTSY facilitates stays, transport and travel help through trusted travel partners."
+        "answer": "No. XTSY's current properties are XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, and Shnonpedeng Riverside Camping by XTSY; neither is at this destination. In Kohima, XTSY facilitates stays, transport and travel help through trusted travel partners."
       },
       {
         "question": "Can XTSY book a stay in Kohima for this weekend?",
@@ -3589,7 +3589,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
       }
     ],
     "metaDescription": "Need a stay in Kohima this weekend? XTSY arranges partner stays, transfers and sightseeing in Kohima, Nagaland. XTSY's own hostel is in New Shillong Township. WhatsApp +91 88373 17070.",
-    "intro": "Need a stay in Kohima this weekend? XTSY does not run its own hostel in Kohima — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Kohima is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Nagaland has Inner Line Permit (ILP) rules for visitors. Check the current requirements before you travel; the XTSY desk can point you to the right application.",
+    "intro": "Need a stay in Kohima this weekend? XTSY does not run its own hostel in Kohima — our current properties are XTSY Travellers Hostel in New Shillong Township and Shnonpedeng Riverside Camping by XTSY, Meghalaya. What we do in Kohima is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Nagaland has Inner Line Permit (ILP) rules for visitors. Check the current requirements before you travel; the XTSY desk can point you to the right application.",
     "h1": "Hostel in Kohima This Weekend",
     "keywords": [
       "kohima hostel",
@@ -3633,7 +3633,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
   {
     "slug": "hostel-in-kohima-tonight",
     "quickAnswer": "XTSY's own property is only in New Shillong Township, Meghalaya. In Kohima, XTSY arranges stays for tonight, transport and travel help through trusted travel partners — WhatsApp +91 88373 17070 with your dates for live options.",
-    "intro": "Need a stay in Kohima tonight? XTSY does not run its own hostel in Kohima — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. What we do in Kohima is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Nagaland has Inner Line Permit (ILP) rules for visitors. Check the current requirements before you travel; the XTSY desk can point you to the right application.",
+    "intro": "Need a stay in Kohima tonight? XTSY does not run its own hostel in Kohima — our current properties are XTSY Travellers Hostel in New Shillong Township and Shnonpedeng Riverside Camping by XTSY, Meghalaya. What we do in Kohima is facilitate: the XTSY desk finds a stay through our trusted travel partners, confirms the rate with you on WhatsApp, and can add transport and sightseeing to the same booking. Nagaland has Inner Line Permit (ILP) rules for visitors. Check the current requirements before you travel; the XTSY desk can point you to the right application.",
     "sections": [
       {
         "heading": "How XTSY helps in Kohima",
@@ -3679,7 +3679,7 @@ export const BOTTOM50_SEO_REWRITES: SEOOverride[] = [
     "faqs": [
       {
         "question": "Does XTSY have its own hostel in Kohima?",
-        "answer": "No. XTSY's only property is XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, Shillong. In Kohima, XTSY facilitates stays, transport and travel help through trusted travel partners."
+        "answer": "No. XTSY's current properties are XTSY Travellers Hostel on Mawdiangdiang Road, New Shillong Township, and Shnonpedeng Riverside Camping by XTSY; neither is at this destination. In Kohima, XTSY facilitates stays, transport and travel help through trusted travel partners."
       },
       {
         "question": "Can XTSY book a stay in Kohima for tonight?",

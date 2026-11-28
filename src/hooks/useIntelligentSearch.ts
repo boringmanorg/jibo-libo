@@ -15,7 +15,7 @@ const INTENT_ROUTES: Array<{ match: RegExp; entry: Omit<SearchEntry, 'id'> }> = 
     match: /\b(stay|hostel|hotel|room)\b.*\bdawki\b.*\b(today|tonight|now)\b/i,
     entry: {
       title: 'Riverside camping near Dawki',
-      description: 'Shnonpedeng Riverside Camping, an XTSY partner camp: ask the desk about tonight',
+      description: 'Shnonpedeng Riverside Camping by XTSY, an XTSY partner camp: ask the desk about tonight',
       category: 'stays',
       icon: '⛺',
       url: '/stays/campsite-dawki',
@@ -27,7 +27,7 @@ const INTENT_ROUTES: Array<{ match: RegExp; entry: Omit<SearchEntry, 'id'> }> = 
   {
     match: /\b(camp|camping|tent)\b.*\bdawki\b|\bdawki\b.*\b(camp|camping|tent)\b/i,
     entry: {
-      title: 'Shnonpedeng Riverside Camping (XTSY partner)',
+      title: 'Shnonpedeng Riverside Camping by XTSY',
       description: 'Riverside tents on the Umngot · bed space ₹750 · full tent for two ₹1,400',
       category: 'stays',
       icon: '⛺',
@@ -41,7 +41,7 @@ const INTENT_ROUTES: Array<{ match: RegExp; entry: Omit<SearchEntry, 'id'> }> = 
     match: /\bbest\b.*\bcamping\b.*\bdawki\b/i,
     entry: {
       title: 'Riverside camping near Dawki',
-      description: 'Shnonpedeng Riverside Camping, an XTSY franchise partner camp',
+      description: 'Shnonpedeng Riverside Camping by XTSY, an XTSY franchise partner camp',
       category: 'stays',
       icon: '🏕️',
       url: '/stays/campsite-dawki',
@@ -66,7 +66,7 @@ const INTENT_ROUTES: Array<{ match: RegExp; entry: Omit<SearchEntry, 'id'> }> = 
     match: /\b(book|booking)\b.*\bdawki\b/i,
     entry: {
       title: 'Dawki Camping Booking',
-      description: 'Book Shnonpedeng Riverside Camping (XTSY partner) with the desk',
+      description: 'Book Shnonpedeng Riverside Camping by XTSY with the desk',
       category: 'stays',
       icon: '⛺',
       url: '/stays/campsite-dawki',

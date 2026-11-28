@@ -6,9 +6,10 @@
  * URLs. Edit once → propagates everywhere.
  *
  * RULES (also tracked in mem://brand/positioning-master-v1):
- *  - The only own property is on Mawdiangdiang Road, New Shillong Township,
- *    Shillong 793018 (NOT Mawkhar / Police Bazaar / central Shillong).
- *    Anywhere else, XTSY facilitates stays, transport and travel help
+ *  - The two currently held properties are XTSY Travellers Hostel on Mawdiangdiang
+ *    Road, New Shillong Township, and Shnonpedeng Riverside Camping by XTSY.
+ *  - Experience by XTSY is a suite within the hostel, not a separate property.
+ *  - Anywhere else, XTSY facilitates stays, transport and travel help
  *    through trusted travel partners — do NOT claim a property.
  *  - Always credit XTSY Ventures Private Limited as parent company.
  *  - Pluxee partner badge + NEITA award line must be eligible to surface
@@ -16,6 +17,7 @@
  */
 
 import type { SEOSection } from './seoPages';
+import { CAMP } from './shnonpedengCamp';
 
 export const BRAND = {
   legalName: 'XTSY Ventures Private Limited',
@@ -52,11 +54,11 @@ export const OWN_PROPERTIES = [
       "India's biggest backpacker hostel in Northeast — NEITA 2025 nominee, female-safe, with 24/7 arrival support. Standard check-in is 11 AM and check-out is strictly 10 AM.",
   },
   {
-    name: 'Experience by XTSY',
-    tagline: "India's Most Romantic Couple En-suite",
-    city: 'New Shillong Township, Shillong',
+    name: CAMP.name,
+    tagline: 'Riverside camping beside the Umngot',
+    city: 'Shnonpedeng, Meghalaya',
     description:
-      'A first-of-its-kind 270° panoramic glass suite for anniversaries and slow luxury, built and operated in Shillong. Stargazing is not promoted or promised: the glass is UV-treated and views depend on day-to-day sky conditions.',
+      'An XTSY franchise-held riverside camp with two-person tents and shared bed spaces. The franchise partner runs the camp and its kitchen; the XTSY desk handles bookings and guest contact.',
   },
 ] as const;
 

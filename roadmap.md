@@ -1,5 +1,13 @@
 # Roadmap — Master SEO prompt (xtsy.one)
 
+## Self check-in, invoicing and property naming — 28 November 2026
+- [x] Rename the campsite to “Shnonpedeng Riverside Camping by XTSY” across guest content, console labels, metadata and generated discovery files without changing URLs or internal IDs.
+- [x] Add per-property GST registration status so unregistered properties issue ordinary business invoices without GST, while registered properties retain tax invoices; keep XTSY and franchise records separate.
+- [x] Build a guided mobile self check-in for both properties with guest/contact/stay details, separate identity-document front/back uploads, international-passport handling and explicit policy acceptance.
+- [x] Add private staff-only check-in records and document downloads for admin@xtsy.one and booking@xtsy.one; rooms and beds remain desk-assigned.
+- [x] Verify the complete international hostel flow and domestic campsite flow on a phone-sized screen with private uploads, guest view/download links, property-specific policies, no overflow and no browser errors; remove every test record afterwards. Guest payments remain off and nothing is published.
+- [ ] Live staff sign-in verification waits for a confirmed booking@xtsy.one auth account; access rules, staff UI and document policies are implemented and tested, but no account was created automatically.
+
 ## Preview startup warnings — 24 November 2026
 - [x] Removed unsupported Bluetooth header directives, duplicate homepage link keys and deprecated gallery motion usage; unused preview font preloads are now production-only. Recovered stale preview server markup; seven pages return 200 on phone/desktop with no browser warnings or errors. All 665 tests pass (four skipped). A harmless platform-managed path-resolution advisory remains in startup logs; guest policies and URLs unchanged, not published.
 

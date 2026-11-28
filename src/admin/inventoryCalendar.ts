@@ -8,7 +8,7 @@ import { closedUnits, type ClosureRow } from '@/booking/consoleClosures';
 import { addDays, type IsoDate } from '@/booking/dates';
 import { sheetCapacity, type SheetAvailability } from '@/booking/sheetAvailability';
 import { ENGINE_ROOM_ID } from '@/data/publicRates';
-import { CAMP_TENTS, CAMP_UNIT_ID } from '@/data/shnonpedengCamp';
+import { CAMP, CAMP_TENTS, CAMP_UNIT_ID } from '@/data/shnonpedengCamp';
 import { CAMP_PROPERTY_ID } from '@/integrations/xtsy-saas/catalogue';
 
 export const HOSTEL_PROPERTY_ID = 'XTSY-SHL-HOSTEL';
@@ -45,7 +45,7 @@ export function calendarRooms(): CalendarRoom[] {
       id: r.id, name: r.name, short: SHORT[r.id] ?? r.name, unit: r.soldAs, total: r.units,
       consoleUnitId: CONSOLE_ID[r.id] ?? r.id, propertyId: HOSTEL_PROPERTY_ID, source: 'sheet' as const,
     })),
-    { id: CAMP_UNIT_ID, name: 'Shnonpedeng Riverside Camping', short: 'Shnonpedeng tents', unit: 'tent' as const, total: CAMP_TENTS, consoleUnitId: CAMP_UNIT_ID, propertyId: CAMP_PROPERTY_ID, source: 'catalogue' as const },
+    { id: CAMP_UNIT_ID, name: CAMP.name, short: 'Shnonpedeng tents', unit: 'tent' as const, total: CAMP_TENTS, consoleUnitId: CAMP_UNIT_ID, propertyId: CAMP_PROPERTY_ID, source: 'catalogue' as const },
   ];
 }
 

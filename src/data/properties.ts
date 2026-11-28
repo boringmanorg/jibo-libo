@@ -130,7 +130,7 @@ export const PROPERTIES: Record<string, Property> = {
   'xtsy-adventure-campsite-dawki': {
     id: 'xtsy-adventure-campsite-dawki',
     slug: 'xtsy-adventure-campsite-dawki',
-    name: 'Shnonpedeng Riverside Camping',
+    name: 'Shnonpedeng Riverside Camping by XTSY',
     shortName: 'Partner camp',
     locationId: 'dawki',
     description: 'Riverside tents on the Umngot at Shnonpedeng, an XTSY franchise accommodation partner. Full tent for two or a single bed space; breakfast and dinner on request.',

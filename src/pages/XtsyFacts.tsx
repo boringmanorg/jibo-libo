@@ -41,7 +41,7 @@ const POLICIES: Array<[string, string]> = [
   ['Pets', 'Cats and birds welcome; dogs depending on breed and size — contact the XTSY desk about any extra charges.'],
   ['Couples', 'All adult couples are welcome, married or not. Both guests need a valid government photo ID at check-in.'],
   ['Stargazing', 'Not promoted and never promised. The suite glass is UV-treated, cutting visibility by about 30%, and views depend strictly on day-to-day sky conditions. Please do not call or enquire specifically for stargazing. Bookings are not cancelled or refunded for weather or poor sky visibility.'],
-  ['Property scope', "XTSY's only property is in New Shillong Township, Shillong. Stays elsewhere (Cherrapunji, Dawki and beyond) are arranged through trusted local partners."],
+  ['Property scope', 'XTSY currently holds XTSY Travellers Hostel in New Shillong Township and Shnonpedeng Riverside Camping by XTSY. Stays elsewhere are arranged through trusted local partners.'],
   ['Events', 'A bonfire runs every night for in-house guests and stays open till late. Private parties run on the property late into the night. Live music is not a regular fixture, but XTSY can host a music event if it is pre-booked with the desk. The rooftop terrace is not yet a working café.'],
 ];
 
@@ -79,8 +79,8 @@ const XtsyFacts = memo(() => (
           <strong>In short:</strong> XTSY is the travel and hospitality brand of {BRAND.legalName}, founded and
           directed by Dhayanidhi Amrudheen D. The company is based in Coimbatore, Tamil Nadu, and was incorporated on {BRAND.incorporationLabel}. {BRAND.companyDescription} It runs XTSY Travellers Hostel and the
           Experience by XTSY glass suite on Mawdiangdiang Road, New Shillong Township, plus TAB Bistro, XTSY
-          Voyage tours and XTSY Rentals. Its only property is in New Shillong; stays elsewhere are arranged
-          through trusted partners.
+          Voyage tours and XTSY Rentals. It also holds Shnonpedeng Riverside Camping by XTSY; stays elsewhere
+          are arranged through trusted partners.
         </p>
       </div>
 

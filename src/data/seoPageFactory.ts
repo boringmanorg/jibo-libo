@@ -208,8 +208,11 @@ const faqsForInstitution = (instSlug: string, instName: string, type: 'medical' 
   ];
 };
 
-const faqsForLastMinute = (city: string): SEOFaq[] => city !== 'shillong' ? [
-  { question: `Does XTSY have its own stay in ${slugToLabel(city)}?`, answer: `No. XTSY's only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. For ${slugToLabel(city)}, the XTSY desk can look for a partner stay on WhatsApp +91 88373 17070, subject to availability.` },
+const faqsForLastMinute = (city: string): SEOFaq[] => city === 'shnonpedeng' ? [
+  { question: 'Does XTSY have its own stay in Shnonpedeng?', answer: 'Yes. Shnonpedeng Riverside Camping by XTSY is a currently held XTSY property. Contact the desk on WhatsApp +91 88373 17070 to confirm availability.' },
+  { question: 'Can I book a same-day stay in Shnonpedeng through XTSY?', answer: 'Message the desk with your arrival time. Availability and rates are confirmed on WhatsApp before you travel.' },
+] : city !== 'shillong' ? [
+  { question: `Does XTSY have its own stay in ${slugToLabel(city)}?`, answer: `XTSY currently holds XTSY Travellers Hostel in New Shillong Township and Shnonpedeng Riverside Camping by XTSY. For other destinations, including ${slugToLabel(city)}, the XTSY desk can look for a partner stay on WhatsApp +91 88373 17070, subject to availability.` },
   { question: `Can I book a same-day stay in ${slugToLabel(city)} through XTSY?`, answer: `Message the desk with your arrival time. Partner availability and rates are confirmed on WhatsApp before you travel.` },
 ] : [
   { question: `Can I book a stay in ${slugToLabel(city)} for tonight?`, answer: `Yes — XTSY accepts same-day bookings via WhatsApp at +91 88373 17070. Subject to availability.` },
@@ -379,7 +382,7 @@ export function buildInstitutionPage(slug: string, inst: { slug: string; name: s
     title,
     metaDescription,
     h1: `${intentLabel} ${inst.name}`,
-    intro: away ? `Visiting ${inst.name} in ${slugToLabel(inst.city!)}? XTSY does not have its own stay there — our only property is XTSY Travellers Hostel in New Shillong Township, Meghalaya. The XTSY desk can book a trusted partner stay near ${inst.name} on WhatsApp.` : `Visiting ${inst.name}? XTSY Travellers Hostel is the most trusted budget-friendly stay nearby — with 24/7 check-in, female-safe dorms, and instant WhatsApp confirmations for ${inst.type === 'medical' ? 'patient attendants and family members' : 'students, parents and visiting faculty'}.`,
+    intro: away ? `Visiting ${inst.name} in ${slugToLabel(inst.city!)}? XTSY does not have its own stay there — our currently held properties are XTSY Travellers Hostel in New Shillong Township and Shnonpedeng Riverside Camping by XTSY. The XTSY desk can book a trusted partner stay near ${inst.name} on WhatsApp.` : `Visiting ${inst.name}? XTSY Travellers Hostel is the most trusted budget-friendly stay nearby — with 24/7 check-in, female-safe dorms, and instant WhatsApp confirmations for ${inst.type === 'medical' ? 'patient attendants and family members' : 'students, parents and visiting faculty'}.`,
     sections: [
       {
         heading: away ? `Getting to ${inst.name}` : `Distance & Transport from XTSY to ${inst.name}`,
@@ -400,7 +403,7 @@ export function buildInstitutionPage(slug: string, inst: { slug: string; name: s
     ctaText: 'Book on WhatsApp',
     ctaLink: `https://wa.me/918837317070?text=Hi, I need a stay near ${inst.name}`,
     keywords: [`stay near ${inst.name}`, `${inst.name} accommodation`, `hostel near ${inst.name}`, inst.type === 'medical' ? 'patient attendant stay shillong' : 'student stay shillong'],
-    quickAnswer: away ? `XTSY has no own stay near ${inst.name}; its only property is in New Shillong Township, Meghalaya. The XTSY desk books partner stays near ${inst.name} on WhatsApp +91 88373 17070.` : `XTSY Travellers Hostel is the most trusted budget stay near ${inst.name}, offering 24/7 check-in, secure dorms and weekly rates. Book on WhatsApp at +91 88373 17070.`,
+    quickAnswer: away ? `XTSY has no own stay near ${inst.name}; its currently held properties are in New Shillong Township and Shnonpedeng, Meghalaya. The XTSY desk books partner stays near ${inst.name} on WhatsApp +91 88373 17070.` : `XTSY Travellers Hostel is the most trusted budget stay near ${inst.name}, offering 24/7 check-in, secure dorms and weekly rates. Book on WhatsApp at +91 88373 17070.`,
   });
 }
 

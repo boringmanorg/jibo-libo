@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   addPhoto, businessProblems, deletePhoto, formCHoursLeft, formCProblems, getInvoiceDoc, issueTaxInvoice,
-  listPhotos, photoPath, reorderPhotos, saveFormC, validPhotoPath, type OpsDeps,
+  listInvoices, listPhotos, photoPath, reorderPhotos, saveFormC, validPhotoPath, type OpsDeps,
 } from '../src/admin/engineOps.core';
 import { verifyBotCheck, botCheckSiteKey } from '../src/booking/botCheck';
 import { generateProductionSecurityHeaders, withBotCheckSources, isBookingPath } from '../src/utils/productionSecurityHeaders';
@@ -17,6 +17,7 @@ function fakeDb(t: Record<string, Row[]>) {
       select(c = '*') { cols = c; return api; }, insert(p: any) { op = 'insert'; payload = p; return api; }, update(p: any) { op = 'update'; payload = p; return api; },
       delete() { op = 'delete'; return api; }, eq(k: string, v: any) { f.push((r) => r[k] === v); return api; }, neq(k: string, v: any) { f.push((r) => r[k] !== v); return api; },
       in(k: string, v: any[]) { f.push((r) => v.includes(r[k])); return api; }, lte() { return api; },
+      or(expression: string) { if (expression === 'property_id.eq.XTSY-SHL-HOSTEL,property_id.is.null') f.push((r) => r.property_id === 'XTSY-SHL-HOSTEL' || r.property_id == null); return api; },
       order(k: string, o?: { ascending?: boolean }) { order = [k, o?.ascending !== false]; return api; }, limit(x: number) { lim = x; return api; },
       single() { single = 'one'; return api; }, maybeSingle() { single = 'maybe'; return api; },
       then(res: any, rej: any) { return Promise.resolve(run()).then(res, rej); },
@@ -116,8 +117,9 @@ describe('invoices', () => {
   });
 
   it('validates business details', () => {
-    expect(businessProblems({ legalName: 'XTSY Ventures Private Limited', gstin: '17ABCDE1234F1Z5', address: 'New Shillong Township, Meghalaya', stateCode: '17', sacCode: '996311' })).toEqual([]);
-    expect(businessProblems({ legalName: 'X', gstin: '18ABCDE1234F1Z5', address: 'x', stateCode: '17', sacCode: '99' }).length).toBeGreaterThanOrEqual(4);
+    expect(businessProblems({ propertyId: 'XTSY-SHL-HOSTEL', gstRegistered: true, legalName: 'XTSY Ventures Private Limited', gstin: '17ABCDE1234F1Z5', address: 'New Shillong Township, Meghalaya', stateCode: '17', sacCode: '996311' })).toEqual([]);
+    expect(businessProblems({ propertyId: 'XTSY-SHL-HOSTEL', gstRegistered: true, legalName: 'X', gstin: '18ABCDE1234F1Z5', address: 'x', stateCode: '17', sacCode: '99' }).length).toBeGreaterThanOrEqual(4);
+    expect(businessProblems({ propertyId: 'XTSY-SHN-CAMP', gstRegistered: false, legalName: 'Shnonpedeng Riverside Camping by XTSY', gstin: '', address: 'Shnonpedeng, Meghalaya', stateCode: '17', sacCode: '996311' })).toEqual([]);
   });
 
   it('issues one numbered tax invoice per booking, with breakfast as its own line and CGST/SGST halves', async () => {
@@ -134,10 +136,40 @@ describe('invoices', () => {
     expect(doc).toMatchObject({ taxable: 536000, total: 562800, paid: 140700, balance: 422100 });
   });
 
-  it('refuses without GSTIN or numbering', async () => {
+  it('issues a business invoice without GST when the property is not GST registered', async () => {
     const t = seed(); t.be_settings[0].gstin = '';
-    await expect(issueTaxInvoice(ops(t, { service: { rpc: async () => ({ data: 1, error: null }) } }).d, 'b1')).rejects.toThrow(/GSTIN/);
+    const { d } = ops(t, { service: { rpc: async () => ({ data: 3, error: null }) } });
+    const r = await issueTaxInvoice(d, 'b1');
+    expect(r.number).toBe('XTSY/2026-27/BI/0003');
+    const doc = await getInvoiceDoc(d, r.id);
+    expect(doc.business.gstRegistered).toBe(false);
+    expect(doc).toMatchObject({ taxable: 562800, gst: 0, total: 562800, cgst: 0, sgst: 0 });
+    expect(doc.lines).toHaveLength(1);
+    expect(doc.lines[0]).toMatchObject({ gstBps: 0, gst: 0 });
+  });
+
+  it('requires a GSTIN only in registered mode and requires invoice numbering', async () => {
+    const t = seed(); t.be_settings[0].gstin = '';
+    t.be_property_invoice_profiles = [{ property_id: 'XTSY-SHL-HOSTEL', legal_name: 'XTSY Ventures Private Limited', gst_registered: true, gstin: '', business_address: 'New Shillong Township, Meghalaya', state_code: '17', sac_code: '996311' }];
+    await expect(issueTaxInvoice(ops(t, { service: { rpc: async () => ({ data: 1, error: null }) } }).d, 'b1')).rejects.toThrow(/tax status|GSTIN/);
     await expect(issueTaxInvoice(ops(seed()).d, 'b1')).rejects.toThrow(/numbering/);
+  });
+
+  it('keeps each property invoice list separate and includes legacy hostel invoices', async () => {
+    const t = seed();
+    t.be_invoices = [
+      { id: 'i1', property_id: null, number: 'XTSY/2026-27/TI/0001', kind: 'tax_invoice', taxable_paise: 1, gst_paise: 0, issued_at: '2026-11-20T06:00:00Z' },
+      { id: 'i2', property_id: 'XTSY-SHL-HOSTEL', number: 'XTSY/2026-27/BI/0002', kind: 'business_invoice', taxable_paise: 2, gst_paise: 0, issued_at: '2026-11-21T06:00:00Z' },
+      { id: 'i3', property_id: 'XTSY-SHN-CAMP', number: 'XTSY/2026-27/BI/0003', kind: 'business_invoice', taxable_paise: 3, gst_paise: 0, issued_at: '2026-11-22T06:00:00Z' },
+    ];
+    const { d } = ops(t);
+    expect((await listInvoices(d)).map((i) => i.number)).toEqual(['XTSY/2026-27/BI/0002', 'XTSY/2026-27/TI/0001']);
+    expect((await listInvoices(d, 'XTSY-SHN-CAMP')).map((i) => i.number)).toEqual(['XTSY/2026-27/BI/0003']);
+  });
+
+  it('does not file a hostel booking under the campsite profile', async () => {
+    const { d } = ops(seed(), { service: { rpc: async () => ({ data: 1, error: null }) } });
+    await expect(issueTaxInvoice(d, 'b1', 'XTSY-SHN-CAMP')).rejects.toThrow(/not connected/);
   });
 });
 

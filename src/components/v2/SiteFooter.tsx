@@ -13,7 +13,7 @@ const COLS = [
     links: [
       { to: '/book', label: 'Book a room' },
       { to: '/stays/experience-by-xtsy', label: 'Experience by XTSY' },
-      { to: '/stays/campsite-dawki', label: 'Shnonpedeng camping (partner)' },
+      { to: '/stays/campsite-dawki', label: 'Shnonpedeng Riverside Camping by XTSY' },
       { to: '/stays/pet-friendly', label: 'Pet-friendly stays' },
       { to: '/stays/female-travellers', label: 'Women safe stays' },
       { to: '/stays/workation', label: 'Workation' },
@@ -90,7 +90,7 @@ export default function SiteFooter() {
               Near NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University
             </address>
             <p className="m-0 text-[13px] leading-relaxed text-[#9EA6B8]">
-              This is XTSY’s only property. Everywhere else, XTSY arranges stays, transport and travel help through trusted travel partners.
+              XTSY currently holds this hostel and Shnonpedeng Riverside Camping by XTSY. Everywhere else, XTSY arranges stays, transport and travel help through trusted travel partners.
             </p>
             <p className="m-0 text-[14px] leading-loose">
               <a href="tel:+918837317070" className="inline-block py-1.5 text-xt-paper hover:text-xt-rose">{WHATSAPP_DISPLAY}</a>

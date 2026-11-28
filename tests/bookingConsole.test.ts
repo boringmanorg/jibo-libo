@@ -179,5 +179,6 @@ describe('invoice numbers', () => {
   it('formats receipts and tax invoices in separate series', () => {
     expect(invoiceNumber('tax_invoice', '2026-27', 7)).toBe('XTSY/2026-27/TI/0007');
     expect(invoiceNumber('advance_receipt', '2026-27', 12)).toBe('XTSY/2026-27/AR/0012');
+    expect(invoiceNumber('business_invoice', '2026-27', 3)).toBe('XTSY/2026-27/BI/0003');
   });
 });

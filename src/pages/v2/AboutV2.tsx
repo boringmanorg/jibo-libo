@@ -113,7 +113,7 @@ export default function AboutV2() {
                 <br />Near NIFT Shillong, IIM Shillong, NEIGRIHMS, NEIAH and Martin Luther Christian University
                 <br />+91 88373 17070 · booking@xtsy.one · Reception 24/7
               </address>
-              <p className="m-0 text-[14px] text-[#9EA6B8]">This is XTSY’s only property. Everywhere else, XTSY arranges stays, transport and travel help through trusted travel partners.</p>
+              <p className="m-0 text-[14px] text-[#9EA6B8]">XTSY currently holds this hostel and Shnonpedeng Riverside Camping by XTSY. Everywhere else, XTSY arranges stays, transport and travel help through trusted travel partners.</p>
             </div>
             <ul className="m-0 flex list-none flex-col gap-3 p-0 text-[15px] leading-relaxed text-xt-fog">
               <li><strong className="text-xt-paper">By air:</strong> Fly to Guwahati (GAU), about 100 km / 2.5–3 hours by road. Shillong Airport (Umroi) also has limited flights. We arrange airport transfers.</li>

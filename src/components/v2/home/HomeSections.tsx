@@ -166,7 +166,7 @@ export function StateExplorer() {
           </Link>
         ))}
       </div>
-      <p className="m-0 text-[14px] text-xt-mute">XTSY’s own property is only in New Shillong Township. Everywhere else, XTSY arranges stays, transport and travel help through trusted travel partners.</p>
+      <p className="m-0 text-[14px] text-xt-mute">XTSY currently holds XTSY Travellers Hostel in New Shillong Township and Shnonpedeng Riverside Camping by XTSY. Everywhere else, XTSY arranges stays, transport and travel help through trusted travel partners.</p>
     </section>
   );
 }

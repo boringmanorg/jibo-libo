@@ -7,7 +7,7 @@
 
 export const CAMP = {
   place: 'Shnonpedeng',
-  name: 'Shnonpedeng Riverside Camping',
+  name: 'Shnonpedeng Riverside Camping by XTSY',
   partnerLine: 'An XTSY franchise accommodation partner',
   where: 'By the Umngot river, Shnonpedeng, Meghalaya',
   /** Meals at the camp are prepared by the partner, not by TAB Bistro or XTSY Travellers Hostel. */

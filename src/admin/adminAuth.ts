@@ -7,6 +7,7 @@ import { getRequest } from '@tanstack/react-start/server';
 import { createClient } from '@supabase/supabase-js';
 
 export const SUPER_ADMIN = 'admin@xtsy.one';
+export const FRONT_DESK = 'booking@xtsy.one';
 
 export const requireSuperAdmin = createMiddleware({ type: 'function' })
   .client(async ({ next }) => {
@@ -29,6 +30,32 @@ export const requireSuperAdmin = createMiddleware({ type: 'function' })
     const user = userData?.user;
     if (error || !user || user.email?.toLowerCase() !== SUPER_ADMIN || !user.email_confirmed_at) throw new Error('Forbidden');
     const { data: ok } = await supabase.rpc('is_super_admin');
+    if (ok !== true) throw new Error('Forbidden');
+    return next({ context: { supabase, userId: user.id } });
+  });
+
+/** Admin or the approved front-desk account, with the corresponding database role. */
+export const requireCheckInStaff = createMiddleware({ type: 'function' })
+  .client(async ({ next }) => {
+    const { getAdminSupabase } = await import('./adminSupabase');
+    const { data } = await (await getAdminSupabase()).auth.getSession();
+    const token = data.session?.access_token;
+    return next({ headers: token ? { Authorization: `Bearer ${token}` } : {} });
+  })
+  .server(async ({ next }) => {
+    const url = process.env['SUPABASE_URL'];
+    const key = process.env['SUPABASE_PUBLISHABLE_KEY'];
+    const auth = getRequest()?.headers.get('authorization');
+    if (!url || !key || !auth?.startsWith('Bearer ')) throw new Error('Unauthorized');
+    const token = auth.slice(7);
+    const supabase = createClient(url, key, {
+      auth: { persistSession: false, autoRefreshToken: false },
+      global: { headers: { Authorization: `Bearer ${token}` } },
+    });
+    const { data: userData, error } = await supabase.auth.getUser(token);
+    const user = userData?.user;
+    if (error || !user || ![SUPER_ADMIN, FRONT_DESK].includes(user.email?.toLowerCase() ?? '') || !user.email_confirmed_at) throw new Error('Forbidden');
+    const { data: ok } = await supabase.rpc('be_is_checkin_staff');
     if (ok !== true) throw new Error('Forbidden');
     return next({ context: { supabase, userId: user.id } });
   });

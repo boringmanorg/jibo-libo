@@ -19,7 +19,8 @@ function InvoiceView() {
   if (q.isLoading) return <p className="text-muted-foreground">Loading…</p>;
   if (q.error || !q.data) return <p className="text-destructive">{(q.error as Error)?.message ?? 'Invoice not found.'}</p>;
   const doc = q.data;
-  const title = doc.kind === 'tax_invoice' ? 'Tax invoice' : 'Receipt voucher (advance)';
+  const title = doc.kind === 'tax_invoice' ? 'Tax invoice' : doc.kind === 'business_invoice' ? 'Business invoice' : 'Receipt voucher (advance)';
+  const showTax = doc.business.gstRegistered || doc.gst > 0;
 
   return (
     <div className="space-y-4">
@@ -33,7 +34,9 @@ function InvoiceView() {
           <div>
             <p className="text-lg font-bold">{doc.business.legalName || 'Legal name not set'}</p>
             <p className="whitespace-pre-line">{doc.business.address}</p>
-            <p>GSTIN: <span className="font-mono">{doc.business.gstin || '—'}</span> · State code {doc.business.stateCode}</p>
+            {showTax
+              ? <p>GSTIN: <span className="font-mono">{doc.business.gstin}</span> · State code {doc.business.stateCode}</p>
+              : <p>GST status: Not registered · State code {doc.business.stateCode}</p>}
           </div>
           <div className="text-right">
             <p className="text-xl font-bold">{title}</p>
@@ -59,14 +62,14 @@ function InvoiceView() {
 
         <table className="mt-4 w-full">
           <thead className="border-b border-neutral-300 text-left">
-            <tr><th className="py-2">Description</th><th>SAC</th><th className="text-right">Taxable value</th><th className="text-right">GST</th><th className="text-right">Amount</th></tr>
+            <tr><th className="py-2">Description</th><th>SAC</th><th className="text-right">{showTax ? 'Taxable value' : 'Amount'}</th>{showTax && <th className="text-right">GST</th>}<th className="text-right">Total</th></tr>
           </thead>
           <tbody>
             {doc.lines.map((l) => (
               <tr key={l.description} className="border-b border-neutral-200">
                 <td className="py-2">{l.description}</td><td>{l.sac}</td>
                 <td className="text-right">{inr(l.taxable)}</td>
-                <td className="text-right">{inr(l.gst)} <span className="text-neutral-500">({pct(l.gstBps)})</span></td>
+                {showTax && <td className="text-right">{inr(l.gst)} <span className="text-neutral-500">({pct(l.gstBps)})</span></td>}
                 <td className="text-right">{inr(l.taxable + l.gst)}</td>
               </tr>
             ))}
@@ -74,11 +77,11 @@ function InvoiceView() {
         </table>
 
         <dl className="ml-auto mt-4 w-full max-w-xs space-y-1">
-          <div className="flex justify-between"><dt>Taxable value</dt><dd>{inr(doc.taxable)}</dd></div>
-          <div className="flex justify-between"><dt>CGST</dt><dd>{inr(doc.cgst)}</dd></div>
-          <div className="flex justify-between"><dt>SGST</dt><dd>{inr(doc.sgst)}</dd></div>
-          <div className="flex justify-between border-t border-neutral-300 pt-1 text-base font-bold"><dt>{doc.kind === 'tax_invoice' ? 'Invoice total' : 'Amount received'}</dt><dd>{inr(doc.total)}</dd></div>
-          {doc.kind === 'tax_invoice' && (
+          <div className="flex justify-between"><dt>{showTax ? 'Taxable value' : 'Accommodation total'}</dt><dd>{inr(doc.taxable)}</dd></div>
+          {showTax && <><div className="flex justify-between"><dt>CGST</dt><dd>{inr(doc.cgst)}</dd></div>
+          <div className="flex justify-between"><dt>SGST</dt><dd>{inr(doc.sgst)}</dd></div></>}
+          <div className="flex justify-between border-t border-neutral-300 pt-1 text-base font-bold"><dt>{doc.kind === 'advance_receipt' ? 'Amount received' : 'Invoice total'}</dt><dd>{inr(doc.total)}</dd></div>
+          {doc.kind !== 'advance_receipt' && (
             <>
               <div className="flex justify-between text-neutral-600"><dt>Paid online</dt><dd>{inr(doc.paid)}</dd></div>
               <div className="flex justify-between text-neutral-600"><dt>Balance</dt><dd>{inr(doc.balance)}</dd></div>
@@ -88,8 +91,10 @@ function InvoiceView() {
 
         <footer className="mt-8 border-t border-neutral-300 pt-3 text-[11px] text-neutral-600">
           {doc.kind === 'advance_receipt'
-            ? 'Advance received against the booking above. The tax invoice is issued for the full stay.'
-            : 'GST on accommodation is charged at the rate for the room tariff. Payment gateway charges, where paid, are billed by the payment provider.'}
+            ? 'Advance received against the booking above. The invoice is issued for the full stay.'
+            : doc.kind === 'business_invoice'
+              ? 'Business invoice issued by a property that is not registered for GST. No GST is charged or shown as payable. Payment gateway charges, where paid, are billed by the payment provider.'
+              : 'GST on accommodation is charged at the rate for the room tariff. Payment gateway charges, where paid, are billed by the payment provider.'}
           {' '}This is a computer-generated document.
         </footer>
       </article>

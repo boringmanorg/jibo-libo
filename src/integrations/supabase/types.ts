@@ -859,6 +859,7 @@ export type Database = {
           policy_accepted_at: string | null
           policy_version: string
           reference: string
+          sheet_write: string | null
           source: string
           stargazing_ack_at: string | null
           status: string
@@ -886,6 +887,7 @@ export type Database = {
           policy_accepted_at?: string | null
           policy_version: string
           reference: string
+          sheet_write?: string | null
           source?: string
           stargazing_ack_at?: string | null
           status?: string
@@ -913,6 +915,7 @@ export type Database = {
           policy_accepted_at?: string | null
           policy_version?: string
           reference?: string
+          sheet_write?: string | null
           source?: string
           stargazing_ack_at?: string | null
           status?: string
@@ -921,6 +924,50 @@ export type Database = {
           updated_at?: string
         }
         Relationships: []
+      }
+      be_change_requests: {
+        Row: {
+          booking_id: string
+          check_in: string
+          check_out: string
+          created_at: string
+          decided_at: string | null
+          decided_reason: string | null
+          id: string
+          note: string | null
+          status: string
+        }
+        Insert: {
+          booking_id: string
+          check_in: string
+          check_out: string
+          created_at?: string
+          decided_at?: string | null
+          decided_reason?: string | null
+          id?: string
+          note?: string | null
+          status?: string
+        }
+        Update: {
+          booking_id?: string
+          check_in?: string
+          check_out?: string
+          created_at?: string
+          decided_at?: string | null
+          decided_reason?: string | null
+          id?: string
+          note?: string | null
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "be_change_requests_booking_id_fkey"
+            columns: ["booking_id"]
+            isOneToOne: false
+            referencedRelation: "be_bookings"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       be_channel_log: {
         Row: {
@@ -959,6 +1006,112 @@ export type Database = {
             columns: ["booking_id"]
             isOneToOne: false
             referencedRelation: "be_bookings"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      be_channel_properties: {
+        Row: {
+          created_at: string
+          enabled: boolean
+          event_place: number
+          id: string
+          last_event_at: string | null
+          name: string
+          updated_at: string
+          zs_live: boolean
+          zs_mode: string | null
+          zs_property_id: number | null
+        }
+        Insert: {
+          created_at?: string
+          enabled?: boolean
+          event_place?: number
+          id: string
+          last_event_at?: string | null
+          name: string
+          updated_at?: string
+          zs_live?: boolean
+          zs_mode?: string | null
+          zs_property_id?: number | null
+        }
+        Update: {
+          created_at?: string
+          enabled?: boolean
+          event_place?: number
+          id?: string
+          last_event_at?: string | null
+          name?: string
+          updated_at?: string
+          zs_live?: boolean
+          zs_mode?: string | null
+          zs_property_id?: number | null
+        }
+        Relationships: []
+      }
+      be_channel_room_map: {
+        Row: {
+          property_id: string
+          room_type_id: string
+          updated_at: string
+          zs_mode: string
+          zs_rate_plan_id: number | null
+          zs_room_type_id: number
+        }
+        Insert: {
+          property_id: string
+          room_type_id: string
+          updated_at?: string
+          zs_mode: string
+          zs_rate_plan_id?: number | null
+          zs_room_type_id: number
+        }
+        Update: {
+          property_id?: string
+          room_type_id?: string
+          updated_at?: string
+          zs_mode?: string
+          zs_rate_plan_id?: number | null
+          zs_room_type_id?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "be_channel_room_map_property_id_fkey"
+            columns: ["property_id"]
+            isOneToOne: false
+            referencedRelation: "be_channel_properties"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      be_channel_sent_counts: {
+        Row: {
+          available: number
+          night: string
+          property_id: string
+          room_type_id: string
+          sent_at: string
+        }
+        Insert: {
+          available: number
+          night: string
+          property_id: string
+          room_type_id: string
+          sent_at?: string
+        }
+        Update: {
+          available?: number
+          night?: string
+          property_id?: string
+          room_type_id?: string
+          sent_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "be_channel_sent_counts_property_id_fkey"
+            columns: ["property_id"]
+            isOneToOne: false
+            referencedRelation: "be_channel_properties"
             referencedColumns: ["id"]
           },
         ]
@@ -1014,6 +1167,30 @@ export type Database = {
           summary?: string
           updated_at?: string
           visitor_hash?: string | null
+        }
+        Relationships: []
+      }
+      be_guest_lookups: {
+        Row: {
+          created_at: string
+          id: number
+          ok: boolean
+          reference: string
+          visitor_hash: string
+        }
+        Insert: {
+          created_at?: string
+          id?: never
+          ok: boolean
+          reference: string
+          visitor_hash: string
+        }
+        Update: {
+          created_at?: string
+          id?: never
+          ok?: boolean
+          reference?: string
+          visitor_hash?: string
         }
         Relationships: []
       }
@@ -1126,34 +1303,40 @@ export type Database = {
       be_invoices: {
         Row: {
           booking_id: string
+          business_snapshot: Json | null
           fy: string
           gst_paise: number
           id: string
           issued_at: string
           kind: string
           number: string
+          property_id: string
           seq: number
           taxable_paise: number
         }
         Insert: {
           booking_id: string
+          business_snapshot?: Json | null
           fy: string
           gst_paise: number
           id?: string
           issued_at?: string
           kind: string
           number: string
+          property_id?: string
           seq: number
           taxable_paise: number
         }
         Update: {
           booking_id?: string
+          business_snapshot?: Json | null
           fy?: string
           gst_paise?: number
           id?: string
           issued_at?: string
           kind?: string
           number?: string
+          property_id?: string
           seq?: number
           taxable_paise?: number
         }
@@ -1163,6 +1346,92 @@ export type Database = {
             columns: ["booking_id"]
             isOneToOne: false
             referencedRelation: "be_bookings"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      be_ota_bookings: {
+        Row: {
+          adults: number
+          check_in: string
+          check_out: string
+          children: number
+          contact_withheld: string | null
+          currency: string | null
+          duplicate_of: number | null
+          guest_email: string | null
+          guest_name: string | null
+          guest_phone: string | null
+          ota_code: string | null
+          ota_name: string | null
+          property_id: string
+          received_at: string
+          rooms: Json
+          sheet_at_arrival: Json
+          sheet_write: string | null
+          status: string
+          total: number | null
+          updated_at: string
+          version: number
+          zs_booking_id: number
+          zs_mode: string
+        }
+        Insert: {
+          adults?: number
+          check_in: string
+          check_out: string
+          children?: number
+          contact_withheld?: string | null
+          currency?: string | null
+          duplicate_of?: number | null
+          guest_email?: string | null
+          guest_name?: string | null
+          guest_phone?: string | null
+          ota_code?: string | null
+          ota_name?: string | null
+          property_id: string
+          received_at?: string
+          rooms?: Json
+          sheet_at_arrival?: Json
+          sheet_write?: string | null
+          status: string
+          total?: number | null
+          updated_at?: string
+          version?: number
+          zs_booking_id: number
+          zs_mode: string
+        }
+        Update: {
+          adults?: number
+          check_in?: string
+          check_out?: string
+          children?: number
+          contact_withheld?: string | null
+          currency?: string | null
+          duplicate_of?: number | null
+          guest_email?: string | null
+          guest_name?: string | null
+          guest_phone?: string | null
+          ota_code?: string | null
+          ota_name?: string | null
+          property_id?: string
+          received_at?: string
+          rooms?: Json
+          sheet_at_arrival?: Json
+          sheet_write?: string | null
+          status?: string
+          total?: number | null
+          updated_at?: string
+          version?: number
+          zs_booking_id?: number
+          zs_mode?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "be_ota_bookings_property_id_fkey"
+            columns: ["property_id"]
+            isOneToOne: false
+            referencedRelation: "be_channel_properties"
             referencedColumns: ["id"]
           },
         ]
@@ -1232,6 +1501,42 @@ export type Database = {
           },
         ]
       }
+      be_property_invoice_profiles: {
+        Row: {
+          business_address: string
+          created_at: string
+          gst_registered: boolean
+          gstin: string
+          legal_name: string
+          property_id: string
+          sac_code: string
+          state_code: string
+          updated_at: string
+        }
+        Insert: {
+          business_address: string
+          created_at?: string
+          gst_registered?: boolean
+          gstin?: string
+          legal_name: string
+          property_id: string
+          sac_code?: string
+          state_code?: string
+          updated_at?: string
+        }
+        Update: {
+          business_address?: string
+          created_at?: string
+          gst_registered?: boolean
+          gstin?: string
+          legal_name?: string
+          property_id?: string
+          sac_code?: string
+          state_code?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       be_room_mapping: {
         Row: {
           room_type_id: string
@@ -1277,6 +1582,87 @@ export type Database = {
           path?: string
           room_type_id?: string
           sort?: number
+        }
+        Relationships: []
+      }
+      be_self_check_ins: {
+        Row: {
+          access_token_hash: string
+          booking_reference: string | null
+          check_in_date: string
+          check_in_time: string
+          city: string
+          country: string
+          created_at: string
+          email: string
+          guest_name: string
+          id: string
+          id_back_path: string
+          id_front_path: string
+          is_international: boolean
+          phone: string
+          policy_accepted_at: string
+          property_id: string
+          purpose: string
+          room_type_id: string
+          state: string
+          status: string
+          total_guests: number
+          updated_at: string
+          visa_path: string | null
+          visitor_hash: string
+        }
+        Insert: {
+          access_token_hash: string
+          booking_reference?: string | null
+          check_in_date: string
+          check_in_time: string
+          city: string
+          country: string
+          created_at?: string
+          email: string
+          guest_name: string
+          id?: string
+          id_back_path?: string
+          id_front_path?: string
+          is_international?: boolean
+          phone: string
+          policy_accepted_at: string
+          property_id: string
+          purpose: string
+          room_type_id: string
+          state: string
+          status?: string
+          total_guests: number
+          updated_at?: string
+          visa_path?: string | null
+          visitor_hash: string
+        }
+        Update: {
+          access_token_hash?: string
+          booking_reference?: string | null
+          check_in_date?: string
+          check_in_time?: string
+          city?: string
+          country?: string
+          created_at?: string
+          email?: string
+          guest_name?: string
+          id?: string
+          id_back_path?: string
+          id_front_path?: string
+          is_international?: boolean
+          phone?: string
+          policy_accepted_at?: string
+          property_id?: string
+          purpose?: string
+          room_type_id?: string
+          state?: string
+          status?: string
+          total_guests?: number
+          updated_at?: string
+          visa_path?: string | null
+          visitor_hash?: string
         }
         Relationships: []
       }
@@ -1367,6 +1753,7 @@ export type Database = {
           requester_hash: string | null
           status: string
           token_hash: string
+          writes_since: string | null
         }
         Insert: {
           approved_at?: string | null
@@ -1379,6 +1766,7 @@ export type Database = {
           requester_hash?: string | null
           status?: string
           token_hash: string
+          writes_since?: string | null
         }
         Update: {
           approved_at?: string | null
@@ -1391,8 +1779,71 @@ export type Database = {
           requester_hash?: string | null
           status?: string
           token_hash?: string
+          writes_since?: string | null
         }
         Relationships: []
+      }
+      be_sheet_writes: {
+        Row: {
+          applied_at: string | null
+          cancels: number | null
+          check_in: string
+          check_out: string
+          created_at: string
+          guest_name: string
+          id: number
+          kind: string
+          placed: Json | null
+          problem: string | null
+          rooms: Json
+          source: string
+          source_ref: string
+          status: string
+          tag: string
+        }
+        Insert: {
+          applied_at?: string | null
+          cancels?: number | null
+          check_in: string
+          check_out: string
+          created_at?: string
+          guest_name: string
+          id?: never
+          kind: string
+          placed?: Json | null
+          problem?: string | null
+          rooms?: Json
+          source: string
+          source_ref: string
+          status?: string
+          tag: string
+        }
+        Update: {
+          applied_at?: string | null
+          cancels?: number | null
+          check_in?: string
+          check_out?: string
+          created_at?: string
+          guest_name?: string
+          id?: never
+          kind?: string
+          placed?: Json | null
+          problem?: string | null
+          rooms?: Json
+          source?: string
+          source_ref?: string
+          status?: string
+          tag?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "be_sheet_writes_cancels_fkey"
+            columns: ["cancels"]
+            isOneToOne: false
+            referencedRelation: "be_sheet_writes"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       be_webhook_events: {
         Row: {
@@ -6593,6 +7044,7 @@ export type Database = {
           invoice_number: string
         }[]
       }
+      be_is_checkin_staff: { Args: never; Returns: boolean }
       be_is_console_admin: { Args: never; Returns: boolean }
       be_next_invoice_seq: {
         Args: { p_fy: string; p_kind: string }

@@ -4,8 +4,8 @@
  * Every place has approximate coordinates, the cluster it belongs to, how long
  * a visit takes and a few facts. Clusters decide where a traveller can sleep:
  * the Shillong-region clusters are day trips from XTSY Travellers Hostel
- * (New Shillong Township, XTSY's only own property); everything further out
- * uses a partner stay in the cluster's base town, booked by the XTSY desk.
+ * (New Shillong Township). Shnonpedeng has its own XTSY-held camp; everything
+ * further out uses a partner stay in the cluster's base town, booked by the XTSY desk.
  *
  * Coordinates and drive times are planning estimates, not navigation data.
  */

@@ -42,7 +42,7 @@ export function creditFor(src?: string | null): PhotoCredit | null {
   if (hit) return hit;
   const path = stem(src);
   if (/\/img\/o\/xtsyvoyage-/.test(path)) return { by: 'XTSY Voyage' };
-  if (/\/img\/o\/shnonpedeng-/.test(path)) return { by: 'Shnonpedeng Riverside Camping' };
+  if (/\/img\/o\/shnonpedeng-/.test(path)) return { by: 'Shnonpedeng Riverside Camping by XTSY' };
   if (/\/img\/o\/xtsy-|\/assets\/xtsy/i.test(path)) return { by: 'XTSY Travellers Hostel' };
   return null;
 }

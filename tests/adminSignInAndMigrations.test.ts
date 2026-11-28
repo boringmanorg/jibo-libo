@@ -51,7 +51,7 @@ describe("admin sign-in messages", () => {
     expect(
       deniedReason({ email: ADMIN, email_confirmed_at: "2026-11-19" }, ADMIN),
     ).toBe("no_admin_role");
-    expect(deniedMessage("no_admin_role", ADMIN)).toMatch(/no admin role/);
+    expect(deniedMessage("no_admin_role", ADMIN)).toMatch(/required admin or front-desk staff role/);
   });
 });
 

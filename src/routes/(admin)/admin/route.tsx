@@ -1,6 +1,6 @@
-import { createFileRoute, Link, Outlet, useRouterState } from '@tanstack/react-router';
+import { createFileRoute, Link, Navigate, Outlet, useRouterState } from '@tanstack/react-router';
 import { PageHead } from '@/admin/components/ConsoleBits';
-import { Ban, CalendarDays, CreditCard, ExternalLink, ImageIcon, Inbox, LogOut, Menu, PlugZap, ReceiptText, Sun, UtensilsCrossed, Wallet, X } from 'lucide-react';
+import { Ban, CalendarDays, CreditCard, ExternalLink, ImageIcon, Inbox, LogOut, Menu, PlugZap, ReceiptText, ScanLine, Sun, UtensilsCrossed, Wallet, X } from 'lucide-react';
 import xtsyLogo from '@/assets/xtsy-color-logo.webp';
 import { useEffect, useState, type FormEvent } from 'react';
 import { Button } from '@/components/ui/button';
@@ -32,6 +32,7 @@ function AdminLayout() {
   const [email, setEmail] = useState('');
   const [reason, setReason] = useState<DeniedReason>('wrong_email');
   const [configError, setConfigError] = useState('');
+  const [access, setAccess] = useState<'admin' | 'frontdesk'>('admin');
 
   useEffect(() => {
     let unsubscribe: (() => void) | undefined;
@@ -53,8 +54,15 @@ function AdminLayout() {
         const why = deniedReason(u, SUPER_ADMIN_EMAIL);
         setReason(why);
         if (why !== 'no_admin_role') return setStatus('denied');
-        const { data: ok } = await sb.rpc('is_super_admin');
-        setStatus(ok === true ? 'in' : 'denied');
+        if (u.email?.toLowerCase() === SUPER_ADMIN_EMAIL) {
+          const { data: ok } = await sb.rpc('is_super_admin');
+          setAccess('admin');
+          setStatus(ok === true ? 'in' : 'denied');
+        } else {
+          const { data: ok } = await sb.rpc('be_is_checkin_staff');
+          setAccess('frontdesk');
+          setStatus(ok === true ? 'in' : 'denied');
+        }
       };
       const { data: sub } = sb.auth.onAuthStateChange((event) => {
         if (event === 'PASSWORD_RECOVERY') return setStatus('recovery');
@@ -80,7 +88,7 @@ function AdminLayout() {
           <Button className="mt-6 min-h-12" onClick={signOut}>Sign out</Button>
         </div>
       )}
-      {status === 'in' && <Shell email={email} onSignOut={signOut} />}
+      {status === 'in' && <Shell email={email} access={access} onSignOut={signOut} />}
     </div>
   );
 }
@@ -90,6 +98,7 @@ const NAV: { group: string; items: { to: string; label: string; icon: typeof Cal
     { to: '/admin', label: 'Today', icon: Sun, exact: true },
     { to: '/admin/inventory', label: 'Inventory', icon: CalendarDays },
     { to: '/admin/inbox', label: 'Inbox', icon: Inbox },
+    { to: '/admin/check-in', label: 'Self check-in', icon: ScanLine },
     { to: '/admin/stays', label: 'Blocks', icon: Ban },
   ] },
   { group: 'Set up', items: [
@@ -114,13 +123,17 @@ const OLD_SCREEN_TITLES: Record<string, [string, string]> = {
   '/admin/restaurants': ['TAB Bistro', 'Table slots and the live tables shown on the Bistro page.'],
 };
 
-function Shell({ email, onSignOut }: { email: string; onSignOut: () => void }) {
+function Shell({ email, access, onSignOut }: { email: string; access: 'admin' | 'frontdesk'; onSignOut: () => void }) {
   const [open, setOpen] = useState(false);
   const path = useRouterState({ select: (st) => st.location.pathname.replace(/\/$/, '') });
+  if (access === 'frontdesk' && path !== '/admin/check-in') return <Navigate to="/admin/check-in" replace />;
   const oldTitle = OLD_SCREEN_TITLES[path];
+  const groups = access === 'frontdesk'
+    ? [{ group: 'Front desk', items: [{ to: '/admin/check-in', label: 'Self check-in', icon: ScanLine }] }]
+    : NAV;
   const nav = (
     <nav aria-label="Console" className="space-y-6">
-      {NAV.map((g) => (
+      {groups.map((g) => (
         <div key={g.group}>
           <p className="px-3 pb-1.5 text-xs font-semibold text-muted-foreground">{g.group}</p>
           <ul className="space-y-0.5">

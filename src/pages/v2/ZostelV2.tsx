@@ -14,7 +14,7 @@ const ROWS = [
   { f: 'Custom itineraries', x: 'Built around your dates and pace', z: 'Mostly scheduled trips' },
   { f: 'Operations', x: 'One XTSY team in Shillong; trusted partners elsewhere', z: 'Network of properties' },
   { f: 'On-site restaurant', x: 'TAB Bistro, breakfast 8:45 AM–12 PM & dinner 5–11 PM', z: 'Varies by property' },
-  { f: 'Where XTSY is', x: 'New Shillong Township, Meghalaya (only property)', z: 'Multiple cities' },
+  { f: 'Where XTSY is', x: 'New Shillong hostel and Shnonpedeng riverside camp, Meghalaya', z: 'Multiple cities' },
 ];
 
 export default function ZostelV2() {

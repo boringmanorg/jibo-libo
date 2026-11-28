@@ -11,9 +11,11 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as adminAdminRouteRouteImport } from './routes/(admin)/admin/route'
+import { Route as staysCheckInRouteImport } from './routes/(stays)/check-in'
 import { Route as adminAdminIndexRouteImport } from './routes/(admin)/admin/index'
 import { Route as adminAdminBookingEngineRouteImport } from './routes/(admin)/admin/booking-engine'
 import { Route as adminAdminBookingsRouteImport } from './routes/(admin)/admin/bookings'
+import { Route as adminAdminCheckInRouteImport } from './routes/(admin)/admin/check-in'
 import { Route as adminAdminInboxRouteImport } from './routes/(admin)/admin/inbox'
 import { Route as adminAdminInventoryRouteImport } from './routes/(admin)/admin/inventory'
 import { Route as adminAdminInvoicesRouteImport } from './routes/(admin)/admin/invoices'
@@ -115,6 +117,11 @@ const adminAdminRouteRoute = adminAdminRouteRouteImport.update({
   path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
+const staysCheckInRoute = staysCheckInRouteImport.update({
+  id: '/(stays)/check-in',
+  path: '/check-in',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const adminAdminIndexRoute = adminAdminIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -128,6 +135,11 @@ const adminAdminBookingEngineRoute = adminAdminBookingEngineRouteImport.update({
 const adminAdminBookingsRoute = adminAdminBookingsRouteImport.update({
   id: '/bookings',
   path: '/bookings',
+  getParentRoute: () => adminAdminRouteRoute,
+} as any)
+const adminAdminCheckInRoute = adminAdminCheckInRouteImport.update({
+  id: '/check-in',
+  path: '/check-in',
   getParentRoute: () => adminAdminRouteRoute,
 } as any)
 const adminAdminInboxRoute = adminAdminInboxRouteImport.update({
@@ -634,8 +646,10 @@ const guidesDestinationsStateCityAttractionRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof adminAdminRouteRouteWithChildren
+  '/check-in': typeof staysCheckInRoute
   '/admin/booking-engine': typeof adminAdminBookingEngineRoute
   '/admin/bookings': typeof adminAdminBookingsRoute
+  '/admin/check-in': typeof adminAdminCheckInRoute
   '/admin/inbox': typeof adminAdminInboxRoute
   '/admin/inventory': typeof adminAdminInventoryRoute
   '/admin/invoices': typeof adminAdminInvoicesRouteWithChildren
@@ -730,8 +744,10 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/check-in': typeof staysCheckInRoute
   '/admin/booking-engine': typeof adminAdminBookingEngineRoute
   '/admin/bookings': typeof adminAdminBookingsRoute
+  '/admin/check-in': typeof adminAdminCheckInRoute
   '/admin/inbox': typeof adminAdminInboxRoute
   '/admin/inventory': typeof adminAdminInventoryRoute
   '/admin/invoices': typeof adminAdminInvoicesRouteWithChildren
@@ -828,8 +844,10 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/(admin)/admin': typeof adminAdminRouteRouteWithChildren
+  '/(stays)/check-in': typeof staysCheckInRoute
   '/(admin)/admin/booking-engine': typeof adminAdminBookingEngineRoute
   '/(admin)/admin/bookings': typeof adminAdminBookingsRoute
+  '/(admin)/admin/check-in': typeof adminAdminCheckInRoute
   '/(admin)/admin/inbox': typeof adminAdminInboxRoute
   '/(admin)/admin/inventory': typeof adminAdminInventoryRoute
   '/(admin)/admin/invoices': typeof adminAdminInvoicesRouteWithChildren
@@ -927,8 +945,10 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/admin'
+    | '/check-in'
     | '/admin/booking-engine'
     | '/admin/bookings'
+    | '/admin/check-in'
     | '/admin/inbox'
     | '/admin/inventory'
     | '/admin/invoices'
@@ -1023,8 +1043,10 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/check-in'
     | '/admin/booking-engine'
     | '/admin/bookings'
+    | '/admin/check-in'
     | '/admin/inbox'
     | '/admin/inventory'
     | '/admin/invoices'
@@ -1120,8 +1142,10 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/(admin)/admin'
+    | '/(stays)/check-in'
     | '/(admin)/admin/booking-engine'
     | '/(admin)/admin/bookings'
+    | '/(admin)/admin/check-in'
     | '/(admin)/admin/inbox'
     | '/(admin)/admin/inventory'
     | '/(admin)/admin/invoices'
@@ -1218,6 +1242,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   adminAdminRouteRoute: typeof adminAdminRouteRouteWithChildren
+  staysCheckInRoute: typeof staysCheckInRoute
   companyAboutContactRoute: typeof companyAboutContactRoute
   companyAboutContactUsRoute: typeof companyAboutContactUsRoute
   companyAboutFaqRoute: typeof companyAboutFaqRoute
@@ -1318,6 +1343,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof adminAdminRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/(stays)/check-in': {
+      id: '/(stays)/check-in'
+      path: '/check-in'
+      fullPath: '/check-in'
+      preLoaderRoute: typeof staysCheckInRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/(admin)/admin/': {
       id: '/(admin)/admin/'
       path: '/'
@@ -1337,6 +1369,13 @@ declare module '@tanstack/react-router' {
       path: '/bookings'
       fullPath: '/admin/bookings'
       preLoaderRoute: typeof adminAdminBookingsRouteImport
+      parentRoute: typeof adminAdminRouteRoute
+    }
+    '/(admin)/admin/check-in': {
+      id: '/(admin)/admin/check-in'
+      path: '/check-in'
+      fullPath: '/admin/check-in'
+      preLoaderRoute: typeof adminAdminCheckInRouteImport
       parentRoute: typeof adminAdminRouteRoute
     }
     '/(admin)/admin/inbox': {
@@ -1986,6 +2025,7 @@ const adminAdminInvoicesRouteWithChildren =
 interface adminAdminRouteRouteChildren {
   adminAdminBookingEngineRoute: typeof adminAdminBookingEngineRoute
   adminAdminBookingsRoute: typeof adminAdminBookingsRoute
+  adminAdminCheckInRoute: typeof adminAdminCheckInRoute
   adminAdminInboxRoute: typeof adminAdminInboxRoute
   adminAdminInventoryRoute: typeof adminAdminInventoryRoute
   adminAdminInvoicesRoute: typeof adminAdminInvoicesRouteWithChildren
@@ -1999,6 +2039,7 @@ interface adminAdminRouteRouteChildren {
 const adminAdminRouteRouteChildren: adminAdminRouteRouteChildren = {
   adminAdminBookingEngineRoute: adminAdminBookingEngineRoute,
   adminAdminBookingsRoute: adminAdminBookingsRoute,
+  adminAdminCheckInRoute: adminAdminCheckInRoute,
   adminAdminInboxRoute: adminAdminInboxRoute,
   adminAdminInventoryRoute: adminAdminInventoryRoute,
   adminAdminInvoicesRoute: adminAdminInvoicesRouteWithChildren,
@@ -2016,6 +2057,7 @@ const adminAdminRouteRouteWithChildren = adminAdminRouteRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   adminAdminRouteRoute: adminAdminRouteRouteWithChildren,
+  staysCheckInRoute: staysCheckInRoute,
   companyAboutContactRoute: companyAboutContactRoute,
   companyAboutContactUsRoute: companyAboutContactUsRoute,
   companyAboutFaqRoute: companyAboutFaqRoute,

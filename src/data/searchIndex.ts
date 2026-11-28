@@ -177,10 +177,10 @@ function buildSearchIndex(): SearchEntry[] {
     keywords: ['bike rental shillong', 'car rental meghalaya', 'scooty rent', 'royal enfield shillong', 'self drive'],
   });
 
-  // 3b. XTSY Adventure Campsite Dawki — featured experience entry
+  // 3b. Shnonpedeng Riverside Camping by XTSY — featured experience entry
   entries.push({
     id: 'exp-dawki-campsite',
-    title: 'Shnonpedeng Riverside Camping (XTSY partner)',
+    title: 'Shnonpedeng Riverside Camping by XTSY',
     description: 'Riverside tents on the Umngot · bed space ₹750 · full tent for two ₹1,400',
     category: 'experiences',
     icon: '⛺',

@@ -58,6 +58,7 @@ export const PrivacyPolicy: React.FC = () => {
               <ul className="list-disc pl-6 space-y-2 mt-3">
                 <li><strong>Create an Account:</strong> Name, email address, phone number, password</li>
                 <li><strong>Make a Booking:</strong> Full name, contact details, address, emergency contact information</li>
+                <li><strong>Complete Self Check-in:</strong> Arrival details, traveller type, room preference, national ID images, and for international travellers passport and visa documents</li>
                 <li><strong>Process Payments:</strong> Payment card details (processed by secure third-party providers)</li>
                 <li><strong>Contact Us:</strong> Any information you provide in communications</li>
                 <li><strong>Subscribe to Newsletter:</strong> Email address and communication preferences</li>

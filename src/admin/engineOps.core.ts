@@ -143,13 +143,14 @@ export async function saveFormC(d: OpsDeps, i: FormCInput) {
 
 // ---------------------------------------------------------------- invoices
 
-export interface Business { legalName: string; gstin: string; address: string; stateCode: string; sacCode: string }
+export interface Business { propertyId: 'XTSY-SHL-HOSTEL' | 'XTSY-SHN-CAMP'; gstRegistered: boolean; legalName: string; gstin: string; address: string; stateCode: string; sacCode: string }
 
 const GSTIN = /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z][1-9A-Z]Z[0-9A-Z]$/;
 
 export function businessProblems(b: Business): string[] {
   const out: string[] = [];
   if (b.legalName.trim().length < 3) out.push('Enter the legal name printed on invoices.');
+  if (b.gstRegistered && !b.gstin) out.push('Enter the GSTIN for this GST-registered property.');
   if (b.gstin && !GSTIN.test(b.gstin.trim().toUpperCase())) out.push('GSTIN must be 15 characters, e.g. 17ABCDE1234F1Z5.');
   if (b.gstin && b.gstin.slice(0, 2) !== b.stateCode) out.push('The GSTIN’s first two digits should match the state code.');
   if (!/^\d{2}$/.test(b.stateCode)) out.push('State code is two digits (Meghalaya is 17).');
@@ -158,21 +159,28 @@ export function businessProblems(b: Business): string[] {
   return out;
 }
 
-export async function getBusiness(d: OpsDeps): Promise<Business> {
-  const r = await d.db.from('be_settings').select('legal_name,gstin,business_address,state_code,sac_code').eq('id', 1).maybeSingle();
+export async function getBusiness(d: OpsDeps, propertyId: Business['propertyId'] = 'XTSY-SHL-HOSTEL'): Promise<Business> {
+  const r = await d.db.from('be_property_invoice_profiles').select('property_id,legal_name,gst_registered,gstin,business_address,state_code,sac_code').eq('property_id', propertyId).maybeSingle();
+  if (r.data) return {
+    propertyId, gstRegistered: !!r.data.gst_registered, legalName: r.data.legal_name ?? '', gstin: r.data.gstin ?? '',
+    address: r.data.business_address ?? '', stateCode: r.data.state_code ?? '17', sacCode: r.data.sac_code ?? '996311',
+  };
+  // Older records and test fixtures keep their former hostel-only settings as a fallback.
+  const legacy = await d.db.from('be_settings').select('legal_name,gstin,business_address,state_code,sac_code').eq('id', 1).maybeSingle();
   return {
-    legalName: r.data?.legal_name ?? '', gstin: r.data?.gstin ?? '', address: r.data?.business_address ?? '',
-    stateCode: r.data?.state_code ?? '17', sacCode: r.data?.sac_code ?? '996311',
+    propertyId, gstRegistered: !!legacy.data?.gstin, legalName: legacy.data?.legal_name ?? '', gstin: legacy.data?.gstin ?? '', address: legacy.data?.business_address ?? '',
+    stateCode: legacy.data?.state_code ?? '17', sacCode: legacy.data?.sac_code ?? '996311',
   };
 }
 
 export async function saveBusiness(d: OpsDeps, b: Business) {
   const problems = businessProblems(b);
   if (problems.length) throw new OpsError(problems.join(' '));
-  const r = await d.db.from('be_settings').update({
-    legal_name: b.legalName.trim(), gstin: b.gstin.trim().toUpperCase(), business_address: b.address.trim(),
+  const r = await d.db.from('be_property_invoice_profiles').upsert({
+    property_id: b.propertyId, legal_name: b.legalName.trim(), gst_registered: b.gstRegistered,
+    gstin: b.gstin.trim().toUpperCase(), business_address: b.address.trim(),
     state_code: b.stateCode, sac_code: b.sacCode, updated_at: d.now.toISOString(),
-  }).eq('id', 1);
+  }, { onConflict: 'property_id' });
   if (r.error) throw new OpsError('Could not save business details.');
   return { ok: true };
 }
@@ -180,8 +188,12 @@ export async function saveBusiness(d: OpsDeps, b: Business) {
 export interface InvoiceRow { id: string; kind: InvoiceKind; number: string; taxable: number; gst: number; issuedAt: string; reference: string; guestName: string; checkIn: string }
 export interface PendingInvoice { id: string; reference: string; guestName: string; checkIn: string; checkOut: string; status: string; total: number }
 
-export async function listInvoices(d: OpsDeps): Promise<InvoiceRow[]> {
-  const r = await d.db.from('be_invoices').select('id,kind,number,taxable_paise,gst_paise,issued_at,be_bookings(reference,guest_name,check_in)').order('issued_at', { ascending: false }).limit(300);
+export async function listInvoices(d: OpsDeps, propertyId: Business['propertyId'] = 'XTSY-SHL-HOSTEL'): Promise<InvoiceRow[]> {
+  let query = d.db.from('be_invoices').select('id,kind,number,taxable_paise,gst_paise,issued_at,be_bookings(reference,guest_name,check_in)');
+  query = propertyId === 'XTSY-SHL-HOSTEL'
+    ? query.or('property_id.eq.XTSY-SHL-HOSTEL,property_id.is.null')
+    : query.eq('property_id', propertyId);
+  const r = await query.order('issued_at', { ascending: false }).limit(300);
   if (r.error) throw new OpsError('Could not load invoices.');
   return (r.data ?? []).map((i: any) => ({
     id: i.id, kind: i.kind as InvoiceKind, number: i.number, taxable: Number(i.taxable_paise), gst: Number(i.gst_paise),
@@ -190,30 +202,35 @@ export async function listInvoices(d: OpsDeps): Promise<InvoiceRow[]> {
 }
 
 /** Bookings that have stayed (or are staying) and have no tax invoice yet. */
-export async function invoiceableBookings(d: OpsDeps): Promise<PendingInvoice[]> {
+export async function invoiceableBookings(d: OpsDeps, propertyId: Business['propertyId'] = 'XTSY-SHL-HOSTEL'): Promise<PendingInvoice[]> {
+  // The current online booking ledger contains hostel stays only; campsite requests use their own enquiry flow.
+  if (propertyId !== 'XTSY-SHL-HOSTEL') return [];
   const b = await d.db.from('be_bookings').select('id,reference,guest_name,check_in,check_out,status,total_paise,be_invoices(kind)').in('status', ['checked_in', 'settled', 'confirmed']).lte('check_in', todayInIndia(d.now)).order('check_in', { ascending: false }).limit(200);
   if (b.error) throw new OpsError('Could not load bookings.');
-  return (b.data ?? []).filter((x: any) => !(x.be_invoices ?? []).some((i: any) => i.kind === 'tax_invoice'))
+  return (b.data ?? []).filter((x: any) => !(x.be_invoices ?? []).some((i: any) => i.kind === 'tax_invoice' || i.kind === 'business_invoice'))
     .map((x: any) => ({ id: x.id, reference: x.reference, guestName: x.guest_name, checkIn: x.check_in, checkOut: x.check_out, status: x.status, total: Number(x.total_paise) }));
 }
 
-export async function issueTaxInvoice(d: OpsDeps, bookingId: string) {
+export async function issueTaxInvoice(d: OpsDeps, bookingId: string, propertyId: Business['propertyId'] = 'XTSY-SHL-HOSTEL') {
   if (!d.service) throw new OpsError('Invoice numbering is not available on this server.');
-  const biz = await getBusiness(d);
-  if (businessProblems(biz).length || !biz.gstin) throw new OpsError('Save the legal name, GSTIN and address under Business details first.');
-  const b = await d.db.from('be_bookings').select('id,status,check_in,taxable_paise,gst_paise,be_invoices(kind)').eq('id', bookingId).maybeSingle();
+  if (propertyId !== 'XTSY-SHL-HOSTEL') throw new OpsError('Campsite bookings are not connected to this invoice ledger yet.');
+  const biz = await getBusiness(d, propertyId);
+  if (businessProblems(biz).length) throw new OpsError('Save this property’s legal name, tax status and address under Business details first.');
+  const b = await d.db.from('be_bookings').select('id,status,check_in,taxable_paise,gst_paise,total_paise,be_invoices(kind)').eq('id', bookingId).maybeSingle();
   if (!b.data) throw new OpsError('Booking not found.');
-  if (!['confirmed', 'checked_in', 'settled'].includes(b.data.status)) throw new OpsError('Only confirmed, checked-in or settled bookings get a tax invoice.');
-  if ((b.data.be_invoices ?? []).some((i: any) => i.kind === 'tax_invoice')) throw new OpsError('This booking already has a tax invoice.');
+  if (!['confirmed', 'checked_in', 'settled'].includes(b.data.status)) throw new OpsError('Only confirmed, checked-in or settled bookings get an invoice.');
+  if ((b.data.be_invoices ?? []).some((i: any) => i.kind === 'tax_invoice' || i.kind === 'business_invoice')) throw new OpsError('This booking already has an invoice.');
+  const kind: InvoiceKind = biz.gstRegistered ? 'tax_invoice' : 'business_invoice';
   const fy = financialYear(todayInIndia(d.now));
-  const seq = await d.service.rpc('be_next_invoice_seq', { p_fy: fy, p_kind: 'tax_invoice' });
+  const seq = await d.service.rpc('be_next_invoice_seq', { p_fy: fy, p_kind: kind });
   if (seq.error || typeof seq.data !== 'number') throw new OpsError('Could not get the next invoice number.');
-  const number = invoiceNumber('tax_invoice', fy, seq.data);
+  const number = invoiceNumber(kind, fy, seq.data);
   const ins = await d.db.from('be_invoices').insert({
-    booking_id: bookingId, kind: 'tax_invoice', fy, seq: seq.data, number,
-    taxable_paise: Number(b.data.taxable_paise), gst_paise: Number(b.data.gst_paise),
+    booking_id: bookingId, kind, fy, seq: seq.data, number, property_id: biz.propertyId, business_snapshot: biz,
+    taxable_paise: biz.gstRegistered ? Number(b.data.taxable_paise) : Number(b.data.total_paise),
+    gst_paise: biz.gstRegistered ? Number(b.data.gst_paise) : 0,
   }).select('id').single();
-  if (ins.error) throw new OpsError(ins.error.code === '23505' ? 'This booking already has a tax invoice.' : 'Could not save the invoice.');
+  if (ins.error) throw new OpsError(ins.error.code === '23505' ? 'This booking already has an invoice.' : 'Could not save the invoice.');
   return { ok: true, id: ins.data.id as string, number };
 }
 
@@ -228,15 +245,18 @@ export interface InvoiceDoc {
 }
 
 export async function getInvoiceDoc(d: OpsDeps, id: string): Promise<InvoiceDoc> {
-  const i = await d.db.from('be_invoices').select('id,kind,number,issued_at,taxable_paise,gst_paise,booking_id').eq('id', id).maybeSingle();
+  const i = await d.db.from('be_invoices').select('id,kind,number,issued_at,taxable_paise,gst_paise,booking_id,property_id,business_snapshot').eq('id', id).maybeSingle();
   if (!i.data) throw new OpsError('Invoice not found.');
   const b = await d.db.from('be_bookings').select('reference,guest_name,guest_email,guest_phone,check_in,check_out,taxable_paise,gst_paise,total_paise,be_booking_lines(room_type_id,units,guests,taxable_paise,gst_bps,gst_paise),be_payments(kind,status,amount_paise)').eq('id', i.data.booking_id).single();
   if (!b.data) throw new OpsError('Booking not found.');
-  const business = await getBusiness(d);
+  const currentBusiness = await getBusiness(d, i.data.property_id ?? 'XTSY-SHL-HOSTEL');
+  const business: Business = i.data.business_snapshot ?? (i.data.kind === 'tax_invoice' ? { ...currentBusiness, gstRegistered: true } : currentBusiness);
   const nights = daysBetween(b.data.check_in, b.data.check_out);
   const taxable = Number(i.data.taxable_paise), gst = Number(i.data.gst_paise);
   let lines: InvoiceDoc['lines'];
-  if (i.data.kind === 'advance_receipt') {
+  if (i.data.kind === 'business_invoice') {
+    lines = [{ description: `Accommodation at ${business.legalName}, ${nights} night${nights === 1 ? '' : 's'}`, sac: business.sacCode, taxable, gstBps: 0, gst: 0 }];
+  } else if (i.data.kind === 'advance_receipt') {
     lines = [{ description: `Advance towards accommodation, booking ${b.data.reference}`, sac: business.sacCode, taxable, gstBps: taxable > 0 ? Math.round((gst / taxable) * 10_000) : 0, gst }];
   } else {
     lines = (b.data.be_booking_lines ?? []).map((l: any) => ({

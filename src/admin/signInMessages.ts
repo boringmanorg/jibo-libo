@@ -44,7 +44,8 @@ export function deniedReason(
   user: { email?: string | null; email_confirmed_at?: string | null },
   superAdminEmail: string,
 ): DeniedReason {
-  if ((user.email ?? "").toLowerCase() !== superAdminEmail)
+  const email = (user.email ?? "").toLowerCase();
+  if (email !== superAdminEmail && email !== "booking@xtsy.one")
     return "wrong_email";
   if (!user.email_confirmed_at) return "unconfirmed";
   return "no_admin_role";
@@ -53,10 +54,10 @@ export function deniedReason(
 export function deniedMessage(reason: DeniedReason, email: string): string {
   switch (reason) {
     case "wrong_email":
-      return `${email} is not allowed in this console. Only admin@xtsy.one can sign in.`;
+      return `${email} is not allowed in this console. Only admin@xtsy.one and booking@xtsy.one can sign in.`;
     case "unconfirmed":
       return `${email} is signed in but its email is not confirmed. Confirm it in Lovable Cloud → Users, then sign in again.`;
     case "no_admin_role":
-      return `${email} is signed in and confirmed, but has no admin role yet. Ask the developer to apply the admin role grant (migration 0014), or run the grant SQL in Lovable Cloud, then sign in again.`;
+      return `${email} is signed in and confirmed, but does not have its required admin or front-desk staff role yet.`;
   }
 }

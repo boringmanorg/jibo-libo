@@ -57,22 +57,25 @@ export const saveFormCFn = createServerFn({ method: 'POST' }).middleware([requir
   .handler(async ({ data, context }) => { const { core, d } = await deps(context); return run(() => core.saveFormC(d, data)); });
 
 // Invoices
+const invoicePropertyId = z.enum(['XTSY-SHL-HOSTEL', 'XTSY-SHN-CAMP']);
 export const getBusinessFn = createServerFn({ method: 'GET' }).middleware([requireSuperAdmin])
-  .handler(async ({ context }) => { const { core, d } = await deps(context); return run(() => core.getBusiness(d)); });
+  .inputValidator(z.object({ propertyId: invoicePropertyId.optional() }).optional())
+  .handler(async ({ data, context }) => { const { core, d } = await deps(context); return run(() => core.getBusiness(d, data?.propertyId)); });
 
 export const saveBusinessFn = createServerFn({ method: 'POST' }).middleware([requireSuperAdmin])
-  .inputValidator(z.object({ legalName: z.string().max(160), gstin: z.string().max(15), address: z.string().max(400), stateCode: z.string().max(2), sacCode: z.string().max(6) }))
+  .inputValidator(z.object({ propertyId: invoicePropertyId, gstRegistered: z.boolean(), legalName: z.string().max(160), gstin: z.string().max(15), address: z.string().max(400), stateCode: z.string().max(2), sacCode: z.string().max(6) }))
   .handler(async ({ data, context }) => { const { core, d } = await deps(context); return run(() => core.saveBusiness(d, data)); });
 
 export const listInvoicesFn = createServerFn({ method: 'GET' }).middleware([requireSuperAdmin])
-  .handler(async ({ context }) => {
+  .inputValidator(z.object({ propertyId: invoicePropertyId.optional() }).optional())
+  .handler(async ({ data, context }) => {
     const { core, d } = await deps(context);
-    return run(async () => ({ invoices: await core.listInvoices(d), pending: await core.invoiceableBookings(d) }));
+    return run(async () => ({ invoices: await core.listInvoices(d, data?.propertyId), pending: await core.invoiceableBookings(d, data?.propertyId) }));
   });
 
 export const issueTaxInvoiceFn = createServerFn({ method: 'POST' }).middleware([requireSuperAdmin])
-  .inputValidator(z.object({ bookingId: uuid }))
-  .handler(async ({ data, context }) => { const { core, d } = await deps(context, true); return run(() => core.issueTaxInvoice(d, data.bookingId)); });
+  .inputValidator(z.object({ bookingId: uuid, propertyId: invoicePropertyId.optional() }))
+  .handler(async ({ data, context }) => { const { core, d } = await deps(context, true); return run(() => core.issueTaxInvoice(d, data.bookingId, data.propertyId)); });
 
 export const getInvoiceDocFn = createServerFn({ method: 'GET' }).middleware([requireSuperAdmin])
   .inputValidator(z.object({ id: uuid }))

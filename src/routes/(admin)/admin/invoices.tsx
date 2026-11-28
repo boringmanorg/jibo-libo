@@ -14,25 +14,26 @@ import { inr } from '@/admin/components/engineBits';
 
 export const Route = createFileRoute('/(admin)/admin/invoices')({ component: Invoices });
 
-const KIND: Record<string, string> = { advance_receipt: 'Advance receipt', tax_invoice: 'Tax invoice' };
+const KIND: Record<string, string> = { advance_receipt: 'Advance receipt', tax_invoice: 'Tax invoice', business_invoice: 'Business invoice' };
 
 function Invoices() {
   const qc = useQueryClient();
+  const [propertyId, setPropertyId] = useState<Business['propertyId']>('XTSY-SHL-HOSTEL');
   const list = useServerFn(listInvoicesFn);
   const issue = useServerFn(issueTaxInvoiceFn);
-  const q = useQuery({ queryKey: ['engine', 'invoices'], queryFn: () => list() });
+  const q = useQuery({ queryKey: ['engine', 'invoices', propertyId], queryFn: () => list({ data: { propertyId } }) });
   const m = useMutation({
-    mutationFn: (bookingId: string) => issue({ data: { bookingId } }),
-    onSuccess: (r) => { toast.success(`Tax invoice ${r.number} issued`); void qc.invalidateQueries({ queryKey: ['engine', 'invoices'] }); },
+    mutationFn: (bookingId: string) => issue({ data: { bookingId, propertyId } }),
+    onSuccess: (r) => { toast.success(`Invoice ${r.number} issued`); void qc.invalidateQueries({ queryKey: ['engine', 'invoices'] }); },
     onError: (e) => toast.error(e.message),
   });
 
   return (
     <div className="space-y-6">
-      <BusinessCard />
+      <BusinessCard propertyId={propertyId} onPropertyChange={setPropertyId} />
 
       <Card>
-        <CardHeader><CardTitle className="text-lg">Ready for a tax invoice</CardTitle></CardHeader>
+        <CardHeader><CardTitle className="text-lg">Ready for a business or tax invoice</CardTitle></CardHeader>
         <CardContent className="space-y-2 text-sm">
           <p className="text-muted-foreground">Bookings that have arrived and have no tax invoice yet. Advance receipts are issued automatically when the 25% advance is paid online.</p>
           {q.isLoading && <p>Loading…</p>}
@@ -41,7 +42,7 @@ function Invoices() {
             {q.data?.pending.map((b) => (
               <li key={b.id} className="flex flex-wrap items-center justify-between gap-3 py-3">
                 <span><span className="font-medium">{b.reference}</span> · {b.guestName} · {b.checkIn} to {b.checkOut} · {inr(b.total)}</span>
-                <Button className="min-h-11" disabled={m.isPending} onClick={() => m.mutate(b.id)}>Issue tax invoice</Button>
+                <Button className="min-h-[48px]" disabled={m.isPending} onClick={() => m.mutate(b.id)}>Issue invoice</Button>
               </li>
             ))}
           </ul>
@@ -73,24 +74,26 @@ function Invoices() {
   );
 }
 
-function BusinessCard() {
+function BusinessCard({ propertyId, onPropertyChange }: { propertyId: Business['propertyId']; onPropertyChange: (propertyId: Business['propertyId']) => void }) {
   const get = useServerFn(getBusinessFn);
   const save = useServerFn(saveBusinessFn);
-  const q = useQuery({ queryKey: ['engine', 'business'], queryFn: () => get() });
-  const [b, setB] = useState<Business>({ legalName: '', gstin: '', address: '', stateCode: '17', sacCode: '996311' });
+  const q = useQuery({ queryKey: ['engine', 'business', propertyId], queryFn: () => get({ data: { propertyId } }) });
+  const [b, setB] = useState<Business>({ propertyId, gstRegistered: false, legalName: '', gstin: '', address: '', stateCode: '17', sacCode: '996311' });
   useEffect(() => { if (q.data) setB(q.data); }, [q.data]);
-  const m = useMutation({ mutationFn: () => save({ data: b }), onSuccess: () => toast.success('Business details saved'), onError: (e) => toast.error(e.message) });
+  const m = useMutation({ mutationFn: () => save({ data: b }), onSuccess: () => toast.success('Property invoice details saved'), onError: (e) => toast.error(e.message) });
 
   return (
     <Card>
-      <CardHeader><CardTitle className="text-lg">Business details on invoices</CardTitle></CardHeader>
+      <CardHeader><CardTitle className="text-lg">Property and GST status on invoices</CardTitle></CardHeader>
       <CardContent className="grid gap-4 md:grid-cols-2">
-        <div className="space-y-1"><Label htmlFor="b-name">Legal name</Label><Input id="b-name" className="h-12 text-base" value={b.legalName} placeholder="As registered for GST" onChange={(e) => setB({ ...b, legalName: e.target.value })} /></div>
-        <div className="space-y-1"><Label htmlFor="b-gstin">GSTIN</Label><Input id="b-gstin" className="h-12 font-mono text-base uppercase" maxLength={15} value={b.gstin} onChange={(e) => setB({ ...b, gstin: e.target.value.toUpperCase() })} /></div>
-        <div className="space-y-1 md:col-span-2"><Label htmlFor="b-addr">Registered address</Label><Textarea id="b-addr" className="min-h-20 text-base" value={b.address} onChange={(e) => setB({ ...b, address: e.target.value })} /></div>
-        <div className="space-y-1"><Label htmlFor="b-state">State code</Label><Input id="b-state" className="h-12 text-base" maxLength={2} value={b.stateCode} onChange={(e) => setB({ ...b, stateCode: e.target.value })} /><p className="text-xs text-muted-foreground">Meghalaya is 17.</p></div>
-        <div className="space-y-1"><Label htmlFor="b-sac">SAC code for rooms</Label><Input id="b-sac" className="h-12 text-base" maxLength={6} value={b.sacCode} onChange={(e) => setB({ ...b, sacCode: e.target.value })} /><p className="text-xs text-muted-foreground">996311 is room accommodation. Check with your CA.</p></div>
-        <div className="md:col-span-2"><Button className="min-h-12" disabled={m.isPending} onClick={() => m.mutate()}>Save business details</Button></div>
+        <div className="space-y-1 md:col-span-2"><Label htmlFor="b-property">Property</Label><select id="b-property" className="min-h-[48px] w-full rounded-md border border-input bg-background px-3 text-base" value={propertyId} onChange={(e) => onPropertyChange(e.target.value as Business['propertyId'])}><option value="XTSY-SHL-HOSTEL">XTSY Travellers Hostel</option><option value="XTSY-SHN-CAMP">Shnonpedeng Riverside Camping by XTSY</option></select><p className="text-xs text-muted-foreground">Each company or franchise-held property keeps its own GST registration and GSTIN. Never copy one property’s tax identity to another.</p></div>
+        <label className="flex min-h-[48px] items-center gap-3 rounded-xl bg-muted p-3 font-medium md:col-span-2"><input type="checkbox" className="h-6 w-6" checked={b.gstRegistered} onChange={(e) => setB({ ...b, gstRegistered: e.target.checked })} /><span>This property is registered for GST</span><span className="text-sm text-muted-foreground">{b.gstRegistered ? 'Issues tax invoices with GST.' : 'Issues ordinary business invoices with no GST.'}</span></label>
+        <div className="space-y-1"><Label htmlFor="b-name">Legal or business name</Label><Input id="b-name" className="min-h-[48px] text-base" value={b.legalName} onChange={(e) => setB({ ...b, legalName: e.target.value })} /></div>
+        <div className="space-y-1"><Label htmlFor="b-gstin">GSTIN {b.gstRegistered ? '' : '(not shown while unregistered)'}</Label><Input id="b-gstin" disabled={!b.gstRegistered} className="min-h-[48px] font-mono text-base uppercase" maxLength={15} value={b.gstin} onChange={(e) => setB({ ...b, gstin: e.target.value.toUpperCase() })} /></div>
+        <div className="space-y-1 md:col-span-2"><Label htmlFor="b-addr">Business address</Label><Textarea id="b-addr" className="min-h-20 text-base" value={b.address} onChange={(e) => setB({ ...b, address: e.target.value })} /></div>
+        <div className="space-y-1"><Label htmlFor="b-state">State code</Label><Input id="b-state" className="min-h-[48px] text-base" maxLength={2} value={b.stateCode} onChange={(e) => setB({ ...b, stateCode: e.target.value })} /><p className="text-xs text-muted-foreground">Meghalaya is 17.</p></div>
+        <div className="space-y-1"><Label htmlFor="b-sac">SAC code for rooms</Label><Input id="b-sac" className="min-h-[48px] text-base" maxLength={6} value={b.sacCode} onChange={(e) => setB({ ...b, sacCode: e.target.value })} /><p className="text-xs text-muted-foreground">996311 is room accommodation. Check with your CA.</p></div>
+        <div className="md:col-span-2"><Button className="min-h-[48px]" disabled={m.isPending} onClick={() => m.mutate()}>Save property invoice details</Button></div>
       </CardContent>
     </Card>
   );

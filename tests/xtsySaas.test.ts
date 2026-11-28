@@ -10,7 +10,7 @@ describe('PMS/POS seed catalogue', () => {
     expect(mapped).toEqual(bookable);
   });
   it('lists two properties: the hostel (with Experience by XTSY) and the Shnonpedeng partner camp of 10 tents', () => {
-    expect(PMS_PROPERTIES.map((p) => p.name)).toEqual(['XTSY Travellers Hostel', 'Shnonpedeng Riverside Camping']);
+    expect(PMS_PROPERTIES.map((p) => p.name)).toEqual(['XTSY Travellers Hostel', 'Shnonpedeng Riverside Camping by XTSY']);
     expect(PMS_PROPERTIES[0].unitTypeIds).toContain('xtsy-270');
     expect(unitInfo('shnonpedeng-tent')?.totalUnits).toBe(10);
     expect(findProperty('XTSY-SHL-SUITE')?.propertyId).toBe('XTSY-SHL-HOSTEL');
