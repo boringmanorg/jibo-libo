@@ -14,6 +14,7 @@ import {
   addChannelHotel, getChannelOverview, linkChannelHotel, makeOtaConnectLink, runChannelAction, setChannelProperty, testChannelConnection,
 } from '@/admin/channel.functions';
 import { Panel, ago } from './ConsoleBits';
+import { useConsoleProperty } from '@/admin/consoleScope';
 
 const WEBHOOK_URL = 'https://xtsy.one/api/public/hooks/zimmerstack';
 const OTAS = [
@@ -81,6 +82,7 @@ export function ChannelManagerPanel() {
   const overview = useServerFn(getChannelOverview);
   const test = useServerFn(testChannelConnection);
   const { data } = useQuery({ queryKey: ['console', 'channel'], queryFn: () => overview() });
+  const selected = useConsoleProperty();
   const status = !data ? pill('off', 'Loading…')
     : !data.keyMode ? pill('off', 'Key not saved')
     : data.keyMode === 'test' ? pill('warn', 'Sandbox key')
@@ -111,7 +113,7 @@ export function ChannelManagerPanel() {
       </div>
       {data?.dbReady && (
         <ul className="mt-5 space-y-4">
-          {data.properties.map((p) => <PropertyCard key={p.id} p={p} keyMode={data.keyMode} onChange={() => qc.invalidateQueries({ queryKey: ['console', 'channel'] })} />)}
+          {data.properties.filter((p) => !selected || p.id === selected).map((p) => <PropertyCard key={p.id} p={p} keyMode={data.keyMode} onChange={() => qc.invalidateQueries({ queryKey: ['console', 'channel'] })} />)}
         </ul>
       )}
     </Panel>
