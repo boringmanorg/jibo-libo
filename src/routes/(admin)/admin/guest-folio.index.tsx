@@ -52,7 +52,7 @@ function GuestFolioList() {
                   <span className="min-w-0"><span className="block truncate font-semibold text-xt-ink">{x.name}</span><span className="text-sm text-xt-mute">{x.phone} · {x.stays} stay{x.stays === 1 ? '' : 's'} · {x.propertyIds.map((p) => PROP[p] ?? p).join(', ')}</span></span>
                   <span className="hidden text-right text-sm sm:block">Billed<br /><b>{inr(x.billed)}</b></span>
                   <span className="hidden text-right text-sm sm:block">Paid<br /><b>{inr(x.paid)}</b></span>
-                  <span className={`text-right text-sm ${x.balance > 0 ? 'text-xt-crimson' : 'text-xt-pine'}`}>{x.balance > 0 ? <>Due<br /><b>{inr(x.balance)}</b></> : 'Settled'}</span>
+                  <span className={`text-right text-sm ${x.balance > 0 ? 'text-xt-crimson' : 'text-xt-pine'}`}>{x.balance > 0 ? <>Due<br /><b>{inr(x.balance)}</b></> : x.billed > 0 ? 'Settled' : <span className="text-xt-mute">Not invoiced</span>}</span>
                 </Link>
               </li>))}</ul>
           )}

@@ -20,7 +20,7 @@ export function useConsoleProperty() {
   const lock = useContext(ConsolePropertyLock);
   const path = useRouterState({ select: (s) => s.location.pathname.replace(/\/$/, '') });
   if (lock) return lock as typeof HOSTEL_ID;
-  return scope === 'hostel' ? HOSTEL_ID : property ?? (['/admin', '/admin/check-in', '/admin/inbox'].includes(path) ? undefined : HOSTEL_ID);
+  return scope === 'hostel' ? HOSTEL_ID : property ?? (['/admin', '/admin/check-in', '/admin/inbox', '/admin/guest-folio', '/admin/live'].includes(path) ? undefined : HOSTEL_ID);
 }
 export function canManageProperty(isSuperAdmin: boolean, propertyId: string): boolean {
   return isSuperAdmin || [HOSTEL_ID, 'XTSY-SHL-SUITE'].includes(propertyId);

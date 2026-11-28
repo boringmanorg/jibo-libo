@@ -5,9 +5,8 @@ import { requirePropertyAdmin } from './adminAuth';
 import { assertPropertyScope, canManageProperty } from './consoleScope';
 import { type SalesPayment, folioTotals, gstBreakdown, invoiceBlocker, paymentProblem, propertyForKind, type FolioLine } from './sales';
 
-import type { SupabaseClient } from '@supabase/supabase-js';
 import type { Database, Json } from '@/integrations/supabase/types';
-type Ctx = { supabase: SupabaseClient<Database>; userId: string; isSuperAdmin: boolean };
+type Ctx = { supabase: import('@supabase/supabase-js').SupabaseClient<Database>; userId: string; isSuperAdmin: boolean };
 const uuid = z.string().uuid();
 const todayIndia = () => new Date(Date.now() + 5.5 * 3600_000).toISOString().slice(0, 10);
 

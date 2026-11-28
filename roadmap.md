@@ -1,15 +1,15 @@
 # Roadmap — Master SEO prompt (xtsy.one)
 
 ## Console revamp, Guest Folio and audit fixes — 28 November 2026
-- [ ] Camp channel setup: add the ₹700 per-person bed space next to the tent.
-- [ ] Live insights: owner-triggered clean-up of entries older than 90 days.
-- [ ] Live insights counting moved into the database (no 10,000 cap).
-- [ ] Tighten data types on sales, live insights and pricing server code.
-- [ ] Split the largest booking engine file.
-- [ ] Balance payment recording and guest-wise records.
-- [ ] New "Guest Folio" section, property-scoped (super admin sees all).
-- [ ] Authentic branded invoice with logo; no "folio" wording on invoices.
-- [ ] Console design refresh for super admin and property views.
+- [x] Camp channel setup: add the ₹700 per-person bed space next to the tent.
+- [x] Live insights: owner-triggered clean-up of entries older than 90 days.
+- [x] Live insights counting moved into the database (no 10,000 cap).
+- [x] Tighten data types on sales, live insights and pricing server code.
+- [x] Split the largest booking engine file.
+- [x] Balance payment recording and guest-wise records.
+- [x] New "Guest Folio" section, property-scoped (super admin sees all).
+- [x] Authentic branded invoice with logo; no "folio" wording on invoices.
+- [x] Console design refresh for super admin and property views.
 
 ## Search trends dashboard — 28 November 2026
 - [x] Add dated Shillong and Shnonpedeng search charts and query metrics within Smart pricing, with manually refreshed real Google data and honest reporting-delay labels. Signed-in refresh retrieved 7,981 real query/date rows; both charts rendered, with Shillong appearances up 42% versus its usual week (the separate existing pricing factor remains +5%).
