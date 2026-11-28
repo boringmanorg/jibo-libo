@@ -1,5 +1,9 @@
 # Roadmap — Master SEO prompt (xtsy.one)
 
+## Search trends dashboard — 28 November 2026
+- [x] Add dated Shillong and Shnonpedeng search charts and query metrics within Smart pricing, with manually refreshed real Google data and honest reporting-delay labels. Signed-in refresh retrieved 7,981 real query/date rows; both charts rendered, with Shillong appearances up 42% versus its usual week (the separate existing pricing factor remains +5%).
+- [x] Make owner-editable nightly boundaries clearer without changing saved prices or the pricing formula; 31 checks passed. Tested as admin@xtsy.one at 1025×661 and 390×844: chart metric/period controls, seven daily rows, invalid-limit blocking and unchanged ₹400–₹500 save/readback; no horizontal overflow or page errors. Preview build OK; not published.
+
 ## Live demand pricing and check-in operations — 28 November 2026
 - [x] Activate all seven hostel room types within owner-approved base-to-base+25% limits; the latest real Google reading (+5%) produces a verified ₹420 guest card and matching quote for the ₹400 dorm bed. Controls remain super-admin-only; campsite pricing unchanged.
 - [x] Let the hostel property admin or super admin delete a check-in before allocation or after release, with property-scoped server checks, database policy, document removal and confirmation; six rule checks pass without deleting a real record.

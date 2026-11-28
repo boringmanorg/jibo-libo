@@ -438,13 +438,15 @@ export const getSearchDemand = createServerFn({ method: 'GET' })
   .middleware([requirePropertyAdmin])
   .handler(async ({ context }) => {
     const ctx = context as Ctx;
-    const { data } = await ctx.supabase.from('be_demand_snapshots').select('*').order('captured_at', { ascending: false }).limit(20);
+    const { data, error } = await ctx.supabase.from('be_demand_snapshots').select('*').order('captured_at', { ascending: false }).limit(20);
+    if (error) throw new Error('Could not load search demand.');
+    const { decodeDemandDetails } = await import('./demandTrends');
     const latest: Record<string, any> = {};
     for (const r of data ?? []) if (!latest[r.property_id]) latest[r.property_id] = r;
     return Object.values(latest).map((r: any) => ({
       propertyId: r.property_id as string, windowEnd: r.window_end as string, capturedAt: r.captured_at as string,
       recentImpressions: r.recent_impressions as number, baselineWeekly: r.baseline_weekly as number,
-      ratio: Number(r.ratio), multiplier: Number(r.multiplier), topQueries: (r.top_queries ?? []) as { query: string; impressions: number; clicks: number }[],
+      ratio: Number(r.ratio), multiplier: Number(r.multiplier), topQueries: decodeDemandDetails(r.top_queries).queries, daily: decodeDemandDetails(r.top_queries).daily,
     }));
   });
 
@@ -455,6 +457,7 @@ export const refreshSearchDemand = createServerFn({ method: 'POST' })
     const ctx = context as Ctx;
     const { fetchSearchRows } = await import('./searchDemand.server');
     const { readDemand } = await import('@/booking/demandIntent');
+    const { dailyDemand } = await import('./demandTrends');
     const { rows, windowEnd } = await fetchSearchRows(new Date());
     const readings = readDemand(rows, windowEnd);
     const { getServiceClient } = await import('./serviceClient.server');
@@ -462,7 +465,7 @@ export const refreshSearchDemand = createServerFn({ method: 'POST' })
     if (!db) throw new Error('The console server is not configured.');
     const { error } = await db.from('be_demand_snapshots').insert(readings.map((r) => ({
       property_id: r.propertyId, window_end: windowEnd, recent_impressions: r.recentImpressions, baseline_weekly: r.baselineWeekly,
-      ratio: r.ratio, multiplier: r.multiplier, top_queries: r.topQueries,
+      ratio: r.ratio, multiplier: r.multiplier, top_queries: { queries: r.topQueries, daily: dailyDemand(rows, r.propertyId, windowEnd) },
     })));
     if (error) throw new Error('Could not save the reading.');
     await audit(ctx, 'pricing.demand_refresh', { windowEnd, rows: rows.length });
