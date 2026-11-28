@@ -21,6 +21,7 @@ function SalesInvoiceView() {
   if (q.error || !q.data) return <p className="text-destructive">{(q.error as Error)?.message ?? 'Invoice not found.'}</p>;
   const { folio: f, business: b } = q.data;
   const n = nights(f.checkIn, f.checkOut);
+  const g = b.gstRegistered && f.gst ? f.gst : null;
   const row = (k: string, v: string | number) => (v === '' || v == null ? null : <div className="grid grid-cols-[8.5rem_minmax(0,1fr)] gap-2"><dt className="text-neutral-500">{k}</dt><dd>{v}</dd></div>);
   return (
     <div className="space-y-4">
@@ -33,10 +34,10 @@ function SalesInvoiceView() {
           <div>
             <p className="text-lg font-bold">{b.legalName}</p>
             <p className="whitespace-pre-line">{b.address}</p>
-            <p>GST status: Not registered · State code {b.stateCode}</p>
+            {g ? <p>GSTIN: <span className="font-mono">{b.gstin}</span> · State code {b.stateCode}</p> : <p>GST status: Not registered · State code {b.stateCode}</p>}
           </div>
           <div className="text-right">
-            <p className="text-xl font-bold">Invoice &amp; guest folio</p>
+            <p className="text-xl font-bold">{g ? 'Tax invoice' : 'Invoice'} &amp; guest folio</p>
             <p>No. <span className="font-mono">{q.data.number}</span></p>
             <p>Date {d(q.data.issuedAt)}</p>
           </div>
@@ -52,10 +53,18 @@ function SalesInvoiceView() {
           </dl>
         </section>
 
+        {g ? (
+        <table className="mt-4 w-full">
+          <thead className="border-b border-neutral-300 text-left"><tr><th className="py-2">Description</th><th>SAC</th><th className="text-right">Taxable</th><th className="text-right">GST</th><th className="text-right">CGST</th><th className="text-right">SGST</th><th className="text-right">Amount</th></tr></thead>
+          <tbody>{g.rows.map((l: any, i: number) => <tr key={i} className="border-b border-neutral-200"><td className="py-2">{l.description}</td><td>{b.sacCode}</td><td className="text-right">{inr(l.taxable)}</td><td className="text-right">{l.rate}%</td><td className="text-right">{inr(l.cgst)}</td><td className="text-right">{inr(l.sgst)}</td><td className="text-right">{inr(l.amount)}</td></tr>)}</tbody>
+          <tfoot className="font-semibold"><tr><td className="py-2" colSpan={2}>Totals</td><td className="text-right">{inr(g.taxable)}</td><td /><td className="text-right">{inr(g.cgst)}</td><td className="text-right">{inr(g.sgst)}</td><td className="text-right">{inr(g.total)}</td></tr></tfoot>
+        </table>
+        ) : (
         <table className="mt-4 w-full">
           <thead className="border-b border-neutral-300 text-left"><tr><th className="py-2">Description</th><th>SAC</th><th className="text-right">Amount</th></tr></thead>
           <tbody>{f.lines.map((l: any, i: number) => <tr key={i} className="border-b border-neutral-200"><td className="py-2">{l.description}</td><td>{b.sacCode}</td><td className="text-right">{inr(l.amount)}</td></tr>)}</tbody>
         </table>
+        )}
 
         <div className="mt-4 grid gap-6 sm:grid-cols-2">
           <div><p className="mb-1 font-semibold">Payments received</p>
@@ -69,7 +78,7 @@ function SalesInvoiceView() {
         </div>
 
         <footer className="mt-8 border-t border-neutral-300 pt-3 text-[11px] text-neutral-600">
-          Invoice issued by a property that is not registered for GST; no GST is charged or payable. Check-in 11:00 AM, check-out 10:00 AM; late check-out up to 11:30 AM is subject to additional charges. The booking amount is non-refundable. This is a computer-generated document.
+          {g ? 'Amounts include GST at the rates shown (CGST and SGST, place of supply: the property’s state).' : 'Invoice issued by a property that is not registered for GST; no GST is charged or payable.'} Check-in 11:00 AM, check-out 10:00 AM; late check-out up to 11:30 AM is subject to additional charges. The booking amount is non-refundable. This is a computer-generated document.
         </footer>
       </article>
     </div>

@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { toast } from 'sonner';
 import { Plus, Trash2 } from 'lucide-react';
 import { deleteSalesPayment, getSalesFolio, issueSalesInvoice, recordSalesPayment } from '@/admin/sales.functions';
-import { SALES_METHODS, folioTotals, type FolioLine, type SalesMethod } from '@/admin/sales';
+import { DEFAULT_GST_RATE, GST_RATES, SALES_METHODS, folioTotals, gstBreakdown, type FolioLine, type GstRate, type SalesMethod } from '@/admin/sales';
 
 const todayIso = () => new Date(Date.now() + 5.5 * 3600_000).toISOString().slice(0, 10);
 const inr = (n: number) => `₹${n.toLocaleString('en-IN', { maximumFractionDigits: 2 })}`;
@@ -27,10 +27,12 @@ export function SalesFolio({ e }: { e: { id: string; summary: string; estimate_r
   const [lines, setLines] = useState<FolioLine[]>([{ description: `${first}, ${e.check_in} to ${e.check_out}`, amount: Number(e.estimate_rupees) || 0 }]);
   const payM = useMutation({ mutationFn: () => record({ data: { enquiryId: e.id, amount: Number(pay.amount), method: pay.method, paidOn: pay.paidOn, note: pay.note || undefined } }), onSuccess: () => { toast.success('Payment recorded'); setPay({ ...pay, amount: '', note: '' }); refresh(); }, onError: fail });
   const delM = useMutation({ mutationFn: (id: string) => remove({ data: { id, enquiryId: e.id } }), onSuccess: () => { toast.success('Payment removed'); refresh(); }, onError: fail });
-  const invM = useMutation({ mutationFn: () => issue({ data: { enquiryId: e.id, lines } }), onSuccess: (r) => { toast.success(`Invoice ${r.number} issued`); refresh(); }, onError: fail });
+  const invM = useMutation({ mutationFn: () => issue({ data: { enquiryId: e.id, lines: lines.map((l) => (q.data?.gstRegistered ? { ...l, gstRate: l.gstRate ?? DEFAULT_GST_RATE } : { description: l.description, amount: l.amount })) } }), onSuccess: (r) => { toast.success(`Invoice ${r.number} issued`); refresh(); }, onError: fail });
   if (!q.data) return <p className="text-sm text-xt-mute">Loading payments…</p>;
   const t = folioTotals(lines, q.data.payments);
   const invoiced = q.data.invoice;
+  const reg = q.data.gstRegistered;
+  const gst = reg ? gstBreakdown(lines.map((l) => ({ ...l, gstRate: l.gstRate ?? DEFAULT_GST_RATE }))) : null;
   return (
     <div className="mt-4 space-y-4 rounded-2xl border border-xt-line bg-xt-cream/40 p-4">
       <div>
@@ -55,15 +57,17 @@ export function SalesFolio({ e }: { e: { id: string; summary: string; estimate_r
         <Link to="/admin/sales-invoices/$id" params={{ id: invoiced.id }} className="inline-flex min-h-11 items-center rounded-full bg-xt-crimson px-5 text-sm font-bold text-white">Open invoice {invoiced.number}</Link>
       ) : q.data.payments.length > 0 && (
         <div>
-          <p className="text-sm font-bold text-xt-ink">Invoice lines</p>
-          <p className="text-xs text-xt-mute">Pre-filled from the enquiry quote. Add late check-out, meals or other charges before issuing; an issued invoice cannot be changed.</p>
+          <div className="flex flex-wrap items-center justify-between gap-2"><p className="text-sm font-bold text-xt-ink">Invoice lines</p><Link to="/admin/invoices" className="inline-flex min-h-11 items-center text-sm font-semibold text-xt-crimson">Business &amp; GST details</Link></div>
+          <p className="text-xs text-xt-mute">Pre-filled from the enquiry quote. Add late check-out, meals or other charges before issuing; an issued invoice cannot be changed.{reg ? ' Amounts include GST; pick the rate for each line.' : ''}</p>
           <ul className="mt-2 space-y-2">{lines.map((l, i) => (
-            <li key={i} className="grid grid-cols-[minmax(0,1fr)_7rem_auto] gap-2">
+            <li key={i} className={reg ? 'grid grid-cols-[minmax(0,1fr)_7rem_5.5rem_auto] gap-2' : 'grid grid-cols-[minmax(0,1fr)_7rem_auto] gap-2'}>
               <input className={input} aria-label="Line description" value={l.description} onChange={(ev) => setLines(lines.map((x, j) => (j === i ? { ...x, description: ev.target.value } : x)))} />
               <input className={input} type="number" inputMode="decimal" aria-label="Line amount" value={l.amount || ''} onChange={(ev) => setLines(lines.map((x, j) => (j === i ? { ...x, amount: Number(ev.target.value) } : x)))} />
+              {reg && <select className={input} aria-label="GST rate" value={l.gstRate ?? DEFAULT_GST_RATE} onChange={(ev) => setLines(lines.map((x, j) => (j === i ? { ...x, gstRate: Number(ev.target.value) as GstRate } : x)))}>{GST_RATES.map((r) => <option key={r} value={r}>{r}% GST</option>)}</select>}
               <button type="button" aria-label="Remove line" disabled={lines.length === 1} onClick={() => setLines(lines.filter((_, j) => j !== i))} className="flex h-11 w-11 items-center justify-center rounded-full hover:bg-white disabled:opacity-30"><Trash2 className="h-4 w-4" /></button>
             </li>))}</ul>
           <button type="button" onClick={() => setLines([...lines, { description: '', amount: 0 }])} className="mt-2 inline-flex min-h-11 items-center gap-1 text-sm font-semibold text-xt-crimson"><Plus className="h-4 w-4" />Add line</button>
+          {gst && <p className="mt-2 text-sm text-xt-mute">Taxable {inr(gst.taxable)} · CGST {inr(gst.cgst)} · SGST {inr(gst.sgst)}</p>}
           <p className="mt-2 text-sm">Total {inr(t.total)} · Paid {inr(t.paid)} · <span className="font-semibold">Balance {inr(t.balance)}</span></p>
           <button type="button" disabled={invM.isPending} onClick={() => invM.mutate()} className="mt-2 min-h-12 rounded-full bg-xt-crimson px-6 font-bold text-white disabled:opacity-40">Generate invoice</button>
         </div>

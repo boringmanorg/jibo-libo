@@ -3,7 +3,7 @@ import { createServerFn } from '@tanstack/react-start';
 import { z } from 'zod';
 import { requirePropertyAdmin } from './adminAuth';
 import { assertPropertyScope } from './consoleScope';
-import { folioTotals, invoiceBlocker, propertyForKind, type FolioLine } from './sales';
+import { folioTotals, gstBreakdown, invoiceBlocker, propertyForKind, type FolioLine } from './sales';
 
 type Ctx = { supabase: any; userId: string; isSuperAdmin: boolean };
 const uuid = z.string().uuid();
@@ -20,16 +20,18 @@ async function enquiry(ctx: Ctx, id: string) {
 export const getSalesFolio = createServerFn({ method: 'GET' })
   .middleware([requirePropertyAdmin])
   .inputValidator(z.object({ enquiryId: uuid }))
-  .handler(async ({ data, context }): Promise<{ payments: { id: string; amount: number; method: string; paidOn: string; note: string }[]; invoice: { id: string; number: string } | null }> => {
+  .handler(async ({ data, context }): Promise<{ payments: { id: string; amount: number; method: string; paidOn: string; note: string }[]; invoice: { id: string; number: string } | null; gstRegistered: boolean }> => {
     const ctx = context as Ctx;
     const e = await enquiry(ctx, data.enquiryId);
-    const [p, inv] = await Promise.all([
+    const [p, inv, biz] = await Promise.all([
       ctx.supabase.from('be_sales_payments').select('id,amount_rupees,method,paid_on,note,created_at').eq('enquiry_id', e.id).order('paid_on'),
       ctx.supabase.from('be_sales_invoices').select('id,number').eq('enquiry_id', e.id).maybeSingle(),
+      ctx.supabase.from('be_property_invoice_profiles').select('gst_registered').eq('property_id', e.propertyId).maybeSingle(),
     ]);
     return {
       payments: (p.data ?? []).map((x: any) => ({ id: x.id as string, amount: Number(x.amount_rupees), method: x.method as string, paidOn: x.paid_on as string, note: (x.note ?? '') as string })),
       invoice: inv.data ? { id: inv.data.id as string, number: inv.data.number as string } : null,
+      gstRegistered: !!biz.data?.gst_registered,
     };
   });
 
@@ -61,7 +63,7 @@ export const deleteSalesPayment = createServerFn({ method: 'POST' })
 
 export const issueSalesInvoice = createServerFn({ method: 'POST' })
   .middleware([requirePropertyAdmin])
-  .inputValidator(z.object({ enquiryId: uuid, lines: z.array(z.object({ description: z.string().max(200), amount: z.number().max(10_000_000) })).min(1).max(12) }))
+  .inputValidator(z.object({ enquiryId: uuid, lines: z.array(z.object({ description: z.string().max(200), amount: z.number().max(10_000_000), gstRate: z.union([z.literal(0), z.literal(5), z.literal(12), z.literal(18)]).optional() })).min(1).max(12) }))
   .handler(async ({ data, context }) => {
     const ctx = context as Ctx;
     const e = await enquiry(ctx, data.enquiryId);
@@ -72,28 +74,31 @@ export const issueSalesInvoice = createServerFn({ method: 'POST' })
       ctx.supabase.from('be_self_check_ins').select('guest_name,phone,email,city,state,country,total_guests,purpose,check_in_date,check_in_time,check_out_date,check_out_time,allocated_units').eq('booking_reference', e.reference).order('created_at', { ascending: false }).limit(1),
     ]);
     if (!biz.data || String(biz.data.legal_name ?? '').trim().length < 3) throw new Error('Save this property’s legal name and address first.');
-    const lines: FolioLine[] = data.lines.map((l) => ({ description: l.description.trim(), amount: Math.round(l.amount * 100) / 100 }));
+    const registered = !!biz.data.gst_registered;
+    if (registered && !/^[0-9]{2}[A-Z0-9]{13}$/.test(String(biz.data.gstin ?? '').trim().toUpperCase())) throw new Error('Save this property’s GSTIN first.');
+    const lines: FolioLine[] = data.lines.map((l) => ({ description: l.description.trim(), amount: Math.round(l.amount * 100) / 100, ...(registered ? { gstRate: l.gstRate } : {}) }));
     const payments = (pays.data ?? []).map((p: any) => ({ amount: Number(p.amount_rupees), method: p.method, paidOn: p.paid_on, note: p.note ?? '' }));
     const blocker = invoiceBlocker({ status: e.status, kind: e.kind, payments: payments.length, gstRegistered: !!biz.data.gst_registered, hasInvoice: !!existing.data, lines });
     if (blocker) throw new Error(blocker);
     const { getServiceClient } = await import('./serviceClient.server');
     const { financialYear, invoiceNumber } = await import('@/booking/invoiceNumber');
     const fy = financialYear(todayIndia());
+    const kind = registered ? 'tax_invoice' as const : 'business_invoice' as const;
     const service = getServiceClient();
     if (!service) throw new Error('Invoice numbering is not available on this server.');
-    const seq = await service.rpc('be_next_invoice_seq', { p_fy: fy, p_kind: 'business_invoice' });
+    const seq = await service.rpc('be_next_invoice_seq', { p_fy: fy, p_kind: kind });
     if (seq.error || typeof seq.data !== 'number') throw new Error('Could not get the next invoice number.');
-    const number = invoiceNumber('business_invoice', fy, seq.data);
+    const number = invoiceNumber(kind, fy, seq.data);
     const c = (ci.data ?? [])[0] ?? null;
     const folio = {
       reference: e.reference, guestName: c?.guest_name || e.guest_name, phone: c?.phone || e.guest_phone, email: c?.email ?? '',
       address: c ? [c.city, c.state, c.country].filter(Boolean).join(', ') : '', guests: c?.total_guests ?? e.guests, purpose: c?.purpose ?? '',
       checkIn: e.check_in, checkOut: e.check_out, arrival: c ? `${c.check_in_date} ${String(c.check_in_time ?? '').slice(0, 5)}` : '',
       departure: c?.check_out_date ? `${c.check_out_date} ${String(c.check_out_time ?? '').slice(0, 5)}` : '', rooms: (c?.allocated_units ?? []) as string[],
-      lines, payments, ...folioTotals(lines, payments),
+      lines, payments, ...folioTotals(lines, payments), ...(registered ? { gst: gstBreakdown(lines) } : {}),
     };
-    const business = { legalName: biz.data.legal_name, gstRegistered: false, gstin: biz.data.gstin ?? '', address: biz.data.business_address ?? '', stateCode: biz.data.state_code ?? '17', sacCode: biz.data.sac_code ?? '996311' };
-    const ins = await ctx.supabase.from('be_sales_invoices').insert({ enquiry_id: e.id, property_id: e.propertyId, kind: 'business_invoice', fy, seq: seq.data, number, folio, business_snapshot: business, total_rupees: folio.total, issued_by: ctx.userId }).select('id').single();
+    const business = { legalName: biz.data.legal_name, gstRegistered: registered, gstin: registered ? String(biz.data.gstin).trim().toUpperCase() : '', address: biz.data.business_address ?? '', stateCode: biz.data.state_code ?? '17', sacCode: biz.data.sac_code ?? '996311' };
+    const ins = await ctx.supabase.from('be_sales_invoices').insert({ enquiry_id: e.id, property_id: e.propertyId, kind, fy, seq: seq.data, number, folio, business_snapshot: business, total_rupees: folio.total, issued_by: ctx.userId }).select('id').single();
     if (ins.error) throw new Error(ins.error.code === '23505' ? 'This booking already has an invoice.' : 'Could not save the invoice.');
     return { id: ins.data.id as string, number };
   });
