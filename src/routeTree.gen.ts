@@ -19,6 +19,7 @@ import { Route as adminAdminCheckInRouteImport } from './routes/(admin)/admin/ch
 import { Route as adminAdminInboxRouteImport } from './routes/(admin)/admin/inbox'
 import { Route as adminAdminInventoryRouteImport } from './routes/(admin)/admin/inventory'
 import { Route as adminAdminInvoicesRouteImport } from './routes/(admin)/admin/invoices'
+import { Route as adminAdminLiveRouteImport } from './routes/(admin)/admin/live'
 import { Route as adminAdminPricingRouteImport } from './routes/(admin)/admin/pricing'
 import { Route as adminAdminPropertyRouteImport } from './routes/(admin)/admin/property'
 import { Route as adminAdminRestaurantsRouteImport } from './routes/(admin)/admin/restaurants'
@@ -159,6 +160,11 @@ const adminAdminInventoryRoute = adminAdminInventoryRouteImport.update({
 const adminAdminInvoicesRoute = adminAdminInvoicesRouteImport.update({
   id: '/invoices',
   path: '/invoices',
+  getParentRoute: () => adminAdminRouteRoute,
+} as any)
+const adminAdminLiveRoute = adminAdminLiveRouteImport.update({
+  id: '/live',
+  path: '/live',
   getParentRoute: () => adminAdminRouteRoute,
 } as any)
 const adminAdminPricingRoute = adminAdminPricingRouteImport.update({
@@ -678,6 +684,7 @@ export interface FileRoutesByFullPath {
   '/admin/inbox': typeof adminAdminInboxRoute
   '/admin/inventory': typeof adminAdminInventoryRoute
   '/admin/invoices': typeof adminAdminInvoicesRouteWithChildren
+  '/admin/live': typeof adminAdminLiveRoute
   '/admin/pricing': typeof adminAdminPricingRoute
   '/admin/property': typeof adminAdminPropertyRoute
   '/admin/restaurants': typeof adminAdminRestaurantsRoute
@@ -780,6 +787,7 @@ export interface FileRoutesByTo {
   '/admin/inbox': typeof adminAdminInboxRoute
   '/admin/inventory': typeof adminAdminInventoryRoute
   '/admin/invoices': typeof adminAdminInvoicesRouteWithChildren
+  '/admin/live': typeof adminAdminLiveRoute
   '/admin/pricing': typeof adminAdminPricingRoute
   '/admin/property': typeof adminAdminPropertyRoute
   '/admin/restaurants': typeof adminAdminRestaurantsRoute
@@ -884,6 +892,7 @@ export interface FileRoutesById {
   '/(admin)/admin/inbox': typeof adminAdminInboxRoute
   '/(admin)/admin/inventory': typeof adminAdminInventoryRoute
   '/(admin)/admin/invoices': typeof adminAdminInvoicesRouteWithChildren
+  '/(admin)/admin/live': typeof adminAdminLiveRoute
   '/(admin)/admin/pricing': typeof adminAdminPricingRoute
   '/(admin)/admin/property': typeof adminAdminPropertyRoute
   '/(admin)/admin/restaurants': typeof adminAdminRestaurantsRoute
@@ -989,6 +998,7 @@ export interface FileRouteTypes {
     | '/admin/inbox'
     | '/admin/inventory'
     | '/admin/invoices'
+    | '/admin/live'
     | '/admin/pricing'
     | '/admin/property'
     | '/admin/restaurants'
@@ -1091,6 +1101,7 @@ export interface FileRouteTypes {
     | '/admin/inbox'
     | '/admin/inventory'
     | '/admin/invoices'
+    | '/admin/live'
     | '/admin/pricing'
     | '/admin/property'
     | '/admin/restaurants'
@@ -1194,6 +1205,7 @@ export interface FileRouteTypes {
     | '/(admin)/admin/inbox'
     | '/(admin)/admin/inventory'
     | '/(admin)/admin/invoices'
+    | '/(admin)/admin/live'
     | '/(admin)/admin/pricing'
     | '/(admin)/admin/property'
     | '/(admin)/admin/restaurants'
@@ -1446,6 +1458,13 @@ declare module '@tanstack/react-router' {
       path: '/invoices'
       fullPath: '/admin/invoices'
       preLoaderRoute: typeof adminAdminInvoicesRouteImport
+      parentRoute: typeof adminAdminRouteRoute
+    }
+    '/(admin)/admin/live': {
+      id: '/(admin)/admin/live'
+      path: '/live'
+      fullPath: '/admin/live'
+      preLoaderRoute: typeof adminAdminLiveRouteImport
       parentRoute: typeof adminAdminRouteRoute
     }
     '/(admin)/admin/pricing': {
@@ -2106,6 +2125,7 @@ interface adminAdminRouteRouteChildren {
   adminAdminInboxRoute: typeof adminAdminInboxRoute
   adminAdminInventoryRoute: typeof adminAdminInventoryRoute
   adminAdminInvoicesRoute: typeof adminAdminInvoicesRouteWithChildren
+  adminAdminLiveRoute: typeof adminAdminLiveRoute
   adminAdminPricingRoute: typeof adminAdminPricingRoute
   adminAdminPropertyRoute: typeof adminAdminPropertyRoute
   adminAdminRestaurantsRoute: typeof adminAdminRestaurantsRoute
@@ -2124,6 +2144,7 @@ const adminAdminRouteRouteChildren: adminAdminRouteRouteChildren = {
   adminAdminInboxRoute: adminAdminInboxRoute,
   adminAdminInventoryRoute: adminAdminInventoryRoute,
   adminAdminInvoicesRoute: adminAdminInvoicesRouteWithChildren,
+  adminAdminLiveRoute: adminAdminLiveRoute,
   adminAdminPricingRoute: adminAdminPricingRoute,
   adminAdminPropertyRoute: adminAdminPropertyRoute,
   adminAdminRestaurantsRoute: adminAdminRestaurantsRoute,

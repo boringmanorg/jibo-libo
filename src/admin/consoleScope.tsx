@@ -2,7 +2,7 @@ import { createContext, useContext } from 'react';
 import { getRouteApi, useRouterState } from '@tanstack/react-router';
 
 export const HOSTEL_ID = 'XTSY-SHL-HOSTEL';
-export const HOSTEL_CONSOLE_PATHS = ['/admin', '/admin/inventory', '/admin/inbox', '/admin/check-in', '/admin/stays', '/admin/room-photos', '/admin/property', '/admin/booking-engine', '/admin/bookings', '/admin/invoices', '/admin/sales-invoices', '/admin/form-c'] as const;
+export const HOSTEL_CONSOLE_PATHS = ['/admin', '/admin/inventory', '/admin/inbox', '/admin/check-in', '/admin/stays', '/admin/room-photos', '/admin/property', '/admin/booking-engine', '/admin/bookings', '/admin/live', '/admin/invoices', '/admin/sales-invoices', '/admin/form-c'] as const;
 export function hostelConsolePath(path: string): boolean {
   return HOSTEL_CONSOLE_PATHS.some((p) => path === p || (['/admin/bookings', '/admin/invoices', '/admin/sales-invoices'].includes(p) && path.startsWith(`${p}/`)));
 }

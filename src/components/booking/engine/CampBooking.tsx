@@ -10,6 +10,7 @@ import { addDays, daysBetween, todayInIndia, type IsoDate } from '@/booking/date
 import { HOSTEL_POLICIES } from '@/data/hostelPolicies';
 import { localEnquiryRef } from '@/lib/localEnquiry';
 import { bookingPageSource, openWhatsAppDirectly } from '@/utils/privacyCompliantWhatsApp';
+import { LIVE_PROPERTY, sendLiveStage, useLiveStage } from '@/booking/liveStage';
 import { trackBookingStart } from '@/utils/dataLayerService';
 import { CAMP, CAMP_GST_NOTE, CAMP_MEALS, CAMP_PHOTOS, CAMP_PLANS, campGuests, campProblem, campQuote, type CampMealId } from '@/data/shnonpedengCamp';
 import { PhotoStrip } from './BookExtras';
@@ -58,6 +59,9 @@ export default function CampBooking({ onBack }: { onBack?: () => void }) {
   const [tried, setTried] = useState(false);
 
   const nights = Math.max(0, daysBetween(checkIn, checkOut));
+  useLiveStage(LIVE_PROPERTY.camp, 'view');
+  useLiveStage(LIVE_PROPERTY.camp, 'rooms', tents !== 1 || beds > 0 || Object.values(meals).some((n) => n > 0));
+  useLiveStage(LIVE_PROPERTY.camp, 'details', name.trim().length > 0 || phone.trim().length > 0);
   const guests = campGuests({ tents, beds });
   const req = { nights, tents, beds, meals };
   const problem = campProblem(req);
@@ -81,6 +85,7 @@ export default function CampBooking({ onBack }: { onBack?: () => void }) {
     setTried(true);
     if (problem || contactProblem) return;
     const ref = localEnquiryRef();
+    sendLiveStage(LIVE_PROPERTY.camp, 'contacted', ref);
     const text = [
       `Hi XTSY, I'd like to book ${CAMP.name} (XTSY franchise partner).`,
       `Enquiry ID: ${ref}`,
@@ -159,6 +164,7 @@ export default function CampBooking({ onBack }: { onBack?: () => void }) {
               </label>
               <label className="space-y-1 text-sm font-semibold text-xt-ink">WhatsApp number
                 <input className={field} type="tel" inputMode="tel" autoComplete="tel" value={phone} onChange={(e) => setPhone(e.target.value)} />
+                <span className="block text-xs font-normal text-xt-mute">WhatsApp number only: the desk confirms your booking and shares updates on WhatsApp, so please use the number that has WhatsApp.</span>
               </label>
             </div>
             <label className="block space-y-1 text-sm font-semibold text-xt-ink">Anything we should know (optional)

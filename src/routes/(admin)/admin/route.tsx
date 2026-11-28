@@ -1,6 +1,6 @@
 import { createFileRoute, Link, Navigate, Outlet, useRouterState, useNavigate } from '@tanstack/react-router';
 import { PageHead } from '@/admin/components/ConsoleBits';
-import { CalendarDays, CreditCard, ExternalLink, Inbox, LogOut, Menu, PanelLeftClose, PanelLeftOpen, PlugZap, ScanLine, Sparkles, Sun, Users, Wallet, X } from 'lucide-react';
+import { Activity, CalendarDays, CreditCard, ExternalLink, Inbox, LogOut, Menu, PanelLeftClose, PanelLeftOpen, PlugZap, ScanLine, Sparkles, Sun, Users, X } from 'lucide-react';
 import xtsyLogo from '@/assets/xtsy-color-logo.webp';
 import { useEffect, useState, type FormEvent } from 'react';
 import { Button } from '@/components/ui/button';
@@ -117,8 +117,8 @@ const NAV: { group: string; items: { to: string; label: string; icon: typeof Cal
     { to: '/admin/settings', label: 'Connections', icon: PlugZap, superOnly: true },
     { to: '/admin/team', label: 'Team & logins', icon: Users, superOnly: true },
   ] },
-  { group: 'Money', items: [
-    { to: '/admin/bookings', label: 'Paid bookings', icon: Wallet },
+  { group: 'Insights', items: [
+    { to: '/admin/live', label: 'Live insights', icon: Activity },
   ] },
 ];
 
@@ -144,7 +144,7 @@ function Shell({ email, access, deskProperty, onSignOut }: { email: string; acce
   const allowed = (p: string) => access === 'admin' || (access === 'property' ? hostelConsolePath(p) : deskPath(p));
   if (!allowed(path)) return <Navigate to="/admin/check-in" search={{ property: lock }} replace />;
   const oldTitle = OLD_SCREEN_TITLES[path];
-  const hostelOnly = ['/admin/inventory', '/admin/stays', '/admin/room-photos', '/admin/settings', '/admin/bookings'];
+  const hostelOnly = ['/admin/inventory', '/admin/stays', '/admin/room-photos', '/admin/bookings'];
   const campUnsupported = property === CAMP_ID && hostelOnly.includes(path);
   const groups = NAV.map((g) => ({ ...g, items: g.items.filter((i) => (!i.superOnly || access === 'admin') && allowed(i.to)) })).filter((g) => g.items.length);
   const renderNav = (compact = false) => (

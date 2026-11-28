@@ -157,3 +157,21 @@ export const requestDateChangeFn = createServerFn({ method: 'POST' })
     const m = await import('./manageBooking.server');
     return asResult(async () => m.requestDateChange(await deps(), data.reference, data.phone, clientIp(), data.checkIn, data.checkOut, data.note));
   });
+
+/** Booking-page step log for Live insights: anonymous, one row per visit and step. */
+export const trackLiveStageFn = createServerFn({ method: 'POST' })
+  .inputValidator(z.object({
+    session: z.string().uuid(),
+    propertyId: z.string().regex(/^[A-Z0-9-]{3,40}$/),
+    stage: z.enum(['view', 'rooms', 'details', 'contacted']),
+    reference: z.string().regex(/^XTSY-[A-Z0-9]{5}$/).optional(),
+  }))
+  .handler(async ({ data }) => {
+    const { getServiceClient } = await import('@/admin/serviceClient.server');
+    const db = getServiceClient();
+    if (!db) return { ok: false };
+    const dup = await db.from('be_live_events').select('id').eq('session_id', data.session).eq('property_id', data.propertyId).eq('stage', data.stage).limit(1);
+    if (dup.data?.length) return { ok: true };
+    const { error } = await db.from('be_live_events').insert({ session_id: data.session, property_id: data.propertyId, stage: data.stage, reference: data.reference ?? null });
+    return { ok: !error };
+  });

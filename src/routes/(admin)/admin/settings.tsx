@@ -9,6 +9,7 @@ import { getConsoleOverview, setIntegrationFlags, testConnection } from '@/admin
 import { PageHead, Panel, SheetChip } from '@/admin/components/ConsoleBits';
 import { ChannelManagerPanel } from '@/admin/components/ChannelManagerPanel';
 import { buildRouteHead } from '@/lib/seo-head';
+import { useConsoleProperty } from '@/admin/consoleScope';
 
 export const Route = createFileRoute('/(admin)/admin/settings')({
   head: () => buildRouteHead({ path: '/admin/settings', title: 'Hostel Connections — XTSY Console', description: 'Private XTSY hostel sheet, PMS and channel-manager connections.', noIndex: true }),
@@ -40,6 +41,8 @@ function Connections() {
   const setFlags = useServerFn(setIntegrationFlags);
   const test = useServerFn(testConnection);
   const { data } = useQuery({ queryKey: ['console', 'overview'], queryFn: () => overview() });
+  const camp = useConsoleProperty() === 'XTSY-SHN-CAMP';
+  if (camp) return <div className="space-y-4"><PageHead title="Connections" sub="Shnonpedeng Riverside Camping is WhatsApp enquiry-only: no Google Sheet or PMS. Only its channel manager switch applies." /><ChannelManagerPanel /></div>;
   if (!data) return <p className="text-muted-foreground">Loading…</p>;
 
   const toggle = (system: 'pms' | 'pos', on: boolean) => (

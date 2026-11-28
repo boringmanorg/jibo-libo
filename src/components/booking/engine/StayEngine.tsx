@@ -35,6 +35,7 @@ import { trackBookingStart } from '@/utils/dataLayerService';
 import { openWhatsAppDirectly } from '@/utils/privacyCompliantWhatsApp';
 import { BrandStory, LocationPicker, NEW_SHILLONG_PHOTOS, PhotoStrip, Promotions, type BookLocation } from './BookExtras';
 import CampBooking from './CampBooking';
+import { LIVE_PROPERTY, sendLiveStage, useLiveStage } from '@/booking/liveStage';
 import PropertyOverview from '@/components/booking/PropertyOverview';
 import BreakfastPicker, { picksToList } from './BreakfastPicker';
 import { breakfastItem } from '@/data/breakfastMenu';
@@ -121,7 +122,9 @@ export default function StayEngine({ hiddenRooms, mode, pending = false, photos,
   const roomQuote = useRoomQuote(result, cart, enquiry, quoteInputs);
   const setDates = (ci: IsoDate, co: IsoDate) => { setCheckIn(ci); setCheckOut(co > ci ? co : addDays(ci, 1)); };
   const shown = result?.rooms.filter((r) => !hiddenRooms?.includes(r.id) && (filter === 'all' || r.soldAs === filter)) ?? [];
-  const toDetails = () => { setRulesOpen(false); setStep('details'); window.scrollTo({ top: 0 }); };
+  const toDetails = () => { setRulesOpen(false); setStep('details'); sendLiveStage(LIVE_PROPERTY.hostel, 'details'); window.scrollTo({ top: 0 }); };
+  useLiveStage(LIVE_PROPERTY.hostel, 'view', mode !== 'preview' && location === 'new-shillong');
+  useLiveStage(LIVE_PROPERTY.hostel, 'rooms', mode !== 'preview' && lines.length > 0);
 
   return (
     <QuoteInputs.Provider value={quoteInputs}>
@@ -596,6 +599,7 @@ function Details({ mode, result, cart, lines, onBack }: { mode: EngineMode; resu
     const url = `https://wa.me/918837317070?text=${encodeURIComponent(message)}`;
     if (tab && !tab.closed) { tab.opener = null; tab.location.href = url; } else openWhatsAppDirectly(message);
     setSentRef(reference);
+    sendLiveStage(LIVE_PROPERTY.hostel, 'contacted', reference);
     // Copy to the console inbox after WhatsApp has opened; never waits on or reports to the guest.
     void recordEnquiryFn({ data: {
       reference, kind: 'stay', name: guest.name.trim(), phone: guest.phone.trim(), checkIn: result.checkIn, checkOut: result.checkOut,
@@ -619,7 +623,7 @@ function Details({ mode, result, cart, lines, onBack }: { mode: EngineMode; resu
           <div className="grid gap-4 sm:grid-cols-2">
             <Field id="g-name" label="Full name (as on ID)" required value={guest.name} onChange={(v) => setGuest({ ...guest, name: v })} autoComplete="name" />
             <Field id="g-email" label="Email for your receipt" required type="email" value={guest.email} onChange={(v) => setGuest({ ...guest, email: v })} autoComplete="email" />
-            <Field id="g-phone" label="Mobile number (WhatsApp)" required type="tel" value={guest.phone} onChange={(v) => setGuest({ ...guest, phone: v })} autoComplete="tel" />
+            <div><Field id="g-phone" label="WhatsApp number" required type="tel" value={guest.phone} onChange={(v) => setGuest({ ...guest, phone: v })} autoComplete="tel" /><p className="mt-1.5 text-xs text-xt-mute">WhatsApp number only: the desk confirms your booking and shares updates on WhatsApp, so please use the number that has WhatsApp.</p></div>
             <div className="space-y-1.5">
               <label htmlFor="g-nat" className="text-sm font-semibold text-xt-ink">Nationality<span className="text-xt-crimson"> *</span></label>
               <select id="g-nat" className={inputCls} value={guest.nationality} onChange={(e) => setGuest({ ...guest, nationality: e.target.value })}>

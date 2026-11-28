@@ -1389,6 +1389,33 @@ export type Database = {
           },
         ]
       }
+      be_live_events: {
+        Row: {
+          created_at: string
+          id: number
+          property_id: string
+          reference: string | null
+          session_id: string
+          stage: string
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          property_id: string
+          reference?: string | null
+          session_id: string
+          stage: string
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          property_id?: string
+          reference?: string | null
+          session_id?: string
+          stage?: string
+        }
+        Relationships: []
+      }
       be_ota_bookings: {
         Row: {
           adults: number
