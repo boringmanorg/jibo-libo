@@ -6,7 +6,7 @@
 import { createServerFn } from '@tanstack/react-start';
 import { setResponseHeader } from '@tanstack/react-start/server';
 import { z } from 'zod';
-import { requirePropertyAdmin, SUPER_ADMIN } from './adminAuth';
+import { requireSuperAdmin, SUPER_ADMIN } from './adminAuth';
 import { canManageMember, isInternalEmail, TEAM_PROPERTIES, type TeamRole } from './teamRules';
 
 type Ctx = { supabase: any; userId: string; isSuperAdmin: boolean };
@@ -30,7 +30,7 @@ async function audit(ctx: Ctx, action: string, details: Record<string, unknown>)
 }
 
 export const listTeam = createServerFn({ method: 'GET' })
-  .middleware([requirePropertyAdmin])
+  .middleware([requireSuperAdmin])
   .handler(async ({ context }) => {
     setResponseHeader('Cache-Control', 'no-store');
     const ctx = context as Ctx;
@@ -47,7 +47,7 @@ export const listTeam = createServerFn({ method: 'GET' })
   });
 
 export const createTeamMember = createServerFn({ method: 'POST' })
-  .middleware([requirePropertyAdmin])
+  .middleware([requireSuperAdmin])
   .inputValidator(z.object({ propertyId, role: z.enum(['property_admin', 'front_desk']), email: z.string().trim().toLowerCase().email().max(120), name: z.string().trim().max(80), password }))
   .handler(async ({ data, context }) => {
     const ctx = context as Ctx;
@@ -63,7 +63,7 @@ export const createTeamMember = createServerFn({ method: 'POST' })
   });
 
 export const setTeamMemberActive = createServerFn({ method: 'POST' })
-  .middleware([requirePropertyAdmin])
+  .middleware([requireSuperAdmin])
   .inputValidator(z.object({ id: z.string().uuid(), active: z.boolean() }))
   .handler(async ({ data, context }) => {
     const ctx = context as Ctx;
@@ -77,7 +77,7 @@ export const setTeamMemberActive = createServerFn({ method: 'POST' })
   });
 
 export const setTeamMemberPassword = createServerFn({ method: 'POST' })
-  .middleware([requirePropertyAdmin])
+  .middleware([requireSuperAdmin])
   .inputValidator(z.object({ id: z.string().uuid(), password }))
   .handler(async ({ data, context }) => {
     const ctx = context as Ctx;
@@ -89,7 +89,7 @@ export const setTeamMemberPassword = createServerFn({ method: 'POST' })
   });
 
 export const setDeskLogins = createServerFn({ method: 'POST' })
-  .middleware([requirePropertyAdmin])
+  .middleware([requireSuperAdmin])
   .inputValidator(z.object({ propertyId, enabled: z.boolean() }))
   .handler(async ({ data, context }) => {
     const ctx = context as Ctx;

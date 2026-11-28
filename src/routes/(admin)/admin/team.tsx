@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useConsoleProperty } from '@/admin/consoleScope';
 import { useServerFn } from '@tanstack/react-start';
 import { useState, type FormEvent } from 'react';
 import { toast } from 'sonner';
@@ -19,6 +20,7 @@ const ROLE: Record<TeamRole, string> = { property_admin: 'Property admin', front
 const field = 'min-h-12 w-full rounded-lg border border-xt-line bg-white px-3 text-base';
 
 function TeamPage() {
+  const selected = useConsoleProperty();
   const load = useServerFn(listTeam);
   const qc = useQueryClient();
   const q = useQuery({ queryKey: ['console', 'team'], queryFn: () => load() });
@@ -31,7 +33,7 @@ function TeamPage() {
 
   if (q.error) return <p className="text-destructive">Could not load the team. {(q.error as Error).message}</p>;
   if (!q.data) return <p className="text-muted-foreground">Loading…</p>;
-  const props = TEAM_PROPERTIES.filter((p) => q.data.isSuperAdmin || p === 'XTSY-SHL-HOSTEL');
+  const props = TEAM_PROPERTIES.filter((p) => (q.data.isSuperAdmin || p === 'XTSY-SHL-HOSTEL') && (!selected || p === selected));
 
   return <div className="space-y-8">
     <PageHead title="Team & logins" sub="Logins use internal @xtsy.one emails with a first password you set. Staff cannot change it; the property admin or super admin changes it here." />

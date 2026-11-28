@@ -114,9 +114,9 @@ const NAV: { group: string; items: { to: string; label: string; icon: typeof Cal
   ] },
   { group: 'Set up', items: [
     { to: '/admin/property', label: 'Property setup', icon: Building2 },
-    { to: '/admin/booking-engine', label: 'Online booking', icon: CreditCard },
-    { to: '/admin/settings', label: 'Connections', icon: PlugZap },
-    { to: '/admin/team', label: 'Team & logins', icon: Users },
+    { to: '/admin/booking-engine', label: 'Booking Config', icon: CreditCard },
+    { to: '/admin/settings', label: 'Connections', icon: PlugZap, superOnly: true },
+    { to: '/admin/team', label: 'Team & logins', icon: Users, superOnly: true },
   ] },
   { group: 'Money', items: [
     { to: '/admin/bookings', label: 'Paid bookings', icon: Wallet },
@@ -126,7 +126,7 @@ const NAV: { group: string; items: { to: string; label: string; icon: typeof Cal
 /** Titles for the older screens that don't draw their own heading. */
 const OLD_SCREEN_TITLES: Record<string, [string, string]> = {
   '/admin/room-photos': ['Room photos', 'The photos /book shows for each room.'],
-  '/admin/booking-engine': ['Online booking', 'Card and UPI payment on /book, fees and GST.'],
+  '/admin/booking-engine': ['Booking Config', 'Card and UPI payment on /book, fees and GST.'],
   '/admin/bookings': ['Paid bookings', 'Bookings paid online through /book.'],
   '/admin/invoices': ['Invoices', 'Advance receipts and tax invoices.'],
 };
@@ -142,7 +142,7 @@ function Shell({ email, access, deskProperty, onSignOut }: { email: string; acce
   const property = lock ?? selected ?? (allView ? undefined : 'XTSY-SHL-HOSTEL');
   const navigate = useNavigate({ from: Route.fullPath });
   const deskPath = (p: string) => (DESK_PATHS as readonly string[]).includes(p);
-  const allowed = (p: string) => access === 'admin' || (access === 'property' ? hostelConsolePath(p) || p === '/admin/team' : deskPath(p));
+  const allowed = (p: string) => access === 'admin' || (access === 'property' ? hostelConsolePath(p) : deskPath(p));
   if (!allowed(path)) return <Navigate to="/admin/check-in" search={{ property: lock }} replace />;
   const oldTitle = OLD_SCREEN_TITLES[path];
   const hostelOnly = ['/admin/inventory', '/admin/stays', '/admin/room-photos', '/admin/booking-engine', '/admin/settings', '/admin/bookings'];
