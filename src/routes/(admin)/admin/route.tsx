@@ -1,6 +1,6 @@
 import { createFileRoute, Link, Navigate, Outlet, useRouterState, useNavigate } from '@tanstack/react-router';
 import { PageHead } from '@/admin/components/ConsoleBits';
-import { Ban, CalendarDays, CreditCard, ExternalLink, ImageIcon, Inbox, LogOut, Menu, PanelLeftClose, PanelLeftOpen, PlugZap, Building2, ScanLine, Sparkles, Sun, Users, Wallet, X } from 'lucide-react';
+import { CalendarDays, CreditCard, ExternalLink, ImageIcon, Inbox, LogOut, Menu, PanelLeftClose, PanelLeftOpen, PlugZap, Building2, ScanLine, Sparkles, Sun, Users, Wallet, X } from 'lucide-react';
 import xtsyLogo from '@/assets/xtsy-color-logo.webp';
 import { useEffect, useState, type FormEvent } from 'react';
 import { Button } from '@/components/ui/button';
@@ -110,7 +110,6 @@ const NAV: { group: string; items: { to: string; label: string; icon: typeof Cal
     { to: '/admin/inventory', label: 'Inventory', icon: CalendarDays },
     { to: '/admin/inbox', label: 'Inbox', icon: Inbox },
     { to: '/admin/check-in', label: 'Self check-in', icon: ScanLine },
-    { to: '/admin/stays', label: 'Blocks', icon: Ban },
     { to: '/admin/pricing', label: 'Smart pricing', icon: Sparkles, superOnly: true },
   ] },
   { group: 'Set up', items: [
@@ -127,7 +126,6 @@ const NAV: { group: string; items: { to: string; label: string; icon: typeof Cal
 
 /** Titles for the older screens that don't draw their own heading. */
 const OLD_SCREEN_TITLES: Record<string, [string, string]> = {
-  '/admin/stays': ['Blocks', 'Close or reopen beds, rooms and tents on /book for a range of dates.'],
   '/admin/room-photos': ['Room photos', 'The photos /book shows for each room.'],
   '/admin/booking-engine': ['Online booking', 'Card and UPI payment on /book, fees and GST.'],
   '/admin/bookings': ['Paid bookings', 'Bookings paid online through /book.'],

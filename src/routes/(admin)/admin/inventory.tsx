@@ -15,6 +15,7 @@ import type { CalendarCell, CalendarRow } from '@/admin/inventoryCalendar';
 import { PageHead, SheetChip, dayMonth, freeTone, weekday } from '@/admin/components/ConsoleBits';
 import { DateRangeBar, useConsoleRange } from '@/admin/components/DateRangeBar';
 import { daysOf, dayHeading } from '@/admin/dateRange';
+import { InventoryBulk } from '@/admin/components/InventoryBulk';
 
 export const Route = createFileRoute('/(admin)/admin/inventory')({
   validateSearch: z.object({ start: z.string().regex(/^\d{4}-\d{2}$/).optional(), view: z.string().max(8).optional() }),
@@ -30,14 +31,14 @@ const daysIn = (ym: string) => new Date(Date.UTC(Number(ym.slice(0, 4)), Number(
 function Inventory() {
   const { view } = Route.useSearch();
   const navigate = useNavigate({ from: Route.fullPath });
-  const list = view !== 'grid';
+  const mode = view === 'grid' || view === 'bulk' ? view : 'list';
   return <div>
     <div role="tablist" aria-label="Inventory view" className="mb-4 inline-flex rounded-full border border-xt-line bg-white p-1">
-      {([['list', 'Day list'], ['grid', 'Month grid']] as const).map(([v, label]) => <button key={v} type="button" role="tab" aria-selected={(v === 'list') === list}
+      {([['list', 'Day list'], ['grid', 'Month grid'], ['bulk', 'Bulk edit & rates']] as const).map(([v, label]) => <button key={v} type="button" role="tab" aria-selected={v === mode}
         onClick={() => void navigate({ search: (prev) => ({ ...prev, view: v }), replace: true })}
-        className={cn('min-h-[44px] rounded-full px-5 text-sm font-bold', (v === 'list') === list ? 'bg-xt-ink text-xt-sand' : 'text-xt-mute')}>{label}</button>)}
+        className={cn('min-h-[44px] rounded-full px-5 text-sm font-bold', v === mode ? 'bg-xt-ink text-xt-sand' : 'text-xt-mute')}>{label}</button>)}
     </div>
-    {list ? <InventoryDays /> : <InventoryGrid />}
+    {mode === 'list' ? <InventoryDays /> : mode === 'grid' ? <InventoryGrid /> : <div className="space-y-4"><PageHead title="Inventory" sub="Bulk edits: close or reopen many nights or the whole property, and see each room's rate." /><InventoryBulk /></div>}
   </div>;
 }
 
@@ -218,7 +219,7 @@ function NightPanel({ row, cell, onClose }: { row: CalendarRow; cell: CalendarCe
           )}
           {cell.closed > 0 && <button type="button" disabled={m.isPending} onClick={() => m.mutate({ state: 'open' })} className="min-h-12 w-full rounded-full bg-xt-ink font-bold text-xt-sand disabled:opacity-40">Reopen this night</button>}
         </div>
-        <p className="mt-4 text-xs text-xt-mute">For several nights or the whole property, use Blocks.</p>
+        <p className="mt-4 text-xs text-xt-mute">For several nights or the whole property, use Bulk edit & rates.</p>
       </div>
     </div>
   );

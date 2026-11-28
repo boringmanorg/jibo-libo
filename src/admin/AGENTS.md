@@ -8,4 +8,5 @@
 - Property admins are limited to XTSY Travellers Hostel (`canManageMember`) because hostel-scoped handlers (`assertPropertyScope`) assume it; extend that before allowing admins for other properties.
 - Today shows operations only; smart pricing lives at `/admin/pricing` and enquiries in `/admin/inbox`. Occupancy counts only properties with live inventory and labels the campsite as not tracked.
 - Search trend charts use the same place classifier as pricing and store daily values with query details in the existing snapshot JSON; decode legacy query arrays without invented history, refresh only on admin action, and never equate site impressions with all Google searches.
+- Blocks live in Inventory → Bulk edit (`?view=bulk`, `InventoryBulk`); `/admin/stays` only redirects there so old links and sheet-pairing instructions keep working.
 - Console date filters share `src/admin/dateRange.ts` and `DateRangeBar` (?range=&from=&to= on the console layout search); day-wise lists use `groupByDay`, and Today insights come from the pure `summarizeArrivals` so ranges behave the same on every page.
